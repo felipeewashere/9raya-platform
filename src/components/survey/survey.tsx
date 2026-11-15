@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
 import { Loader2, Lock, Mail } from "lucide-react";
 import { toast } from "sonner";
-import { signInWithGoogle } from "@/app/actions/auth";
-import { completeOnboarding } from "@/app/actions/profile";
+import { signInWithGoogle } from "@/lib/actions/auth";
+import { completeOnboarding } from "@/lib/actions/profile";
 import { cn } from "@/lib/utils";
 
 /*
@@ -164,7 +164,6 @@ export function Survey({ mode, name }: { mode: "guest" | "member"; name?: string
         }
         clearStoredAnswers();
         router.replace("/tableau-de-bord");
-        router.refresh();
       });
     },
     [router],

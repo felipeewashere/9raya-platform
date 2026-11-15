@@ -8,7 +8,7 @@ import { AlertCircle, Eye, EyeOff, Loader2, MailCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { requestPasswordReset, signIn, signInWithGoogle, signUp, updatePassword, type FormState } from "@/app/actions/auth";
+import { requestPasswordReset, signIn, signInWithGoogle, signUp, updatePassword, type FormState } from "@/lib/actions/auth";
 
 function Submit({ children }: { children: React.ReactNode }) {
   const { pending } = useFormStatus();

@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import katex from "katex";
 import { cn } from "@/lib/utils";
+import { withBase } from "@/lib/base-path";
 
 const rehype = [[rehypeKatex, { strict: "ignore", throwOnError: false, output: "htmlAndMathml" }]] as const;
 
@@ -35,10 +36,10 @@ export function Md({ children, className, inline = false }: { children: string; 
         // figures: readable in both themes (dark mode inverts the drawing, keeping hues)
         img: ({ src, alt }) => (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={typeof src === "string" ? src : undefined} alt={alt ?? ""} loading="lazy" className="fig mx-auto my-4 block h-auto max-h-[480px] w-full max-w-[680px] object-contain" />
+          <img src={typeof src === "string" ? withBase(src) : undefined} alt={alt ?? ""} loading="lazy" className="fig mx-auto my-4 block h-auto max-h-[480px] w-full max-w-[680px] object-contain" />
         ),
         a: ({ href, children }) => (
-          <a href={href} target={href?.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+          <a href={withBase(href)} target={href?.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
             {children}
           </a>
         ),

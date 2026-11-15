@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, LayoutDashboard, LogOut, PencilRuler, Settings, Shield, Trophy, User } from "lucide-react";
+import { BookOpen, LayoutDashboard, LogOut, PencilRuler, Settings, Trophy, User } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { CommandPalette } from "./command-palette";
 import { StreakCalendar } from "./streak-calendar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { signOut } from "@/app/actions/auth";
+import { signOut } from "@/lib/actions/auth";
 import { cn } from "@/lib/utils";
 
 export type ShellUser = { name: string; username: string | null; avatar: string | null; role: "student" | "admin" };
@@ -66,13 +66,6 @@ export function UserMenu({ user }: { user: ShellUser }) {
             <Settings /> Paramètres
           </Link>
         </DropdownMenuItem>
-        {user.role === "admin" && (
-          <DropdownMenuItem asChild>
-            <Link href="/admin">
-              <Shield /> Administration
-            </Link>
-          </DropdownMenuItem>
-        )}
         <DropdownMenuSeparator />
         <form action={signOut}>
           <DropdownMenuItem asChild>

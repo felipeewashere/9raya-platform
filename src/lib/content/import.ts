@@ -1,7 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { chapterSchema, lessonSchema, type Block, type Chapter, type Lesson, type Question } from "@/content/schema";
-import { joinQuestion, splitQuestion } from "@/lib/quiz/serialize";
-import type { PublicQuestion, SecretAnswer } from "@/lib/quiz/types";
+import { chapterSchema, lessonSchema, type Chapter, type Lesson, type Question } from "@/content/schema";
+import { splitQuestion } from "@/lib/quiz/serialize";
 
 export type ImportOptions = {
   /** Publish chapters and lessons immediately (default true). */
@@ -128,76 +127,6 @@ export async function importLesson(db: SupabaseClient, target: LessonTarget, raw
     if (ins.error) throw new Error(`insert blocks for ${lesson.slug}: ${ins.error.message}`);
   }
   return { id: les.id, questions: questionRows.length, blocks: blockRows.length };
-}
-
-/** Database rows of one lesson, as read by the admin editor (service role: answers included). */
-export type StoredLessonRows = {
-  lesson: { slug: string; title: string; number: string | null; summary: string | null; estimated_minutes: number };
-  blocks: { position: number; type: string; data: Record<string, unknown>; origin: "source" | "added"; question_id: string | null }[];
-  questions: {
-    id: string;
-    key: string;
-    placement: "quiz" | "checkpoint";
-    position: number;
-    kind: string;
-    data: PublicQuestion;
-    answer: { answer: SecretAnswer; explanation: string } | null;
-  }[];
-};
-
-/**
- * Rebuild the AUTHORING lesson (lessonSchema shape) from its database rows — the inverse of
- * `importLesson`. The result is not validated: a lesson created in the admin may still be
- * incomplete (no blocks, fewer than 3 quiz questions). Checkpoint blocks whose question is
- * missing are dropped and reported in `warnings`.
- */
-export function lessonFromRows(rows: StoredLessonRows): { lesson: Lesson; warnings: string[] } {
-  const warnings: string[] = [];
-  const toQuestion = (q: StoredLessonRows["questions"][number]): Question | null => {
-    if (!q.answer) {
-      warnings.push(`La question ${q.key} n'a pas de correction enregistrée : elle a été ignorée.`);
-      return null;
-    }
-    try {
-      return joinQuestion(q.kind, q.data, q.answer.answer, q.answer.explanation);
-    } catch (e) {
-      warnings.push(`${q.key} : ${(e as Error).message}`);
-      return null;
-    }
-  };
-  const byId = new Map(rows.questions.map((q) => [q.id, q]));
-  const blocks: Block[] = [];
-  for (const b of [...rows.blocks].sort((x, y) => x.position - y.position)) {
-    if (b.type === "checkpoint") {
-      const q = b.question_id ? byId.get(b.question_id) : undefined;
-      const question = q ? toQuestion(q) : null;
-      if (!question) {
-        if (!q) warnings.push(`Le bloc ${b.position} (question intégrée) ne pointe plus vers une question : il a été retiré.`);
-        continue;
-      }
-      blocks.push({ type: "checkpoint", question, origin: b.origin });
-    } else {
-      blocks.push({ ...(b.data as object), type: b.type, origin: b.origin } as Block);
-    }
-  }
-  const quiz = rows.questions
-    .filter((q) => q.placement === "quiz")
-    .sort((a, b) => a.position - b.position)
-    .map(toQuestion)
-    .filter((q): q is Question => q !== null);
-  const l = rows.lesson;
-  return {
-    lesson: {
-      slug: l.slug,
-      title: l.title,
-      ...(l.number ? { number: l.number } : {}),
-      estimatedMinutes: l.estimated_minutes,
-      summary: l.summary ?? "",
-      blocks,
-      quiz,
-    },
-    warnings,
-  };
 }
 
 /**

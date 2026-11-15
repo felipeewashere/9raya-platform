@@ -14,11 +14,12 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono-face", 
 const inter = DM_Sans({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
+  // absolute URLs in metadata (https://<user>.github.io/9raya-platform in production)
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
   title: { default: "9raya", template: "%s · 9raya" },
   description:
     "Cours universitaires interactifs (S1) : leçons courtes, démonstrations pas à pas, quiz corrigés, séries et progression.",
   applicationName: "9raya",
-  manifest: "/manifest.webmanifest",
 };
 
 export const viewport: Viewport = {

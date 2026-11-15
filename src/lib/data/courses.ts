@@ -1,7 +1,5 @@
-import "server-only";
-import { cache } from "react";
-import { createClient } from "@/lib/supabase/server";
-import { getUser } from "@/lib/supabase/server";
+import { createClient, getUser } from "@/lib/supabase/client";
+import { chapterStates } from "@/lib/gamification";
 
 export type CourseRow = {
   id: string;
@@ -65,11 +63,10 @@ export type CourseOutline = {
   completed: number;
   /** First lesson to continue with (last opened unfinished lesson, else first unfinished). */
   resume: { chapterSlug: string; lessonSlug: string; title: string } | null;
-  resources: { id: string; title: string; storage_path: string; size_bytes: number | null; chapter_id: string | null }[];
 };
 
-export const getCatalog = cache(async (): Promise<SemesterWithCourses[]> => {
-  const supabase = await createClient();
+export async function getCatalog(): Promise<SemesterWithCourses[]> {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("semesters")
     .select("id, slug, title, description, position, courses(*)")
@@ -79,27 +76,15 @@ export const getCatalog = cache(async (): Promise<SemesterWithCourses[]> => {
     ...(s as Omit<SemesterWithCourses, "courses">),
     courses: ((s as { courses: CourseRow[] }).courses ?? []).sort((a, b) => a.position - b.position),
   }));
-});
-
-/** Unlock rule for sequential courses: chapter k opens when chapter k−1 is at least half done. */
-export function chapterStates(chapters: { total: number; completed: number }[], sequential: boolean, isAdmin: boolean) {
-  return chapters.map((c, i) => {
-    const prev = chapters[i - 1];
-    const unlocked = isAdmin || !sequential || i === 0 || (prev && prev.total > 0 && prev.completed / prev.total >= 0.5);
-    if (c.total > 0 && c.completed === c.total) return "completed" as const;
-    if (!unlocked) return "locked" as const;
-    if (c.completed > 0) return "in_progress" as const;
-    return "available" as const;
-  });
 }
 
-export const getCourseOutline = cache(async (courseSlug: string): Promise<CourseOutline | null> => {
-  const supabase = await createClient();
+export async function getCourseOutline(courseSlug: string): Promise<CourseOutline | null> {
+  const supabase = createClient();
   const user = await getUser();
   const { data: course } = await supabase.from("courses").select("*").eq("slug", courseSlug).maybeSingle();
   if (!course) return null;
 
-  const [{ data: chapters, error }, progress, bookmarks, attempts, profile, resources] = await Promise.all([
+  const [{ data: chapters, error }, progress, bookmarks, attempts, profile] = await Promise.all([
     supabase
       .from("chapters")
       .select("id, slug, number, title, description, video_url, position, sections(id, slug, number, title, position, lessons(id, slug, number, title, summary, estimated_minutes, position))")
@@ -109,7 +94,6 @@ export const getCourseOutline = cache(async (courseSlug: string): Promise<Course
     user ? supabase.from("bookmarks").select("lesson_id").eq("user_id", user.id) : Promise.resolve({ data: [] }),
     user ? supabase.from("quiz_attempts").select("lesson_id, score, total").eq("user_id", user.id).eq("status", "finished") : Promise.resolve({ data: [] }),
     user ? supabase.from("profiles").select("role").eq("id", user.id).maybeSingle() : Promise.resolve({ data: null }),
-    supabase.from("resources").select("id, title, storage_path, size_bytes, chapter_id").eq("course_id", course.id).order("created_at"),
   ]);
   if (error) throw new Error(error.message);
 
@@ -178,6 +162,5 @@ export const getCourseOutline = cache(async (courseSlug: string): Promise<Course
     total: outline.reduce((n, c) => n + c.total, 0),
     completed: outline.reduce((n, c) => n + c.completed, 0),
     resume,
-    resources: (resources.data ?? []) as CourseOutline["resources"],
   };
-});
+}

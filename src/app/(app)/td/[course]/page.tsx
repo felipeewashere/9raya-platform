@@ -1,19 +1,23 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { getCatalog } from "@/lib/data/courses";
-import { readTdChapters } from "@/lib/data/td";
+import { courseTitle, readTdChapters, tdCourses } from "@/lib/content/static";
+
+export function generateStaticParams() {
+  return tdCourses().map((course) => ({ course }));
+}
 
 export async function generateMetadata({ params }: PageProps<"/td/[course]">) {
   const { course } = await params;
-  const c = (await getCatalog()).flatMap((s) => s.courses).find((x) => x.slug === course);
-  return { title: c ? `TD — ${c.title}` : "TD" };
+  const title = await courseTitle(course);
+  return { title: title ? `TD — ${title}` : "TD" };
 }
 
 /** One module's TD, one row per chapter. */
 export default async function TdCoursePage({ params }: PageProps<"/td/[course]">) {
   const { course } = await params;
-  const info = (await getCatalog()).flatMap((s) => s.courses).find((x) => x.slug === course);
+  const title = await courseTitle(course);
+  const info = title ? { title } : null;
   const chapters = readTdChapters(course);
   if (!info || !chapters.length) notFound();
 

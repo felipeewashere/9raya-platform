@@ -9,7 +9,8 @@ import { ImportantBox, SectionTitle } from "@/components/notes";
 import { Button } from "@/components/ui/button";
 import { QuestionCard } from "@/components/quiz/question-card";
 import { XpPop } from "@/components/rewards/rewards";
-import { answerCheckpoint } from "@/app/actions/learning";
+import { answerCheckpoint } from "@/lib/actions/learning";
+import { withBase } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 import { stripNumber } from "./strip-number";
 import { Simulation } from "@/components/sim/simulation";
@@ -261,7 +262,7 @@ export function LessonBlockView({ block, index, number }: { block: LessonBlock; 
       return (
         <figure className="my-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={String(d.src)} alt={String(d.alt ?? "")} loading="lazy" className="fig mx-auto block h-auto max-h-[520px] w-full max-w-[720px] object-contain" />
+          <img src={withBase(String(d.src))} alt={String(d.alt ?? "")} loading="lazy" className="fig mx-auto block h-auto max-h-[520px] w-full max-w-[720px] object-contain" />
           {typeof d.caption === "string" && <figcaption className="mt-2 text-center text-[0.95rem] text-muted-foreground">{d.caption}</figcaption>}
         </figure>
       );

@@ -1,6 +1,3 @@
-import "server-only";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
 import { getCatalog, getCourseOutline } from "./courses";
 
 export type ModuleCard = {
@@ -17,14 +14,11 @@ export type ModuleCard = {
   clip: { src: string; poster: string | null } | null;
 };
 
-function clipFor(slug: string): ModuleCard["clip"] {
-  const dir = join(process.cwd(), "public", "media", "modules");
-  if (!existsSync(join(dir, `${slug}.mp4`))) return null;
-  return { src: `/media/modules/${slug}.mp4`, poster: existsSync(join(dir, `${slug}.jpg`)) ? `/media/modules/${slug}.jpg` : null };
-}
+/** Clips found at build time (see getModuleClips in src/lib/content/static.ts). */
+export type ModuleClips = Record<string, ModuleCard["clip"]>;
 
 /** Every module of the first semester that has courses, with the student's progress. */
-export async function getModuleCards(): Promise<ModuleCard[]> {
+export async function getModuleCards(clips: ModuleClips = {}): Promise<ModuleCard[]> {
   const catalog = await getCatalog();
   const semester = catalog.find((s) => s.courses.length) ?? catalog[0];
   if (!semester) return [];
@@ -43,7 +37,7 @@ export async function getModuleCards(): Promise<ModuleCard[]> {
         completed: outline?.completed ?? 0,
         href: resume ? `/cours/${c.slug}/${resume.chapterSlug}/${resume.lessonSlug}` : `/cours/${c.slug}`,
         nextLesson: resume?.title ?? null,
-        clip: clipFor(c.slug),
+        clip: clips[c.slug] ?? null,
       };
     }),
   );

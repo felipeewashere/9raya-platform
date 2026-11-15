@@ -27,8 +27,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { ThemeToggle } from "@/components/shell/theme-toggle";
 import { FooterBand, NoteLabel, NumberSquare, Watermark } from "@/components/notes";
 import { LessonBlockView, headingId } from "./blocks";
-import { saveLessonPosition, completeLessonWithoutQuiz, skipLesson, unskipLesson } from "@/app/actions/learning";
+import { saveLessonPosition, completeLessonWithoutQuiz, skipLesson, unskipLesson } from "@/lib/actions/learning";
 import { cn } from "@/lib/utils";
+import { refreshData } from "@/lib/use-data";
 import { stripNumber } from "./strip-number";
 import type { LessonView } from "@/lib/data/lesson";
 import type { OutlineChapter } from "@/lib/data/courses";
@@ -422,7 +423,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
                           const r = await completeLessonWithoutQuiz(view.lesson.id);
                           if (!r.ok) return void toast.error(r.error);
                           toast.success(`Leçon terminée ! +${r.data.xp} XP`);
-                          router.refresh();
+                          refreshData();
                         })
                       }
                     >
@@ -442,7 +443,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
                         if (!r.ok) return void toast.error(r.error);
                         toast("Leçon passée (sans XP)");
                         if (view.next && !view.next.locked) router.push(view.next.href);
-                        else router.refresh();
+                        else refreshData();
                       })
                     }
                   >
@@ -459,7 +460,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
                       start(async () => {
                         const r = await unskipLesson(view.lesson.id);
                         if (!r.ok) return void toast.error(r.error);
-                        router.refresh();
+                        refreshData();
                       })
                     }
                   >

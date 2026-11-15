@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useReducedMotion, type MotionValue } from "motion/react";
 import { cn } from "@/lib/utils";
+import { withBase } from "@/lib/base-path";
 import { useSceneProgress } from "./scene";
 
 export type ScrubClip = {
@@ -112,14 +113,14 @@ export function ScrubVideo({
 
   if (reduced) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={clip.poster} alt="" aria-hidden className={cn(fitClass, className)} style={style} />;
+    return <img src={withBase(clip.poster)} alt="" aria-hidden className={cn(fitClass, className)} style={style} />;
   }
 
   return (
     <video
       ref={videoRef}
-      src={requested ? clip.src : undefined}
-      poster={clip.poster}
+      src={requested ? withBase(clip.src) : undefined}
+      poster={withBase(clip.poster)}
       muted
       playsInline
       preload={requested ? "auto" : "none"}

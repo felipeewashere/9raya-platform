@@ -12,9 +12,10 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { QuestionCard, FeedbackPanel } from "./question-card";
 import { AchievementQueue, CountUp, ProgressBar, fireConfetti } from "@/components/rewards/rewards";
 import { Md } from "@/components/math/md";
-import { answerQuizQuestion, finishQuiz, getAttemptReview, startQuiz, type QuizSummary } from "@/app/actions/learning";
+import { answerQuizQuestion, finishQuiz, getAttemptReview, startQuiz, type QuizSummary } from "@/lib/actions/learning";
 import { PASS_RATIO, XP } from "@/lib/gamification";
 import { cn } from "@/lib/utils";
+import { refreshData } from "@/lib/use-data";
 import type { PublicQuestion, Feedback } from "@/lib/quiz/types";
 
 type Q = { id: string; kind: string; data: PublicQuestion };
@@ -72,7 +73,7 @@ export function QuizRunner({
       setSummary(r.data);
       setPhase("results");
       if (r.data.passed) fireConfetti(r.data.score === r.data.total ? "big" : "small");
-      router.refresh();
+      refreshData();
     });
   };
 

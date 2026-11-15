@@ -1,13 +1,24 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCatalog } from "@/lib/data/courses";
-import { publicExercise, readTdChapters } from "@/lib/data/td";
+import { courseTitle, publicExercise, readTdChapters, tdCourses } from "@/lib/content/static";
 import { TdExercise } from "@/components/td/td-exercise";
+
+export function generateStaticParams() {
+  return tdCourses().flatMap((course) => readTdChapters(course).map((c) => ({ course, chapter: String(c.chapter) })));
+}
+
+export async function generateMetadata({ params }: PageProps<"/td/[course]/[chapter]">) {
+  const { course, chapter } = await params;
+  const title = await courseTitle(course);
+  const ch = readTdChapters(course).find((c) => String(c.chapter) === chapter);
+  return { title: ch ? `TD — ${ch.title}` : title ? `TD — ${title}` : "TD" };
+}
 
 /** All exercises of one chapter's TD. */
 export default async function TdChapterPage({ params }: PageProps<"/td/[course]/[chapter]">) {
   const { course, chapter } = await params;
-  const info = (await getCatalog()).flatMap((s) => s.courses).find((x) => x.slug === course);
+  const title = await courseTitle(course);
+  const info = title ? { title } : null;
   const ch = readTdChapters(course).find((c) => String(c.chapter) === chapter);
   if (!info || !ch) notFound();
 

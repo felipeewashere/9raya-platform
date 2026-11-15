@@ -1,10 +1,12 @@
-import { SignInForm } from "@/components/auth/forms";
+import { Suspense } from "react";
+import { SignInPageView } from "@/components/auth/pages";
 
 export const metadata = { title: "Connexion" };
 
-export default async function SignInPage({ searchParams }: PageProps<"/connexion">) {
-  const sp = await searchParams;
-  const next = typeof sp.suivant === "string" ? sp.suivant : undefined;
-  const error = typeof sp.erreur === "string" ? sp.erreur : undefined;
-  return <SignInForm next={next} error={error} />;
+export default function SignInPage() {
+  return (
+    <Suspense>
+      <SignInPageView />
+    </Suspense>
+  );
 }

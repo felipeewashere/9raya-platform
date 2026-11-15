@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { ModuleArt } from "./module-art";
 import type { ModuleCard } from "@/lib/data/modules";
 import { cn } from "@/lib/utils";
+import { withBase } from "@/lib/base-path";
 
 const PAPER = "#efede6";
 const INK = "#0e0e0e";
@@ -37,8 +38,8 @@ export function CourseCard({ m, index = 0, unit = "leçons", progress = true }: 
           <div className="relative aspect-[16/9] overflow-hidden border" style={rule}>
             {m.clip ? (
               <video
-                src={m.clip.src}
-                poster={m.clip.poster ?? undefined}
+                src={withBase(m.clip.src)}
+                poster={withBase(m.clip.poster ?? undefined)}
                 autoPlay
                 muted
                 loop

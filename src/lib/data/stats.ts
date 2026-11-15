@@ -1,39 +1,37 @@
-import "server-only";
-import { cache } from "react";
-import { createClient, getUser } from "@/lib/supabase/server";
+import { createClient, getUser } from "@/lib/supabase/client";
 import { levelFromXp } from "@/lib/gamification";
 
 export type Streak = { current_streak: number; longest_streak: number; active_today: boolean };
 
-export const getStreak = cache(async (): Promise<Streak> => {
-  const supabase = await createClient();
+export async function getStreak(): Promise<Streak> {
+  const supabase = createClient();
   const { data } = await supabase.rpc("my_streak");
   const row = (Array.isArray(data) ? data[0] : data) as Streak | null;
   return row ?? { current_streak: 0, longest_streak: 0, active_today: false };
-});
+}
 
-export const getTotalXp = cache(async (): Promise<number> => {
+export async function getTotalXp(): Promise<number> {
   const user = await getUser();
   if (!user) return 0;
-  const supabase = await createClient();
+  const supabase = createClient();
   const { data } = await supabase.from("xp_events").select("amount").eq("user_id", user.id);
   return (data ?? []).reduce((n, r) => n + (r as { amount: number }).amount, 0);
-});
+}
 
 /** Days (YYYY-MM-DD, student's local day) on which the student earned XP, last ~13 months. */
-export const getActiveDays = cache(async (): Promise<string[]> => {
+export async function getActiveDays(): Promise<string[]> {
   const user = await getUser();
   if (!user) return [];
-  const supabase = await createClient();
+  const supabase = createClient();
   const since = new Date(Date.now() - 400 * 864e5).toISOString().slice(0, 10);
   const { data } = await supabase.from("activity_days").select("day").eq("user_id", user.id).gt("xp", 0).gte("day", since);
   return (data ?? []).map((r) => String((r as { day: string }).day).slice(0, 10));
-});
+}
 
-export const getHeaderStats = cache(async () => {
+export async function getHeaderStats() {
   const [xp, streak, activeDays] = await Promise.all([getTotalXp(), getStreak(), getActiveDays()]);
   return { xp, streak, level: levelFromXp(xp), activeDays };
-});
+}
 
 /** Local calendar day string (YYYY-MM-DD) in a timezone. */
 export function localDay(date: Date, timeZone: string) {
@@ -55,9 +53,9 @@ export type DashboardData = {
   achievementTotal: number;
 };
 
-export const getDashboardData = cache(async (timeZone: string): Promise<DashboardData> => {
+export async function getDashboardData(timeZone: string): Promise<DashboardData> {
   const user = await getUser();
-  const supabase = await createClient();
+  const supabase = createClient();
   const uid = user?.id ?? "00000000-0000-0000-0000-000000000000";
   const since = new Date(Date.now() - 40 * 86400_000).toISOString().slice(0, 10);
 
@@ -100,4 +98,4 @@ export const getDashboardData = cache(async (timeZone: string): Promise<Dashboar
     achievementCount: earnedRows.length,
     achievementTotal: allAch.count ?? 0,
   };
-});
+}

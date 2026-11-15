@@ -33,3 +33,15 @@ export const STREAK_MILESTONES = [3, 7, 14, 30, 60, 100];
 export function nextStreakMilestone(streak: number) {
   return STREAK_MILESTONES.find((m) => m > streak) ?? streak + 30;
 }
+
+/** Unlock rule for sequential courses: chapter k opens when chapter k−1 is at least half done. */
+export function chapterStates(chapters: { total: number; completed: number }[], sequential: boolean, isAdmin: boolean) {
+  return chapters.map((c, i) => {
+    const prev = chapters[i - 1];
+    const unlocked = isAdmin || !sequential || i === 0 || (prev && prev.total > 0 && prev.completed / prev.total >= 0.5);
+    if (c.total > 0 && c.completed === c.total) return "completed" as const;
+    if (!unlocked) return "locked" as const;
+    if (c.completed > 0) return "in_progress" as const;
+    return "available" as const;
+  });
+}

@@ -1,7 +1,4 @@
-import "server-only";
-import { cache } from "react";
-import { redirect } from "next/navigation";
-import { createClient, getUser } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/client";
 
 export type Profile = {
   id: string;
@@ -18,33 +15,15 @@ export type Profile = {
   created_at: string;
 };
 
-export const getProfile = cache(async (): Promise<Profile | null> => {
-  const user = await getUser();
-  if (!user) return null;
-  const supabase = await createClient();
-  const { data } = await supabase.from("profiles").select("*").eq("id", user.id).maybeSingle();
+/** The profile row of a user (RLS: a student reads only their own). */
+export async function getProfile(userId: string): Promise<Profile | null> {
+  const { data, error } = await createClient().from("profiles").select("*").eq("id", userId).maybeSingle();
+  if (error) throw new Error(error.message);
   return (data as Profile | null) ?? null;
-});
-
-/** For pages and actions that need a signed-in student. */
-export async function requireUser() {
-  const user = await getUser();
-  if (!user) redirect("/connexion");
-  return user;
 }
 
-export async function requireProfile() {
-  const profile = await getProfile();
-  if (!profile) redirect("/connexion");
-  return profile;
-}
-
-/** For the admin area: verified on the server from the database role, never from the client. */
-export async function requireAdmin() {
-  const profile = await getProfile();
-  if (!profile) redirect("/connexion");
-  if (profile.role !== "admin") redirect("/tableau-de-bord");
-  return profile;
+export function isOnboarded(p: Pick<Profile, "onboarded" | "group_code"> | null) {
+  return Boolean(p?.onboarded && p.group_code);
 }
 
 export function displayName(p: Pick<Profile, "full_name" | "username"> | null) {

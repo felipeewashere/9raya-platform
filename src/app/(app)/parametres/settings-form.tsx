@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Camera, Loader2, Monitor, Moon, Sun } from "lucide-react";
 import { toast } from "sonner";
@@ -11,10 +10,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { deleteAccount, updateProfile, uploadAvatar } from "@/app/actions/profile";
+import { deleteAccount, updateProfile, uploadAvatar } from "@/lib/actions/profile";
+import { hardNavigate } from "@/lib/base-path";
+import { refreshData } from "@/lib/use-data";
 import { initials } from "@/components/shell/app-header";
 import { cn } from "@/lib/utils";
 import { SectionTitle } from "@/components/notes";
+import { useSession } from "@/components/shell/session";
 
 const COMMON_TZ = ["Africa/Casablanca", "Europe/Paris", "Europe/Madrid", "Europe/Brussels", "Africa/Algiers", "Africa/Tunis", "America/Montreal", "UTC"];
 
@@ -23,7 +25,6 @@ export function SettingsForm({
 }: {
   profile: { username: string | null; full_name: string | null; avatar_url: string | null; timezone: string; daily_goal_xp: number; email: string; provider: string };
 }) {
-  const router = useRouter();
   const { theme, setTheme } = useTheme();
   const [username, setUsername] = useState(profile.username ?? "");
   const [fullName, setFullName] = useState(profile.full_name ?? "");
@@ -41,20 +42,18 @@ export function SettingsForm({
       const r = await updateProfile({ username, full_name: fullName, timezone, daily_goal_xp: Number(goal) });
       if (!r.ok) return void toast.error(r.error);
       toast.success("Profil enregistré");
-      router.refresh();
+      refreshData();
     });
 
   const onFile = async (f: File | undefined) => {
     if (!f) return;
     setUploading(true);
-    const fd = new FormData();
-    fd.set("file", f);
-    const r = await uploadAvatar(fd);
+    const r = await uploadAvatar(f);
     setUploading(false);
     if (!r.ok) return void toast.error(r.error);
     setAvatar(r.data.url);
     toast.success("Photo mise à jour");
-    router.refresh();
+    refreshData();
   };
 
   return (
@@ -189,7 +188,7 @@ export function SettingsForm({
                   start(async () => {
                     const r = await deleteAccount(confirm);
                     if (!r.ok) return void toast.error(r.error);
-                    router.push("/");
+                    hardNavigate("/");
                   })
                 }
               >
@@ -201,5 +200,24 @@ export function SettingsForm({
         </div>
       </section>
     </div>
+  );
+}
+
+/** The settings form fed with the signed-in student's profile. */
+export function SettingsView() {
+  const { user, profile } = useSession();
+  return (
+    <SettingsForm
+      key={`${profile.username}|${profile.full_name}|${profile.avatar_url}|${profile.timezone}|${profile.daily_goal_xp}`}
+      profile={{
+        username: profile.username,
+        full_name: profile.full_name,
+        avatar_url: profile.avatar_url,
+        timezone: profile.timezone,
+        daily_goal_xp: profile.daily_goal_xp,
+        email: user.email ?? "",
+        provider: (user.app_metadata?.provider as string) ?? "email",
+      }}
+    />
   );
 }

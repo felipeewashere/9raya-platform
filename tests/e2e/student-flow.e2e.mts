@@ -1,7 +1,8 @@
 /**
- * End-to-end test of the student journey against a running server and the real Supabase project.
- *   npx next start -p 3100   (in another terminal)
- *   node --env-file=.env.local --import tsx tests/e2e/student-flow.e2e.mts
+ * End-to-end test of the student journey on the static export (as served by GitHub Pages)
+ * against the real Supabase project and its Edge Function `api`.
+ *   npm run build && npm run serve:out   (in another terminal)
+ *   npm run test:e2e
  *
  * Creates a throwaway confirmed account, signs in through the UI, completes onboarding,
  * answers an in-lesson checkpoint, passes a full quiz (every question kind answered through
@@ -12,7 +13,7 @@ import { mkdirSync } from "node:fs";
 import { chromium, type Page } from "playwright-core";
 import { createClient } from "@supabase/supabase-js";
 
-const BASE = process.env.E2E_BASE ?? "http://localhost:3100";
+const BASE = process.env.E2E_BASE ?? "http://localhost:3000/9raya-platform";
 const SHOTS = process.env.E2E_SHOTS ?? "e2e-shots";
 mkdirSync(SHOTS, { recursive: true });
 const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
@@ -45,11 +46,13 @@ async function questionsOf(lessonId: string, placement: "quiz" | "checkpoint"): 
 async function answer(page: Page, scope: ReturnType<Page["locator"]>, q: Q) {
   const check = () => scope.getByRole("button", { name: "Vérifier" }).click();
   const cont = async () => {
-    const btn = page.getByRole("status").getByRole("button").last();
-    await btn.waitFor({ state: "visible", timeout: 15000 });
-    const status = await page.getByRole("status").last().innerText();
+    const panel = page.getByRole("status").last();
+    await panel.waitFor({ state: "visible", timeout: 30000 });
+    const status = await panel.innerText();
     if (!status.toLowerCase().includes("bonne réponse")) throw new Error(`expected a correct answer for ${q.kind} ${q.id}, got: ${status.slice(0, 160)}`);
-    await btn.click();
+    // the last step of an in-lesson checkpoint has no continue button
+    const btn = panel.getByRole("button").last();
+    if (await btn.count()) await btn.click();
   };
   const fill = async (text: string) => {
     const input = scope.getByLabel("Ta réponse");
@@ -120,7 +123,8 @@ async function main() {
   const { data: lessons } = await db.from("lessons").select("id, slug, title, position, chapter:chapters!inner(slug, number, course:courses!inner(slug))").eq("chapters.number", 1).order("position");
   let lesson: { id: string; slug: string; title: string; chapter: { slug: string } } | null = null;
   let checkpoint: Q | null = null;
-  for (const l of (lessons ?? []) as unknown as { id: string; slug: string; title: string; chapter: { slug: string } }[]) {
+  for (const l of (lessons ?? []) as unknown as { id: string; slug: string; title: string; chapter: { slug: string; course: { slug: string } } }[]) {
+    if (l.chapter.course.slug !== "algebre-1") continue;
     const cps = await questionsOf(l.id, "checkpoint");
     if (cps[0] && ["mcq", "true_false"].includes(cps[0].kind)) {
       lesson = l;
@@ -135,11 +139,12 @@ async function main() {
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 }, locale: "fr-FR", timezoneId: "Africa/Casablanca" });
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  page.on("console", (m) => m.type() === "error" && !m.text().startsWith("Failed to load resource") && errors.push(m.text()));
+  page.on("response", (r) => r.status() >= 400 && errors.push(`HTTP ${r.status()} ${r.url()}`));
 
   try {
     // sign in → onboarding → dashboard
-    await page.goto(`${BASE}/connexion`);
+    await page.goto(`${BASE}/connexion/`);
     await page.getByLabel("E-mail").fill(email);
     await page.getByLabel("Mot de passe", { exact: true }).fill(password);
     await page.getByRole("button", { name: "Se connecter" }).click();
@@ -152,19 +157,19 @@ async function main() {
     await page.getByRole("radio", { name: "G6", exact: true }).click();
     await page.waitForURL(/\/tableau-de-bord/, { timeout: 30000 });
     await page.getByRole("heading", { name: /^cours$/i }).waitFor({ timeout: 30000 });
-    await page.getByRole("link", { name: /Commencer/i }).first().waitFor();
+    await page.getByRole("progressbar", { name: /Algèbre 1/ }).first().waitFor({ timeout: 30000 });
     await shot(page, "1-dashboard-new");
     log("dashboard");
 
     // course page
-    await page.goto(`${BASE}/cours/algebre-1`);
+    await page.goto(`${BASE}/cours/algebre-1/`);
     await page.getByRole("heading", { name: "Algèbre 1" }).waitFor();
     await page.waitForTimeout(1500);
     await shot(page, "2-course");
     log("course page");
 
     // lesson + checkpoint
-    const lessonUrl = `${BASE}/cours/algebre-1/${lesson.chapter.slug}/${lesson.slug}`;
+    const lessonUrl = `${BASE}/cours/algebre-1/${lesson.chapter.slug}/${lesson.slug}/`;
     await page.goto(lessonUrl);
     await page.getByRole("heading", { level: 1 }).waitFor();
     await page.waitForTimeout(1000);
@@ -177,7 +182,7 @@ async function main() {
 
     // quiz
     const quiz = await questionsOf(lesson.id, "quiz");
-    await page.goto(`${lessonUrl}/quiz`);
+    await page.goto(`${lessonUrl}quiz/`);
     await page.getByRole("button", { name: "Commencer" }).click();
     for (const [i, q] of quiz.entries()) {
       await page.getByText(`${i + 1}/${quiz.length}`, { exact: true }).waitFor({ timeout: 15000 });
@@ -192,24 +197,80 @@ async function main() {
 
     // skip the next lesson: checked, no XP
     const { data: nextLesson } = await db.from("lessons").select("id, slug").eq("chapter_id", (await db.from("lessons").select("chapter_id").eq("id", lesson.id).single()).data!.chapter_id).gt("position", (await db.from("lessons").select("position").eq("id", lesson.id).single()).data!.position).order("position").limit(1).single();
-    await page.goto(`${BASE}/cours/algebre-1/${lesson.chapter.slug}/${nextLesson!.slug}`);
+    await page.goto(`${BASE}/cours/algebre-1/${lesson.chapter.slug}/${nextLesson!.slug}/`);
     await page.waitForLoadState("networkidle"); // let React hydrate before clicking
     await page.getByRole("button", { name: /Passer la leçon/i }).click();
-    await page.waitForURL((u) => !u.pathname.endsWith(nextLesson!.slug), { timeout: 30000 });
+    await page.waitForURL((u) => !u.pathname.replace(/\/$/, "").endsWith(nextLesson!.slug), { timeout: 30000 });
     log("skipped next lesson");
 
     // leaderboard
-    await page.goto(`${BASE}/classement?periode=jour`);
+    await page.goto(`${BASE}/classement/?periode=jour`);
     await page.getByText("(toi)").first().waitFor({ timeout: 30000 });
     await page.waitForTimeout(1200);
     await shot(page, "8-leaderboard");
     log("leaderboard");
 
-    // dashboard after
-    await page.goto(`${BASE}/tableau-de-bord`);
+    // dashboard after: the header shows the XP earned (2 + 10 + 20 + 10)
+    await page.goto(`${BASE}/tableau-de-bord/`);
     await page.getByRole("heading", { name: /^cours$/i }).waitFor();
+    await page.getByText("42 XP").first().waitFor({ timeout: 30000 });
     await page.waitForTimeout(1500);
     await shot(page, "7-dashboard-after");
+    log("header XP");
+
+    // TD: statement + correction on demand
+    await page.goto(`${BASE}/td/`);
+    await page.getByRole("heading", { name: "TD", exact: true }).waitFor({ timeout: 30000 });
+    await page.goto(`${BASE}/td/algebre-1/1/`);
+    const firstEx = page.locator("article[id^=exercice-]").first();
+    await firstEx.waitFor({ timeout: 30000 });
+    await firstEx.getByRole("button", { name: "Voir la correction" }).click();
+    await firstEx.getByRole("button", { name: "Cacher" }).waitFor();
+    await shot(page, "9-td-correction");
+    log("TD + correction");
+
+    // profile, streak calendar
+    await page.goto(`${BASE}/profil/`);
+    await page.getByRole("grid", { name: "Calendrier d'activité" }).waitFor({ timeout: 30000 });
+    await page.getByText("Niveau 1").first().waitFor();
+    await shot(page, "10-profile");
+    log("profile");
+
+    // settings page loads the profile
+    await page.goto(`${BASE}/parametres/`);
+    await page.getByLabel("Prénom et nom").waitFor({ timeout: 30000 });
+    if ((await page.getByLabel("Prénom et nom").inputValue()) !== "Test Parcours") throw new Error("settings: name not loaded");
+    log("settings");
+
+    // theme toggle
+    const darkBefore = await page.evaluate(() => document.documentElement.classList.contains("dark"));
+    await page.getByRole("button", { name: /Passer en mode (sombre|clair)/ }).first().click();
+    await page.waitForFunction((d) => document.documentElement.classList.contains("dark") !== d, darkBefore);
+    await shot(page, "11-theme");
+    log("theme toggle");
+
+    // a lesson with a figure and a 3D simulation (first chapter of another course)
+    await page.goto(`${BASE}/cours/mecanique-du-point/cinematique-du-point-materiel/repere-d-espace-et-produits-de-vecteurs/`);
+    await page.getByRole("heading", { level: 1 }).waitFor({ timeout: 30000 });
+    const fig = page.locator("main figure img").first();
+    await fig.scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => {
+      const img = document.querySelector("main figure img") as HTMLImageElement | null;
+      return !!img && img.complete && img.naturalWidth > 0;
+    }, undefined, { timeout: 30000 });
+    const sim = page.locator("figure", { hasText: "Simulation" }).first();
+    await sim.scrollIntoViewIfNeeded();
+    await sim.locator("canvas, svg").first().waitFor({ timeout: 60000 });
+    await page.waitForTimeout(2000);
+    await shot(page, "12-figure-simulation");
+    log("figure + simulation");
+
+    // signed-out visitors are sent to the sign-in page (client-side guard)
+    const guest = await browser.newPage();
+    await guest.goto(`${BASE}/tableau-de-bord/`);
+    await guest.waitForURL(/\/connexion\/\?suivant=/, { timeout: 30000 });
+    await guest.close();
+    log("guard redirects signed-out visitors");
 
     // database checks
     const [{ data: prog }, { data: xp }, { data: att }, { data: ach }, { data: streak }] = await Promise.all([
@@ -237,6 +298,10 @@ async function main() {
     if (errors.length) console.log("browser errors:\n  " + errors.slice(0, 10).join("\n  "));
     console.log("XP rows:", JSON.stringify(xp));
     if (checks.some(([, ok]) => !ok)) process.exitCode = 1;
+  } catch (e) {
+    await shot(page, "error").catch(() => {});
+    if (errors.length) console.log("browser errors:\n  " + errors.slice(0, 10).join("\n  "));
+    throw e;
   } finally {
     await browser.close();
   }

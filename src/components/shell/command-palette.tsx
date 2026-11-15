@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { BookOpen, FileText, Layers, Search, LayoutDashboard, User } from "lucide-react";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
-import { getSearchIndex, type SearchEntry } from "@/app/actions/profile";
+import { getSearchIndex, type SearchEntry } from "@/lib/actions/profile";
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);

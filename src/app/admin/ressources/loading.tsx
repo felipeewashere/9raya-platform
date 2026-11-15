@@ -1,5 +1,0 @@
-import { PageSkeleton } from "@/components/admin/parts";
-
-export default function Loading() {
-  return <PageSkeleton rows={6} />;
-}

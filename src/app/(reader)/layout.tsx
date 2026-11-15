@@ -1,6 +1,6 @@
-import { requireProfile } from "@/lib/auth";
+import { RequireSession } from "@/components/shell/session";
+import { LessonSkeleton } from "@/components/shell/skeletons";
 
-export default async function ReaderLayout({ children }: LayoutProps<"/">) {
-  await requireProfile();
-  return <>{children}</>;
+export default function ReaderLayout({ children }: LayoutProps<"/">) {
+  return <RequireSession fallback={<LessonSkeleton />}>{children}</RequireSession>;
 }
