@@ -169,12 +169,6 @@
         }
       ],
       "source": "Bibliotheque_sources/Mecanique du point/TD/TD2 (1).pdf p.1",
-      "simulations": [
-        {
-          "scene": "rotating-rod",
-          "caption": "Fais tourner la tige et glisser l'anneau : vitesse relative le long de la tige, vitesse d'entraînement du point coïncidant, et leur somme."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "1.1 — Quelle est l'équation polaire de la trajectoire de $M$ ?",

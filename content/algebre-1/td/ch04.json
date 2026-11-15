@@ -218,12 +218,6 @@
           "answer": "c",
           "explanation_md": "$b=c=0$ et $a^2=d^2=1$ avec $d\\neq-a$ : donc $d=a=\\pm1$. Les matrices $\\operatorname{diag}(1,-1)$ et $\\operatorname{diag}(-1,1)$ ont $a+d=0$ et sont dans la famille $(S_1)$."
         }
-      ],
-      "simulations": [
-        {
-          "scene": "linear-map-2d",
-          "caption": "Cherche des matrices A telles que A² = I₂ : symétries par rapport à une droite, ±I₂… applique-les deux fois."
-        }
       ]
     },
     {

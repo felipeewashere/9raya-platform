@@ -28,8 +28,6 @@ export type TdExercise = {
   answers?: TdAnswer[];
   /** concours-style multiple choice questions about the exercise (not shown anymore) */
   qcm?: TdQcm[];
-  /** interactive simulations shown under the statement (scenes from src/content/sim-scenes.ts) */
-  simulations?: { scene: string; params?: Record<string, unknown>; caption?: string }[];
 };
 export type TdChapter = { chapter: number; title: string; exercises: TdExercise[] };
 

@@ -43,15 +43,6 @@
       ],
       "source": "TD/TD2 (2).pdf p.1, exercice 1",
       "solution_from": "TD/Correction TD2 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.3-8",
-      "simulations": [
-        {
-          "scene": "gauss-surface",
-          "params": {
-            "shape": "cylinder"
-          },
-          "caption": "Fais varier le rayon du cylindre de Gauss : le flux ne passe que par la surface latérale."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Que donnent les symétries pour le fil infini ?",
@@ -193,15 +184,6 @@
       ],
       "source": "TD/TD2 (2).pdf p.1, exercice 2",
       "solution_from": "TD/Correction TD2 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.8-12",
-      "simulations": [
-        {
-          "scene": "gauss-surface",
-          "params": {
-            "shape": "plane"
-          },
-          "caption": "Boîte de Gauss à cheval sur le plan : le flux sort par les deux bases."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Que donnent les symétries pour le plan infini $z=0$ ?",
@@ -370,15 +352,6 @@
       ],
       "source": "TD/TD2 (2).pdf p.2, exercice 3",
       "solution_from": "TD/Correction TD2 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.13-20",
-      "simulations": [
-        {
-          "scene": "gauss-surface",
-          "params": {
-            "shape": "sphere"
-          },
-          "caption": "Fais varier le rayon de la sphère de Gauss, à l'intérieur puis à l'extérieur de la boule chargée."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Que donnent les symétries de la sphère uniformément chargée ?",
@@ -695,15 +668,6 @@
       ],
       "source": "TD/TD_Application_Corrige_Couleur 1.pdf p.2, exercice 2",
       "solution_from": "TD/TD_Application_Corrige_Couleur 1.pdf p.2-3",
-      "simulations": [
-        {
-          "scene": "gauss-surface",
-          "params": {
-            "shape": "cylinder"
-          },
-          "caption": "Cylindre de Gauss coaxial : seule la charge intérieure au rayon r compte."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quelle est la charge par unité de longueur $Q_{\\mathrm L}$ ?",

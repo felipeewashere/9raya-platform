@@ -760,12 +760,6 @@
         }
       ],
       "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.2",
-      "simulations": [
-        {
-          "scene": "sup-inf",
-          "caption": "Visualise sur la droite réelle la borne inférieure et la borne supérieure d'une partie, atteintes ou non."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Pour $A=\\left\\{\\sin\\frac{\\pi}{2n}\\mid n\\in\\mathbb{N}^*\\right\\}$ :",

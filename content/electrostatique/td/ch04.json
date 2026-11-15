@@ -71,12 +71,6 @@
       ],
       "source": "TD/TD1 (1).pdf p.1, exercice 1",
       "solution_from": "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.2-10",
-      "simulations": [
-        {
-          "scene": "point-charges",
-          "caption": "Place des charges de signes opposés aux sommets d'un carré et observe le champ et les équipotentielles au centre."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quel est le champ $\\vec E(O)$ au centre du carré ?",
@@ -210,15 +204,6 @@
       ],
       "source": "TD/TD1 (1).pdf p.1, exercice 3",
       "solution_from": "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.16-25",
-      "simulations": [
-        {
-          "scene": "charged-distribution",
-          "params": {
-            "shape": "disk"
-          },
-          "caption": "Champ sur l'axe d'un disque chargé : la couronne est un disque privé de sa partie centrale."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quel est le potentiel $V(z)$ sur l'axe ($V(\\infty)=0$) ?",

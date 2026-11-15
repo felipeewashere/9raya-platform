@@ -13,12 +13,6 @@
       "solution_source": "ia",
       "answers": [],
       "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1",
-      "simulations": [
-        {
-          "scene": "sequence-limit",
-          "caption": "Choisis ε et observe le rang N à partir duquel la suite reste dans la bande autour de sa limite."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "1) — Que vaut $\\left|\\dfrac{3n+1}{n+2}-3\\right|$ ?",
@@ -218,12 +212,6 @@
         }
       ],
       "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1",
-      "simulations": [
-        {
-          "scene": "recurrent-sequence",
-          "caption": "Trace le diagramme en escalier d'une suite récurrente u_{n+1} = f(u_n) et observe sa convergence."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "1) — Dans la récurrence, pourquoi $u_{n+1}>0$ si $u_n\\in\\,]0,1[$ ?",

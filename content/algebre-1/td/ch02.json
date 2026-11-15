@@ -677,12 +677,6 @@
           "answer": "b",
           "explanation_md": "$f_2(1,1,0)=(1,1,1)$, $f_2(2,3,0)=(6,2,3)$, somme $(7,3,4)$ ; mais $f_2(3,4,0)=(12,3,4)$. Le terme $xy$ casse l'additivité. ($f_2(0,0,0)=(0,0,0)$, ce n'est donc pas l'argument.)"
         }
-      ],
-      "simulations": [
-        {
-          "scene": "linear-map-2d",
-          "caption": "Entre la matrice de f₁ (colonnes (2, 1) et (1, −1)) et observe comment elle transforme la grille du plan."
-        }
       ]
     },
     {
@@ -838,12 +832,6 @@
           ],
           "answer": "a",
           "explanation_md": "$f_1(x,y)=(2x+y,\\,-2x-y)$ : noyau $y=-2x$, et toute image $(X,Y)$ vérifie $X+Y=0$. (Cohérent avec le théorème du rang : $1+1=2$.)"
-        }
-      ],
-      "simulations": [
-        {
-          "scene": "linear-map-2d",
-          "caption": "Une application linéaire du plan transforme la grille en grille et fixe l'origine : compare avec les applications de l'exercice."
         }
       ]
     }

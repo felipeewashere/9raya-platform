@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Md } from "@/components/math/md";
-import { Simulation } from "@/components/sim/simulation";
 import type { PublicTdExercise } from "@/lib/data/td";
 
 /** One TD exercise: "Exercice 3" with "Voir la correction" on the right, the statement, the correction on demand. */
@@ -29,9 +28,6 @@ export function TdExercise({ ex }: { ex: PublicTdExercise }) {
 
       <div className="prose-lesson bg-primary/[0.06] px-5 py-5">
         <Md>{ex.statement_md}</Md>
-        {ex.simulations?.map((sim, i) => (
-          <Simulation key={i} scene={sim.scene} params={sim.params} caption={sim.caption} />
-        ))}
       </div>
 
       {open && ex.solution_md && (

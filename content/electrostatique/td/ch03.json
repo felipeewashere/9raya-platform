@@ -48,15 +48,6 @@
       ],
       "source": "TD/TD1 (1).pdf p.1, exercice 2",
       "solution_from": "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.10-16",
-      "simulations": [
-        {
-          "scene": "charged-distribution",
-          "params": {
-            "shape": "wire"
-          },
-          "caption": "Observe le champ d'un fil chargé : sur la médiatrice, les composantes parallèles au segment se compensent."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quel est le champ $\\vec E(M)$ créé par le segment sur sa médiatrice ?",

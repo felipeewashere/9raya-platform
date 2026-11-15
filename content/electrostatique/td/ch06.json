@@ -403,12 +403,6 @@
       ],
       "source": "TD/TD3.pdf p.1, exercice 3",
       "solution_from": "Correction proposée (IA) — à confirmer",
-      "simulations": [
-        {
-          "scene": "conductor",
-          "caption": "Conducteur en équilibre : champ nul dans le métal, charges en surface."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quelles sont les charges induites sur les surfaces intérieure ($R_1$) et extérieure ($R_2$) ?",
@@ -570,12 +564,6 @@
       ],
       "source": "TD/TD_Application_Corrige_Couleur.pdf p.1, exercice 1",
       "solution_from": "TD/TD_Application_Corrige_Couleur.pdf p.1-2",
-      "simulations": [
-        {
-          "scene": "conductor",
-          "caption": "Observe la redistribution des charges d'un conducteur placé dans un champ extérieur."
-        }
-      ],
       "qcm": [
         {
           "prompt_md": "Q1 — Quel est le signe des charges induites et le champ résultant dans le métal ?",
