@@ -4,8 +4,9 @@ import type { ModuleCard } from "./modules";
 import type { AnswerType } from "@/lib/quiz/types";
 
 /*
- * TD series of each module, one file per course chapter:
- *   content/<course-slug>/td/chNN.json
+ * TD sheets of each module, in the order the professor gave them (TD 1, TD 2…):
+ *   content/<course-slug>/td/tdNN.json   ("chapter" = TD number, "title" = theme)
+ * Regrouped from the per-chapter builder output by output/td_path/series_from_chapters.py.
  * Exercises are the professor's statements; the correction is the professor's when it exists
  * (solution_source "prof"), otherwise written with AI (solution_source "ia") and labelled as such.
  * The files are read at build time (src/lib/content/static.ts); the pages only embed PublicTdExercise.

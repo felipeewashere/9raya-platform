@@ -1,19 +1,7 @@
 {
   "chapter": 1,
-  "title": "Cinématique du point matériel",
-  "series": "Travaux dirigés de mécanique du point — Série n°1 : Cinématique du point (ENSA Agadir, AP1 S1, 2026-2027)",
-  "sources": [
-    "Bibliotheque_sources/Mecanique du point/TD/TD1 photos/WhatsApp-Image-2026-11-15-at-16-37-22.jpeg (page 1)",
-    "Bibliotheque_sources/Mecanique du point/TD/TD1 photos/WhatsApp-Image-2026-11-15-at-16-37-21.jpeg (page 2)",
-    "Bibliotheque_sources/Mecanique du point/TD/TD1 photos/WhatsApp-Image-2026-11-15-at-16-37-20.jpeg (page 3)",
-    "Bibliotheque_sources/Mecanique du point/TD/TD1 photos/WhatsApp-Image-2026-11-15-at-16-37-19.jpeg (page 4)"
-  ],
-  "notes": [
-    "Aucune correction du professeur : toutes les corrections sont proposées par IA (à confirmer).",
-    "Exercice 7 : l'annotation manuscrite de l'étudiant « K = 1/Rc » (encre bleue) n'est pas reprise dans l'énoncé.",
-    "Exercice 8 : z(t) = 1e^{ωt} transcrit tel qu'imprimé ; le « 1 » est probablement une coquille pour a (traité avec un coefficient c dans la correction).",
-    "Exercice 10 : la correction suppose que les bras sont articulés sur l'axe Oz (r = ℓ constant)."
-  ],
+  "title": "Cinématique du point",
+  "source": "Série n°1",
   "exercises": [
     {
       "number": "1",

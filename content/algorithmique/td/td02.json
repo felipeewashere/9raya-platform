@@ -1,0 +1,107 @@
+{
+  "chapter": 2,
+  "title": "Opérateurs arithmétiques et logiques",
+  "source": "Série de TD N°2",
+  "exercises": [
+    {
+      "number": "1",
+      "statement_md": "Écrire un algorithme qui lit deux entiers A et B, puis calcule et affiche leur somme S, leur différence D, leur produit P, leur quotient réel Q, leur quotient entier Qe et leur reste R.",
+      "solution_md": "```\nAlgorithme OperationsArithmetiques\nVariables\n  A, B, S, D, P, Qe, R : entier\n  Q : réel\nDébut\n  Lire(A)\n  Lire(B)\n  S ← A + B\n  D ← A − B\n  P ← A × B\n  Q ← A / B\n  Qe ← A div B\n  R ← A mod B\n  Afficher(S, D, P)\n  Afficher(Q, Qe, R)\nFin\n```\n\n**Test :** A = 17, B = 5 → S = 22, D = 12, P = 85, Q = 3.4, Qe = 3, R = 2 (on suppose B ≠ 0).",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "2",
+      "statement_md": "Écrire un algorithme qui lit trois nombres réels A=2, B=3 et C=4, puis calcule et affiche deux résultats illustrant l'effet des parenthèses sur l'ordre de calcul : R1 = A + B × C et R2 = (A + B) × C.\n\nQuelle valeur de Y l'algorithme affiche-t-il pour X = … ?",
+      "solution_md": "```\nAlgorithme EffetParentheses\nVariables\n  A, B, C, R1, R2 : réel\nDébut\n  Lire(A)\n  Lire(B)\n  Lire(C)\n  R1 ← A + B × C\n  R2 ← (A + B) × C\n  Afficher(\"R1 = \", R1)\n  Afficher(\"R2 = \", R2)\nFin\n```\n\n**Test :** A = 2, B = 3, C = 4 → R1 = 2 + 12 = 14 (× est prioritaire sur +) et R2 = 5 × 4 = 20. (La dernière ligne de l'énoncé, sur Y et X, semble appartenir à l'exercice 3.)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "3",
+      "statement_md": "Écrire un algorithme qui lit un nombre réel X, puis calcule et affiche la valeur de l'expression Y = 2 × X × X − 3 × X + 5.\n\nQuelle valeur de Y l'algorithme affiche-t-il pour X = … ?",
+      "solution_md": "```\nAlgorithme CalculExpression\nVariables\n  X, Y : réel\nDébut\n  Lire(X)\n  Y ← 2 × X × X − 3 × X + 5\n  Afficher(\"Y = \", Y)\nFin\n```\n\n**Test :** La valeur de X n'est pas précisée sur la feuille (« X = … »). Exemple : X = 2 → Y = 8 − 6 + 5 = 7 ; X = 0 → Y = 5.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "4",
+      "statement_md": "Écrire un algorithme qui lit le nombre d'objets N à ranger et la capacité (C) d'une boîte, puis calcule et affiche le nombre de boîtes pleines (NbBoites) et le nombre d'objets restants (Reste).",
+      "solution_md": "```\nAlgorithme RangementBoites\nVariables\n  N, C, NbBoites, Reste : entier\nDébut\n  Lire(N)\n  Lire(C)\n  NbBoites ← N div C\n  Reste ← N mod C\n  Afficher(\"Boîtes pleines : \", NbBoites)\n  Afficher(\"Objets restants : \", Reste)\nFin\n```\n\n**Test :** N = 23, C = 5 → NbBoites = 4, Reste = 3.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "5",
+      "statement_md": "Écrire un algorithme qui lit un entier N compris entre 10 et 99, puis calcule et affiche le chiffre des dizaines Dz et le chiffre des unités Un.",
+      "solution_md": "```\nAlgorithme ChiffresNombre\nVariables\n  N, Dz, Un : entier\nDébut\n  Lire(N)\n  Dz ← N div 10\n  Un ← N mod 10\n  Afficher(\"Dizaines : \", Dz)\n  Afficher(\"Unités : \", Un)\nFin\n```\n\n**Test :** N = 47 → Dz = 4, Un = 7.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "6",
+      "statement_md": "Écrire un algorithme qui lit deux nombres réels A et B, puis calcule et affiche les résultats booléens des six comparaisons possibles entre A et B.",
+      "solution_md": "```\nAlgorithme SixComparaisons\nVariables\n  A, B : réel\n  Egal, Different, Inf, Sup, InfEgal, SupEgal : booléen\nDébut\n  Lire(A)\n  Lire(B)\n  Egal ← (A = B)\n  Different ← (A ≠ B)\n  Inf ← (A < B)\n  Sup ← (A > B)\n  InfEgal ← (A ≤ B)\n  SupEgal ← (A ≥ B)\n  Afficher(Egal, Different, Inf)\n  Afficher(Sup, InfEgal, SupEgal)\nFin\n```\n\n**Test :** A = 3, B = 7 → Faux, Vrai, Vrai, Faux, Vrai, Faux.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "7",
+      "statement_md": "Écrire un algorithme qui lit un nombre réel X ainsi que les bornes Min et Max d'un intervalle, puis calcule et affiche un résultat booléen DansIntervalle indiquant si X appartient à l'intervalle [Min, Max].",
+      "solution_md": "```\nAlgorithme TestIntervalle\nVariables\n  X, Min, Max : réel\n  DansIntervalle : booléen\nDébut\n  Lire(X)\n  Lire(Min)\n  Lire(Max)\n  DansIntervalle ← (X ≥ Min) ET (X ≤ Max)\n  Afficher(DansIntervalle)\nFin\n```\n\n**Test :** X = 5, Min = 0, Max = 10 → Vrai ; X = 12 → Faux.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg"
+    },
+    {
+      "number": "8",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche un résultat booléen HorsPlage indiquant si N est en dehors de la plage [0, 100].",
+      "solution_md": "```\nAlgorithme HorsPlage\nVariables\n  N : entier\n  HorsPlage : booléen\nDébut\n  Lire(N)\n  HorsPlage ← (N < 0) OU (N > 100)\n  Afficher(HorsPlage)\nFin\n```\n\n**Test :** N = 150 → Vrai ; N = 42 → Faux.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "9",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche un résultat booléen EstPair indiquant si N est pair.",
+      "solution_md": "```\nAlgorithme TestParite\nVariables\n  N : entier\n  EstPair : booléen\nDébut\n  Lire(N)\n  EstPair ← (N mod 2 = 0)\n  Afficher(EstPair)\nFin\n```\n\n**Test :** N = 14 → Vrai ; N = 9 → Faux.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "10",
+      "statement_md": "Écrire un algorithme qui lit deux entiers N et D, puis calcule et affiche un résultat booléen EstDivisible indiquant si N est divisible par D.",
+      "solution_md": "```\nAlgorithme TestDivisibilite\nVariables\n  N, D : entier\n  EstDivisible : booléen\nDébut\n  Lire(N)\n  Lire(D)\n  EstDivisible ← (N mod D = 0)\n  Afficher(EstDivisible)\nFin\n```\n\n**Test :** N = 35, D = 7 → Vrai ; N = 35, D = 4 → Faux (on suppose D ≠ 0).",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "11",
+      "statement_md": "Écrire un algorithme qui lit un caractère C (une lettre minuscule), puis calcule et affiche un résultat booléen EstVoyelle indiquant si C est une voyelle.",
+      "solution_md": "```\nAlgorithme TestVoyelle\nVariables\n  C : caractère\n  EstVoyelle : booléen\nDébut\n  Lire(C)\n  EstVoyelle ← (C = 'a') OU (C = 'e') OU (C = 'i')\n                OU (C = 'o') OU (C = 'u') OU (C = 'y')\n  Afficher(EstVoyelle)\nFin\n```\n\n**Test :** C = 'e' → Vrai ; C = 'k' → Faux. (Le « y » est compté comme voyelle, comme en français.)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "12",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche trois résultats booléens : EstMultiple3 indiquant si N est multiple de 3, EstMultiple5 indiquant si N est multiple de 5, et EstMultipleDes2 indiquant si N est multiple des deux à la fois.",
+      "solution_md": "```\nAlgorithme Multiples3et5\nVariables\n  N : entier\n  EstMultiple3, EstMultiple5, EstMultipleDes2 : booléen\nDébut\n  Lire(N)\n  EstMultiple3 ← (N mod 3 = 0)\n  EstMultiple5 ← (N mod 5 = 0)\n  EstMultipleDes2 ← EstMultiple3 ET EstMultiple5\n  Afficher(EstMultiple3, EstMultiple5, EstMultipleDes2)\nFin\n```\n\n**Test :** N = 30 → Vrai, Vrai, Vrai ; N = 9 → Vrai, Faux, Faux.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "13",
+      "statement_md": "Écrire un algorithme qui lit la température T d'une machine, puis calcule et affiche deux résultats booléens (TemperatureCritique) et (TemperatureNormale). La température est considérée comme critique si elle est inférieure à 10 °C ou bien supérieure à 80 °C. Une température est considérée comme normale si elle n'est pas critique.",
+      "solution_md": "**Pseudo-code**\n\n```\nAlgorithme  Controle_Temperature\nVariables\n    T : Réel\n    TemperatureCritique, TemperatureNormale : Booléen\nDébut\n    Ecrire(\"Saisir la température : \")\n    Lire(T)\n    TemperatureCritique ← (T < 10) OU (T > 80)\n    TemperatureNormale ← NON TemperatureCritique\n    Ecrire(\"Température critique : \", TemperatureCritique)\n    Ecrire(\"Température normale : \", TemperatureNormale)\nFin\n```",
+      "solution_source": "prof",
+      "solution_ref": "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.123-124 (exercice d'application 7)",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    },
+    {
+      "number": "14",
+      "statement_md": "Écrire un algorithme qui lit le nom d'un utilisateur NomUtilisateur, puis construit et affiche un message de bienvenue personnalisé Message en concaténant plusieurs morceaux de texte avec la variable.",
+      "solution_md": "Message = \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\".\n\n**Pseudo-code**\n\n```\nAlgorithme MessageBienvenue\nVariables\n  NomUtilisateur, Message : chaîne\nDébut\n  Lire(NomUtilisateur)\n  Message ← \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\"\n  Afficher(Message)\nFin\n```",
+      "solution_source": "prof",
+      "solution_ref": "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.125-126 (exercice d'application 8)",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg"
+    }
+  ]
+}

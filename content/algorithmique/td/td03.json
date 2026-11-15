@@ -1,0 +1,77 @@
+{
+  "chapter": 3,
+  "title": "Structures conditionnelles",
+  "source": "Série de TD N°3",
+  "exercises": [
+    {
+      "number": "1",
+      "statement_md": "Écrire un algorithme qui lit un nombre N, puis affiche \"Le nombre est positif\" si N est supérieur ou égal à 0, sinon affiche \"Le nombre est négatif\".",
+      "solution_md": "```\nAlgorithme SigneNombre\nVariables\n  N : réel\nDébut\n  Lire(N)\n  Si (N >= 0) Alors\n    Afficher(\"Le nombre est positif\")\n  Sinon\n    Afficher(\"Le nombre est négatif\")\n  FinSi\nFin\n```\n\n**Test :** N = 5 → « Le nombre est positif » ; N = −3 → « Le nombre est négatif ».\n\n![Figure — organigramme de l'algorithme SigneNombre (structure Si … Sinon).](/figures/algorithmique/td-ch04-ex1-organigramme.svg)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "2",
+      "statement_md": "Écrire un algorithme qui lit un nombre entier N, calcule le reste de sa division par 2, puis affiche si N est pair ou impair.",
+      "solution_md": "```\nAlgorithme PairImpair\nVariables\n  N, R : entier\nDébut\n  Lire(N)\n  R ← N mod 2\n  Si (R = 0) Alors\n    Afficher(N, \" est pair\")\n  Sinon\n    Afficher(N, \" est impair\")\n  FinSi\nFin\n```\n\n**Test :** N = 8 → R = 0, « 8 est pair » ; N = 7 → R = 1, « 7 est impair ».",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "3",
+      "statement_md": "Écrire un algorithme qui lit deux nombres A et B, détermine lequel est le plus grand, puis l'affiche.",
+      "solution_md": "```\nAlgorithme PlusGrand\nVariables\n  A, B, Max : réel\nDébut\n  Lire(A)\n  Lire(B)\n  Si (A > B) Alors\n    Max ← A\n  Sinon\n    Max ← B\n  FinSi\n  Afficher(\"Le plus grand est : \", Max)\nFin\n```\n\n**Test :** A = 4, B = 9 → 9 ; A = 6, B = 6 → 6.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "4",
+      "statement_md": "Dans un parc d'attractions, il faut mesurer au moins 1.20 m pour monter dans un manège. Écrire un algorithme qui lit la taille d'un visiteur (en mètres) et affiche \"Accès autorisé\" ou \"Accès refusé\".",
+      "solution_md": "```\nAlgorithme AccesManege\nVariables\n  Taille : réel\nDébut\n  Lire(Taille)\n  Si (Taille >= 1.20) Alors\n    Afficher(\"Accès autorisé\")\n  Sinon\n    Afficher(\"Accès refusé\")\n  FinSi\nFin\n```\n\n**Test :** Taille = 1.35 → « Accès autorisé » ; Taille = 1.10 → « Accès refusé ».",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "5",
+      "statement_md": "Un cinéma applique les tarifs suivants : 20 dh pour les moins de 12 ans, 40 dh de 12 à 59 ans, et 25 dh à partir de 60 ans. Écrire un algorithme qui lit l'âge d'un spectateur, calcule puis affiche le tarif qui lui correspond.",
+      "solution_md": "```\nAlgorithme TarifCinema\nVariables\n  Age, Tarif : entier\nDébut\n  Lire(Age)\n  Si (Age < 12) Alors\n    Tarif ← 20\n  SinonSi (Age < 60) Alors\n    Tarif ← 40\n  Sinon\n    Tarif ← 25\n  FinSi\n  Afficher(\"Tarif : \", Tarif, \" dh\")\nFin\n```\n\n**Test :** Age = 8 → 20 dh ; Age = 30 → 40 dh ; Age = 65 → 25 dh.\n\n![Figure — organigramme de l'algorithme TarifCinema (structure Si … SinonSi … Sinon).](/figures/algorithmique/td-ch04-ex5-organigramme.svg)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "6",
+      "statement_md": "Un règlement d'examen attribue les mentions suivantes selon la moyenne obtenue : moins de 10 → Échec, de 10 à moins de 12 → Passable, de 12 à moins de 14 → Assez Bien, de 14 à moins de 16 → Bien, 16 et plus → Très Bien. Écrire un algorithme qui lit la moyenne d'un étudiant et affiche sa mention.",
+      "solution_md": "```\nAlgorithme Mention\nVariables\n  Moy : réel\nDébut\n  Lire(Moy)\n  Si (Moy < 10) Alors\n    Afficher(\"Échec\")\n  SinonSi (Moy < 12) Alors\n    Afficher(\"Passable\")\n  SinonSi (Moy < 14) Alors\n    Afficher(\"Assez Bien\")\n  SinonSi (Moy < 16) Alors\n    Afficher(\"Bien\")\n  Sinon\n    Afficher(\"Très Bien\")\n  FinSi\nFin\n```\n\n**Test :** Moy = 13.5 → « Assez Bien » ; Moy = 16 → « Très Bien ».",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "7",
+      "statement_md": "On classe l'indice de masse corporelle (IMC) ainsi : moins de 18.5 → Maigreur, de 18.5 à moins de 25 → Normal, de 25 à moins de 30 → Surpoids, 30 et plus → Obésité. Écrire un algorithme qui lit le poids (kg) et la taille (m) d'une personne, calcule son IMC, puis affiche sa catégorie.",
+      "solution_md": "```\nAlgorithme CategorieIMC\nVariables\n  Poids, Taille, IMC : réel\nDébut\n  Lire(Poids)\n  Lire(Taille)\n  IMC ← Poids / (Taille × Taille)\n  Afficher(\"IMC : \", IMC)\n  Si (IMC < 18.5) Alors\n    Afficher(\"Maigreur\")\n  SinonSi (IMC < 25) Alors\n    Afficher(\"Normal\")\n  SinonSi (IMC < 30) Alors\n    Afficher(\"Surpoids\")\n  Sinon\n    Afficher(\"Obésité\")\n  FinSi\nFin\n```\n\n**Test :** Poids = 70, Taille = 1.75 → IMC ≈ 22.86 → « Normal ».",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "8",
+      "statement_md": "Pour se présenter à l'examen du permis de conduire, il faut avoir au moins 18 ans et avoir suivi au moins 20 heures de conduite. Écrire un algorithme qui lit l'âge d'un candidat et le nombre d'heures de conduite suivies, puis affiche s'il peut se présenter à l'examen.",
+      "solution_md": "```\nAlgorithme PermisConduire\nVariables\n  Age, Heures : entier\nDébut\n  Lire(Age)\n  Lire(Heures)\n  Si (Age >= 18) ET (Heures >= 20) Alors\n    Afficher(\"Le candidat peut se présenter à l'examen\")\n  Sinon\n    Afficher(\"Le candidat ne peut pas se présenter à l'examen\")\n  FinSi\nFin\n```\n\n**Test :** Age = 19, Heures = 25 → peut se présenter ; Age = 19, Heures = 12 → ne peut pas.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "9",
+      "statement_md": "Un billet de train coûte 100 dh en semaine et 130 dh le week-end. Les enfants de moins de 12 ans bénéficient en plus d'une réduction de 50 %, quel que soit le jour. Écrire un algorithme qui lit l'âge du voyageur et une valeur booléenne indiquant si l'on est le week-end, calcule puis affiche le prix du billet (utiliser un Si imbriqué dans chaque branche).",
+      "solution_md": "```\nAlgorithme PrixBillet\nVariables\n  Age : entier\n  WeekEnd : booléen\n  Prix : réel\nDébut\n  Lire(Age)\n  Lire(WeekEnd)\n  Si (WeekEnd) Alors\n    Si (Age < 12) Alors\n      Prix ← 130 × 0.5\n    Sinon\n      Prix ← 130\n    FinSi\n  Sinon\n    Si (Age < 12) Alors\n      Prix ← 100 × 0.5\n    Sinon\n      Prix ← 100\n    FinSi\n  FinSi\n  Afficher(\"Prix du billet : \", Prix, \" dh\")\nFin\n```\n\n**Test :** Age = 8, WeekEnd = Vrai → 65 dh ; Age = 30, WeekEnd = Faux → 100 dh.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    },
+    {
+      "number": "10",
+      "statement_md": "Écrire un algorithme complet qui lit les longueurs de trois côtés a, b et c. Il vérifie d'abord si ces longueurs peuvent former un triangle valide (la somme de deux côtés doit toujours être strictement supérieure au troisième). Si le triangle est valide, il détermine et affiche son type : \"équilatéral\" (les trois côtés égaux), \"isocèle\" (exactement deux côtés égaux) ou \"quelconque\" (aucun côté égal). Sinon, il affiche que les longueurs ne forment pas un triangle.",
+      "solution_md": "```\nAlgorithme TypeTriangle\nVariables\n  a, b, c : réel\nDébut\n  Lire(a)\n  Lire(b)\n  Lire(c)\n  Si (a + b > c) ET (a + c > b) ET (b + c > a) Alors\n    Si (a = b) ET (b = c) Alors\n      Afficher(\"équilatéral\")\n    SinonSi (a = b) OU (a = c) OU (b = c) Alors\n      Afficher(\"isocèle\")\n    Sinon\n      Afficher(\"quelconque\")\n    FinSi\n  Sinon\n    Afficher(\"Les longueurs ne forment pas un triangle\")\n  FinSi\nFin\n```\n\n**Test :** (3, 3, 3) → équilatéral ; (5, 5, 8) → isocèle ; (3, 4, 5) → quelconque ; (1, 2, 5) → pas un triangle.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.35.jpeg"
+    }
+  ]
+}

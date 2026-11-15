@@ -102,7 +102,8 @@ export function readTdChapters(slug: string): TdChapter[] {
   const dir = join(CONTENT, slug, "td");
   if (!SLUG.test(slug) || !existsSync(dir)) return [];
   return readdirSync(dir)
-    .filter((f) => /^ch\d+\.json$/.test(f))
+    // one file per TD sheet, in the order the professor gave them: td01.json = TD 1, td02.json = TD 2…
+    .filter((f) => /^td\d+\.json$/.test(f))
     .sort()
     .map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")) as TdChapter)
     .filter((c) => Array.isArray(c.exercises) && c.exercises.length > 0)

@@ -1,0 +1,190 @@
+{
+  "chapter": 1,
+  "title": "Prise en main d'un algorithme",
+  "source": "Série de TD N°1",
+  "exercises": [
+    {
+      "number": "1",
+      "statement_md": "Écrire un algorithme qui lit le nombre de pages à imprimer N et le prix d'une page P, puis calcule et affiche le montant total à payer M : M = N × P.",
+      "solution_md": "```\nAlgorithme Impression\nVariables\n  N : entier\n  P, M : réel\nDébut\n  Lire(N)\n  Lire(P)\n  M ← N × P\n  Afficher(\"Montant total : \", M)\nFin\n```\n\n**Test :** N = 120, P = 0.5 → M = 60.\n\n![Figure — organigramme de l'algorithme Impression.](/figures/algorithmique/td-ch02-ex1-organigramme.svg)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "2",
+      "statement_md": "Écrire un algorithme qui lit le nombre de mots tapés N et la durée D (en minutes), puis calcule et affiche la vitesse de frappe V, en mots par minute : V = N / D.",
+      "solution_md": "```\nAlgorithme VitesseFrappe\nVariables\n  N : entier\n  D, V : réel\nDébut\n  Lire(N)\n  Lire(D)\n  V ← N / D\n  Afficher(\"Vitesse (mots/min) : \", V)\nFin\n```\n\n**Test :** N = 600, D = 15 → V = 40.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "3",
+      "statement_md": "Écrire un algorithme qui lit la vitesse moyenne V d'un véhicule et la durée D d'un trajet, puis calcule et affiche la distance parcourue Dist : Dist = V × D.",
+      "solution_md": "```\nAlgorithme DistanceParcourue\nVariables\n  V, D, Dist : réel\nDébut\n  Lire(V)\n  Lire(D)\n  Dist ← V × D\n  Afficher(\"Distance : \", Dist)\nFin\n```\n\n**Test :** V = 80, D = 2.5 → Dist = 200.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "4",
+      "statement_md": "Écrire un algorithme qui lit la longueur L, la largeur l et la hauteur H d'un réservoir rectangulaire (en mètres), puis calcule et affiche sa capacité Cap, en litres : Vol = L × l × H et Cap = Vol × 1000.",
+      "solution_md": "```\nAlgorithme CapaciteReservoir\nVariables\n  L, l, H, Vol, Cap : réel\nDébut\n  Lire(L)\n  Lire(l)\n  Lire(H)\n  Vol ← L × l × H\n  Cap ← Vol × 1000\n  Afficher(\"Capacité (litres) : \", Cap)\nFin\n```\n\n**Test :** L = 2, l = 1.5, H = 1 → Vol = 3 m³, Cap = 3000 L.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "5",
+      "statement_md": "Écrire un algorithme qui lit la distance D d'un trajet, la consommation moyenne C d'un véhicule (en L/100 km) et le prix d'un litre de carburant Pr, puis calcule et affiche le coût du trajet Cout : Carb = D × C / 100 et Cout = Carb × Pr.",
+      "solution_md": "```\nAlgorithme CoutTrajet\nVariables\n  D, C, Pr, Carb, Cout : réel\nDébut\n  Lire(D)\n  Lire(C)\n  Lire(Pr)\n  Carb ← D × C / 100\n  Cout ← Carb × Pr\n  Afficher(\"Coût du trajet : \", Cout)\nFin\n```\n\n**Test :** D = 250, C = 6, Pr = 12 → Carb = 15 L, Cout = 180.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "6",
+      "statement_md": "Écrire un algorithme qui lit le prénom Prenom et le nom Nom d'un étudiant, puis calcule et affiche son adresse e-mail universitaire Adresse : Adresse = Prenom + « . » + Nom + « @universite.ma ».",
+      "solution_md": "```\nAlgorithme AdresseMail\nVariables\n  Prenom, Nom, Adresse : chaîne\nDébut\n  Lire(Prenom)\n  Lire(Nom)\n  Adresse ← Prenom + \".\" + Nom + \"@universite.ma\"\n  Afficher(\"Adresse : \", Adresse)\nFin\n```\n\n**Test :** Prenom = \"sara\", Nom = \"alami\" → Adresse = \"sara.alami@universite.ma\".",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "7",
+      "statement_md": "Écrire un algorithme qui lit le montant d'une addition Add et le nombre de personnes N, puis calcule et affiche le pourboire Pb, le montant total Tot et la part par personne Part : Pb = Add × 10 / 100, Tot = Add + Pb et Part = Tot / N.",
+      "solution_md": "```\nAlgorithme Pourboire\nVariables\n  N : entier\n  Add, Pb, Tot, Part : réel\nDébut\n  Lire(Add)\n  Lire(N)\n  Pb ← Add × 10 / 100\n  Tot ← Add + Pb\n  Part ← Tot / N\n  Afficher(Pb)\n  Afficher(Tot)\n  Afficher(Part)\nFin\n```\n\n**Test :** Add = 400, N = 4 → Pb = 40, Tot = 440, Part = 110.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "8",
+      "statement_md": "Écrire un algorithme qui lit l'heure d'un rendez-vous HRDV (en minutes depuis minuit), la durée d'un trajet Dur et un temps d'avance souhaité Av, puis calcule et affiche l'heure de départ HDep : HDep = HRDV − Av − Dur.",
+      "solution_md": "```\nAlgorithme HeureDepart\nVariables\n  HRDV, Dur, Av, HDep : entier\nDébut\n  Lire(HRDV)\n  Lire(Dur)\n  Lire(Av)\n  HDep ← HRDV − Av − Dur\n  Afficher(\"Heure de départ (min) : \", HDep)\nFin\n```\n\n**Test :** HRDV = 600 (10 h 00), Dur = 45, Av = 15 → HDep = 540 (9 h 00).",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "9",
+      "statement_md": "Écrire un algorithme qui lit un ancien relevé AR et un nouveau relevé NR (en kWh), ainsi que le prix d'un kWh Pr, puis calcule et affiche le montant à payer Mt : Cons = NR − AR et Mt = Cons × Pr.",
+      "solution_md": "```\nAlgorithme FactureElectricite\nVariables\n  AR, NR, Pr, Cons, Mt : réel\nDébut\n  Lire(AR)\n  Lire(NR)\n  Lire(Pr)\n  Cons ← NR − AR\n  Mt ← Cons × Pr\n  Afficher(\"Montant à payer : \", Mt)\nFin\n```\n\n**Test :** AR = 1200, NR = 1350, Pr = 1.2 → Cons = 150, Mt = 180.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "10",
+      "statement_md": "Écrire un algorithme qui lit le nombre initial de personnes N1, le nouveau nombre de personnes N2, ainsi que les quantités initiales de farine F, d'œufs O et de lait L d'une recette, puis calcule et affiche les nouvelles quantités F2, O2 et L2, sachant que : K = N2 / N1, F2 = F × K, O2 = O × K et L2 = L × K.",
+      "solution_md": "k : Coefficient de proportionnalité = Nouveau nombre de personnes / Nombre initial de personnes\n\nNouvelle quantité = (Quantité initiale × Nouveau nombre de personnes ) / Nombre initial de personnes\n\n| Étape | Application |\n|---|---|\n| Comprendre le problème | Il faut adapter les quantités d'une recette pour un nombre différent de personnes, en conservant les proportions. |\n| Entrées | N1 (nombre initial de personnes), N2 (nouveau nombre de personnes), F, O et L (quantités initiales de farine, d'œufs et de lait). |\n| Sortie | F2, O2 et L2 (nouvelles quantités de farine, d'œufs et de lait). |\n| Concevoir | On calcule un coefficient K = N2 / N1, puis on multiplie chaque quantité initiale par ce coefficient. |\n\n**Solution — étapes de l'algorithme**\n\n1. Lire N1.\n2. Lire N2.\n3. Lire F, O et L.\n4. Calculer K : K = N2 / N1.\n5. Calculer F2, O2 et L2 en multipliant chaque quantité initiale par K.\n6. Afficher F2, O2 et L2.\n\n**Pseudo-code**\n\n```\nAlgorithme AdapterRecette\nVariable\n  N1, N2 : entier\n  F, O, L, K, F2, O2, L2 : réel\nDébut\n  Lire(N1,N2,F,O,L)\n  K ← N2 / N1\n  F2 ← F × K\n  O2 ← O × K\n  L2 ← L × K\n  Afficher(F2)\n  Afficher(O2)\n  Afficher(L2)\nFin\n```",
+      "solution_source": "prof",
+      "solution_ref": "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.61-63",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1_ETD_Algorithmique_Demarche_de_resolution-VF-26-09-25.pdf p.2"
+    },
+    {
+      "number": "11",
+      "title": "Moyenne pondérée de deux notes",
+      "statement_md": "Écrire un algorithme qui lit deux notes N1 et N2 ainsi que leurs coefficients respectifs C1 et C2, puis calcule et affiche la moyenne pondérée M : M = (N1 × C1 + N2 × C2) / (C1 + C2).",
+      "solution_md": "```\nAlgorithme MoyennePonderee\nVariables\n  N1, N2, C1, C2, M : réel\nDébut\n  Lire(N1)\n  Lire(C1)\n  Lire(N2)\n  Lire(C2)\n  M ← (N1 × C1 + N2 × C2) / (C1 + C2)\n  Afficher(\"Moyenne : \", M)\nFin\n```\n\n**Test :** N1 = 12, C1 = 2, N2 = 15, C2 = 3 → M = (24 + 45) / 5 = 13.8.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "12",
+      "title": "Prix d'une course de taxi",
+      "statement_md": "Écrire un algorithme qui lit le montant de la prise en charge PC d'un taxi, le prix par kilomètre PK et la distance parcourue D, puis calcule et affiche le prix total de la course Prix : Prix = PC + PK × D.",
+      "solution_md": "```\nAlgorithme CourseTaxi\nVariables\n  PC, PK, D, Prix : réel\nDébut\n  Lire(PC)\n  Lire(PK)\n  Lire(D)\n  Prix ← PC + PK × D\n  Afficher(\"Prix de la course : \", Prix)\nFin\n```\n\n**Test :** PC = 7, PK = 2.5, D = 12 → Prix = 37.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "13",
+      "title": "Volume d'un cube",
+      "statement_md": "Écrire un algorithme qui lit la longueur de l'arête A d'un cube, puis calcule et affiche son volume V : V = A × A × A.",
+      "solution_md": "```\nAlgorithme VolumeCube\nVariables\n  A, V : réel\nDébut\n  Lire(A)\n  V ← A × A × A\n  Afficher(\"Volume : \", V)\nFin\n```\n\n**Test :** A = 3 → V = 27.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "14",
+      "title": "Fréquence cardiaque maximale et zone d'effort cible",
+      "statement_md": "Écrire un algorithme qui lit l'âge Age d'une personne, puis calcule et affiche sa fréquence cardiaque maximale FCM et la borne de sa zone d'effort cible Zc (70 % de la FCM) : FCM = 220 − Age et Zc = FCM × 0.7.",
+      "solution_md": "```\nAlgorithme FrequenceCardiaque\nVariables\n  Age, FCM : entier\n  Zc : réel\nDébut\n  Lire(Age)\n  FCM ← 220 − Age\n  Zc ← FCM × 0.7\n  Afficher(FCM)\n  Afficher(Zc)\nFin\n```\n\n**Test :** Age = 20 → FCM = 200, Zc = 140.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "15",
+      "title": "Surface d'un mur à peindre",
+      "statement_md": "Écrire un algorithme qui lit la longueur L et la hauteur H d'un mur, ainsi que la surface de la porte Sp qu'il contient, puis calcule et affiche la surface à peindre Sa et la quantité de peinture nécessaire Qp, sachant qu'un litre de peinture couvre un rendement R m² : Sa = (L × H) − Sp et Qp = Sa / R.",
+      "solution_md": "```\nAlgorithme PeintureMur\nVariables\n  L, H, Sp, R, Sa, Qp : réel\nDébut\n  Lire(L)\n  Lire(H)\n  Lire(Sp)\n  Lire(R)\n  Sa ← (L × H) − Sp\n  Qp ← Sa / R\n  Afficher(Sa)\n  Afficher(Qp)\nFin\n```\n\n**Test :** L = 5, H = 3, Sp = 2, R = 10 → Sa = 13 m², Qp = 1.3 L.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "16",
+      "title": "Distance parcourue à pied (nombre de pas)",
+      "statement_md": "Écrire un algorithme qui lit le nombre de pas NP effectués par une personne et la longueur moyenne d'un pas Lp (en mètres), puis calcule et affiche la distance parcourue en mètres Dm et en kilomètres Dk : Dm = NP × Lp et Dk = Dm / 1000.",
+      "solution_md": "```\nAlgorithme DistancePas\nVariables\n  NP : entier\n  Lp, Dm, Dk : réel\nDébut\n  Lire(NP)\n  Lire(Lp)\n  Dm ← NP × Lp\n  Dk ← Dm / 1000\n  Afficher(Dm)\n  Afficher(Dk)\nFin\n```\n\n**Test :** NP = 8000, Lp = 0.75 → Dm = 6000 m, Dk = 6 km.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "17",
+      "title": "Remise et prix final lors d'un solde",
+      "statement_md": "Écrire un algorithme qui lit le prix initial Pi d'un article et le taux de remise Tr (en %) appliqué lors d'un solde, puis calcule et affiche le montant de la remise Mr et le prix final Pf à payer : Mr = Pi × Tr / 100 et Pf = Pi − Mr.",
+      "solution_md": "```\nAlgorithme Solde\nVariables\n  Pi, Tr, Mr, Pf : réel\nDébut\n  Lire(Pi)\n  Lire(Tr)\n  Mr ← Pi × Tr / 100\n  Pf ← Pi − Mr\n  Afficher(Mr)\n  Afficher(Pf)\nFin\n```\n\n**Test :** Pi = 250, Tr = 20 → Mr = 50, Pf = 200.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1"
+    },
+    {
+      "number": "18",
+      "title": "Densité de population d'une ville",
+      "statement_md": "Écrire un algorithme qui lit la population Pop d'une ville et sa superficie Sup (en km²), puis calcule et affiche sa densité de population D : D = Pop / Sup.",
+      "solution_md": "```\nAlgorithme DensitePopulation\nVariables\n  Pop : entier\n  Sup, D : réel\nDébut\n  Lire(Pop)\n  Lire(Sup)\n  D ← Pop / Sup\n  Afficher(\"Densité (hab/km²) : \", D)\nFin\n```\n\n**Test :** Pop = 500000, Sup = 250 → D = 2000 hab/km².",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.1-2"
+    },
+    {
+      "number": "19",
+      "title": "Prix au kilogramme d'un produit",
+      "statement_md": "Écrire un algorithme qui lit le prix total Pt payé pour un produit et son poids Poids (en kg), puis calcule et affiche le prix unitaire au kilogramme Pu : Pu = Pt / Poids.",
+      "solution_md": "```\nAlgorithme PrixAuKilo\nVariables\n  Pt, Poids, Pu : réel\nDébut\n  Lire(Pt)\n  Lire(Poids)\n  Pu ← Pt / Poids\n  Afficher(\"Prix au kg : \", Pu)\nFin\n```\n\n**Test :** Pt = 45, Poids = 1.5 → Pu = 30.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    },
+    {
+      "number": "20",
+      "title": "Consommation d'eau moyenne par personne",
+      "statement_md": "Écrire un algorithme qui lit la consommation d'eau mensuelle totale Ct (en m³) d'un foyer et le nombre de personnes Np qui le composent, puis calcule et affiche la consommation moyenne mensuelle par personne Cm et la consommation moyenne journalière Cj : Cm = Ct / Np et Cj = Cm / 30.",
+      "solution_md": "```\nAlgorithme ConsommationEau\nVariables\n  Np : entier\n  Ct, Cm, Cj : réel\nDébut\n  Lire(Ct)\n  Lire(Np)\n  Cm ← Ct / Np\n  Cj ← Cm / 30\n  Afficher(Cm)\n  Afficher(Cj)\nFin\n```\n\n**Test :** Ct = 12, Np = 4 → Cm = 3 m³, Cj = 0.1 m³.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    },
+    {
+      "number": "21",
+      "title": "Note finale d'un module (coefficients fixes)",
+      "statement_md": "Écrire un algorithme qui lit la note de contrôle continu CC et la note d'examen Ex d'un étudiant, puis calcule et affiche sa note finale NF, sachant que le contrôle continu compte pour 40 % et l'examen pour 60 % : NF = CC × 0.4 + Ex × 0.6.",
+      "solution_md": "```\nAlgorithme NoteFinale\nVariables\n  CC, Ex, NF : réel\nDébut\n  Lire(CC)\n  Lire(Ex)\n  NF ← CC × 0.4 + Ex × 0.6\n  Afficher(\"Note finale : \", NF)\nFin\n```\n\n**Test :** CC = 14, Ex = 11 → NF = 5.6 + 6.6 = 12.2.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    },
+    {
+      "number": "22",
+      "title": "Taux de réussite à un examen",
+      "statement_md": "Écrire un algorithme qui lit le nombre de candidats admis NA et le nombre total de candidats NT à un examen, puis calcule et affiche le taux de réussite Tx (en %) : Tx = (NA / NT) × 100.",
+      "solution_md": "```\nAlgorithme TauxReussite\nVariables\n  NA, NT : entier\n  Tx : réel\nDébut\n  Lire(NA)\n  Lire(NT)\n  Tx ← (NA / NT) × 100\n  Afficher(\"Taux de réussite (%) : \", Tx)\nFin\n```\n\n**Test :** NA = 45, NT = 60 → Tx = 75 %.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    },
+    {
+      "number": "23",
+      "title": "Temps de trajet restant",
+      "statement_md": "Écrire un algorithme qui lit la distance totale d'un trajet Dt, la distance déjà parcourue Dp et la vitesse moyenne V, puis calcule et affiche la distance restante Dr et le temps restant estimé Tr pour arriver à destination : Dr = Dt − Dp et Tr = Dr / V.",
+      "solution_md": "```\nAlgorithme TrajetRestant\nVariables\n  Dt, Dp, V, Dr, Tr : réel\nDébut\n  Lire(Dt)\n  Lire(Dp)\n  Lire(V)\n  Dr ← Dt − Dp\n  Tr ← Dr / V\n  Afficher(Dr)\n  Afficher(Tr)\nFin\n```\n\n**Test :** Dt = 300, Dp = 120, V = 90 → Dr = 180, Tr = 2 (heures).",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    },
+    {
+      "number": "24",
+      "title": "Volume d'un cylindre",
+      "statement_md": "Écrire un algorithme qui lit le rayon R de la base d'un cylindre et sa hauteur H, puis calcule et affiche son volume V, avec π = 3.14 : V = π × R² × H.",
+      "solution_md": "```\nAlgorithme VolumeCylindre\nConstante\n  Pi : réel = 3.14\nVariables\n  R, H, V : réel\nDébut\n  Lire(R)\n  Lire(H)\n  V ← Pi × R × R × H\n  Afficher(\"Volume : \", V)\nFin\n```\n\n**Test :** R = 2, H = 5 → V = 3.14 × 4 × 5 = 62.8.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Algorithme/TD/TD1 suite.pdf p.2"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps<"/td/[course]">) {
   return { title: title ? `TD — ${title}` : "TD" };
 }
 
-/** One module's TD, one row per chapter. */
+/** One module's TD sheets in order: TD 1, TD 2… */
 export default async function TdCoursePage({ params }: PageProps<"/td/[course]">) {
   const { course } = await params;
   const title = await courseTitle(course);
@@ -36,9 +36,9 @@ export default async function TdCoursePage({ params }: PageProps<"/td/[course]">
         {chapters.map((ch) => {
           return (
             <li key={ch.chapter} className="border-b border-[var(--rule)]">
-              <Link href={`/td/${course}/${ch.chapter}`} className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 px-2 py-5 transition-colors hover:bg-foreground hover:text-background">
-                <span className="font-display text-[2.6rem] leading-none">{String(ch.chapter).padStart(2, "0")}</span>
-                <span className="font-display text-[1.6rem] leading-none sm:text-[2rem]">{ch.title}</span>
+              <Link href={`/td/${course}/${ch.chapter}`} className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 px-2 py-5 transition-colors hover:bg-foreground hover:text-background">
+                <span className="font-display text-[2.6rem] leading-none">TD {ch.chapter}</span>
+                <span className="text-[1.05rem] text-muted-foreground group-hover:text-background">{ch.title}</span>
                 <span className="label flex items-center gap-2">
                   {ch.exercises.length} ex.
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

@@ -1,0 +1,95 @@
+{
+  "chapter": 2,
+  "title": "Suites numériques",
+  "source": "TD2.pdf",
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Définition de la limite",
+      "statement_md": "1) En revenant à la définition, montrer que $\\displaystyle\\lim_{n\\to+\\infty}\\frac{3n+1}{n+2}=3$.\n\n2) En revenant à la définition, montrer que $\\displaystyle\\lim_{n\\to+\\infty}\\frac{n^2+1}{n+1}=+\\infty$.\n\n3) Montrer que la suite $\\big((-1)^n\\big)_{n\\in\\mathbb{N}}$ diverge.",
+      "solution_md": "**1)** Pour tout $n\\in\\mathbb{N}$ :\n$$\\left|\\frac{3n+1}{n+2}-3\\right|=\\frac{|3n+1-3n-6|}{n+2}=\\frac{5}{n+2}.$$\nSoit $\\varepsilon>0$. Par la propriété d'Archimède, il existe $N\\in\\mathbb{N}$ avec $N>\\frac5\\varepsilon$ (donc $N\\ge1$). Pour $n\\ge N$ : $\\frac{5}{n+2}<\\frac5n\\le\\frac5N<\\varepsilon$. Donc $\\frac{3n+1}{n+2}\\to3$.\n\n**2)** Pour $n\\in\\mathbb{N}$ : $n^2+1\\ge n^2-1=(n-1)(n+1)$, donc $\\frac{n^2+1}{n+1}\\ge n-1$. Soit $A>0$ et $N=E(A)+2$. Pour $n\\ge N$ : $\\frac{n^2+1}{n+1}\\ge n-1\\ge E(A)+1>A$. Donc $\\frac{n^2+1}{n+1}\\to+\\infty$.\n\n**3)** Supposons que $u_n=(-1)^n$ converge vers $\\ell\\in\\mathbb{R}$. Avec $\\varepsilon=1$, il existe $N$ tel que $|u_n-\\ell|<1$ pour $n\\ge N$. Alors, pour $n\\ge N$ :\n$$2=|u_{n+1}-u_n|\\le|u_{n+1}-\\ell|+|\\ell-u_n|<2,$$\nce qui est absurde. La suite n'a donc pas de limite finie ; étant bornée, elle ne tend pas non plus vers $\\pm\\infty$ : elle diverge.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1"
+    },
+    {
+      "number": "2",
+      "title": "Théorème de Cesàro",
+      "statement_md": "Soit $(u_n)_{n\\ge1}$ une suite réelle et $c_n=\\dfrac{u_1+u_2+\\cdots+u_n}{n}$.\n\n1) Montrer que si $u_n\\to\\ell\\in\\mathbb{R}$, alors $c_n\\to\\ell$.\n\n2) La réciproque est-elle vraie ?\n\n3) En déduire que si $u_{n+1}-u_n\\to a\\in\\mathbb{R}$, alors $\\dfrac{u_n}{n}\\to a$.\n\n4) Application : calculer $\\displaystyle\\lim_{n\\to+\\infty}\\frac1n\\sum_{k=1}^{n}\\sqrt[k]{k}$.",
+      "solution_md": "**1)** Soit $\\varepsilon>0$. Il existe $N\\ge1$ tel que $|u_k-\\ell|<\\frac\\varepsilon2$ pour $k>N$. Pour $n>N$ :\n$$|c_n-\\ell|=\\left|\\frac1n\\sum_{k=1}^{n}(u_k-\\ell)\\right|\\le\\frac{C}{n}+\\frac1n\\sum_{k=N+1}^{n}|u_k-\\ell|\\le\\frac Cn+\\frac{n-N}{n}\\cdot\\frac\\varepsilon2\\le\\frac Cn+\\frac\\varepsilon2,$$\noù $C=\\sum_{k=1}^{N}|u_k-\\ell|$ ne dépend pas de $n$. Comme $\\frac Cn\\to0$, il existe $N'\\ge N+1$ tel que $\\frac Cn<\\frac\\varepsilon2$ pour $n\\ge N'$. Alors $|c_n-\\ell|<\\varepsilon$ pour $n\\ge N'$ : $c_n\\to\\ell$.\n\n**2)** Non. Pour $u_n=(-1)^n$, la somme $u_1+\\cdots+u_n$ vaut $-1$ ou $0$, donc $|c_n|\\le\\frac1n\\to0$ : $(c_n)$ converge vers $0$, alors que $(u_n)$ diverge (exercice 1).\n\n**3)** Quitte à poser $u_0=0$ (ce qui ne change pas la limite de $u_{n+1}-u_n$), posons $v_n=u_n-u_{n-1}$ pour $n\\ge1$. Alors $v_n\\to a$ et, d'après 1),\n$$\\frac{v_1+\\cdots+v_n}{n}=\\frac{u_n-u_0}{n}\\to a.$$\nComme $\\frac{u_0}{n}\\to0$, on obtient $\\frac{u_n}{n}\\to a$.\n\n**4)** $\\sqrt[k]{k}=k^{1/k}=\\exp\\left(\\frac{\\ln k}{k}\\right)$ et $\\frac{\\ln k}{k}\\to0$, donc $\\sqrt[k]{k}\\to e^0=1$ par continuité de $\\exp$. D'après 1) :\n$$\\lim_{n\\to+\\infty}\\frac1n\\sum_{k=1}^{n}\\sqrt[k]{k}=1.$$",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1"
+    },
+    {
+      "number": "3",
+      "title": "Suite récurrente et équivalent",
+      "statement_md": "Soit $u_0\\in\\left]0,1\\right[$ et, pour tout $n\\in\\mathbb{N}$, $u_{n+1}=u_n-u_n^2$.\n\n1) Montrer que $u_n\\in\\left]0,1\\right[$ pour tout $n\\in\\mathbb{N}$.\n\n2) Montrer que $(u_n)$ est décroissante, puis qu'elle converge et déterminer sa limite.\n\n3) Montrer que $\\displaystyle\\lim_{n\\to+\\infty}\\left(\\frac{1}{u_{n+1}}-\\frac{1}{u_n}\\right)=1$.\n\n4) En utilisant l'exercice 2, en déduire que $u_n\\sim\\dfrac1n$.",
+      "solution_md": "**1)** Par récurrence. $u_0\\in\\,]0,1[$. Si $u_n\\in\\,]0,1[$, alors $u_{n+1}=u_n(1-u_n)>0$ (produit de deux nombres $>0$) et $u_{n+1}=u_n-u_n^2<u_n<1$. Donc $u_{n+1}\\in\\,]0,1[$.\n\n**2)** $u_{n+1}-u_n=-u_n^2<0$ : $(u_n)$ est strictement décroissante. Elle est minorée par $0$, donc converge vers un réel $\\ell\\in[0,1[$. Par continuité de $x\\mapsto x-x^2$, en passant à la limite dans la relation de récurrence : $\\ell=\\ell-\\ell^2$, donc $\\ell=0$.\n\n**3)** Pour tout $n$ :\n$$\\frac{1}{u_{n+1}}-\\frac{1}{u_n}=\\frac{u_n-u_{n+1}}{u_nu_{n+1}}=\\frac{u_n^2}{u_n\\cdot u_n(1-u_n)}=\\frac{1}{1-u_n}\\xrightarrow[n\\to+\\infty]{}1.$$\n\n**4)** Posons $v_n=\\frac1{u_n}$. D'après 3), $v_{n+1}-v_n\\to1$, donc d'après l'exercice 2 (question 3), $\\frac{v_n}{n}\\to1$, c'est-à-dire $\\frac{1}{nu_n}\\to1$, soit $nu_n\\to1$. Ainsi $u_n\\sim\\frac1n$.\n\n![Figure — diagramme en escalier de u_{n+1} = u_n − u_n² : la suite décroît vers 0.](/figures/analyse-1/td-ch02-ex3-escalier.svg)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1"
+    },
+    {
+      "number": "4",
+      "title": "Suites adjacentes et irrationalité de e",
+      "statement_md": "Pour $n\\ge1$, on pose $u_n=\\displaystyle\\sum_{k=0}^{n}\\frac{1}{k!}$ et $v_n=u_n+\\dfrac{1}{n\\cdot n!}$.\n\n1) Montrer que $(u_n)$ et $(v_n)$ sont adjacentes. On note $e$ leur limite commune.\n\n2) Montrer que, pour tout $n\\ge1$, $u_n<e<v_n$.\n\n3) En raisonnant par l'absurde avec $e=\\frac pq$ ($p,q\\in\\mathbb{N}^*$), montrer que $e$ est irrationnel.",
+      "solution_md": "**1)** $u_{n+1}-u_n=\\frac{1}{(n+1)!}>0$ : $(u_n)$ est strictement croissante. Ensuite, en utilisant $\\frac{1}{n\\cdot n!}=\\frac{n+1}{n\\,(n+1)!}$ :\n$$\\begin{aligned}v_{n+1}-v_n&=\\frac{1}{(n+1)!}+\\frac{1}{(n+1)(n+1)!}-\\frac{n+1}{n\\,(n+1)!}\\\\&=\\frac{n(n+1)+n-(n+1)^2}{n(n+1)\\,(n+1)!}=\\frac{-1}{n(n+1)\\,(n+1)!}<0,\\end{aligned}$$\ndonc $(v_n)$ est strictement décroissante. Enfin $v_n-u_n=\\frac{1}{n\\cdot n!}\\to0$. Les suites sont adjacentes.\n\n**2)** Pour des suites adjacentes, $u_n\\le e\\le v_n$ pour tout $n$. Les monotonies étant strictes : $u_n<u_{n+1}\\le e$ et $e\\le v_{n+1}<v_n$. Donc $u_n<e<v_n$.\n\n**3)** Supposons $e=\\frac pq$ avec $p,q\\in\\mathbb{N}^*$. Avec $n=q$ : $u_q<\\frac pq<u_q+\\frac{1}{q\\cdot q!}$. En multipliant par $q\\cdot q!>0$ :\n$$q\\cdot q!\\,u_q<p\\cdot q!<q\\cdot q!\\,u_q+1.$$\nOr $q!\\,u_q=\\sum_{k=0}^{q}\\frac{q!}{k!}$ est un entier (car $k!$ divise $q!$ pour $k\\le q$), donc $N=q\\cdot q!\\,u_q\\in\\mathbb{N}$. L'entier $p\\cdot q!$ serait strictement compris entre les entiers consécutifs $N$ et $N+1$ : c'est absurde. Donc $e$ est irrationnel.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1"
+    },
+    {
+      "number": "5",
+      "title": "Suites de Cauchy",
+      "statement_md": "1) Soit $H_n=\\displaystyle\\sum_{k=1}^{n}\\frac1k$. Montrer que $H_{2n}-H_n\\ge\\frac12$. En déduire que $(H_n)$ n'est pas de Cauchy, puis que $H_n\\to+\\infty$.\n\n2) Soit $w_n=\\displaystyle\\sum_{k=1}^{n}\\frac{\\sin k}{k^2}$. Montrer que $(w_n)$ est de Cauchy. Conclure.",
+      "solution_md": "**1)** $H_{2n}-H_n=\\sum_{k=n+1}^{2n}\\frac1k$ est une somme de $n$ termes, chacun $\\ge\\frac{1}{2n}$, donc $H_{2n}-H_n\\ge n\\cdot\\frac1{2n}=\\frac12$.\n\nSi $(H_n)$ était de Cauchy, avec $\\varepsilon=\\frac12$ il existerait $N$ tel que $|H_p-H_q|<\\frac12$ pour tous $p,q\\ge N$ ; avec $p=2N$ et $q=N$ on obtiendrait $H_{2N}-H_N<\\frac12$ : absurde. Donc $(H_n)$ n'est pas de Cauchy, donc pas convergente (dans $\\mathbb{R}$, convergente $\\iff$ de Cauchy). Or $H_{n+1}-H_n=\\frac{1}{n+1}>0$ : $(H_n)$ est croissante. Une suite croissante non convergente n'est pas majorée, donc $H_n\\to+\\infty$.\n\n**2)** Pour $q>p\\ge1$ :\n$$|w_q-w_p|=\\left|\\sum_{k=p+1}^{q}\\frac{\\sin k}{k^2}\\right|\\le\\sum_{k=p+1}^{q}\\frac{1}{k^2}\\le\\sum_{k=p+1}^{q}\\frac{1}{k(k-1)}=\\sum_{k=p+1}^{q}\\left(\\frac1{k-1}-\\frac1k\\right)=\\frac1p-\\frac1q<\\frac1p.$$\nSoit $\\varepsilon>0$ et $N\\in\\mathbb{N}^*$ tel que $N>\\frac1\\varepsilon$. Pour $q>p\\ge N$ : $|w_q-w_p|<\\frac1p\\le\\frac1N<\\varepsilon$. Donc $(w_n)$ est de Cauchy.\n\nConclusion : $\\mathbb{R}$ étant complet, la suite $(w_n)$ converge.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.1"
+    },
+    {
+      "number": "6",
+      "title": "Suites extraites",
+      "statement_md": "1) Soit $(u_n)$ une suite telle que $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite $\\ell$. Montrer que $u_n\\to\\ell$.\n\n2) Application : soit $S_n=\\displaystyle\\sum_{k=1}^{n}\\frac{(-1)^{k+1}}{k}$. Montrer que $(S_{2n})$ et $(S_{2n+1})$ sont adjacentes et en déduire que $(S_n)$ converge.",
+      "solution_md": "**1)** Soit $\\varepsilon>0$. Il existe $N_1$ tel que $|u_{2n}-\\ell|<\\varepsilon$ pour $n\\ge N_1$, et $N_2$ tel que $|u_{2n+1}-\\ell|<\\varepsilon$ pour $n\\ge N_2$. Posons $N=\\max(2N_1,2N_2+1)$ et soit $m\\ge N$. Si $m=2n$ est pair, alors $n\\ge N_1$ ; si $m=2n+1$ est impair, alors $n\\ge N_2$. Dans les deux cas $|u_m-\\ell|<\\varepsilon$. Donc $u_n\\to\\ell$.\n\n**2)** Pour tout $n$ :\n$$S_{2n+2}-S_{2n}=\\frac{1}{2n+1}-\\frac{1}{2n+2}>0,\\qquad S_{2n+3}-S_{2n+1}=-\\frac{1}{2n+2}+\\frac{1}{2n+3}<0,$$\ndonc $(S_{2n})$ est croissante et $(S_{2n+1})$ décroissante. De plus $S_{2n+1}-S_{2n}=\\frac{1}{2n+1}\\to0$. Les deux suites sont adjacentes, donc convergent vers une même limite $\\ell$. D'après 1), $(S_n)$ converge vers $\\ell$.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    },
+    {
+      "number": "7",
+      "title": "Suite récurrente linéaire d'ordre 2",
+      "statement_md": "Soit $(u_n)$ définie par $u_0=0$, $u_1=1$ et, pour tout $n\\in\\mathbb{N}$, $u_{n+2}=u_{n+1}+2u_n$.\n\n1) Écrire l'équation caractéristique associée et la résoudre.\n\n2) En déduire l'expression de $u_n$ en fonction de $n$.\n\n3) Déterminer $\\displaystyle\\lim_{n\\to+\\infty}\\frac{u_{n+1}}{u_n}$.",
+      "solution_md": "**1)** L'équation caractéristique est $r^2=r+2$, soit $r^2-r-2=0$, c'est-à-dire $(r-2)(r+1)=0$. Ses racines sont $r_1=2$ et $r_2=-1$.\n\n**2)** Les racines étant réelles et distinctes, il existe $\\alpha,\\beta\\in\\mathbb{R}$ tels que $u_n=\\alpha\\,2^n+\\beta(-1)^n$ pour tout $n$. Les conditions initiales donnent $\\alpha+\\beta=0$ et $2\\alpha-\\beta=1$, d'où $\\alpha=\\frac13$ et $\\beta=-\\frac13$ :\n$$u_n=\\frac{2^n-(-1)^n}{3}.$$\n(Vérification : $u_2=1=u_1+2u_0$ et $u_3=3=u_2+2u_1$.)\n\n**3)** Pour $n\\ge1$, $u_n\\ne0$ et\n$$\\frac{u_{n+1}}{u_n}=\\frac{2^{n+1}-(-1)^{n+1}}{2^n-(-1)^n}=\\frac{2+\\left(-\\frac12\\right)^n}{1-\\left(-\\frac12\\right)^n}\\xrightarrow[n\\to+\\infty]{}2,$$\ncar $\\left(-\\frac12\\right)^n\\to0$.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    },
+    {
+      "number": "8",
+      "title": "Moyenne arithmético-géométrique",
+      "statement_md": "Soient $0<a<b$. On pose $a_0=a$, $b_0=b$ et, pour tout $n\\in\\mathbb{N}$ :\n$$a_{n+1}=\\sqrt{a_nb_n},\\qquad b_{n+1}=\\frac{a_n+b_n}{2}.$$\n\n1) Montrer que, pour tout $n$, $0<a_n\\le b_n$.\n\n2) Montrer que $(a_n)$ est croissante et $(b_n)$ décroissante.\n\n3) Montrer que $b_{n+1}-a_{n+1}\\le\\dfrac12(b_n-a_n)$, puis que $0\\le b_n-a_n\\le\\dfrac{b-a}{2^n}$.\n\n4) En déduire que $(a_n)$ et $(b_n)$ convergent vers une même limite.",
+      "solution_md": "**1)** Par récurrence. $0<a_0=a<b=b_0$. Si $0<a_n\\le b_n$, alors $a_{n+1}=\\sqrt{a_nb_n}>0$, et\n$$b_{n+1}-a_{n+1}=\\frac{a_n+b_n}{2}-\\sqrt{a_nb_n}=\\frac{\\left(\\sqrt{b_n}-\\sqrt{a_n}\\right)^2}{2}\\ge0.$$\nDonc $0<a_{n+1}\\le b_{n+1}$.\n\n**2)** Comme $0<a_n\\le b_n$ : $a_{n+1}=\\sqrt{a_nb_n}\\ge\\sqrt{a_na_n}=a_n$ et $b_{n+1}=\\frac{a_n+b_n}{2}\\le\\frac{b_n+b_n}{2}=b_n$.\n\n**3)** Comme $a_{n+1}\\ge a_n$ :\n$$b_{n+1}-a_{n+1}\\le b_{n+1}-a_n=\\frac{a_n+b_n}{2}-a_n=\\frac12(b_n-a_n).$$\nPar récurrence, $b_n-a_n\\le\\frac{b-a}{2^n}$ : c'est vrai pour $n=0$, et si c'est vrai au rang $n$, alors $b_{n+1}-a_{n+1}\\le\\frac12\\cdot\\frac{b-a}{2^n}=\\frac{b-a}{2^{n+1}}$. La minoration $b_n-a_n\\ge0$ vient de 1).\n\n**4)** $(a_n)$ est croissante, $(b_n)$ décroissante, et $b_n-a_n\\to0$ par encadrement (car $\\frac{b-a}{2^n}\\to0$). Les suites sont adjacentes, donc convergent vers une même limite.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    },
+    {
+      "number": "9",
+      "title": "Suites extraites et valeurs d'adhérence",
+      "statement_md": "1) Soit $(u_n)$ une suite croissante admettant une suite extraite $(u_{\\varphi(n)})$ convergente vers $\\ell$. Montrer que $(u_n)$ converge vers $\\ell$.\n\n2) Soit $u_n=\\cos\\left(\\dfrac{n\\pi}{3}\\right)$. Déterminer les valeurs d'adhérence de $(u_n)$. La suite est-elle convergente ?",
+      "solution_md": "**1)** $\\varphi:\\mathbb{N}\\to\\mathbb{N}$ est strictement croissante, donc $\\varphi(m)\\ge m$ pour tout $m$ (récurrence immédiate). Soit $n\\in\\mathbb{N}$ : pour tout $m\\ge n$, $\\varphi(m)\\ge n$ donc $u_n\\le u_{\\varphi(m)}$ (croissance de $(u_n)$). En faisant tendre $m\\to+\\infty$ : $u_n\\le\\ell$. Ainsi $(u_n)$ est croissante et majorée par $\\ell$, donc converge vers une limite $L$. Toute suite extraite d'une suite convergente a la même limite, donc $\\ell=L$ : $u_n\\to\\ell$.\n\n**2)** La suite est $6$-périodique : $u_{n+6}=\\cos\\left(\\frac{n\\pi}{3}+2\\pi\\right)=u_n$, avec\n$$u_0=1,\\quad u_1=\\tfrac12,\\quad u_2=-\\tfrac12,\\quad u_3=-1,\\quad u_4=-\\tfrac12,\\quad u_5=\\tfrac12.$$\nPour $r\\in\\{0,\\dots,5\\}$, la suite extraite $(u_{6n+r})$ est constante égale à $\\cos\\frac{r\\pi}{3}$ : les réels $1,\\frac12,-\\frac12,-1$ sont des valeurs d'adhérence. Réciproquement, une suite extraite convergente prend ses valeurs dans l'ensemble fini $\\left\\{1,\\frac12,-\\frac12,-1\\right\\}$, et sa limite appartient nécessairement à cet ensemble (si $\\ell$ n'y était pas, sa distance $\\delta>0$ à cet ensemble empêcherait $|u_{\\varphi(n)}-\\ell|<\\delta$). Les valeurs d'adhérence sont donc exactement $-1,-\\frac12,\\frac12,1$.\n\nLa suite ne converge pas : $(u_{6n})$ tend vers $1$ et $(u_{6n+3})$ vers $-1$.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    },
+    {
+      "number": "10",
+      "title": "Suite définie implicitement",
+      "statement_md": "Pour $n\\ge1$, on considère $f_n(x)=x^n+x-1$ sur $[0,1]$.\n\n1) Montrer que l'équation $f_n(x)=0$ admet une unique solution $x_n\\in\\left]0,1\\right[$.\n\n2) Calculer $f_{n+1}(x_n)$ et en déduire que $(x_n)$ est croissante.\n\n3) Montrer que $(x_n)$ converge, puis que $\\displaystyle\\lim_{n\\to+\\infty}x_n=1$.",
+      "solution_md": "**1)** $f_n$ est continue et strictement croissante sur $[0,1]$ (somme de $x\\mapsto x^n$, croissante sur $[0,1]$, et de $x\\mapsto x-1$, strictement croissante). De plus $f_n(0)=-1<0$ et $f_n(1)=1>0$. D'après le théorème des valeurs intermédiaires et la stricte monotonie, l'équation $f_n(x)=0$ a une unique solution $x_n\\in[0,1]$, et $x_n\\ne0$, $x_n\\ne1$ : $x_n\\in\\,]0,1[$.\n\n**2)** Comme $f_n(x_n)=0$, on a $x_n-1=-x_n^n$, donc\n$$f_{n+1}(x_n)=x_n^{n+1}+x_n-1=x_n^{n+1}-x_n^n=x_n^n(x_n-1)<0.$$\nAinsi $f_{n+1}(x_n)<0=f_{n+1}(x_{n+1})$, et $f_{n+1}$ étant strictement croissante, $x_n<x_{n+1}$ : $(x_n)$ est croissante.\n\n**3)** $(x_n)$ est croissante et majorée par $1$, donc converge vers $\\ell\\in\\,]0,1]$. Supposons $\\ell<1$. Pour tout $n$, $0<x_n\\le\\ell$, donc $0<x_n^n\\le\\ell^n\\to0$, d'où $x_n^n\\to0$. Mais $x_n^n=1-x_n\\to1-\\ell>0$ : contradiction. Donc $\\lim x_n=1$.\n\n![Figure — les fonctions fₙ(x) = xⁿ + x − 1 sur [0, 1] : leur zéro xₙ se déplace vers 1 quand n augmente.](/figures/analyse-1/td-ch02-ex10-xn.svg)",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    },
+    {
+      "number": "11",
+      "title": "Limites classiques",
+      "statement_md": "Soient $a\\in\\mathbb{R}$ et $\\lambda>0$. Calculer les limites suivantes :\n\n1) $\\displaystyle\\lim_{n\\to+\\infty}\\left(1+\\frac an\\right)^n$\n\n2) $\\displaystyle\\lim_{n\\to+\\infty}n\\left(\\lambda^{\\frac1n}-1\\right)$\n\n3) $\\displaystyle\\lim_{n\\to+\\infty}\\left(\\sqrt{n^2+n}-n\\right)$\n\n4) $\\displaystyle\\lim_{n\\to+\\infty}\\frac{n!}{n^n}$",
+      "solution_md": "**1)** Si $a=0$, la suite est constante égale à $1=e^0$. Si $a\\ne0$ : pour $n>|a|$, $1+\\frac an>0$ et\n$$\\left(1+\\frac an\\right)^n=\\exp\\left(n\\ln\\left(1+\\frac an\\right)\\right),\\qquad n\\ln\\left(1+\\frac an\\right)=a\\cdot\\frac{\\ln\\left(1+\\frac an\\right)}{\\frac an}\\to a,$$\ncar $\\frac{\\ln(1+t)}{t}\\to1$ quand $t\\to0$. Par continuité de $\\exp$, la limite est $e^a$.\n\n**2)** $\\lambda^{1/n}=e^{\\frac{\\ln\\lambda}{n}}$. Si $\\lambda=1$, la suite est nulle et la limite vaut $0=\\ln1$. Sinon, avec $t_n=\\frac{\\ln\\lambda}{n}\\to0$ :\n$$n\\left(\\lambda^{\\frac1n}-1\\right)=\\ln\\lambda\\cdot\\frac{e^{t_n}-1}{t_n}\\to\\ln\\lambda,$$\ncar $\\frac{e^t-1}{t}\\to1$ quand $t\\to0$. La limite est $\\ln\\lambda$.\n\n**3)** En multipliant par la quantité conjuguée :\n$$\\sqrt{n^2+n}-n=\\frac{n}{\\sqrt{n^2+n}+n}=\\frac{1}{\\sqrt{1+\\frac1n}+1}\\to\\frac12.$$\n\n**4)** $\\frac{n!}{n^n}=\\frac1n\\cdot\\frac2n\\cdots\\frac nn$, et chaque facteur $\\frac kn$ ($2\\le k\\le n$) est $\\le1$, donc $0<\\frac{n!}{n^n}\\le\\frac1n$. Par encadrement, la limite est $0$.",
+      "solution_source": "ia",
+      "source": "Bibliotheque_sources/Analyse/TD/TD2.pdf p.2"
+    }
+  ]
+}
