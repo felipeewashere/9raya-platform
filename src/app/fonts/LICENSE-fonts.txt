@@ -1,0 +1,2 @@
+Computer Modern Unicode (CMU) fonts, SIL Open Font License 1.1.
+Source: npm package "computer-modern" 0.1.3 (github.com/stevenpetryk/computer-modern).

@@ -1,0 +1,3610 @@
+{
+  "slug": "fonctions-limites-continuite",
+  "number": 3,
+  "title": "Fonctions réelles, limites et continuité",
+  "description": "Généralités sur les fonctions (opérations, bornes, extremums, monotonie, parité, périodicité), limites en un point et à l'infini, continuité, théorème des valeurs intermédiaires, continuité uniforme et fonctions lipschitziennes, bijections réciproques, comparaison de fonctions (o, équivalents, croissances comparées), fonctions circulaires et hyperboliques réciproques.",
+  "sourcePdf": "Modules/Analyse/Cours/Chapitre 03 - Fonctions, limites et continuité.pdf",
+  "sections": [
+    {
+      "slug": "generalites-fonctions",
+      "title": "Généralités sur les fonctions",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "fonctions-reelles-operations",
+          "title": "Fonctions réelles et opérations",
+          "number": "1.1",
+          "estimatedMinutes": 7,
+          "summary": "Fonction réelle d'une variable réelle, domaine de définition, et les cinq opérations usuelles sur les fonctions.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "On appelle **fonction réelle d'une variable réelle** toute application $f$ définie sur une partie $D$ de $\\mathbb{R}$ à valeurs dans $\\mathbb{R}$.\nL'ensemble $D$ est appelé **domaine de définition** de $f$ et est noté $D_f$. On a alors\n\n$$D_f=\\{x\\in\\mathbb{R} \\mid f(x)\\text{ existe}\\}.$$",
+              "title": "Fonction réelle d'une variable réelle",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Chercher $D_f$, c'est repérer les « interdits » de la formule : division par $0$, racine carrée d'un nombre négatif, logarithme d'un nombre $\\le 0$… Par exemple, pour $f(x)=\\sqrt{x-1}$, il faut $x-1\\ge0$, donc $D_f=[1,+\\infty[$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel est le domaine de définition de $f(x)=\\dfrac{\\ln x}{x-2}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$]0,2[\\,\\cup\\,]2,+\\infty[$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$]0,+\\infty[$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\mathbb{R}\\setminus\\{2\\}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$[0,2[\\,\\cup\\,]2,+\\infty[$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Il faut $x>0$ (pour $\\ln x$) et $x\\ne2$ (pour le dénominateur) : $D_f=]0,2[\\,\\cup\\,]2,+\\infty[$. Le point $0$ est exclu car $\\ln 0$ n'existe pas."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Opérations sur les fonctions",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On suppose que les fonctions qui interviennent ici sont définies sur un intervalle $I$ de $\\mathbb{R}$. L'ensemble des fonctions de $I$ dans $\\mathbb{R}$ se note $\\mathcal F(I,\\mathbb{R})$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Dans $\\mathcal F(I,\\mathbb{R})$ on définit les lois suivantes.\n1. **Addition :** si $(f,g)\\in\\mathcal F(I,\\mathbb{R})^2$, on définit $f+g\\in\\mathcal F(I,\\mathbb{R})$ par $\\forall x\\in I,\\ (f+g)(x)=f(x)+g(x)$.\n2. **Multiplication par un réel :** si $f\\in\\mathcal F(I,\\mathbb{R})$ et $\\lambda\\in\\mathbb{R}$, on définit $\\lambda f$ par $\\forall x\\in I,\\ (\\lambda f)(x)=\\lambda\\times f(x)$.\n3. **Multiplication de deux fonctions :** si $(f,g)\\in\\mathcal F(I,\\mathbb{R})^2$, on définit $fg\\in\\mathcal F(I,\\mathbb{R})$ par $\\forall x\\in I,\\ (fg)(x)=f(x)\\times g(x)$.\n4. **Valeur absolue d'une fonction :** si $f\\in\\mathcal F(I,\\mathbb{R})$, on définit $|f|\\in\\mathcal F(I,\\mathbb{R})$ par $\\forall x\\in I,\\ |f|(x)=|f(x)|$.\n5. **Maximum, minimum de deux fonctions :** si $(f,g)\\in\\mathcal F(I,\\mathbb{R})^2$, on définit $\\sup(f,g)$ et $\\inf(f,g)$ par\n\n$$\\forall x\\in I,\\quad \\sup(f,g)(x)=\\max\\{f(x),g(x)\\},\\qquad \\inf(f,g)(x)=\\min\\{f(x),g(x)\\}.$$",
+              "title": "Lois sur $\\mathcal F(I,\\mathbb{R})$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Pour tout $(f,g)\\in\\mathcal F(I,\\mathbb{R})^2$ et tout $x\\in I$ :\n\n$$\\sup(f,g)(x)=\\max\\{f(x),g(x)\\}=\\frac{f(x)+g(x)+|f(x)-g(x)|}{2},$$\n\n$$\\inf(f,g)(x)=\\min\\{f(x),g(x)\\}=\\frac{f(x)+g(x)-|f(x)-g(x)|}{2}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Pourquoi ces formules marchent : $\\frac{f(x)+g(x)}2$ est le milieu des deux valeurs et $\\frac{|f(x)-g(x)|}2$ la demi-distance entre elles. En ajoutant la demi-distance au milieu on tombe sur la plus grande valeur ; en la retranchant, sur la plus petite.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Soient $f(x)=x^2$ et $g(x)=2$ sur $\\mathbb{R}$. Alors $\\inf(f,g)(-3)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$f(-3)=9$ et $g(-3)=2$, donc $\\inf(f,g)(-3)=\\min\\{9,2\\}=2$. Avec la formule : $\\frac{9+2-|9-2|}{2}=\\frac{4}{2}=2$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Le domaine de définition de $x\\mapsto\\dfrac1x$ est $\\mathbb{R}$.",
+              "answer": false,
+              "explanation": "Faux : $\\frac1x$ n'existe pas pour $x=0$, donc $D_f=\\mathbb{R}^*$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque fonction construite à partir de $f$ et $g$ à sa valeur en $x$.",
+              "pairs": [
+                {
+                  "left": "$f+g$",
+                  "right": "$f(x)+g(x)$"
+                },
+                {
+                  "left": "$fg$",
+                  "right": "$f(x)\\times g(x)$"
+                },
+                {
+                  "left": "$|f|$",
+                  "right": "$|f(x)|$"
+                },
+                {
+                  "left": "$\\sup(f,g)$",
+                  "right": "$\\max\\{f(x),g(x)\\}$"
+                }
+              ],
+              "explanation": "Toutes les opérations sur $\\mathcal F(I,\\mathbb{R})$ se définissent **point par point** : on effectue l'opération sur les valeurs $f(x)$ et $g(x)$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Soient $f(x)=x$ et $g(x)=-x$ sur $\\mathbb{R}$. La fonction $\\sup(f,g)$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$x\\mapsto|x|$"
+                },
+                {
+                  "id": "b",
+                  "md": "$x\\mapsto x$"
+                },
+                {
+                  "id": "c",
+                  "md": "$x\\mapsto -|x|$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x\\mapsto0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\sup(f,g)(x)=\\max\\{x,-x\\}=|x|$. Avec la formule : $\\frac{x+(-x)+|x-(-x)|}{2}=\\frac{|2x|}{2}=|x|$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $f(x_0)=5$ et $g(x_0)=-1$, alors $\\dfrac{f(x_0)+g(x_0)-|f(x_0)-g(x_0)|}{2}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "-1"
+              ],
+              "explanation": "$\\frac{5+(-1)-|6|}{2}=\\frac{4-6}{2}=-1$ : c'est bien $\\min\\{5,-1\\}=\\inf(f,g)(x_0)$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $f\\in\\mathcal F(I,\\mathbb{R})$ et $\\lambda\\in\\mathbb{R}$, la fonction $\\lambda f$ est définie par :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$(\\lambda f)(x)=\\lambda\\times f(x)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$(\\lambda f)(x)=f(\\lambda x)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$(\\lambda f)(x)=f(x)+\\lambda$"
+                },
+                {
+                  "id": "d",
+                  "md": "$(\\lambda f)(x)=f(x)^\\lambda$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La multiplication par un réel agit sur la **valeur** $f(x)$ : $(\\lambda f)(x)=\\lambda\\times f(x)$. $f(\\lambda x)$ est une autre fonction (changement de variable)."
+            }
+          ]
+        },
+        {
+          "slug": "fonctions-bornees",
+          "title": "Fonctions majorées, minorées, bornées",
+          "number": "1.2",
+          "estimatedMinutes": 8,
+          "summary": "Comparer deux fonctions, fonctions majorées, minorées, bornées, et caractérisation des bornes supérieure et inférieure d'une fonction.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soient $f:U\\to\\mathbb{R}$ et $g:U\\to\\mathbb{R}$ deux fonctions. Alors :\n- $f\\ge g$ si $\\forall x\\in U,\\ f(x)\\ge g(x)$ ;\n- $f\\ge0$ si $\\forall x\\in U,\\ f(x)\\ge0$ ;\n- $f>0$ si $\\forall x\\in U,\\ f(x)>0$ ;\n- $f$ est dite **constante** sur $U$ si $\\exists a\\in\\mathbb{R},\\ \\forall x\\in U,\\ f(x)=a$ ;\n- $f$ est dite **nulle** sur $U$ si $\\forall x\\in U,\\ f(x)=0$.",
+              "title": "Comparaison de fonctions",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-fonctions-bornees.svg",
+              "alt": "Deux graphiques : à gauche la courbe de f au-dessus de celle de g ; à droite la courbe de f au-dessus de l'axe des abscisses.",
+              "caption": "Figure — à gauche f ≥ g ; à droite f > 0.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f\\ge 0$ sur $U$, alors $f>0$ sur $U$.",
+                "answer": false,
+                "explanation": "Faux : $f\\ge0$ autorise $f(x)=0$. Par exemple $x\\mapsto x^2$ vérifie $f\\ge0$ sur $\\mathbb{R}$, mais $f(0)=0$, donc on n'a pas $f>0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Soit $f:U\\to\\mathbb{R}$ une fonction. On dit que :\n- $f$ est **majorée** sur $U$ si $\\exists M\\in\\mathbb{R},\\ \\forall x\\in U,\\ f(x)\\le M$ ;\n- $f$ est **minorée** sur $U$ si $\\exists m\\in\\mathbb{R},\\ \\forall x\\in U,\\ f(x)\\ge m$ ;\n- $f$ est **bornée** sur $U$ si $f$ est à la fois majorée et minorée sur $U$, c'est-à-dire si $\\exists M\\in\\mathbb{R}^+,\\ \\forall x\\in U,\\ |f(x)|\\le M$.",
+              "title": "Fonction majorée, minorée, bornée",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "La fonction $\\cos$ est bornée car $\\forall x\\in\\mathbb{R},\\ -1\\le\\cos(x)\\le1$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces fonctions est bornée sur $\\mathbb{R}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$x\\mapsto\\dfrac{1}{1+x^2}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$x\\mapsto x^2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$x\\mapsto e^x$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$x\\mapsto x^3$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Pour tout $x$, $0<\\frac1{1+x^2}\\le1$ : la fonction est bornée. $x^2$ et $e^x$ sont minorées (par $0$) mais pas majorées ; $x^3$ n'est ni majorée ni minorée."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Caractérisations des bornes supérieure et inférieure d'une fonction",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soit $f$ une fonction définie sur une partie $A$ de $\\mathbb{R}$.\n1. Si $f$ est majorée sur $A$, alors\n\n$$M=\\sup_{x\\in A}f(x)=\\sup\\bigl(f(A)\\bigr)\\iff\\begin{cases}\\forall x\\in A,\\ f(x)\\le M,\\\\ \\forall\\varepsilon>0,\\ \\exists a_\\varepsilon\\in A,\\ M-\\varepsilon<f(a_\\varepsilon)\\le M.\\end{cases}$$\n\n2. Si $f$ est minorée sur $A$, alors\n\n$$m=\\inf_{x\\in A}f(x)=\\inf\\bigl(f(A)\\bigr)\\iff\\begin{cases}\\forall x\\in A,\\ f(x)\\ge m,\\\\ \\forall\\varepsilon>0,\\ \\exists b_\\varepsilon\\in A,\\ m\\le f(b_\\varepsilon)<m+\\varepsilon.\\end{cases}$$",
+              "title": "Caractérisation de sup et inf",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "La première ligne dit que $M$ est un majorant ; la seconde, qu'on ne peut pas le baisser : aussi petit que soit $\\varepsilon$, la fonction dépasse $M-\\varepsilon$ quelque part. C'est exactement la caractérisation de la borne supérieure d'une partie de $\\mathbb{R}$, appliquée à l'ensemble des valeurs $f(A)$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Soit $f(x)=1-\\frac1x$ sur $A=[1,+\\infty[$. Montrons que $\\sup_{x\\in A}f(x)=1$.",
+              "title": "Une borne supérieure non atteinte",
+              "steps": [
+                {
+                  "md": "Pour tout $x\\ge1$, $\\frac1x>0$, donc $f(x)<1$ : $1$ est un majorant."
+                },
+                {
+                  "md": "Soit $\\varepsilon>0$. Choisissons $a_\\varepsilon\\in A$ avec $a_\\varepsilon>\\frac1\\varepsilon$ (par exemple $a_\\varepsilon=1+\\frac1\\varepsilon$). Alors $\\frac1{a_\\varepsilon}<\\varepsilon$, donc $1-\\varepsilon<f(a_\\varepsilon)\\le1$.",
+                  "why": "C'est la seconde condition de la caractérisation."
+                },
+                {
+                  "md": "Donc $\\sup_A f=1$. Cette borne n'est pas atteinte : $f(x)=1$ n'a pas de solution."
+                }
+              ],
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque fonction (définie sur $\\mathbb{R}$) à sa propriété.",
+              "pairs": [
+                {
+                  "left": "$x\\mapsto x^2$",
+                  "right": "minorée, non majorée"
+                },
+                {
+                  "left": "$x\\mapsto -x^2$",
+                  "right": "majorée, non minorée"
+                },
+                {
+                  "left": "$x\\mapsto\\cos x$",
+                  "right": "bornée"
+                },
+                {
+                  "left": "$x\\mapsto x^3$",
+                  "right": "ni majorée ni minorée"
+                }
+              ],
+              "explanation": "$x^2\\ge0$ mais prend des valeurs arbitrairement grandes ; $-x^2\\le0$ ; $|\\cos x|\\le1$ ; $x^3$ tend vers $+\\infty$ en $+\\infty$ et vers $-\\infty$ en $-\\infty$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$f$ est bornée sur $U$ si et seulement s'il existe $M\\ge0$ tel que $|f(x)|\\le M$ pour tout $x\\in U$.",
+              "answer": true,
+              "explanation": "Vrai : si $m\\le f\\le M'$, on prend $M=\\max(|m|,|M'|)$ ; réciproquement $|f|\\le M$ donne $-M\\le f\\le M$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $M=\\sup_{x\\in A}f(x)$, alors il existe forcément $a\\in A$ tel que $f(a)=M$.",
+              "answer": false,
+              "explanation": "Faux : la borne supérieure n'est pas forcément atteinte. Exemple : $f(x)=1-\\frac1x$ sur $[1,+\\infty[$ a pour borne supérieure $1$, jamais atteinte."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La borne inférieure de $x\\mapsto e^{-x}$ sur $[0,+\\infty[$ vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$e^{-x}>0$ pour tout $x$, donc $0$ est un minorant ; et $e^{-x}$ devient plus petit que tout $\\varepsilon>0$ pour $x$ assez grand. Donc $\\inf=0$ (non atteint)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "La seconde condition de la caractérisation de $M=\\sup_A f$ s'écrit :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists a_\\varepsilon\\in A,\\ M-\\varepsilon<f(a_\\varepsilon)\\le M$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists\\varepsilon>0,\\ \\forall a\\in A,\\ M-\\varepsilon<f(a)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\forall\\varepsilon>0,\\ \\forall a\\in A,\\ f(a)<M-\\varepsilon$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\exists a\\in A,\\ f(a)=M$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Pour **tout** $\\varepsilon>0$, on trouve **un** point où $f$ dépasse $M-\\varepsilon$ : aucun nombre plus petit que $M$ n'est un majorant. La dernière proposition dirait que le sup est atteint (c'est un maximum), ce qui n'est pas exigé."
+            }
+          ]
+        },
+        {
+          "slug": "maximum-minimum-extremum",
+          "title": "Maximum, minimum et extremum local",
+          "number": "1.3",
+          "estimatedMinutes": 6,
+          "summary": "Maximum et minimum d'une fonction sur un intervalle, extremum, et extremum local.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Dans cette leçon, $f$ est une fonction définie sur un intervalle $I$ de $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "On dit que $M\\in\\mathbb{R}$ est un **maximum** de $f$ si et seulement s'il existe $a\\in I$ tel que $f(a)=M$ et si pour tout $x$ de $I$, $f(x)\\le f(a)$ (on dit aussi que $f$ présente en $a$ un maximum).\nOn définit de même un **minimum**, et on parlera d'**extremum** lorsqu'on aura un maximum ou un minimum. On notera\n\n$$M=\\max_{x\\in I}f(x),\\qquad m=\\min_{x\\in I}f(x).$$",
+              "title": "Maximum, minimum, extremum",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-maximum.svg",
+              "alt": "Courbe en cloche atteignant sa plus grande valeur M en a.",
+              "caption": "Figure — M = f(a) est le maximum de f : la courbe reste sous la droite y = M.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "On prend la fonction $\\cos$ sur $I=\\mathbb{R}$. On a $\\cos(x)\\le1$ pour tout $x\\in\\mathbb{R}$ et $\\cos(0)=1$, donc $1$ est un maximum de $\\cos$ (atteint en $0$, et aussi en tout $2k\\pi$).",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-cos-maximum.svg",
+              "alt": "Courbe de cos ; le maximum 1 est atteint en 0.",
+              "caption": "Figure — cos atteint son maximum 1 en 0.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel est le maximum de $f(x)=1-x^2$ sur $\\mathbb{R}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$1$, atteint en $x=0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$0$, atteint en $x=1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$f$ n'a pas de maximum"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$+\\infty$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Pour tout $x$, $f(x)=1-x^2\\le1=f(0)$. Le maximum est donc $1$, atteint en $0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "On dit que $M=f(a)$ est un **extremum local** de $f$ si et seulement s'il existe un voisinage $V$ de $a$ tel que la restriction de $f$ à ce voisinage présente en $a$ un extremum.",
+              "title": "Extremum local",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Soit $f(x)=x^3-3x$ sur $\\mathbb{R}$. Pour $x$ proche de $-1$, on a $f(x)\\le f(-1)=2$ : en effet $2-f(x)=-(x^3-3x-2)=-(x+1)^2(x-2)\\ge0$ dès que $x\\le2$. Donc $f(-1)=2$ est un **maximum local** (prendre $V=]-2,2[$).\nMais ce n'est pas un maximum sur $\\mathbb{R}$ : $f(3)=18>2$.",
+              "title": "Extremum local qui n'est pas global",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un extremum local de $f$ est toujours un extremum de $f$ sur tout l'intervalle $I$.",
+                "answer": false,
+                "explanation": "Faux : « local » signifie seulement « sur un voisinage de $a$ ». Exemple : $x^3-3x$ a un maximum local $2$ en $-1$, mais prend la valeur $18$ en $3$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Le minimum de $f(x)=x^2+2x$ sur $\\mathbb{R}$ vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "-1"
+              ],
+              "explanation": "$x^2+2x=(x+1)^2-1\\ge-1$, avec égalité en $x=-1$. Le minimum est donc $-1$, atteint en $-1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La fonction $x\\mapsto x$ admet un maximum sur $]0,1[$.",
+              "answer": false,
+              "explanation": "Faux : sa borne supérieure sur $]0,1[$ est $1$, mais il n'existe aucun $a\\in]0,1[$ avec $a=1$. La borne n'est pas atteinte : pas de maximum."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Sur $I=[0,1]$, la fonction $x\\mapsto x$ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "a pour maximum $1$ (atteint en $1$) et pour minimum $0$ (atteint en $0$)"
+                },
+                {
+                  "id": "b",
+                  "md": "a un maximum mais pas de minimum"
+                },
+                {
+                  "id": "c",
+                  "md": "n'a ni maximum ni minimum"
+                },
+                {
+                  "id": "d",
+                  "md": "a pour maximum $0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Pour tout $x\\in[0,1]$, $f(0)=0\\le f(x)\\le1=f(1)$ : les deux bornes sont atteintes, ce sont un minimum et un maximum."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un maximum de $f$ sur $I$ est aussi un extremum local de $f$.",
+              "answer": true,
+              "explanation": "Vrai : si $f(x)\\le f(a)$ pour tout $x\\in I$, c'est vrai en particulier sur n'importe quel voisinage de $a$ (intersecté avec $I$)."
+            }
+          ]
+        },
+        {
+          "slug": "fonctions-monotones",
+          "title": "Fonctions monotones",
+          "number": "1.4",
+          "estimatedMinutes": 7,
+          "summary": "Fonctions croissantes, décroissantes, strictement monotones ; exemples des fonctions racine, exponentielle, logarithme et valeur absolue.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Dans cette leçon, $f$ est une fonction définie sur un intervalle $I$ de $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- On dit que $f$ est **croissante** sur $I$ si et seulement si $\\forall(x,y)\\in I^2,\\ x\\le y\\implies f(x)\\le f(y)$.\n- On dit que $f$ est **décroissante** sur $I$ si et seulement si $\\forall(x,y)\\in I^2,\\ x\\le y\\implies f(x)\\ge f(y)$.\n- On dit que $f$ est **monotone** si et seulement si elle est croissante ou décroissante.\n- On dit que $f$ est **strictement croissante** sur $I$ si et seulement si $\\forall(x,y)\\in I^2,\\ x<y\\implies f(x)<f(y)$.\n- On dit que $f$ est **strictement décroissante** sur $I$ si et seulement si $\\forall(x,y)\\in I^2,\\ x<y\\implies f(x)>f(y)$.",
+              "title": "Fonctions monotones",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-monotonie.svg",
+              "alt": "Deux graphiques : une fonction croissante (f(x) ≤ f(y)) et une fonction décroissante (f(x) ≥ f(y)) pour x ≤ y.",
+              "caption": "Figure — fonction croissante (à gauche) et décroissante (à droite).",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Une fonction croissante « conserve l'ordre », une fonction décroissante « le renverse ». Une fonction constante est à la fois croissante et décroissante ; elle n'est pas strictement monotone.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une fonction constante sur $I$ est à la fois croissante et décroissante sur $I$.",
+                "answer": true,
+                "explanation": "Vrai : si $f(x)=a$ pour tout $x$, alors $f(x)\\le f(y)$ et $f(x)\\ge f(y)$ sont toutes deux vraies (égalité)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "- La fonction racine carrée $[0,+\\infty[\\to\\mathbb{R}$, $x\\mapsto\\sqrt x$, est strictement croissante.\n- Les fonctions exponentielle $\\exp:\\mathbb{R}\\to\\mathbb{R}$ et logarithme $\\ln:\\,]0,+\\infty[\\to\\mathbb{R}$ sont strictement croissantes.\n- La fonction valeur absolue $\\mathbb{R}\\to\\mathbb{R}$, $x\\mapsto|x|$, n'est ni croissante ni décroissante. Par contre, la fonction $[0,+\\infty[\\to\\mathbb{R}$, $x\\mapsto|x|$, est strictement croissante.",
+              "title": "Exemples",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-racine-valeur-absolue.svg",
+              "alt": "Courbes de la racine carrée et de la valeur absolue.",
+              "caption": "Figure — y = √x et y = |x|.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi $x\\mapsto|x|$ n'est-elle pas croissante sur $\\mathbb{R}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Car $-1\\le0$ mais $|-1|=1>0=|0|$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Car elle n'est pas continue"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Car $|x|\\ge0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Car elle est paire et toute fonction paire est décroissante"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Un seul contre-exemple suffit : $-1\\le0$ et pourtant $f(-1)>f(0)$. De même $0\\le1$ avec $f(0)<f(1)$ empêche la décroissance."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "La fonction $x\\mapsto x^2$ est croissante sur $\\mathbb{R}$.",
+              "answer": false,
+              "explanation": "Faux : $-2\\le-1$ mais $(-2)^2=4>1=(-1)^2$. Elle est décroissante sur $]-\\infty,0]$ et croissante sur $[0,+\\infty[$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces fonctions est strictement décroissante sur $]0,+\\infty[$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$x\\mapsto\\dfrac1x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$x\\mapsto\\ln x$"
+                },
+                {
+                  "id": "c",
+                  "md": "$x\\mapsto\\sqrt x$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x\\mapsto|x|$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Si $0<x<y$ alors $\\frac1x>\\frac1y$. Les trois autres sont strictement croissantes sur $]0,+\\infty[$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la négation de « $f$ est croissante sur $I$ » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\exists(x,y)\\in I^2,\\ x\\le y$ et $f(x)>f(y)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\forall(x,y)\\in I^2,\\ x\\le y\\implies f(x)>f(y)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$f$ est décroissante sur $I$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\exists(x,y)\\in I^2,\\ x\\le y$ et $f(x)\\le f(y)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La négation de $\\forall\\,(A\\Rightarrow B)$ est $\\exists\\,(A$ et non $B)$. Attention : « non croissante » ne veut pas dire « décroissante » (exemple : $|x|$ sur $\\mathbb{R}$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute fonction strictement croissante sur $I$ est croissante sur $I$.",
+              "answer": true,
+              "explanation": "Vrai : si $x<y$ on a $f(x)<f(y)$, donc $f(x)\\le f(y)$ ; et si $x=y$, $f(x)=f(y)$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque fonction (sur l'intervalle indiqué) à son sens de variation.",
+              "pairs": [
+                {
+                  "left": "$\\exp$ sur $\\mathbb{R}$",
+                  "right": "strictement croissante"
+                },
+                {
+                  "left": "$x\\mapsto -x$ sur $\\mathbb{R}$",
+                  "right": "strictement décroissante"
+                },
+                {
+                  "left": "$x\\mapsto|x|$ sur $\\mathbb{R}$",
+                  "right": "ni croissante ni décroissante"
+                },
+                {
+                  "left": "$x\\mapsto 3$ sur $\\mathbb{R}$",
+                  "right": "croissante et décroissante"
+                }
+              ],
+              "explanation": "$\\exp$ croît strictement ; $-x$ renverse l'ordre ; $|x|$ descend puis monte ; une constante est les deux à la fois (au sens large)."
+            }
+          ]
+        },
+        {
+          "slug": "parite-periodicite",
+          "title": "Parité et périodicité",
+          "number": "1.5",
+          "estimatedMinutes": 7,
+          "summary": "Fonctions paires et impaires (symétries du graphe), fonctions périodiques.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $I$ un intervalle symétrique par rapport à $0$ et $f:I\\to\\mathbb{R}$.\nOn dit que $f$ est **paire** si et seulement si $\\forall x\\in I,\\ f(-x)=f(x)$, et que $f$ est **impaire** si et seulement si $\\forall x\\in I,\\ f(-x)=-f(x)$.",
+              "title": "Fonction paire, fonction impaire",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "La fonction $f(x)=x^2$ est paire. Graphiquement :\n- $f$ est paire si et seulement si son graphe est symétrique par rapport à l'axe des ordonnées ;\n- $f$ est impaire si et seulement si son graphe est symétrique par rapport à l'origine.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-paire-impaire.svg",
+              "alt": "Parabole y=x² symétrique par rapport à l'axe des ordonnées, et courbe y=x³ symétrique par rapport à l'origine.",
+              "caption": "Figure — x² est paire (symétrie d'axe Oy), x³ est impaire (symétrie de centre O).",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "La fonction $f(x)=x^3$ sur $\\mathbb{R}$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "impaire"
+                  },
+                  {
+                    "id": "b",
+                    "md": "paire"
+                  },
+                  {
+                    "id": "c",
+                    "md": "ni paire ni impaire"
+                  },
+                  {
+                    "id": "d",
+                    "md": "paire et impaire"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f(-x)=(-x)^3=-x^3=-f(x)$ : $f$ est impaire."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Si $f$ est impaire et $0\\in I$, alors $f(0)=-f(0)$, donc $f(0)=0$. La seule fonction à la fois paire et impaire est la fonction nulle : $f(x)=f(-x)=-f(x)$ donne $f(x)=0$.",
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Une fonction $f$ définie sur $\\mathbb{R}$ est **périodique** si et seulement si $\\exists T>0,\\ \\forall x\\in\\mathbb{R},\\ f(x+T)=f(x)$.",
+              "title": "Fonction périodique",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Les fonctions $\\sin$ et $\\cos$ sont périodiques de période $2\\pi$ car, pour tout $x\\in\\mathbb{R}$, $\\sin(x+2\\pi)=\\sin(x)$ et $\\cos(x+2\\pi)=\\cos(x)$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-sin-cos-periodiques.svg",
+              "alt": "Courbes de sinus et cosinus sur [−2π, 2π].",
+              "caption": "Figure — sin et cos sont 2π-périodiques.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f$ est périodique de période $T$, alors $f(x+2T)=f(x)$ pour tout $x$.",
+                "answer": true,
+                "explanation": "Vrai : $f(x+2T)=f\\bigl((x+T)+T\\bigr)=f(x+T)=f(x)$. Donc $2T$ (et plus généralement $kT$, $k\\in\\mathbb{N}^*$) convient aussi."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "La fonction $f(x)=x|x|$ sur $\\mathbb{R}$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "impaire"
+                },
+                {
+                  "id": "b",
+                  "md": "paire"
+                },
+                {
+                  "id": "c",
+                  "md": "ni paire ni impaire"
+                },
+                {
+                  "id": "d",
+                  "md": "périodique"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$f(-x)=(-x)|-x|=-x|x|=-f(x)$ : $f$ est impaire."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La fonction $\\cos$ est impaire.",
+              "answer": false,
+              "explanation": "Faux : $\\cos(-x)=\\cos x$, donc $\\cos$ est **paire** (graphe symétrique par rapport à l'axe des ordonnées). C'est $\\sin$ qui est impaire."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque propriété à la symétrie du graphe correspondante.",
+              "pairs": [
+                {
+                  "left": "$f$ paire",
+                  "right": "symétrie par rapport à l'axe des ordonnées"
+                },
+                {
+                  "left": "$f$ impaire",
+                  "right": "symétrie par rapport à l'origine"
+                },
+                {
+                  "left": "$f$ périodique de période $T$",
+                  "right": "invariance par translation de $T$ le long de l'axe des abscisses"
+                }
+              ],
+              "explanation": "$f(-x)=f(x)$ : les points $(x,y)$ et $(-x,y)$ sont sur le graphe. $f(-x)=-f(x)$ : $(x,y)$ et $(-x,-y)$. $f(x+T)=f(x)$ : $(x,y)$ et $(x+T,y)$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La plus petite période strictement positive de $x\\mapsto\\sin(2x)$ est $T=$ ___ (en fraction de $\\pi$, par exemple « pi/3 »)",
+              "answerType": "text",
+              "accepted": [
+                "pi",
+                "π"
+              ],
+              "explanation": "$\\sin(2(x+T))=\\sin(2x+2T)$ ; il faut $2T$ multiple de $2\\pi$, la plus petite valeur est $2T=2\\pi$, donc $T=\\pi$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est impaire sur $\\mathbb{R}$, alors $f(0)=0$.",
+              "answer": true,
+              "explanation": "Vrai : en $x=0$, $f(-0)=-f(0)$ donne $f(0)=-f(0)$, donc $f(0)=0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "limites",
+      "title": "Limites d'une fonction",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "limite-en-un-point",
+          "title": "Limite d'une fonction en un point",
+          "number": "2.1",
+          "estimatedMinutes": 11,
+          "summary": "Définition de la limite par voisinages et par ε–η, ordre des quantificateurs, exemples de la racine carrée et de la partie entière.",
+          "blocks": [
+            {
+              "type": "remark",
+              "md": "**Rappels.** Les notions de *voisinage* d'un réel $a$ (ensemble $\\mathcal V_a$ des voisinages de $a$) et de *point adhérent* à une partie $A$ (adhérence $\\overline A$) ont été vues au chapitre 1. On les étend aux infinis : une partie $V\\subset\\mathbb{R}$ est un **voisinage de $+\\infty$** s'il existe $A>0$ tel que $]A,+\\infty[\\,\\subset V$, et un **voisinage de $-\\infty$** s'il existe $B<0$ tel que $]-\\infty,B[\\,\\subset V$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Soient une fonction $f\\in\\mathcal F(I,\\mathbb{R})$, un point $a\\in\\overline I$ (éventuellement infini) et $\\ell\\in\\mathbb{R}$. On dit que $f(x)\\xrightarrow[x\\to a]{}\\ell$ si et seulement si\n\n$$\\forall W\\in\\mathcal V_\\ell,\\ \\exists V\\in\\mathcal V_a\\ \\text{tel que}\\ f(I\\cap V)\\subset W.$$\n\nLorsque $a\\in\\mathbb{R}$ est fini et que la limite $\\ell\\in\\mathbb{R}$ est finie, cette définition se traduit par\n\n$$\\forall\\varepsilon>0,\\ \\exists\\eta_\\varepsilon>0\\ \\text{tel que}\\ \\forall x\\in I,\\quad |x-a|\\le\\eta_\\varepsilon\\implies|f(x)-\\ell|\\le\\varepsilon.$$\n\nLorsqu'un tel $\\ell$ existe, on dit que $\\ell$ est la **limite de $f$ en $a$** et l'on note alors $\\ell=\\lim_{x\\to a}f(x)$.",
+              "title": "Limite en un point",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-limite-epsilon-eta.svg",
+              "alt": "Courbe de f, bande horizontale de demi-largeur ε autour de ℓ et intervalle de demi-largeur η_ε autour de a sur lequel la courbe reste dans la bande.",
+              "caption": "Figure — pour tout ε > 0, il existe η_ε tel que f(x) reste à moins de ε de ℓ quand x est à moins de η_ε de a.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Lire la définition comme un défi : un adversaire choisit une précision $\\varepsilon$ (aussi petite qu'il veut) ; vous devez répondre par une distance $\\eta_\\varepsilon$ telle que, dès que $x$ est à moins de $\\eta_\\varepsilon$ de $a$, $f(x)$ est à moins de $\\varepsilon$ de $\\ell$. La limite existe si vous gagnez à tous les coups.",
+              "origin": "added"
+            },
+            {
+              "type": "simulation",
+              "scene": "function-limit",
+              "caption": "Choisis ε : la simulation propose un η qui fait rester la courbe dans la bande autour de ℓ.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans la définition de $\\lim_{x\\to a}f(x)=\\ell$, de quoi dépend $\\eta_\\varepsilon$ en général ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "De $\\varepsilon$ (et de $f$, $a$)"
+                  },
+                  {
+                    "id": "b",
+                    "md": "De $x$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "De rien : c'est une constante universelle"
+                  },
+                  {
+                    "id": "d",
+                    "md": "De $f(x)$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "On choisit d'abord $\\varepsilon$, puis on trouve $\\eta_\\varepsilon$ : il dépend de $\\varepsilon$. Il est choisi **avant** $x$ (qui est quantifié ensuite par « $\\forall x\\in I$ »), donc il ne dépend pas de $x$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "- L'inégalité $|x-x_0|<\\eta_\\varepsilon$ équivaut à $x\\in\\,]x_0-\\eta_\\varepsilon,x_0+\\eta_\\varepsilon[$. L'inégalité $|f(x)-\\ell|<\\varepsilon$ équivaut à $f(x)\\in\\,]\\ell-\\varepsilon,\\ell+\\varepsilon[$.\n- On peut remplacer certaines inégalités strictes « $<$ » par des inégalités larges « $\\le$ » dans la définition : $\\forall\\varepsilon>0\\ \\exists\\eta_\\varepsilon>0\\ \\forall x\\in I\\quad |x-x_0|\\le\\eta_\\varepsilon\\implies|f(x)-\\ell|\\le\\varepsilon$.\n- Dans la définition de la limite $\\forall\\varepsilon>0\\ \\exists\\eta_\\varepsilon>0\\ \\forall x\\in I\\quad |x-x_0|<\\eta_\\varepsilon\\implies|f(x)-\\ell|<\\varepsilon$, le quantificateur $\\forall x\\in I$ n'est là que pour être sûr que l'on puisse parler de $f(x)$. Il est souvent omis et l'existence de la limite s'écrit alors juste : $\\forall\\varepsilon>0\\ \\exists\\eta_\\varepsilon>0\\quad |x-x_0|<\\eta_\\varepsilon\\implies|f(x)-\\ell|<\\varepsilon$.\n- N'oubliez pas que l'ordre des quantificateurs est important : on ne peut pas échanger le $\\forall\\varepsilon$ avec le $\\exists\\eta_\\varepsilon$ : le $\\eta_\\varepsilon$ dépend en général du $\\varepsilon$. Pour marquer cette dépendance on peut écrire : $\\forall\\varepsilon>0\\ \\exists\\eta_\\varepsilon(\\varepsilon)>0\\ \\dots$\n- Avec cette définition, le point $a$ n'est pas exclu de $I$ : si $a\\in I$ et si $f$ admet une limite $\\ell$ en $a$, alors nécessairement $\\ell=f(a)$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "- $\\lim_{x\\to x_0}\\sqrt x=\\sqrt{x_0}$ pour tout $x_0\\ge0$ ;\n- la fonction partie entière $E$ n'a pas de limite aux points $x_0\\in\\mathbb{Z}$.",
+              "title": "Exemples",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-racine-partie-entiere.svg",
+              "alt": "À gauche la courbe de √x passant par (x₀, √x₀) ; à droite le graphe en escalier de la partie entière E.",
+              "caption": "Figure — √x a une limite en tout x₀ ≥ 0 ; E saute en chaque entier.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La fonction partie entière $E$ admet une limite en $x_0=3$.",
+                "answer": false,
+                "explanation": "Faux : juste à gauche de $3$, $E(x)=2$ ; en $3$ et juste à droite, $E(x)=3$. Les valeurs ne se rapprochent d'aucun réel unique : pas de limite."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces écritures traduit $\\lim_{x\\to a}f(x)=\\ell$ (avec $a,\\ell$ finis) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists\\eta>0,\\ \\forall x\\in I,\\ |x-a|\\le\\eta\\implies|f(x)-\\ell|\\le\\varepsilon$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists\\eta>0,\\ \\forall\\varepsilon>0,\\ \\forall x\\in I,\\ |x-a|\\le\\eta\\implies|f(x)-\\ell|\\le\\varepsilon$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists\\eta>0,\\ \\forall x\\in I,\\ |f(x)-\\ell|\\le\\varepsilon\\implies|x-a|\\le\\eta$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall\\eta>0,\\ \\exists\\varepsilon>0,\\ \\forall x\\in I,\\ |x-a|\\le\\eta\\implies|f(x)-\\ell|\\le\\varepsilon$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "On se donne la précision $\\varepsilon$ sur $f(x)$ et on trouve $\\eta$ sur $x$. La deuxième échange les quantificateurs ($\\eta$ ne pourrait plus dépendre de $\\varepsilon$), la troisième inverse l'implication, la quatrième inverse les rôles."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $f(x)=2x$, $a=1$, $\\ell=2$ et $\\varepsilon=0{,}1$, le plus grand $\\eta$ tel que $|x-1|\\le\\eta\\Rightarrow|f(x)-2|\\le\\varepsilon$ est $\\eta=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0.05",
+                "1/20"
+              ],
+              "explanation": "$|2x-2|=2|x-1|\\le0{,}1\\iff|x-1|\\le0{,}05$. Plus généralement $\\eta_\\varepsilon=\\varepsilon/2$ convient."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Avec la définition du cours, si $a\\in I$ et si $f$ admet une limite $\\ell$ en $a$, alors $\\ell=f(a)$.",
+              "answer": true,
+              "explanation": "Vrai : le point $a$ n'est pas exclu. En prenant $x=a$ dans la définition, $|f(a)-\\ell|\\le\\varepsilon$ pour tout $\\varepsilon>0$, donc $f(a)=\\ell$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\lim_{x\\to 9}\\sqrt x=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$\\lim_{x\\to x_0}\\sqrt x=\\sqrt{x_0}$ pour tout $x_0\\ge0$ ; ici $\\sqrt9=3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une partie $V\\subset\\mathbb{R}$ est un voisinage de $+\\infty$ si :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "il existe $A>0$ tel que $]A,+\\infty[\\,\\subset V$"
+                },
+                {
+                  "id": "b",
+                  "md": "$V$ contient un intervalle ouvert"
+                },
+                {
+                  "id": "c",
+                  "md": "$V$ est non majorée"
+                },
+                {
+                  "id": "d",
+                  "md": "$V=\\,]0,+\\infty[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la définition du rappel. Attention : « non majorée » ne suffit pas (exemple $V=\\mathbb{N}$, qui ne contient aucune demi-droite)."
+            }
+          ]
+        },
+        {
+          "slug": "limites-infinies-et-a-l-infini",
+          "title": "Limites infinies et limites à l'infini",
+          "number": "2.2",
+          "estimatedMinutes": 9,
+          "summary": "Limite ±∞ en un point, limite finie ou infinie en +∞, limites classiques des puissances et des fractions rationnelles.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Limite infinie en un point",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Soit $f$ une fonction définie sur un ensemble de la forme $I=\\,]a,x_0[\\,\\cup\\,]x_0,b[$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- On dit que $f$ a pour limite $+\\infty$ en $x_0$ si $\\forall A>0\\ \\exists\\eta_A>0\\ \\forall x\\in I\\quad |x-x_0|<\\eta_A\\implies f(x)>A$. On note alors $\\lim_{x\\to x_0}f(x)=+\\infty$.\n- On dit que $f$ a pour limite $-\\infty$ en $x_0$ si $\\forall A>0\\ \\exists\\eta_A>0\\ \\forall x\\in I\\quad |x-x_0|<\\eta_A\\implies f(x)<-A$. On note alors $\\lim_{x\\to x_0}f(x)=-\\infty$.",
+              "title": "Limite $\\pm\\infty$ en un point",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-limite-infinie.svg",
+              "alt": "Courbe qui monte vers l'asymptote verticale x=x₀ ; au-dessus du niveau A sur un intervalle autour de x₀.",
+              "caption": "Figure — f(x) → +∞ quand x → x₀ : la courbe dépasse tout niveau A près de x₀.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour $f(x)=\\dfrac1{x^2}$ en $x_0=0$ et $A=100$, le plus grand $\\eta_A$ tel que $0<|x|<\\eta_A\\Rightarrow f(x)>A$ est ___",
+                "answerType": "number",
+                "accepted": [
+                  "0.1",
+                  "1/10"
+                ],
+                "explanation": "$\\frac1{x^2}>100\\iff x^2<\\frac1{100}\\iff|x|<0{,}1$. En général $\\eta_A=\\frac1{\\sqrt A}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Limite en l'infini",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Soit $f:I\\to\\mathbb{R}$ une fonction définie sur un intervalle de la forme $I=\\,]a,+\\infty[$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- Soit $\\ell\\in\\mathbb{R}$. On dit que $f$ a pour limite $\\ell$ en $+\\infty$ si $\\forall\\varepsilon>0\\ \\exists B>0\\ \\forall x\\in I\\quad x>B\\implies|f(x)-\\ell|<\\varepsilon$. On note alors $\\lim_{x\\to+\\infty}f(x)=\\ell$ ou $\\lim_{+\\infty}f=\\ell$.\n- On dit que $f$ a pour limite $+\\infty$ en $+\\infty$ si $\\forall A>0\\ \\exists B>0\\ \\forall x\\in I\\quad x>B\\implies f(x)>A$. On note alors $\\lim_{x\\to+\\infty}f(x)=+\\infty$.",
+              "title": "Limite en $+\\infty$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On définirait de la même manière la limite en $-\\infty$ pour des fonctions définies sur des intervalles du type $]-\\infty,a[$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Pour tout $n\\ge1$ :\n- $\\lim_{x\\to+\\infty}x^n=+\\infty$ et $\\lim_{x\\to-\\infty}x^n=\\begin{cases}+\\infty&\\text{si } n \\text{ est pair},\\\\-\\infty&\\text{si } n \\text{ est impair} ;\\end{cases}$\n- $\\lim_{x\\to+\\infty}\\frac1{x^n}=0$ et $\\lim_{x\\to-\\infty}\\frac1{x^n}=0$.",
+              "title": "Limites classiques",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-xn-et-1-sur-xn.svg",
+              "alt": "Courbes de y=xⁿ (qui part vers le haut) et de y=1/xⁿ (qui se rapproche de l'axe des abscisses).",
+              "caption": "Figure — xⁿ → +∞ et 1/xⁿ → 0 quand x → +∞.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Soient $P(x)=a_nx^n+a_{n-1}x^{n-1}+\\dots+a_1x+a_0$ avec $a_n>0$ et $Q(x)=b_mx^m+b_{m-1}x^{m-1}+\\dots+b_1x+b_0$ avec $b_m>0$. Alors\n\n$$\\lim_{x\\to+\\infty}\\frac{P(x)}{Q(x)}=\\begin{cases}+\\infty&\\text{si }n>m,\\\\ \\dfrac{a_n}{b_m}&\\text{si }n=m,\\\\ 0&\\text{si }n<m.\\end{cases}$$",
+              "title": "Fractions rationnelles",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "En $+\\infty$, seuls les termes de plus haut degré comptent : $\\frac{P(x)}{Q(x)}=\\frac{a_nx^n(1+\\cdots)}{b_mx^m(1+\\cdots)}$ où les « $\\cdots$ » tendent vers $0$. Tout se ramène donc à $\\frac{a_n}{b_m}x^{n-m}$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\displaystyle\\lim_{x\\to+\\infty}\\frac{3x^2+1}{2x^2-x}=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1.5",
+                  "3/2"
+                ],
+                "explanation": "Même degré $n=m=2$ : la limite est le quotient des coefficients dominants, $\\frac32$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "$\\lim_{x\\to-\\infty}x^3$ vaut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-\\infty$"
+                },
+                {
+                  "id": "b",
+                  "md": "$+\\infty$"
+                },
+                {
+                  "id": "c",
+                  "md": "$0$"
+                },
+                {
+                  "id": "d",
+                  "md": "n'existe pas"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$3$ est impair : $\\lim_{x\\to-\\infty}x^n=-\\infty$ pour $n$ impair."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{x\\to+\\infty}\\frac{2x^3+1}{x^5+4}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "Degré du numérateur $3<5$ : la limite est $0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\lim_{x\\to-\\infty}\\dfrac{1}{x^2}=0$.",
+              "answer": true,
+              "explanation": "Vrai : $\\lim_{x\\to\\pm\\infty}\\frac1{x^n}=0$ pour tout $n\\ge1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces phrases définit $\\lim_{x\\to+\\infty}f(x)=+\\infty$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall A>0\\ \\exists B>0\\ \\forall x\\in I,\\ x>B\\implies f(x)>A$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists A>0\\ \\forall B>0\\ \\forall x\\in I,\\ x>B\\implies f(x)>A$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\forall A>0\\ \\forall B>0\\ \\forall x\\in I,\\ x>B\\implies f(x)>A$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall A>0\\ \\exists B>0\\ \\forall x\\in I,\\ f(x)>A\\implies x>B$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Pour tout niveau $A$, il existe un seuil $B$ au-delà duquel $f$ dépasse $A$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Soient $P$, $Q$ de degrés $n$, $m$ et de coefficients dominants $a_n>0$, $b_m>0$. Associez chaque cas à $\\lim_{+\\infty}P/Q$.",
+              "pairs": [
+                {
+                  "left": "$n>m$",
+                  "right": "$+\\infty$"
+                },
+                {
+                  "left": "$n=m$",
+                  "right": "$\\dfrac{a_n}{b_m}$"
+                },
+                {
+                  "left": "$n<m$",
+                  "right": "$0$"
+                }
+              ],
+              "explanation": "Tout se ramène au quotient des termes dominants $\\frac{a_n}{b_m}x^{n-m}$."
+            }
+          ]
+        },
+        {
+          "slug": "limites-a-gauche-a-droite",
+          "title": "Limite à gauche et limite à droite",
+          "number": "2.3",
+          "estimatedMinutes": 7,
+          "summary": "Limites latérales, lien avec la limite, exemple de la partie entière.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $f$ une fonction définie sur un intervalle $I$. On dit que $f$ admet une limite $\\ell$ :\n- **à gauche** en $x_0$ si et seulement si $\\forall\\varepsilon>0,\\ \\exists\\eta_\\varepsilon>0,\\quad x_0-\\eta_\\varepsilon<x<x_0\\implies|f(x)-\\ell|<\\varepsilon$. On note $\\lim_{x\\to x_0^-}f(x)=\\ell$ ou $\\lim_{x_0^-}f=\\ell$ ;\n- **à droite** en $x_0$ si et seulement si $\\forall\\varepsilon>0,\\ \\exists\\eta_\\varepsilon>0,\\quad x_0<x<x_0+\\eta_\\varepsilon\\implies|f(x)-\\ell|<\\varepsilon$. On note $\\lim_{x\\to x_0^+}f(x)=\\ell$ ou $\\lim_{x_0^+}f=\\ell$.",
+              "title": "Limite à gauche, limite à droite",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-limites-laterales.svg",
+              "alt": "Deux graphiques : la courbe arrive de la gauche vers (x₀, ℓ), puis une courbe qui part de (x₀, ℓ) vers la droite.",
+              "caption": "Figure — limite à gauche et limite à droite en x₀.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Une fonction $f$ admet une limite $\\ell$ en $x_0$ si et seulement si elle admet $\\ell$ comme limite à gauche et à droite en $x_0$, c'est-à-dire\n\n$$\\lim_{x\\to x_0}f(x)=\\ell\\iff\\lim_{x\\to x_0^+}f(x)=\\lim_{x\\to x_0^-}f(x)=\\ell.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Avec la convention de ce cours (le point $x_0$ n'est pas exclu dans la définition de la limite), si $x_0$ appartient au domaine de $f$, il faut de plus que $f(x_0)=\\ell$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Soit $f$ définie sur $\\mathbb{R}$ par $f(x)=0$ si $x\\ne0$ et $f(0)=1$. Avec la convention du cours, $f$ admet une limite en $0$.",
+                "answer": false,
+                "explanation": "Faux : les limites à gauche et à droite valent $0$, mais $0$ est dans le domaine et $f(0)=1\\ne0$. D'après la remarque, il faudrait aussi $f(0)=\\ell$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Considérons la fonction partie entière au point $x=2$ :\n- comme pour tout $x\\in\\,]2,3[$ on a $E(x)=2$, on a $\\lim_{2^+}E=2$ ;\n- comme pour tout $x\\in[1,2[$ on a $E(x)=1$, on a $\\lim_{2^-}E=1$.\n\nCes deux limites étant différentes, on en déduit que $E$ n'a pas de limite en $2$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Soit $f(x)=\\frac{|x|}{x}$ sur $\\mathbb{R}^*$. Pour $x>0$, $f(x)=1$ ; pour $x<0$, $f(x)=-1$. Donc $\\lim_{0^+}f=1$ et $\\lim_{0^-}f=-1$ : $f$ n'a pas de limite en $0$.",
+              "title": "Exemple",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\displaystyle\\lim_{x\\to3^-}E(x)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "Pour $x\\in[2,3[$, $E(x)=2$ ; donc la limite à gauche en $3$ vaut $2$ (et la limite à droite vaut $3$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{x\\to0^+}\\frac{|x|}{x}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "Pour $x>0$, $|x|=x$, donc $\\frac{|x|}{x}=1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "En $x_0=2{,}5$, la fonction partie entière $E$ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "admet la limite $2$"
+                },
+                {
+                  "id": "b",
+                  "md": "n'a pas de limite"
+                },
+                {
+                  "id": "c",
+                  "md": "admet la limite $3$"
+                },
+                {
+                  "id": "d",
+                  "md": "admet la limite $2{,}5$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Sur $]2,3[$, $E$ est constante égale à $2$ : à gauche comme à droite de $2{,}5$, $E(x)=2=E(2{,}5)$. Les sauts n'ont lieu qu'aux entiers."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $\\lim_{x_0^-}f=1$ et $\\lim_{x_0^+}f=1$, et si $f$ n'est pas définie en $x_0$, alors $\\lim_{x_0}f=1$.",
+              "answer": true,
+              "explanation": "Vrai : c'est la proposition ; comme $x_0$ n'est pas dans le domaine, la condition supplémentaire $f(x_0)=\\ell$ ne se pose pas."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "La limite à droite de $f$ en $x_0$ ne fait intervenir que les $x$ tels que :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$x_0<x<x_0+\\eta_\\varepsilon$"
+                },
+                {
+                  "id": "b",
+                  "md": "$x_0-\\eta_\\varepsilon<x<x_0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$|x-x_0|<\\eta_\\varepsilon$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x>\\eta_\\varepsilon$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "« À droite » : $x$ est plus grand que $x_0$ et proche de lui."
+            }
+          ]
+        },
+        {
+          "slug": "operations-sur-les-limites",
+          "title": "Propriétés et opérations sur les limites",
+          "number": "2.4",
+          "estimatedMinutes": 9,
+          "summary": "Unicité de la limite, opérations algébriques, formes indéterminées, passage à la limite dans les inégalités et théorème des gendarmes.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si une fonction admet une limite, alors cette limite est unique.",
+              "title": "Unicité de la limite",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On ne donne pas la démonstration de cette proposition, qui est très similaire à celle de l'unicité de la limite pour les suites (un raisonnement par l'absurde).",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Soient deux fonctions $f$ et $g$. On suppose que $x_0$ est un réel, ou que $x_0=\\pm\\infty$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $\\lim_{x_0}f=\\ell\\in\\mathbb{R}$ et $\\lim_{x_0}g=\\ell'\\in\\mathbb{R}$, alors :\n- $\\lim_{x_0}(\\lambda\\cdot f)=\\lambda\\cdot\\ell$ pour tout $\\lambda\\in\\mathbb{R}$ ;\n- $\\lim_{x_0}(f+g)=\\ell+\\ell'$ ;\n- $\\lim_{x_0}(f\\times g)=\\ell\\times\\ell'$ ;\n- si $\\ell\\ne0$, alors $\\lim_{x_0}\\frac1f=\\frac1\\ell$.\n\nDe plus, si $\\lim_{x_0}f=+\\infty$ (ou $-\\infty$), alors $\\lim_{x_0}\\frac1f=0$.",
+              "title": "Opérations sur les limites",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si $\\lim_{x_0}f=2$ et $\\lim_{x_0}g=-3$, alors $\\lim_{x_0}\\left(f\\times g+\\dfrac1f\\right)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "-5.5",
+                  "-11/2"
+                ],
+                "explanation": "$\\lim(fg)=2\\times(-3)=-6$ et $\\lim\\frac1f=\\frac12$ (car $2\\ne0$), d'où $-6+\\frac12=-\\frac{11}2$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Formes indéterminées.** Il y a des situations où l'on ne peut rien dire sur les limites. Par exemple si $\\lim_{x_0}f=+\\infty$ et $\\lim_{x_0}g=-\\infty$, alors on ne peut a priori rien dire sur la limite de $f+g$ (cela dépend vraiment de $f$ et de $g$). On raccourcit cela en : $+\\infty-\\infty$ est une **forme indéterminée**. Voici une liste de formes indéterminées :\n\n$$+\\infty-\\infty\\ ;\\quad 0\\times\\infty\\ ;\\quad \\frac\\infty\\infty\\ ;\\quad \\frac00\\ ;\\quad 1^\\infty\\ ;\\quad \\infty^0.$$",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "En $+\\infty$ : avec $f(x)=x+1$ et $g(x)=-x$, $f+g\\to1$ ; avec $f(x)=2x$ et $g(x)=-x$, $f+g\\to+\\infty$. Dans les deux cas on a « $+\\infty-\\infty$ », mais les limites diffèrent.",
+              "title": "Pourquoi « indéterminée »",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces situations **n'est pas** une forme indéterminée ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$+\\infty+\\infty$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$+\\infty-\\infty$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$0\\times\\infty$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\dfrac00$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Si $f\\to+\\infty$ et $g\\to+\\infty$, alors $f+g\\to+\\infty$ sans ambiguïté. Les trois autres figurent dans la liste des formes indéterminées."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "- Si $f\\le g$ et si $\\lim_{x_0}f=\\ell\\in\\mathbb{R}$ et $\\lim_{x_0}g=\\ell'\\in\\mathbb{R}$, alors $\\ell\\le\\ell'$.\n- Si $f\\le g$ et si $\\lim_{x_0}f=+\\infty$, alors $\\lim_{x_0}g=+\\infty$.\n- (**Théorème des gendarmes**) Si $f\\le g\\le h$ et si $\\lim_{x_0}f=\\lim_{x_0}h=\\ell\\in\\mathbb{R}$, alors $g$ a une limite en $x_0$ et $\\lim_{x_0}g=\\ell$.",
+              "title": "Limites et inégalités",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Pour $x\\ne0$, $-x^2\\le x^2\\sin\\frac1x\\le x^2$, et $\\lim_{0}(-x^2)=\\lim_0x^2=0$. Par le théorème des gendarmes, $\\lim_{x\\to0}x^2\\sin\\frac1x=0$.",
+              "title": "Gendarmes",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation (limites de $f$ et $g$ en $x_0$) à sa conclusion.",
+              "pairs": [
+                {
+                  "left": "$f\\to+\\infty,\\ g\\to-\\infty$ : limite de $f+g$",
+                  "right": "forme indéterminée"
+                },
+                {
+                  "left": "$f\\to+\\infty$ : limite de $\\frac1f$",
+                  "right": "$0$"
+                },
+                {
+                  "left": "$f\\to4,\\ g\\to3$ : limite de $fg$",
+                  "right": "$12$"
+                },
+                {
+                  "left": "$f\\to0,\\ g\\to0$ : limite de $\\frac fg$",
+                  "right": "forme indéterminée"
+                }
+              ],
+              "explanation": "$+\\infty-\\infty$ et $\\frac00$ sont des formes indéterminées ; $\\frac1f\\to0$ quand $f\\to\\pm\\infty$ ; le produit des limites finies donne la limite du produit."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f<g$ au voisinage de $x_0$, $\\lim_{x_0}f=\\ell$ et $\\lim_{x_0}g=\\ell'$, alors $\\ell<\\ell'$.",
+              "answer": false,
+              "explanation": "Faux : le passage à la limite transforme les inégalités strictes en inégalités **larges**. Exemple en $+\\infty$ : $0<\\frac1x$, mais les deux limites valent $0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On sait que $1-x^2\\le g(x)\\le1+x^2$ pour tout $x$. Que peut-on dire de $\\lim_{x\\to0}g(x)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Elle existe et vaut $1$"
+                },
+                {
+                  "id": "b",
+                  "md": "Elle vaut $0$"
+                },
+                {
+                  "id": "c",
+                  "md": "On ne peut rien dire"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle existe mais on ne peut pas la calculer"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Les deux « gendarmes » tendent vers $1$ en $0$ : par le théorème des gendarmes, $g$ a une limite et elle vaut $1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f\\le g$ et $\\lim_{x_0}f=+\\infty$, alors $\\lim_{x_0}g=+\\infty$.",
+              "answer": true,
+              "explanation": "Vrai : c'est le deuxième point de la proposition « Limites et inégalités » : $g$ est poussée vers $+\\infty$ par $f$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $\\lim_{x_0}f=-\\infty$, alors $\\displaystyle\\lim_{x_0}\\frac{1}{f}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "D'après la proposition, si $f\\to\\pm\\infty$ alors $\\frac1f\\to0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "continuite",
+      "title": "Continuité",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "continuite-en-un-point",
+          "title": "Continuité en un point",
+          "number": "3.1",
+          "estimatedMinutes": 7,
+          "summary": "Définition de la continuité en un point et sur un intervalle ; une fonction continue en un point y est localement bornée.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit $I$ un intervalle de $\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ une fonction.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- On dit que $f$ est **continue en un point** $x_0\\in I$ si\n\n$$\\forall\\varepsilon>0\\quad\\exists\\eta_\\varepsilon>0\\quad\\forall x\\in I\\quad |x-x_0|<\\eta_\\varepsilon\\implies|f(x)-f(x_0)|<\\varepsilon,$$\n\nc'est-à-dire si $f$ admet une limite en $x_0$ (cette limite vaut alors nécessairement $f(x_0)$).\n- On dit que $f$ est **continue sur $I$** si $f$ est continue en tout point de $I$.",
+              "title": "Continuité",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-continuite-epsilon-eta.svg",
+              "alt": "Courbe de f, bande de demi-largeur ε centrée en f(x₀) et intervalle de demi-largeur η_ε autour de x₀.",
+              "caption": "Figure — continuité en x₀ : la bande est centrée sur f(x₀).",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Continuité en $x_0$ = « on peut rendre $f(x)$ aussi proche que l'on veut de $f(x_0)$ en prenant $x$ assez proche de $x_0$ ». Il n'y a pas de saut au point $x_0$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "La fonction $f$ définie par $f(x)=\\sqrt x$ est continue en $a$ pour tout $a\\in\\mathbb{R}_+^*$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f$ est continue en $x_0$, alors $\\lim_{x\\to x_0}f(x)=f(x_0)$.",
+                "answer": true,
+                "explanation": "Vrai : c'est la définition même (avec $\\ell=f(x_0)$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $f$ est continue en $a$, alors $f$ est bornée au voisinage de $a$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La réciproque est fausse, comme le montre l'exemple suivant : $f$ définie sur $[0,1]$ par\n\n$$f(x)=\\begin{cases}0&\\text{si }x\\ne1,\\\\1&\\text{si }x=1.\\end{cases}$$\n\nCette fonction est bornée (au voisinage de $1$ comme partout), mais n'est pas continue en $1$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi la fonction $f$ ci-dessus n'est-elle pas continue en $1$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Car pour $x<1$ proche de $1$, $|f(x)-f(1)|=1$ ne devient pas petit"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Car elle n'est pas bornée"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Car $1$ n'est pas dans son domaine"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Car elle n'a pas de limite à gauche en $1$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f(1)=1$ mais $f(x)=0$ pour $x<1$ : avec $\\varepsilon=\\frac12$, aucun $\\eta$ ne convient. La limite à gauche existe pourtant (elle vaut $0$), mais elle diffère de $f(1)$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "$f$ est continue sur $I$ signifie :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$f$ est continue en tout point de $I$"
+                },
+                {
+                  "id": "b",
+                  "md": "$f$ est bornée sur $I$"
+                },
+                {
+                  "id": "c",
+                  "md": "$f$ admet une limite en au moins un point de $I$"
+                },
+                {
+                  "id": "d",
+                  "md": "$f$ est monotone sur $I$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la définition : continuité en chaque point de $I$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute fonction bornée au voisinage de $a$ est continue en $a$.",
+              "answer": false,
+              "explanation": "Faux : c'est la réciproque de la proposition, et elle est fausse (contre-exemple : $f=0$ sauf $f(1)=1$ sur $[0,1]$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La fonction $x\\mapsto\\sqrt x$ est continue en $4$.",
+              "answer": true,
+              "explanation": "Vrai : $\\sqrt{\\cdot}$ est continue en tout $a>0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f(x)=3x$ et $x_0=0$. Pour $\\varepsilon=0{,}3$, le plus grand $\\eta$ tel que $|x|<\\eta\\Rightarrow|f(x)-f(0)|<\\varepsilon$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "0.1",
+                "1/10"
+              ],
+              "explanation": "$|3x-0|<0{,}3\\iff|x|<0{,}1$. En général $\\eta_\\varepsilon=\\varepsilon/3$."
+            }
+          ]
+        },
+        {
+          "slug": "operations-fonctions-continues",
+          "title": "Opérations sur les fonctions continues",
+          "number": "3.2",
+          "estimatedMinutes": 9,
+          "summary": "Une fonction continue non nulle en un point est non nulle autour ; sommes, produits, inverses et composées de fonctions continues.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "La continuité assure par exemple que si la fonction n'est pas nulle en un point (qui est une propriété ponctuelle), alors elle n'est pas nulle autour de ce point (propriété locale). Voici l'énoncé :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "lemme",
+              "md": "Soit $f:I\\to\\mathbb{R}$ une fonction définie sur un intervalle $I$ et $x_0$ un point de $I$. Si $f$ est continue en $x_0$ et si $f(x_0)\\ne0$, alors il existe $\\eta>0$ tel que\n\n$$\\forall x\\in I\\cap\\,]x_0-\\eta,x_0+\\eta[,\\quad f(x)\\ne0.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-signe-voisinage.svg",
+              "alt": "Courbe passant par (x₀, f(x₀)) avec f(x₀)>0 ; sur ]x₀−η, x₀+η[ elle reste au-dessus de l'axe.",
+              "caption": "Figure — si f est continue en x₀ et f(x₀) > 0, f reste > 0 sur un voisinage de x₀.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Supposons par exemple que $f(x_0)>0$, le cas $f(x_0)<0$ se montrerait de la même manière."
+                },
+                {
+                  "md": "Écrivons la définition de la continuité de $f$ en $x_0$ : $\\forall\\varepsilon>0\\ \\exists\\eta>0\\ \\forall x\\in I\\quad x\\in\\,]x_0-\\eta,x_0+\\eta[\\implies f(x_0)-\\varepsilon<f(x)<f(x_0)+\\varepsilon$."
+                },
+                {
+                  "md": "Il suffit donc de choisir $\\varepsilon$ tel que $0<\\varepsilon<f(x_0)$. Il existe alors bien un intervalle $J=I\\cap\\,]x_0-\\eta,x_0+\\eta[$ tel que pour tout $x$ dans $J$, on a $f(x)>f(x_0)-\\varepsilon>0$.",
+                  "why": "Par exemple $\\varepsilon=\\frac{f(x_0)}2$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans la preuve, pourquoi choisit-on $\\varepsilon<f(x_0)$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Pour que $f(x_0)-\\varepsilon>0$, ce qui force $f(x)>0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que $\\varepsilon$ doit être plus petit que $\\eta$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Pour que $f$ soit continue"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Parce que $f(x_0)<0$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "On sait $f(x)>f(x_0)-\\varepsilon$ près de $x_0$. Pour en déduire $f(x)>0$, il faut que le minorant $f(x_0)-\\varepsilon$ soit positif."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "La continuité se comporte bien avec les opérations élémentaires. Les propositions suivantes sont des conséquences immédiates des propositions analogues sur les limites.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soient $f,g:I\\to\\mathbb{R}$ deux fonctions continues en un point $x_0\\in I$. Alors :\n- $\\lambda\\cdot f$ est continue en $x_0$ (pour tout $\\lambda\\in\\mathbb{R}$) ;\n- $f+g$ est continue en $x_0$ ;\n- $f\\times g$ est continue en $x_0$ ;\n- si $f(x_0)\\ne0$, alors $\\dfrac1f$ est continue en $x_0$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La proposition précédente permet de vérifier que d'autres fonctions usuelles sont continues :",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "- les fonctions puissance $x\\mapsto x^n$ sur $\\mathbb{R}$ (comme produit $x\\times x\\times\\cdots$) ;\n- les polynômes sur $\\mathbb{R}$ (somme et produit de fonctions puissance et de fonctions constantes) ;\n- les fractions rationnelles $x\\mapsto\\dfrac{P(x)}{Q(x)}$ sur tout intervalle où le polynôme $Q(x)$ ne s'annule pas.",
+              "title": "Exemples",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La composition conserve la continuité (mais il faut faire attention en quels points les hypothèses s'appliquent).",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soient $f:I\\to\\mathbb{R}$ et $g:J\\to\\mathbb{R}$ deux fonctions telles que $f(I)\\subset J$. Si $f$ est continue en un point $x_0\\in I$ et si $g$ est continue en $f(x_0)$, alors $g\\circ f$ est continue en $x_0$.",
+              "title": "Composition",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour que $g\\circ f$ soit continue en $x_0$, la proposition demande que :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$f$ soit continue en $x_0$ et $g$ continue en $f(x_0)$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$f$ et $g$ soient continues en $x_0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$g$ soit continue en $x_0$ et $f$ en $g(x_0)$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$f(x_0)\\ne0$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$g$ est évaluée en $f(x)$, qui est proche de $f(x_0)$ : c'est donc en $f(x_0)$ qu'il faut la continuité de $g$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est continue en $x_0$ et $f(x_0)=0$, alors $\\dfrac1f$ est continue en $x_0$.",
+              "answer": false,
+              "explanation": "Faux : $\\frac1f$ n'est même pas définie en $x_0$. L'hypothèse $f(x_0)\\ne0$ est indispensable."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Sur quel ensemble la fraction rationnelle $x\\mapsto\\dfrac{x+1}{x^2-4}$ est-elle continue ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Sur chacun des intervalles $]-\\infty,-2[$, $]-2,2[$, $]2,+\\infty[$"
+                },
+                {
+                  "id": "b",
+                  "md": "Sur $\\mathbb{R}$"
+                },
+                {
+                  "id": "c",
+                  "md": "Sur $]-2,2[$ seulement"
+                },
+                {
+                  "id": "d",
+                  "md": "Sur $\\mathbb{R}\\setminus\\{-1\\}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le dénominateur s'annule en $\\pm2$ ; sur tout intervalle évitant ces points, c'est un quotient de polynômes avec dénominateur non nul."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est continue en $x_0$ et $f(x_0)>0$, alors $f>0$ sur tout l'intervalle $I$.",
+              "answer": false,
+              "explanation": "Faux : le lemme ne donne $f>0$ que sur un **voisinage** $I\\cap]x_0-\\eta,x_0+\\eta[$. Exemple : $f(x)=x$ en $x_0=1$ sur $\\mathbb{R}$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve du lemme (cas $f(x_0)>0$).",
+              "items": [
+                "On écrit la continuité de $f$ en $x_0$ avec un $\\varepsilon>0$ quelconque.",
+                "On choisit $\\varepsilon$ tel que $0<\\varepsilon<f(x_0)$.",
+                "On obtient $\\eta>0$ tel que $f(x)>f(x_0)-\\varepsilon$ pour $x\\in I\\cap]x_0-\\eta,x_0+\\eta[$.",
+                "Comme $f(x_0)-\\varepsilon>0$, on conclut $f(x)>0\\ne0$ sur ce voisinage."
+              ],
+              "explanation": "On part de la définition, on fixe un $\\varepsilon$ adapté, on récupère le $\\eta$ correspondant et on conclut."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi $x\\mapsto x^5-3x+1$ est-elle continue sur $\\mathbb{R}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "C'est un polynôme : sommes et produits de fonctions continues"
+                },
+                {
+                  "id": "b",
+                  "md": "Elle est bornée"
+                },
+                {
+                  "id": "c",
+                  "md": "Elle est monotone"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle s'annule en un point"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Les fonctions constantes et $x\\mapsto x$ sont continues ; les sommes, produits et multiples le restent."
+            }
+          ]
+        },
+        {
+          "slug": "prolongement-par-continuite",
+          "title": "Prolongement par continuité",
+          "number": "3.3",
+          "estimatedMinutes": 7,
+          "summary": "Prolonger une fonction en un point où elle n'est pas définie, lorsqu'elle y a une limite finie.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $I$ un intervalle, $x_0$ un point de $I$ et $f:I\\setminus\\{x_0\\}\\to\\mathbb{R}$ une fonction.\n- On dit que $f$ est **prolongeable par continuité** en $x_0$ si $f$ admet une limite finie en $x_0$. Notons alors $\\ell=\\lim_{x\\to x_0}f$.\n- On définit alors la fonction $\\tilde f:I\\to\\mathbb{R}$ en posant pour tout $x\\in I$\n\n$$\\tilde f(x)=\\begin{cases}f(x)&\\text{si }x\\ne x_0,\\\\ \\ell&\\text{si }x=x_0.\\end{cases}$$\n\nAlors $\\tilde f$ est continue en $x_0$ et on l'appelle le **prolongement par continuité** de $f$ en $x_0$.",
+              "title": "Prolongement par continuité",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-prolongement.svg",
+              "alt": "Courbe avec un trou au point (x₀, ℓ), bouché par le prolongement.",
+              "caption": "Figure — prolonger par continuité, c'est boucher le trou en posant f̃(x₀) = ℓ.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Considérons la fonction $f$ définie sur $\\mathbb{R}^*$ par $f(x)=x\\sin\\left(\\dfrac1x\\right)$. Voyons si $f$ admet un prolongement par continuité en $0$.\n\nComme pour tout $x\\in\\mathbb{R}^*$ on a $|f(x)|\\le|x|$, on en déduit que $f$ tend vers $0$ en $0$. Elle est donc prolongeable par continuité en $0$ et son prolongement est la fonction $\\tilde f$ définie sur $\\mathbb{R}$ tout entier par\n\n$$\\tilde f(x)=\\begin{cases}x\\sin\\left(\\dfrac1x\\right)&\\text{si }x\\ne0,\\\\ 0&\\text{si }x=0.\\end{cases}$$",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "La fonction $f(x)=\\dfrac{x^2-1}{x-1}$, définie sur $\\mathbb{R}\\setminus\\{1\\}$, se prolonge par continuité en $1$ en posant $\\tilde f(1)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "Pour $x\\ne1$, $f(x)=\\frac{(x-1)(x+1)}{x-1}=x+1\\to2$. Donc $\\tilde f(1)=2$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Certaines fonctions n'admettent pas de limite en $a$, donc ne peuvent être prolongées en $a$. Par exemple, la fonction $f(x)=\\dfrac{|x|}{x}$ définie sur $\\mathbb{R}^*$ n'admet pas de limite en $0$ (limite $-1$ à gauche, $1$ à droite).",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La fonction $x\\mapsto\\dfrac1x$ est prolongeable par continuité en $0$.",
+                "answer": false,
+                "explanation": "Faux : elle n'a pas de limite **finie** en $0$ ($\\pm\\infty$ selon le côté)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est prolongeable par continuité en $x_0$, son prolongement est unique.",
+              "answer": true,
+              "explanation": "Vrai : la valeur en $x_0$ est forcément $\\ell=\\lim_{x_0}f$, qui est unique (unicité de la limite)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La fonction $x\\mapsto\\dfrac{x^2+3x}{x}$ (sur $\\mathbb{R}^*$) se prolonge par continuité en $0$ par la valeur ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "Pour $x\\ne0$, $\\frac{x^2+3x}{x}=x+3\\to3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour montrer que $x\\sin\\frac1x\\to0$ en $0$, le cours utilise :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "l'inégalité $\\left|x\\sin\\frac1x\\right|\\le|x|$"
+                },
+                {
+                  "id": "b",
+                  "md": "le fait que $\\sin\\frac1x$ a une limite en $0$"
+                },
+                {
+                  "id": "c",
+                  "md": "la continuité de $\\sin$ en $0$"
+                },
+                {
+                  "id": "d",
+                  "md": "la parité de la fonction"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$|\\sin|\\le1$ donne $|f(x)|\\le|x|\\to0$ : la fonction est coincée. Attention, $\\sin\\frac1x$ seule n'a pas de limite en $0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces fonctions définies sur $\\mathbb{R}^*$ est prolongeable par continuité en $0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$x\\mapsto x\\sin\\frac1x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$x\\mapsto\\frac{|x|}{x}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$x\\mapsto\\frac1{x^2}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x\\mapsto\\sin\\frac1x$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Seule $x\\sin\\frac1x$ a une limite finie ($0$) en $0$. $\\frac{|x|}{x}$ a des limites latérales différentes, $\\frac1{x^2}\\to+\\infty$, et $\\sin\\frac1x$ oscille."
+            }
+          ]
+        },
+        {
+          "slug": "suites-et-continuite",
+          "title": "Suites et continuité sur un intervalle",
+          "number": "3.4",
+          "estimatedMinutes": 7,
+          "summary": "Caractérisation séquentielle de la continuité, application aux suites récurrentes, et continuité sur un intervalle.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Suites et continuité",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soit $f:I\\to\\mathbb{R}$ une fonction et $x_0$ un point de $I$. Alors $f$ est continue en $x_0$ si et seulement si, pour toute suite $(u_n)$ d'éléments de $I$ qui converge vers $x_0$, la suite $\\bigl(f(u_n)\\bigr)$ converge vers $f(x_0)$.",
+              "title": "Caractérisation séquentielle de la continuité",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "On retiendra surtout l'implication : si $f$ est continue sur $I$ et si $(u_n)$ est une suite d'éléments de $I$ convergente de limite $\\ell\\in I$, alors $\\bigl(f(u_n)\\bigr)$ converge vers $f(\\ell)$. On l'utilisera intensivement pour l'étude des suites récurrentes $u_{n+1}=f(u_n)$ : si $f$ est continue et $u_n\\to\\ell$ (avec $\\ell\\in I$), alors $f(\\ell)=\\ell$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Soit $u_0=0$ et $u_{n+1}=\\sqrt{2+u_n}$. On admet que $(u_n)$ converge vers un réel $\\ell\\ge0$. Trouvons $\\ell$.",
+              "title": "Suite récurrente",
+              "steps": [
+                {
+                  "md": "$f(x)=\\sqrt{2+x}$ est continue sur $I=[0,+\\infty[$ et $\\ell\\in I$, donc $f(u_n)\\to f(\\ell)$."
+                },
+                {
+                  "md": "Mais $f(u_n)=u_{n+1}\\to\\ell$. Par unicité de la limite, $\\ell=f(\\ell)=\\sqrt{2+\\ell}$."
+                },
+                {
+                  "md": "Donc $\\ell^2=2+\\ell$, soit $(\\ell-2)(\\ell+1)=0$ ; comme $\\ell\\ge0$, $\\ell=2$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si $u_{n+1}=\\dfrac{u_n}{2}+3$ et si $(u_n)$ converge, sa limite vaut ___",
+                "answerType": "number",
+                "accepted": [
+                  "6"
+                ],
+                "explanation": "$f(x)=\\frac x2+3$ est continue sur $\\mathbb{R}$ ; la limite vérifie $\\ell=\\frac\\ell2+3$, donc $\\ell=6$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Continuité sur un intervalle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On dit qu'une fonction $f$ est **continue sur un intervalle** $I$ si et seulement si la fonction $f$ est continue en chaque point de $I$, ce qui se traduit avec des quantificateurs de la manière suivante :\n\n$$\\forall a\\in I,\\ \\forall\\varepsilon>0,\\ \\exists\\alpha>0,\\ \\forall x\\in I,\\quad |x-a|\\le\\alpha\\implies|f(x)-f(a)|\\le\\varepsilon.$$\n\nOn note $C(I)$ ou $C^0(I)$ l'ensemble des fonctions continues sur $I$.\n\nGraphiquement, cela signifie que l'on peut tracer la courbe représentative de $f$ sur l'intervalle $I$ sans lever le crayon.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans la définition de la continuité sur $I$, le réel $\\alpha$ peut dépendre à la fois de $a$ et de $\\varepsilon$.",
+                "answer": true,
+                "explanation": "Vrai : $\\alpha$ est choisi après $a$ et $\\varepsilon$. (Quand on peut le choisir indépendamment de $a$, on parlera de continuité **uniforme**.)"
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Pour montrer qu'une fonction $f$ **n'est pas** continue en $x_0$, il suffit de trouver :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "une suite $u_n\\to x_0$ telle que $f(u_n)$ ne tende pas vers $f(x_0)$"
+                },
+                {
+                  "id": "b",
+                  "md": "une suite $u_n\\to x_0$ telle que $f(u_n)\\to f(x_0)$"
+                },
+                {
+                  "id": "c",
+                  "md": "un point où $f$ n'est pas dérivable"
+                },
+                {
+                  "id": "d",
+                  "md": "une suite bornée"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la contraposée de la caractérisation séquentielle : un seul contre-exemple de suite suffit."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\to\\ell$ et $u_{n+1}=f(u_n)$ avec $f$ continue en $\\ell$, alors $f(\\ell)=\\ell$.",
+              "answer": true,
+              "explanation": "Vrai : $u_{n+1}\\to\\ell$ et $f(u_n)\\to f(\\ell)$ ; par unicité de la limite, $f(\\ell)=\\ell$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $u_{n+1}=\\sqrt{6+u_n}$, $u_0=0$, et $(u_n)$ converge vers $\\ell\\ge0$, alors $\\ell=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$\\ell=\\sqrt{6+\\ell}\\Rightarrow\\ell^2-\\ell-6=0\\Rightarrow(\\ell-3)(\\ell+2)=0$, et $\\ell\\ge0$ donne $\\ell=3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que désigne $C^0(I)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'ensemble des fonctions continues sur $I$"
+                },
+                {
+                  "id": "b",
+                  "md": "L'ensemble des fonctions nulles sur $I$"
+                },
+                {
+                  "id": "c",
+                  "md": "L'ensemble des fonctions constantes sur $I$"
+                },
+                {
+                  "id": "d",
+                  "md": "L'ensemble des fonctions bornées sur $I$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$C(I)$ ou $C^0(I)$ : fonctions continues sur $I$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "theoremes-fonctions-continues",
+      "title": "Théorèmes sur les fonctions continues",
+      "number": "4",
+      "lessons": [
+        {
+          "slug": "theoreme-des-valeurs-intermediaires",
+          "title": "Théorème des valeurs intermédiaires",
+          "number": "4.1",
+          "estimatedMinutes": 11,
+          "summary": "Théorème des valeurs intermédiaires, théorème de Bolzano, racines des polynômes de degré impair, image d'un intervalle par une fonction continue.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $f:[a,b]\\to\\mathbb{R}$ une fonction continue sur un segment. Pour tout réel $y$ compris entre $f(a)$ et $f(b)$, il existe $c\\in[a,b]$ tel que $f(c)=y$.",
+              "title": "Théorème des valeurs intermédiaires",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-tvi.svg",
+              "alt": "Courbe continue de (a,f(a)) à (b,f(b)) ; la droite horizontale y la coupe en c₁, c₂, c₃.",
+              "caption": "Figure — TVI : chaque y entre f(a) et f(b) est atteint (ici trois fois).",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "De plus, si la fonction n'est pas continue, le théorème n'est plus vrai.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-tvi-saut.svg",
+              "alt": "Fonction discontinue qui saute par-dessus la valeur y entre f(a) et f(b).",
+              "caption": "Figure — sans continuité, la valeur y peut être « sautée ».",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f$ est continue sur $[a,b]$, le réel $c$ donné par le théorème des valeurs intermédiaires est unique.",
+                "answer": false,
+                "explanation": "Faux : la droite $y$ peut couper la courbe plusieurs fois. Il y a unicité si $f$ est de plus strictement monotone."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $f:[a,b]\\to\\mathbb{R}$ une fonction continue telle que $f(a)f(b)\\le0$. Alors il existe au moins un réel $c$ compris entre $a$ et $b$ tel que $f(c)=0$.",
+              "title": "Théorème de Bolzano",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-bolzano.svg",
+              "alt": "Courbe avec f(a)<0 et f(b)>0 qui traverse l'axe des abscisses en c.",
+              "caption": "Figure — Bolzano : f(a) < 0 < f(b), donc f s'annule en un point c.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "$f(a)f(b)\\le0$ signifie que $f(a)$ et $f(b)$ sont de signes opposés (ou l'un est nul) : $0$ est donc « entre » $f(a)$ et $f(b)$, et Bolzano est le cas $y=0$ du théorème des valeurs intermédiaires.",
+              "origin": "added"
+            },
+            {
+              "type": "simulation",
+              "scene": "ivt",
+              "caption": "Déplace le niveau y entre f(a) et f(b) : la courbe continue le coupe toujours.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Tout polynôme de degré impair possède au moins une racine réelle.\n\nEn effet, un tel polynôme s'écrit $P(x)=a_nx^n+\\dots+a_1x+a_0$ avec $n$ un entier impair. On peut supposer que le coefficient $a_n$ est strictement positif. Alors on a $\\lim_{x\\to-\\infty}P=-\\infty$ et $\\lim_{x\\to+\\infty}P=+\\infty$. En particulier, il existe deux réels $a$ et $b$ tels que $P(a)<0$ et $P(b)>0$, et on conclut grâce au théorème de Bolzano.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-polynome-degre-3.svg",
+              "alt": "Courbe d'un polynôme de degré 3 qui coupe l'axe des abscisses.",
+              "caption": "Figure — un polynôme de degré 3 va de −∞ à +∞ : il s'annule.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour $f(x)=x^3+x-1$ sur $[0,1]$, que donne le théorème de Bolzano ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$f$ s'annule au moins une fois sur $[0,1]$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$f$ ne s'annule pas sur $[0,1]$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$f(0)=f(1)$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "On ne peut pas l'appliquer"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f$ est continue (polynôme), $f(0)=-1<0$ et $f(1)=1>0$, donc $f(0)f(1)\\le0$ : il existe $c\\in[0,1]$ avec $f(c)=0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Soit $f:I\\to\\mathbb{R}$ une fonction continue sur un intervalle $I$. Alors $f(I)$ est un intervalle.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention !** Il serait faux de croire que l'image par une fonction $f$ de l'intervalle $[a,b]$ soit l'intervalle $[f(a),f(b)]$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-image-segment.svg",
+              "alt": "Courbe qui monte au-dessus de f(b) puis descend sous f(a) : l'image f([a,b]) dépasse [f(a), f(b)].",
+              "caption": "Figure — f([a, b]) peut être plus grand que [f(a), f(b)].",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soient $y_1,y_2\\in f(I)$, $y_1\\le y_2$. Montrons que si $y\\in[y_1,y_2]$, alors $y\\in f(I)$.",
+                  "why": "Une partie de $\\mathbb{R}$ est un intervalle si elle contient tout réel compris entre deux de ses éléments."
+                },
+                {
+                  "md": "Par hypothèse, il existe $x_1,x_2\\in I$ tels que $y_1=f(x_1)$, $y_2=f(x_2)$, et donc $y$ est compris entre $f(x_1)$ et $f(x_2)$."
+                },
+                {
+                  "md": "D'après le théorème des valeurs intermédiaires (appliqué sur le segment d'extrémités $x_1$ et $x_2$, inclus dans $I$), comme $f$ est continue, il existe donc $x\\in I$ tel que $y=f(x)$, et ainsi $y\\in f(I)$."
+                }
+              ],
+              "title": "Preuve du corollaire",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle hypothèse est indispensable dans le théorème des valeurs intermédiaires ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$f$ continue sur $[a,b]$"
+                },
+                {
+                  "id": "b",
+                  "md": "$f$ strictement croissante"
+                },
+                {
+                  "id": "c",
+                  "md": "$f(a)<f(b)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$f$ dérivable"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Sans continuité le théorème est faux (fonction qui « saute » par-dessus $y$). La monotonie ne sert qu'à l'unicité de $c$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tout polynôme de degré $3$ à coefficients réels a au moins une racine réelle.",
+              "answer": true,
+              "explanation": "Vrai : degré impair ; les limites en $\\pm\\infty$ sont de signes opposés et Bolzano s'applique."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est continue sur $[a,b]$, alors $f([a,b])=[f(a),f(b)]$.",
+              "answer": false,
+              "explanation": "Faux : $f([a,b])$ est bien un intervalle, mais il peut être plus grand. Exemple : $\\sin$ sur $[0,\\pi]$ : $f(0)=f(\\pi)=0$ mais $f([0,\\pi])=[0,1]$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On sait que $f$ est continue sur $[1,3]$, $f(1)=5$ et $f(3)=-2$. Laquelle de ces affirmations est garantie ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Il existe $c\\in[1,3]$ tel que $f(c)=0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$f$ est décroissante"
+                },
+                {
+                  "id": "c",
+                  "md": "$f(2)=1{,}5$"
+                },
+                {
+                  "id": "d",
+                  "md": "$f$ ne prend jamais la valeur $6$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$0$ est compris entre $-2$ et $5$ : TVI (ou Bolzano). Les autres ne sont pas garanties ($f$ peut monter au-dessus de $6$ entre $1$ et $3$)."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve de « tout polynôme de degré impair a une racine réelle » (avec $a_n>0$).",
+              "items": [
+                "$P$ est continue sur $\\mathbb{R}$ (c'est un polynôme).",
+                "$\\lim_{-\\infty}P=-\\infty$ et $\\lim_{+\\infty}P=+\\infty$ car $n$ est impair et $a_n>0$.",
+                "Il existe donc $a<b$ avec $P(a)<0$ et $P(b)>0$.",
+                "Par le théorème de Bolzano sur $[a,b]$, $P$ s'annule en un point $c$."
+              ],
+              "explanation": "Continuité, limites aux infinis, choix de deux points de signes opposés, puis Bolzano."
+            }
+          ]
+        },
+        {
+          "slug": "continuite-uniforme",
+          "title": "Continuité uniforme",
+          "number": "4.2",
+          "estimatedMinutes": 7,
+          "summary": "Fonctions uniformément continues, lien avec la continuité, théorème de Heine.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $I\\subset\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ une fonction. On dit que $f$ est **uniformément continue** sur $I$ si\n\n$$\\forall\\varepsilon>0,\\ \\exists\\eta_\\varepsilon>0\\ \\text{tel que}\\ \\forall x,x'\\in I,\\quad |x-x'|\\le\\eta_\\varepsilon\\implies|f(x)-f(x')|\\le\\varepsilon.$$",
+              "title": "Continuité uniforme",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Comparez avec la continuité sur $I$ : $\\forall a\\ \\forall\\varepsilon\\ \\exists\\eta\\ \\forall x$. Ici, $\\eta_\\varepsilon$ est choisi **avant** les points : le même $\\eta_\\varepsilon$ doit marcher partout dans $I$.",
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "- Il est immédiat que l'uniforme continuité de $f$ sur $I$ entraîne sa continuité en tout point de $I$.\n- La réciproque n'est pas toujours vraie, mais nous avons le théorème ci-dessous.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la différence entre « continue sur $I$ » et « uniformément continue sur $I$ » ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Pour l'uniforme continuité, $\\eta$ ne dépend que de $\\varepsilon$, pas du point"
+                  },
+                  {
+                    "id": "b",
+                    "md": "L'uniforme continuité n'utilise pas $\\varepsilon$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Il n'y a aucune différence"
+                  },
+                  {
+                    "id": "d",
+                    "md": "La continuité exige $\\eta$ indépendant de $\\varepsilon$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Continuité : $\\forall a\\ \\forall\\varepsilon\\ \\exists\\eta$ ($\\eta$ dépend de $a$ et $\\varepsilon$). Uniforme : $\\forall\\varepsilon\\ \\exists\\eta\\ \\forall x,x'$ ($\\eta$ dépend seulement de $\\varepsilon$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "La fonction $f:x\\mapsto x^2$ n'est pas uniformément continue sur $\\mathbb{R}$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Justification : prenons $\\varepsilon=1$ et un $\\eta>0$ quelconque. Pour $x'=x+\\eta$, on a $|f(x')-f(x)|=\\eta(2x+\\eta)\\ge2x\\eta$, qui dépasse $1$ dès que $x>\\frac1{2\\eta}$. Aucun $\\eta$ ne convient pour tous les points : plus $x$ est grand, plus la courbe est raide.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $I=[a,b]\\subset\\mathbb{R}$ un intervalle fermé borné de $\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ une application continue sur $I$. Alors $f$ est uniformément continue sur $I$.",
+              "title": "Heine",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "1. La fonction $f:x\\mapsto x^2$ est uniformément continue sur $[0,1]$.\n2. La fonction $x\\mapsto\\sin x$ est uniformément continue sur $\\mathbb{R}$.",
+              "title": "Exemples",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "D'après le théorème de Heine, $x\\mapsto x^2$ est uniformément continue sur $[0,1]$.",
+                "answer": true,
+                "explanation": "Vrai : elle est continue sur le segment $[0,1]$ (fermé borné)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute fonction uniformément continue sur $I$ est continue sur $I$.",
+              "answer": true,
+              "explanation": "Vrai : il suffit de fixer $x'=a$ dans la définition."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute fonction continue sur $\\mathbb{R}$ est uniformément continue sur $\\mathbb{R}$.",
+              "answer": false,
+              "explanation": "Faux : $x\\mapsto x^2$ est continue mais pas uniformément continue sur $\\mathbb{R}$. Heine ne s'applique qu'aux segments $[a,b]$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Le théorème de Heine s'applique à une fonction continue sur :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$[a,b]$ (fermé et borné)"
+                },
+                {
+                  "id": "b",
+                  "md": "$]a,b[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathbb{R}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[a,+\\infty[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Il faut un intervalle **fermé borné** (un segment)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la définition de l'uniforme continuité, l'ordre des quantificateurs est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists\\eta>0,\\ \\forall x,x'\\in I$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\forall x\\in I,\\ \\forall\\varepsilon>0,\\ \\exists\\eta>0,\\ \\forall x'\\in I$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\exists\\eta>0,\\ \\forall\\varepsilon>0,\\ \\forall x,x'\\in I$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall x,x'\\in I,\\ \\exists\\eta>0,\\ \\forall\\varepsilon>0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\eta$ est choisi après $\\varepsilon$ mais avant les points. Le deuxième ordre est celui de la simple continuité."
+            }
+          ]
+        },
+        {
+          "slug": "fonctions-lipschitziennes",
+          "title": "Fonctions lipschitziennes",
+          "number": "4.3",
+          "estimatedMinutes": 7,
+          "summary": "Fonctions k-lipschitziennes et contractantes, caractérisation par les taux d'accroissement ; lipschitzienne implique uniformément continue.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $I\\subset\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ une fonction. Soit $k\\ge0$. On dit que $f$ est\n- **$k$-lipschitzienne** sur $I$ si $\\forall x,x'\\in I,\\quad |f(x)-f(x')|\\le k|x-x'|$ ;\n- **$k$-contractante** sur $I$ si $f$ est $k$-lipschitzienne et $k\\in[0,1[$.",
+              "title": "Fonction lipschitzienne",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le nombre $k$ n'est pas unique car si $\\forall(x,y)\\in I^2,\\ |f(x)-f(y)|\\le k|x-y|$, alors par exemple $\\forall(x,y)\\in I^2,\\ |f(x)-f(y)|\\le(k+1)|x-y|$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Une fonction $k$-lipschitzienne « n'étire pas les distances de plus d'un facteur $k$ ». Géométriquement : toutes les cordes de sa courbe ont une pente comprise entre $-k$ et $k$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La fonction $x\\mapsto|x|$ est $1$-lipschitzienne sur $\\mathbb{R}$.",
+                "answer": true,
+                "explanation": "Vrai : l'inégalité triangulaire renversée donne $\\bigl||x|-|x'|\\bigr|\\le|x-x'|$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Un résultat immédiat est :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "$f$ est lipschitzienne sur $I$ si et seulement si\n\n$$\\sup\\left\\{\\frac{|f(x)-f(y)|}{|x-y|}\\ ,\\ (x,y)\\in I^2,\\ x\\ne y\\right\\}<+\\infty.$$",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soit $I\\subset\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ une fonction $k$-lipschitzienne sur $I$. Alors $f$ est uniformément continue sur $I$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Preuve rapide : si $k>0$, pour $\\varepsilon>0$ on prend $\\eta_\\varepsilon=\\frac\\varepsilon k$ ; alors $|x-x'|\\le\\eta_\\varepsilon\\Rightarrow|f(x)-f(x')|\\le k\\eta_\\varepsilon=\\varepsilon$. (Si $k=0$, $f$ est constante.)",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "1. La fonction $x\\mapsto\\sqrt x$ est lipschitzienne sur $[1,+\\infty[$.\n2. La fonction $x\\mapsto\\sqrt x$ n'est pas lipschitzienne sur $[0,1]$.",
+              "title": "Exemples",
+              "steps": [
+                {
+                  "md": "Pour $x,y\\ge1$ : $|\\sqrt x-\\sqrt y|=\\dfrac{|x-y|}{\\sqrt x+\\sqrt y}\\le\\dfrac{|x-y|}{2}$. Donc $\\sqrt{\\cdot}$ est $\\frac12$-lipschitzienne sur $[1,+\\infty[$.",
+                  "why": "On multiplie par la quantité conjuguée."
+                },
+                {
+                  "md": "Sur $[0,1]$, avec $y=0$ : $\\dfrac{|\\sqrt x-0|}{|x-0|}=\\dfrac1{\\sqrt x}$, qui n'est pas majoré quand $x\\to0^+$. Par le théorème, $\\sqrt{\\cdot}$ n'est pas lipschitzienne sur $[0,1]$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-racine-lipschitz.svg",
+              "alt": "Courbe de la racine carrée, très raide près de 0.",
+              "caption": "Figure — √x est très raide près de 0 (pente infinie) : pas lipschitzienne sur [0, 1].",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "La fonction $x\\mapsto 5x-2$ est $k$-lipschitzienne sur $\\mathbb{R}$ avec un plus petit $k$ égal à ___",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "$|f(x)-f(x')|=5|x-x'|$ : $k=5$ convient et aucun $k<5$ ne convient."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute fonction lipschitzienne sur $I$ est uniformément continue sur $I$.",
+              "answer": true,
+              "explanation": "Vrai : on prend $\\eta_\\varepsilon=\\varepsilon/k$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est $2$-lipschitzienne sur $I$, elle est aussi $3$-lipschitzienne sur $I$.",
+              "answer": true,
+              "explanation": "Vrai : $|f(x)-f(x')|\\le2|x-x'|\\le3|x-x'|$. La constante $k$ n'est pas unique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une fonction $k$-contractante est une fonction $k$-lipschitzienne avec :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$k\\in[0,1[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$k>1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$k=1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$k$ quelconque"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la définition : $k\\in[0,1[$ — la fonction rapproche les points."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi $x\\mapsto\\sqrt x$ n'est-elle pas lipschitzienne sur $[0,1]$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le taux $\\frac{\\sqrt x}{x}=\\frac1{\\sqrt x}$ n'est pas borné près de $0$"
+                },
+                {
+                  "id": "b",
+                  "md": "Elle n'est pas continue en $0$"
+                },
+                {
+                  "id": "c",
+                  "md": "Elle n'est pas définie en $0$"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle est décroissante"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La caractérisation exige que les taux d'accroissement soient bornés ; près de $0$ ils explosent (tangente verticale)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $x,y\\ge1$, $|\\sqrt x-\\sqrt y|\\le k|x-y|$ avec $k=$ ___ (valeur obtenue dans l'exemple du cours)",
+              "answerType": "number",
+              "accepted": [
+                "0.5",
+                "1/2"
+              ],
+              "explanation": "$|\\sqrt x-\\sqrt y|=\\frac{|x-y|}{\\sqrt x+\\sqrt y}$ et $\\sqrt x+\\sqrt y\\ge2$, d'où $k=\\frac12$."
+            }
+          ]
+        },
+        {
+          "slug": "bijections-fonctions-reciproques",
+          "title": "Bijections et fonctions réciproques",
+          "number": "4.4",
+          "estimatedMinutes": 10,
+          "summary": "Injection, surjection, bijection, application réciproque ; théorème de la bijection pour les fonctions continues strictement monotones.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "- Une application $f:E\\to F$ est **injective** si tout élément de $F$ a au plus un antécédent par $f$, c'est-à-dire $\\forall x_1,x_2\\in E,\\ f(x_1)=f(x_2)\\implies x_1=x_2$.\n- Une application $f:E\\to F$ est **surjective** si tout élément de $F$ a au moins un antécédent par $f$, c'est-à-dire $\\forall y\\in F,\\ \\exists x\\in E,\\ y=f(x)$.\n- Une application $f:E\\to F$ est **bijective** si elle est à la fois injective et surjective, c'est-à-dire $\\forall y\\in F,\\ \\exists!\\,x\\in E,\\ y=f(x)$.",
+              "title": "Injectivité, surjectivité, bijectivité",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Soit une application bijective $f:E\\to F$. Il existe alors une unique application notée $f^{-1}:F\\to E$ telle que $f^{-1}\\circ f=\\operatorname{Id}_E$ et $f\\circ f^{-1}=\\operatorname{Id}_F$. L'application $f^{-1}$ est appelée **application réciproque** de $f$.",
+              "title": "Application réciproque",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "L'application $f:\\mathbb{R}\\to\\mathbb{R}$, $x\\mapsto x^2$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "ni injective ni surjective"
+                  },
+                  {
+                    "id": "b",
+                    "md": "injective"
+                  },
+                  {
+                    "id": "c",
+                    "md": "surjective"
+                  },
+                  {
+                    "id": "d",
+                    "md": "bijective"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f(-1)=f(1)$ : pas injective ; $-1$ n'a pas d'antécédent : pas surjective."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit une fonction $f:I\\to\\mathbb{R}$ définie sur un intervalle $I$. On note $J=f(I)$. On suppose que la fonction $f$ est :\n1. continue sur $I$ ;\n2. strictement monotone sur $I$.\n\nAlors la fonction $f$ réalise une bijection de l'intervalle $I$ vers l'intervalle $J$, et sa bijection réciproque $f^{-1}:J\\to I$ est une fonction continue strictement monotone de même sens que $f$.",
+              "title": "Fonction réciproque et monotonie",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "La fonction $x\\mapsto e^x$ est une bijection de $\\mathbb{R}$ sur $\\mathbb{R}_+^*$ ; sa fonction réciproque est $f^{-1}(x)=\\ln(x)$.",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-exp.svg",
+              "alt": "Courbe de l'exponentielle, strictement croissante, tendant vers 0 en −∞ et vers +∞ en +∞.",
+              "caption": "Figure — exp est continue et strictement croissante : bijection de ℝ sur ]0, +∞[.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Les courbes de $f$ et $f^{-1}$ sont symétriques par rapport à la droite $y=x$ : le point $(a,b)$ est sur la courbe de $f$ si et seulement si $(b,a)$ est sur celle de $f^{-1}$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f$ est continue et strictement décroissante sur $I$, alors $f^{-1}$ est strictement croissante sur $f(I)$.",
+                "answer": false,
+                "explanation": "Faux : $f^{-1}$ est strictement monotone **de même sens** que $f$, donc strictement décroissante."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Soit $f$ la fonction définie de $[0,1]$ dans $\\mathbb{R}$ par $f(x)=\\dfrac{x}{x^2+1}$.\n1. Montrer directement que $f$ est strictement monotone.\n2. En déduire que $f$ est une bijection de $[0,1]$ sur $f([0,1])$ et déterminer $f^{-1}$.",
+              "title": "Exercice",
+              "solution": [
+                {
+                  "md": "Pour $0\\le x<y\\le1$ : $f(y)-f(x)=\\dfrac{y(x^2+1)-x(y^2+1)}{(x^2+1)(y^2+1)}=\\dfrac{(y-x)(1-xy)}{(x^2+1)(y^2+1)}$.",
+                  "why": "Le numérateur vaut $yx^2-xy^2+y-x=xy(x-y)+(y-x)$."
+                },
+                {
+                  "md": "Comme $y-x>0$ et $xy<1$ (car $x<y\\le1$, donc $x<1$), on a $f(y)-f(x)>0$ : $f$ est strictement croissante sur $[0,1]$."
+                },
+                {
+                  "md": "$f$ est continue (fraction rationnelle à dénominateur non nul) et strictement croissante : c'est une bijection de $[0,1]$ sur $f([0,1])=[f(0),f(1)]=\\left[0,\\frac12\\right]$."
+                },
+                {
+                  "md": "Pour $y\\in\\left]0,\\frac12\\right]$, $y=\\frac{x}{x^2+1}\\iff yx^2-x+y=0\\iff x=\\dfrac{1\\pm\\sqrt{1-4y^2}}{2y}$."
+                },
+                {
+                  "md": "La racine avec « $+$ » est $\\ge\\frac1{2y}\\ge1$ (égalité seulement si $y=\\frac12$) ; celle qui est dans $[0,1]$ est donc $f^{-1}(y)=\\dfrac{1-\\sqrt{1-4y^2}}{2y}$, et $f^{-1}(0)=0$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soient $I$ un intervalle de $\\mathbb{R}$ et $f:I\\to\\mathbb{R}$ continue. Alors $f$ est injective $\\iff$ $f$ est strictement monotone sur $I$.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque propriété de $f:E\\to F$ à sa traduction.",
+              "pairs": [
+                {
+                  "left": "injective",
+                  "right": "tout $y\\in F$ a **au plus** un antécédent"
+                },
+                {
+                  "left": "surjective",
+                  "right": "tout $y\\in F$ a **au moins** un antécédent"
+                },
+                {
+                  "left": "bijective",
+                  "right": "tout $y\\in F$ a **exactement** un antécédent"
+                }
+              ],
+              "explanation": "Injective = au plus un, surjective = au moins un, bijective = exactement un."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$x\\mapsto e^x$ est une bijection de $\\mathbb{R}$ sur :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathbb{R}_+^*=]0,+\\infty[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathbb{R}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$[0,+\\infty[$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[1,+\\infty[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$e^x>0$ pour tout $x$ et toute valeur $y>0$ est atteinte ($x=\\ln y$). La valeur $0$ n'est pas atteinte."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une fonction continue et injective sur un intervalle est strictement monotone.",
+              "answer": true,
+              "explanation": "Vrai : c'est la dernière proposition de la leçon (l'hypothèse « intervalle » est essentielle)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec $f(x)=\\dfrac{x}{x^2+1}$ sur $[0,1]$, l'intervalle image est $f([0,1])=[0,m]$ avec $m=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0.5",
+                "1/2"
+              ],
+              "explanation": "$f$ est continue strictement croissante, donc $f([0,1])=[f(0),f(1)]=[0,\\frac12]$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $f:I\\to J$ est bijective, que vaut $f^{-1}\\circ f$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\operatorname{Id}_I$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\operatorname{Id}_J$"
+                },
+                {
+                  "id": "c",
+                  "md": "$f$"
+                },
+                {
+                  "id": "d",
+                  "md": "$f^2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$f^{-1}\\circ f$ part de $I$ et y revient : c'est $\\operatorname{Id}_I$ ; et $f\\circ f^{-1}=\\operatorname{Id}_J$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comparaison-fonctions",
+      "title": "Comparaison de fonctions",
+      "number": "5",
+      "lessons": [
+        {
+          "slug": "limites-par-comparaison",
+          "title": "Calcul de limites par comparaison",
+          "number": "5.1",
+          "estimatedMinutes": 7,
+          "summary": "Majoration par une fonction de limite nulle et théorème d'encadrement.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit une fonction $f:I\\to\\mathbb{R}$, un point $a\\in\\overline I$ et un réel $\\ell\\in\\mathbb{R}$. Soit $\\theta$ une fonction définie sur un voisinage $V$ de $a$. On suppose que :\n- (H1) $\\forall x\\in V,\\quad |f(x)-\\ell|\\le\\theta(x)$ ;\n- (H2) $\\theta(x)\\xrightarrow[x\\to a]{}0$.\n\nAlors $f(x)\\xrightarrow[x\\to a]{}\\ell$.",
+              "title": "Majoration par une fonction de limite nulle",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-encadrement-theta.svg",
+              "alt": "La courbe de f oscille entre ℓ−θ(x) et ℓ+θ(x), qui se resserrent sur ℓ en a.",
+              "caption": "Figure — |f(x) − ℓ| ≤ θ(x) avec θ(x) → 0 : f(x) → ℓ.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $|f(x)-3|\\le x^2$ près de $0$. Alors :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\lim_{x\\to0}f(x)=3$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\lim_{x\\to0}f(x)=0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$f$ n'a pas de limite en $0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\lim_{x\\to0}f(x)=9$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\theta(x)=x^2\\to0$ en $0$, donc $f(x)\\to3$ par le théorème."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soient $\\alpha$, $f$, $\\beta$ trois fonctions définies sur un voisinage $V$ du point $a$, et $\\ell\\in\\mathbb{R}$. On suppose que :\n- (H1) $\\forall x\\in V,\\quad \\alpha(x)\\le f(x)\\le\\beta(x)$ ;\n- (H2) $\\alpha(x)\\xrightarrow[x\\to a]{}\\ell$ et $\\beta(x)\\xrightarrow[x\\to a]{}\\ell$.\n\nAlors la fonction $f$ admet une limite au point $a$ et $f(x)\\xrightarrow[x\\to a]{}\\ell$.",
+              "title": "Théorème d'encadrement",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-gendarmes.svg",
+              "alt": "La courbe de f prise entre celles de α et β, qui se rejoignent en (a, ℓ).",
+              "caption": "Figure — théorème des gendarmes : α ≤ f ≤ β.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Pour tout $x\\in\\mathbb{R}_+^*$, $\\dfrac{-1}{x}\\le\\dfrac{\\sin x}{x}\\le\\dfrac1x$. Or\n\n$$\\lim_{x\\to+\\infty}\\left(\\frac{-1}{x}\\right)=\\lim_{x\\to+\\infty}\\left(\\frac1x\\right)=0,\\qquad\\text{donc}\\qquad\\lim_{x\\to+\\infty}\\left(\\frac{\\sin x}{x}\\right)=0.$$",
+              "title": "Exemple",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\displaystyle\\lim_{x\\to+\\infty}\\frac{\\cos x}{x^2}=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "0"
+                ],
+                "explanation": "$-\\frac1{x^2}\\le\\frac{\\cos x}{x^2}\\le\\frac1{x^2}$ et les deux bornes tendent vers $0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans le théorème d'encadrement, il faut savoir à l'avance que $f$ a une limite en $a$.",
+              "answer": false,
+              "explanation": "Faux : le théorème **prouve** l'existence de la limite de $f$, en plus de donner sa valeur."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle majoration permet de montrer que $\\lim_{x\\to0}x\\cos\\frac1x=0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\left|x\\cos\\frac1x\\right|\\le|x|$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\left|x\\cos\\frac1x\\right|\\le1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$x\\cos\\frac1x\\le x$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\left|\\cos\\frac1x\\right|\\le|x|$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Avec $\\ell=0$ et $\\theta(x)=|x|\\to0$. Une majoration par $1$ ne suffit pas : il faut une majorante qui tend vers $0$. La troisième est fausse pour $x<0$ et la quatrième est fausse."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $|f(x)-\\ell|\\le\\theta(x)$ près de $a$ et $\\theta(x)\\to1$, alors $f(x)\\to\\ell$.",
+              "answer": false,
+              "explanation": "Faux : il faut $\\theta\\to0$. Avec $\\theta\\to1$ on sait seulement que $f$ reste à distance au plus (environ) $1$ de $\\ell$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{x\\to+\\infty}\\frac{\\sin x}{x}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "Encadrement par $-\\frac1x$ et $\\frac1x$, qui tendent vers $0$."
+            }
+          ]
+        },
+        {
+          "slug": "negligeabilite-equivalence",
+          "title": "Négligeabilité et équivalence de fonctions",
+          "number": "5.2",
+          "estimatedMinutes": 11,
+          "summary": "Notation o (fonction négligeable), fonctions équivalentes, règles de calcul et croissances comparées.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soient deux fonctions $f,g:I\\to\\mathbb{R}$ et un point $a\\in I$ ou une borne (éventuellement infinie) de $I$. On suppose que $g$ ne s'annule pas au voisinage de $a$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "On dit que $f=o(g)$ (la fonction $f$ est **négligeable** devant la fonction $g$ au voisinage du point $a$) si et seulement si\n\n$$\\frac{f(x)}{g(x)}\\xrightarrow[x\\to a]{}0.$$",
+              "title": "Fonction négligeable",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "En $+\\infty$ : $x=o(x^2)$ car $\\frac{x}{x^2}=\\frac1x\\to0$. En $0$ : $x^2=o(x)$ car $\\frac{x^2}{x}=x\\to0$. Le point $a$ compte !",
+              "title": "Exemple",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Au voisinage du point $a$ :\n1. $f=o(g)$ et $g=o(h)\\implies f=o(h)$ ;\n2. $f_1=o(g)$ et $f_2=o(g)\\implies f_1+f_2=o(g)$ ;\n3. $f_1=o(g_1)$ et $f_2=o(g_2)\\implies f_1f_2=o(g_1g_2)$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "On dit que les fonctions $f$ et $g$ sont **équivalentes** au voisinage du point $a$ lorsque $f-g=o(g)$ ; cela revient à dire que\n\n$$\\frac{f(x)}{g(x)}\\xrightarrow[x\\to a]{}1.$$\n\nOn note alors $f\\underset{x\\to a}{\\sim}g$.",
+              "title": "Fonctions équivalentes",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "En $+\\infty$, $3x^2+x+5\\underset{x\\to+\\infty}{\\sim}3x^2$ car $\\frac{3x^2+x+5}{3x^2}=1+\\frac1{3x}+\\frac5{3x^2}\\to1$ : un polynôme est équivalent en $\\pm\\infty$ à son terme de plus haut degré.",
+              "title": "Exemple",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soient deux fonctions $f,g:I\\to\\mathbb{R}$ et un point $a\\in\\overline I$.\n1. $f\\underset{x\\to a}{\\sim}g$ et $g(x)\\xrightarrow[x\\to a]{}\\ell\\implies f(x)\\xrightarrow[x\\to a]{}\\ell$.\n2. $f(x)\\xrightarrow[x\\to a]{}\\ell$ et $\\ell\\ne0\\implies f\\underset{x\\to a}{\\sim}\\ell$.\n3. $f_1\\underset{x\\to a}{\\sim}g_1$ et $f_2\\underset{x\\to a}{\\sim}g_2\\implies f_1f_2\\underset{x\\to a}{\\sim}g_1g_2$ $\\left(\\text{et } \\dfrac{f_1}{f_2}\\underset{x\\to a}{\\sim}\\dfrac{g_1}{g_2}\\right)$.\n4. Soit $\\alpha\\in\\mathbb{R}$ (indépendant de $x$). Si $f\\underset{x\\to a}{\\sim}g$, alors $f^\\alpha\\underset{x\\to a}{\\sim}g^\\alpha$ (pour des puissances réelles, on suppose les bases strictement positives).",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "En utilisant des équivalents, $\\displaystyle\\lim_{x\\to+\\infty}\\frac{2x^3-x}{5x^3+x^2}=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "0.4",
+                  "2/5"
+                ],
+                "explanation": "$2x^3-x\\sim2x^3$ et $5x^3+x^2\\sim5x^3$, donc le quotient est équivalent à $\\frac{2x^3}{5x^3}=\\frac25$, qui est sa limite (point 1)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "On peut multiplier, diviser et élever à une puissance fixe des équivalents, mais le théorème ne dit rien des **sommes** : en $+\\infty$, $x+1\\sim x$ et $-x\\sim-x+\\frac1x$, pourtant $(x+1)+(-x)=1$ n'est pas équivalent à $x+(-x+\\frac1x)=\\frac1x$.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soient $\\alpha,\\beta,\\gamma>0$ trois réels.\n1. **Comparaison $\\ln$ et puissance :**\n   - en $+\\infty$ : $(\\ln x)^\\gamma=o(x^\\alpha)$ ;\n   - en $0^+$ : $|\\ln x|^\\gamma=o\\left(\\dfrac1{x^\\alpha}\\right)$.\n2. **Comparaison puissance et exponentielle :**\n   - en $+\\infty$ : $x^\\alpha=o\\left(e^{\\beta x}\\right)$ ;\n   - en $-\\infty$ : $e^{\\beta x}=o\\left(\\dfrac1{|x|^\\alpha}\\right)$.",
+              "title": "Croissances comparées",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que vaut $\\displaystyle\\lim_{x\\to+\\infty}\\frac{x^{10}}{e^{x}}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$+\\infty$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$10$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Croissances comparées : $x^{10}=o(e^{x})$ en $+\\infty$, donc le quotient tend vers $0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Au voisinage de $0$, $x=o(x^2)$.",
+              "answer": false,
+              "explanation": "Faux : en $0$, $\\frac{x}{x^2}=\\frac1x$ ne tend pas vers $0$. C'est au contraire $x^2=o(x)$ en $0$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque limite (en $+\\infty$ sauf indication) à sa valeur, par croissances comparées.",
+              "pairs": [
+                {
+                  "left": "$\\dfrac{(\\ln x)^3}{x}$",
+                  "right": "$0$"
+                },
+                {
+                  "left": "$\\dfrac{e^{2x}}{x^5}$",
+                  "right": "$+\\infty$"
+                },
+                {
+                  "left": "$\\dfrac{x^2+1}{x^2}$",
+                  "right": "$1$"
+                },
+                {
+                  "left": "$\\dfrac{x^3+x}{2x^3}$",
+                  "right": "$\\frac12$"
+                }
+              ],
+              "explanation": "$(\\ln x)^3=o(x)$ ; $x^5=o(e^{2x})$ donc l'inverse du quotient tend vers $0$ ; les deux derniers quotients se ramènent aux termes dominants : $\\frac{x^2}{x^2}=1$ et $\\frac{x^3}{2x^3}=\\frac12$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f\\underset{a}{\\sim}g$ et $g(x)\\to5$ en $a$, alors $f(x)\\to5$ en $a$.",
+              "answer": true,
+              "explanation": "Vrai : point 1 du théorème."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Au voisinage de $+\\infty$, $x^4-100x^3+7$ est équivalent à :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$x^4$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-100x^3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$7$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x^3$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Un polynôme est équivalent en $\\pm\\infty$ à son terme de plus haut degré : $\\frac{x^4-100x^3+7}{x^4}=1-\\frac{100}x+\\frac7{x^4}\\to1$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$f$ et $g$ sont équivalentes en $a$ si et seulement si $\\dfrac{f(x)}{g(x)}$ tend vers ___ quand $x\\to a$",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "C'est la définition : $f\\sim g\\iff\\frac fg\\to1$ (avec $g$ non nulle près de $a$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f_1\\sim g_1$ et $f_2\\sim g_2$ en $a$, alors $f_1+f_2\\sim g_1+g_2$ en $a$.",
+              "answer": false,
+              "explanation": "Faux en général : les équivalents ne s'ajoutent pas. Le théorème ne concerne que les produits, quotients et puissances."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fonctions-reciproques-usuelles",
+      "title": "Fonctions réciproques usuelles",
+      "number": "6",
+      "lessons": [
+        {
+          "slug": "fonctions-circulaires-reciproques",
+          "title": "Fonctions circulaires réciproques",
+          "number": "6.1",
+          "estimatedMinutes": 10,
+          "summary": "Arccosinus, arcsinus et arctangente : restrictions bijectives de cos, sin, tan et identités fondamentales.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Arccosinus",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Considérons la fonction cosinus $\\cos:\\mathbb{R}\\to[-1,1]$, $x\\mapsto\\cos x$. Pour obtenir une bijection à partir de cette fonction, il faut considérer la restriction de cosinus à l'intervalle $[0,\\pi]$. Sur cet intervalle la fonction cosinus est continue et strictement décroissante, donc la restriction\n\n$$\\cos_{|[0,\\pi]}:[0,\\pi]\\to[-1,1]$$\n\nest une bijection. Sa bijection réciproque est la fonction\n\n$$\\arccos:[-1,1]\\to[0,\\pi].$$",
+              "title": "Fonction $\\arccos$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-arccos.svg",
+              "alt": "À gauche la courbe de cos avec en gras la restriction à [0, π] ; à droite la courbe de arccos de [−1,1] vers [0, π].",
+              "caption": "Figure — cos restreinte à [0, π] et sa réciproque arccos.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On a donc, par définition de la bijection réciproque :\n\n$$\\cos\\bigl(\\arccos(x)\\bigr)=x\\quad\\forall x\\in[-1,1],\\qquad \\arccos\\bigl(\\cos(x)\\bigr)=x\\quad\\forall x\\in[0,\\pi].$$\n\nAutrement dit : si $x\\in[0,\\pi]$, $\\cos(x)=y\\iff x=\\arccos y$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\arccos\\left(\\dfrac12\\right)=$ ___ (en fraction de $\\pi$, par exemple « pi/4 »)",
+                "answerType": "text",
+                "accepted": [
+                  "pi/3",
+                  "π/3"
+                ],
+                "explanation": "On cherche $x\\in[0,\\pi]$ tel que $\\cos x=\\frac12$ : c'est $x=\\frac\\pi3$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Arcsinus",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "La restriction\n\n$$\\sin:\\left[-\\frac\\pi2,+\\frac\\pi2\\right]\\to[-1,1]$$\n\nest une bijection. Sa bijection réciproque est la fonction\n\n$$\\arcsin:[-1,1]\\to\\left[-\\frac\\pi2,+\\frac\\pi2\\right].$$",
+              "title": "Fonction $\\arcsin$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-arcsin.svg",
+              "alt": "À gauche la courbe de sin avec en gras la partie sur [−π/2, π/2] ; à droite la courbe de arcsin.",
+              "caption": "Figure — sin restreinte à [−π/2, π/2] et sa réciproque arcsin.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "$$\\sin\\bigl(\\arcsin(x)\\bigr)=x\\quad\\forall x\\in[-1,1],\\qquad \\arcsin\\bigl(\\sin(x)\\bigr)=x\\quad\\forall x\\in\\left[-\\frac\\pi2,+\\frac\\pi2\\right].$$\n\nSi $x\\in\\left[-\\frac\\pi2,+\\frac\\pi2\\right]$, $\\sin(x)=y\\iff x=\\arcsin y$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$\\arcsin(\\sin\\pi)=\\pi$.",
+                "answer": false,
+                "explanation": "Faux : $\\sin\\pi=0$ et $\\arcsin0=0$. L'identité $\\arcsin(\\sin x)=x$ n'est vraie que pour $x\\in[-\\frac\\pi2,\\frac\\pi2]$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Arctangente",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "La restriction\n\n$$\\tan:\\left]-\\frac\\pi2,+\\frac\\pi2\\right[\\to\\mathbb{R}$$\n\nest une bijection. Sa bijection réciproque est la fonction\n\n$$\\arctan:\\mathbb{R}\\to\\left]-\\frac\\pi2,+\\frac\\pi2\\right[.$$",
+              "title": "Fonction $\\arctan$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-tan.svg",
+              "alt": "Courbe de tan avec ses asymptotes verticales ; la branche centrale sur ]−π/2, π/2[ en gras.",
+              "caption": "Figure — tan et sa branche centrale sur ]−π/2, π/2[.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-arctan.svg",
+              "alt": "Courbe de arctan, croissante de −π/2 à π/2 avec deux asymptotes horizontales.",
+              "caption": "Figure — arctan : ℝ → ]−π/2, π/2[.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "$$\\tan\\bigl(\\arctan(x)\\bigr)=x\\quad\\forall x\\in\\mathbb{R},\\qquad \\arctan\\bigl(\\tan(x)\\bigr)=x\\quad\\forall x\\in\\left]-\\frac\\pi2,+\\frac\\pi2\\right[.$$\n\nSi $x\\in\\left]-\\frac\\pi2,+\\frac\\pi2\\right[$, $\\tan(x)=y\\iff x=\\arctan y$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Les dérivées de $\\arccos$, $\\arcsin$ et $\\arctan$ sont établies au chapitre 4 (leçon « Dérivées des fonctions réciproques usuelles »).",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque fonction à son ensemble d'arrivée (image).",
+              "pairs": [
+                {
+                  "left": "$\\arccos$",
+                  "right": "$[0,\\pi]$"
+                },
+                {
+                  "left": "$\\arcsin$",
+                  "right": "$\\left[-\\frac\\pi2,\\frac\\pi2\\right]$"
+                },
+                {
+                  "left": "$\\arctan$",
+                  "right": "$\\left]-\\frac\\pi2,\\frac\\pi2\\right[$"
+                }
+              ],
+              "explanation": "Ce sont les intervalles sur lesquels on a restreint $\\cos$, $\\sin$, $\\tan$ pour obtenir des bijections."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le domaine de définition de $\\arctan$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathbb{R}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[-1,1]$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\left]-\\frac\\pi2,\\frac\\pi2\\right[$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[0,\\pi]$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\tan$ réalise une bijection de $]-\\frac\\pi2,\\frac\\pi2[$ sur $\\mathbb{R}$ tout entier ; donc $\\arctan$ est définie sur $\\mathbb{R}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\arctan(1)=$ ___ (en fraction de $\\pi$)",
+              "answerType": "text",
+              "accepted": [
+                "pi/4",
+                "π/4"
+              ],
+              "explanation": "$\\tan\\frac\\pi4=1$ et $\\frac\\pi4\\in]-\\frac\\pi2,\\frac\\pi2[$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tout $x\\in[-1,1]$, $\\cos(\\arccos x)=x$.",
+              "answer": true,
+              "explanation": "Vrai : c'est la relation $f\\circ f^{-1}=\\operatorname{Id}$ sur $[-1,1]$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que vaut $\\arccos(\\cos(-\\frac\\pi3))$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\frac\\pi3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\frac\\pi3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\frac{2\\pi}3$"
+                },
+                {
+                  "id": "d",
+                  "md": "$0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\cos(-\\frac\\pi3)=\\frac12$ et $\\arccos\\frac12=\\frac\\pi3\\in[0,\\pi]$. La relation $\\arccos(\\cos x)=x$ exige $x\\in[0,\\pi]$, ce qui n'est pas le cas de $-\\frac\\pi3$."
+            }
+          ]
+        },
+        {
+          "slug": "fonctions-hyperboliques",
+          "title": "Fonctions hyperboliques et leurs réciproques",
+          "number": "6.2",
+          "estimatedMinutes": 12,
+          "summary": "Cosinus, sinus et tangente hyperboliques, leurs réciproques Argch, Argsh, Argth, formules de trigonométrie hyperbolique et expressions logarithmiques.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Cosinus hyperbolique et son inverse",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Pour $x\\in\\mathbb{R}$, le **cosinus hyperbolique** est\n\n$$\\operatorname{ch}x=\\frac{e^x+e^{-x}}{2}.$$\n\nLa restriction $\\operatorname{ch}:[0,+\\infty[\\to[1,+\\infty[$ est une bijection. Sa bijection réciproque est $\\operatorname{Argch}:[1,+\\infty[\\to[0,+\\infty[$.",
+              "title": "Cosinus hyperbolique",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Sinus hyperbolique et son inverse",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Pour $x\\in\\mathbb{R}$, le **sinus hyperbolique** est\n\n$$\\operatorname{sh}x=\\frac{e^x-e^{-x}}{2}.$$\n\n$\\operatorname{sh}:\\mathbb{R}\\to\\mathbb{R}$ est une fonction continue, dérivable, strictement croissante vérifiant $\\lim_{x\\to-\\infty}\\operatorname{sh}x=-\\infty$ et $\\lim_{x\\to+\\infty}\\operatorname{sh}x=+\\infty$ ; c'est donc une bijection. Sa bijection réciproque est $\\operatorname{Argsh}:\\mathbb{R}\\to\\mathbb{R}$.",
+              "title": "Sinus hyperbolique",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-ch-sh-argsh-argch.svg",
+              "alt": "À gauche les courbes de ch et sh ; à droite celles de Argsh et Argch.",
+              "caption": "Figure — ch, sh (à gauche) et leurs réciproques Argsh, Argch (à droite).",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "1. $\\operatorname{ch}^2x-\\operatorname{sh}^2x=1$.\n2. $\\operatorname{Argsh}:\\mathbb{R}\\to\\mathbb{R}$ est strictement croissante et continue.\n3. $\\operatorname{Argsh}x=\\ln\\left(x+\\sqrt{x^2+1}\\right)$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "1. On a $\\operatorname{ch}^2x-\\operatorname{sh}^2x=\\frac14\\left[\\left(e^x+e^{-x}\\right)^2-\\left(e^x-e^{-x}\\right)^2\\right]=\\frac14\\left[\\left(e^{2x}+2+e^{-2x}\\right)-\\left(e^{2x}-2+e^{-2x}\\right)\\right]=1$."
+                },
+                {
+                  "md": "2. Car c'est la réciproque de $\\operatorname{sh}$, qui est continue et strictement croissante sur l'intervalle $\\mathbb{R}$.",
+                  "why": "Théorème de la bijection (leçon 4.4)."
+                },
+                {
+                  "md": "3. La démonstration de cette formule, qui utilise la dérivation, est donnée au chapitre 4 (leçon « Dérivées des fonctions réciproques usuelles »)."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi $\\operatorname{ch}$ n'est-elle pas une bijection de $\\mathbb{R}$ sur $[1,+\\infty[$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Car elle est paire : $\\operatorname{ch}(-x)=\\operatorname{ch}x$, donc pas injective"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Car elle n'est pas continue"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Car elle n'atteint pas $1$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Car elle est impaire"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\operatorname{ch}(-1)=\\operatorname{ch}(1)$ : deux antécédents. D'où la restriction à $[0,+\\infty[$, où elle est strictement croissante."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Tangente hyperbolique et son inverse",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Par définition, la **tangente hyperbolique** est\n\n$$\\tanh x=\\frac{\\operatorname{sh}x}{\\operatorname{ch}x}.$$\n\nLa fonction $\\tanh:\\mathbb{R}\\to\\,]-1,1[$ est une bijection ; on note $\\operatorname{Argth}:\\,]-1,1[\\to\\mathbb{R}$ sa bijection réciproque.",
+              "title": "Tangente hyperbolique",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch03-th-argth.svg",
+              "alt": "À gauche la courbe de th avec ses asymptotes y=±1 ; à droite la courbe de Argth sur ]−1,1[.",
+              "caption": "Figure — th (asymptotes y = ±1) et sa réciproque Argth.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Trigonométrie hyperbolique",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "$$\\begin{gathered}\n\\operatorname{ch}^2x-\\operatorname{sh}^2x=1\\\\[4pt]\n\\operatorname{ch}(a+b)=\\operatorname{ch}a\\cdot\\operatorname{ch}b+\\operatorname{sh}a\\cdot\\operatorname{sh}b\\\\\n\\operatorname{ch}(2a)=\\operatorname{ch}^2a+\\operatorname{sh}^2a=2\\operatorname{ch}^2a-1=1+2\\operatorname{sh}^2a\\\\[4pt]\n\\operatorname{sh}(a+b)=\\operatorname{sh}a\\cdot\\operatorname{ch}b+\\operatorname{sh}b\\cdot\\operatorname{ch}a\\\\\n\\operatorname{sh}(2a)=2\\operatorname{sh}a\\cdot\\operatorname{ch}a\\\\[4pt]\n\\tanh(a+b)=\\frac{\\tanh a+\\tanh b}{1+\\tanh a\\cdot\\tanh b}\n\\end{gathered}$$\n\n$$\\begin{aligned}\n\\operatorname{Argch}x&=\\ln\\left(x+\\sqrt{x^2-1}\\right)&&(x\\ge1),\\\\\n\\operatorname{Argsh}x&=\\ln\\left(x+\\sqrt{x^2+1}\\right)&&(x\\in\\mathbb{R}),\\\\\n\\operatorname{Argth}x&=\\frac12\\ln\\left(\\frac{1+x}{1-x}\\right)&&(-1<x<1).\n\\end{aligned}$$",
+              "title": "Formules de trigonométrie hyperbolique",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Ces formules ressemblent à celles de la trigonométrie circulaire, avec des changements de signe : $\\cos^2+\\sin^2=1$ devient $\\operatorname{ch}^2-\\operatorname{sh}^2=1$, et $\\cos(a+b)=\\cos a\\cos b-\\sin a\\sin b$ devient $\\operatorname{ch}(a+b)=\\operatorname{ch}a\\operatorname{ch}b+\\operatorname{sh}a\\operatorname{sh}b$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\operatorname{Argth}(0)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "0"
+                ],
+                "explanation": "$\\frac12\\ln\\frac{1+0}{1-0}=\\frac12\\ln1=0$ (et en effet $\\tanh0=0$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Les dérivées des fonctions hyperboliques et de leurs réciproques ($\\operatorname{ch}'=\\operatorname{sh}$, $\\operatorname{sh}'=\\operatorname{ch}$, $\\operatorname{Argsh}'$, …) sont traitées au chapitre 4 (leçon « Dérivées des fonctions réciproques usuelles »).",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque fonction à son expression.",
+              "pairs": [
+                {
+                  "left": "$\\operatorname{ch}x$",
+                  "right": "$\\frac{e^x+e^{-x}}2$"
+                },
+                {
+                  "left": "$\\operatorname{sh}x$",
+                  "right": "$\\frac{e^x-e^{-x}}2$"
+                },
+                {
+                  "left": "$\\operatorname{Argsh}x$",
+                  "right": "$\\ln\\left(x+\\sqrt{x^2+1}\\right)$"
+                },
+                {
+                  "left": "$\\operatorname{Argth}x$",
+                  "right": "$\\frac12\\ln\\frac{1+x}{1-x}$"
+                }
+              ],
+              "explanation": "Ce sont les définitions de $\\operatorname{ch}$, $\\operatorname{sh}$ et les expressions logarithmiques des réciproques."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tout $x\\in\\mathbb{R}$, $\\operatorname{ch}^2x+\\operatorname{sh}^2x=1$.",
+              "answer": false,
+              "explanation": "Faux : la relation fondamentale est $\\operatorname{ch}^2x-\\operatorname{sh}^2x=1$. D'ailleurs $\\operatorname{ch}^2x+\\operatorname{sh}^2x=\\operatorname{ch}(2x)$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est l'ensemble image de $\\tanh$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$]-1,1[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[-1,1]$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathbb{R}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[1,+\\infty[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\tanh$ est une bijection de $\\mathbb{R}$ sur $]-1,1[$ : les valeurs $\\pm1$ ne sont jamais atteintes (asymptotes)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\operatorname{Argch}(1)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$\\ln(1+\\sqrt{1-1})=\\ln1=0$ ; en effet $\\operatorname{ch}0=1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$\\operatorname{sh}(2a)$ est égal à :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$2\\operatorname{sh}a\\operatorname{ch}a$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\operatorname{sh}^2a+\\operatorname{ch}^2a$"
+                },
+                {
+                  "id": "c",
+                  "md": "$2\\operatorname{sh}a$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\operatorname{ch}^2a-\\operatorname{sh}^2a$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Avec $\\operatorname{sh}(a+b)=\\operatorname{sh}a\\operatorname{ch}b+\\operatorname{sh}b\\operatorname{ch}a$ et $b=a$. (La deuxième option est $\\operatorname{ch}(2a)$, la dernière vaut $1$.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : Analyse 1, Prof. Saïd TAARABTI, ENSA Agadir (F107, 21 pages, scannées). Contenu repris de la transcription LaTeX fidèle leçon par leçon (output/course_path/bodies/ch03, 21 leçons), dans l'ordre de la source ; les 21 leçons sont regroupées en 6 sections. Numérotation des leçons « section.leçon » propre au site (la source numérote définitions et théorèmes en continu : Déf. 25 à 46, Th. 29 à 38…).",
+    "Coquilles corrigées (déjà dans la transcription) : « valeur dans R » → « à valeurs dans R » (Déf. 25) ; « de mme » → « de même » (Déf. 31) ; « n'est l que pourêtre sr » → « n'est là que pour être sûr » (Rem. 16) ; « raccourci » → « raccourcit » (Rem. 17) ; « prolonger » → « prolongées » (Ex. 33).",
+    "Corrections mathématiques (déjà dans la transcription, d'après les annotations de la source) : Déf. 35 périodicité « ∀x ∈ I » → « ∀x ∈ R » ; Déf. 37 le seuil dépend de A (η_ε renommé η_A) ; Ex. 34 « grâce au corollaire précédent » → « grâce au théorème de Bolzano » et f(a), f(b) → P(a), P(b) ; Déf. 42 « f : D → R … sur D » unifié en I ; Th. 32 dénominateur |x − y| ; Exercice 3 : bijection vers f([0,1]) et non vers R ; Prop. 20 : hypothèse « I intervalle » rétablie ; Th. 37.3 : f1 f2 ~ g1 g2 (la source écrivait f1 g1 ~ f2 g2) ; Th. 38 : en 0 limite à droite, en −∞ 1/|x|^α ; le « Théorème 36 » de la source (notation o) est présenté comme une définition.",
+    "Précisions issues des annotations de la source : la limite est définie sans exclure a (si a ∈ I, ℓ = f(a)) — remarque en leçon 2.1 et 2.3 ; caractérisation séquentielle avec (u_n) à valeurs dans I et ℓ ∈ I (leçon 3.4).",
+    "Matériel déplacé : voisinage d'un réel et point adhérent (p. 2–3) relèvent de la topologie de R (chapitre 1) ; remplacés par un court rappel en tête de la leçon 2.1, qui énonce aussi les voisinages de ±∞ (absents du ch. 1). Les dérivées de arccos, arcsin, arctan (p. 17–18) et de ch, sh, th, Argch, Argsh, Argth (p. 19–20), ainsi que la preuve de Argsh x = ln(x + √(x²+1)) par dérivation, sont au chapitre 4 (leçon « Dérivées des fonctions réciproques usuelles »).",
+    "Figures : les figures TikZ de la source sont redessinées (SVG dans public/figures/analyse-1/, sources TikZ dans output/figures_src/analyse-1/) ; ajout de simulations (limite ε–η, TVI). La petite figure décorative de la Prop. 13 n'est pas reprise.",
+    "Ajouts pédagogiques (origin « added ») : intuitions, exemples (sup non atteint, extremum local non global, formes indéterminées, gendarmes avec x² sin(1/x), |x|/x, suite récurrente √(2+u_n), polynôme équivalent à son terme dominant), justifications courtes des exemples non démontrés dans la source (x² non uniformément continue sur R, √x lipschitzienne sur [1,+∞[ et non sur [0,1], lipschitzienne ⇒ uniformément continue), remarque sur la somme d'équivalents.",
+    "Leçon 4.4 : l'Exercice 3 de la source n'a pas de corrigé ; une solution détaillée a été ajoutée dans le bloc exercice (à relire).",
+    "Non démontrés dans la source (donc pas de preuve ici) : unicité de la limite, opérations sur les limites, caractérisation séquentielle, TVI, Heine, théorème de la bijection, propriétés de o et ~, croissances comparées."
+  ]
+}

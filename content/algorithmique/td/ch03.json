@@ -1,0 +1,1233 @@
+{
+  "chapter": 3,
+  "title": "Variables, types et opérateurs",
+  "series": "Série de TD N°2 : Opérateurs arithmétiques et logiques (Pr. Lamya Oukhouya, Filière AP 1re année, 2026-2027)",
+  "intro_md": "**Objectif de la série**\n\nCette série complète la série n°1 en se concentrant sur les opérateurs du langage algorithmique. Chaque exercice se résout toujours de façon purement séquentielle (lire / calculer / afficher), sans boucle ni structure conditionnelle : une condition est ici directement calculée et stockée dans une variable de type booléen, puis affichée.\n\nOn y manipule trois familles d'opérateurs :\n\n- Opérateurs arithmétiques : +, −, ×, / (division réelle), div (quotient entier), mod (reste de la division entière).\n- Opérateurs de comparaison : =, ≠, <, >, ≤, ≥ — leur résultat est toujours une valeur booléenne (Vrai ou Faux).\n- Opérateurs logiques : ET, OU, NON — ils combinent ou inversent des valeurs booléennes.\n\nLes quatre types de valeurs de base sont utilisés : entier, réel, caractère et booléen. Pour chaque exercice, la solution reprend le même format que la série n°1 : étapes de l'algorithme, tableau de la démarche de résolution, pseudo-code complet (en-tête, déclaration des variables, corps) et un test chiffré.",
+  "sources": [
+    "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg (page 1 : objectif, exercices 1-7)",
+    "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg (page 2 : exercices 8-14)",
+    "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.123-126 (corrections du professeur des exercices 13 et 14)"
+  ],
+  "notes": [
+    "Exercices 13 et 14 : corrections du professeur (cours F162, exercices d'application 7 et 8). Les autres : corrections proposées par IA.",
+    "Exercice 3 : « un nombre réel X=, puis » corrigé en « X, puis ». Exercice 13 : « Erire » corrigé en « Écrire ». Exercice 4 : espaces « (C)d'une » et « ( Reste) » corrigées.",
+    "Exercice 2 : la ligne « Quelle valeur de Y l'algorithme affiche-t-il pour X = … ? » est laissée telle quelle (elle semble copiée de l'exercice 3). Exercices 2-3 : la valeur de X n'est pas donnée (« X = … »)."
+  ],
+  "exercises": [
+    {
+      "number": "1",
+      "statement_md": "Écrire un algorithme qui lit deux entiers A et B, puis calcule et affiche leur somme S, leur différence D, leur produit P, leur quotient réel Q, leur quotient entier Qe et leur reste R.",
+      "solution_md": "```\nAlgorithme OperationsArithmetiques\nVariables\n  A, B, S, D, P, Qe, R : entier\n  Q : réel\nDébut\n  Lire(A)\n  Lire(B)\n  S ← A + B\n  D ← A − B\n  P ← A × B\n  Q ← A / B\n  Qe ← A div B\n  R ← A mod B\n  Afficher(S, D, P)\n  Afficher(Q, Qe, R)\nFin\n```\n\n**Test :** A = 17, B = 5 → S = 22, D = 12, P = 85, Q = 3.4, Qe = 3, R = 2 (on suppose B ≠ 0).",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Pour A = 17 et B = 5, que vaut Qe ← A div B ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "3.4"
+            },
+            {
+              "id": "b",
+              "md": "2"
+            },
+            {
+              "id": "c",
+              "md": "3"
+            },
+            {
+              "id": "d",
+              "md": "4"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "`div` donne le quotient entier : 17 = 5 × 3 + 2, donc 17 div 5 = 3."
+        },
+        {
+          "prompt_md": "Q2 — Pour A = 17 et B = 5, que vaut R ← A mod B ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "2"
+            },
+            {
+              "id": "b",
+              "md": "3"
+            },
+            {
+              "id": "c",
+              "md": "0.4"
+            },
+            {
+              "id": "d",
+              "md": "12"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "`mod` donne le reste de la division entière : 17 − 5 × 3 = 2."
+        },
+        {
+          "prompt_md": "Q3 — Pour A = 17 et B = 5, que vaut Q ← A / B ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "3.4"
+            },
+            {
+              "id": "b",
+              "md": "3"
+            },
+            {
+              "id": "c",
+              "md": "2"
+            },
+            {
+              "id": "d",
+              "md": "0.29"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "`/` est la division réelle : 17 / 5 = 3.4. (3 est le quotient entier ; 0.29 ≈ 5 / 17.)"
+        },
+        {
+          "prompt_md": "Q4 — Pourquoi Q est-elle la seule variable déclarée de type réel ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Parce que Q est lue au clavier"
+            },
+            {
+              "id": "b",
+              "md": "Parce que `/` (division réelle) peut donner un résultat décimal, alors que +, −, ×, div et mod restent entiers"
+            },
+            {
+              "id": "c",
+              "md": "Parce que A et B sont réels"
+            },
+            {
+              "id": "d",
+              "md": "Parce que `div` donne un réel"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Sur des entiers, +, −, ×, div et mod donnent des entiers ; seule `/` produit un réel."
+        },
+        {
+          "prompt_md": "Q5 — Quelle condition doit vérifier l'entrée pour que l'algorithme fonctionne ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "A > B"
+            },
+            {
+              "id": "b",
+              "md": "A ≠ 0"
+            },
+            {
+              "id": "c",
+              "md": "A et B pairs"
+            },
+            {
+              "id": "d",
+              "md": "B ≠ 0"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Q, Qe et R divisent par B : la division par zéro est impossible. (A peut être plus petit que B : 3 div 5 = 0 et 3 mod 5 = 3.)"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "statement_md": "Écrire un algorithme qui lit trois nombres réels A=2, B=3 et C=4, puis calcule et affiche deux résultats illustrant l'effet des parenthèses sur l'ordre de calcul : R1 = A + B × C et R2 = (A + B) × C.\n\nQuelle valeur de Y l'algorithme affiche-t-il pour X = … ?",
+      "solution_md": "```\nAlgorithme EffetParentheses\nVariables\n  A, B, C, R1, R2 : réel\nDébut\n  Lire(A)\n  Lire(B)\n  Lire(C)\n  R1 ← A + B × C\n  R2 ← (A + B) × C\n  Afficher(\"R1 = \", R1)\n  Afficher(\"R2 = \", R2)\nFin\n```\n\n**Test :** A = 2, B = 3, C = 4 → R1 = 2 + 12 = 14 (× est prioritaire sur +) et R2 = 5 × 4 = 20. (La dernière ligne de l'énoncé, sur Y et X, semble appartenir à l'exercice 3.)",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 2 – R1",
+          "answerType": "number",
+          "accepted": [
+            "14"
+          ]
+        },
+        {
+          "label": "Ex 2 – R2",
+          "answerType": "number",
+          "accepted": [
+            "20"
+          ]
+        }
+      ],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Pour A = 2, B = 3 et C = 4, que vaut R1 = A + B × C ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "20"
+            },
+            {
+              "id": "b",
+              "md": "24"
+            },
+            {
+              "id": "c",
+              "md": "10"
+            },
+            {
+              "id": "d",
+              "md": "14"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "× est prioritaire sur + : R1 = 2 + (3 × 4) = 2 + 12 = 14."
+        },
+        {
+          "prompt_md": "Q2 — Pour A = 2, B = 3 et C = 4, que vaut R2 = (A + B) × C ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "14"
+            },
+            {
+              "id": "b",
+              "md": "24"
+            },
+            {
+              "id": "c",
+              "md": "20"
+            },
+            {
+              "id": "d",
+              "md": "9"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Les parenthèses forcent l'addition d'abord : R2 = 5 × 4 = 20."
+        },
+        {
+          "prompt_md": "Q3 — Pourquoi R1 et R2 sont-ils différents ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Les expressions sont évaluées strictement de gauche à droite"
+            },
+            {
+              "id": "b",
+              "md": "Sans parenthèses, × est évalué avant + ; les parenthèses changent l'ordre de calcul"
+            },
+            {
+              "id": "c",
+              "md": "L'addition est prioritaire sur la multiplication"
+            },
+            {
+              "id": "d",
+              "md": "Les réels sont arrondis différemment dans les deux calculs"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Même règle de priorité qu'en mathématiques : ×, / avant +, − ; les parenthèses sont évaluées en premier."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "statement_md": "Écrire un algorithme qui lit un nombre réel X, puis calcule et affiche la valeur de l'expression Y = 2 × X × X − 3 × X + 5.\n\nQuelle valeur de Y l'algorithme affiche-t-il pour X = … ?",
+      "solution_md": "```\nAlgorithme CalculExpression\nVariables\n  X, Y : réel\nDébut\n  Lire(X)\n  Y ← 2 × X × X − 3 × X + 5\n  Afficher(\"Y = \", Y)\nFin\n```\n\n**Test :** La valeur de X n'est pas précisée sur la feuille (« X = … »). Exemple : X = 2 → Y = 8 − 6 + 5 = 7 ; X = 0 → Y = 5.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction traduit correctement Y = 2X² − 3X + 5 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`Y ← (2 × X) × (2 × X) − 3 × X + 5`"
+            },
+            {
+              "id": "b",
+              "md": "`Y ← 2 × (X − 3) × X + 5`"
+            },
+            {
+              "id": "c",
+              "md": "`Y ← 2 × X × X − 3 × X + 5`"
+            },
+            {
+              "id": "d",
+              "md": "`2 × X × X − 3 × X + 5 ← Y`"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "X² s'écrit X × X ; seul X est au carré, pas 2X. La variable qui reçoit le résultat est à gauche de `←`."
+        },
+        {
+          "prompt_md": "Q2 — Quelle valeur de Y est affichée pour X = 2 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "15"
+            },
+            {
+              "id": "b",
+              "md": "19"
+            },
+            {
+              "id": "c",
+              "md": "5"
+            },
+            {
+              "id": "d",
+              "md": "7"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Y = 2 × 4 − 3 × 2 + 5 = 8 − 6 + 5 = 7. (15 vient de (2X)² ; 19 d'une erreur de signe sur −3X.)"
+        },
+        {
+          "prompt_md": "Q3 — Quelle valeur de Y est affichée pour X = 0 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "0"
+            },
+            {
+              "id": "b",
+              "md": "2"
+            },
+            {
+              "id": "c",
+              "md": "−3"
+            },
+            {
+              "id": "d",
+              "md": "5"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Les deux premiers termes s'annulent : Y = 0 − 0 + 5 = 5."
+        },
+        {
+          "prompt_md": "Q4 — Quelle valeur de Y est affichée pour X = −1 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "4"
+            },
+            {
+              "id": "b",
+              "md": "6"
+            },
+            {
+              "id": "c",
+              "md": "0"
+            },
+            {
+              "id": "d",
+              "md": "10"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "X × X = (−1) × (−1) = 1, donc Y = 2 × 1 − 3 × (−1) + 5 = 2 + 3 + 5 = 10. (4 : erreur de signe sur −3X ; 6 : X × X pris égal à −1.)"
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "statement_md": "Écrire un algorithme qui lit le nombre d'objets N à ranger et la capacité (C) d'une boîte, puis calcule et affiche le nombre de boîtes pleines (NbBoites) et le nombre d'objets restants (Reste).",
+      "solution_md": "```\nAlgorithme RangementBoites\nVariables\n  N, C, NbBoites, Reste : entier\nDébut\n  Lire(N)\n  Lire(C)\n  NbBoites ← N div C\n  Reste ← N mod C\n  Afficher(\"Boîtes pleines : \", NbBoites)\n  Afficher(\"Objets restants : \", Reste)\nFin\n```\n\n**Test :** N = 23, C = 5 → NbBoites = 4, Reste = 3.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule le nombre de boîtes pleines ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`NbBoites ← N / C`"
+            },
+            {
+              "id": "b",
+              "md": "`NbBoites ← N mod C`"
+            },
+            {
+              "id": "c",
+              "md": "`NbBoites ← C div N`"
+            },
+            {
+              "id": "d",
+              "md": "`NbBoites ← N div C`"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Le nombre de boîtes pleines est le quotient entier de N par C (`/` donnerait un nombre décimal de boîtes)."
+        },
+        {
+          "prompt_md": "Q2 — Pour N = 23 et C = 5, que valent NbBoites et Reste ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "NbBoites = 4, Reste = 3"
+            },
+            {
+              "id": "b",
+              "md": "NbBoites = 4.6, Reste = 0"
+            },
+            {
+              "id": "c",
+              "md": "NbBoites = 5, Reste = 2"
+            },
+            {
+              "id": "d",
+              "md": "NbBoites = 3, Reste = 4"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "23 = 5 × 4 + 3 : 4 boîtes pleines (23 div 5) et 3 objets restants (23 mod 5)."
+        },
+        {
+          "prompt_md": "Q3 — Quelle relation est toujours vérifiée par les résultats ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "N = NbBoites + C × Reste"
+            },
+            {
+              "id": "b",
+              "md": "N = NbBoites × Reste + C"
+            },
+            {
+              "id": "c",
+              "md": "N = NbBoites × C + Reste, avec 0 ≤ Reste < C"
+            },
+            {
+              "id": "d",
+              "md": "N = NbBoites × C − Reste"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "C'est la division euclidienne : quotient `div` et reste `mod`, le reste étant strictement inférieur au diviseur."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "statement_md": "Écrire un algorithme qui lit un entier N compris entre 10 et 99, puis calcule et affiche le chiffre des dizaines Dz et le chiffre des unités Un.",
+      "solution_md": "```\nAlgorithme ChiffresNombre\nVariables\n  N, Dz, Un : entier\nDébut\n  Lire(N)\n  Dz ← N div 10\n  Un ← N mod 10\n  Afficher(\"Dizaines : \", Dz)\n  Afficher(\"Unités : \", Un)\nFin\n```\n\n**Test :** N = 47 → Dz = 4, Un = 7.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction donne le chiffre des dizaines Dz ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`Dz ← N mod 10`"
+            },
+            {
+              "id": "b",
+              "md": "`Dz ← N / 10`"
+            },
+            {
+              "id": "c",
+              "md": "`Dz ← N div 10`"
+            },
+            {
+              "id": "d",
+              "md": "`Dz ← 10 div N`"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Pour un nombre à deux chiffres, le quotient entier par 10 est le chiffre des dizaines (47 div 10 = 4). `/` donnerait 4.7."
+        },
+        {
+          "prompt_md": "Q2 — Quelle instruction donne le chiffre des unités Un ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`Un ← N div 10`"
+            },
+            {
+              "id": "b",
+              "md": "`Un ← N − 10`"
+            },
+            {
+              "id": "c",
+              "md": "`Un ← N mod 100`"
+            },
+            {
+              "id": "d",
+              "md": "`Un ← N mod 10`"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Le reste de la division par 10 est le chiffre des unités (47 mod 10 = 7)."
+        },
+        {
+          "prompt_md": "Q3 — Qu'affiche l'algorithme pour N = 90 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Dz = 9, Un = 0"
+            },
+            {
+              "id": "b",
+              "md": "Dz = 0, Un = 9"
+            },
+            {
+              "id": "c",
+              "md": "Dz = 9, Un = 9"
+            },
+            {
+              "id": "d",
+              "md": "Dz = 9.0, Un = 0.9"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "90 div 10 = 9 et 90 mod 10 = 0."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "statement_md": "Écrire un algorithme qui lit deux nombres réels A et B, puis calcule et affiche les résultats booléens des six comparaisons possibles entre A et B.",
+      "solution_md": "```\nAlgorithme SixComparaisons\nVariables\n  A, B : réel\n  Egal, Different, Inf, Sup, InfEgal, SupEgal : booléen\nDébut\n  Lire(A)\n  Lire(B)\n  Egal ← (A = B)\n  Different ← (A ≠ B)\n  Inf ← (A < B)\n  Sup ← (A > B)\n  InfEgal ← (A ≤ B)\n  SupEgal ← (A ≥ B)\n  Afficher(Egal, Different, Inf)\n  Afficher(Sup, InfEgal, SupEgal)\nFin\n```\n\n**Test :** A = 3, B = 7 → Faux, Vrai, Vrai, Faux, Vrai, Faux.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Pour A = 3 et B = 7, quelles valeurs prennent (Egal, Different, Inf, Sup, InfEgal, SupEgal) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux, Vrai, Faux, Vrai, Faux, Vrai"
+            },
+            {
+              "id": "b",
+              "md": "Faux, Vrai, Vrai, Faux, Faux, Faux"
+            },
+            {
+              "id": "c",
+              "md": "Vrai, Faux, Vrai, Faux, Vrai, Faux"
+            },
+            {
+              "id": "d",
+              "md": "Faux, Vrai, Vrai, Faux, Vrai, Faux"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "3 = 7 Faux ; 3 ≠ 7 Vrai ; 3 < 7 Vrai ; 3 > 7 Faux ; 3 ≤ 7 Vrai ; 3 ≥ 7 Faux."
+        },
+        {
+          "prompt_md": "Q2 — Pour A = B = 5, quelles valeurs prennent (Egal, Different, Inf, Sup, InfEgal, SupEgal) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Vrai, Faux, Faux, Faux, Faux, Faux"
+            },
+            {
+              "id": "b",
+              "md": "Vrai, Faux, Vrai, Vrai, Vrai, Vrai"
+            },
+            {
+              "id": "c",
+              "md": "Vrai, Faux, Faux, Faux, Vrai, Vrai"
+            },
+            {
+              "id": "d",
+              "md": "Vrai, Vrai, Faux, Faux, Vrai, Vrai"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "En cas d'égalité, < et > sont faux mais ≤ et ≥ sont vrais (ils incluent l'égalité)."
+        },
+        {
+          "prompt_md": "Q3 — Quel est le type des six variables résultats ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "entier (0 ou 1)"
+            },
+            {
+              "id": "b",
+              "md": "réel, comme A et B"
+            },
+            {
+              "id": "c",
+              "md": "caractère"
+            },
+            {
+              "id": "d",
+              "md": "booléen"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Un opérateur de comparaison renvoie toujours Vrai ou Faux : le résultat se stocke dans une variable booléenne."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "statement_md": "Écrire un algorithme qui lit un nombre réel X ainsi que les bornes Min et Max d'un intervalle, puis calcule et affiche un résultat booléen DansIntervalle indiquant si X appartient à l'intervalle [Min, Max].",
+      "solution_md": "```\nAlgorithme TestIntervalle\nVariables\n  X, Min, Max : réel\n  DansIntervalle : booléen\nDébut\n  Lire(X)\n  Lire(Min)\n  Lire(Max)\n  DansIntervalle ← (X ≥ Min) ET (X ≤ Max)\n  Afficher(DansIntervalle)\nFin\n```\n\n**Test :** X = 5, Min = 0, Max = 10 → Vrai ; X = 12 → Faux.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32 (1).jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule DansIntervalle ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`DansIntervalle ← (X ≥ Min) OU (X ≤ Max)`"
+            },
+            {
+              "id": "b",
+              "md": "`DansIntervalle ← (X ≥ Min) ET (X ≤ Max)`"
+            },
+            {
+              "id": "c",
+              "md": "`DansIntervalle ← (X > Min) ET (X < Max)`"
+            },
+            {
+              "id": "d",
+              "md": "`DansIntervalle ← (X ≤ Min) ET (X ≥ Max)`"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "X ∈ [Min, Max] signifie Min ≤ X **et** X ≤ Max ; les crochets incluent les bornes, d'où ≥ et ≤."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut DansIntervalle pour X = 10, Min = 0 et Max = 10 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux"
+            },
+            {
+              "id": "b",
+              "md": "10"
+            },
+            {
+              "id": "c",
+              "md": "Erreur d'exécution"
+            },
+            {
+              "id": "d",
+              "md": "Vrai"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "10 ≥ 0 est Vrai et 10 ≤ 10 est Vrai : Vrai ET Vrai = Vrai (la borne Max est incluse)."
+        },
+        {
+          "prompt_md": "Q3 — Si l'on remplaçait ET par OU, que vaudrait le résultat pour X = 12, Min = 0, Max = 10 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux"
+            },
+            {
+              "id": "b",
+              "md": "12"
+            },
+            {
+              "id": "c",
+              "md": "Erreur d'exécution"
+            },
+            {
+              "id": "d",
+              "md": "Vrai (résultat faux, car 12 n'est pas dans [0, 10])"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "12 ≥ 0 est Vrai, donc (Vrai) OU (Faux) = Vrai : avec OU, presque tout nombre serait déclaré dans l'intervalle. Il faut ET."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche un résultat booléen HorsPlage indiquant si N est en dehors de la plage [0, 100].",
+      "solution_md": "```\nAlgorithme HorsPlage\nVariables\n  N : entier\n  HorsPlage : booléen\nDébut\n  Lire(N)\n  HorsPlage ← (N < 0) OU (N > 100)\n  Afficher(HorsPlage)\nFin\n```\n\n**Test :** N = 150 → Vrai ; N = 42 → Faux.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule HorsPlage ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`HorsPlage ← (N < 0) OU (N > 100)`"
+            },
+            {
+              "id": "b",
+              "md": "`HorsPlage ← (N < 0) ET (N > 100)`"
+            },
+            {
+              "id": "c",
+              "md": "`HorsPlage ← (N ≤ 0) OU (N ≥ 100)`"
+            },
+            {
+              "id": "d",
+              "md": "`HorsPlage ← (N > 0) ET (N < 100)`"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "N est hors de [0, 100] s'il est trop petit **ou** trop grand. Avec ET, la condition serait toujours fausse ; avec ≤ / ≥, 0 et 100 seraient déclarés hors plage."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut HorsPlage pour N = 100 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Vrai"
+            },
+            {
+              "id": "b",
+              "md": "100"
+            },
+            {
+              "id": "c",
+              "md": "Faux"
+            },
+            {
+              "id": "d",
+              "md": "Erreur d'exécution"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "100 < 0 Faux, 100 > 100 Faux : Faux OU Faux = Faux (100 appartient à la plage)."
+        },
+        {
+          "prompt_md": "Q3 — Quelle expression est équivalente à `(N < 0) OU (N > 100)` ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`NON ((N ≥ 0) OU (N ≤ 100))`"
+            },
+            {
+              "id": "b",
+              "md": "`NON (N ≥ 0) ET NON (N ≤ 100)`"
+            },
+            {
+              "id": "c",
+              "md": "`(N ≥ 0) ET NON (N ≤ 100)`"
+            },
+            {
+              "id": "d",
+              "md": "`NON ((N ≥ 0) ET (N ≤ 100))`"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Loi de De Morgan : NON (P ET Q) = (NON P) OU (NON Q), avec NON (N ≥ 0) = (N < 0) et NON (N ≤ 100) = (N > 100)."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche un résultat booléen EstPair indiquant si N est pair.",
+      "solution_md": "```\nAlgorithme TestParite\nVariables\n  N : entier\n  EstPair : booléen\nDébut\n  Lire(N)\n  EstPair ← (N mod 2 = 0)\n  Afficher(EstPair)\nFin\n```\n\n**Test :** N = 14 → Vrai ; N = 9 → Faux.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule EstPair ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`EstPair ← (N div 2 = 0)`"
+            },
+            {
+              "id": "b",
+              "md": "`EstPair ← (N mod 2 = 1)`"
+            },
+            {
+              "id": "c",
+              "md": "`EstPair ← (N mod 2 = 0)`"
+            },
+            {
+              "id": "d",
+              "md": "`EstPair ← (N / 2 = 0)`"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Un entier est pair si le reste de sa division par 2 est nul."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut N mod 2 pour N = 9 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "1"
+            },
+            {
+              "id": "b",
+              "md": "4"
+            },
+            {
+              "id": "c",
+              "md": "4.5"
+            },
+            {
+              "id": "d",
+              "md": "0"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "9 = 2 × 4 + 1 : le reste est 1, donc EstPair vaut Faux. (4 est le quotient 9 div 2.)"
+        },
+        {
+          "prompt_md": "Q3 — Que vaut EstPair pour N = 0 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux"
+            },
+            {
+              "id": "b",
+              "md": "Vrai"
+            },
+            {
+              "id": "c",
+              "md": "0"
+            },
+            {
+              "id": "d",
+              "md": "Erreur d'exécution"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "0 mod 2 = 0, donc la comparaison (0 = 0) est Vraie : 0 est pair."
+        }
+      ]
+    },
+    {
+      "number": "10",
+      "statement_md": "Écrire un algorithme qui lit deux entiers N et D, puis calcule et affiche un résultat booléen EstDivisible indiquant si N est divisible par D.",
+      "solution_md": "```\nAlgorithme TestDivisibilite\nVariables\n  N, D : entier\n  EstDivisible : booléen\nDébut\n  Lire(N)\n  Lire(D)\n  EstDivisible ← (N mod D = 0)\n  Afficher(EstDivisible)\nFin\n```\n\n**Test :** N = 35, D = 7 → Vrai ; N = 35, D = 4 → Faux (on suppose D ≠ 0).",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule EstDivisible ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`EstDivisible ← (D mod N = 0)`"
+            },
+            {
+              "id": "b",
+              "md": "`EstDivisible ← (N div D = 0)`"
+            },
+            {
+              "id": "c",
+              "md": "`EstDivisible ← (N / D = 0)`"
+            },
+            {
+              "id": "d",
+              "md": "`EstDivisible ← (N mod D = 0)`"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "N est divisible par D si le reste de la division de N par D est nul."
+        },
+        {
+          "prompt_md": "Q2 — Pour N = 35 et D = 4, que valent N mod D et EstDivisible ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "8 et Faux"
+            },
+            {
+              "id": "b",
+              "md": "3 et Faux"
+            },
+            {
+              "id": "c",
+              "md": "3 et Vrai"
+            },
+            {
+              "id": "d",
+              "md": "0 et Vrai"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "35 = 4 × 8 + 3 : le reste est 3 ≠ 0, donc EstDivisible = Faux. (8 est le quotient.)"
+        },
+        {
+          "prompt_md": "Q3 — Quelle hypothèse sur les entrées faut-il faire ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "N > D"
+            },
+            {
+              "id": "b",
+              "md": "N ≠ 0"
+            },
+            {
+              "id": "c",
+              "md": "N et D positifs et pairs"
+            },
+            {
+              "id": "d",
+              "md": "D ≠ 0"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "`mod D` est impossible si D = 0. En revanche N peut être nul (0 est divisible par tout D ≠ 0) ou plus petit que D."
+        }
+      ]
+    },
+    {
+      "number": "11",
+      "statement_md": "Écrire un algorithme qui lit un caractère C (une lettre minuscule), puis calcule et affiche un résultat booléen EstVoyelle indiquant si C est une voyelle.",
+      "solution_md": "```\nAlgorithme TestVoyelle\nVariables\n  C : caractère\n  EstVoyelle : booléen\nDébut\n  Lire(C)\n  EstVoyelle ← (C = 'a') OU (C = 'e') OU (C = 'i')\n                OU (C = 'o') OU (C = 'u') OU (C = 'y')\n  Afficher(EstVoyelle)\nFin\n```\n\n**Test :** C = 'e' → Vrai ; C = 'k' → Faux. (Le « y » est compté comme voyelle, comme en français.)",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule correctement EstVoyelle ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`EstVoyelle ← (C = 'a') OU (C = 'e') OU (C = 'i') OU (C = 'o') OU (C = 'u') OU (C = 'y')`"
+            },
+            {
+              "id": "b",
+              "md": "`EstVoyelle ← (C = 'a') ET (C = 'e') ET (C = 'i') ET (C = 'o') ET (C = 'u') ET (C = 'y')`"
+            },
+            {
+              "id": "c",
+              "md": "`EstVoyelle ← C = 'a' OU 'e' OU 'i' OU 'o' OU 'u' OU 'y'`"
+            },
+            {
+              "id": "d",
+              "md": "`EstVoyelle ← (C = a) OU (C = e) OU (C = i) OU (C = o) OU (C = u) OU (C = y)`"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Chaque comparaison doit être complète, et il suffit qu'une seule soit vraie (OU). Avec ET, le résultat serait toujours Faux ; les constantes caractère s'écrivent entre apostrophes."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut EstVoyelle pour C = 'k' ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux"
+            },
+            {
+              "id": "b",
+              "md": "Vrai"
+            },
+            {
+              "id": "c",
+              "md": "'k'"
+            },
+            {
+              "id": "d",
+              "md": "Erreur d'exécution"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Aucune des six comparaisons n'est vraie : Faux OU … OU Faux = Faux."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut EstVoyelle pour C = 'E' (majuscule) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux"
+            },
+            {
+              "id": "b",
+              "md": "Vrai"
+            },
+            {
+              "id": "c",
+              "md": "'e'"
+            },
+            {
+              "id": "d",
+              "md": "Erreur d'exécution"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "'E' est différent de 'e' : l'algorithme ne compare qu'aux minuscules (l'énoncé suppose une lettre minuscule)."
+        }
+      ]
+    },
+    {
+      "number": "12",
+      "statement_md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche trois résultats booléens : EstMultiple3 indiquant si N est multiple de 3, EstMultiple5 indiquant si N est multiple de 5, et EstMultipleDes2 indiquant si N est multiple des deux à la fois.",
+      "solution_md": "```\nAlgorithme Multiples3et5\nVariables\n  N : entier\n  EstMultiple3, EstMultiple5, EstMultipleDes2 : booléen\nDébut\n  Lire(N)\n  EstMultiple3 ← (N mod 3 = 0)\n  EstMultiple5 ← (N mod 5 = 0)\n  EstMultipleDes2 ← EstMultiple3 ET EstMultiple5\n  Afficher(EstMultiple3, EstMultiple5, EstMultipleDes2)\nFin\n```\n\n**Test :** N = 30 → Vrai, Vrai, Vrai ; N = 9 → Vrai, Faux, Faux.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule EstMultipleDes2 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`EstMultipleDes2 ← EstMultiple3 OU EstMultiple5`"
+            },
+            {
+              "id": "b",
+              "md": "`EstMultipleDes2 ← (N mod 8 = 0)`"
+            },
+            {
+              "id": "c",
+              "md": "`EstMultipleDes2 ← (N mod 3 = 0) + (N mod 5 = 0)`"
+            },
+            {
+              "id": "d",
+              "md": "`EstMultipleDes2 ← EstMultiple3 ET EstMultiple5`"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "« Multiple des deux à la fois » : les deux booléens doivent être vrais, d'où ET. On réutilise les deux résultats déjà calculés."
+        },
+        {
+          "prompt_md": "Q2 — Pour N = 10, quelles valeurs sont affichées (EstMultiple3, EstMultiple5, EstMultipleDes2) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Faux, Vrai, Faux"
+            },
+            {
+              "id": "b",
+              "md": "Vrai, Vrai, Vrai"
+            },
+            {
+              "id": "c",
+              "md": "Faux, Vrai, Vrai"
+            },
+            {
+              "id": "d",
+              "md": "Vrai, Faux, Faux"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "10 mod 3 = 1 → Faux ; 10 mod 5 = 0 → Vrai ; Faux ET Vrai = Faux."
+        },
+        {
+          "prompt_md": "Q3 — Quelle condition est équivalente à EstMultipleDes2 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`(N mod 8 = 0)`"
+            },
+            {
+              "id": "b",
+              "md": "`(N mod 15 = 0)`"
+            },
+            {
+              "id": "c",
+              "md": "`(N mod 2 = 0)`"
+            },
+            {
+              "id": "d",
+              "md": "`(N mod 35 = 0)`"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "3 et 5 sont premiers entre eux : être multiple de 3 et de 5 équivaut à être multiple de 3 × 5 = 15."
+        }
+      ]
+    },
+    {
+      "number": "13",
+      "statement_md": "Écrire un algorithme qui lit la température T d'une machine, puis calcule et affiche deux résultats booléens (TemperatureCritique) et (TemperatureNormale). La température est considérée comme critique si elle est inférieure à 10 °C ou bien supérieure à 80 °C. Une température est considérée comme normale si elle n'est pas critique.",
+      "solution_md": "**Pseudo-code**\n\n```\nAlgorithme  Controle_Temperature\nVariables\n    T : Réel\n    TemperatureCritique, TemperatureNormale : Booléen\nDébut\n    Ecrire(\"Saisir la température : \")\n    Lire(T)\n    TemperatureCritique ← (T < 10) OU (T > 80)\n    TemperatureNormale ← NON TemperatureCritique\n    Ecrire(\"Température critique : \", TemperatureCritique)\n    Ecrire(\"Température normale : \", TemperatureNormale)\nFin\n```",
+      "solution_source": "prof",
+      "solution_ref": "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.123-124 (exercice d'application 7)",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction calcule TemperatureCritique ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`TemperatureCritique ← (T < 10) ET (T > 80)`"
+            },
+            {
+              "id": "b",
+              "md": "`TemperatureCritique ← (T < 10) OU (T > 80)`"
+            },
+            {
+              "id": "c",
+              "md": "`TemperatureCritique ← (T ≤ 10) OU (T ≥ 80)`"
+            },
+            {
+              "id": "d",
+              "md": "`TemperatureCritique ← (T > 10) ET (T < 80)`"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Correction du cours : la température est critique si elle est inférieure à 10 **ou** supérieure à 80 (inégalités strictes, comme dans l'énoncé)."
+        },
+        {
+          "prompt_md": "Q2 — Quelle instruction calcule TemperatureNormale ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`TemperatureNormale ← NON TemperatureCritique`"
+            },
+            {
+              "id": "b",
+              "md": "`TemperatureNormale ← NON (T < 10) OU NON (T > 80)`"
+            },
+            {
+              "id": "c",
+              "md": "`TemperatureNormale ← (T > 10) OU (T < 80)`"
+            },
+            {
+              "id": "d",
+              "md": "`TemperatureNormale ← TemperatureCritique`"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "« Normale si elle n'est pas critique » se traduit directement par NON. (NON (T < 10) OU NON (T > 80) est toujours vrai : il faudrait ET, loi de De Morgan.)"
+        },
+        {
+          "prompt_md": "Q3 — Qu'affiche l'algorithme pour T = 80 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Critique : Faux ; Normale : Vrai"
+            },
+            {
+              "id": "b",
+              "md": "Critique : Vrai ; Normale : Faux"
+            },
+            {
+              "id": "c",
+              "md": "Critique : Vrai ; Normale : Vrai"
+            },
+            {
+              "id": "d",
+              "md": "Critique : Faux ; Normale : Faux"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "80 > 80 est Faux et 80 < 10 est Faux : TemperatureCritique = Faux, donc TemperatureNormale = NON Faux = Vrai."
+        },
+        {
+          "prompt_md": "Q4 — Qu'affiche l'algorithme pour T = 5 ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Critique : Faux ; Normale : Vrai"
+            },
+            {
+              "id": "b",
+              "md": "Critique : Vrai ; Normale : Vrai"
+            },
+            {
+              "id": "c",
+              "md": "Critique : Vrai ; Normale : Faux"
+            },
+            {
+              "id": "d",
+              "md": "Critique : Faux ; Normale : Faux"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "5 < 10 est Vrai, donc (Vrai) OU (Faux) = Vrai, et la température normale vaut NON Vrai = Faux."
+        }
+      ]
+    },
+    {
+      "number": "14",
+      "statement_md": "Écrire un algorithme qui lit le nom d'un utilisateur NomUtilisateur, puis construit et affiche un message de bienvenue personnalisé Message en concaténant plusieurs morceaux de texte avec la variable.",
+      "solution_md": "Message = \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\".\n\n**Pseudo-code**\n\n```\nAlgorithme MessageBienvenue\nVariables\n  NomUtilisateur, Message : chaîne\nDébut\n  Lire(NomUtilisateur)\n  Message ← \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\"\n  Afficher(Message)\nFin\n```",
+      "solution_source": "prof",
+      "solution_ref": "Bibliotheque_sources/Algorithme/Cours/Documents generaux/F162 - Algorithmique-AP1 04-11-26.pdf p.125-126 (exercice d'application 8)",
+      "answers": [],
+      "source": "Bibliotheque_sources/Algorithme/TD/WhatsApp Image 2026-11-15 at 16.45.32.jpeg",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle instruction construit le message ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`Message ← \"Bonjour \" + \"NomUtilisateur\" + \", bienvenue sur la plateforme !\"`"
+            },
+            {
+              "id": "b",
+              "md": "`Message ← Bonjour + NomUtilisateur + bienvenue sur la plateforme`"
+            },
+            {
+              "id": "c",
+              "md": "`Message ← \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\"`"
+            },
+            {
+              "id": "d",
+              "md": "`Message ← \"Bonjour \" × NomUtilisateur × \", bienvenue sur la plateforme !\"`"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Correction du cours : on concatène avec `+` les textes constants (entre guillemets) et la variable (sans guillemets, sinon c'est son nom qui serait affiché)."
+        },
+        {
+          "prompt_md": "Q2 — Quel message est affiché si l'utilisateur saisit Sara ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "`BonjourSara, bienvenue sur la plateforme !`"
+            },
+            {
+              "id": "b",
+              "md": "`Bonjour Sara, bienvenue sur la plateforme !`"
+            },
+            {
+              "id": "c",
+              "md": "`Bonjour NomUtilisateur, bienvenue sur la plateforme !`"
+            },
+            {
+              "id": "d",
+              "md": "`Bonjour , bienvenue sur la plateforme !Sara`"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "La concaténation recopie les morceaux dans l'ordre ; l'espace après « Bonjour » fait partie de la chaîne constante \"Bonjour \"."
+        },
+        {
+          "prompt_md": "Q3 — Quel est le type de NomUtilisateur et de Message ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "chaîne"
+            },
+            {
+              "id": "b",
+              "md": "caractère"
+            },
+            {
+              "id": "c",
+              "md": "booléen"
+            },
+            {
+              "id": "d",
+              "md": "entier"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Un nom et un message sont des suites de caractères : type chaîne."
+        }
+      ]
+    }
+  ]
+}

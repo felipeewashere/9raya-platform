@@ -1,0 +1,596 @@
+{
+  "slug": "gestion-du-temps",
+  "number": 2,
+  "title": "Gestion du temps",
+  "description": "Séance 2 : urgence et importance, sources courantes de perte de temps, priorités de vie, quatre « D » de la paperasse, astuces de gestion du temps (études, dissertation, téléphone, travail), et gestion du stress.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "prioriser",
+      "title": "Prioriser son temps",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "urgence-et-importance",
+          "title": "Urgence et importance",
+          "number": "2.1",
+          "estimatedMinutes": 9,
+          "summary": "Objectifs de la séance, auto-évaluation de la gestion du temps et distinction entre tâches urgentes et tâches importantes.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Ce module couvre ce que l'on appelle une **gestion efficace du temps**, les **causes courantes de perte de temps** et la manière de **prioriser ses tâches** quotidiennes. Il comprend des éléments de **gestion du stress** (principaux facteurs de stress et astuces pour y faire face), explore la différence entre niveaux « sains » et « malsains » de stress, et montre comment une **vie équilibrée** peut réduire le stress (équilibre travail-vie).",
+              "origin": "source",
+              "title": "La gestion du temps"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de cette séance, vous serez en mesure de :\n1. identifier les pertes de temps les plus courantes et savoir y faire face ;\n2. distinguer les tâches importantes de celles qui ne le sont pas ;\n3. distinguer les tâches urgentes des tâches non urgentes ;\n4. apprécier la valeur du temps à travers une profonde réflexion sur les priorités de la vie ;\n5. développer les compétences de base pour gérer son temps au bureau, à la maison et tout au long de sa vie ;\n6. comprendre le lien entre la gestion du temps et la gestion du stress ;\n7. identifier certains symptômes corporels, mentaux, émotionnels et comportementaux du stress.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Cochez « toujours », « parfois » ou « jamais » pour chaque déclaration :\n1. Je fais une liste des tâches à faire chaque jour pour le lendemain ou chaque semaine pour la semaine d'après.\n2. Je fais le suivi de cette liste.\n3. Je refuse fermement les demandes que je ne peux pas livrer à temps.\n4. J'accepte immédiatement des responsabilités supplémentaires sans crainte.\n5. Mon espace de travail est toujours organisé.\n6. J'ai un système de classement efficace et de qualité.\n7. J'ai un temps fixe pour dormir et une heure fixe pour me réveiller.\n8. Je délègue des tâches chaque fois que possible.\n9. Je suis en mesure d'expliquer très clairement aux autres ce qui doit être fait.\n10. Je laisse les autres faire leur part du travail de groupe même quand je ne suis pas sûr de leurs compétences.\n11. Les fichiers de mon ordinateur sont organisés.\n12. J'ai du mal à dire « non » aux parents et amis quand ils demandent une faveur.\n13. Je peux me décrire comme un « perfectionniste » puisque je m'attarde sur les moindres détails.\n14. J'aime parler longtemps au téléphone.\n15. Je respecte toujours mes échéances.\n16. Je me laisse facilement distraire en travaillant sur un devoir d'école ou un projet professionnel.\n17. Si je veux faire quelque chose de bien, je le fais toujours moi-même.",
+              "origin": "source",
+              "title": "Auto-évaluation"
+            },
+            {
+              "type": "heading",
+              "text": "Comprendre l'urgence et l'importance",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Placez chaque tâche dans l'une des quatre cases (urgent / pas urgent × important / pas important), d'abord individuellement, puis partagez avec le groupe :\n\nimminence de la date limite d'une tâche ; formation professionnelle ; sport ; résoudre une grille de mots croisés ou de sudoku ; voir un film ; visite de la famille et des amis ; développement personnel à long terme ; planifier le pique-nique du week-end prochain ; finaliser un rapport à remettre dans huit semaines ; changer le toner de l'imprimante du bureau ; payer une facture échue ; un rendez-vous avec un collègue de travail ; courriels à des clients importants ; répondre à la plainte d'un client ; regarder la télé ; confirmer un rendez-vous avec le médecin ; le café quotidien avec les amis ; gérer une crise ; écrire une lettre de remerciement à un client ; changer le décor de votre bureau.\n\n**Pourquoi est-il important de faire la distinction entre les différents niveaux d'urgence et d'importance ?**",
+              "origin": "source",
+              "title": "Le tableau à quatre cases"
+            },
+            {
+              "type": "definition",
+              "md": "- Une tâche est **urgente** quand elle doit être faite **maintenant** (une échéance proche, une demande immédiate).\n- Une tâche est **importante** quand elle **contribue à nos objectifs** (études, travail, santé, relations, projets).\n\nLes quatre cases :\n| | Urgent | Pas urgent |\n|---|---|---|\n| **Important** | À faire tout de suite (gérer une crise, payer une facture échue, répondre à la plainte d'un client) | À planifier (formation professionnelle, développement personnel à long terme, rapport à remettre dans huit semaines, sport) |\n| **Pas important** | À limiter ou déléguer (beaucoup d'interruptions, certaines demandes des autres) | À réduire (regarder la télé, mots croisés) |",
+              "origin": "added",
+              "title": "Urgent ou important ?"
+            },
+            {
+              "type": "remark",
+              "md": "Les tâches **importantes mais non urgentes** sont celles que l'on oublie le plus facilement : si on ne les planifie pas, elles finissent par devenir urgentes (le rapport à remettre dans huit semaines devient une crise la dernière semaine).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "« Finaliser un rapport à remettre dans huit semaines » est plutôt une tâche :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "urgente et importante"
+                  },
+                  {
+                    "id": "b",
+                    "md": "importante mais pas urgente"
+                  },
+                  {
+                    "id": "c",
+                    "md": "urgente mais pas importante"
+                  },
+                  {
+                    "id": "d",
+                    "md": "ni urgente ni importante"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Elle compte pour vos objectifs (importante) mais l'échéance est lointaine (pas urgente) : il faut la planifier."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "« Gérer une crise » se range dans la case :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "urgent et important"
+                },
+                {
+                  "id": "b",
+                  "md": "important, pas urgent"
+                },
+                {
+                  "id": "c",
+                  "md": "urgent, pas important"
+                },
+                {
+                  "id": "d",
+                  "md": "ni urgent ni important"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Une crise doit être traitée immédiatement et a des conséquences importantes."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces tâches est **ni urgente ni importante** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Payer une facture échue"
+                },
+                {
+                  "id": "b",
+                  "md": "Regarder la télé"
+                },
+                {
+                  "id": "c",
+                  "md": "Répondre à la plainte d'un client"
+                },
+                {
+                  "id": "d",
+                  "md": "Formation professionnelle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Regarder la télé n'a ni échéance ni lien avec vos objectifs ; les autres sont importantes."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une tâche urgente est forcément importante.",
+              "answer": false,
+              "explanation": "Faux : l'urgence concerne le moment (il faut agir vite), l'importance concerne l'apport à nos objectifs. Certaines urgences sont sans importance."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'un des objectifs de la séance est de comprendre le lien entre la gestion du temps et la gestion du stress.",
+              "answer": true,
+              "explanation": "C'est l'objectif 6 de la séance."
+            }
+          ]
+        },
+        {
+          "slug": "pertes-de-temps",
+          "title": "Les sources courantes de perte de temps",
+          "number": "2.2",
+          "estimatedMinutes": 8,
+          "summary": "Les quatorze sources courantes de perte de temps, des dictons sur le temps et l'interview sur le temps.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Pensez aux dernières semaines : un délai manqué, un rendez-vous raté, une mission non terminée. Listez trois causes possibles. En binôme, discutez de ce qui s'est mal passé et conseillez-vous l'un l'autre.",
+              "origin": "source",
+              "title": "Exercice sur les sources courantes de perte de temps"
+            },
+            {
+              "type": "definition",
+              "md": "1. Incapacité à distinguer ce qui est **important** de ce qui ne l'est pas ;\n2. incapacité à distinguer ce qui est **urgent** de ce qui ne l'est pas ;\n3. incapacité à dire « **NON** » aux autres ;\n4. incapacité à gérer les tâches importantes et urgentes immédiatement ;\n5. incapacité à **planifier** correctement ;\n6. incapacité à gérer les **interruptions** ;\n7. incapacité à **déléguer** des tâches aux autres ;\n8. incapacité à gérer son **espace de travail** (ou espace d'étude, bureau, chambre, etc.) ;\n9. incapacité à dire non à ses **addictions** (Internet, jeux informatiques, e-mails, SMS, etc.) ;\n10. incapacité à gérer son utilisation du **téléphone** ;\n11. incapacité à détecter et à faire face aux gens qui **abusent de votre temps** ;\n12. incapacité à contrôler le temps des **réunions** qui s'éternisent ;\n13. incapacité à gérer correctement les **tâches multiples** ;\n14. réticence à **demander de l'aide** ou des conseils.",
+              "origin": "source",
+              "title": "Sources courantes de perte de temps"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La réticence à demander de l'aide ou des conseils fait partie des sources de perte de temps citées.",
+                "answer": true,
+                "explanation": "C'est la 14ᵉ source de la liste."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Le temps : ce que les gens disent du temps",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "- « Le temps perdu n'est jamais retrouvé. » — Benjamin Franklin\n- « Apprenez à vivre le temps qui vous a été donné. » — Dario Fo\n- « Il est très clair que la ressource la plus précieuse que nous avons tous est le temps. » — Steve Jobs\n- « Nous devons utiliser le temps de manière créative – et nous rendre compte à tout jamais que le temps est toujours l'espoir de faire de grandes choses. » — Martin Luther King Jr.\n- « Les hommes parlent haut de tuer le temps, alors que le temps les tue silencieusement. » — Dion Boucicault\n\nN'oubliez pas… le temps n'est pas de l'argent… **« Le temps c'est la vie »** (dicton arabe).",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Interviewez une personne de votre groupe, puis échangez les rôles :\n1. Quelle a été la chose la plus importante que vous ayez faite l'année dernière ? la semaine dernière ? hier ?\n2. Quelle est la chose la plus importante que vous voulez faire demain ? la semaine prochaine ? l'année prochaine ?\n3. Que feriez-vous si vous aviez soudainement un jour libre ?\n4. Quelle est la chose la plus importante que vous deviez faire au cours de ces derniers jours ou semaines et que vous n'avez pas encore faite ?",
+              "origin": "source",
+              "title": "Interview sur le temps"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces propositions **n'est pas** une source de perte de temps citée par le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'incapacité à dire non"
+                },
+                {
+                  "id": "b",
+                  "md": "L'incapacité à gérer les interruptions"
+                },
+                {
+                  "id": "c",
+                  "md": "Le fait de planifier sa semaine"
+                },
+                {
+                  "id": "d",
+                  "md": "Les réunions qui s'éternisent"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Planifier fait gagner du temps ; c'est l'**incapacité** à planifier qui est une source de perte de temps."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Selon le dicton arabe cité, « le temps, c'est de l'argent ».",
+              "answer": false,
+              "explanation": "Faux : le cahier dit au contraire « le temps n'est pas de l'argent… le temps c'est la vie »."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque citation à son auteur.",
+              "pairs": [
+                {
+                  "left": "« Le temps perdu n'est jamais retrouvé. »",
+                  "right": "Benjamin Franklin"
+                },
+                {
+                  "left": "« La ressource la plus précieuse que nous avons tous est le temps. »",
+                  "right": "Steve Jobs"
+                },
+                {
+                  "left": "« Apprenez à vivre le temps qui vous a été donné. »",
+                  "right": "Dario Fo"
+                }
+              ],
+              "explanation": "Ce sont trois des dictons du monde sur le temps cités dans le cahier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Passer des heures sur les jeux en ligne pendant les révisions correspond à quelle source de perte de temps ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'incapacité à déléguer"
+                },
+                {
+                  "id": "b",
+                  "md": "L'incapacité à dire non à ses addictions"
+                },
+                {
+                  "id": "c",
+                  "md": "Les réunions qui s'éternisent"
+                },
+                {
+                  "id": "d",
+                  "md": "La réticence à demander de l'aide"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cahier cite explicitement Internet, les jeux informatiques, les e-mails et les SMS comme addictions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "organiser-et-gerer-stress",
+      "title": "S'organiser et gérer le stress",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "priorites-et-astuces",
+          "title": "Priorités de vie et astuces de gestion du temps",
+          "number": "2.3",
+          "estimatedMinutes": 10,
+          "summary": "L'exercice du 100ᵉ anniversaire, les quatre « D » de la paperasse, les astuces pour les études, la dissertation, le téléphone et le travail, l'équilibre de vie et le séquençage d'un projet.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Imaginez que vous êtes à la fête de votre 100ᵉ anniversaire, après une longue et riche vie. Répondez :\n1. Qu'ai-je accompli au cours de ma vie ? Quelles sont les trois choses les plus importantes que j'ai faites ?\n2. Quel héritage ai-je laissé derrière moi ? (Résumez en une phrase vos 100 ans.)\n3. Quels conseils donnerais-je aux autres ?\n4. Quel est, à votre avis, l'objectif de cet exercice ? Qu'avez-vous appris en matière de gestion du temps ?",
+              "origin": "source",
+              "title": "Votre 100ᵉ anniversaire"
+            },
+            {
+              "type": "definition",
+              "md": "- **Dump** : débarrassez-vous ;\n- **Do** : exécutez ;\n- **Delegate** : déléguez ;\n- **Delay** : retardez.\n\nAu travail, l'idée est d'essayer de **ne traiter un document qu'une seule fois**.",
+              "origin": "source",
+              "title": "Les quatre « D » de la paperasse"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que signifie « Delegate » dans les quatre D de la paperasse ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Débarrassez-vous"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Exécutez"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Déléguez"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Retardez"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Dump = débarrassez-vous, Do = exécutez, Delegate = déléguez, Delay = retardez."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "**Dans vos études :** utilisez un calendrier et écrivez vos objectifs avec les dates d'échéance ainsi que vos activités parascolaires ; utilisez un calendrier hebdomadaire et préparez un programme quotidien ; ne reportez pas au lendemain ; n'hésitez pas à demander de l'aide (consultez votre professeur durant ses heures de bureau) ; écoutez activement votre professeur, lisez préalablement la leçon et consultez vos notes ; ne vous chargez pas des tâches des autres dans un travail de groupe (soyez ferme mais courtois) ; éteignez votre téléphone ou mettez-le en mode silencieux ; utilisez la bibliothèque ou des espaces d'étude calmes ; équilibrez votre temps (loisirs, sport) et récompensez-vous.\n\n**Dissertation :** commencez avec un plan ; divisez les longs devoirs en parties et prenez une pause ; faites bon usage des logiciels de traitement de texte (parfois, papier et crayon sont utiles) ; ne soyez pas perfectionniste, améliorez-vous en progressant ; apprenez à vous connaître et identifiez le bon moment pour commencer.\n\n**Téléphone :** ne répondez pas tout le temps (mode silencieux) ; si un e-mail peut faire l'affaire, faites-le ; reportez une discussion inutile ; indiquez poliment dès le début de l'appel le temps dont vous disposez ; résumez ce que vous avez compris ; prévoyez de petites tâches au cas où vous êtes mis en attente ; pour les appels formels, identifiez-vous et précisez l'objectif de l'appel.\n\n**Au travail :** fermez votre porte ; apprenez à dire non ; voyez les autres seulement en cas de besoin ; déléguez ; divisez les grandes tâches en plus petites ; connaissez vos propres sources de perte de temps ; tenez les réunions hors de votre bureau (salle de conférence, bureau d'un collègue) ; pratiquez les 4 D de la paperasse ; menez une vie équilibrée (sport, art, spiritualité, etc.) : étudier et travailler ne sont pas tout.",
+              "origin": "source",
+              "title": "Astuces pour la gestion du temps"
+            },
+            {
+              "type": "text",
+              "md": "**Votre temps, votre vie.** Vivre en harmonie nécessite d'arriver à un **équilibre**. Les études (faculté/université) et la famille sont importantes, mais il existe au moins cinq autres domaines de la vie qui méritent votre attention et votre temps. Quels sont-ils pour vous ?",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Vous allez mener à bien un nouveau projet. En groupe, numérotez les étapes suivantes dans le bon ordre : prenez des décisions en fonction de séquences de travail adéquates ; planifiez les tâches les plus importantes ; évitez de programmer chaque minute de la journée ; divisez votre projet en petites tâches ; dressez la liste des tâches à réaliser ; barrez les tâches dès qu'elles sont terminées ; planifiez les tâches restantes ; respectez le programme ; priorisez vos tâches ; listez les tâches importantes à faire le lendemain.",
+              "origin": "source",
+              "title": "Travail de séquençage"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Selon les astuces du cahier, pour une dissertation, il vaut mieux être perfectionniste dès le premier jet.",
+              "answer": false,
+              "explanation": "Faux : « Ne soyez pas perfectionniste. Améliorez-vous en progressant. »"
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces conseils concerne le **téléphone** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Commencez avec un plan"
+                },
+                {
+                  "id": "b",
+                  "md": "Indiquez poliment dès le début de l'appel le temps dont vous disposez"
+                },
+                {
+                  "id": "c",
+                  "md": "Fermez votre porte"
+                },
+                {
+                  "id": "d",
+                  "md": "Utilisez la bibliothèque"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les autres conseils concernent la dissertation, le travail et les études."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque « D » de la paperasse à sa traduction.",
+              "pairs": [
+                {
+                  "left": "Dump",
+                  "right": "Débarrassez-vous"
+                },
+                {
+                  "left": "Do",
+                  "right": "Exécutez"
+                },
+                {
+                  "left": "Delegate",
+                  "right": "Déléguez"
+                },
+                {
+                  "left": "Delay",
+                  "right": "Retardez"
+                }
+              ],
+              "explanation": "Les quatre D aident à décider vite quoi faire de chaque document."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est l'objectif des 4 D au travail ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Lire chaque document plusieurs fois"
+                },
+                {
+                  "id": "b",
+                  "md": "Ne traiter un document qu'une seule fois"
+                },
+                {
+                  "id": "c",
+                  "md": "Tout déléguer"
+                },
+                {
+                  "id": "d",
+                  "md": "Tout garder"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« Essayez de ne traiter un document qu'une seule fois. »"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le cahier recommande de diviser les grandes tâches en plus petites.",
+              "answer": true,
+              "explanation": "C'est un conseil donné à la fois pour la dissertation et pour le travail."
+            }
+          ]
+        },
+        {
+          "slug": "gestion-du-stress",
+          "title": "La gestion du stress",
+          "number": "2.4",
+          "estimatedMinutes": 8,
+          "summary": "Le lien entre stress et gestion du temps, le stress sain et malsain, le test du stress et les symptômes du stress (corps, esprit, émotions, comportement).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Le stress est une **réalité de la vie**. Trop de stress va probablement vous amener à devenir **moins efficace** dans votre travail. La relation entre le stress et la gestion du temps est claire : **la mauvaise gestion du temps conduit à des contraintes excessives** dans la vie.\n\nIl existe cependant un certain niveau de **stress sain** qui vous pousse à travailler et à produire, et qui ne vous mènera pas à l'épuisement professionnel.",
+              "origin": "source",
+              "title": "Gestion du stress"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Selon le cahier, tout stress est nuisible.",
+                "answer": false,
+                "explanation": "Faux : il existe un niveau de stress sain qui pousse à travailler et à produire sans mener à l'épuisement."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "1. Certains symptômes **immédiats** du stress sont : a. la transpiration ; b. l'accélération du rythme cardiaque ; c. le changement d'appétit ; d. l'acné ; e. tout ce qui précède.\n2. Certains symptômes du stress **à long terme** sont : a. la fatigue ; b. l'incapacité à se concentrer ; c. l'irritabilité ; d. la dépression ; e. les maux de tête ; f. tout ce qui précède.\n3. Le stress devient dangereux lorsque : a. il vous pousse à rompre avec votre famille et vos amis ; b. il vous cause de l'anxiété ; c. il vous fait sentir un besoin physiologique de chocolat ; d. il interfère avec votre capacité à vivre une vie normale pendant une période de temps prolongée.\n4. Le stress peut nuire à votre corps lorsqu'il : a. augmente les facteurs de risque de maladies cardiaques comme l'hypertension et le taux de cholestérol ; b. vous oblige à manger de façon malsaine ; c. vous conduit à la dépression ; d. affaiblit votre système immunitaire ; e. tout ce qui précède.\n5. Le stress peut faire vieillir une personne en : a. lui donnant des rides ; b. affectant le système immunitaire et conduisant à des signes de « vieillissement » (fragilité, déclin fonctionnel, maladies cardiovasculaires, ostéoporose, arthrite inflammatoire, diabète de type 2, certains cancers) ; c. la faisant paraître grincheuse et vieille ; d. tout ce qui précède.\n6. Le stress est une manière pour l'organisme de : a. réagir à ce qui semble être une menace ; b. se venger de vous pour la vie dure que vous lui faites subir ; c. faire en sorte que vous ne vous surchargiez pas ; d. tout ce qui précède.",
+              "origin": "source",
+              "title": "Test du stress",
+              "solution": [
+                {
+                  "md": "Réponses attendues : 1 e ; 2 f ; 3 d ; 4 e ; 5 b ; 6 a.",
+                  "why": "Le cahier ne donne pas le corrigé ; ces réponses sont celles du questionnaire d'origine sur le stress. À confirmer avec l'enseignant."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "md": "| Corps | Esprit | Émotions | Comportement |\n|---|---|---|---|\n| Maux de tête | Inquiétude | Perte de confiance | Prédisposition aux accidents |\n| Infections fréquentes | Pensée confuse | Paranoïa | Perte d'appétit |\n| Spasmophilie | Altération du jugement | Irritabilité | Tendance à boire plus |\n| Fatigue | Cauchemars | Dépression | Insomnie |\n| Éruptions cutanées | Indécisions | Apathie | Agitation |\n| Essoufflement | Négativité | Aliénation | Tendance à fumer plus |\n| | Décisions hâtives | Appréhension | |",
+              "origin": "source",
+              "title": "Les symptômes du stress"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans le schéma des symptômes du stress, « altération du jugement » est classée dans :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Corps"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Esprit"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Émotions"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Comportement"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Elle fait partie des symptômes de l'esprit, avec l'inquiétude, la pensée confuse, les cauchemars, les indécisions, la négativité et les décisions hâtives."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous voulez faire au quotidien pour améliorer vos compétences en gestion du temps, puis signez et datez.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Classez chaque symptôme du stress dans sa catégorie.",
+              "pairs": [
+                {
+                  "left": "Essoufflement",
+                  "right": "Corps"
+                },
+                {
+                  "left": "Indécisions",
+                  "right": "Esprit"
+                },
+                {
+                  "left": "Irritabilité",
+                  "right": "Émotions"
+                },
+                {
+                  "left": "Insomnie",
+                  "right": "Comportement"
+                }
+              ],
+              "explanation": "Ce sont les quatre catégories du schéma « Les symptômes du stress »."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle relation le cahier établit-il entre gestion du temps et stress ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Aucune"
+                },
+                {
+                  "id": "b",
+                  "md": "Une mauvaise gestion du temps conduit à des contraintes excessives"
+                },
+                {
+                  "id": "c",
+                  "md": "Le stress améliore toujours la gestion du temps"
+                },
+                {
+                  "id": "d",
+                  "md": "Le stress n'existe que chez les mauvais gestionnaires"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« La mauvaise gestion du temps conduit à des contraintes excessives dans la vie. »"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un certain niveau de stress peut pousser à travailler et à produire sans mener à l'épuisement.",
+              "answer": true,
+              "explanation": "C'est le stress « sain » décrit dans le cahier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces propositions est un symptôme **comportemental** du stress d'après le schéma ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Maux de tête"
+                },
+                {
+                  "id": "b",
+                  "md": "Perte de confiance"
+                },
+                {
+                  "id": "c",
+                  "md": "Tendance à fumer plus"
+                },
+                {
+                  "id": "d",
+                  "md": "Pensée confuse"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Tendance à fumer plus est dans la catégorie Comportement ; les autres relèvent du corps, des émotions et de l'esprit."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 2 = p. 23–38 du PDF (pages 19–34 du cahier).",
+    "Le tableau « urgent / important » (p. 26) ne donne pas de corrigé. Une définition ajoutée (origin: added) explique les deux critères et range quelques tâches de la liste du cahier dans les quatre cases (seulement des cas non ambigus) ; les quiz ne portent que sur ces cas.",
+    "Test du stress (p. 36–37) : la question 6 est imprimée deux fois sur la p. 37 (doublon supprimé) ; le cahier ne donne pas de corrigé. Le corrigé proposé (1e, 2f, 3d, 4e, 5b, 6a) est celui du questionnaire d'origine et est signalé « à confirmer » ; aucune question de quiz ne porte dessus.",
+    "Les espaces à remplir (interview sur le temps, domaines de la vie, engagement) sont résumés en consignes. Coquilles : « Dion Boucicaut » → « Dion Boucicault » ; « Sodoku » → « sudoku »."
+  ]
+}

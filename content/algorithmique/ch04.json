@@ -1,0 +1,800 @@
+{
+  "slug": "structures-conditionnelles",
+  "number": 4,
+  "title": "Structures conditionnelles",
+  "description": "Structures de contrôle conditionnelles : condition et expression logique, passage de l'expression logique à la décision, structures alternatives simple (Si…Alors), double (Si…Alors…Sinon), multiple (Si…SinonSi…Sinon), indentation, cas multiples (Selon…Cas), et exercices d'application.",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 04 - Structures conditionnelles.pdf",
+  "sections": [
+    {
+      "slug": "conditions",
+      "title": "Conditions et décision",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "expression-logique-et-decision",
+          "title": "De l'expression logique à la décision",
+          "number": "4.1",
+          "estimatedMinutes": 10,
+          "summary": "Pourquoi un algorithme a besoin de conditions, ce qu'est une condition (expression logique simple ou composée), et pourquoi une expression logique seule ne suffit pas à décider.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Pourquoi avons-nous besoin de conditions ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "- Dans un algorithme, les instructions sont exécutées **les unes après les autres**, dans l'ordre de leur écriture.\n- Certains problèmes nécessitent de **prendre une décision**.\n\n*Exemple :* si la température est supérieure à 30 °C, afficher « Il fait chaud ». La question « la température est-elle supérieure à 30 °C ? » a deux réponses possibles : **VRAI** ou **FAUX**.\n\nUne **structure conditionnelle** permet de choisir quelles instructions exécuter selon qu'une condition est vraie ou fausse.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une **condition** est une **expression logique** qui peut prendre deux valeurs : Vrai ou Faux, et qui suit la forme suivante :\n\n`Variable1  Opérateur  Variable2`\n\nUne expression logique se forme avec :\n1. des **variables booléennes** (qui valent vrai ou faux) ;\n2. des **comparaisons** (comme `x > 5`, `age <= 18`) ;\n3. des **opérateurs logiques** pour lier le tout (comme `age <= 18 et inscrit = vrai`).",
+              "origin": "source",
+              "title": "Condition"
+            },
+            {
+              "type": "text",
+              "md": "1. **Variables booléennes** : une variable booléenne ne peut prendre que deux valeurs, VRAI ou FAUX. Exemple : `Inscrit ← VRAI`, `Admis ← FAUX`.\n2. **Comparaisons** : une comparaison permet de vérifier une relation entre deux valeurs ; chaque comparaison produit un résultat logique, Vrai ou Faux. Exemple : `Age >= 18` → Vrai ; `Note < 10` → Faux.\n3. **Opérateurs logiques** : ils permettent de combiner ou modifier des expressions logiques en utilisant OU, ET, NON. Exemple : `(Age >= 18) ET (Permis = VRAI)`.\n\nUne expression logique peut donc être une variable booléenne, **ou** une comparaison, **ou** plusieurs comparaisons liées par des opérateurs logiques.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- **Expression logique simple** : `VariableBooléenne`, ou bien `Variable1 OpérateurDeComparaison Variable2`.\n- **Expression logique composée** : `(Expression logique simple 1) opérateur logique (Expression logique simple 2)`.\n\nArbre récapitulatif :\n- Simple → booléenne (ex. `Inscrit`) ou comparaison (ex. `Age >= 18`) ;\n- Composée → ET / OU / NON (ex. `(Age >= 18) ET (…)`).",
+              "origin": "source",
+              "title": "Syntaxe d'une expression logique"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Classez chaque expression.",
+                "pairs": [
+                  {
+                    "left": "`Inscrit`",
+                    "right": "Simple : variable booléenne"
+                  },
+                  {
+                    "left": "`Note < 10`",
+                    "right": "Simple : comparaison"
+                  },
+                  {
+                    "left": "`(Age >= 18) ET (Permis = VRAI)`",
+                    "right": "Composée"
+                  }
+                ],
+                "explanation": "Une expression simple est soit une variable booléenne seule, soit une comparaison ; dès qu'un opérateur logique en relie plusieurs, elle est composée."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "De l'expression logique à la décision",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons que l'on veuille savoir si une personne est majeure (afficher « Majeur »). On dispose de `Age ← 20` ; on peut écrire l'expression logique `Age >= 18`, dont l'évaluation donne **vrai**.\n\n**Mais quel est le problème ?** L'expression logique nous donne seulement une information (la personne a-t-elle au moins 18 ans ? → VRAI) ; elle **ne dit pas à l'algorithme quoi faire** avec ce résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Écrire un algorithme qui lit la note d'un étudiant : si la note est supérieure ou égale à 10, afficher « Module validé », sinon afficher « Module non validé ».\n```\nAlgorithme ValidationModule\nVariable\n    Note : Réel\nDébut\n    Lire(Note)\n    Note >= 10\n    Afficher(\"Module validé\")\n    Afficher(\"Module non validé\")\nFin\n```\n\n1. L'expression logique évalue une situation : `Note >= 10` donne un résultat VRAI ou FAUX.\n2. Mais elle ne permet pas de choisir l'instruction à exécuter : **les deux messages seront affichés**, quelle que soit la note saisie.\n3. Il nous manque donc une **structure de contrôle** permettant de prendre une décision. C'est le rôle de la **structure conditionnelle**.",
+              "origin": "source",
+              "title": "Une tentative qui ne fonctionne pas"
+            },
+            {
+              "type": "example",
+              "md": "`Age >= 18` → VRAI ou FAUX → décision : VRAI → « Majeur », FAUX → « Mineur ». En pseudo-code :\n\n```\nSi Age >= 18 Alors\n    Afficher(\"Majeur\")\nSinon\n    Afficher(\"Mineur\")\nFinSi\n```",
+              "origin": "source",
+              "title": "La traduction en structure alternative"
+            },
+            {
+              "type": "definition",
+              "md": "- Une **structure de contrôle** permet d'organiser et de modifier le déroulement des instructions d'un algorithme.\n- Une **structure conditionnelle** est une structure de contrôle qui permet de prendre une décision selon le résultat d'une condition (VRAI ou FAUX).\n- Une **structure alternative** est une forme de structure conditionnelle qui permet de choisir entre deux traitements à l'aide de `Si…Alors…Sinon`.",
+              "origin": "source",
+              "title": "Structures de contrôle et structures conditionnelles"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans ValidationModule sans structure conditionnelle, si l'on saisit 15, seul « Module validé » s'affiche.",
+                "answer": false,
+                "explanation": "Faux : sans Si…Alors…Sinon, les instructions s'exécutent séquentiellement, donc **les deux** messages s'affichent, quelle que soit la note."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Une condition est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "une instruction d'affichage"
+                },
+                {
+                  "id": "b",
+                  "md": "une expression logique qui vaut Vrai ou Faux"
+                },
+                {
+                  "id": "c",
+                  "md": "une variable de type réel"
+                },
+                {
+                  "id": "d",
+                  "md": "une boucle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la définition du cours : une expression logique qui peut prendre deux valeurs, Vrai ou Faux."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Sans structure conditionnelle, les instructions d'un algorithme s'exécutent les unes après les autres, dans l'ordre d'écriture.",
+              "answer": true,
+              "explanation": "Oui : c'est l'exécution séquentielle. La structure conditionnelle permet justement de sortir de ce schéma."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi `Note >= 10` écrit seul dans le corps de l'algorithme ne suffit-il pas ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que la comparaison est fausse"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce qu'elle évalue la situation mais ne dit pas quelle instruction exécuter"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que Note est réel"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce qu'il manque un Lire"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'expression donne une information (Vrai/Faux) mais ne choisit rien : il faut une structure conditionnelle."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec Age ← 15, l'expression `Age >= 18` vaut ___ (Vrai ou Faux)",
+              "answerType": "text",
+              "accepted": [
+                "Faux"
+              ],
+              "explanation": "15 n'est pas ≥ 18."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une structure conditionnelle est un cas particulier de structure de contrôle.",
+              "answer": true,
+              "explanation": "Oui : c'est une structure de contrôle qui décide selon le résultat d'une condition."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "structures-alternatives",
+      "title": "Les structures alternatives",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "si-alors-sinon",
+          "title": "Structures alternatives simple et double",
+          "number": "4.2",
+          "estimatedMinutes": 12,
+          "summary": "Si…Alors (une action seulement si la condition est vraie) et Si…Alors…Sinon (une action pour Vrai, une autre pour Faux), avec quatre exercices d'application.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "- Une **structure alternative** est une structure de contrôle qui permet à un algorithme de prendre une décision et de choisir les instructions à exécuter en fonction du résultat d'une condition.\n- La condition est une expression logique qui peut prendre deux valeurs : Vrai / Faux.\n- Sans structure alternative, les instructions sont exécutées séquentiellement, les unes après les autres.\n- Le rôle d'une structure alternative est de tester si une condition est vraie, et cela pour exécuter telle instruction ; sinon, exécuter une autre instruction.",
+              "origin": "source",
+              "title": "Structure alternative"
+            },
+            {
+              "type": "text",
+              "md": "Une structure alternative peut prendre plusieurs formes selon le problème à résoudre : 1. **simple**, 2. **double**, 3. **multiple**, 4. **cas multiples**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une action est exécutée **uniquement si la condition est vraie** :\n\n```\nSi Condition Alors\n    Instructions\nFinSi\n```",
+              "origin": "source",
+              "title": "1. Structure alternative simple : Si…Alors"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch04-si-alors.svg",
+              "alt": "Organigramme de la structure Si…Alors : si la condition est vraie on exécute les instructions, sinon on passe directement à la suite.",
+              "caption": "Figure — structure simple Si … Alors … FinSi.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Un étudiant reçoit un message « Admis » uniquement si sa moyenne est supérieure ou égale à 10. Il n'y a rien de particulier à faire si la condition est fausse.\n```\nSi Moyenne >= 10 Alors\n    Afficher(\"Admis\")\nFinSi\n```\n\nUne seule action conditionnelle : si la condition est vraie → on agit ; sinon → on continue notre algorithme.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "definition",
+              "md": "Une action différente est exécutée selon que la condition est vraie ou fausse :\n\n```\nSi Condition Alors\n    Instructions 1\nSinon\n    Instructions 2\nFinSi\n```",
+              "origin": "source",
+              "title": "2. Structure alternative double : Si…Alors…Sinon"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch04-si-alors-sinon.svg",
+              "alt": "Organigramme de la structure Si…Alors…Sinon : branche Vrai vers Instructions 1, branche Faux vers Instructions 2, puis les deux branches se rejoignent.",
+              "caption": "Figure — structure double Si … Alors … Sinon … FinSi.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Lire l'âge d'une personne et afficher « Majeur » si elle a au moins 18 ans, « Mineur » sinon. Ici, il y a deux possibilités et une action pour chacune.\n```\nSi Age >= 18 Alors\n    Afficher(\"Majeur\")\nSinon\n    Afficher(\"Mineur\")\nFinSi\n```",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Avec Moyenne = 8, qu'affiche la structure simple `Si Moyenne >= 10 Alors Afficher(\"Admis\") FinSi` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Admis"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Non admis"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Rien"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Une erreur"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "La condition est fausse et il n'y a pas de Sinon : aucune instruction n'est exécutée, l'algorithme continue."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exercices d'application",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit la température (temperature) d'un moteur (en °C), puis affiche un message d'alerte si cette température dépasse 90 °C.",
+              "origin": "source",
+              "title": "Exercice 1 : surchauffe d'un moteur",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme AlerteSurchauffe\nVariables\n    temperature : réel\nDébut\n    Lire(temperature)\n    Si (temperature > 90) Alors\n        Afficher(\"Attention : surchauffe du moteur !\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit la quantité en stock (qte) d'un produit, puis affiche un message d'alerte si cette quantité est inférieure à 10.",
+              "origin": "source",
+              "title": "Exercice 2 : stock faible",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme StockFaible\nVariables\n    qte : entier\nDébut\n    Lire(qte)\n    Si (qte < 10) Alors\n        Afficher(\"Stock faible, pensez à réapprovisionner !\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit la température (temperature) de l'eau (en °C), puis affiche « L'eau est gelée » pour une température inférieure ou égale à 0, et « L'eau est liquide » dans le cas contraire.",
+              "origin": "source",
+              "title": "Exercice 3 : état de l'eau",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme EtatEau\nVariables\n    temperature : réel\nDébut\n    Lire(temperature)\n    Si (temperature <= 0) Alors\n        Afficher(\"L'eau est gelée\")\n    Sinon\n        Afficher(\"L'eau est liquide\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Une salle de conférence a une capacité maximale de places assises. Écrire un algorithme qui lit le nombre de personnes présentes et la capacité de la salle, puis indique si la salle est surchargée ou non.",
+              "origin": "source",
+              "title": "Exercice 4 : capacité d'une salle",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme CapaciteSalle\nVariables\n    nb, capacite : entier\nDébut\n    Lire(nb)\n    Lire(capacite)\n    Si (nb > capacite) Alors\n        Afficher(\"Salle surchargée\")\n    Sinon\n        Afficher(\"Salle dans les normes\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans EtatEau, si l'on saisit 0, le message affiché est « L'eau est ___ »",
+                "answerType": "text",
+                "accepted": [
+                  "gelée",
+                  "gelee"
+                ],
+                "explanation": "La condition est `temperature <= 0` : 0 ≤ 0 est vrai, donc « L'eau est gelée »."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle structure choisir pour « afficher une alerte si le stock est inférieur à 10 », sans rien faire sinon ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Si…Alors"
+                },
+                {
+                  "id": "b",
+                  "md": "Si…Alors…Sinon"
+                },
+                {
+                  "id": "c",
+                  "md": "Selon…Cas"
+                },
+                {
+                  "id": "d",
+                  "md": "Aucune"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Une seule action conditionnelle et rien à faire si la condition est fausse : structure alternative simple."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans CapaciteSalle, avec nb = 120 et capacite = 120, qu'affiche l'algorithme ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Salle surchargée"
+                },
+                {
+                  "id": "b",
+                  "md": "Salle dans les normes"
+                },
+                {
+                  "id": "c",
+                  "md": "Rien"
+                },
+                {
+                  "id": "d",
+                  "md": "Les deux messages"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La condition est `nb > capacite` : 120 > 120 est faux, donc on exécute le Sinon."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les lignes de la structure alternative double.",
+              "items": [
+                "Si Age >= 18 Alors",
+                "Afficher(\"Majeur\")",
+                "Sinon",
+                "Afficher(\"Mineur\")",
+                "FinSi"
+              ],
+              "explanation": "Si … Alors, instructions du cas Vrai, Sinon, instructions du cas Faux, FinSi."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans une structure Si…Alors…Sinon, il peut arriver que les deux blocs soient exécutés.",
+              "answer": false,
+              "explanation": "Faux : exactement **un** des deux blocs est exécuté, selon que la condition est vraie ou fausse."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "AlerteSurchauffe : combien de messages s'affichent si temperature = 90 ? ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "La condition est `temperature > 90` (strict) : 90 > 90 est faux, il n'y a pas de Sinon, donc 0 message."
+            }
+          ]
+        },
+        {
+          "slug": "si-sinonsi-indentation",
+          "title": "Structure alternative multiple et indentation",
+          "number": "4.3",
+          "estimatedMinutes": 10,
+          "summary": "Si…SinonSi…Sinon pour plus de deux situations (conditions testées dans l'ordre), règles d'indentation, et deux exercices de classement par intervalles.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Lorsqu'il y a **plus de deux situations**, on enchaîne plusieurs conditions :\n\n```\nSi Condition1 Alors\n    Instructions 1\nSinonSi Condition2 Alors\n    Instructions 2\nSinon\n    Instructions 3\nFinSi\n```",
+              "origin": "source",
+              "title": "3. Structure alternative multiple : Si…SinonSi…Sinon"
+            },
+            {
+              "type": "example",
+              "md": "À partir d'une note, afficher une appréciation : note ≥ 16 → Très bien ; note ≥ 14 → Bien ; note ≥ 12 → Assez bien ; note ≥ 10 → Passable ; sinon → Insuffisant.\n```\nSi Note >= 16 Alors\n    Afficher(\"Très bien\")\nSinonSi Note >= 14 Alors\n    Afficher(\"Bien\")\nSinonSi Note >= 12 Alors\n    Afficher(\"Assez bien\")\nSinonSi Note >= 10 Alors\n    Afficher(\"Passable\")\nSinon\n    Afficher(\"Insuffisant\")\nFinSi\n```",
+              "origin": "source",
+              "title": "Exemple : appréciation d'une note"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch04-si-sinonsi.svg",
+              "alt": "Organigramme de l'appréciation d'une note : on teste Note ≥ 16, puis ≥ 14, ≥ 12, ≥ 10 ; la première condition vraie déclenche l'affichage, sinon « Insuffisant ».",
+              "caption": "Figure — Si … SinonSi : les conditions sont testées dans l'ordre, la première vraie gagne.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Les conditions sont testées **une par une, dans l'ordre**. Dès qu'une condition est vraie, son bloc est exécuté et **les autres conditions ne sont plus testées**.",
+              "origin": "source",
+              "title": "Ordre d'évaluation"
+            },
+            {
+              "type": "intuition",
+              "md": "C'est pour cela qu'on peut écrire simplement `SinonSi Note >= 14` au lieu de `(Note >= 14) ET (Note < 16)` : si l'on arrive à cette ligne, c'est que `Note >= 16` était faux. Attention, l'ordre compte : si l'on testait `Note >= 10` en premier, une note de 18 afficherait « Passable » !",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec Note = 14, l'algorithme affiche « ___ »",
+                "answerType": "text",
+                "accepted": [
+                  "Bien"
+                ],
+                "explanation": "Note ≥ 16 est faux, Note ≥ 14 est vrai : on affiche « Bien » et on ne teste plus les conditions suivantes."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "L'**indentation** consiste à décaler les instructions vers la droite afin de montrer leur appartenance à un bloc et de faciliter la lecture de l'algorithme.\n\nRègles à retenir :\n- les instructions appartenant à un bloc sont décalées vers la droite ;\n- les instructions d'un même bloc sont alignées ;\n- `Si`, `Sinon` et `FinSi` sont au même niveau d'indentation ;\n- après `FinSi`, les instructions reprennent le niveau précédent.",
+              "origin": "source",
+              "title": "Indentation"
+            },
+            {
+              "type": "exercise",
+              "md": "Sur une route, les vitesses sont classées en quatre catégories : lente (moins de 50 km/h), modérée (de 50 à 99 km/h), rapide (de 100 à 149 km/h) et excessive (150 km/h ou plus). Écrire un algorithme qui lit la vitesse mesurée d'un véhicule et indique sa catégorie.",
+              "origin": "source",
+              "title": "Exercice 5 : catégorie de vitesse",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme CategorieVitesse\nVariables\n    v : réel\nDébut\n    Lire(v)\n    Si (v < 50) Alors\n        Afficher(\"Vitesse lente\")\n    SinonSi (v < 100) Alors\n        Afficher(\"Vitesse modérée\")\n    SinonSi (v < 150) Alors\n        Afficher(\"Vitesse rapide\")\n    Sinon\n        Afficher(\"Vitesse excessive\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Une compagnie d'électricité classe la consommation mensuelle (c) des foyers en quatre niveaux : faible (moins de 100 kWh), moyenne (de 100 à 299 kWh), élevée (de 300 à 599 kWh) et très élevée (600 kWh ou plus). Écrire un algorithme qui lit la consommation mensuelle d'un foyer et indique son niveau de consommation.",
+              "origin": "source",
+              "title": "Exercice 6 : niveau de consommation électrique",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme NiveauConsommation\nVariables\n    c : réel\nDébut\n    Lire(c)\n    Si (c < 100) Alors\n        Afficher(\"Consommation faible\")\n    SinonSi (c < 300) Alors\n        Afficher(\"Consommation moyenne\")\n    SinonSi (c < 600) Alors\n        Afficher(\"Consommation élevée\")\n    Sinon\n        Afficher(\"Consommation très élevée\")\n    FinSi\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans CategorieVitesse, quelle catégorie pour v = 100 ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Lente"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Modérée"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Rapide"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Excessive"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "100 < 50 faux, 100 < 100 faux, 100 < 150 vrai → « Vitesse rapide » (de 100 à 149 km/h)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans un Si…SinonSi…Sinon, toutes les conditions sont toujours testées.",
+              "answer": false,
+              "explanation": "Faux : dès qu'une condition est vraie, son bloc est exécuté et les suivantes ne sont plus testées."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec Note = 9.5, l'algorithme d'appréciation affiche « ___ »",
+              "answerType": "text",
+              "accepted": [
+                "Insuffisant"
+              ],
+              "explanation": "Aucune des conditions (≥ 16, ≥ 14, ≥ 12, ≥ 10) n'est vraie : on exécute le Sinon."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans NiveauConsommation, quel niveau pour c = 600 ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Faible"
+                },
+                {
+                  "id": "b",
+                  "md": "Moyenne"
+                },
+                {
+                  "id": "c",
+                  "md": "Élevée"
+                },
+                {
+                  "id": "d",
+                  "md": "Très élevée"
+                }
+              ],
+              "answer": "d",
+              "explanation": "600 < 600 est faux : on arrive au Sinon, « très élevée » (600 kWh ou plus)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle règle d'indentation est correcte ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "FinSi est décalé à droite de Si"
+                },
+                {
+                  "id": "b",
+                  "md": "Si, Sinon et FinSi sont au même niveau"
+                },
+                {
+                  "id": "c",
+                  "md": "Les instructions d'un bloc sont alignées sur Si"
+                },
+                {
+                  "id": "d",
+                  "md": "Après FinSi, on reste décalé"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Si, Sinon et FinSi sont alignés ; les instructions des blocs sont décalées vers la droite ; après FinSi on revient au niveau précédent."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si l'on testait `Note >= 10` avant `Note >= 16`, une note de 18 serait classée « Passable ».",
+              "answer": true,
+              "explanation": "Oui : 18 ≥ 10 est vrai, donc ce premier bloc serait exécuté et les autres conditions ignorées. L'ordre des tests est essentiel."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans CategorieVitesse, combien de conditions sont évaluées pour v = 120 ? ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "v < 50 (faux), v < 100 (faux), v < 150 (vrai) : trois conditions évaluées, puis on s'arrête."
+            }
+          ]
+        },
+        {
+          "slug": "selon-cas",
+          "title": "Cas multiples : Selon…Cas",
+          "number": "4.4",
+          "estimatedMinutes": 11,
+          "summary": "La structure Selon…Cas pour comparer une même expression à plusieurs valeurs précises, la comparaison avec Si…SinonSi…Sinon, et le récapitulatif des structures alternatives.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Lorsque l'on teste **une même variable ou expression contre plusieurs valeurs**, on peut utiliser :\n```\nSelon Variable Faire\n    Cas Valeur1 :\n        Instructions\n    Cas Valeur2 :\n        Instructions\n    ……\nFinSelon\n```\n\nNous avons une seule expression que l'on compare à plusieurs valeurs possibles.",
+              "origin": "source",
+              "title": "4. Cas multiples : Selon…Cas"
+            },
+            {
+              "type": "example",
+              "md": "Écrire un algorithme qui demande à l'utilisateur de saisir un numéro compris entre 1 et 7, puis affiche le jour de la semaine correspondant (1 : Lundi, 2 : Mardi, …, 7 : Dimanche).\n```\nAlgorithme JourSemaine\nVariable\n    Jour : Entier\nDébut\n    Écrire \"Saisir un numéro entre 1 et 7 :\"\n    Lire Jour\n    Selon Jour Faire\n        Cas 1 :\n            Afficher \"Lundi\"\n        Cas 2 :\n            Afficher \"Mardi\"\n        Cas 3 :\n            Afficher \"Mercredi\"\n        Cas 4 :\n            Afficher \"Jeudi\"\n        Cas 5 :\n            Afficher \"Vendredi\"\n        Cas 6 :\n            Afficher \"Samedi\"\n        Cas 7 :\n            Afficher \"Dimanche\"\n        Sinon :\n            Afficher \"Numéro invalide\"\n    FinSelon\nFin\n```",
+              "origin": "source",
+              "title": "Exemple : jour de la semaine"
+            },
+            {
+              "type": "remark",
+              "md": "La ligne `Sinon :` (appelée `Autre cas :` dans d'autres exemples du cours) traite toutes les valeurs qui ne correspondent à aucun `Cas`. Ici, un numéro comme 9 affiche « Numéro invalide ».",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans JourSemaine, si l'utilisateur saisit 5, l'algorithme affiche ___",
+                "answerType": "text",
+                "accepted": [
+                  "Vendredi"
+                ],
+                "explanation": "Le Cas 5 correspond à « Vendredi »."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "« Selon…Cas » vs « Si…SinonSi…Sinon »",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "- **La structure Selon…Cas** : lorsque nous souhaitons comparer **une même variable à plusieurs valeurs précises et connues**.\n- **La structure Si…SinonSi…Sinon** : lorsque nous souhaitons tester **différentes conditions**, notamment des **intervalles** ou des expressions logiques.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour classer une vitesse en « lente / modérée / rapide / excessive » selon des intervalles, quelle structure convient ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Selon…Cas"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Si…SinonSi…Sinon"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Ce sont des intervalles (v < 50, v < 100…), pas des valeurs précises : on utilise Si…SinonSi…Sinon."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exercices d'application",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Une calculatrice de base effectue une seule opération à la fois, choisie par l'utilisateur parmi +, −, × et ÷. Écrire un algorithme qui lit deux nombres et l'opérateur souhaité, puis effectue et affiche le calcul correspondant.",
+              "origin": "source",
+              "title": "Exercice 1 : calculatrice simple",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme CalculatriceSimple\nVariables\n    a, b, resultat : réel\n    operateur : caractère\nDébut\n    Lire(a)\n    Lire(b)\n    Lire(operateur)\n    Selon (operateur) Faire\n        Cas '+' : resultat ← a + b\n        Cas '-' : resultat ← a - b\n        Cas '*' : resultat ← a × b\n        Cas '/' : resultat ← a / b\n        Autre cas : Afficher(\"Opérateur invalide\")\n    FinSelon\n    Afficher(resultat)\nFin\n```"
+                },
+                {
+                  "md": "Remarque : si l'opérateur est invalide, l'algorithme affiche le message puis `Afficher(resultat)` affiche une variable qui n'a reçu aucune valeur. On peut placer `Afficher(resultat)` dans chaque Cas, ou n'afficher le résultat que si l'opérateur est valide.",
+                  "why": "Une variable non initialisée n'a pas de valeur définie."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le numéro d'un mois (1 à 12) et affiche son nom.",
+              "origin": "source",
+              "title": "Exercice 2 : nom du mois",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme NomDuMois\nVariables\n    mois : entier\n    nomMois : chaîne\nDébut\n    Lire(mois)\n    Selon (mois) Faire\n        Cas 1 : nomMois ← \"Janvier\"\n        Cas 2 : nomMois ← \"Février\"\n        Cas 3 : nomMois ← \"Mars\"\n        Cas 4 : nomMois ← \"Avril\"\n        Cas 5 : nomMois ← \"Mai\"\n        Cas 6 : nomMois ← \"Juin\"\n        Cas 7 : nomMois ← \"Juillet\"\n        Cas 8 : nomMois ← \"Août\"\n        Cas 9 : nomMois ← \"Septembre\"\n        Cas 10 : nomMois ← \"Octobre\"\n        Cas 11 : nomMois ← \"Novembre\"\n        Cas 12 : nomMois ← \"Décembre\"\n        Autre cas : nomMois ← \"Mois invalide\"\n    FinSelon\n    Afficher(nomMois)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Récap : structures alternatives",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Structure | Nombre de possibilités | Exemple | Quand l'utiliser ? |\n|---|---|---|---|\n| Si…Alors | 1 action conditionnelle | Moyenne >= 10 | Agir uniquement si une condition est vraie |\n| Si…Alors…Sinon | 2 | Age >= 18 | Une action pour VRAI, une autre pour FAUX |\n| Si…SinonSi…Sinon | Plusieurs | Note >= 16, >= 14, >= 12… | Plusieurs conditions différentes |\n| Selon…Cas | Plusieurs valeurs | Jour = 1, 2, 3… | Une même expression comparée à plusieurs valeurs |\n\n**Combien de situations ?** 1 → Si…Alors ; 2 → Si…Sinon ; plusieurs → conditions différentes : SinonSi ; valeurs précises : Selon.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation à la structure la plus adaptée.",
+              "pairs": [
+                {
+                  "left": "Afficher « Admis » seulement si Moyenne ≥ 10",
+                  "right": "Si…Alors"
+                },
+                {
+                  "left": "Afficher « Majeur » ou « Mineur »",
+                  "right": "Si…Alors…Sinon"
+                },
+                {
+                  "left": "Appréciation selon des tranches de notes",
+                  "right": "Si…SinonSi…Sinon"
+                },
+                {
+                  "left": "Nom du jour à partir d'un numéro 1 à 7",
+                  "right": "Selon…Cas"
+                }
+              ],
+              "explanation": "C'est le tableau récapitulatif du cours : 1 action, 2 actions, plusieurs conditions différentes, plusieurs valeurs précises."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans NomDuMois, si l'on saisit 8, l'algorithme affiche ___",
+              "answerType": "text",
+              "accepted": [
+                "Août",
+                "Aout"
+              ],
+              "explanation": "Le Cas 8 affecte « Août » à nomMois."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "CalculatriceSimple avec a = 12, b = 4 et operateur = '/' affiche ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "Le Cas '/' calcule 12 / 4 = 3."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Selon…Cas convient bien pour tester des intervalles comme « v < 50 ».",
+              "answer": false,
+              "explanation": "Faux : Selon…Cas compare une expression à des **valeurs précises**. Pour des intervalles, on utilise Si…SinonSi…Sinon."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans JourSemaine, que se passe-t-il si l'utilisateur saisit 0 ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Rien ne s'affiche"
+                },
+                {
+                  "id": "b",
+                  "md": "« Lundi » s'affiche"
+                },
+                {
+                  "id": "c",
+                  "md": "« Numéro invalide » s'affiche"
+                },
+                {
+                  "id": "d",
+                  "md": "L'algorithme redemande un numéro"
+                }
+              ],
+              "answer": "c",
+              "explanation": "0 ne correspond à aucun Cas : c'est la branche Sinon qui s'exécute. (Redemander la saisie nécessiterait une boucle, vue au chapitre suivant.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives de Pr L. OUKHOUYA, « Chapitre 4 : Structures de contrôle conditionnelles » (39 p.), identiques à Bibliotheque_sources/Algorithme/Cours/Structures algebriques/F329. NB : ce fichier est rangé dans un dossier « Structures algebriques » par erreur de classement de la bibliothèque ; son contenu est bien le chapitre sur les conditions.",
+    "MATÉRIEL DÉPLACÉ : les exercices 1 (calculatrice simple, Selon…Cas sur un opérateur) et 2 (nom du mois) se trouvent au début des exercices du chapitre 5 (Boucles, p. 14–16) alors qu'ils portent sur Selon…Cas ; ils sont placés ici dans la leçon 4.4 « Cas multiples : Selon…Cas ».",
+    "Solutions inversées dans la source (p. 26 et 28) : la diapositive « Solution exercice 3 » donne l'algorithme CapaciteSalle (énoncé de l'exercice 4) et « Solution exercice 4 » donne EtatEau (énoncé de l'exercice 3). Chaque solution est remise sous son énoncé.",
+    "p. 18 : la définition de la structure alternative multiple reprenait mot pour mot celle de la double (« selon que la condition est vraie ou fausse ») ; reformulée en « lorsqu'il y a plus de deux situations, on enchaîne plusieurs conditions » d'après l'exemple de la p. 19. p. 19 : « le programme s'arrête et ne teste plus les autres » précisé en « son bloc est exécuté et les autres conditions ne sont plus testées » (l'algorithme ne s'arrête pas).",
+    "p. 10 : l'exemple écrit « Si Module >= 10 » alors que la variable s'appelle Note (p. 9) ; harmonisé en Note dans la leçon (l'exemple est fusionné avec celui de l'âge). p. 8 : « RAI » → « VRAI ». « comparaissions » → « comparaisons » ; « on utilisant » → « en utilisant » ; « Variable 1 Opérateurdecomparasion Variable2 » → « Variable1 OpérateurDeComparaison Variable2 » ; « inférieur ou égal » → « inférieure ou égale » (exercice 3).",
+    "La source écrit la branche par défaut de Selon tantôt « Sinon : » (JourSemaine), tantôt « Autre cas : » (exercices déplacés) ; les deux sont conservées et une remarque ajoutée explique leur équivalence. CalculatriceSimple : une remarque ajoutée signale qu'avec un opérateur invalide, Afficher(resultat) affiche une variable non initialisée.",
+    "Les schémas ASCII (arbre des expressions logiques p. 5 et 39, arbre de décision p. 39, schémas VRAI/FAUX p. 8 et 10) et la diapositive « Diagramme » (p. 27, image d'organigramme) sont rendus en texte. La diapositive récapitulative p. 33 (répétition des trois formes) n'est pas dupliquée. Figures (SVG) : organigrammes des structures Si…Alors et Si…Alors…Sinon (schémas VRAI/FAUX p. 8 et 10) et organigramme ajouté pour Si…SinonSi.",
+    "Ajouts (origin: added) : intuition sur l'ordre des SinonSi, réponses chiffrées dans les checkpoints."
+  ]
+}

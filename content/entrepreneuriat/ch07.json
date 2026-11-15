@@ -1,0 +1,500 @@
+{
+  "slug": "recherche-emploi",
+  "number": 7,
+  "title": "La recherche d'un emploi",
+  "description": "Séance 7 : étapes de la recherche d'emploi, connaissance de soi et types d'intérêts, CV et lettre de motivation annotés, marché caché de l'emploi, modèle HADAF, connaissance de l'employeur, entretien d'embauche et réseaux sociaux.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "se-preparer",
+      "title": "Se préparer",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "se-connaitre-pour-chercher",
+          "title": "Les étapes de la recherche d'emploi et la connaissance de soi",
+          "number": "7.1",
+          "estimatedMinutes": 11,
+          "summary": "Objectifs de la séance, les facteurs qui déterminent la durée de recherche, les six étapes, l'exploration de soi et les six types d'intérêts (réaliste, investigateur, artiste, sociable, entrepreneur, conventionnel).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance comprend des conseils efficaces pour **trouver un emploi** dans divers contextes : techniques pour réussir un **entretien d'embauche**, trouver des annonces, acquérir des compétences de **networking (réseautage)**, comprendre les stratégies des recruteurs et traiter les questions difficiles, et planifier sa recherche.\n\n**Résultats d'apprentissage.** Vous serez en mesure de : 1. identifier les étapes clés d'une recherche d'emploi efficace ; 2. comprendre l'importance de planifier la recherche ; 3. privilégier la connaissance de soi ; 4. explorer la rédaction d'une lettre de motivation captivante et d'un CV puissant ; 5. identifier où et comment commence la recherche ; 6. être conscient de l'importance de connaître l'employeur potentiel ; 7. explorer les aspects de l'entretien d'embauche ; 8. mesurer l'influence des réseaux sociaux.",
+              "origin": "source",
+              "title": "La recherche d'emploi"
+            },
+            {
+              "type": "text",
+              "md": "**Combien faut-il de temps pour trouver un emploi ?** La réponse dépend de deux facteurs principaux : les **facteurs liés à vous** et les **facteurs liés au marché**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "1. **Se connaître** : identifiez vos points forts et vos axes d'amélioration.\n2. **Le dossier d'embauche** : préparez votre CV, votre lettre de motivation…\n3. **Le networking** : commencez votre recherche active d'emploi en faisant du networking.\n4. **L'entreprise** : connaissez votre employeur potentiel.\n5. **Les compétences d'entretien** : maîtrisez l'art de l'entretien d'embauche.\n6. **Les réseaux sociaux** : utilisez-les en gardant à l'esprit leur danger.",
+              "origin": "source",
+              "title": "Les étapes de la recherche d'emploi"
+            },
+            {
+              "type": "text",
+              "md": "**Se connaître.** Essayer de trouver un emploi sans se connaître ne sert à rien sur le long terme. L'objectif n'est pas un emploi de courte durée qui ne refléterait pas vos compétences, mais un emploi qui corresponde à vos **valeurs**, vos **intérêts**, vos **connaissances** et vos **compétences**. Pensez à ce qui vous différencie, à pourquoi un employeur vous embaucherait, à vos réalisations passées ; et pensez à la carrière de vos rêves, en oubliant un instant l'aspect financier, pour la satisfaction personnelle qu'elle vous apporterait.\n\n**L'exploration de soi : mes passions et mes rêves.** Ce que j'aime faire ; ce qui me passionne ; l'emploi de mes rêves ; ce qui me distingue des autres ; les raisons pour lesquelles un employeur m'embaucherait. Utilisez-le pour identifier trois domaines clés : **intérêts**, **valeurs**, **capacités**, qui mènent ensemble à la **carrière**.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les étapes de la recherche d'emploi.",
+                "items": [
+                  "Se connaître",
+                  "Préparer le dossier d'embauche",
+                  "Faire du networking",
+                  "Connaître l'employeur",
+                  "Maîtriser l'entretien",
+                  "Utiliser les réseaux sociaux avec prudence"
+                ],
+                "explanation": "Tout commence par la connaissance de soi, sans laquelle le reste ne mène pas à un emploi qui vous corresponde."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Un questionnaire de 20 affirmations (« Je suis une personne qui… ») classe vos intérêts :\n\n| Type | Items | Exemples d'affirmations | Exemples de professions |\n|---|---|---|---|\n| Réaliste | 1–3 | aime travailler avec des animaux, des outils ou des machines ; pragmatique, efficace, réaliste | ingénieurs, architectes, agriculteurs |\n| Investigateur | 4–6 | aime résoudre des problèmes mathématiques ou scientifiques ; minutieux, intellectuel | archéologues, psychiatres, chirurgiens |\n| Artiste | 7–10 | aime les activités créatives (art, théâtre) ; expressif, original, indépendant | fleuristes, graphistes, acteurs |\n| Sociable | 11–13 | aime aider les gens (enseignement, soins, information) ; serviable, aimable | physiothérapeutes, enseignants, psychologues |\n| Entrepreneur | 14–16 | aime diriger et persuader, vendre des choses et des idées ; énergique, ambitieux, sociable | chefs cuisiniers, juges, avocats |\n| Conventionnel | 17–20 | aime travailler avec des chiffres et des dossiers de manière établie et méthodique | secrétaires, comptables |",
+              "origin": "source",
+              "title": "Découvrez qui vous êtes : les types d'intérêts"
+            },
+            {
+              "type": "remark",
+              "md": "Ces catégories ne sont **pas mutuellement exclusives** : un réaliste peut aussi être entrepreneur ou investigateur, mais les gens tendent vers un trait principal. Ce questionnaire n'est pas le seul critère : votre choix de carrière dépendra aussi d'autres aspects de votre personnalité, de vos **valeurs** (indépendance ? réussite ? reconnaissance ?), de vos **capacités** (mathématiques ou sciences ? relations humaines ?), de votre **parcours et formation**, et de votre **famille et environnement**.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une personne qui aime diriger, persuader et vendre des idées a un profil plutôt :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Réaliste"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Conventionnel"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Entrepreneur"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Artiste"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "C'est la description des items 14–16 : profil entrepreneur."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque type d'intérêt à un exemple de profession du cahier.",
+              "pairs": [
+                {
+                  "left": "Réaliste",
+                  "right": "Ingénieur"
+                },
+                {
+                  "left": "Investigateur",
+                  "right": "Archéologue"
+                },
+                {
+                  "left": "Sociable",
+                  "right": "Enseignant"
+                },
+                {
+                  "left": "Conventionnel",
+                  "right": "Comptable"
+                }
+              ],
+              "explanation": "Ce sont des exemples du tableau « Où vous voyez-vous ? »."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les six types d'intérêts sont mutuellement exclusifs : on n'en a qu'un seul.",
+              "answer": false,
+              "explanation": "Faux : ils ne sont pas mutuellement exclusifs, même si l'on tend vers un trait principal."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "De quels deux facteurs dépend la durée de la recherche d'emploi ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'âge et le sexe"
+                },
+                {
+                  "id": "b",
+                  "md": "Les facteurs liés à vous et ceux liés au marché"
+                },
+                {
+                  "id": "c",
+                  "md": "Le salaire et la ville"
+                },
+                {
+                  "id": "d",
+                  "md": "La chance et le diplôme"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la réponse donnée au début de la séance."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quels sont les trois domaines clés de la connaissance de soi qui mènent à la carrière ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Intérêts, valeurs, capacités"
+                },
+                {
+                  "id": "b",
+                  "md": "Diplôme, salaire, ville"
+                },
+                {
+                  "id": "c",
+                  "md": "CV, lettre, entretien"
+                },
+                {
+                  "id": "d",
+                  "md": "Famille, amis, loisirs"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le schéma du cahier relie intérêts, valeurs et capacités à la carrière."
+            }
+          ]
+        },
+        {
+          "slug": "dossier-et-marche-cache",
+          "title": "Le dossier de candidature et le marché caché",
+          "number": "7.2",
+          "estimatedMinutes": 10,
+          "summary": "Quelques faits sur les CV (lecture rapide, systèmes de suivi, CV chronologique ou par compétences), un CV et une lettre annotés, le marché caché de l'emploi et le modèle HADAF.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "1. Certains CV sont rejetés après quelques secondes d'examen : on estime qu'en moyenne chaque CV ne retient que **2,9 secondes** d'attention. Votre rôle est d'éviter la pile « à rejeter » après le premier examen rapide.\n2. La pile « rejeter » comprend les CV mal rédigés, ceux où l'information est difficile à trouver ou mal organisée (par exemple, les compétences pertinentes seulement à la fin).\n3. Certaines entreprises utilisent un **système de suivi des candidatures** qui scanne les CV et cherche les **mots clés** de l'employeur.\n4. Il existe deux types de CV : **chronologique** (montrer la stabilité de votre progression, formation et expérience) et **par compétences** (souligner vos compétences et leur adéquation au poste). Le CV chronologique convient mieux à un étudiant.",
+              "origin": "source",
+              "title": "Curriculum vitae : quelques faits à savoir"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "En moyenne, combien de secondes d'attention un CV retient-il selon le cahier ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "2.9"
+                ],
+                "explanation": "Environ 2,9 secondes : l'information importante doit sauter aux yeux."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "- Il présente les expériences professionnelles par ordre chronologique, **l'expérience la plus récente en premier** ; si la formation est plus récente que l'expérience, mettez-la en premier.\n- Un design professionnel et simple reste le meilleur ; une seule police (deux maximum) ; marges confortables (environ 2,5 cm) ; ne pas surcharger.\n- L'adresse complète en haut, pas à la fin ; police 12 pour les titres de section, 11 pour le texte.\n- Des **exemples spécifiques de réalisations** accrochent l'attention ; le passé est réservé aux expériences antérieures.\n- Mettez en valeur les compétences intéressantes pour l'employeur ; **trois références** sont généralement suffisantes (dont au moins un professeur).",
+              "origin": "source",
+              "title": "Conseils annotés sur un CV chronologique"
+            },
+            {
+              "type": "definition",
+              "md": "D'après l'exemple d'Amer Kais (poste de Webmaster Senior) :\n- Une lettre de motivation ne devrait pas dépasser **une page** ; créez votre propre en-tête.\n- Dès le début, une phrase doit montrer que vous correspondez au profil recherché, avec une bonne référence à votre CV.\n- La lettre inclut plus de détails que le CV (équipe de cinq webmasters, 10 clients clés, prix national parmi 500 sites).\n- Montrer que l'on a fait des recherches sur l'entreprise (visite des locaux, intérêt pour ses équipes multiculturelles) : ce n'est pas une lettre standard.\n- Montrer des traits de personnalité recherchés (amélioration continue, partage par des ateliers) et de la flexibilité (dates d'entretien adaptables).\n- **Demander un entretien.**",
+              "origin": "source",
+              "title": "Conseils annotés sur une lettre de motivation"
+            },
+            {
+              "type": "exercise",
+              "md": "En groupes, avec un membre chargé du tri : le groupe reçoit des cartes « Pour la préparation d'un curriculum vitae… » vraies ou fausses, doit les classer par consensus en 5 secondes (sinon la réponse compte comme fausse) et compte ses bonnes réponses. Ensuite : identifiez au moins cinq endroits où rechercher des offres d'emploi.",
+              "origin": "source",
+              "title": "Le jeu du CV"
+            },
+            {
+              "type": "definition",
+              "md": "Dans le monde, **75 à 85 %** des offres d'emploi **ne sont pas publiées** ; ce pourcentage pourrait être encore plus élevé dans notre pays. Ces emplois forment le « **marché caché de l'emploi** ». Vous devez être en mesure de développer et d'utiliser votre **réseau**, de rechercher proactivement un emploi et d'être persévérant.",
+              "origin": "source",
+              "title": "Le marché caché de l'emploi"
+            },
+            {
+              "type": "definition",
+              "md": "| Lettre | Principe |\n|---|---|\n| **H** – Honnêteté (*Honesty*) | Soyez honnête avec vous-même d'abord, puis avec vos employeurs potentiels. |\n| **A** – Ambition et attitude | Ne sous-estimez pas votre potentiel. Visez haut. Soyez positif et optimiste. |\n| **D** – Motivation (*Drive*) | La motivation est la clé : ne perdez jamais espoir. |\n| **A** – Accès et alliances | Établissez des relations et des contacts. |\n| **F** – Concentration (*Focus*) | Ne vous laissez pas distraire. Entreprenez une action et soyez persévérant. |",
+              "origin": "source",
+              "title": "Le modèle HADAF pour la recherche d'emploi"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque lettre de HADAF à son principe.",
+                "pairs": [
+                  {
+                    "left": "H",
+                    "right": "Honnêteté"
+                  },
+                  {
+                    "left": "D",
+                    "right": "Motivation (Drive)"
+                  },
+                  {
+                    "left": "F",
+                    "right": "Concentration (Focus)"
+                  }
+                ],
+                "explanation": "HADAF : Honesty, Ambition & Attitude, Drive, Access & Alliances, Focus."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quel pourcentage des offres d'emploi n'est pas publié selon le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "5 à 10 %"
+                },
+                {
+                  "id": "b",
+                  "md": "25 à 35 %"
+                },
+                {
+                  "id": "c",
+                  "md": "75 à 85 %"
+                },
+                {
+                  "id": "d",
+                  "md": "100 %"
+                }
+              ],
+              "answer": "c",
+              "explanation": "75 à 85 % : c'est le marché caché de l'emploi."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel type de CV convient le mieux à un étudiant selon le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Par compétences"
+                },
+                {
+                  "id": "b",
+                  "md": "Chronologique"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le CV chronologique montre la stabilité de la progression (formation et expérience) et correspond mieux à un étudiant."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un CV chronologique, on met l'expérience la plus ancienne en premier.",
+              "answer": false,
+              "explanation": "Faux : l'expérience la plus récente est mise en premier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi faut-il soigner les mots clés d'un CV ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour qu'il soit plus long"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que des systèmes de suivi des candidatures scannent les CV à la recherche des mots clés de l'employeur"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour éviter les fautes"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que c'est obligatoire par la loi"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Fait n° 3 : certaines entreprises utilisent un système qui cherche les mots clés recherchés par l'employeur."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une lettre de motivation ne devrait pas dépasser ___ page(s).",
+              "answerType": "text",
+              "accepted": [
+                "1",
+                "une"
+              ],
+              "explanation": "Une page au maximum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chercher-activement",
+      "title": "Chercher activement",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "employeur-entretien-reseaux",
+          "title": "Connaître l'employeur, l'entretien et les réseaux sociaux",
+          "number": "7.3",
+          "estimatedMinutes": 9,
+          "summary": "Planifier sa journée de recherche, se renseigner sur l'employeur potentiel, préparer les questions d'entretien et maîtriser les risques des réseaux sociaux.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "En groupe, planifiez votre journée de recherche (de 8 h à 18 h). La préparation de la veille : 1. préparer les CV et lettres de motivation ; 2. identifier les sociétés pertinentes et les employeurs potentiels ; 3. consulter les réseaux sociaux (ouvrir des comptes LinkedIn ou autres, inviter amis et connaissances professionnelles, sans abuser du système).",
+              "origin": "source",
+              "title": "Le planning de la recherche d'emploi de demain"
+            },
+            {
+              "type": "definition",
+              "md": "Connaître son employeur envoie l'image d'un **candidat sérieux**, prêt à s'adapter à l'environnement de l'entreprise ; cela aide à rédiger la lettre de motivation et lors de l'entretien.\n1. Connaître le secteur de l'entreprise ;\n2. visiter le site web de l'entreprise ;\n3. comprendre la structure et la taille de l'entreprise ;\n4. recueillir des informations sur les concurrents ;\n5. recueillir des informations sur les clients principaux, si possible ;\n6. obtenir plus d'informations sur l'emploi auquel vous postulez ;\n7. le nom et le poste de la personne qui recevra votre lettre ou qui vous fera passer l'entretien ;\n8. connaissez-vous un employé actuel ou ancien de l'entreprise ? Ce sont d'excellentes sources d'information.",
+              "origin": "source",
+              "title": "Connaissez votre employeur potentiel"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Connaître son employeur potentiel aide à la fois pour la lettre de motivation et pour l'entretien.",
+                "answer": true,
+                "explanation": "C'est ce qu'affirme le cahier."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "**Activité individuelle :** comment répondriez-vous à ces questions ?\n1. Parlez-nous de vous en 60 secondes ou moins, de vos plus grands atouts et principaux points forts.\n2. Parlez-nous de votre plus grande faiblesse et de la manière dont elle a pu vous conduire à de mauvaises décisions.\n3. Comment décririez-vous votre éthique de travail ?\n4. Pourquoi avez-vous quitté votre dernier emploi ? ou pourquoi voulez-vous changer de carrière ?\n5. Pourquoi êtes-vous intéressé par notre société ?\n6. Quelles sont vos prétentions salariales ?\n\n**Activité de groupe :** identifiez le top 5 des erreurs commises lors des entretiens d'embauche.",
+              "origin": "source",
+              "title": "L'art de l'entretien d'embauche"
+            },
+            {
+              "type": "definition",
+              "md": "Selon une enquête de CareerBuilder (citée par *Fast Company*), **45 %** des employeurs utilisent les réseaux sociaux pour se faire une idée des candidats, et davantage Facebook que LinkedIn. Raisons pour lesquelles des candidatures ont été rejetées après vérification :\n\n| Raison | % |\n|---|---|\n| Photos ou informations inappropriées ou provocatrices | 53 % |\n| Informations relatives à la consommation d'alcool ou de drogues | 44 % |\n| Insultes envers l'ancien employeur, les collègues ou les clients | 35 % |\n| Peu de compétences en communication | 29 % |\n| Commentaires discriminatoires | 26 % |\n| Mensonge au sujet de ses qualifications | 24 % |\n| Partage d'informations confidentielles sur l'ancien emploi | 20 % |\n\nQuoi que vous publiiez, une **trace** restera très longtemps. **Postez uniquement des choses que vous voudriez que votre futur employeur sache.**",
+              "origin": "source",
+              "title": "Les promesses et risques des réseaux sociaux"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la raison de rejet la plus fréquente dans l'enquête citée ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Mensonge sur les qualifications"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Photos ou informations inappropriées ou provocatrices"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Commentaires discriminatoires"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Informations confidentielles"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "53 % : photos ou informations inappropriées ou provocatrices."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous souhaitez inclure dans votre vie pour améliorer vos compétences en recherche d'emploi.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Selon l'enquête citée, quel pourcentage des employeurs utilise les réseaux sociaux pour se faire une idée des candidats ? ___",
+              "answerType": "number",
+              "accepted": [
+                "45"
+              ],
+              "explanation": "45 % des employeurs."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces points fait partie de « Connaissez votre employeur potentiel » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Connaître la couleur des bureaux"
+                },
+                {
+                  "id": "b",
+                  "md": "Recueillir des informations sur les concurrents"
+                },
+                {
+                  "id": "c",
+                  "md": "Demander le salaire du directeur"
+                },
+                {
+                  "id": "d",
+                  "md": "Ignorer le site web"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cahier cite secteur, site web, structure et taille, concurrents, clients, emploi visé, interlocuteur, contacts dans l'entreprise."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le cahier conseille de publier sur les réseaux sociaux uniquement ce que l'on voudrait que son futur employeur sache.",
+              "answer": true,
+              "explanation": "C'est la conclusion de la partie sur les réseaux sociaux."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi un employé actuel ou ancien de l'entreprise est-il utile ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Il peut signer le contrat"
+                },
+                {
+                  "id": "b",
+                  "md": "C'est une excellente source d'information"
+                },
+                {
+                  "id": "c",
+                  "md": "Il remplace l'entretien"
+                },
+                {
+                  "id": "d",
+                  "md": "Il rédige le CV"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Point 8 de la liste."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 7 = p. 113–134 du PDF (pages 109–130 du cahier). Les p. 135–136 sont vides.",
+    "Questionnaire des intérêts (p. 119–120) : l'item 16 mélange deux phrases (« aime travailler avec des animaux… ; évite généralement les se voit comme une personne énergique, ambitieuse et sociable ») ; seule la partie entrepreneur (« énergique, ambitieuse et sociable ») est retenue dans le tableau. La répartition des items (artiste 7–10, sociable 11–13) est conservée telle quelle. Le cahier présente les chefs cuisiniers, juges et avocats comme exemples du type « entrepreneur », conservé.",
+    "Les CV et lettre annotés (p. 124, 126) sont rendus par des listes de conseils, l'exemple complet ayant déjà été présenté au chapitre 4. Le planning horaire (p. 129) et les espaces de réponse sont résumés en consignes.",
+    "Coquilles : « Amer essai de créer » → « créez votre propre en-tête » ; « que vous porté » → « portez » ; « ale titre » → « le titre » ; « Luxemourg » omis (coordonnées fictives)."
+  ]
+}

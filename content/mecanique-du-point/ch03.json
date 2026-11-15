@@ -1,0 +1,1671 @@
+{
+ "slug": "dynamique-referentiel-galileen",
+ "number": 3,
+ "title": "Dynamique du point matériel dans un référentiel galiléen",
+ "description": "Forces usuelles (gravitation, poids, force électrique), principe d'inertie et référentiels galiléens, PFD et actions réciproques, pendule simple, moment cinétique et théorème du moment cinétique, équilibre et stabilité.",
+ "sourcePdf": "Modules/Mecanique du point/Cours/Chapitre 03 - Dynamique dans un référentiel galiléen.pdf",
+ "sections": [
+  {
+   "slug": "forces-exemples",
+   "title": "Force exercée sur un point matériel – Exemples",
+   "number": "I",
+   "lessons": [
+    {
+     "slug": "force-gravitation-poids",
+     "title": "Force, gravitation et poids",
+     "number": "I.1",
+     "estimatedMinutes": 8,
+     "summary": "La notion de force, la force gravitationnelle entre deux masses et le poids $\\vec P=m\\vec g$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "I – Force exercée sur un point matériel – Exemples",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "La **dynamique** est l'étude du mouvement **en tenant compte des causes** qui le provoquent.",
+       "origin": "source",
+       "title": "Dynamique"
+      },
+      {
+       "type": "definition",
+       "md": "Une **force** est toute action capable de modifier la vitesse : son module et sa direction.\n\nUne force est **invariante par changement de référentiel** : $\\vec F_{/R}=\\vec F_{/R'}$ ($R$ et $R'$ galiléens).",
+       "origin": "source",
+       "title": "Force"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "La cinématique et la dynamique étudient toutes deux le mouvement, mais seule la dynamique tient compte des forces.",
+        "answer": true,
+        "explanation": "Vrai : la cinématique (chapitre 1) décrit le mouvement sans ses causes ; la dynamique relie le mouvement aux forces."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Exemples de forces usuelles",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Soient deux points $M_1(m_1)$ et $M_2(m_2)$. On pose $r=M_1M_2$ et $\\vec u=\\dfrac{\\overrightarrow{M_1M_2}}{M_1M_2}$. La force exercée par $M_1$ sur $M_2$ est\n$$\\vec F_{1/2}=-G\\,\\frac{m_1m_2}{M_1M_2^{\\,3}}\\,\\overrightarrow{M_1M_2}=-G\\,\\frac{m_1m_2}{r^2}\\,\\vec u,\\qquad \\vec F_{2/1}=-\\vec F_{1/2},$$\navec $G=6{,}67\\cdot10^{-11}\\ \\mathrm{N\\cdot m^2\\cdot kg^{-2}}$. C'est une force **attractive**.",
+       "origin": "source",
+       "title": "1) Force gravitationnelle"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-gravitation.svg",
+       "alt": "Deux points M1(m1) et M2(m2) à la distance r ; le vecteur unitaire u de M1 vers M2, F_1/2 appliquée en M2 dirigée vers M1 et F_2/1 appliquée en M1 dirigée vers M2.",
+       "caption": "Figure — interaction gravitationnelle : forces opposées, portées par $(M_1M_2)$, toujours attractives.",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Cas de la Terre.** Si $M_1$ représente la Terre de masse $m_T$ et $M_2=M(m)$, à l'altitude $z$ : $r=R_T+z$ et $\\vec u_r=\\vec u_z$, donc\n$$\\vec F_{T/M}=-G\\,\\frac{m_Tm}{r^2}\\,\\vec u_r=m\\left[-\\frac{Gm_T}{(R_T+z)^2}\\,\\vec u_z\\right].$$",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-poids-altitude.svg",
+       "alt": "La Terre de centre O et de rayon R_T ; un point M à l'altitude z au-dessus de la surface, le vecteur u_z vers le haut et le poids P vers le centre.",
+       "caption": "Figure — point $M$ à l'altitude $z$ : $r=R_T+z$ et la force est dirigée selon $-\\vec u_z$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "On pose $\\vec g=-\\dfrac{Gm_T}{(R_T+z)^2}\\,\\vec u_z$ : **champ de pesanteur**. Alors $\\vec F_{T/M}=m\\vec g$, soit le **poids**\n$$\\vec P=m\\,\\vec g.$$",
+       "origin": "source",
+       "title": "Champ de pesanteur et poids"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Si la distance entre deux masses double, la force gravitationnelle est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "multipliée par 2"
+         },
+         {
+          "id": "b",
+          "md": "divisée par 2"
+         },
+         {
+          "id": "c",
+          "md": "divisée par 4"
+         },
+         {
+          "id": "d",
+          "md": "inchangée"
+         }
+        ],
+        "answer": "c",
+        "explanation": "$F\\propto1/r^2$ : $r\\to2r$ donne $F\\to F/4$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "$g$ diminue avec l'altitude : à $z=R_T$ (environ $6\\,400$ km d'altitude), $g$ est divisé par $4$. Au sol, $g_0=Gm_T/R_T^2\\approx9{,}8\\ \\mathrm{m\\cdot s^{-2}}$.",
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "La force gravitationnelle peut être répulsive.",
+       "answer": false,
+       "explanation": "Faux : elle est toujours **attractive** (signe $-$ devant $\\vec u$ dirigé de $M_1$ vers $M_2$)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "La constante de gravitation vaut $G=6{,}67\\cdot10^{\\,?}\\ \\mathrm{N\\cdot m^2\\cdot kg^{-2}}$ ; l'exposant est ___",
+       "answerType": "number",
+       "accepted": [
+        "-11"
+       ],
+       "explanation": "$G=6{,}67\\cdot10^{-11}$ S.I."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le champ de pesanteur à l'altitude $z$ a pour norme :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\dfrac{Gm_T}{R_T^2}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\dfrac{Gm_T}{(R_T+z)^2}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\dfrac{Gm_Tm}{(R_T+z)^2}$"
+        },
+        {
+         "id": "d",
+         "md": "$\\dfrac{Gm_T}{R_T+z}$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "La distance au centre de la Terre est $R_T+z$ ; la masse $m$ du point n'apparaît pas dans $\\vec g$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec F_{2/1}=-\\vec F_{1/2}$ pour la force gravitationnelle.",
+       "answer": true,
+       "explanation": "Vrai : les deux forces sont opposées."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Un objet de masse $m=2$ kg avec $g=9{,}8$ m/s² a un poids de ___ N.",
+       "answerType": "number",
+       "accepted": [
+        "19.6"
+       ],
+       "explanation": "$P=mg=2\\times9{,}8=19{,}6$ N."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Une force est invariante par changement de référentiel (entre référentiels galiléens).",
+       "answer": true,
+       "explanation": "Vrai : $\\vec F_{/R}=\\vec F_{/R'}$."
+      }
+     ]
+    },
+    {
+     "slug": "force-electrique",
+     "title": "Force électrique",
+     "number": "I.2",
+     "estimatedMinutes": 5,
+     "summary": "La force de Coulomb entre deux charges ponctuelles, attractive ou répulsive selon le signe de $q_1q_2$.",
+     "blocks": [
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Soient 2 charges $q_1$ et $q_2$ placées respectivement en $M_1$ et $M_2$, avec $r=M_1M_2$ et $\\vec u=\\overrightarrow{M_1M_2}/M_1M_2$ :\n$$\\vec F_{1/2}=\\frac1{4\\pi\\varepsilon_0}\\,\\frac{q_1q_2}{M_1M_2^{\\,3}}\\,\\overrightarrow{M_1M_2}=\\frac1{4\\pi\\varepsilon_0}\\,\\frac{q_1q_2}{r^2}\\,\\vec u,\\qquad \\vec F_{2/1}=-\\vec F_{1/2}.$$",
+       "origin": "source",
+       "title": "2) Force électrique"
+      },
+      {
+       "type": "text",
+       "md": "Une telle force peut être **attractive** ($q_1q_2<0$) ou **répulsive** ($q_1q_2>0$).",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-force-electrique.svg",
+       "alt": "En haut, deux charges de même signe : les forces s'éloignent l'une de l'autre (répulsion). En bas, deux charges de signes opposés : les forces se rapprochent (attraction).",
+       "caption": "Figure — force de Coulomb : répulsive si $q_1q_2>0$, attractive si $q_1q_2<0$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Deux électrons ($q_1=q_2=-e$) exercent l'un sur l'autre une force :",
+        "options": [
+         {
+          "id": "a",
+          "md": "attractive"
+         },
+         {
+          "id": "b",
+          "md": "répulsive"
+         },
+         {
+          "id": "c",
+          "md": "nulle"
+         },
+         {
+          "id": "d",
+          "md": "attractive ou répulsive selon la distance"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$q_1q_2=e^2>0$ : force répulsive. Seul le signe du produit compte, pas le signe de chaque charge."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "La force de Coulomb a la même forme que la gravitation ($1/r^2$, portée par $\\vec u$), mais avec un signe : $-G m_1m_2$ (toujours attractif) devient $+\\frac{q_1q_2}{4\\pi\\varepsilon_0}$ (attractif ou répulsif).",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si $q_1q_2<0$, la force électrique est attractive.",
+        "answer": true,
+        "explanation": "Vrai : des charges de signes opposés s'attirent."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "fill_blank",
+       "prompt": "Si la distance entre deux charges est divisée par 3, la force électrique est multipliée par ___",
+       "answerType": "number",
+       "accepted": [
+        "9"
+       ],
+       "explanation": "$F\\propto1/r^2$ : $(1/3)^{-2}=9$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La force électrique est toujours attractive.",
+       "answer": false,
+       "explanation": "Faux : elle est répulsive si $q_1q_2>0$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le coefficient de la force de Coulomb est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$G$"
+        },
+        {
+         "id": "b",
+         "md": "$\\dfrac1{4\\pi\\varepsilon_0}$"
+        },
+        {
+         "id": "c",
+         "md": "$4\\pi\\varepsilon_0$"
+        },
+        {
+         "id": "d",
+         "md": "$\\dfrac1{G}$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec F_{1/2}=\\frac1{4\\pi\\varepsilon_0}\\frac{q_1q_2}{r^2}\\vec u$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez le signe de $q_1q_2$ au type de force.",
+       "pairs": [
+        {
+         "left": "$q_1q_2>0$",
+         "right": "répulsive"
+        },
+        {
+         "left": "$q_1q_2<0$",
+         "right": "attractive"
+        }
+       ],
+       "explanation": "Cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Pour la force électrique, $\\vec F_{2/1}=-\\vec F_{1/2}$.",
+       "answer": true,
+       "explanation": "Vrai, comme pour la gravitation."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lois-de-newton",
+   "title": "Principe d'inertie, PFD et action-réaction",
+   "number": "II",
+   "lessons": [
+    {
+     "slug": "quantite-de-mouvement-principe-d-inertie",
+     "title": "Quantité de mouvement et principe d'inertie",
+     "number": "II.1",
+     "estimatedMinutes": 7,
+     "summary": "Quantité de mouvement, systèmes isolés et pseudo-isolés, principe d'inertie et définition d'un référentiel galiléen.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "II – Principe d'inertie – Référentiel galiléen",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Dans un référentiel, la quantité de mouvement d'un point $M$ de masse $m$ et de vitesse $\\vec V$ est\n$$\\vec p=m\\vec V\\qquad(\\mathrm{kg\\cdot m\\cdot s^{-1}}),$$ où $m$ est la **masse inertielle** (kg) et $\\vec V$ en $\\mathrm{m\\cdot s^{-1}}$.",
+       "origin": "source",
+       "title": "a – Quantité de mouvement"
+      },
+      {
+       "type": "remark",
+       "md": "1) **Système isolé** mécaniquement : absence d'interactions (pas de force) ; exemple : l'univers.\n\n2) **Système pseudo-isolé** : les interactions existent, mais $\\sum\\vec F=\\vec 0$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un point de masse $0{,}5$ kg se déplace à $4$ m/s : $\\|\\vec p\\|=$ ___ kg·m/s.",
+        "answerType": "number",
+        "accepted": [
+         "2"
+        ],
+        "explanation": "$p=mV=0{,}5\\times4=2$ kg·m/s."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "Il existe des référentiels particuliers, dits **référentiels galiléens**, par rapport auxquels une particule **isolée ou pseudo-isolée** est en **mouvement de translation rectiligne uniforme** (ou au repos).",
+       "origin": "source",
+       "title": "b – Principe d'inertie"
+      },
+      {
+       "type": "remark",
+       "md": "① Un référentiel galiléen est un référentiel dans lequel le principe d'inertie est vérifié.\n\n② Soit $R_g$ un référentiel galiléen ; tout référentiel en **MRU** (translation rectiligne uniforme) par rapport à $R_g$ est aussi galiléen.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Un palet sur une table à coussin d'air horizontale (poids compensé par la réaction, pas de frottement) est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "isolé"
+         },
+         {
+          "id": "b",
+          "md": "pseudo-isolé"
+         },
+         {
+          "id": "c",
+          "md": "ni l'un ni l'autre"
+         },
+         {
+          "id": "d",
+          "md": "forcément immobile"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Des forces s'exercent (poids, réaction) mais leur somme est nulle : il est pseudo-isolé. Dans un référentiel galiléen il est donc en MRU ou au repos."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Un système pseudo-isolé ne subit aucune force.",
+       "answer": false,
+       "explanation": "Faux : il subit des forces dont la somme est nulle. C'est le système **isolé** qui ne subit aucune force."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Dans un référentiel galiléen, une particule pseudo-isolée est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "en mouvement circulaire uniforme"
+        },
+        {
+         "id": "b",
+         "md": "en translation rectiligne uniforme ou au repos"
+        },
+        {
+         "id": "c",
+         "md": "forcément au repos"
+        },
+        {
+         "id": "d",
+         "md": "en chute libre"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Énoncé du principe d'inertie."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Un référentiel en rotation uniforme par rapport à un référentiel galiléen est galiléen.",
+       "answer": false,
+       "explanation": "Faux : seul un référentiel en **translation rectiligne uniforme** par rapport à $R_g$ est galiléen."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "L'unité S.I. de la quantité de mouvement est le kg·m·s^___ (exposant).",
+       "answerType": "number",
+       "accepted": [
+        "-1"
+       ],
+       "explanation": "$\\mathrm{kg\\cdot m\\cdot s^{-1}}$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque système à sa définition.",
+       "pairs": [
+        {
+         "left": "isolé",
+         "right": "aucune interaction"
+        },
+        {
+         "left": "pseudo-isolé",
+         "right": "interactions de somme nulle, $\\sum\\vec F=\\vec 0$"
+        }
+       ],
+       "explanation": "Remarques 1 et 2 du cours."
+      }
+     ]
+    },
+    {
+     "slug": "exemples-de-referentiels-galileens",
+     "title": "Exemples de référentiels galiléens",
+     "number": "II.1",
+     "estimatedMinutes": 8,
+     "summary": "Référentiels de Copernic, héliocentrique, géocentrique et terrestre, et dans quelle mesure chacun est galiléen.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "Exemples",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "C'est le **meilleur** référentiel galiléen : $R_c(O_c,x,y,z)$ où $O_c$ est le barycentre du système solaire et les axes pointent vers 3 étoiles « fixes ».\nIl existe une infinité de référentiels, tous en MTRU par rapport à $R_c$, donc galiléens.",
+       "origin": "source",
+       "title": "Référentiel de Copernic"
+      },
+      {
+       "type": "definition",
+       "md": "Avec une bonne approximation $m_S(\\text{Soleil})\\approx m(\\text{système solaire})$ (ou $m_S\\ggg m_p$), donc $O_S\\approx O_c$, où $O_S$ est le barycentre du Soleil. Les axes de $R_S$ sont parallèles à ceux de $R_c$.\n\n**Conclusion** : avec une très bonne approximation, $R_S$ est galiléen.",
+       "origin": "source",
+       "title": "Référentiel héliocentrique $R_S$"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Le centre du Soleil est très proche du barycentre du système solaire parce que la masse du Soleil est très supérieure à celle des planètes.",
+        "answer": true,
+        "explanation": "Vrai : $m_S\\ggg m_p$, donc $O_S\\approx O_c$ et $R_S$ est quasiment confondu avec $R_c$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "definition",
+       "md": "$R_G(O_G,x_G,y_G,z_G)$, où $O_G$ est le barycentre de la Terre (défini par $\\sum m_i\\overrightarrow{GG_i}=\\vec 0$, soit $\\overrightarrow{OG}=\\frac{\\sum m_i\\overrightarrow{OG_i}}{\\sum m_i}$) ; les axes sont parallèles à ceux de $R_S$.\n\n⚠ $R_G$ est en mouvement de **translation elliptique « uniforme »** par rapport à $R_S$ (période 365 j).",
+       "origin": "source",
+       "title": "Référentiel géocentrique $R_G$"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "En toute rigueur, $R_G$ n'est **pas** galiléen. Mais sur une durée $\\Delta t$ de l'ordre de quelques jours, la trajectoire de $O_G$ peut être considérée comme un segment de droite $\\Rightarrow$ $R_G$ en MTRU $\\Rightarrow$ $R_G$ galiléen.",
+       "origin": "source",
+       "title": "Conclusion pour $R_G$"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-referentiels-astro.svg",
+       "alt": "Le Soleil au centre avec les axes du référentiel héliocentrique ; la Terre à deux positions de son orbite elliptique, avec les axes du référentiel géocentrique restés parallèles à ceux de R_S.",
+       "caption": "Figure — le référentiel géocentrique $\\mathcal R_G$ est en translation (ses axes restent parallèles) par rapport à $\\mathcal R_S$.",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Référentiel terrestre $R_T$** (référentiel du laboratoire) : rien d'autre n'est écrit sous ce titre dans la source.",
+       "origin": "source"
+      },
+      {
+       "type": "intuition",
+       "md": "Le référentiel terrestre tourne avec la Terre (un tour par jour) : il n'est galiléen qu'en approximation, pour des expériences de courte durée. Les écarts (déviation vers l'est, pendule de Foucault) s'expliquent au chapitre 4 par les forces d'inertie.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pourquoi peut-on considérer $R_G$ comme galiléen pour une expérience de quelques jours ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "parce que la Terre ne tourne pas sur elle-même"
+         },
+         {
+          "id": "b",
+          "md": "parce que la trajectoire de $O_G$ est alors presque un segment de droite parcouru uniformément"
+         },
+         {
+          "id": "c",
+          "md": "parce que $R_G$ est confondu avec $R_c$"
+         },
+         {
+          "id": "d",
+          "md": "parce que la Terre est isolée"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Sur quelques jours, l'arc d'ellipse est presque rectiligne : $R_G$ est quasiment en MTRU par rapport à $R_S$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "Quel est le « meilleur » référentiel galiléen selon le cours ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "terrestre"
+        },
+        {
+         "id": "b",
+         "md": "géocentrique"
+        },
+        {
+         "id": "c",
+         "md": "héliocentrique"
+        },
+        {
+         "id": "d",
+         "md": "de Copernic"
+        }
+       ],
+       "answer": "d",
+       "explanation": "Le référentiel de Copernic."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "En toute rigueur, le référentiel géocentrique est galiléen.",
+       "answer": false,
+       "explanation": "Faux : il est en translation **elliptique** par rapport à $R_S$, donc accéléré. Il n'est galiléen qu'en approximation, sur quelques jours."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "La période du mouvement de $R_G$ par rapport à $R_S$ est de ___ jours.",
+       "answerType": "number",
+       "accepted": [
+        "365"
+       ],
+       "explanation": "Une révolution de la Terre autour du Soleil."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque référentiel à son origine.",
+       "pairs": [
+        {
+         "left": "Copernic",
+         "right": "barycentre du système solaire"
+        },
+        {
+         "left": "héliocentrique",
+         "right": "barycentre du Soleil"
+        },
+        {
+         "left": "géocentrique",
+         "right": "barycentre de la Terre"
+        }
+       ],
+       "explanation": "Définitions du cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Les axes du référentiel géocentrique sont parallèles à ceux du référentiel héliocentrique.",
+       "answer": true,
+       "explanation": "Vrai : c'est pourquoi $R_G$ est en **translation** par rapport à $R_S$."
+      }
+     ]
+    },
+    {
+     "slug": "pfd-et-action-reaction",
+     "title": "Principe fondamental de la dynamique et action-réaction",
+     "number": "II.2–II.3",
+     "estimatedMinutes": 7,
+     "summary": "La deuxième loi de Newton $m\\vec a=\\vec F$, le théorème de la quantité de mouvement et le principe des actions réciproques.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2) Principe fondamental de la dynamique (2e loi de Newton)",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "Soit $M$ un point en mouvement dans le référentiel $R$ supposé **galiléen** et soumis à la force $\\vec F=\\sum\\vec F_i$ (bilan des forces). Le PFD est donné par\n$$m\\,\\vec a_{M/R}=\\vec F\\qquad(\\mathrm N=\\mathrm{kg\\cdot m\\cdot s^{-2}}).$$",
+       "origin": "source",
+       "title": "PFD"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "⚠ $m\\vec a=m\\left.\\dfrac{d\\vec V}{dt}\\right|_R=\\left.\\dfrac{d\\vec p}{dt}\\right|_R$ (masse constante). Le PFD s'écrit donc aussi\n$$\\left.\\dfrac{d\\vec p}{dt}\\right|_R=\\vec F,$$ dit **théorème de la quantité de mouvement**.",
+       "origin": "source",
+       "title": "Théorème de la quantité de mouvement"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Une force constante de $6$ N agit sur une masse de $2$ kg (référentiel galiléen). L'accélération vaut ___ m/s².",
+        "answerType": "number",
+        "accepted": [
+         "3"
+        ],
+        "explanation": "$a=F/m=6/2=3$ m/s²."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "example",
+       "md": "(Cité sans développement dans la source.) Un point soumis à son seul poids dans un référentiel galiléen vérifie $m\\vec a=m\\vec g$, soit $\\vec a=\\vec g$ : l'accélération ne dépend pas de la masse.",
+       "origin": "added",
+       "title": "Exemple : chute libre"
+      },
+      {
+       "type": "simulation",
+       "scene": "projectile",
+       "caption": "Lance le point avec différentes vitesses initiales : seul le poids agit, l'accélération reste $\\vec g$ et la trajectoire est une parabole.",
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "3) Principe de l'action et de la réaction",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "Soient $M_1$ et $M_2$ deux points en interaction :\n$$\\vec F_{1/2}=-\\vec F_{2/1},\\qquad \\overrightarrow{M_1M_2}\\wedge\\vec F_{1/2}=\\vec 0.$$\n$\\vec F_{1/2}$ et $\\vec F_{2/1}$ ont le **même support** (la droite $M_1M_2$).",
+       "origin": "source",
+       "title": "Actions réciproques"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-action-reaction.svg",
+       "alt": "Deux points M1 et M2 ; la force F_1/2 appliquée en M2 et la force F_2/1 appliquée en M1, opposées et portées par la droite M1M2.",
+       "caption": "Figure — action et réaction : $\\vec F_{1/2}=-\\vec F_{2/1}$, même support $(M_1M_2)$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "La condition $\\overrightarrow{M_1M_2}\\wedge\\vec F_{1/2}=\\vec 0$ signifie que la force est portée par la droite $M_1M_2$.",
+        "answer": true,
+        "explanation": "Vrai : un produit vectoriel nul signifie que les deux vecteurs sont colinéaires."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Le PFD $m\\vec a=\\vec F$ est valable dans n'importe quel référentiel.",
+       "answer": false,
+       "explanation": "Faux : sous cette forme, il est valable dans un référentiel **galiléen** (le chapitre 4 traite le cas non galiléen)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le newton s'écrit en unités de base :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\mathrm{kg\\cdot m\\cdot s^{-1}}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\mathrm{kg\\cdot m\\cdot s^{-2}}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\mathrm{kg\\cdot m^2\\cdot s^{-2}}$"
+        },
+        {
+         "id": "d",
+         "md": "$\\mathrm{kg\\cdot s^{-2}}$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$F=ma$ : kg × m·s⁻²."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le théorème de la quantité de mouvement s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\dfrac{d\\vec p}{dt}=\\vec F$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec p=\\vec F$"
+        },
+        {
+         "id": "c",
+         "md": "$\\dfrac{d\\vec F}{dt}=\\vec p$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec p=m\\vec a$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "C'est le PFD réécrit avec $\\vec p=m\\vec V$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Pour deux points en interaction, $\\vec F_{1/2}$ et $\\vec F_{2/1}$ ont même norme et même support mais des sens opposés.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec F_{1/2}=-\\vec F_{2/1}$ avec le même support."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Une masse de $3$ kg accélère à $2$ m/s² dans un référentiel galiléen. La résultante des forces vaut ___ N.",
+       "answerType": "number",
+       "accepted": [
+        "6"
+       ],
+       "explanation": "$F=ma=6$ N."
+      }
+     ]
+    },
+    {
+     "slug": "pendule-simple-pfd",
+     "title": "Application : pendule simple par le PFD",
+     "number": "II.4",
+     "estimatedMinutes": 11,
+     "summary": "Forces sur le pendule en base polaire, équation du mouvement $\\ddot\\theta+\\frac gl\\sin\\theta=0$, petites oscillations et pulsation propre.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4) Application : pendule simple",
+       "origin": "source"
+      },
+      {
+       "type": "exercise",
+       "md": "Un point $M$ de masse $m$ est suspendu en $O$ par un fil de longueur $l$ ; l'axe $Ox$ est vertical descendant et $\\theta$ est l'angle entre $Ox$ et le fil. On utilise la base polaire $(\\vec e_r,\\vec e_\\theta)$.\n1) Exprimer les forces appliquées sur $M$ dans la base polaire.\n2) En appliquant le PFD, établir l'équation différentielle du mouvement.\n3) Que devient cette équation dans le cas des faibles amplitudes ? Proposer des solutions.",
+       "origin": "source",
+       "title": "Énoncé"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-pendule-simple.svg",
+       "alt": "Pendule simple : point O d'attache, axe Ox vertical descendant, fil de longueur l faisant l'angle θ avec Ox, la masse M avec la tension T dirigée vers O, le poids P vertical et la base polaire (e_r, e_θ).",
+       "caption": "Figure — pendule simple : forces $\\vec P$ et $\\vec T$, base polaire $(\\vec e_r,\\vec e_\\theta)$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "1) Poids : $\\vec P=m\\vec g=mg\\,\\vec e_x=mg(\\cos\\theta\\,\\vec e_r-\\sin\\theta\\,\\vec e_\\theta)$. Tension du fil : $\\vec T=-T\\,\\vec e_r$."
+        },
+        {
+         "md": "2) PFD dans $R(O,x,y,z)$ galiléen : $m\\vec a=\\vec P+\\vec T$."
+        },
+        {
+         "md": "Calculons $\\vec a$ : $\\vec V=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\left.\\dfrac{d(l\\vec e_r)}{dt}\\right|_R=l\\dot\\theta\\,\\vec e_\\theta$ et $\\vec a=l(-\\dot\\theta^2\\,\\vec e_r+\\ddot\\theta\\,\\vec e_\\theta)$.",
+         "why": "Mouvement circulaire de rayon $l$ (chapitre 1)."
+        },
+        {
+         "md": "$\\Rightarrow ml(-\\dot\\theta^2\\,\\vec e_r+\\ddot\\theta\\,\\vec e_\\theta)=mg(\\cos\\theta\\,\\vec e_r-\\sin\\theta\\,\\vec e_\\theta)-T\\,\\vec e_r$."
+        },
+        {
+         "md": "Projection du PFD sur $\\vec e_\\theta$ : $ml\\ddot\\theta=-mg\\sin\\theta\\;\\Rightarrow\\; l\\ddot\\theta+g\\sin\\theta=0$.",
+         "why": "La tension n'a pas de composante selon $\\vec e_\\theta$ : on l'élimine en projetant sur $\\vec e_\\theta$."
+        },
+        {
+         "md": "3) Faibles amplitudes : $\\theta\\ll1\\Rightarrow\\sin\\theta\\approx\\theta$, d'où $l\\ddot\\theta+g\\theta=0$."
+        }
+       ],
+       "origin": "source",
+       "title": "Réponses"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Sur quel vecteur projette-t-on le PFD pour éliminer la tension $\\vec T$ ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec e_r$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec e_\\theta$"
+         },
+         {
+          "id": "c",
+          "md": "$\\vec e_x$"
+         },
+         {
+          "id": "d",
+          "md": "$\\vec e_z$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\vec T=-T\\vec e_r$ est perpendiculaire à $\\vec e_\\theta$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "⚠ Forme canonique : $\\ddot\\theta+\\dfrac gl\\,\\theta=0$. On pose $\\omega_0^2=\\dfrac gl\\Rightarrow\\omega_0=\\sqrt{\\dfrac gl}$ (**pulsation propre**). Soit\n$$\\ddot\\theta+\\omega_0^2\\,\\theta=0,\\qquad \\theta(t)=\\theta_m\\cos(\\omega_0t+\\varphi)\\quad(\\text{ou }\\theta(t)=A\\cos\\omega_0t+B\\sin\\omega_0t),$$\navec $\\theta_m$ et $\\varphi$ (ou $A$ et $B$) des constantes d'intégration qu'on détermine par les C.I.",
+       "origin": "source",
+       "title": "Forme canonique et solution"
+      },
+      {
+       "type": "simulation",
+       "scene": "pendulum",
+       "caption": "Écarte le pendule et lâche-le : compare la période pour de petits et de grands angles.",
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "⚠ Autres applications : voir TD.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $l=0{,}4$ m et $g=10$ m/s², la pulsation propre $\\omega_0=$ ___ rad/s.",
+        "answerType": "number",
+        "accepted": [
+         "5"
+        ],
+        "explanation": "$\\omega_0=\\sqrt{g/l}=\\sqrt{25}=5$ rad/s."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "L'équation $l\\ddot\\theta+g\\sin\\theta=0$ est linéaire.",
+       "answer": false,
+       "explanation": "Faux : à cause de $\\sin\\theta$. Elle devient linéaire après l'approximation $\\sin\\theta\\approx\\theta$ (faibles amplitudes)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La pulsation propre du pendule simple dépend :",
+       "options": [
+        {
+         "id": "a",
+         "md": "de $m$ et $l$"
+        },
+        {
+         "id": "b",
+         "md": "de $g$ et $l$"
+        },
+        {
+         "id": "c",
+         "md": "de $m$ et $g$"
+        },
+        {
+         "id": "d",
+         "md": "de $\\theta_m$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\omega_0=\\sqrt{g/l}$ : la masse se simplifie dans le PFD."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si on multiplie la longueur $l$ du fil par 4, $\\omega_0$ est divisée par ___",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$\\omega_0\\propto1/\\sqrt l$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Dans la base polaire, le poids s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$mg(\\cos\\theta\\vec e_r-\\sin\\theta\\vec e_\\theta)$"
+        },
+        {
+         "id": "b",
+         "md": "$mg(\\sin\\theta\\vec e_r+\\cos\\theta\\vec e_\\theta)$"
+        },
+        {
+         "id": "c",
+         "md": "$-mg\\,\\vec e_r$"
+        },
+        {
+         "id": "d",
+         "md": "$mg(\\cos\\theta\\vec e_r+\\sin\\theta\\vec e_\\theta)$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\vec e_x=\\cos\\theta\\,\\vec e_r-\\sin\\theta\\,\\vec e_\\theta$ ; le poids tend à ramener $\\theta$ vers 0, d'où la composante $-mg\\sin\\theta$."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre la résolution par le PFD.",
+       "items": [
+        "Bilan des forces dans la base polaire",
+        "Calcul de $\\vec a=l(-\\dot\\theta^2\\vec e_r+\\ddot\\theta\\vec e_\\theta)$",
+        "PFD $m\\vec a=\\vec P+\\vec T$",
+        "Projection sur $\\vec e_\\theta$",
+        "Approximation $\\sin\\theta\\approx\\theta$ et solution sinusoïdale"
+       ],
+       "explanation": "Démarche du cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La projection du PFD sur $\\vec e_r$ permet de calculer la tension $T$.",
+       "answer": true,
+       "explanation": "Vrai : $-ml\\dot\\theta^2=mg\\cos\\theta-T$, d'où $T=mg\\cos\\theta+ml\\dot\\theta^2$ (calcul non fait dans la source mais immédiat)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "theoreme-du-moment-cinetique",
+   "title": "Théorème du moment cinétique",
+   "number": "III",
+   "lessons": [
+    {
+     "slug": "moment-cinetique",
+     "title": "Moment cinétique",
+     "number": "III.1",
+     "estimatedMinutes": 8,
+     "summary": "Définition du moment cinétique $\\vec L_O=\\overrightarrow{OM}\\wedge m\\vec V$, ses propriétés, le changement d'origine et le moment par rapport à un axe.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "III – Théorème du moment cinétique",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Moment cinétique",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Soit le point $M(m)$ de vitesse $\\vec V$ dans $R$. On appelle **moment cinétique** du point $M$ en $O$, noté $\\vec L_O$, le moment de la quantité de mouvement :\n$$\\vec L_O=\\overrightarrow{OM}\\wedge\\vec p=\\overrightarrow{OM}\\wedge m\\vec V\\qquad(\\vec p=m\\vec V).$$\nIl est parfois noté $\\vec\\sigma_O$ (une 2e notation, $\\vec J_O$, est peu lisible dans la source).",
+       "origin": "source",
+       "title": "Moment cinétique"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-moment-cinetique.svg",
+       "alt": "Dans le plan xOy, le vecteur OM et la quantité de mouvement mV en M ; le moment cinétique L_O en O est perpendiculaire à la feuille (symbole ⊗, vers l'arrière).",
+       "caption": "Figure — $\\vec L_O=\\overrightarrow{OM}\\wedge m\\vec V$ est perpendiculaire au plan de $\\overrightarrow{OM}$ et $\\vec V$.",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "- Son unité : $\\mathrm{kg\\cdot m^2\\cdot s^{-1}}$.\n- $\\vec L_O$ est $\\perp$ au plan $(\\overrightarrow{OM},\\vec V)$.\n- Son sens est donné par la règle du tire-bouchon.\n- Son module : $L_O=m\\,OM\\,V\\sin\\alpha$, où $\\alpha$ est l'angle entre $\\overrightarrow{OM}$ et $\\vec V$.",
+       "origin": "source",
+       "title": "Propriétés"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un point de masse $2$ kg tourne sur un cercle de rayon $3$ m centré en $O$ à $V=4$ m/s. $L_O=$ ___ kg·m²/s.",
+        "answerType": "number",
+        "accepted": [
+         "24"
+        ],
+        "explanation": "$\\alpha=\\pi/2$ (vitesse tangente au cercle) : $L_O=mrV=2\\times3\\times4=24$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec L_A=\\overrightarrow{AM}\\wedge m\\vec V=(\\overrightarrow{AB}+\\overrightarrow{BM})\\wedge m\\vec V=\\overrightarrow{BM}\\wedge m\\vec V+\\overrightarrow{AB}\\wedge m\\vec V,$$\n$$\\vec L_A=\\vec L_B+\\overrightarrow{AB}\\wedge m\\vec V.$$",
+       "origin": "source",
+       "title": "Changement d'origine"
+      },
+      {
+       "type": "definition",
+       "md": "Le moment cinétique par rapport à l'axe $(\\Delta)$ passant par $O$, de vecteur directeur unitaire $\\vec u_\\Delta$, est\n$$L_\\Delta=\\vec L_O\\cdot\\vec u_\\Delta=L_O\\cos\\beta=\\overline{OK},$$ où $\\beta$ est l'angle entre $\\vec L_O$ et $\\vec u_\\Delta$, et $K$ la projection de l'extrémité de $\\vec L_O$ sur $(\\Delta)$. C'est un **scalaire**.",
+       "origin": "source",
+       "title": "Moment cinétique par rapport à un axe"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-moment-axe.svg",
+       "alt": "Axe (Δ) passant par O de vecteur unitaire u_Δ ; le vecteur L_O fait l'angle β avec l'axe ; K est la projection de son extrémité sur l'axe et L_Δ = OK.",
+       "caption": "Figure — moment cinétique par rapport à l'axe $(\\Delta)$ : $L_\\Delta=L_O\\cos\\beta=\\overline{OK}$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Le moment cinétique par rapport à un axe est un vecteur.",
+        "answer": false,
+        "explanation": "Faux : $L_\\Delta=\\vec L_O\\cdot\\vec u_\\Delta$ est un **scalaire** (projection)."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Si $\\vec V$ est colinéaire à $\\overrightarrow{OM}$, alors $\\vec L_O=\\vec 0$.",
+       "answer": true,
+       "explanation": "Vrai : $\\sin\\alpha=0$ ; un point qui s'éloigne radialement de $O$ n'a pas de moment cinétique en $O$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "L'unité du moment cinétique est le kg·m^___·s⁻¹ (exposant de m).",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$\\mathrm{kg\\cdot m^2\\cdot s^{-1}}$ : m (de $OM$) × kg·m·s⁻¹ (de $\\vec p$)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La formule de changement d'origine est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec L_A=\\vec L_B+\\overrightarrow{AB}\\wedge m\\vec V$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec L_A=\\vec L_B+m\\vec V\\wedge\\overrightarrow{AB}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec L_A=\\vec L_B$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec L_A=\\vec L_B-\\overrightarrow{AB}\\wedge\\overrightarrow{AM}$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "On décompose $\\overrightarrow{AM}=\\overrightarrow{AB}+\\overrightarrow{BM}$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec L_O$ est perpendiculaire à $\\overrightarrow{OM}$ et à $\\vec V$.",
+       "answer": true,
+       "explanation": "Vrai : c'est un produit vectoriel."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si $L_O=10$ et l'angle entre $\\vec L_O$ et l'axe $(\\Delta)$ est $\\beta=60°$, alors $L_\\Delta=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$L_\\Delta=L_O\\cos\\beta=10\\times0{,}5=5$."
+      }
+     ]
+    },
+    {
+     "slug": "moment-d-une-force-tmc",
+     "title": "Moment d'une force et théorème du moment cinétique",
+     "number": "III.2–III.3",
+     "estimatedMinutes": 10,
+     "summary": "Moment d'une force en un point et par rapport à un axe, théorème du moment cinétique en un point fixe puis en un point mobile.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2) Moment d'une force",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Soit $\\vec F$ une force appliquée sur $M(m)$. Le moment de la force $\\vec F$ en $O$ est\n$$\\vec{\\mathcal M}_O(\\vec F)=\\overrightarrow{OM}\\wedge\\vec F\\qquad(\\mathrm{m\\cdot N}).$$\n- Son module : $\\mathcal M_O=OM\\cdot F\\cdot|\\sin\\theta|$ ($\\theta$ angle entre $\\overrightarrow{OM}$ et $\\vec F$) ;\n- Sens : règle du tire-bouchon ;\n- Moment par rapport à l'axe $(\\Delta)$ : $\\mathcal M_\\Delta=\\vec{\\mathcal M}_O(\\vec F)\\cdot\\vec u_\\Delta$ ($\\mathcal M_\\Delta=\\pm F\\cdot d$, $d$ distance de la droite d'action à l'axe).",
+       "origin": "source",
+       "title": "Moment d'une force"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-moment-force.svg",
+       "alt": "Force F appliquée en M ; sa droite d'action en pointillés ; H est le pied de la perpendiculaire issue de O, d = OH est le bras de levier ; le moment en O est perpendiculaire à la feuille.",
+       "caption": "Figure — moment d'une force : $\\|\\vec{\\mathcal M}_O(\\vec F)\\|=F\\,d$, où $d$ est la distance de $O$ à la droite d'action.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Une force de $20$ N agit perpendiculairement à un bras de levier de $0{,}5$ m. $|\\mathcal M_\\Delta|=$ ___ N·m.",
+        "answerType": "number",
+        "accepted": [
+         "10"
+        ],
+        "explanation": "$F\\cdot d=20\\times0{,}5=10$ N·m."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "3) Théorème du moment cinétique (TMC)",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "Soit $\\vec L_O$ le moment cinétique de $M$ en mouvement dans $R$ galiléen, de vitesse $\\vec V$ et soumis à $\\vec F=\\sum\\vec F_i$ : $\\vec L_O=\\overrightarrow{OM}\\wedge m\\vec V$."
+        },
+        {
+         "md": "Par dérivation ($O$ fixe) : $\\left.\\dfrac{d\\vec L_O}{dt}\\right|_R=\\underbrace{\\vec V\\wedge m\\vec V}_{\\vec 0}+\\overrightarrow{OM}\\wedge m\\vec a$.",
+         "why": "$\\frac{d\\overrightarrow{OM}}{dt}=\\vec V$ et $\\vec V\\wedge\\vec V=\\vec 0$."
+        },
+        {
+         "md": "$=\\overrightarrow{OM}\\wedge\\vec F$ (PFD : $m\\vec a=\\vec F$)."
+        }
+       ],
+       "origin": "source",
+       "title": "Démonstration"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "$$\\left.\\dfrac{d\\vec L_O}{dt}\\right|_R=\\vec{\\mathcal M}_O(\\vec F),\\qquad\\vec F=\\sum\\vec F_i,\\quad \\vec{\\mathcal M}_O(\\vec F)=\\sum\\vec{\\mathcal M}_O(\\vec F_i).$$",
+       "origin": "source",
+       "title": "TMC"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si toutes les forces passent par $O$, le moment cinétique $\\vec L_O$ est constant.",
+        "answer": true,
+        "explanation": "Vrai : chaque moment $\\overrightarrow{OM}\\wedge\\vec F_i$ est nul, donc $d\\vec L_O/dt=\\vec 0$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "TMC en un point $A$ mobile dans $R$",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "Soit $\\vec L_A=\\overrightarrow{AM}\\wedge m\\vec V$."
+        },
+        {
+         "md": "$\\left.\\dfrac{d\\vec L_A}{dt}\\right|_R=\\left.\\dfrac{d\\overrightarrow{AM}}{dt}\\right|_R\\wedge m\\vec V+\\overrightarrow{AM}\\wedge m\\left.\\dfrac{d\\vec V}{dt}\\right|_R=(\\vec V-\\vec V_A)\\wedge m\\vec V+\\overrightarrow{AM}\\wedge\\vec F$ (PFD)"
+        },
+        {
+         "md": "$=-\\vec V_A\\wedge m\\vec V+\\vec{\\mathcal M}_A(\\vec F)$."
+        }
+       ],
+       "origin": "source",
+       "title": "Démonstration"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "$$\\left.\\dfrac{d\\vec L_A}{dt}\\right|_R+\\vec V_A\\wedge m\\vec V=\\vec{\\mathcal M}_A(\\vec F).$$",
+       "origin": "source",
+       "title": "TMC en un point mobile"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "Le moment d'une force en $O$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec F\\wedge\\overrightarrow{OM}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\overrightarrow{OM}\\wedge\\vec F$"
+        },
+        {
+         "id": "c",
+         "md": "$\\overrightarrow{OM}\\cdot\\vec F$"
+        },
+        {
+         "id": "d",
+         "md": "$m\\overrightarrow{OM}\\wedge\\vec F$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec{\\mathcal M}_O(\\vec F)=\\overrightarrow{OM}\\wedge\\vec F$ ; l'ordre compte (antisymétrie)."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le TMC $\\dfrac{d\\vec L_O}{dt}=\\vec{\\mathcal M}_O(\\vec F)$ suppose $O$ fixe dans $R$ galiléen.",
+       "answer": true,
+       "explanation": "Vrai ; pour un point $A$ mobile, il apparaît le terme supplémentaire $\\vec V_A\\wedge m\\vec V$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Une force de $5$ N dont la droite d'action passe à $d=0{,}2$ m de l'axe a un moment de norme ___ N·m.",
+       "answerType": "number",
+       "accepted": [
+        "1"
+       ],
+       "explanation": "$F\\cdot d=5\\times0{,}2=1$ N·m."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Dans la démonstration du TMC, le terme $\\vec V\\wedge m\\vec V$ est nul.",
+       "answer": true,
+       "explanation": "Vrai : produit vectoriel de deux vecteurs colinéaires."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le TMC en un point $A$ mobile s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\frac{d\\vec L_A}{dt}=\\vec{\\mathcal M}_A(\\vec F)$"
+        },
+        {
+         "id": "b",
+         "md": "$\\frac{d\\vec L_A}{dt}+\\vec V_A\\wedge m\\vec V=\\vec{\\mathcal M}_A(\\vec F)$"
+        },
+        {
+         "id": "c",
+         "md": "$\\frac{d\\vec L_A}{dt}-\\vec V_A\\wedge m\\vec V=\\vec{\\mathcal M}_A(\\vec F)$"
+        },
+        {
+         "id": "d",
+         "md": "$\\frac{d\\vec L_A}{dt}=\\vec V_A\\wedge\\vec F$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Résultat du cours. Si $\\vec V_A=\\vec 0$ on retrouve le TMC en un point fixe."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "L'unité S.I. du moment d'une force est le ___ (produit de deux unités)",
+       "answerType": "text",
+       "accepted": [
+        "m.N",
+        "N.m",
+        "N·m",
+        "m·N",
+        "Nm",
+        "mN"
+       ],
+       "explanation": "$\\mathrm{m\\cdot N}$ (ou N·m)."
+      }
+     ]
+    },
+    {
+     "slug": "pendule-simple-tmc",
+     "title": "Application : pendule simple par le TMC",
+     "number": "III.4",
+     "estimatedMinutes": 9,
+     "summary": "Moment cinétique du pendule, moments du poids et de la tension, et équation du mouvement retrouvée par le TMC.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4) Application : pendule simple",
+       "origin": "source"
+      },
+      {
+       "type": "exercise",
+       "md": "Même pendule que précédemment (fil de longueur $l$, axe $Ox$ vertical descendant, base $(\\vec e_r,\\vec e_\\theta,\\vec e_z)$).\n1) Calculer $\\vec L_O$.\n2) Calculer $\\vec{\\mathcal M}_O(\\vec P)$ et $\\vec{\\mathcal M}_O(\\vec T)$.\n3) Par application du TMC, montrer que $\\ddot\\theta+\\dfrac gl\\sin\\theta=0$.\n4) Donner la solution dans le cas des faibles amplitudes.",
+       "origin": "source",
+       "title": "Énoncé"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-pendule-simple.svg",
+       "alt": "Pendule simple : point O d'attache, axe Ox vertical descendant, fil de longueur l faisant l'angle θ avec Ox, la tension T passant par O, le poids P et la base polaire (e_r, e_θ).",
+       "caption": "Figure — même pendule : $\\vec T$ passe par $O$, donc son moment en $O$ est nul.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "1) $\\vec L_O=\\overrightarrow{OM}\\wedge m\\vec V_{M/R}=l\\,\\vec e_r\\wedge ml\\dot\\theta\\,\\vec e_\\theta=ml^2\\dot\\theta\\,\\vec e_z$."
+        },
+        {
+         "md": "2) $\\vec{\\mathcal M}_O(\\vec P)=\\overrightarrow{OM}\\wedge m\\vec g=l\\,\\vec e_r\\wedge mg\\,\\vec e_x=-mgl\\sin\\theta\\,\\vec e_z$.",
+         "why": "$\\vec e_x=\\cos\\theta\\,\\vec e_r-\\sin\\theta\\,\\vec e_\\theta$ et $\\vec e_r\\wedge\\vec e_\\theta=\\vec e_z$."
+        },
+        {
+         "md": "$\\vec{\\mathcal M}_O(\\vec T)=\\overrightarrow{OM}\\wedge\\vec T=l\\,\\vec e_r\\wedge(-T\\,\\vec e_r)=\\vec 0$."
+        },
+        {
+         "md": "3) TMC : $\\left.\\dfrac{d\\vec L_O}{dt}\\right|_R=\\vec{\\mathcal M}_O(\\vec P)+\\vec{\\mathcal M}_O(\\vec T)\\Rightarrow ml^2\\ddot\\theta\\,\\vec e_z=-mgl\\sin\\theta\\,\\vec e_z+\\vec 0$."
+        },
+        {
+         "md": "Soit $\\ddot\\theta+\\dfrac gl\\sin\\theta=0$. Cas des faibles amplitudes : $\\sin\\theta\\approx\\theta$, alors $\\ddot\\theta+\\dfrac gl\\theta=0$."
+        },
+        {
+         "md": "4) $\\ddot\\theta+\\omega_0^2\\theta=0\\Rightarrow\\theta(t)=\\theta_{max}\\cos(\\omega_0t+\\varphi)$ ou $\\theta=A\\cos\\omega_0t+B\\sin\\omega_0t$ (même résultat qu'avec le PFD)."
+        }
+       ],
+       "origin": "source",
+       "title": "Réponses"
+      },
+      {
+       "type": "remark",
+       "md": "$\\vec T$ passe par $O$ $\\Rightarrow$ $\\vec{\\mathcal M}_O(\\vec T)=\\vec 0$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pourquoi le TMC en $O$ donne-t-il directement l'équation du mouvement sans connaître $T$ ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "parce que $T=0$"
+         },
+         {
+          "id": "b",
+          "md": "parce que la tension passe par $O$, son moment est nul"
+         },
+         {
+          "id": "c",
+          "md": "parce que $\\vec L_O$ est constant"
+         },
+         {
+          "id": "d",
+          "md": "parce que le fil est inextensible"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\vec{\\mathcal M}_O(\\vec T)=l\\vec e_r\\wedge(-T\\vec e_r)=\\vec 0$ : l'inconnue $T$ disparaît."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Le PFD projeté sur $\\vec e_\\theta$ et le TMC en $O$ donnent la même équation : ce sont deux façons d'éliminer la tension. Le TMC est souvent plus rapide quand une force inconnue passe par un point fixe.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $m=0{,}1$ kg, $l=2$ m et $\\dot\\theta=3$ rad/s, $L_O=ml^2\\dot\\theta=$ ___ kg·m²/s.",
+        "answerType": "number",
+        "accepted": [
+         "1.2"
+        ],
+        "explanation": "$0{,}1\\times4\\times3=1{,}2$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "Le moment cinétique du pendule simple en $O$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$ml\\dot\\theta\\,\\vec e_z$"
+        },
+        {
+         "id": "b",
+         "md": "$ml^2\\dot\\theta\\,\\vec e_z$"
+        },
+        {
+         "id": "c",
+         "md": "$ml^2\\dot\\theta\\,\\vec e_\\theta$"
+        },
+        {
+         "id": "d",
+         "md": "$ml^2\\ddot\\theta\\,\\vec e_z$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$l\\vec e_r\\wedge ml\\dot\\theta\\vec e_\\theta=ml^2\\dot\\theta\\,\\vec e_z$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le moment du poids en $O$ est nul.",
+       "answer": false,
+       "explanation": "Faux : $\\vec{\\mathcal M}_O(\\vec P)=-mgl\\sin\\theta\\,\\vec e_z$ ; il n'est nul que pour $\\theta=0$ (ou $\\pi$)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $m=1$ kg, $g=10$ m/s², $l=0{,}5$ m et $\\theta=\\pi/2$, $|\\mathcal M_O(\\vec P)|=$ ___ N·m.",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$mgl\\sin\\theta=1\\times10\\times0{,}5\\times1=5$ N·m."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le TMC et le PFD donnent la même équation différentielle pour le pendule simple.",
+       "answer": true,
+       "explanation": "Vrai : $\\ddot\\theta+\\frac gl\\sin\\theta=0$ dans les deux cas."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre la méthode par le TMC.",
+       "items": [
+        "Calculer $\\vec L_O=ml^2\\dot\\theta\\,\\vec e_z$",
+        "Calculer les moments $\\vec{\\mathcal M}_O(\\vec P)$ et $\\vec{\\mathcal M}_O(\\vec T)$",
+        "Écrire $\\frac{d\\vec L_O}{dt}=\\sum\\vec{\\mathcal M}_O(\\vec F_i)$",
+        "Projeter sur $\\vec e_z$ : $\\ddot\\theta+\\frac gl\\sin\\theta=0$"
+       ],
+       "explanation": "Démarche du cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "equilibre",
+   "title": "Équilibre d'un point dans un référentiel",
+   "number": "IV",
+   "lessons": [
+    {
+     "slug": "equilibre-et-stabilite",
+     "title": "Équilibre d'un point et stabilité",
+     "number": "IV",
+     "estimatedMinutes": 7,
+     "summary": "Conditions d'équilibre ($\\vec V=\\vec 0$ et $\\vec a=\\vec 0$), pourquoi une vitesse nulle ne suffit pas, et idée de stabilité.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "IV – Équilibre d'un point $M$ dans un référentiel",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Conditions d'équilibre",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Soit $M$ un point en mouvement par rapport à $R$. On dit que $M$ est en **équilibre** dans $R$ en $M_e$ si\n$$\\vec V_{M/R}=\\vec 0\\quad\\text{et}\\quad\\vec a_{M/R}=\\vec 0\\quad(\\text{en }M_e).$$\nIl faut que les **2 conditions** soient vérifiées **en même temps**.",
+       "origin": "source",
+       "title": "Équilibre"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$\\vec a_{M/R}=\\vec 0\\Rightarrow\\sum\\vec F_i=\\vec 0$ (PFD).",
+       "origin": "source",
+       "title": "Conséquence"
+      },
+      {
+       "type": "remark",
+       "md": "La condition $\\vec V=\\vec 0$ en un point **n'est pas suffisante** pour dire que $M$ est en équilibre.",
+       "origin": "source"
+      },
+      {
+       "type": "example",
+       "md": "Pour le pendule simple en $\\theta=\\theta_m$ : $\\vec V=\\vec 0$ mais $\\sum\\vec F_i=m\\vec a\\neq\\vec 0$ $\\Rightarrow$ une telle position n'est **pas** une position d'équilibre.",
+       "origin": "source",
+       "title": "EX : pendule en position extrême"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-pendule-equilibre.svg",
+       "alt": "Pendule à l'amplitude maximale θm : la tension T, le poids P et leur somme, non nulle, tangente au cercle et dirigée vers la verticale.",
+       "caption": "Figure — en $\\theta=\\theta_m$, $\\vec V=\\vec 0$ mais $\\sum\\vec F_i\\neq\\vec 0$ : ce n'est pas une position d'équilibre.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Une balle lancée verticalement, au sommet de sa trajectoire, est en équilibre.",
+        "answer": false,
+        "explanation": "Faux : sa vitesse est nulle à cet instant, mais son accélération vaut $\\vec g\\neq\\vec 0$. Les deux conditions doivent être vérifiées."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "2) Stabilité de la position d'équilibre (étude qualitative)",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch03-stabilite.svg",
+       "alt": "À gauche un point M au fond d'une cuvette, avec la réaction R vers le haut et le poids P vers le bas ; écarté, il revient vers le fond. À droite un point au sommet d'une bosse ; écarté, il s'éloigne.",
+       "caption": "Figure — équilibre stable au fond d'une cuvette, instable au sommet d'une bosse (cas de droite ajouté).",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Un point $M$ au fond d'une cuvette (figure ci-dessus, à gauche). Au fond, $\\vec P+\\vec R=\\vec 0$. Écarté de cette position, le point est ramené vers le fond et oscille autour : c'est une **position d'équilibre stable**.",
+       "origin": "source"
+      },
+      {
+       "type": "intuition",
+       "md": "À l'inverse, un point posé au sommet d'une bosse est en équilibre ($\\vec P+\\vec R=\\vec 0$), mais au moindre écart il s'éloigne : équilibre **instable**. (Cette opposition n'est pas écrite dans la source ; elle complète la figure.)",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Une position d'équilibre est stable si, écarté légèrement de cette position, le point :",
+        "options": [
+         {
+          "id": "a",
+          "md": "s'en éloigne"
+         },
+         {
+          "id": "b",
+          "md": "y est ramené (oscille autour)"
+         },
+         {
+          "id": "c",
+          "md": "reste immobile à sa nouvelle place"
+         },
+         {
+          "id": "d",
+          "md": "accélère indéfiniment"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Cas de la cuvette."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "$M$ est en équilibre dans $R$ en $M_e$ si :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec V=\\vec 0$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec a=\\vec 0$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec V=\\vec 0$ et $\\vec a=\\vec 0$"
+        },
+        {
+         "id": "d",
+         "md": "$\\sum\\vec F=\\vec 0$ seulement"
+        }
+       ],
+       "answer": "c",
+       "explanation": "Les deux conditions simultanément."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "À l'équilibre, la résultante des forces est nulle.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec a=\\vec 0\\Rightarrow\\sum\\vec F_i=\\vec 0$ (PFD)."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Pour un pendule simple, la position $\\theta=\\theta_m$ est une position d'équilibre.",
+       "answer": false,
+       "explanation": "Faux : $\\vec V=\\vec 0$ mais $\\vec a\\neq\\vec 0$ (exemple du cours)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Pour un pendule simple, la position verticale basse $\\theta=0$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "une position d'équilibre stable"
+        },
+        {
+         "id": "b",
+         "md": "une position d'équilibre instable"
+        },
+        {
+         "id": "c",
+         "md": "une position où $\\vec a\\neq\\vec 0$ quand le pendule y est au repos"
+        },
+        {
+         "id": "d",
+         "md": "jamais une position d'équilibre"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Au repos en $\\theta=0$, $\\vec P+\\vec T=\\vec 0$ ; écarté, le pendule y revient en oscillant : équilibre stable."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Au fond d'une cuvette, $\\vec P+\\vec R=\\vec 0$.",
+       "answer": true,
+       "explanation": "Vrai : c'est la condition d'équilibre décrite par la figure du cours."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "reviewNotes": [
+  "Source de référence : notes de cours ENSA Agadir (« Méca Cours », mp/cours/Méca Cours (1).pdf, p. 24–33), via la copie nettoyée Modules/Mecanique du point/Cours/Chapitre 03 (pages 1–10).",
+  "§I.1 : la source note le champ de pesanteur avec R au lieu de R_T dans « g = −G m_T/(R + z)² u_z » ; harmonisé en R_T.",
+  "§II.1 Rq ③ est vide dans la source (omise).",
+  "§II.1 « Réf. terrestre R_T (réf. du labo) » : rien d'autre n'est écrit sous ce titre dans la source ; signalé tel quel dans la leçon. Une intuition ajoutée explique pourquoi il n'est galiléen qu'en approximation.",
+  "§II.1 : la formule du barycentre de la Terre (Σ m_i GG_i = 0, OG = Σ m_i OG_i / Σ m_i) est notée en marge dans la source ; intégrée dans la définition de R_G.",
+  "§II.2 « Exemple : chute libre » : sans développement dans la source ; une phrase de développement (a = g) est ajoutée (origin: added).",
+  "§III.1 : la 2e notation du moment cinétique est peu lisible dans la source (σ_O ou J_O) ; les deux sont mentionnées.",
+  "§III.2 : la source écrit le moment avec une lettre cursive (𝓜) ; rendue par \\mathcal M.",
+  "§III.4 question 4 (solution) : la source l'écrit dans la marge de la p. 32 ; regroupée avec les autres réponses.",
+  "§IV.1 : l'indice de la position d'équilibre (« M_e ») est peu lisible dans la source.",
+  "§IV.2 : figure seule dans la source (cuvette, « position d'équilibre stable ») ; décrite en texte. L'équilibre instable (bosse) est un complément ajouté (intuition).",
+  "Quiz du §II.4 : la question sur la tension T = mg cos θ + ml θ̇² utilise la projection sur e_r, non écrite dans la source (calcul immédiat signalé dans l'explication)."
+ ]
+}

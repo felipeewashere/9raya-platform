@@ -1,0 +1,2706 @@
+{
+  "slug": "conducteurs-en-equilibre",
+  "number": 6,
+  "title": "Conducteurs en équilibre électrostatique",
+  "description": "Conducteurs et isolants, électrons de conduction, équilibre électrostatique ; propriétés d'un conducteur à l'équilibre (champ nul, équipotentialité, champ normal, charge en surface) ; théorème de Coulomb ; effet de pointe ; capacité et énergie d'un conducteur isolé ; influence partielle et totale, mise à la terre.",
+  "sourcePdf": "Bibliotheque_sources/Electrostatique/Cours/Conducteurs et condensateurs/F085 - COURS-6 ELECTROSTATIQUE.pdf",
+  "sections": [
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "number": "6.1",
+      "lessons": [
+        {
+          "slug": "introduction-conducteurs",
+          "title": "Pourquoi étudier les conducteurs à l'équilibre",
+          "number": "6.1",
+          "estimatedMinutes": 5,
+          "summary": "Les questions auxquelles répond le chapitre, ses objectifs, ses prérequis, le fil de compréhension et le cadre de travail.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Un objet métallique peut être électriquement neutre, positif ou négatif. Cependant, à la différence d'un isolant idéal, il renferme des charges qui peuvent se déplacer à l'intérieur du matériau. Que deviennent ces charges lorsqu'on dépose un excès d'électrons sur le métal ? Pourquoi le champ électrique disparaît-il dans sa matière, alors qu'il peut être très intense au voisinage d'une pointe ? Comment un objet chargé peut-il agir sur un autre sans jamais le toucher ?\n\nCe chapitre répond progressivement à ces questions. Nous partons du *modèle microscopique* de la conduction, puis nous définissons l'*équilibre électrostatique*. Les propriétés du champ, du potentiel et des charges seront ensuite *démontrées*, plutôt que simplement énoncées. Elles conduiront au théorème de Coulomb à la surface, à l'effet de pointe, à la capacité d'un conducteur isolé, à son énergie électrostatique et aux phénomènes d'influence.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Objectifs.** À la fin du chapitre, l'étudiant doit pouvoir : expliquer l'origine des électrons de conduction sans confondre conduction et arrachement des électrons ; déduire les propriétés d'un conducteur à l'équilibre ; construire la pilule de Gauss et démontrer le théorème de Coulomb ; établir la capacité et l'énergie d'une sphère conductrice ; justifier les charges induites et décrire correctement une électrisation par influence avec mise à la terre.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Prérequis.** Nous utiliserons la loi de Coulomb (chapitre 2), la force électrique $\\vec F=q\\vec E$ (chapitre 3), la relation $\\vec E=-\\overrightarrow{\\mathrm{grad}}\\,V$ (chapitre 4) et le théorème de Gauss $\\displaystyle\\oint_\\Sigma \\vec E\\cdot\\mathrm d\\vec S=Q_{\\text{int}}/\\varepsilon_0$ (chapitre 5). On précisera les hypothèses de chaque résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode — fil de compréhension :** mobilité des électrons $\\longrightarrow$ redistribution sous un champ $\\longrightarrow$ équilibre $\\longrightarrow$ champ et potentiel $\\longrightarrow$ charges de surface $\\longrightarrow$ conséquences et phénomènes d'influence.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre le fil de compréhension du chapitre.",
+                "items": [
+                  "Mobilité des électrons",
+                  "Redistribution sous un champ",
+                  "Équilibre",
+                  "Champ et potentiel",
+                  "Charges de surface",
+                  "Phénomènes d'influence"
+                ],
+                "explanation": "Le chapitre part de la mobilité des porteurs, qui se redistribuent sous un champ jusqu'à l'équilibre ; on en déduit le champ et le potentiel, puis la localisation des charges en surface, et enfin les conséquences (Coulomb, pointe, capacité, influence)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "**Cadre de travail.** Sauf indication contraire, on considère des métaux immobiles, un état électrostatique, le vide extérieur et une description *macroscopique*. Les surfaces considérées sont localement régulières, en dehors du voisinage d'une pointe mathématiquement idéale. Les symboles $+$ et $-$ sont toujours respectivement représentés en rouge et en bleu dans les figures.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans le cadre de travail du chapitre, le milieu extérieur aux conducteurs est le vide et la description est macroscopique.",
+                "answer": true,
+                "explanation": "Vrai : le cadre fixé est celui de métaux immobiles, d'un état électrostatique, du vide extérieur et d'une description macroscopique (surfaces localement régulières)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle relation, vue au chapitre 4, sera utilisée pour montrer qu'un conducteur à l'équilibre est équipotentiel ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec F=q\\vec E$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec E=-\\overrightarrow{\\mathrm{grad}}\\,V$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\oint_\\Sigma \\vec E\\cdot\\mathrm d\\vec S=Q_{\\text{int}}/\\varepsilon_0$"
+                },
+                {
+                  "id": "d",
+                  "md": "La loi de Coulomb"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la relation champ–potentiel $\\vec E=-\\overrightarrow{\\mathrm{grad}}\\,V$ du chapitre 4 : si $\\vec E=\\vec 0$ dans le métal, $V$ y est constant. Le théorème de Gauss (chapitre 5) servira, lui, pour les charges et le théorème de Coulomb."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Ce qui distingue un métal d'un isolant idéal, c'est qu'il renferme des charges qui peuvent se déplacer à l'intérieur du matériau.",
+              "answer": true,
+              "explanation": "Vrai : un objet métallique peut être neutre, positif ou négatif, comme un isolant ; la différence est la présence de charges mobiles dans le matériau."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque outil à son chapitre d'origine.",
+              "pairs": [
+                {
+                  "left": "Loi de Coulomb",
+                  "right": "Chapitre 2"
+                },
+                {
+                  "left": "$\\vec F=q\\vec E$",
+                  "right": "Chapitre 3"
+                },
+                {
+                  "left": "$\\vec E=-\\overrightarrow{\\mathrm{grad}}\\,V$",
+                  "right": "Chapitre 4"
+                },
+                {
+                  "left": "Théorème de Gauss",
+                  "right": "Chapitre 5"
+                }
+              ],
+              "explanation": "Ce sont les prérequis listés en introduction : loi de Coulomb (ch. 2), force électrique (ch. 3), relation champ–potentiel (ch. 4), théorème de Gauss (ch. 5)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "definitions-et-rappels",
+      "title": "Définitions et rappels sur les conducteurs",
+      "number": "6.2",
+      "lessons": [
+        {
+          "slug": "conducteur-isolant-reseau-metallique",
+          "title": "Conducteur, isolant et réseau métallique",
+          "number": "6.2.1–6.2.2",
+          "estimatedMinutes": 9,
+          "summary": "Ce qui distingue un conducteur d'un isolant (la mobilité des charges), la force de Coulomb dans un atome isolé et le passage au réseau métallique avec ses électrons de conduction.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.2.1 Conducteur, isolant et charges mobiles",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Conducteur et isolant",
+              "md": "Un **conducteur électrique** est un matériau comportant des porteurs de charge capables d'effectuer des déplacements macroscopiques lorsqu'un champ électrique agit sur eux. Dans un **isolant**, les charges sont essentiellement liées à la matière : elles ne peuvent pas circuler librement à grande distance dans les conditions usuelles.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les deux familles contiennent des charges positives et négatives. Ce n'est donc *pas* la présence de charges qui distingue un conducteur d'un isolant, mais leur *mobilité*. Dans le cuivre, l'aluminium ou l'argent, les porteurs responsables de la conduction sont les électrons. Dans un isolant, un champ peut déplacer légèrement des charges liées et créer une **polarisation** : le matériau réagit, sans qu'un courant de conduction soutenu apparaisse dans le modèle idéal.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le terme « libre » ne signifie pas « situé hors du métal ». Un électron de conduction reste généralement à l'intérieur du solide ; il n'est simplement pas attaché à un atome particulier.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Qu'est-ce qui distingue un conducteur d'un isolant ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le conducteur contient des charges, l'isolant n'en contient pas."
+                  },
+                  {
+                    "id": "b",
+                    "md": "La mobilité des charges : dans un conducteur, des porteurs peuvent se déplacer à l'échelle macroscopique."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le conducteur est toujours chargé, l'isolant toujours neutre."
+                  },
+                  {
+                    "id": "d",
+                    "md": "Les électrons d'un conducteur sont situés hors du métal."
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les deux familles contiennent des charges positives et négatives ; c'est leur **mobilité** qui fait la différence. « Libre » ne veut pas dire « hors du métal » : l'électron de conduction reste dans le solide."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.2.2 De l'atome isolé au réseau métallique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un atome possède un **noyau** de charge positive et des **électrons** de charge négative. Les **électrons de valence** sont les électrons des états externes, importants pour les liaisons et les propriétés électriques. L'attraction électrique entre le noyau et un électron est décrite, dans un modèle classique simplifié, par la loi de Coulomb.\n\nPour un noyau de charge $q_n>0$ et un électron de charge $q_e=-e<0$, séparés par une distance $r$, on oriente le vecteur radial $\\vec u_r$ du noyau vers l'électron. La force exercée par le noyau sur l'électron est :\n$$\\vec F_{n\\to e}=k\\,\\frac{q_nq_e}{r^2}\\,\\vec u_r,\\qquad k=\\frac{1}{4\\pi\\varepsilon_0}.$$\nSa composante radiale est $F_r=kq_nq_e/r^2<0$ ; elle est négative car la force pointe *vers le noyau*. Son intensité, toujours positive, vaut\n$$\\|\\vec F_{n\\to e}\\|=k\\,\\frac{|q_nq_e|}{r^2}.$$\nSi la distance est multipliée par deux, cette intensité est divisée par quatre.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-atome-coulomb.svg",
+              "alt": "Noyau positif et électron à la distance r ; la force du noyau sur l'électron pointe vers le noyau.",
+              "caption": "Figure 6.1 — Force de Coulomb sur un électron dans le modèle simplifié d'un atome isolé.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Ce schéma ne doit pas être interprété comme une orbite électronique réelle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si la distance noyau–électron est multipliée par $2$, l'intensité de la force de Coulomb est divisée par ___.",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "L'intensité varie en $1/r^2$ : $(2r)^2=4r^2$, donc la force est divisée par $4$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Mais cette interaction classique ne suffit **pas** à déduire la conduction métallique. Dans un cristal, les atomes sont proches et les **états électroniques** de leurs électrons externes se recouvrent. Ces états s'associent en **bandes d'énergie** ; certains permettent une réponse collective des électrons à un champ. On qualifie ces électrons de **délocalisés** ou **électrons de conduction**. Il s'agit d'une interprétation simplifiée de la description quantique du solide.\n\nLe **réseau cristallin** est l'arrangement ordonné des sites atomiques. Les **cœurs ioniques positifs** (noyaux accompagnés de leurs électrons liés) restent approximativement localisés aux nœuds du réseau, tandis que les électrons de conduction peuvent se redistribuer dans l'ensemble du métal.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-reseau-metallique.svg",
+              "alt": "Réseau régulier de cœurs ioniques positifs entourés d'électrons de conduction répartis entre eux.",
+              "caption": "Figure 6.2 — Cœurs ioniques (charges $+$) aux nœuds du réseau et électrons de conduction (charges $-$).",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Les cercles illustrent un voisinage atomique, non des orbites.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans un isolant soumis à un champ, les charges liées peuvent se déplacer légèrement et créer une polarisation, sans courant de conduction soutenu.",
+              "answer": true,
+              "explanation": "Vrai : c'est la polarisation. Le matériau réagit au champ, mais dans le modèle idéal aucun courant de conduction soutenu n'apparaît."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour la force $\\vec F_{n\\to e}=k\\,\\dfrac{q_nq_e}{r^2}\\,\\vec u_r$ (avec $\\vec u_r$ orienté du noyau vers l'électron), la composante radiale $F_r$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "positive, car la force est répulsive"
+                },
+                {
+                  "id": "b",
+                  "md": "négative, car la force pointe vers le noyau"
+                },
+                {
+                  "id": "c",
+                  "md": "nulle, car l'électron est sur une orbite"
+                },
+                {
+                  "id": "d",
+                  "md": "toujours égale à l'intensité de la force"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$q_n>0$ et $q_e<0$, donc $F_r=kq_nq_e/r^2<0$ : la force est attractive, dirigée vers le noyau. L'intensité, elle, est toujours positive : $k|q_nq_e|/r^2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La décroissance en $1/r^2$ de l'attraction noyau–électron suffit à démontrer l'existence d'électrons libres dans un métal.",
+              "answer": false,
+              "explanation": "Faux : l'interaction classique ne suffit pas. Ce sont le recouvrement des états électroniques dans le cristal et la formation de bandes d'énergie qui expliquent les électrons délocalisés."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque terme à sa description.",
+              "pairs": [
+                {
+                  "left": "Électrons de valence",
+                  "right": "Électrons des états externes de l'atome"
+                },
+                {
+                  "left": "Cœurs ioniques positifs",
+                  "right": "Noyaux et électrons liés, localisés aux nœuds du réseau"
+                },
+                {
+                  "left": "Électrons de conduction",
+                  "right": "Électrons délocalisés pouvant se redistribuer dans tout le métal"
+                },
+                {
+                  "left": "Réseau cristallin",
+                  "right": "Arrangement ordonné des sites atomiques"
+                }
+              ],
+              "explanation": "Ce sont les définitions du §6.2.2 : les cœurs ioniques restent localisés, les électrons de conduction (délocalisés) se redistribuent dans tout le métal."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le cuivre, quels sont les porteurs responsables de la conduction ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Les noyaux"
+                },
+                {
+                  "id": "b",
+                  "md": "Les cœurs ioniques positifs"
+                },
+                {
+                  "id": "c",
+                  "md": "Les électrons"
+                },
+                {
+                  "id": "d",
+                  "md": "Des ions transportés à travers le métal"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Dans le cuivre, l'aluminium ou l'argent, les porteurs de la conduction sont les électrons ; les cœurs ioniques restent approximativement fixes aux nœuds du réseau."
+            }
+          ]
+        },
+        {
+          "slug": "charges-libres-liees-reponse-au-champ",
+          "title": "Charges libres, charges liées et réponse au champ",
+          "number": "6.2.3–6.2.4",
+          "estimatedMinutes": 6,
+          "summary": "Charge nette d'un métal, distinction entre charges libres et liées, et dérive des électrons sous un champ appliqué jusqu'à l'équilibre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.2.3 Charge nette, charges libres et charges liées",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un métal initialement neutre vérifie $Q_{\\text{ions}}+Q_{\\text{électrons}}=0$. Il reste pourtant constitué d'un très grand nombre de particules chargées. Si des électrons lui sont retirés, un déficit d'électrons lui donne une charge nette $Q>0$ ; s'ils lui sont ajoutés, il acquiert $Q<0$. Les ions ne sont pas transportés à travers le métal lors de ce processus.\n\nOn distingue **charges libres** (électrons mobiles assurant le transport) et **charges liées** (charges associées aux atomes ou aux ions ; elles peuvent réagir localement, mais ne participent pas au transport macroscopique usuel). La **charge nette** est la somme algébrique de toutes les charges, pas seulement celle des porteurs mobiles.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "On retire des électrons à un métal initialement neutre : il acquiert une charge nette $Q>0$.",
+                "answer": true,
+                "explanation": "Vrai : le déficit d'électrons laisse un excès de charge positive, $Q>0$. Les ions ne sont pas déplacés : seuls les électrons sont retirés."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.2.4 Réponse à un champ électrique appliqué",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour toute charge $q$ placée dans un champ électrique $\\vec E$, la force électrique s'écrit $\\vec F=q\\vec E$. Pour un électron $q=-e$, on obtient $\\vec F=-e\\vec E$ : sa force et sa dérive moyenne sont donc opposées au champ. En s'accumulant localement, les électrons créent leur propre champ, qui modifie peu à peu le champ total. Cette réorganisation est la transition vers l'équilibre étudié ci-après.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-barreau-champ.svg",
+              "alt": "Barreau métallique dans un champ orienté vers la droite ; les électrons dérivent vers la gauche.",
+              "caption": "Figure 6.3 — Avant l'équilibre, les électrons de conduction dérivent sous l'action du champ résultant, dans le sens opposé à $\\vec E$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Un champ $\\vec E$ uniforme dirigé vers la droite est appliqué à un barreau métallique. Dans quel sens les électrons de conduction dérivent-ils ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Vers la droite"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Vers la gauche"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Perpendiculairement au champ"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Ils ne bougent pas"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$\\vec F=-e\\vec E$ est opposée à $\\vec E$ : les électrons dérivent vers la gauche, jusqu'à ce que leur accumulation modifie le champ total."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**À retenir.** Le mécanisme de la conduction métallique doit être raconté dans cet ordre : **atome et interaction électrique** $\\to$ **états collectifs du réseau** $\\to$ **électrons délocalisés** $\\to$ **réponse au champ**. La seule décroissance de l'attraction en $1/r^2$ ne démontre pas l'existence d'électrons libres dans un métal.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le récit de la conduction métallique.",
+              "items": [
+                "Atome et interaction électrique",
+                "États collectifs du réseau",
+                "Électrons délocalisés",
+                "Réponse au champ"
+              ],
+              "explanation": "C'est l'ordre « À retenir » du §6.2.4 : de l'atome au réseau, puis aux électrons délocalisés qui répondent au champ appliqué."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La charge nette d'un métal est la charge totale de ses seuls électrons de conduction.",
+              "answer": false,
+              "explanation": "Faux : la charge nette est la somme algébrique de **toutes** les charges (ions et électrons), pas seulement celle des porteurs mobiles. Un métal neutre vérifie $Q_{\\text{ions}}+Q_{\\text{électrons}}=0$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque type de charge à sa description.",
+              "pairs": [
+                {
+                  "left": "Charges libres",
+                  "right": "Électrons mobiles assurant le transport"
+                },
+                {
+                  "left": "Charges liées",
+                  "right": "Charges associées aux atomes ou ions, ne participant pas au transport macroscopique"
+                },
+                {
+                  "left": "Charge nette",
+                  "right": "Somme algébrique de toutes les charges"
+                }
+              ],
+              "explanation": "Définitions du §6.2.3."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi le champ total dans un métal soumis à un champ extérieur se modifie-t-il peu à peu ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que les ions se déplacent à travers le métal"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que les électrons, en s'accumulant localement, créent leur propre champ"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que le champ extérieur s'annule de lui-même"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que le métal devient un isolant"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les électrons dérivent et s'accumulent ; leur propre champ s'ajoute au champ extérieur et modifie le champ total : c'est la transition vers l'équilibre."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conducteur-en-equilibre",
+      "title": "Conducteur en équilibre électrostatique",
+      "number": "6.3",
+      "lessons": [
+        {
+          "slug": "equilibre-electrostatique-isole-terre",
+          "title": "Équilibre électrostatique, conducteur isolé et relié à la Terre",
+          "number": "6.3.1–6.3.2",
+          "estimatedMinutes": 6,
+          "summary": "Définition de l'équilibre électrostatique d'un conducteur, son établissement, et la distinction entre conducteur isolé et conducteur relié à la Terre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.3.1 Définition et établissement de l'équilibre",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Équilibre électrostatique",
+              "md": "Un conducteur est en **équilibre électrostatique** lorsque ses charges libres ne présentent plus de *mouvement de dérive macroscopique* et que la répartition de charges ne varie plus au cours du temps.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Au début, un champ non compensé déplace les électrons. Leur redistribution engendre une charge de surface et, avec elle, un champ supplémentaire. Le processus se poursuit jusqu'à un état stationnaire : plus aucun transfert net de charge n'est nécessaire. Il ne faut pas imaginer que les électrons cessent tout mouvement microscopique ; ce qui s'annule est le **transport moyen dirigé**.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si une bille roule sur un plan incliné, sa position change jusqu'à ce qu'elle ne soit plus soumise à une force motrice dans la direction de déplacement. Dans le modèle du métal, les électrons peuvent également se redistribuer jusqu'à supprimer la force électrique moyenne qui entretiendrait une dérive.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La définition ne fixe ni le signe ni la valeur de la charge totale $Q$. Un même conducteur peut être en équilibre avec $Q=0$, $Q>0$ ou $Q<0$. La charge *totale* et la présence d'une *dérive* sont deux caractéristiques distinctes.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "À l'équilibre électrostatique, les électrons du métal sont totalement immobiles.",
+                "answer": false,
+                "explanation": "Faux : les électrons gardent leur mouvement microscopique ; ce qui s'annule est le **transport moyen dirigé** (la dérive macroscopique)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.3.2 Conducteur isolé et conducteur relié à la Terre",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un conducteur est dit **électriquement isolé** s'il ne peut pas échanger de charge nette avec l'extérieur pendant l'expérience. Sa charge totale se conserve, même si les charges se redistribuent. Un conducteur **relié à la Terre** échange au contraire des électrons avec un très grand réservoir conducteur ; à l'équilibre et dans l'approximation usuelle, son potentiel est fixé à celui de la Terre, pris comme origine $V=0$. Nous reprendrons cette distinction dans l'influence électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque situation à la grandeur qui est fixée.",
+                "pairs": [
+                  {
+                    "left": "Conducteur isolé",
+                    "right": "Sa charge totale $Q$ se conserve"
+                  },
+                  {
+                    "left": "Conducteur relié à la Terre",
+                    "right": "Son potentiel est fixé à $V=0$"
+                  }
+                ],
+                "explanation": "Isolé : pas d'échange de charge nette, donc $Q$ conservée. Relié à la Terre : échange d'électrons avec un grand réservoir, donc $V$ fixé à celui de la Terre ($V=0$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Parmi ces conditions, laquelle définit l'équilibre électrostatique d'un conducteur ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Sa charge totale est nulle."
+                },
+                {
+                  "id": "b",
+                  "md": "Ses charges libres n'ont plus de dérive macroscopique et la répartition de charges ne varie plus au cours du temps."
+                },
+                {
+                  "id": "c",
+                  "md": "Il est relié à la Terre."
+                },
+                {
+                  "id": "d",
+                  "md": "Aucun champ extérieur n'agit sur lui."
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la définition du §6.3.1. Elle ne fixe ni le signe ni la valeur de $Q$, et un champ extérieur peut exister (cas de l'influence)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un conducteur portant une charge $Q<0$ peut être en équilibre électrostatique.",
+              "answer": true,
+              "explanation": "Vrai : un conducteur peut être en équilibre avec $Q=0$, $Q>0$ ou $Q<0$. Charge totale et dérive sont deux caractéristiques distinctes."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes de l'établissement de l'équilibre.",
+              "items": [
+                "Un champ non compensé déplace les électrons",
+                "Leur redistribution engendre une charge de surface",
+                "Cette charge crée un champ supplémentaire",
+                "État stationnaire : plus aucun transfert net de charge"
+              ],
+              "explanation": "C'est le processus décrit au §6.3.1 : il se poursuit tant qu'un champ non compensé entretient une dérive."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un conducteur relié à la Terre a, à l'équilibre, un potentiel $V=$ ___ (en prenant celui de la Terre comme origine).",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "La Terre est un très grand réservoir conducteur dont le potentiel est pris comme origine : $V=0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "proprietes-fondamentales",
+      "title": "Propriétés fondamentales d'un conducteur en équilibre",
+      "number": "6.4",
+      "lessons": [
+        {
+          "slug": "champ-nul-equipotentiel-champ-normal",
+          "title": "Champ nul, équipotentialité et champ normal à la surface",
+          "number": "6.4.1–6.4.3",
+          "estimatedMinutes": 10,
+          "summary": "Les trois premières propriétés d'un conducteur à l'équilibre, démontrées l'une après l'autre : champ nul dans le métal, conducteur équipotentiel, champ extérieur normal à la surface.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Les propriétés qui suivent concernent le *champ macroscopique* dans le métal et ses limites près d'une surface régulière. Elles sont déduites l'une après l'autre : la compréhension de chaque étape rend la suivante naturelle.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.4.1 Première propriété : le champ dans le métal est nul",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons, par contradiction, que le champ total dans une petite région du métal demeure non nul. Un électron libre de charge $-e$ y subirait une force $\\vec F=-e\\vec E\\neq\\vec 0$ et développerait une dérive dans le modèle conducteur usuel. L'état ne serait donc pas un équilibre électrostatique. La répartition se réajuste jusqu'à annuler le champ total.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Champ intérieur nul",
+              "md": "Dans le volume matériel d'un conducteur métallique en équilibre électrostatique :\n$$\\vec E_{\\text{int}}=\\vec 0.$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le champ qui disparaît est la *somme* du champ dû aux sources extérieures et du champ produit par les charges redistribuées. Le résultat n'affirme pas que chaque contribution est nulle séparément.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Cette propriété ne s'applique pas automatiquement à une cavité vide, au vide extérieur, à un isolant, ni au métal parcouru par un courant permanent. Son domaine est la **matière du conducteur à l'équilibre**.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans un conducteur à l'équilibre placé dans un champ extérieur, le champ créé par les sources extérieures est nul dans le métal.",
+                "answer": false,
+                "explanation": "Faux : c'est le champ **total** (sources extérieures + charges redistribuées) qui est nul. Le champ extérieur n'est pas nul séparément ; il est compensé par celui des charges redistribuées."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.4.2 Deuxième propriété : le conducteur est équipotentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le **potentiel électrique** $V(M)$ décrit, à une constante de référence près, l'énergie potentielle électrique par unité de charge d'essai. En électrostatique, $\\vec E=-\\overrightarrow{\\mathrm{grad}}\\,V$. Pour deux points $A$ et $B$ reliés par un chemin $\\gamma$ situé dans un même morceau connexe de métal :\n$$V(B)-V(A)=-\\int_A^B\\vec E\\cdot\\mathrm d\\vec\\ell=0,$$\ncar $\\vec E=\\vec 0$ sur ce trajet. Tous les points de ce conducteur ont donc le même potentiel, et la continuité usuelle de $V$ permet d'étendre cette conclusion à sa surface.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Équipotentialité",
+              "md": "Pour un conducteur connexe à l'équilibre,\n$$V(M)=V_0\\quad\\text{en tout point du métal et de sa surface.}$$\nLa constante $V_0$ n'est *pas nécessairement nulle*.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Deux conducteurs non reliés peuvent être chacun équipotentiels sans être au même potentiel. Deux conducteurs reliés par un fil conducteur idéal deviennent, en revanche, un ensemble conducteur de potentiel unique à l'équilibre.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.4.3 Troisième propriété : le champ extérieur est normal à la surface",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Au voisinage d'une surface conductrice régulière, on décompose le champ extérieur en une composante **tangentielle** (parallèle à la surface) et une composante **normale** (perpendiculaire). Prenons un déplacement infinitésimal $\\mathrm d\\vec\\ell_t$ tangent à la surface. Puisque $V$ ne change pas le long de cette surface,\n$$\\mathrm dV=-\\vec E\\cdot\\mathrm d\\vec\\ell_t=-\\vec E_t\\cdot\\mathrm d\\vec\\ell_t=0.$$\nCela étant vrai pour toute direction tangentielle, on déduit $\\vec E_t=\\vec 0$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Champ extérieur normal",
+              "md": "Juste à l'extérieur du métal, le champ électrique ne possède aucune composante tangentielle :\n$$\\vec E_t=\\vec 0\\qquad\\text{et}\\qquad \\vec E_{\\text{ext}}=E_n\\,\\vec n.$$\nLe vecteur unitaire $\\vec n$ est choisi **sortant du métal**. Le coefficient $E_n$ peut être positif ou négatif.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-champ-normal-surface.svg",
+              "alt": "Surface de métal chargée positivement : champ nul dedans, flèches de champ perpendiculaires à la surface au-dessus.",
+              "caption": "Figure 6.4 — À l'équilibre, le champ est nul dans le métal et normal à la surface (élément de surface de densité positive).",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "conductor",
+              "caption": "Charge le conducteur et observe : charges en surface, champ nul dans le métal, champ normal à la surface.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux sphères métalliques à l'équilibre, non reliées entre elles. Que peut-on affirmer ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Elles sont au même potentiel."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Chacune est équipotentielle, mais leurs potentiels peuvent différer."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Leurs potentiels sont nuls."
+                  },
+                  {
+                    "id": "d",
+                    "md": "Aucune n'est équipotentielle."
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Chaque conducteur connexe est équipotentiel ($V=V_0$, pas forcément nul). Seuls des conducteurs reliés par un fil forment un ensemble de potentiel unique."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le raisonnement qui mène au champ extérieur normal.",
+              "items": [
+                "À l'équilibre, aucune dérive : $\\vec E_{\\text{int}}=\\vec 0$",
+                "$V(B)-V(A)=-\\int_A^B\\vec E\\cdot\\mathrm d\\vec\\ell=0$ : le conducteur est équipotentiel",
+                "Le long de la surface, $\\mathrm dV=-\\vec E_t\\cdot\\mathrm d\\vec\\ell_t=0$",
+                "Donc $\\vec E_t=\\vec 0$ : le champ extérieur est normal"
+              ],
+              "explanation": "Chaque propriété découle de la précédente : champ nul $\\Rightarrow$ équipotentiel $\\Rightarrow$ pas de composante tangentielle."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La propriété $\\vec E=\\vec 0$ s'applique automatiquement dans une cavité vide creusée dans le métal.",
+              "answer": false,
+              "explanation": "Faux : son domaine est la **matière** du conducteur à l'équilibre. Elle ne s'applique pas automatiquement à une cavité vide, au vide extérieur, à un isolant ni à un métal parcouru par un courant permanent."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Juste à l'extérieur d'un conducteur à l'équilibre, on écrit $\\vec E_{\\text{ext}}=E_n\\,\\vec n$. Quelle affirmation est correcte ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec n$ est entrant dans le métal et $E_n>0$."
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec n$ est sortant du métal et $E_n$ peut être positif ou négatif."
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec n$ est tangent à la surface."
+                },
+                {
+                  "id": "d",
+                  "md": "$E_n$ est toujours nul."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le vecteur $\\vec n$ est choisi sortant du métal ; la composante algébrique $E_n$ peut être de signe quelconque."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Deux conducteurs reliés par un fil conducteur idéal forment, à l'équilibre, un ensemble de potentiel ___.",
+              "answerType": "text",
+              "accepted": [
+                "unique",
+                "commun",
+                "identique"
+              ],
+              "explanation": "Reliés par un fil, ils forment un seul conducteur connexe, donc équipotentiel : un potentiel unique."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour un conducteur connexe à l'équilibre, le potentiel du métal est toujours nul.",
+              "answer": false,
+              "explanation": "Faux : $V(M)=V_0$ partout dans le métal et sur sa surface, mais la constante $V_0$ n'est pas nécessairement nulle."
+            }
+          ]
+        },
+        {
+          "slug": "densite-volumique-nulle-charge-en-surface",
+          "title": "Densité volumique nulle et charge en surface",
+          "number": "6.4.4–6.4.5",
+          "estimatedMinutes": 8,
+          "summary": "Par le théorème de Gauss, la densité volumique nette est nulle dans le métal ; la charge excédentaire réside sur les surfaces, décrite par la densité surfacique σ.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.4.4 Quatrième propriété : densité volumique nette nulle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La **densité volumique de charge nette** $\\rho_{\\text{int}}$ représente la charge algébrique par unité de volume, en $\\mathrm{C\\,m^{-3}}$. Choisissons une surface de Gauss fermée $\\Sigma$ *entièrement contenue dans le métal*, délimitant un volume $\\mathcal V$ sans portion de surface physique du conducteur.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Densité volumique nulle",
+              "steps": [
+                {
+                  "md": "**Étape 1.** Le flux à travers $\\Sigma$ est nul car le champ est nul sur cette surface : $\\displaystyle\\oint_\\Sigma\\vec E\\cdot\\mathrm d\\vec S=0$."
+                },
+                {
+                  "md": "**Étape 2.** Par Gauss, $Q_{\\mathcal V}=\\varepsilon_0\\displaystyle\\oint_\\Sigma\\vec E\\cdot\\mathrm d\\vec S=0$."
+                },
+                {
+                  "md": "**Étape 3.** Or $Q_{\\mathcal V}=\\displaystyle\\iiint_{\\mathcal V}\\rho_{\\text{int}}\\,\\mathrm d\\tau$. Puisque le choix du petit volume est arbitraire, la densité macroscopique nette est nulle en chaque point ordinaire du matériau :\n$$\\rho_{\\text{int}}=0\\quad\\text{dans le métal à l'équilibre.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "La nullité de $\\rho_{\\text{int}}$ signifie qu'il n'y a **pas d'excès de charge volumique nette** dans le matériau. Les cœurs ioniques positifs et les électrons négatifs restent présents, comme dans la figure 6.2 ; leurs contributions se compensent à l'échelle macroscopique.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$\\rho_{\\text{int}}=0$ dans un métal à l'équilibre signifie qu'il n'y a plus aucune charge (ni ions, ni électrons) dans le matériau.",
+                "answer": false,
+                "explanation": "Faux : ions positifs et électrons restent présents ; leurs contributions se **compensent** à l'échelle macroscopique. Seul l'excès de charge volumique nette est nul."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.4.5 Cinquième propriété : charge excédentaire aux surfaces",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La charge **excédentaire** (celle qui rend la charge totale différente de sa valeur neutre) ne pouvant subsister dans le volume matériel, elle réside sur ses **frontières**. Pour un conducteur plein isolé sans cavité, il s'agit de sa surface extérieure. Pour un métal comprenant des cavités ou plusieurs interfaces, les charges peuvent apparaître sur différentes surfaces : leur répartition dépend des sources présentes et des conditions électriques.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Densité surfacique de charge",
+              "md": "La **densité surfacique de charge** $\\sigma$ est la quantité algébrique de charge portée, localement, par unité de surface :\n$$\\sigma=\\frac{\\mathrm dQ}{\\mathrm dS},\\qquad [\\sigma]=\\mathrm{C\\,m^{-2}}.$$\nElle est *positive* si la surface présente un déficit local d'électrons, *négative* en cas d'excès d'électrons.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La charge totale d'un conducteur plein s'écrit $Q=\\displaystyle\\iint_S\\sigma(M)\\,\\mathrm dS$, la surface $S$ représentant toute sa frontière. La densité $\\sigma$ n'est pas nécessairement uniforme : la forme du conducteur et les charges situées à proximité la modifient.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple — Conducteur sphérique isolé",
+              "md": "Une sphère métallique seule dans le vide de rayon $R$ possède une symétrie sphérique. À l'équilibre, la charge $Q$ se répartit uniformément sur sa surface : $\\sigma=Q/(4\\pi R^2)$. Cette conclusion utilise la *symétrie de la configuration entière*, et non la seule nature conductrice du matériau.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une sphère conductrice isolée de rayon $R=0{,}5\\ \\mathrm m$ porte $Q=\\pi\\times10^{-9}\\ \\mathrm C$. Sa densité surfacique vaut $\\sigma=$ ___ $\\times10^{-9}\\ \\mathrm{C\\,m^{-2}}$.",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$\\sigma=\\dfrac{Q}{4\\pi R^2}=\\dfrac{\\pi\\times10^{-9}}{4\\pi\\times0{,}25}=1\\times10^{-9}\\ \\mathrm{C\\,m^{-2}}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la démonstration de $\\rho_{\\text{int}}=0$.",
+              "items": [
+                "Choisir une surface de Gauss $\\Sigma$ entièrement dans le métal",
+                "Le flux à travers $\\Sigma$ est nul car $\\vec E=\\vec 0$",
+                "Par Gauss, la charge intérieure $Q_{\\mathcal V}$ est nulle",
+                "Le volume étant arbitraire, $\\rho_{\\text{int}}=0$"
+              ],
+              "explanation": "C'est la démonstration en trois étapes du §6.4.4, après le choix de la surface de Gauss."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Où se trouve la charge excédentaire d'un conducteur plein, isolé, sans cavité, à l'équilibre ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Uniformément dans tout son volume"
+                },
+                {
+                  "id": "b",
+                  "md": "Au centre du conducteur"
+                },
+                {
+                  "id": "c",
+                  "md": "Sur sa surface extérieure"
+                },
+                {
+                  "id": "d",
+                  "md": "Dans le vide autour du conducteur"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Elle ne peut subsister dans le volume ($\\rho_{\\text{int}}=0$) : elle réside sur les frontières, ici la surface extérieure."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Sur tout conducteur à l'équilibre, la densité surfacique $\\sigma$ est uniforme.",
+              "answer": false,
+              "explanation": "Faux : $\\sigma$ dépend de la forme du conducteur et des charges proches. Pour la sphère isolée, l'uniformité vient de la symétrie de la configuration entière, pas de la seule nature conductrice."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque grandeur à son unité.",
+              "pairs": [
+                {
+                  "left": "$\\rho_{\\text{int}}$",
+                  "right": "$\\mathrm{C\\,m^{-3}}$"
+                },
+                {
+                  "left": "$\\sigma$",
+                  "right": "$\\mathrm{C\\,m^{-2}}$"
+                },
+                {
+                  "left": "$Q$",
+                  "right": "$\\mathrm C$"
+                }
+              ],
+              "explanation": "Densité volumique : charge par volume ; densité surfacique : charge par surface ; charge : coulomb."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une portion de surface d'un conducteur présente un excès local d'électrons. Le signe de $\\sigma$ y est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "positif"
+                },
+                {
+                  "id": "b",
+                  "md": "négatif"
+                },
+                {
+                  "id": "c",
+                  "md": "nul"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\sigma$ est négative en cas d'excès d'électrons, positive en cas de déficit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "theoreme-de-coulomb",
+      "title": "Théorème de Coulomb au voisinage d'une surface conductrice",
+      "number": "6.5",
+      "lessons": [
+        {
+          "slug": "pilule-de-gauss-theoreme-de-coulomb",
+          "title": "Pilule de Gauss et théorème de Coulomb",
+          "number": "6.5.1–6.5.2",
+          "estimatedMinutes": 11,
+          "summary": "Construction de la pilule de Gauss à l'interface métal–vide, calcul du flux et démonstration du théorème de Coulomb E = σ/ε₀ n, avec un exemple numérique et la méthode d'utilisation.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Nous connaissons maintenant deux faits : le champ est nul *dans* le métal et normal *juste à l'extérieur*. Il reste à calculer son amplitude en fonction de la charge surfacique. La loi de Gauss, étudiée au chapitre précédent, permet de le faire très simplement.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.5.1 Construire une pilule de Gauss",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons une petite portion *régulière* de la surface séparant le métal du vide, ainsi qu'un point $M$ situé dans le vide, **juste au voisinage de la surface physique du conducteur**. La figure 6.5 distingue clairement la surface réelle du métal de la surface fictive de Gauss. Elle présente une petite surface fermée cylindrique $\\Sigma$, appelée **pilule de Gauss**, qui traverse l'interface. Elle comprend trois parties : $S_{\\text{int}}$ (base dans le métal), $S_{\\text{ext}}$ (base dans le vide), $S_L$ (paroi latérale). Les bases ont une aire $\\Delta S$ et la normale $\\vec n$ est orientée vers le vide.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-pilule-gauss.svg",
+              "alt": "Petit cylindre de Gauss traversant l'interface métal–vide, avec ses bases S_int, S_ext et sa surface latérale S_L.",
+              "caption": "Figure 6.5 — Pilule de Gauss traversant l'interface métal–vide ; $M$ est dans le vide, juste au voisinage de la surface, et $\\vec n$ est la normale sortante au métal.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le point $M$ n'est pas sur la base extérieure $S_{\\text{ext}}$ : le contour de la pilule est une surface de Gauss fictive.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.5.2 Décomposer et calculer le flux",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Calcul du flux à travers la pilule",
+              "steps": [
+                {
+                  "md": "Le théorème de Gauss s'applique à la surface *fermée* $\\Sigma$ :\n$$\\Phi_{\\text{int}}+\\Phi_L+\\Phi_{\\text{ext}}=\\oint_\\Sigma\\vec E\\cdot\\mathrm d\\vec S=\\frac{Q_\\Sigma}{\\varepsilon_0}.$$"
+                },
+                {
+                  "md": "**Base intérieure.** $\\Phi_{\\text{int}}=0$, car le champ est nul dans le métal."
+                },
+                {
+                  "md": "**Paroi latérale.** Pour une pilule dont la hauteur tend vers zéro, la surface latérale tend vers zéro ; si le champ est borné près d'une surface lisse, son flux tend donc vers zéro : $\\Phi_L\\to0$. Il serait en revanche abusif de le poser nul pour *toute* hauteur finie."
+                },
+                {
+                  "md": "**Base extérieure.** La base est rapprochée de la surface conductrice, et son rayon est suffisamment petit pour que le champ normal soit presque constant :\n$$\\Phi_{\\text{ext}}\\simeq E_n(M)\\,\\Delta S.$$"
+                },
+                {
+                  "md": "**Charge enfermée.** La pilule coupe une portion de surface portant $Q_\\Sigma\\simeq\\sigma\\,\\Delta S$, où $\\sigma$ est la densité surfacique locale. En faisant tendre la hauteur puis les dimensions transversales vers zéro, on obtient\n$$E_n(M)\\,\\Delta S=\\frac{\\sigma\\,\\Delta S}{\\varepsilon_0}\\quad\\Longrightarrow\\quad E_n(M)=\\frac{\\sigma}{\\varepsilon_0}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque partie de la pilule de Gauss à son flux (dans la limite où la pilule s'aplatit).",
+                "pairs": [
+                  {
+                    "left": "Base intérieure $S_{\\text{int}}$",
+                    "right": "$0$ car $\\vec E=\\vec 0$ dans le métal"
+                  },
+                  {
+                    "left": "Paroi latérale $S_L$",
+                    "right": "Tend vers $0$ quand la hauteur tend vers $0$"
+                  },
+                  {
+                    "left": "Base extérieure $S_{\\text{ext}}$",
+                    "right": "$\\simeq E_n(M)\\,\\Delta S$"
+                  }
+                ],
+                "explanation": "Seule la base extérieure contribue dans la limite ; égalée à $\\sigma\\Delta S/\\varepsilon_0$, elle donne $E_n=\\sigma/\\varepsilon_0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème de Coulomb (champ immédiatement extérieur au conducteur)",
+              "md": "Au point $M$ du vide, dans la limite où $M$ s'approche d'une portion régulière de la surface du métal :\n$$\\vec E(M)=\\frac{\\sigma}{\\varepsilon_0}\\,\\vec n.$$\nIci $\\vec n$ est la normale *sortante du métal*, définie localement au voisinage de $M$. La relation donne le champ dans sa *limite extérieure* ; elle ne prétend pas que le champ est uniforme à une distance finie de la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le signe de $\\sigma$ règle le sens du champ : pour $\\sigma>0$, $\\vec E$ pointe vers le vide ; pour $\\sigma<0$, il pointe vers le métal. Son intensité est $|\\vec E(M)|=|\\sigma|/\\varepsilon_0$. Il ne faut pas confondre ce résultat avec le champ d'une nappe infinie isolée, égal en module à $|\\sigma|/(2\\varepsilon_0)$ de chaque côté.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple — Champ au voisinage d'une surface chargée",
+              "md": "Une portion lisse de métal porte $\\sigma=+1{,}77\\times10^{-8}\\ \\mathrm{C\\,m^{-2}}$. Avec $\\varepsilon_0\\simeq8{,}85\\times10^{-12}\\ \\mathrm{F\\,m^{-1}}$, le champ immédiatement extérieur vaut $E_n=\\sigma/\\varepsilon_0\\simeq2{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$. Il est dirigé vers le vide. La même valeur absolue de densité avec un signe négatif renverse le sens de $\\vec E$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode.** Pour utiliser cette relation : (1) repérer la *surface physique* du conducteur et son sens sortant ; (2) identifier le signe de $\\sigma$ ; (3) calculer la composante normale algébrique $E_n=\\sigma/\\varepsilon_0$ ; (4) en déduire direction et sens, sans confondre le point extérieur $M$ et une base de Gauss.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Juste à l'extérieur d'un conducteur, $\\sigma=-1{,}77\\times10^{-8}\\ \\mathrm{C\\,m^{-2}}$. Le champ vaut :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$2{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$, dirigé vers le vide"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$2{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$ en module, dirigé vers le métal"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$1{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$ en module, dirigé vers le métal"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$|E|=|\\sigma|/\\varepsilon_0\\simeq2{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$ ; $\\sigma<0$ donne $E_n<0$ : le champ pointe vers le métal. La valeur $|\\sigma|/(2\\varepsilon_0)$ est celle d'une nappe isolée, pas d'un conducteur."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Le théorème de Coulomb s'écrit :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec E=\\dfrac{\\sigma}{2\\varepsilon_0}\\,\\vec n$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec E=\\dfrac{\\sigma}{\\varepsilon_0}\\,\\vec n$, $\\vec n$ sortant du métal"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec E=\\dfrac{\\sigma}{\\varepsilon_0}\\,\\vec n$, $\\vec n$ entrant dans le métal"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\vec E=\\varepsilon_0\\sigma\\,\\vec n$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Champ immédiatement extérieur : $\\vec E=\\frac{\\sigma}{\\varepsilon_0}\\vec n$ avec $\\vec n$ normale sortante. Le facteur $1/2$ correspond à une nappe infinie isolée."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après le théorème de Coulomb, le champ au voisinage d'un conducteur est uniforme jusqu'à une distance finie de la surface.",
+              "answer": false,
+              "explanation": "Faux : la relation donne le champ dans sa **limite extérieure**, quand $M$ s'approche de la surface ; elle ne prétend rien sur le champ à distance finie."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la pilule de Gauss, on peut poser $\\Phi_L=0$ pour toute hauteur finie de la pilule.",
+              "answer": false,
+              "explanation": "Faux : $\\Phi_L\\to0$ seulement quand la hauteur tend vers zéro (champ borné, surface latérale qui s'annule). Le poser nul pour une hauteur finie serait abusif."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec $\\varepsilon_0\\simeq8{,}85\\times10^{-12}\\ \\mathrm{F\\,m^{-1}}$, une surface conductrice portant $\\sigma=8{,}85\\times10^{-9}\\ \\mathrm{C\\,m^{-2}}$ crée juste à l'extérieur un champ $E_n=$ ___ $\\mathrm{V\\,m^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "1000",
+                "1e3"
+              ],
+              "explanation": "$E_n=\\sigma/\\varepsilon_0=8{,}85\\times10^{-9}/8{,}85\\times10^{-12}=10^3\\ \\mathrm{V\\,m^{-1}}$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la méthode d'utilisation du théorème de Coulomb.",
+              "items": [
+                "Repérer la surface physique du conducteur et son sens sortant",
+                "Identifier le signe de $\\sigma$",
+                "Calculer $E_n=\\sigma/\\varepsilon_0$",
+                "En déduire direction et sens du champ"
+              ],
+              "explanation": "C'est la méthode en quatre points du §6.5.2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "effet-de-pointe",
+      "title": "Effet de pointe",
+      "number": "6.6",
+      "lessons": [
+        {
+          "slug": "spheres-reliees-pouvoir-des-pointes",
+          "title": "Sphères reliées et pouvoir des pointes",
+          "number": "6.6.1–6.6.3",
+          "estimatedMinutes": 10,
+          "summary": "Deux sphères éloignées reliées par un fil : σ₁R₁ ≃ σ₂R₂, donc la petite sphère porte un champ de surface plus intense ; généralisation qualitative à l'effet de pointe.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.6.1 Une expérience de pensée : deux sphères reliées",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La **courbure** mesure le changement local de direction d'une surface. Une partie très arrondie possède un rayon de courbure plus grand qu'une partie fortement pointue. Pour comprendre pourquoi le champ se renforce près des zones pointues, considérons d'abord **deux sphères métalliques éloignées** de rayons $R_1>R_2$, reliées par un fil conducteur (figure 6.6). Le fil permet un transfert d'électrons : à l'équilibre, les deux sphères ont un même potentiel $V_1=V_2$.\n\nPour une sphère conductrice *isolée dans le vide*, la symétrie et Gauss donnent à l'extérieur :\n$$E_r(r)=\\frac{Q}{4\\pi\\varepsilon_0r^2}\\qquad(r\\geq R).$$\nComme $E_r=-\\mathrm dV/\\mathrm dr$ et $V(\\infty)=0$,\n$$V(R)=\\int_R^\\infty E_r(r)\\,\\mathrm dr=\\frac{Q}{4\\pi\\varepsilon_0R}.$$\nCette expression du potentiel sera reprise pour la capacité électrique.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-deux-spheres-reliees.svg",
+              "alt": "Une grande sphère de rayon R1 et une petite sphère de rayon R2 reliées par un fil conducteur, au même potentiel.",
+              "caption": "Figure 6.6 — Deux sphères suffisamment éloignées et reliées électriquement : $V_1=V_2$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Les charges représentées sont des charges excédentaires positives ; leur nombre dessiné est seulement qualitatif.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.6.2 Densité surfacique et rayon de courbure",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons les sphères **suffisamment éloignées** l'une de l'autre pour négliger, à première approximation, l'influence réciproque sur leurs potentiels. À partir de $Q_i=4\\pi R_i^2\\sigma_i$ :\n$$V_i\\simeq\\frac{Q_i}{4\\pi\\varepsilon_0R_i}=\\frac{\\sigma_iR_i}{\\varepsilon_0}.$$\nL'égalité des potentiels implique\n$$\\sigma_1R_1\\simeq\\sigma_2R_2\\quad\\Longrightarrow\\quad\\boxed{\\frac{\\sigma_2}{\\sigma_1}\\simeq\\frac{R_1}{R_2}}.$$\nAvec le théorème de Coulomb, le rapport des intensités des champs extérieurs est donc approximativement\n$$\\boxed{\\frac{|E_2|}{|E_1|}\\simeq\\frac{R_1}{R_2}}.$$\nSi $R_1=3R_2$, la petite sphère possède, à potentiel commun et dans cette approximation, une densité de charge et un champ de surface environ trois fois plus grands en valeur absolue.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Deux sphères éloignées reliées par un fil, de rayons $R_1=10\\ \\mathrm{cm}$ et $R_2=2\\ \\mathrm{cm}$. Le rapport $\\sigma_2/\\sigma_1$ vaut environ ___.",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "$\\sigma_1R_1\\simeq\\sigma_2R_2$ donne $\\sigma_2/\\sigma_1\\simeq R_1/R_2=10/2=5$ : la petite sphère a la plus grande densité."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.6.3 Généralisation qualitative : le pouvoir des pointes",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Sur un conducteur de forme irrégulière, les charges se répartissent de manière à préserver l'équipotentialité. Les régions à **faible rayon de courbure**, telles que les pointes arrondies, peuvent présenter une densité surfacique plus élevée que les régions larges et arrondies. Par $|\\vec E|=|\\sigma|/\\varepsilon_0$, cela entraîne un champ extérieur local plus intense : on parle d'**effet de pointe** ou de **pouvoir des pointes**.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-effet-de-pointe.svg",
+              "alt": "Conducteur en forme de goutte chargé positivement ; les charges et le champ sont plus intenses vers la pointe.",
+              "caption": "Figure 6.7 — Effet de pointe : la densité surfacique et le champ extérieur (normal à la surface) sont plus importants près de l'extrémité aiguë.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "conductor",
+              "caption": "Repère où le champ extérieur est le plus intense : près des régions pointues (effet de pointe).",
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le rapport $|E_2|/|E_1|\\simeq R_1/R_2$ est établi ici pour *deux sphères suffisamment éloignées*, et non pour deux points quelconques d'un conducteur de forme arbitraire. L'effet de pointe est une tendance géométrique utile ; la répartition exacte dépend de toute la configuration électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le rapport $|E_2|/|E_1|\\simeq R_1/R_2$ s'applique exactement à deux points quelconques d'un conducteur de forme arbitraire, en remplaçant $R$ par le rayon de courbure local.",
+                "answer": false,
+                "explanation": "Faux : il est établi pour deux sphères suffisamment éloignées. Pour un conducteur quelconque, l'effet de pointe n'est qu'une tendance qualitative ; la répartition exacte dépend de toute la configuration."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Deux sphères éloignées de rayons $R_1>R_2$ sont reliées par un fil. À l'équilibre :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "elles portent la même charge"
+                },
+                {
+                  "id": "b",
+                  "md": "elles ont la même densité surfacique"
+                },
+                {
+                  "id": "c",
+                  "md": "elles ont le même potentiel et la petite a la plus grande densité surfacique"
+                },
+                {
+                  "id": "d",
+                  "md": "la grande sphère a le champ de surface le plus intense"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Le fil impose $V_1=V_2$, d'où $\\sigma_1R_1\\simeq\\sigma_2R_2$ : $\\sigma_2>\\sigma_1$ et le champ de surface est plus intense sur la petite sphère."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le potentiel d'une sphère conductrice isolée de rayon $R$ portant la charge $Q$ (avec $V(\\infty)=0$) s'écrit $V(R)=\\dfrac{Q}{4\\pi\\varepsilon_0\\,x}$ avec $x=$ ___ (donner le symbole).",
+              "answerType": "text",
+              "accepted": [
+                "R"
+              ],
+              "explanation": "$V(R)=\\int_R^\\infty\\frac{Q}{4\\pi\\varepsilon_0r^2}\\mathrm dr=\\frac{Q}{4\\pi\\varepsilon_0R}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une région à faible rayon de courbure d'un conducteur peut présenter une densité surfacique et un champ extérieur plus élevés qu'une région large et arrondie.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'effet de pointe (pouvoir des pointes), conséquence de $|\\vec E|=|\\sigma|/\\varepsilon_0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour deux sphères éloignées reliées avec $R_1=3R_2$, le rapport $|E_2|/|E_1|$ des champs de surface vaut environ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$1/3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$3$"
+                },
+                {
+                  "id": "d",
+                  "md": "$9$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$|E_2|/|E_1|\\simeq R_1/R_2=3$ : le champ est environ trois fois plus intense sur la petite sphère (et non $9$ : la dépendance est en $1/R$, pas en $1/R^2$)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque relation à son origine dans le raisonnement.",
+              "pairs": [
+                {
+                  "left": "$V_1=V_2$",
+                  "right": "Le fil conducteur relie les sphères"
+                },
+                {
+                  "left": "$V_i\\simeq\\sigma_iR_i/\\varepsilon_0$",
+                  "right": "Potentiel d'une sphère isolée avec $Q_i=4\\pi R_i^2\\sigma_i$"
+                },
+                {
+                  "left": "$|E_i|=|\\sigma_i|/\\varepsilon_0$",
+                  "right": "Théorème de Coulomb"
+                }
+              ],
+              "explanation": "On combine l'équipotentialité (fil), le potentiel d'une sphère isolée et le théorème de Coulomb."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "capacite-conducteur-isole",
+      "title": "Capacité d'un conducteur isolé",
+      "number": "6.7",
+      "lessons": [
+        {
+          "slug": "capacite-sphere-conductrice",
+          "title": "Capacité d'un conducteur isolé et d'une sphère",
+          "number": "6.7.1–6.7.2",
+          "estimatedMinutes": 10,
+          "summary": "Linéarité entre charge et potentiel, définition de la capacité C = Q/V, et calcul rigoureux de la capacité d'une sphère conductrice : C = 4πε₀R.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.7.1 Pourquoi introduire la capacité ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Charge et potentiel ne sont pas indépendants. Un conducteur isolé peut accueillir une charge $Q$ ; sa répartition et son potentiel s'ajustent alors sous les contraintes de la géométrie. Dans le vide, pour une forme et un environnement fixés, les équations électrostatiques sont linéaires : si toute la charge est multipliée par un facteur $\\lambda$, le potentiel associé est multiplié par le même facteur.\n\nAvec la référence de potentiel $V(\\infty)=0$ et un conducteur isolé suffisamment éloigné de toute autre source, l'expression intégrale est\n$$V(M)=\\frac{1}{4\\pi\\varepsilon_0}\\iint_S\\frac{\\sigma}{|MM'|}\\,\\mathrm dS'.$$\nDans cette intégrale, $M'$ est le point courant de la surface chargée, $|MM'|$ est sa distance au point d'observation $M$, et $\\sigma$ désigne la densité surfacique locale sur l'élément $\\mathrm dS'$. Elle montre la linéarité de $V$ en $\\sigma$ : à géométrie inchangée, $Q\\mapsto\\lambda Q$ conduit à $V\\mapsto\\lambda V$. La relation est donc de la forme $Q=CV$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Capacité électrique",
+              "md": "La **capacité électrique** d'un conducteur isolé est le coefficient\n$$C=\\frac{Q}{V},\\qquad [C]=\\mathrm F\\ \\text{(farad)},$$\noù $V$ est le potentiel du conducteur *par rapport à l'infini*. Lorsque $Q=V=0$, on définit $C$ comme le coefficient de proportionnalité de $Q=CV$, non comme le quotient indéterminé $0/0$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La capacité mesure la charge qu'il faut apporter pour élever le potentiel du conducteur de $1\\ \\mathrm V$. Dans un milieu linéaire et à géométrie fixée, elle dépend de la forme, des dimensions du conducteur et du milieu environnant, *pas* de la valeur de $Q$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "La capacité d'un conducteur isolé n'est pas la même notion géométrique que la capacité d'un *condensateur à deux armatures*. Le prochain chapitre étudiera les systèmes à plusieurs conducteurs et leurs associations. Il n'est pas nécessaire d'introduire ces systèmes pour définir $C$ ici.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si l'on double la charge d'un conducteur isolé (géométrie et environnement fixés), sa capacité double.",
+                "answer": false,
+                "explanation": "Faux : par linéarité, $V$ double aussi, donc $C=Q/V$ est inchangée. La capacité dépend de la forme, des dimensions et du milieu, pas de $Q$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.7.2 Calcul rigoureux pour une sphère conductrice",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons une sphère métallique de rayon $R$, isolée dans le vide, portant la charge nette $Q$. Par symétrie sphérique, $\\sigma=Q/(4\\pi R^2)$ ; le théorème de Gauss donne le champ radial :\n$$\\vec E(r)=\\begin{cases}\\vec 0, & 0\\leq r<R,\\\\[4pt] \\dfrac{Q}{4\\pi\\varepsilon_0r^2}\\,\\vec u_r, & r>R.\\end{cases}$$\nLe potentiel est continu en $r=R$ et, avec $V(\\infty)=0$, pour $r\\geq R$ :\n$$V(r)=-\\int_\\infty^r\\vec E\\cdot\\mathrm d\\vec\\ell=\\frac{Q}{4\\pi\\varepsilon_0r}.$$\nPuisque $\\vec E=\\vec 0$ dans le métal, tout l'intérieur possède le potentiel de surface :\n$$V(r)=\\frac{Q}{4\\pi\\varepsilon_0R},\\qquad 0\\leq r\\leq R.$$\nEn divisant $Q$ par ce potentiel, on obtient la capacité de la sphère :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat — Capacité d'une sphère",
+              "md": "$$C_{\\text{sphère}}=4\\pi\\varepsilon_0R.$$\nLa capacité d'une sphère isolée dans le vide est proportionnelle à son rayon et ne dépend pas de sa charge.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-sphere-potentiel.svg",
+              "alt": "Graphe de V(r) pour une sphère conductrice chargée : palier constant jusqu'à R puis décroissance en 1/r.",
+              "caption": "Figure 6.8 — Sphère chargée positivement : $V$ est constant pour $r\\le R$, puis décroît en $1/r$ ; il est continu à la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple — Ordre de grandeur",
+              "md": "Pour une sphère de rayon $R=0{,}10\\ \\mathrm m$, en prenant $\\varepsilon_0\\simeq8{,}85\\times10^{-12}\\ \\mathrm{F\\,m^{-1}}$ :\n$$C=4\\pi\\varepsilon_0R\\simeq1{,}11\\times10^{-11}\\ \\mathrm F=11{,}1\\ \\mathrm{pF}.$$\nUne capacité exprimée en picofarads est donc tout à fait possible pour un conducteur isolé.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Le rayon d'une sphère conductrice isolée est multiplié par $3$. Sa capacité est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "inchangée"
+                  },
+                  {
+                    "id": "b",
+                    "md": "multipliée par $3$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "multipliée par $9$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "divisée par $3$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$C=4\\pi\\varepsilon_0R$ est proportionnelle au rayon : elle est multipliée par $3$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Le potentiel $V$ qui intervient dans $C=Q/V$ pour un conducteur isolé est référencé :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "au centre du conducteur"
+                },
+                {
+                  "id": "b",
+                  "md": "à l'infini, $V(\\infty)=0$"
+                },
+                {
+                  "id": "c",
+                  "md": "à la surface du conducteur"
+                },
+                {
+                  "id": "d",
+                  "md": "à n'importe quel point, sans conséquence"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$V$ est le potentiel du conducteur par rapport à l'infini, avec $V(\\infty)=0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour une sphère conductrice chargée, le potentiel au centre est nul puisque le champ y est nul.",
+              "answer": false,
+              "explanation": "Faux : $\\vec E=\\vec 0$ dans le métal signifie que $V$ y est **constant**, égal au potentiel de surface $Q/(4\\pi\\varepsilon_0R)$, pas nul."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une sphère conductrice de rayon $R=0{,}10\\ \\mathrm m$ a une capacité d'environ ___ pF.",
+              "answerType": "number",
+              "accepted": [
+                "11.1",
+                "11"
+              ],
+              "explanation": "$C=4\\pi\\varepsilon_0R\\simeq4\\pi(8{,}85\\times10^{-12})(0{,}10)\\simeq1{,}11\\times10^{-11}\\ \\mathrm F=11{,}1\\ \\mathrm{pF}$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour une sphère conductrice de rayon $R$ portant $Q$ (avec $V(\\infty)=0$), associez chaque région à son champ ou son potentiel.",
+              "pairs": [
+                {
+                  "left": "Champ pour $r<R$",
+                  "right": "$\\vec 0$"
+                },
+                {
+                  "left": "Champ pour $r>R$",
+                  "right": "$\\dfrac{Q}{4\\pi\\varepsilon_0r^2}\\,\\vec u_r$"
+                },
+                {
+                  "left": "Potentiel pour $r\\geq R$",
+                  "right": "$\\dfrac{Q}{4\\pi\\varepsilon_0r}$"
+                },
+                {
+                  "left": "Potentiel pour $r\\leq R$",
+                  "right": "$\\dfrac{Q}{4\\pi\\varepsilon_0R}$"
+                }
+              ],
+              "explanation": "Le champ est nul dans le métal et coulombien à l'extérieur ; le potentiel décroît en $1/r$ à l'extérieur et reste égal à sa valeur de surface à l'intérieur (continuité en $r=R$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La capacité d'un conducteur isolé et celle d'un condensateur à deux armatures sont la même notion géométrique.",
+              "answer": false,
+              "explanation": "Faux : le cours souligne que ce sont deux notions différentes ; les systèmes à plusieurs conducteurs sont étudiés au chapitre suivant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "energie-conducteur-isole",
+      "title": "Énergie électrostatique d'un conducteur isolé",
+      "number": "6.8",
+      "lessons": [
+        {
+          "slug": "energie-de-chargement",
+          "title": "Énergie de chargement d'un conducteur",
+          "number": "6.8.1",
+          "estimatedMinutes": 7,
+          "summary": "En apportant la charge progressivement, on obtient l'énergie U = Q²/(2C) = QV/2 = CV²/2 ; origine du facteur 1/2 et exemple numérique.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.8.1 Charger le conducteur progressivement",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour comprendre l'origine de l'énergie, imaginons qu'on assemble progressivement la charge du conducteur, initialement neutre et isolé. Lorsque sa charge intermédiaire vaut $q$, son potentiel est $V(q)=q/C$. Le travail réversible nécessaire pour apporter une petite charge supplémentaire $\\mathrm dq$ est\n$$\\mathrm dU=V(q)\\,\\mathrm dq=\\frac{q}{C}\\,\\mathrm dq.$$\nLe potentiel n'est donc *pas constant* durant l'opération : il part de zéro puis augmente avec la charge. L'énergie du conducteur chargé est l'intégrale de ce travail :\n$$U=\\int_0^Q\\mathrm dU=\\int_0^Q\\frac{q}{C}\\,\\mathrm dq=\\frac{1}{C}\\left[\\frac{q^2}{2}\\right]_0^Q=\\frac{Q^2}{2C}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Énergie d'un conducteur isolé",
+              "md": "Pour un conducteur isolé, dans un environnement linéaire et de capacité fixe,\n$$U=\\frac{Q^2}{2C}=\\frac12QV=\\frac12CV^2,\\qquad [U]=\\mathrm J.$$\nLes trois expressions sont équivalentes grâce à $Q=CV$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-energie-charge.svg",
+              "alt": "Droite V(q)=q/C de l'origine au point (Q,V) ; l'aire du triangle sous la droite vaut U=QV/2.",
+              "caption": "Figure 6.9 — L'énergie est l'aire du triangle sous la droite $V(q)=q/C$ : $U=\\tfrac12QV$ (tracé pour $Q>0$).",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "D'où vient le facteur $1/2$ dans $U=\\frac12QV$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "D'une convention de signe"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Du fait que le potentiel croît linéairement de $0$ à $V$ pendant le chargement"
+                  },
+                  {
+                    "id": "c",
+                    "md": "De la moitié des charges qui restent dans le volume"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Du théorème de Coulomb"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Pendant le chargement, $V(q)=q/C$ croît de $0$ à $V$ ; l'intégrale $\\int_0^Q(q/C)\\,\\mathrm dq$ est l'aire d'un triangle, d'où $\\frac12QV$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** La formule $U=QV$ serait incorrecte dans cette opération de charge progressive : elle oublierait que le potentiel augmente au cours du chargement. De plus, $Q$ et $V$ peuvent être tous deux négatifs pour un conducteur chargé négativement, mais $U=Q^2/(2C)$ reste positive.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple — Énergie d'une sphère isolée",
+              "md": "Une sphère de capacité $C=20\\ \\mathrm{pF}$ portée à $V=1000\\ \\mathrm V$ emmagasine\n$$U=\\frac12CV^2=\\frac12(20\\times10^{-12})(1000)^2=1{,}0\\times10^{-5}\\ \\mathrm J=10\\ \\mu\\mathrm J.$$\nCette énergie est liée à l'établissement du champ électrique autour du conducteur.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Un conducteur de capacité $C=10\\ \\mathrm{pF}$ est porté à $V=1000\\ \\mathrm V$. Son énergie vaut $U=$ ___ $\\mu\\mathrm J$.",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "$U=\\frac12CV^2=\\frac12(10\\times10^{-12})(10^6)=5\\times10^{-6}\\ \\mathrm J=5\\ \\mu\\mathrm J$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Un conducteur chargé négativement ($Q<0$, $V<0$) a une énergie électrostatique négative.",
+              "answer": false,
+              "explanation": "Faux : $U=Q^2/(2C)$ reste positive, même si $Q$ et $V$ sont négatifs (leur produit est positif)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces expressions n'est **pas** l'énergie d'un conducteur isolé de capacité $C$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{Q^2}{2C}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac12QV$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac12CV^2$"
+                },
+                {
+                  "id": "d",
+                  "md": "$QV$"
+                }
+              ],
+              "answer": "d",
+              "explanation": "$U=QV$ oublierait que le potentiel augmente pendant le chargement ; les trois autres sont équivalentes via $Q=CV$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une sphère de capacité $C=20\\ \\mathrm{pF}$ portée à $V=1000\\ \\mathrm V$ emmagasine $U=$ ___ $\\mu\\mathrm J$.",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "$U=\\frac12(20\\times10^{-12})(1000)^2=1{,}0\\times10^{-5}\\ \\mathrm J=10\\ \\mu\\mathrm J$ (exemple du cours)."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le calcul de l'énergie de chargement.",
+              "items": [
+                "Charge intermédiaire $q$, potentiel $V(q)=q/C$",
+                "Travail pour apporter $\\mathrm dq$ : $\\mathrm dU=(q/C)\\,\\mathrm dq$",
+                "Intégrer de $0$ à $Q$",
+                "$U=Q^2/(2C)$"
+              ],
+              "explanation": "C'est la démarche du §6.8.1."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "phenomenes-d-influence",
+      "title": "Phénomènes d'influence électrostatique",
+      "number": "6.9",
+      "lessons": [
+        {
+          "slug": "influence-partielle-et-totale",
+          "title": "Influence sans contact, partielle et totale",
+          "number": "6.9.1–6.9.2",
+          "estimatedMinutes": 8,
+          "summary": "Pourquoi un corps chargé sépare les charges d'un conducteur voisin sans le toucher, conservation de la charge d'un conducteur isolé influencé, et distinction entre influence partielle et totale.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.9.1 Influence sans contact : pourquoi les charges se séparent-elles ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On parle d'**influence électrostatique** lorsque le champ créé par un corps chargé provoque une *redistribution* des charges sur un conducteur voisin, **sans contact** entre les deux objets.\n\nSupposons un conducteur $A$ chargé positivement, placé près d'un conducteur $B$ initialement neutre et isolé. Le champ de $A$ attire les électrons libres de $B$ du côté proche de $A$. La face proche présente alors une densité nette négative. Sur la face éloignée, le *déficit local d'électrons* fait apparaître une densité nette positive. Les cœurs ioniques positifs, eux, ne migrent pas à travers le métal.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-influence-partielle.svg",
+              "alt": "Conducteur A positif à gauche ; conducteur B neutre à droite avec des charges négatives côté A et positives de l'autre côté.",
+              "caption": "Figure 6.10 — Influence partielle : les électrons de $B$ migrent vers la face proche de $A$ ; la charge totale de $B$ reste nulle.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le déplacement initial des électrons (flèche en pointillés) cesse à l'équilibre.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Charge d'un conducteur isolé influencé",
+              "md": "Si $B$ reste isolé, *aucune charge nette ne traverse sa frontière*. Ainsi, après redistribution :\n$$Q_B=0\\quad\\text{si }B\\text{ était initialement neutre.}$$\nLes charges induites positives et négatives sur les différentes régions de sa surface se compensent *globalement*.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Comment le champ peut-il alors être nul dans $B$ ? Les nouvelles charges induites créent un champ $\\vec E_{\\text{ind}}$ qui compense le champ de $A$ dans la matière conductrice :\n$$\\vec E_{\\text{total}}=\\vec E_A+\\vec E_{\\text{ind}}=\\vec 0\\qquad\\text{dans le métal de }B.$$\nCette égalité concerne le champ total à l'équilibre ; les deux champs pris séparément peuvent être non nuls.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Un conducteur $A$ positif est approché d'un conducteur $B$ neutre et isolé, sans contact. À l'équilibre :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$B$ devient négatif"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La face de $B$ proche de $A$ est négative, la face éloignée positive, et $Q_B=0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Les ions positifs de $B$ migrent vers la face éloignée"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Le champ de $A$ est nul dans $B$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les électrons migrent vers la face proche ; le déficit d'électrons rend la face éloignée positive. $B$ isolé garde $Q_B=0$. C'est le champ **total** qui est nul dans le métal de $B$, pas $\\vec E_A$ seul ; les ions ne migrent pas."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.9.2 Influence partielle et influence totale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On appelle **influence partielle** une configuration où le conducteur influencé n'entoure pas complètement le corps chargé. Une partie seulement des lignes de champ issues de $A$ peut rejoindre $B$ ; d'autres peuvent atteindre des régions plus éloignées. La figure 6.10 en donne un exemple. Les lignes de champ sont un outil de visualisation, pas une méthode de comptage exact des charges induites.\n\nDans une configuration d'**influence totale**, un conducteur $B$ enveloppe entièrement le conducteur $A$ sans contact électrique, par exemple sous la forme d'une enveloppe conductrice entourant une cavité. Toute ligne de champ issue de $A$ rencontre alors la paroi intérieure de $B$, dans la configuration électrostatique considérée.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-influence-totale.svg",
+              "alt": "Conducteur A au centre d'une cavité d'une enveloppe métallique B ; paroi interne négative, surface externe positive, surface de Gauss dans le métal.",
+              "caption": "Figure 6.11 — Influence totale : $A$ porte $+Q$, la paroi interne de $B$ porte $-Q$ et sa surface externe $+Q$ ; surface de Gauss en pointillés dans le métal de $B$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "En influence totale, toute ligne de champ issue de $A$ rencontre la paroi intérieure du conducteur $B$ qui l'enveloppe.",
+                "answer": true,
+                "explanation": "Vrai : $B$ entoure entièrement $A$. En influence partielle, au contraire, seule une partie des lignes issues de $A$ rejoint $B$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Lors de l'influence, les cœurs ioniques positifs du conducteur influencé migrent vers la face éloignée.",
+              "answer": false,
+              "explanation": "Faux : les cœurs ioniques ne migrent pas ; la face éloignée devient positive par **déficit local d'électrons**."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque configuration à sa description.",
+              "pairs": [
+                {
+                  "left": "Influence partielle",
+                  "right": "Le conducteur influencé n'entoure pas complètement le corps chargé"
+                },
+                {
+                  "left": "Influence totale",
+                  "right": "Le conducteur influencé enveloppe entièrement le corps chargé"
+                },
+                {
+                  "left": "Influence électrostatique",
+                  "right": "Redistribution de charges provoquée par un corps chargé sans contact"
+                }
+              ],
+              "explanation": "Définitions du §6.9."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le métal de $B$ influencé par $A$, à l'équilibre :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec E_A=\\vec 0$ et $\\vec E_{\\text{ind}}=\\vec 0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec E_A+\\vec E_{\\text{ind}}=\\vec 0$, chaque terme pouvant être non nul"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec E_{\\text{ind}}=\\vec E_A$"
+                },
+                {
+                  "id": "d",
+                  "md": "Le champ total est égal à $\\vec E_A$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le champ des charges induites compense celui de $A$ : c'est le **total** qui est nul."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les lignes de champ permettent de compter exactement les charges induites.",
+              "answer": false,
+              "explanation": "Faux : elles sont un outil de visualisation, pas une méthode de comptage exact des charges induites."
+            }
+          ]
+        },
+        {
+          "slug": "charges-induites-mise-a-la-terre",
+          "title": "Charges induites en influence totale et mise à la terre",
+          "number": "6.9.3–6.9.4",
+          "estimatedMinutes": 10,
+          "summary": "Démonstration par Gauss des charges induites en influence totale (−Q sur la paroi interne), cas d'une enveloppe chargée, et électrisation par influence avec mise à la terre dans le bon ordre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.9.3 Démonstration des charges induites en influence totale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons que $A$ porte une charge $Q$ et que l'enveloppe $B$ soit initialement neutre, isolée et en équilibre.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Charges des surfaces interne et externe de $B$",
+              "steps": [
+                {
+                  "md": "Choisissons une surface de Gauss fermée $\\Sigma$ *entièrement située dans l'épaisseur métallique de $B$*, qui entoure la cavité. Comme $\\vec E=\\vec 0$ sur $\\Sigma$, le flux y est nul."
+                },
+                {
+                  "md": "La charge contenue dans le volume intérieur de $\\Sigma$ est la somme de la charge $Q$ du corps $A$ et de la charge $Q_{\\text{int},B}$ portée par la paroi intérieure de $B$ :\n$$0=\\oint_\\Sigma\\vec E\\cdot\\mathrm d\\vec S=\\frac{Q+Q_{\\text{int},B}}{\\varepsilon_0}\\quad\\Longrightarrow\\quad\\boxed{Q_{\\text{int},B}=-Q}.$$"
+                },
+                {
+                  "md": "Puisque le conducteur $B$ est globalement neutre,\n$$Q_B=Q_{\\text{int},B}+Q_{\\text{ext},B}=0\\quad\\Longrightarrow\\quad\\boxed{Q_{\\text{ext},B}=+Q}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ces équations portent sur les *charges totales* des surfaces interne et externe. Leur distribution locale $\\sigma(M)$ peut être inégale ; elle dépend de la position du corps $A$ dans la cavité et de la géométrie.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Si l'enveloppe $B$ possède au départ une charge totale $Q_B$, l'égalité sur la face interne reste $Q_{\\text{int},B}=-Q$ (s'il n'y a pas d'autre charge dans la cavité), mais la surface externe porte alors $Q_{\\text{ext},B}=Q_B+Q$. La neutralité initiale est une hypothèse, non une conséquence de l'influence.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Un corps $A$ de charge $+3\\ \\mathrm{nC}$ est placé dans la cavité d'une enveloppe conductrice $B$ isolée de charge initiale $Q_B=+1\\ \\mathrm{nC}$. Sa surface externe porte $Q_{\\text{ext},B}=$ ___ nC.",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "$Q_{\\text{int},B}=-3\\ \\mathrm{nC}$ (Gauss dans le métal de $B$), et $Q_{\\text{ext},B}=Q_B+Q=1+3=4\\ \\mathrm{nC}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.9.4 Mise à la terre : électriser un conducteur sans contact",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La **mise à la terre** consiste à relier un conducteur à la Terre au moyen d'une connexion conductrice. Dans le modèle idéal usuel, la Terre constitue un réservoir de charges assez grand pour maintenir son potentiel fixé à $V_{\\text{Terre}}=0$. La liaison autorise un échange d'électrons avec le conducteur. Elle ne signifie *pas* que celui-ci devient toujours neutre.\n\nPrenons $A$ positivement chargé et $B$ initialement neutre. Pour obtenir, après séparation, un conducteur $B$ chargé *négativement* sans contact direct avec $A$, on procède dans l'ordre suivant (figure 6.12).\n\n1. **Approcher $A$ de $B$ sans contact.** $B$ étant isolé, ses électrons migrent vers la face proche de $A$, mais $Q_B$ reste nul.\n2. **Garder $A$ à proximité et relier $B$ à la Terre.** Le potentiel de $B$ s'ajuste à celui de la Terre. Des électrons peuvent remonter depuis la Terre vers $B$ et celui-ci acquiert une charge nette négative.\n3. **Déconnecter d'abord $B$ de la Terre, puis éloigner $A$.** La charge négative supplémentaire reste sur $B$, qui est maintenant isolé ; les électrons se redistribuent sur sa surface à l'équilibre.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch06-electrisation-influence.svg",
+              "alt": "Trois étapes : approcher A de B, relier B à la Terre, puis débrancher la Terre avant d'éloigner A ; B reste chargé négativement.",
+              "caption": "Figure 6.12 — Électrisation par influence avec $A$ positif : (1) séparation des charges, (2) mise à la Terre, (3) déconnexion de la Terre *avant* l'éloignement de $A$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention. L'ordre des opérations est essentiel.** Si l'on éloigne $A$ tout en maintenant le fil de terre, les électrons peuvent retourner vers la Terre et $B$ peut redevenir neutre dans le cas idéal. Pour électriser $B$ négativement à l'aide de $A$ positif : *approcher $A$ $\\to$ mettre à la Terre $\\to$ débrancher la Terre $\\to$ éloigner $A$.*",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les opérations pour électriser $B$ négativement à l'aide de $A$ positif.",
+                "items": [
+                  "Approcher $A$ de $B$ sans contact",
+                  "Relier $B$ à la Terre",
+                  "Débrancher la Terre",
+                  "Éloigner $A$"
+                ],
+                "explanation": "Il faut débrancher la Terre **avant** d'éloigner $A$ ; sinon les électrons retournent vers la Terre et $B$ redevient neutre."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "En influence totale, $A$ porte $Q$ et l'enveloppe $B$ est neutre et isolée. Les charges des surfaces interne et externe de $B$ sont :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$Q_{\\text{int},B}=+Q$, $Q_{\\text{ext},B}=-Q$"
+                },
+                {
+                  "id": "b",
+                  "md": "$Q_{\\text{int},B}=-Q$, $Q_{\\text{ext},B}=+Q$"
+                },
+                {
+                  "id": "c",
+                  "md": "$Q_{\\text{int},B}=0$, $Q_{\\text{ext},B}=0$"
+                },
+                {
+                  "id": "d",
+                  "md": "$Q_{\\text{int},B}=-Q$, $Q_{\\text{ext},B}=0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Gauss dans le métal de $B$ : $Q+Q_{\\text{int},B}=0$ ; neutralité de $B$ : $Q_{\\text{ext},B}=-Q_{\\text{int},B}=+Q$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "En influence totale, la densité $\\sigma$ sur la paroi interne de $B$ est toujours uniforme.",
+              "answer": false,
+              "explanation": "Faux : les relations portent sur les charges **totales** des surfaces ; la distribution locale dépend de la position de $A$ dans la cavité et de la géométrie."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Relier un conducteur à la Terre le rend toujours neutre.",
+              "answer": false,
+              "explanation": "Faux : la Terre fixe le potentiel $V=0$ et autorise un échange d'électrons ; sous influence, le conducteur peut recevoir ou céder des électrons et devenir chargé."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On approche $A$ positif de $B$ neutre, on relie $B$ à la Terre, puis on éloigne $A$ **avant** de débrancher la Terre. Quelle charge reste sur $B$ (modèle idéal) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Une charge négative"
+                },
+                {
+                  "id": "b",
+                  "md": "Une charge positive"
+                },
+                {
+                  "id": "c",
+                  "md": "Une charge nulle, $Q_B\\simeq0$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Avec la Terre encore branchée, les électrons apportés sous influence repartent quand $A$ s'éloigne : $B$ redevient neutre."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un objet $A$ de charge $Q_A=+4{,}0\\ \\mathrm{nC}$ est dans la cavité d'une enveloppe conductrice $B$ isolée de charge initiale $-2{,}0\\ \\mathrm{nC}$. La surface externe de $B$ porte ___ nC.",
+              "answerType": "number",
+              "accepted": [
+                "2",
+                "2.0",
+                "+2"
+              ],
+              "explanation": "$Q_{\\text{int},B}=-4{,}0\\ \\mathrm{nC}$ et $Q_{\\text{ext},B}=Q_B-Q_{\\text{int},B}=-2{,}0-(-4{,}0)=+2{,}0\\ \\mathrm{nC}$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conclusion-et-revision",
+      "title": "Conclusion, révision et auto-évaluation",
+      "number": "6.10–6.11",
+      "lessons": [
+        {
+          "slug": "conclusion-synthese-conducteurs",
+          "title": "Conclusion et synthèse du chapitre",
+          "number": "6.10–6.11.4",
+          "estimatedMinutes": 9,
+          "summary": "La conclusion du chapitre, le tableau de synthèse des résultats essentiels, la carte de progression conceptuelle, les erreurs fréquentes et le lexique.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.10 Conclusion",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "L'équilibre électrostatique d'un métal résulte du déplacement initial de ses **électrons de conduction** puis de la disparition du transport de dérive. De là découlent, successivement, le champ intérieur nul, l'équipotentialité, la nullité de la composante tangentielle extérieure, l'absence de charge volumique nette et la répartition des charges excédentaires sur les surfaces.\n\nL'étude locale au moyen d'une **pilule de Gauss** relie ensuite la densité surfacique au champ immédiatement extérieur : $\\vec E(M)=[\\sigma/\\varepsilon_0]\\,\\vec n$. La géométrie rend cette densité variable et permet de comprendre l'**effet de pointe**. À plus grande échelle, les relations $Q=CV$ et $U=Q^2/(2C)$ quantifient la charge et l'énergie d'un conducteur isolé. Enfin, l'**influence électrostatique** illustre comment le champ d'un objet agit sans contact sur la répartition des électrons d'un autre, et pourquoi la mise à la Terre autorise une charge nette durable si l'ordre des opérations est respecté.\n\nCes résultats forment la base conceptuelle de l'étude des **condensateurs** et des **diélectriques**, abordée au chapitre suivant.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.11.1 Synthèse des résultats essentiels",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Notion | Expression et signification |\n|---|---|\n| Équilibre | Pas de dérive macroscopique des porteurs libres. |\n| Champ dans le métal | $\\vec E_{\\text{int}}=\\vec 0$ (conducteur en équilibre). |\n| Potentiel | $V=V_0$ dans un même conducteur connexe et sur sa surface. |\n| Champ tangent | $E_t=0$ juste à l'extérieur. |\n| Densité volumique | $\\rho_{\\text{int}}=0$ : densité *nette* macroscopique. |\n| Charge de surface | $\\sigma=\\mathrm dQ/\\mathrm dS$, $Q=\\iint_S\\sigma\\,\\mathrm dS$. |\n| Théorème de Coulomb | $\\vec E(M)=[\\sigma/\\varepsilon_0]\\,\\vec n$, dans la limite extérieure. |\n| Effet de pointe | Forte courbure (faible rayon de courbure) $\\Rightarrow$ $\\lvert\\sigma\\rvert$ généralement plus élevé $\\Rightarrow$ champ extérieur plus intense. |\n| Conducteur isolé | $C=Q/V$, potentiel référencé à l'infini. |\n| Sphère isolée | $C=4\\pi\\varepsilon_0R$. |\n| Énergie emmagasinée | $U=Q^2/(2C)=QV/2=CV^2/2$. |\n| Influence totale | $Q_{\\text{int},B}=-Q$ et $Q_{\\text{ext},B}=Q_B+Q$. |",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.11.2 Carte de progression conceptuelle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Charges libres dans le métal $\\to$ redistribution des électrons sous l'effet du champ $\\to$ équilibre : absence de dérive macroscopique. De l'équilibre découlent d'une part $\\vec E_{\\text{int}}=\\vec 0$, $V=\\text{cte}$, d'autre part $\\rho_{\\text{int}}=0$ et la charge sur la surface ; ensemble, ils mènent au **théorème de Coulomb**, d'où découlent l'**effet de pointe**, la **capacité et l'énergie**, et l'**influence électrostatique**.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque notion à son expression.",
+                "pairs": [
+                  {
+                    "left": "Sphère isolée",
+                    "right": "$C=4\\pi\\varepsilon_0R$"
+                  },
+                  {
+                    "left": "Énergie emmagasinée",
+                    "right": "$U=Q^2/(2C)$"
+                  },
+                  {
+                    "left": "Théorème de Coulomb",
+                    "right": "$\\vec E=(\\sigma/\\varepsilon_0)\\,\\vec n$"
+                  },
+                  {
+                    "left": "Influence totale (paroi interne)",
+                    "right": "$Q_{\\text{int},B}=-Q$"
+                  }
+                ],
+                "explanation": "Ce sont des lignes du tableau de synthèse du §6.11.1."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "6.11.3 Erreurs fréquentes et pièges de raisonnement",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Erreurs fréquentes.**\n\n1. **Un métal est neutre, donc il ne contient pas de charges.** Faux : il contient des charges positives et négatives dont les sommes se compensent.\n2. **La force de Coulomb prouve que les électrons se libèrent dans le cristal.** Non : la conduction métallique dépend des états électroniques collectifs.\n3. **À l'équilibre, les électrons sont entièrement immobiles.** Faux : la dérive *macroscopique* s'arrête, pas tous les mouvements microscopiques.\n4. **$V=0$ dans tout conducteur en équilibre.** Faux : $V$ est constant, mais son niveau dépend de la référence et des conditions électriques.\n5. **$\\rho_{\\text{int}}=0$ signifie qu'il n'y a pas de charges dans le métal.** Faux : seules les charges volumiques *nettes* se compensent.\n6. **Le champ au voisinage d'une surface est toujours $\\sigma/(2\\varepsilon_0)$.** Faux : juste à l'extérieur d'un métal à l'équilibre, $E_n=\\sigma/\\varepsilon_0$.\n7. **La relation des deux sphères vaut pour n'importe quelle pointe.** Non : la comparaison $\\sigma_2/\\sigma_1\\simeq R_1/R_2$ dépend de l'approximation de sphères éloignées.\n8. **La mise à la Terre rend toujours un conducteur neutre.** Faux : sous influence, il peut recevoir ou céder des électrons.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.11.4 Lexique essentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "- **Électron de conduction** : électron délocalisé qui participe au transport de charge dans le métal.\n- **Cœur ionique** : noyau et électrons liés, localisés autour d'un site du réseau métallique.\n- **Charge libre** : porteur capable d'un déplacement macroscopique dans le matériau.\n- **Charge liée** : charge associée localement à la matière, ne participant pas à la conduction usuelle.\n- **Équilibre électrostatique** : état stationnaire sans dérive macroscopique des porteurs.\n- **Équipotentiel** : région où la différence de potentiel entre deux points est nulle.\n- **Densité surfacique $\\sigma$** : charge nette par unité d'aire, en $\\mathrm{C\\,m^{-2}}$.\n- **Pilule de Gauss** : surface fermée mince traversant une interface pour relier les champs et la charge surfacique.\n- **Capacité $C$** : coefficient de proportionnalité entre charge et potentiel d'un conducteur isolé.\n- **Influence électrostatique** : redistribution de charges provoquée par une source extérieure sans contact.\n- **Mise à la Terre** : liaison permettant échange d'électrons avec un réservoir à potentiel de référence.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le champ immédiatement à l'extérieur d'un métal à l'équilibre vaut $\\sigma/(2\\varepsilon_0)$.",
+                "answer": false,
+                "explanation": "Faux (erreur fréquente n° 6) : $E_n=\\sigma/\\varepsilon_0$. La valeur $\\sigma/(2\\varepsilon_0)$ est celle d'une nappe infinie isolée."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Un métal neutre ne contient pas de charges électriques.",
+              "answer": false,
+              "explanation": "Faux : il contient des charges positives (cœurs ioniques) et négatives (électrons) dont les sommes se compensent."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans tout conducteur en équilibre, le potentiel est nul.",
+              "answer": false,
+              "explanation": "Faux : $V$ est constant dans le conducteur, mais son niveau dépend de la référence et des conditions électriques."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Selon la carte de progression, de quoi découlent directement l'effet de pointe, la capacité et l'influence ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "De la loi de Coulomb entre deux charges ponctuelles"
+                },
+                {
+                  "id": "b",
+                  "md": "Du théorème de Coulomb, lui-même issu des propriétés de l'équilibre"
+                },
+                {
+                  "id": "c",
+                  "md": "De la polarisation des isolants"
+                },
+                {
+                  "id": "d",
+                  "md": "Du mouvement microscopique des électrons"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Équilibre $\\Rightarrow$ ($\\vec E_{\\text{int}}=\\vec 0$, $V$ constant) et ($\\rho_{\\text{int}}=0$, charge en surface) $\\Rightarrow$ théorème de Coulomb $\\Rightarrow$ effet de pointe, capacité et énergie, influence."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque terme du lexique à sa définition.",
+              "pairs": [
+                {
+                  "left": "Pilule de Gauss",
+                  "right": "Surface fermée mince traversant une interface"
+                },
+                {
+                  "left": "Capacité",
+                  "right": "Coefficient de proportionnalité entre charge et potentiel"
+                },
+                {
+                  "left": "Équipotentiel",
+                  "right": "Région où la différence de potentiel entre deux points est nulle"
+                },
+                {
+                  "left": "Mise à la Terre",
+                  "right": "Liaison avec un réservoir à potentiel de référence"
+                }
+              ],
+              "explanation": "Définitions du lexique essentiel (§6.11.4)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le cours annonce que les condensateurs et les diélectriques sont étudiés au chapitre suivant.",
+              "answer": true,
+              "explanation": "Vrai : la conclusion indique que ces résultats forment la base de l'étude des condensateurs et des diélectriques, abordée au chapitre suivant."
+            }
+          ]
+        },
+        {
+          "slug": "auto-test-exercices-1",
+          "title": "Auto-test express et premiers exercices corrigés",
+          "number": "6.11.5–6.11.6",
+          "estimatedMinutes": 12,
+          "summary": "Les dix questions de l'auto-test express avec leurs réponses, puis les exercices corrigés 6.1 à 6.6 : porteurs, potentiel, densité surfacique, théorème de Coulomb.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "6.11.5 Auto-test express",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Auto-test express",
+              "md": "1. Pourquoi un isolant possède-t-il des charges sans conduire comme un métal ?\n2. Quel mouvement électronique disparaît à l'équilibre : le mouvement microscopique ou la dérive moyenne ?\n3. Une sphère conductrice peut-elle avoir $V\\neq0$ avec $\\vec E=0$ dans sa matière ?\n4. Dans une pilule de Gauss, pourquoi le flux latéral disparaît-il lorsque l'épaisseur tend vers zéro ?\n5. Si $\\sigma<0$, quel est le sens de $\\vec E$ immédiatement extérieur au métal ?\n6. Quelle condition simplifie le potentiel de deux sphères reliées dans l'étude de l'effet de pointe ?\n7. Quelle est la référence de potentiel dans $C=Q/V$ pour un conducteur isolé ?\n8. Pourquoi l'énergie de chargement contient-elle un facteur $1/2$ ?\n9. $B$ reste-t-il neutre si $A$ positif est approché sans contact et sans connexion électrique ?\n10. Dans l'électrisation par influence, faut-il éloigner $A$ avant ou après avoir débranché la Terre ?",
+              "solution": [
+                {
+                  "md": "(1) Ses charges sont surtout liées ; (2) la dérive moyenne ; (3) oui, le potentiel est une constante éventuellement non nulle ; (4) son aire tend vers zéro pour un champ borné ; (5) vers le métal."
+                },
+                {
+                  "md": "(6) les sphères doivent être suffisamment éloignées ; (7) $V(\\infty)=0$ ; (8) le potentiel croît linéairement de $0$ à $V$ ; (9) oui, $Q_B=0$ ; (10) débrancher la Terre avant d'éloigner $A$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "6.11.6 Exercices progressifs intégralement corrigés",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les exercices sont ordonnés du rappel conceptuel à l'utilisation de plusieurs propriétés. Les données numériques utilisent $\\varepsilon_0\\simeq8{,}85\\times10^{-12}\\ \\mathrm{F\\,m^{-1}}$.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.1 — Identifier les porteurs et l'état de charge",
+              "md": "Pour un métal conducteur, dire si les affirmations suivantes sont vraies ou fausses, avec une justification courte : (a) le métal ne contient aucune charge s'il est neutre ; (b) un déficit d'électrons produit une charge nette positive ; (c) les ions positifs traversent le métal lorsqu'on approche un objet chargé ; (d) le courant de dérive s'annule à l'équilibre électrostatique.",
+              "solution": [
+                {
+                  "md": "(a) Faux : les cœurs ioniques positifs et les électrons négatifs sont toujours présents et se compensent."
+                },
+                {
+                  "md": "(b) Vrai : retirer des charges négatives augmente la charge nette."
+                },
+                {
+                  "md": "(c) Faux dans le modèle étudié : les ions du réseau sont localisés et ce sont les électrons de conduction qui se redistribuent."
+                },
+                {
+                  "md": "(d) Vrai par définition de l'équilibre ; il ne s'ensuit pas que tout mouvement microscopique cesse."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.2 — Déduire le potentiel à partir du champ",
+              "md": "Dans un morceau connexe de métal en équilibre, deux points $A$ et $B$ sont séparés de $12\\ \\mathrm{cm}$. On donne $V(A)=150\\ \\mathrm V$. Calculer $\\vec E$ en tout point du métal et $V(B)$. Que deviennent ces résultats si la charge totale du métal est négative ?",
+              "solution": [
+                {
+                  "md": "L'équilibre impose $\\vec E_{\\text{int}}=\\vec 0$. Dès lors $V(B)-V(A)=-\\int_A^B\\vec E\\cdot\\mathrm d\\vec\\ell=0$, donc $V(B)=150\\ \\mathrm V$. La distance n'intervient pas."
+                },
+                {
+                  "md": "Le signe de la charge totale ne modifie ni la nullité du champ dans le métal ni son équipotentialité ; il peut, selon la configuration et la référence choisie, modifier la valeur commune du potentiel."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans un métal connexe à l'équilibre, $V(A)=150\\ \\mathrm V$ et $B$ est à $12\\ \\mathrm{cm}$ de $A$ dans le métal. Alors $V(B)=$ ___ V.",
+                "answerType": "number",
+                "accepted": [
+                  "150"
+                ],
+                "explanation": "Le métal est équipotentiel : $V(B)=V(A)=150\\ \\mathrm V$, quelle que soit la distance."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.3 — Densité surfacique d'une sphère",
+              "md": "Une sphère métallique isolée de rayon $R=4{,}0\\ \\mathrm{cm}$ porte $Q=+8{,}0\\ \\mathrm{nC}$. Déterminer sa densité surfacique de charge à l'équilibre, en supposant qu'aucune autre source ne rompt la symétrie.",
+              "solution": [
+                {
+                  "md": "La symétrie sphérique impose une répartition uniforme et $S=4\\pi R^2$. Avec $R=0{,}040\\ \\mathrm m$ et $Q=8{,}0\\times10^{-9}\\ \\mathrm C$,\n$$\\sigma=\\frac{8{,}0\\times10^{-9}}{4\\pi(0{,}040)^2}\\simeq+3{,}98\\times10^{-7}\\ \\mathrm{C\\,m^{-2}}.$$"
+                },
+                {
+                  "md": "Le signe positif indique un déficit global d'électrons."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.4 — Champ immédiatement extérieur",
+              "md": "À un point régulier d'une surface conductrice, on mesure la densité $\\sigma=-2{,}655\\times10^{-8}\\ \\mathrm{C\\,m^{-2}}$. Calculer la composante normale algébrique $E_n$ du champ extérieur. Préciser son sens.",
+              "solution": [
+                {
+                  "md": "D'après le théorème de Coulomb, $E_n=\\sigma/\\varepsilon_0$. On obtient\n$$E_n=\\frac{-2{,}655\\times10^{-8}}{8{,}85\\times10^{-12}}=-3{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}.$$"
+                },
+                {
+                  "md": "Le signe négatif signifie que le champ est opposé à la normale sortante $\\vec n$ : il est dirigé *vers le métal*. Son intensité vaut $3{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.5 — Sphère conductrice : champ et potentiel",
+              "md": "Une sphère conductrice isolée a $R=5{,}0\\ \\mathrm{cm}$ et $Q=+2{,}0\\ \\mathrm{nC}$. Déterminer $E(0)$, $E(2R)$, le potentiel de la surface $V(R)$ et le potentiel au centre $V(0)$, avec $V(\\infty)=0$.",
+              "solution": [
+                {
+                  "md": "Dans le métal $E(0)=0$."
+                },
+                {
+                  "md": "À $r=2R=0{,}10\\ \\mathrm m$,\n$$E(2R)=\\frac{Q}{4\\pi\\varepsilon_0(2R)^2}\\simeq1{,}80\\times10^3\\ \\mathrm{V\\,m^{-1}},$$\nradial sortant."
+                },
+                {
+                  "md": "Sur la surface,\n$$V(R)=\\frac{2{,}0\\times10^{-9}}{4\\pi(8{,}85\\times10^{-12})(0{,}050)}\\simeq360\\ \\mathrm V.$$"
+                },
+                {
+                  "md": "La sphère étant équipotentielle, $V(0)=V(R)\\simeq360\\ \\mathrm V$. Le potentiel n'est donc pas nul malgré le champ intérieur nul."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.6 — Théorème de Coulomb et flux",
+              "md": "Une pilule de Gauss traverse une surface métallique plane localement lisse dont la densité surfacique est $\\sigma=+4{,}0\\times10^{-9}\\ \\mathrm{C\\,m^{-2}}$. L'aire commune de ses deux bases est $\\Delta S=2{,}0\\ \\mathrm{cm^2}$. Calculer la charge enfermée à l'approximation locale, puis le flux extérieur dominant quand la hauteur tend vers zéro.",
+              "solution": [
+                {
+                  "md": "$\\Delta S=2{,}0\\times10^{-4}\\ \\mathrm{m^2}$ ; ainsi\n$$Q_\\Sigma\\simeq\\sigma\\Delta S=(4{,}0\\times10^{-9})(2{,}0\\times10^{-4})=8{,}0\\times10^{-13}\\ \\mathrm C.$$"
+                },
+                {
+                  "md": "La base intérieure a un flux nul et le flux latéral tend vers zéro. Par Gauss,\n$$\\Phi_{\\text{ext}}\\simeq\\frac{Q_\\Sigma}{\\varepsilon_0}=\\frac{8{,}0\\times10^{-13}}{8{,}85\\times10^{-12}}\\simeq9{,}04\\times10^{-2}\\ \\mathrm{V\\,m}.$$"
+                },
+                {
+                  "md": "Le résultat est positif : le champ extérieur est orienté selon la normale sortante du métal."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Exercice 6.5 : la sphère ($R=5{,}0\\ \\mathrm{cm}$, $Q=+2{,}0\\ \\mathrm{nC}$) a $V(R)\\simeq360\\ \\mathrm V$. Que vaut $V(0)$ au centre ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$0\\ \\mathrm V$, car $E(0)=0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$360\\ \\mathrm V$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$720\\ \\mathrm V$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Infini"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "La sphère conductrice est équipotentielle : $V(0)=V(R)\\simeq360\\ \\mathrm V$. Un champ nul n'implique pas un potentiel nul."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quel mouvement électronique disparaît à l'équilibre électrostatique ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le mouvement microscopique"
+                },
+                {
+                  "id": "b",
+                  "md": "La dérive moyenne"
+                },
+                {
+                  "id": "c",
+                  "md": "Les deux"
+                },
+                {
+                  "id": "d",
+                  "md": "Aucun"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Seule la dérive moyenne (transport dirigé) disparaît ; le mouvement microscopique demeure (auto-test, question 2)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une surface conductrice porte $\\sigma=-2{,}655\\times10^{-8}\\ \\mathrm{C\\,m^{-2}}$. La composante normale algébrique du champ extérieur vaut $E_n=$ ___ $\\times10^3\\ \\mathrm{V\\,m^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "-3",
+                "-3.0"
+              ],
+              "explanation": "$E_n=\\sigma/\\varepsilon_0=-2{,}655\\times10^{-8}/8{,}85\\times10^{-12}=-3{,}0\\times10^3\\ \\mathrm{V\\,m^{-1}}$ : champ dirigé vers le métal."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un déficit d'électrons produit une charge nette positive sur un métal.",
+              "answer": true,
+              "explanation": "Vrai (exercice 6.1 b) : retirer des charges négatives augmente la charge nette."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 6.3 : une sphère isolée de rayon $4{,}0\\ \\mathrm{cm}$ porte $+8{,}0\\ \\mathrm{nC}$. Sa densité surfacique vaut environ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+3{,}98\\times10^{-7}\\ \\mathrm{C\\,m^{-2}}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$+1{,}59\\times10^{-6}\\ \\mathrm{C\\,m^{-2}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$+5{,}0\\times10^{-6}\\ \\mathrm{C\\,m^{-2}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-3{,}98\\times10^{-7}\\ \\mathrm{C\\,m^{-2}}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\sigma=Q/(4\\pi R^2)=8{,}0\\times10^{-9}/(4\\pi\\times0{,}0016)\\simeq3{,}98\\times10^{-7}\\ \\mathrm{C\\,m^{-2}}$, positive (déficit d'électrons)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans une pilule de Gauss, le flux latéral disparaît lorsque l'épaisseur tend vers zéro, car l'aire latérale tend vers zéro pour un champ borné.",
+              "answer": true,
+              "explanation": "Vrai (auto-test, question 4)."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-2",
+          "title": "Exercices corrigés : pointe, capacité, énergie et influence",
+          "number": "6.11.6",
+          "estimatedMinutes": 14,
+          "summary": "Exercices corrigés 6.7 à 6.15 : deux sphères reliées, capacité et énergie d'une sphère, influence partielle et totale, ordre des opérations, charge volumique et bilan de synthèse.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "title": "Exercice 6.7 — Deux sphères reliées : effet de pointe",
+              "md": "Deux sphères métalliques suffisamment éloignées, de rayons $R_1=6\\ \\mathrm{cm}$ et $R_2=2\\ \\mathrm{cm}$, sont reliées par un fil. Elles portent ensemble une charge $Q_{\\text{tot}}=+8\\ \\mathrm{nC}$. En négligeant leur influence mutuelle, déterminer $Q_1$, $Q_2$, le rapport $\\sigma_2/\\sigma_1$ et le rapport des intensités des champs de surface.",
+              "solution": [
+                {
+                  "md": "L'égalité des potentiels donne $Q_1/R_1\\simeq Q_2/R_2$, donc $Q_1\\simeq3Q_2$. Avec $Q_1+Q_2=8\\ \\mathrm{nC}$, il vient $Q_2\\simeq2\\ \\mathrm{nC}$ et $Q_1\\simeq6\\ \\mathrm{nC}$."
+                },
+                {
+                  "md": "Comme $\\sigma_i=Q_i/(4\\pi R_i^2)$,\n$$\\frac{\\sigma_2}{\\sigma_1}\\simeq\\frac{R_1}{R_2}=3,\\qquad\\frac{|E_2|}{|E_1|}\\simeq3.$$"
+                },
+                {
+                  "md": "La petite sphère porte moins de charge *totale*, mais une densité surfacique et un champ *plus* élevés."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.8 — Capacité et potentiel d'un conducteur sphérique",
+              "md": "Pour une sphère de rayon $R=10\\ \\mathrm{cm}$, déterminer sa capacité dans le vide. Calculer la charge nécessaire pour atteindre le potentiel $V=+900\\ \\mathrm V$.",
+              "solution": [
+                {
+                  "md": "$$C=4\\pi\\varepsilon_0R=4\\pi(8{,}85\\times10^{-12})(0{,}10)\\simeq1{,}11\\times10^{-11}\\ \\mathrm F=11{,}1\\ \\mathrm{pF}.$$"
+                },
+                {
+                  "md": "La relation $Q=CV$ donne $Q\\simeq(1{,}11\\times10^{-11})(900)\\simeq1{,}00\\times10^{-8}\\ \\mathrm C=+10{,}0\\ \\mathrm{nC}$. La capacité serait inchangée pour une charge négative de même valeur absolue."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.9 — Énergie du chargement",
+              "md": "Un conducteur isolé de capacité $C=10\\ \\mathrm{pF}$ est porté progressivement de $Q=0$ à $V=500\\ \\mathrm V$. Calculer sa charge finale $Q$ et l'énergie $U$ stockée. Expliquer le facteur $1/2$.",
+              "solution": [
+                {
+                  "md": "La charge finale est $Q=CV=10\\times10^{-12}\\times500=5{,}0\\times10^{-9}\\ \\mathrm C$."
+                },
+                {
+                  "md": "L'énergie est\n$$U=\\frac12CV^2=\\frac12(10\\times10^{-12})(500)^2=1{,}25\\times10^{-6}\\ \\mathrm J.$$"
+                },
+                {
+                  "md": "Le potentiel instantané durant le chargement est $V(q)=q/C$. L'intégrale $\\int_0^Q(q/C)\\,\\mathrm dq$ donne le facteur $1/2$, car le potentiel croît de zéro à sa valeur finale."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Exercice 6.7 : deux sphères éloignées reliées, $R_1=6\\ \\mathrm{cm}$, $R_2=2\\ \\mathrm{cm}$, $Q_{\\text{tot}}=8\\ \\mathrm{nC}$. La petite sphère porte $Q_2\\simeq$ ___ nC.",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$Q_1/R_1=Q_2/R_2$ donne $Q_1=3Q_2$ ; $4Q_2=8\\ \\mathrm{nC}$, d'où $Q_2=2\\ \\mathrm{nC}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.10 — Influence partielle : bilan qualitatif",
+              "md": "Un conducteur $A$ chargé positivement est approché d'un conducteur $B$ métallique, neutre et parfaitement isolé. Décrire le signe des charges induites sur les faces proche et éloignée de $B$, l'évolution de sa charge totale et la valeur du champ au sein de sa matière une fois l'équilibre atteint.",
+              "solution": [
+                {
+                  "md": "Les électrons de conduction de $B$ sont attirés vers la face proche de $A$ : cette face porte une charge induite négative. Un déficit d'électrons apparaît sur la face éloignée, donc une charge induite positive."
+                },
+                {
+                  "md": "Comme il n'y a pas de contact ni de fil, aucune charge nette ne traverse la frontière de $B$ : $Q_B=0$ demeure. Après rééquilibrage, le champ total dans le *métal* est nul, même si le champ est non nul à l'extérieur."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.11 — Influence totale sur un conducteur neutre",
+              "md": "Un objet métallique $A$ portant $Q_A=+4{,}0\\ \\mathrm{nC}$ est placé dans une cavité entièrement entourée par une enveloppe conductrice $B$ initialement neutre, sans contact avec $A$. Déterminer la charge totale sur les surfaces intérieure et extérieure de $B$ et indiquer le principe utilisé.",
+              "solution": [
+                {
+                  "md": "Une surface de Gauss située *dans le métal de $B$* a un flux nul. Elle enferme $Q_A$ et la charge de la paroi interne, d'où $Q_A+Q_{\\text{int},B}=0$. Ainsi\n$$Q_{\\text{int},B}=-4{,}0\\ \\mathrm{nC}.$$"
+                },
+                {
+                  "md": "Puisque $B$ est initialement neutre et isolé, $Q_B=Q_{\\text{int},B}+Q_{\\text{ext},B}=0$, donc $Q_{\\text{ext},B}=+4{,}0\\ \\mathrm{nC}$. Ce bilan concerne les charges totales de chacune des surfaces."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.12 — Influence totale sur un conducteur initialement chargé",
+              "md": "On reprend l'exercice précédent, mais $B$ porte avant l'introduction de $A$ une charge totale $Q_B=-2{,}0\\ \\mathrm{nC}$. Quel est le bilan des charges sur ses surfaces intérieure et extérieure après l'équilibre ?",
+              "solution": [
+                {
+                  "md": "La loi de Gauss dans le métal de $B$ impose toujours $Q_{\\text{int},B}=-Q_A=-4{,}0\\ \\mathrm{nC}$."
+                },
+                {
+                  "md": "La charge totale de $B$ se conserve, puisque $B$ est isolé :\n$$Q_{\\text{ext},B}=Q_B-Q_{\\text{int},B}=-2{,}0-(-4{,}0)=+2{,}0\\ \\mathrm{nC}.$$\nL'enveloppe n'a pas besoin d'être initialement neutre pour que sa charge intérieure vaille $-Q_A$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.13 — Ordre des opérations lors d'une électrisation par influence",
+              "md": "Un conducteur $A$ est positif et $B$ est initialement neutre. On approche $A$ de $B$, on relie $B$ à la Terre, puis on retire $A$ *avant* de débrancher la connexion. Quelle charge nette restera en général sur $B$ dans le modèle idéal une fois la Terre débranchée ? Comment modifier la procédure pour laisser $B$ chargé négativement ?",
+              "solution": [
+                {
+                  "md": "Si $A$ est éloigné alors que $B$ est encore relié à la Terre, les électrons apportés sous influence peuvent repartir ; sans autres sources, $B$ redevient neutre à l'équilibre : $Q_B\\simeq0$."
+                },
+                {
+                  "md": "Pour conserver une charge négative, il faut maintenir $A$ proche au moment où l'on *débranche la Terre*, puis seulement éloigner $A$. La charge nette supplémentaire est dès lors piégée sur le conducteur isolé."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.14 — Distinguer charge volumique et champ",
+              "md": "Un étudiant affirme : « La densité volumique nette vaut zéro, donc le champ électrique est obligatoirement nul. » L'implication est-elle générale ? Pourquoi conclut-on néanmoins à $\\rho_{\\text{int}}=0$ dans le métal en équilibre ?",
+              "solution": [
+                {
+                  "md": "L'implication $\\rho=0\\Rightarrow\\vec E=\\vec 0$ est fausse en général : dans le vide, une région sans charges peut être traversée par un champ produit par des charges situées ailleurs."
+                },
+                {
+                  "md": "En revanche, dans le *métal à l'équilibre*, la mobilité des porteurs impose d'abord $\\vec E=\\vec 0$. Par Gauss, toutes les surfaces entièrement dans cette matière ont alors un flux nul et enferment une charge nette nulle ; la densité macroscopique nette $\\rho_{\\text{int}}$ est donc nulle localement."
+                },
+                {
+                  "md": "Le sens logique correct est ici : *équilibre du conducteur* $\\Rightarrow\\vec E_{\\text{int}}=\\vec 0\\Rightarrow\\rho_{\\text{int}}=0$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 6.15 — Bilan de synthèse",
+              "md": "Une sphère métallique isolée de rayon $R=8\\ \\mathrm{cm}$ porte $Q=-4\\ \\mathrm{nC}$. Calculer sa capacité, son potentiel (référence à l'infini), l'intensité et le sens du champ juste à l'extérieur, ainsi que son énergie électrostatique.",
+              "solution": [
+                {
+                  "md": "La capacité vaut\n$$C=4\\pi\\varepsilon_0R\\simeq4\\pi(8{,}85\\times10^{-12})(0{,}080)\\simeq8{,}90\\times10^{-12}\\ \\mathrm F.$$"
+                },
+                {
+                  "md": "Le potentiel commun au métal vaut\n$$V=\\frac{Q}{C}=\\frac{-4{,}0\\times10^{-9}}{8{,}90\\times10^{-12}}\\simeq-449\\ \\mathrm V.$$"
+                },
+                {
+                  "md": "À la surface, la densité et le champ normal sont négatifs ; l'intensité du champ est\n$$|\\vec E|=\\frac{|Q|}{4\\pi\\varepsilon_0R^2}\\simeq5{,}62\\times10^3\\ \\mathrm{V\\,m^{-1}},$$\ndirigée vers le centre de la sphère."
+                },
+                {
+                  "md": "Enfin,\n$$U=\\frac{Q^2}{2C}=\\frac{(4{,}0\\times10^{-9})^2}{2(8{,}90\\times10^{-12})}\\simeq8{,}99\\times10^{-7}\\ \\mathrm J.$$\nL'énergie reste positive malgré la charge et le potentiel négatifs."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "L'implication « $\\rho=0\\Rightarrow\\vec E=\\vec 0$ » est vraie en général.",
+                "answer": false,
+                "explanation": "Faux (exercice 6.14) : dans le vide, une région sans charges peut être traversée par un champ créé ailleurs. Dans le métal, l'ordre logique est équilibre $\\Rightarrow\\vec E_{\\text{int}}=\\vec 0\\Rightarrow\\rho_{\\text{int}}=0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Exercice 6.8 : une sphère de rayon $10\\ \\mathrm{cm}$ ($C\\simeq11{,}1\\ \\mathrm{pF}$) doit être portée à $V=+900\\ \\mathrm V$. La charge nécessaire vaut $Q\\simeq$ ___ nC.",
+              "answerType": "number",
+              "accepted": [
+                "10",
+                "10.0"
+              ],
+              "explanation": "$Q=CV\\simeq(1{,}11\\times10^{-11})(900)\\simeq1{,}00\\times10^{-8}\\ \\mathrm C=10{,}0\\ \\mathrm{nC}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 6.9 : $C=10\\ \\mathrm{pF}$, $V=500\\ \\mathrm V$. L'énergie stockée vaut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$1{,}25\\times10^{-6}\\ \\mathrm J$"
+                },
+                {
+                  "id": "b",
+                  "md": "$2{,}5\\times10^{-6}\\ \\mathrm J$"
+                },
+                {
+                  "id": "c",
+                  "md": "$5{,}0\\times10^{-9}\\ \\mathrm J$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2{,}5\\times10^{-9}\\ \\mathrm J$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$U=\\frac12CV^2=\\frac12(10^{-11})(2{,}5\\times10^5)=1{,}25\\times10^{-6}\\ \\mathrm J$. La réponse b oublie le facteur $1/2$ (ce serait $QV$)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Exercice 6.15 (sphère $R=8\\ \\mathrm{cm}$, $Q=-4\\ \\mathrm{nC}$) : associez chaque grandeur à sa valeur.",
+              "pairs": [
+                {
+                  "left": "Capacité $C$",
+                  "right": "$\\simeq8{,}90\\times10^{-12}\\ \\mathrm F$"
+                },
+                {
+                  "left": "Potentiel $V$",
+                  "right": "$\\simeq-449\\ \\mathrm V$"
+                },
+                {
+                  "left": "Champ juste à l'extérieur $|\\vec E|$",
+                  "right": "$\\simeq5{,}62\\times10^3\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "left": "Énergie $U$",
+                  "right": "$\\simeq8{,}99\\times10^{-7}\\ \\mathrm J$"
+                }
+              ],
+              "explanation": "$C=4\\pi\\varepsilon_0R$, $V=Q/C$, $|E|=|Q|/(4\\pi\\varepsilon_0R^2)$, $U=Q^2/(2C)$ (positive malgré $Q<0$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'exercice 6.15, le champ juste à l'extérieur de la sphère est dirigé vers son centre.",
+              "answer": true,
+              "explanation": "Vrai : $Q<0$ donc $\\sigma<0$ et $E_n<0$ ; le champ pointe vers le métal, c'est-à-dire vers le centre."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 6.12 : $Q_A=+4{,}0\\ \\mathrm{nC}$ dans la cavité de $B$ isolé de charge initiale $-2{,}0\\ \\mathrm{nC}$. Que vaut $Q_{\\text{int},B}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-2{,}0\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-4{,}0\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$+2{,}0\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-6{,}0\\ \\mathrm{nC}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Gauss dans le métal de $B$ impose toujours $Q_{\\text{int},B}=-Q_A=-4{,}0\\ \\mathrm{nC}$, quelle que soit la charge initiale de $B$ ; c'est $Q_{\\text{ext},B}$ (ici $+2{,}0\\ \\mathrm{nC}$) qui en dépend."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : COURS-6 (F085, Pr. M. EL AZZAOUI, ENSA Agadir), 23 pages, transcrit dans l'ordre (§6.1 à §6.11). Les encadrés de la source (Objectifs, Prérequis, Méthode, Intuition, Attention, À retenir, Remarque, Exemple) sont conservés avec origin « source » ; les encadrés Attention/À retenir/Objectifs/Prérequis/Méthode sont rendus en blocs « remark » avec leur intitulé en gras. F148 (notes de révision du même chapitre) n'a pas été nécessaire : COURS-6 est complet.",
+    "CONDENSATEURS NON TRAITÉS : malgré le nom du dossier « Conducteurs et condensateurs » et le titre du fichier F148 (« Conducteurs en équilibre et condensateurs »), ni COURS-6 ni F148 ne traitent des condensateurs. COURS-6 annonce explicitement (§6.7.1 Remarque et §6.10 Conclusion) que les systèmes à plusieurs conducteurs, les condensateurs et les diélectriques sont étudiés « au chapitre suivant », qui ne figure pas dans les sources du professeur. Aucune section condensateurs n'a été inventée ; à décider (autre source, ou attendre un COURS-7).",
+    "Figures 6.1 à 6.12 redessinées en TikZ d'après COURS-6 (blocs « figure », SVG dans /figures/electrostatique/ch06-*.svg) ; les phrases explicatives des anciennes descriptions sont conservées en « remark » après la figure. La figure 6.11.2 (carte de progression conceptuelle) reste rendue sous forme de phrase enchaînée. Deux simulations « conductor » ajoutées (§6.4.3 et §6.6.3).",
+    "La démonstration de ρ_int = 0 (§6.4.4), le calcul du flux de la pilule de Gauss (§6.5.2) et la démonstration des charges induites en influence totale (§6.9.3) sont des démonstrations de la source, mises en blocs « proof » par étapes (origin « source »).",
+    "Le §6.11.5 (auto-test express, 10 questions avec réponses) est rendu en un bloc « exercise » avec sa solution ; les exercices 6.1 à 6.15 du §6.11.6 sont tous repris avec leurs solutions intégrales, répartis en deux leçons (6.1–6.6 et 6.7–6.15).",
+    "Valeurs numériques de la source vérifiées (exemples §6.5, §6.7.2, §6.8.1 et exercices 6.3 à 6.15) : toutes correctes, aucune correction nécessaire. Aucune coquille notable relevée dans la source.",
+    "Les exercices de la source sont numérotés 6.1–6.15 dans une section intitulée « 6.11.6 » ; le titre de section regroupant 6.10 et 6.11 (« Conclusion, révision et auto-évaluation ») est un regroupement éditorial."
+  ]
+}

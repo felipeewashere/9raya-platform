@@ -1,0 +1,2907 @@
+{
+  "slug": "travail-energie-potentiel",
+  "number": 4,
+  "title": "Travail, énergie potentielle et potentiel électrique",
+  "description": "Travail d'une force, travail de la force électrostatique et caractère conservatif, énergie potentielle électrostatique, potentiel et différence de potentiel, électron-volt, calcul du potentiel (charges ponctuelles, anneau, disque), relation E = −grad V, surfaces équipotentielles, méthodes de résolution et exercices corrigés.",
+  "sourcePdf": "Bibliotheque_sources/Electrostatique/Cours/Documents generaux/F198 - COURS-4 ELECTROSTATIQUE.pdf",
+  "sections": [
+    {
+      "slug": "approche-energetique",
+      "title": "Du champ électrique à l'approche énergétique",
+      "number": "4.1",
+      "lessons": [
+        {
+          "slug": "champ-vers-energie",
+          "title": "De la force au potentiel",
+          "number": "4.1",
+          "estimatedMinutes": 5,
+          "summary": "Pourquoi passer d'une description locale par le champ à une description énergétique : la chaîne force → travail → énergie potentielle → potentiel.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Au chapitre précédent, le champ électrostatique $\\vec E$ a permis de décrire l'action des charges en chaque point de l'espace. Une charge $q$ placée dans ce champ subit la force\n$$\\vec F = q\\vec E.$$\nCette description est **locale** : elle indique la force à un point donné. Mais de nombreux problèmes posent une question différente : *que se passe-t-il lorsqu'une charge se déplace d'un point $A$ vers un point $B$ ?*",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour répondre, il faut relier trois idées qui seront introduites dans cet ordre :\n$$\\boxed{\\text{force}\\longrightarrow\\text{travail}\\longrightarrow\\text{énergie potentielle}\\longrightarrow\\text{potentiel.}}$$\nLe passage doit être progressif. On commencera donc par définir le travail d'une force pendant un déplacement élémentaire. On montrera ensuite, par un calcul explicite, que le travail de la force électrostatique ne dépend que des points de départ et d'arrivée. Cette propriété permettra d'introduire l'énergie potentielle. Enfin, en divisant cette énergie par la charge placée dans le champ, on définira le **potentiel électrostatique**, grandeur scalaire souvent plus simple à calculer que le champ.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre la progression suivie par le chapitre.",
+                "items": [
+                  "Force $\\vec F = q\\vec E$",
+                  "Travail",
+                  "Énergie potentielle",
+                  "Potentiel"
+                ],
+                "explanation": "Le chapitre suit la chaîne force → travail → énergie potentielle → potentiel : le travail permet de montrer le caractère conservatif, qui permet de définir $E_p$, et le potentiel est $E_p$ divisée par la charge."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Objectifs.** À la fin de ce chapitre, l'étudiant devra être capable de :\n- définir et interpréter le travail élémentaire d'une force ;\n- calculer le travail de la force électrostatique entre deux points ;\n- démontrer le caractère conservatif de la force électrostatique ;\n- définir l'énergie potentielle électrostatique sans utiliser prématurément le potentiel ;\n- expliquer la conservation de l'énergie mécanique dans un champ électrostatique ;\n- définir le potentiel électrostatique et la différence de potentiel ;\n- calculer le potentiel créé par des charges ponctuelles ou par une distribution continue ;\n- retrouver le champ à partir du potentiel par la relation $\\vec E = -\\,\\overrightarrow{\\mathrm{grad}}\\,V$ ;\n- interpréter des surfaces équipotentielles et leur relation avec les lignes de champ ;\n- vérifier les signes, les unités, les limites et la cohérence physique d'un résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Prérequis.** Ce chapitre utilise la relation $\\vec F = q\\vec E$, le champ créé par une charge ponctuelle, le principe de superposition et les distributions continues étudiés au chapitre 3. Il utilise également le produit scalaire, les vecteurs et les intégrales introduits au chapitre 1.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Dans une pente, connaître la force de pesanteur en chaque point n'est pas toujours la manière la plus rapide de comparer deux positions. On préfère souvent parler d'altitude et d'énergie potentielle. En électrostatique, le potentiel joue un rôle analogue : il associe un nombre à chaque point de l'espace et permet de comparer directement deux positions.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'analogie avec la pesanteur proposée par le cours, quelle grandeur joue en électrostatique le rôle de l'altitude ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le champ $\\vec E$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le potentiel $V$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "La force $\\vec F$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "La charge $q$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Comme l'altitude, le potentiel associe **un nombre** à chaque point de l'espace et permet de comparer directement deux positions. Le champ et la force sont des vecteurs, analogues au poids."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "La relation $\\vec F = q\\vec E$ donne une description **locale** : elle indique la force en un point donné.",
+              "answer": true,
+              "explanation": "Vrai : c'est la description utilisée au chapitre 3. Elle ne répond pas directement à la question de ce qui se passe lors d'un déplacement de $A$ vers $B$, d'où l'approche énergétique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Comment le cours obtient-il le potentiel électrostatique à partir de l'énergie potentielle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "En la multipliant par la charge placée dans le champ"
+                },
+                {
+                  "id": "b",
+                  "md": "En la divisant par la charge placée dans le champ"
+                },
+                {
+                  "id": "c",
+                  "md": "En la dérivant par rapport au temps"
+                },
+                {
+                  "id": "d",
+                  "md": "En prenant son gradient"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le potentiel est obtenu « en divisant cette énergie par la charge placée dans le champ » : $V = E_p/q$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le potentiel électrostatique est une grandeur vectorielle, comme le champ.",
+              "answer": false,
+              "explanation": "Faux : le potentiel est une grandeur **scalaire**, ce qui le rend souvent plus simple à calculer que le champ."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le caractère indépendant du chemin du travail de la force électrostatique sera obtenu par ___ (et non posé comme hypothèse).",
+              "answerType": "text",
+              "accepted": [
+                "le calcul",
+                "calcul",
+                "un calcul",
+                "un calcul explicite",
+                "calcul explicite"
+              ],
+              "explanation": "Le cours insiste : on montrera par un calcul explicite que le travail ne dépend que des points de départ et d'arrivée."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "travail-mecanique",
+      "title": "Travail mécanique d'une force",
+      "number": "4.2",
+      "lessons": [
+        {
+          "slug": "travail-d-une-force",
+          "title": "Travail élémentaire et travail le long d'une trajectoire",
+          "number": "4.2.1–4.2.2",
+          "estimatedMinutes": 7,
+          "summary": "Définition du travail élémentaire $dW = \\vec F\\cdot d\\vec\\ell$, interprétation de son signe, puis travail sur une trajectoire finie comme intégrale curviligne.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Avant de parler d'énergie ou de potentiel, il faut préciser ce que signifie le **travail d'une force**. Cette notion mesure l'effet d'une force lorsqu'un point matériel se déplace.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.2.1 Définition et interprétation du travail élémentaire",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons une particule qui se déplace le long d'une trajectoire. Pendant un déplacement très petit, on note $d\\vec\\ell$ le vecteur déplacement élémentaire. Si la force exercée sur la particule est $\\vec F$, on définit le travail élémentaire par un produit scalaire.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Travail élémentaire",
+              "md": "Le travail élémentaire d'une force $\\vec F$ pendant le déplacement $d\\vec\\ell$ est\n$$\\boxed{dW = \\vec F\\cdot d\\vec\\ell.}$$\nSi $\\alpha$ est l'angle entre $\\vec F$ et $d\\vec\\ell$,\n$$dW = F\\,d\\ell\\cos\\alpha.$$\nL'unité SI du travail est le joule :\n$$[W] = \\mathrm{J} = \\mathrm{N\\,m}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-travail-elementaire.svg",
+              "alt": "En un point M d'une trajectoire courbe, la force F fait un angle alpha avec le déplacement élémentaire dl tangent à la trajectoire.",
+              "caption": "Figure 4.1 — Le travail élémentaire dépend de la composante de la force dans la direction du déplacement.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le travail élémentaire dépend de la composante de la force dans la direction du déplacement : seule la projection de $\\vec F$ sur la direction du déplacement contribue au travail. Une composante perpendiculaire au déplacement ne fournit aucun travail élémentaire.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le signe du travail a une interprétation immédiate :\n- $dW>0$ si la force favorise le déplacement ;\n- $dW<0$ si la force s'oppose au déplacement ;\n- $dW=0$ si la force est perpendiculaire au déplacement.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une force de norme $F = 2\\ \\mathrm{N}$ fait un angle $\\alpha = 120^\\circ$ avec un déplacement élémentaire de longueur $d\\ell = 1\\ \\mathrm{mm}$. Que vaut $dW$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$+1\\times10^{-3}\\ \\mathrm{J}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-1\\times10^{-3}\\ \\mathrm{J}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$-2\\times10^{-3}\\ \\mathrm{J}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$dW = F\\,d\\ell\\cos\\alpha = 2\\times10^{-3}\\times\\cos 120^\\circ = 2\\times10^{-3}\\times(-\\tfrac12) = -1\\times10^{-3}\\ \\mathrm{J}$. Le travail est négatif : la force s'oppose (en partie) au déplacement."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.2.2 Travail le long d'une trajectoire",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour un déplacement fini de $A$ vers $B$, la force peut changer de norme et de direction. On additionne alors tous les travaux élémentaires le long de la trajectoire suivie.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Travail le long d'une trajectoire",
+              "md": "Le travail de la force $\\vec F$ lors du déplacement de $A$ vers $B$ le long d'une trajectoire $\\mathcal C$ est\n$$\\boxed{W_{A\\to B} = \\int_{\\mathcal C}\\vec F\\cdot d\\vec\\ell.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "À ce stade, il faut être attentif : pour une force quelconque, la valeur de cette intégrale **peut dépendre du chemin suivi**. Deux trajectoires reliant les mêmes points $A$ et $B$ peuvent donc, en général, conduire à deux travaux différents.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Question.** La force électrostatique possède-t-elle cette dépendance au chemin, ou bien son travail ne dépend-il que des positions initiale et finale ? La réponse sera obtenue par le calcul, et non posée comme une hypothèse.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour une force quelconque, deux trajectoires différentes reliant les mêmes points $A$ et $B$ donnent toujours le même travail.",
+                "answer": false,
+                "explanation": "Faux : en général l'intégrale $\\int_{\\mathcal C}\\vec F\\cdot d\\vec\\ell$ dépend du chemin $\\mathcal C$ (penser aux frottements). L'indépendance vis-à-vis du chemin est une propriété particulière, qu'il faudra démontrer pour la force électrostatique."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation au signe du travail élémentaire.",
+              "pairs": [
+                {
+                  "left": "La force favorise le déplacement",
+                  "right": "$dW>0$"
+                },
+                {
+                  "left": "La force s'oppose au déplacement",
+                  "right": "$dW<0$"
+                },
+                {
+                  "left": "La force est perpendiculaire au déplacement",
+                  "right": "$dW=0$"
+                }
+              ],
+              "explanation": "$dW = F\\,d\\ell\\cos\\alpha$ : le signe est celui de $\\cos\\alpha$. Il est positif pour $\\alpha<90^\\circ$, négatif pour $\\alpha>90^\\circ$, nul pour $\\alpha=90^\\circ$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'unité SI du travail ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le newton (N)"
+                },
+                {
+                  "id": "b",
+                  "md": "Le joule (J $=$ N m)"
+                },
+                {
+                  "id": "c",
+                  "md": "Le volt (V)"
+                },
+                {
+                  "id": "d",
+                  "md": "Le watt (W)"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le travail est un produit force × longueur : $[W] = \\mathrm{N\\,m} = \\mathrm{J}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une force de $5\\ \\mathrm N$ parallèle et de même sens qu'un déplacement de $0{,}2\\ \\mathrm m$ (force constante) fournit un travail de ___ J.",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$W = F\\,\\ell\\cos 0 = 5\\times0{,}2 = 1\\ \\mathrm J$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une composante de la force perpendiculaire au déplacement ne fournit aucun travail élémentaire.",
+              "answer": true,
+              "explanation": "Vrai : seule la projection de $\\vec F$ sur la direction de $d\\vec\\ell$ intervient dans le produit scalaire $\\vec F\\cdot d\\vec\\ell$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Comment s'écrit le travail de $\\vec F$ de $A$ à $B$ le long de la trajectoire $\\mathcal C$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$W_{A\\to B} = \\vec F\\cdot\\overrightarrow{AB}$ dans tous les cas"
+                },
+                {
+                  "id": "b",
+                  "md": "$W_{A\\to B} = \\int_{\\mathcal C}\\vec F\\cdot d\\vec\\ell$"
+                },
+                {
+                  "id": "c",
+                  "md": "$W_{A\\to B} = \\int_{\\mathcal C}\\|\\vec F\\|\\,d\\ell$"
+                },
+                {
+                  "id": "d",
+                  "md": "$W_{A\\to B} = \\vec F\\wedge\\overrightarrow{AB}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On additionne les travaux élémentaires le long de la trajectoire : c'est une intégrale curviligne du produit scalaire. La formule $\\vec F\\cdot\\overrightarrow{AB}$ ne vaut que pour une force constante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "travail-force-electrostatique",
+      "title": "Travail de la force électrostatique",
+      "number": "4.3",
+      "lessons": [
+        {
+          "slug": "travail-elementaire-charge-ponctuelle",
+          "title": "Travail élémentaire de la force créée par une charge ponctuelle",
+          "number": "4.3.1–4.3.2",
+          "estimatedMinutes": 8,
+          "summary": "La force créée par une charge ponctuelle est radiale ; en montrant que $dr = \\vec e_r\\cdot d\\vec\\ell$, on obtient $dW = kQq\\,dr/r^2$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "On commence par le cas fondamental d'une charge source ponctuelle $Q$. Ce cas permettra de comprendre géométriquement pourquoi le travail électrostatique ne dépend pas du chemin.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.3.1 Force électrostatique créée par une charge ponctuelle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une charge source $Q$ est placée en $O$. Une charge mobile $q$ se trouve en un point $M$ situé à la distance $r = OM$. Le champ créé par $Q$ est\n$$\\vec E(M) = k\\frac{Q}{r^2}\\vec e_r,\\qquad k = \\frac{1}{4\\pi\\varepsilon_0}.$$\nLa force exercée sur $q$ est donc\n$$\\boxed{\\vec F(M) = q\\vec E(M) = k\\frac{Qq}{r^2}\\vec e_r.}$$\nCette force est **radiale** : elle est portée par la droite $OM$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-travail-charge-ponctuelle.svg",
+              "alt": "Une charge q va de A (distance r_A de Q) à B (distance r_B) le long d'une trajectoire courbe C ; la force F(A) est portée par la droite OA.",
+              "caption": "Figure 4.2 — Une charge $q$ va de $A$ vers $B$ suivant une trajectoire quelconque ; la force créée par $Q$ reste radiale.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure met en évidence deux éléments différents : la trajectoire peut être courbe, mais la force est toujours dirigée suivant la direction radiale $\\vec e_r$ au point considéré.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.3.2 Contribution de la variation de distance au travail",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La force créée par la charge ponctuelle $Q$ est radiale : elle est portée par la direction de $\\overrightarrow{OM}$. Pour calculer son travail, il n'est donc pas nécessaire d'introduire un système de coordonnées particulier. Il suffit de relier le déplacement élémentaire $d\\vec\\ell$ à la variation de la distance $r = OM$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Relation $dr = \\vec e_r\\cdot d\\vec\\ell$",
+              "steps": [
+                {
+                  "md": "On part de l'identité géométrique\n$$r^2 = \\overrightarrow{OM}\\cdot\\overrightarrow{OM}.$$"
+                },
+                {
+                  "md": "Lorsque le point $M$ subit le déplacement élémentaire $d\\vec\\ell$, on a $d\\overrightarrow{OM} = d\\vec\\ell$. En différentiant l'égalité précédente,\n$$d(r^2) = d\\left(\\overrightarrow{OM}\\cdot\\overrightarrow{OM}\\right)\\quad\\Longrightarrow\\quad 2r\\,dr = 2\\,\\overrightarrow{OM}\\cdot d\\vec\\ell.$$",
+                  "why": "La différentielle d'un produit scalaire $\\vec u\\cdot\\vec u$ vaut $2\\,\\vec u\\cdot d\\vec u$."
+                },
+                {
+                  "md": "Or $\\overrightarrow{OM} = r\\vec e_r$. On obtient donc $2r\\,dr = 2r\\,\\vec e_r\\cdot d\\vec\\ell$, puis, pour $r\\neq0$,\n$$\\boxed{dr = \\vec e_r\\cdot d\\vec\\ell.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cette relation possède une interprétation simple : $dr$ est la composante du déplacement élémentaire dans la direction radiale. La partie du déplacement perpendiculaire à $\\vec e_r$ ne modifie pas la distance à $O$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si le déplacement élémentaire $d\\vec\\ell$ est perpendiculaire à $\\vec e_r$, alors la distance $r = OM$ ne varie pas au premier ordre ($dr = 0$).",
+                "answer": true,
+                "explanation": "Vrai : $dr = \\vec e_r\\cdot d\\vec\\ell = 0$ si $d\\vec\\ell\\perp\\vec e_r$. Seule la composante radiale du déplacement change la distance à $O$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "La force électrostatique étant $\\vec F = k\\dfrac{Qq}{r^2}\\vec e_r$, son travail élémentaire s'écrit alors directement\n$$dW = \\vec F\\cdot d\\vec\\ell = k\\frac{Qq}{r^2}\\,\\vec e_r\\cdot d\\vec\\ell = k\\frac{Qq}{r^2}\\,dr.$$\nAinsi,\n$$\\boxed{dW = k\\frac{Qq}{r^2}\\,dr.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Imaginez que la charge se déplace momentanément sur un arc de cercle centré en $O$. Sa distance $r$ à la charge source ne change pas : $dr = 0$. Le déplacement est alors tangent au cercle tandis que la force est radiale. Les deux directions sont perpendiculaires, donc $dW = 0$. Seule la partie du déplacement qui rapproche ou éloigne la charge de $O$ produit un travail.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux charges de même signe ($Qq>0$). La charge $q$ s'éloigne de $Q$ ($dr>0$). Quel est le signe de $dW$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$dW>0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$dW<0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$dW=0$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$dW = kQq\\,dr/r^2$ avec $kQq>0$ et $dr>0$ : $dW>0$. Cohérent : la force est répulsive, elle favorise l'éloignement."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'expression de la force exercée par une charge $Q$ placée en $O$ sur une charge $q$ placée en $M$ ($r = OM$) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec F = k\\dfrac{Qq}{r}\\vec e_r$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec F = k\\dfrac{Qq}{r^2}\\vec e_r$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec F = k\\dfrac{Q}{r^2}\\vec e_r$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\vec F = -k\\dfrac{Qq}{r^2}\\vec e_\\theta$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec F = q\\vec E$ avec $\\vec E = kQ\\vec e_r/r^2$. La réponse c est le champ, pas la force."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour la force créée par une charge ponctuelle, le travail élémentaire s'écrit $dW = k\\dfrac{Qq}{r^2}\\,$___ .",
+              "answerType": "text",
+              "accepted": [
+                "dr",
+                "d r"
+              ],
+              "explanation": "Comme $dr = \\vec e_r\\cdot d\\vec\\ell$, on a $dW = k\\dfrac{Qq}{r^2}\\vec e_r\\cdot d\\vec\\ell = k\\dfrac{Qq}{r^2}dr$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes de la démonstration de $dr = \\vec e_r\\cdot d\\vec\\ell$.",
+              "items": [
+                "$r^2 = \\overrightarrow{OM}\\cdot\\overrightarrow{OM}$",
+                "$2r\\,dr = 2\\,\\overrightarrow{OM}\\cdot d\\vec\\ell$",
+                "$2r\\,dr = 2r\\,\\vec e_r\\cdot d\\vec\\ell$",
+                "$dr = \\vec e_r\\cdot d\\vec\\ell$ (pour $r\\neq0$)"
+              ],
+              "explanation": "On différencie l'identité $r^2 = OM^2$, on remplace $\\overrightarrow{OM}$ par $r\\vec e_r$, puis on simplifie par $2r$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour calculer le travail de la force créée par une charge ponctuelle, il est indispensable de choisir des coordonnées sphériques.",
+              "answer": false,
+              "explanation": "Faux : le cours souligne qu'il suffit de relier $d\\vec\\ell$ à la variation $dr$ de la distance, grâce à $dr = \\vec e_r\\cdot d\\vec\\ell$, sans introduire de système de coordonnées particulier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "La charge $q$ parcourt un arc de cercle centré sur $Q$. Le travail de la force électrostatique sur cet arc est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "positif"
+                },
+                {
+                  "id": "b",
+                  "md": "négatif"
+                },
+                {
+                  "id": "c",
+                  "md": "nul"
+                },
+                {
+                  "id": "d",
+                  "md": "dépendant du signe de $Q$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Sur un arc centré en $O$, $r$ est constant : $dr = 0$ à chaque instant, donc $dW = 0$ et le travail total est nul, quel que soit le signe des charges."
+            }
+          ]
+        },
+        {
+          "slug": "travail-conservatif",
+          "title": "Travail entre deux positions et force conservative",
+          "number": "4.3.3–4.3.4",
+          "estimatedMinutes": 9,
+          "summary": "Intégration de $dW$ : $W_{A\\to B} = kQq(1/r_A - 1/r_B)$ ne dépend que des extrémités ; la force électrostatique est conservative et sa circulation sur un contour fermé est nulle.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "4.3.3 Expression du travail entre deux positions",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Calcul de $W_{A\\to B}$",
+              "steps": [
+                {
+                  "md": "On intègre le travail élémentaire entre les distances $r_A$ et $r_B$ :\n$$W_{A\\to B} = \\int_A^B dW = \\int_{r_A}^{r_B} k\\frac{Qq}{r^2}\\,dr = kQq\\int_{r_A}^{r_B} r^{-2}\\,dr.$$"
+                },
+                {
+                  "md": "Une primitive de $r^{-2}$ est $-1/r$. Donc\n$$W_{A\\to B} = kQq\\left[-\\frac1r\\right]_{r_A}^{r_B} = kQq\\left(-\\frac1{r_B}+\\frac1{r_A}\\right).$$"
+                },
+                {
+                  "md": "Finalement,\n$$\\boxed{W_{A\\to B} = kQq\\left(\\frac1{r_A}-\\frac1{r_B}\\right).}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat",
+              "md": "Le résultat ne contient aucune information sur la forme de la trajectoire : il ne dépend que de $r_A$ et $r_B$, donc uniquement des points de départ et d'arrivée.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "steps",
+                "prompt": "Une charge $Q = 2\\ \\mu\\mathrm C$ est fixe en $O$. Une charge $q = 1\\ \\mu\\mathrm C$ passe de $r_A = 0{,}1\\ \\mathrm m$ à $r_B = 0{,}2\\ \\mathrm m$. On prend $k = 9\\times10^9\\ \\mathrm{SI}$.",
+                "steps": [
+                  {
+                    "kind": "fill_blank",
+                    "prompt": "Calculez $\\dfrac1{r_A}-\\dfrac1{r_B}$ (en $\\mathrm m^{-1}$) : ___",
+                    "answerType": "number",
+                    "accepted": [
+                      "5"
+                    ],
+                    "explanation": "$\\dfrac1{0{,}1}-\\dfrac1{0{,}2} = 10-5 = 5\\ \\mathrm m^{-1}$."
+                  },
+                  {
+                    "kind": "fill_blank",
+                    "prompt": "En déduire $W_{A\\to B}$ en joules : ___",
+                    "answerType": "number",
+                    "accepted": [
+                      "0.09"
+                    ],
+                    "explanation": "$W = kQq\\times5 = 9\\times10^9\\times2\\times10^{-6}\\times10^{-6}\\times5 = 0{,}09\\ \\mathrm J$."
+                  }
+                ],
+                "explanation": "$W_{A\\to B} = kQq(1/r_A-1/r_B) = 0{,}09\\ \\mathrm J>0$ : les charges se repoussent et $q$ s'éloigne, la force est motrice."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.3.4 Caractère conservatif de la force électrostatique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une force est dite **conservative** lorsque son travail entre deux points ne dépend pas du chemin suivi. Le calcul précédent vient précisément de montrer cette propriété pour la force créée par une charge ponctuelle.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Force conservative",
+              "md": "Une force $\\vec F$ est conservative si, pour deux points fixés $A$ et $B$, le travail\n$$W_{A\\to B} = \\int_A^B\\vec F\\cdot d\\vec\\ell$$\nest indépendant de la trajectoire reliant $A$ à $B$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-chemins-conservatifs.svg",
+              "alt": "Deux chemins C1 et C2 relient A à B ; pour une force conservative, les travaux le long des deux chemins sont égaux.",
+              "caption": "Figure 4.3 — Pour une force conservative, deux chemins reliant les mêmes points donnent le même travail.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure résume la conséquence de l'indépendance du chemin. Si l'on va de $A$ vers $B$ par $\\mathcal C_1$ puis que l'on revient de $B$ vers $A$ par $\\mathcal C_2$, on effectue un parcours fermé. Les deux travaux s'annulent alors.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Circulation sur un contour fermé",
+              "md": "Pour la force électrostatique,\n$$\\boxed{\\oint\\vec F\\cdot d\\vec\\ell = 0.}$$\nDe manière équivalente, puisque $\\vec F = q\\vec E$ avec $q$ constant,\n$$\\boxed{\\oint\\vec E\\cdot d\\vec\\ell = 0.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le résultat n'est pas limité à une seule charge source. Si plusieurs charges fixes créent la force totale $\\vec F = \\sum_i\\vec F_i$, alors\n$$W_{A\\to B} = \\int_A^B\\sum_i\\vec F_i\\cdot d\\vec\\ell = \\sum_i\\int_A^B\\vec F_i\\cdot d\\vec\\ell.$$\nChaque terme dépend seulement de $A$ et de $B$ ; leur somme aussi. Le champ électrostatique créé par toute distribution fixe de charges est donc conservatif.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Dire qu'une force est conservative ne signifie pas que son travail est toujours nul. Le travail est nul sur un parcours fermé, ou entre deux points particuliers donnant la même énergie potentielle. Entre deux points quelconques, il peut être positif ou négatif.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Puisque la force électrostatique est conservative, son travail entre deux points quelconques $A$ et $B$ est nul.",
+                "answer": false,
+                "explanation": "Faux : c'est le piège signalé par le cours. Le travail est nul sur un **parcours fermé** ; entre $A$ et $B$ distincts, il vaut par exemple $kQq(1/r_A-1/r_B)$, qui est non nul si $r_A\\neq r_B$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'expression du travail de la force créée par $Q$ sur $q$ entre $A$ et $B$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$kQq\\left(\\dfrac1{r_B}-\\dfrac1{r_A}\\right)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$kQq\\left(\\dfrac1{r_A}-\\dfrac1{r_B}\\right)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$kQq\\left(\\dfrac1{r_A^2}-\\dfrac1{r_B^2}\\right)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$kQq\\,(r_B-r_A)$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Primitive de $r^{-2}$ : $-1/r$. $\\left[-1/r\\right]_{r_A}^{r_B} = 1/r_A - 1/r_B$. Vérification : pour des charges de même signe qui s'éloignent ($r_B>r_A$), le travail est positif."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le travail de la force créée par une charge ponctuelle dépend de la forme de la trajectoire suivie entre $A$ et $B$.",
+              "answer": false,
+              "explanation": "Faux : le résultat $kQq(1/r_A-1/r_B)$ ne dépend que de $r_A$ et $r_B$, donc des points de départ et d'arrivée."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour le champ électrostatique, la circulation sur un contour fermé vaut $\\oint\\vec E\\cdot d\\vec\\ell =$ ___ .",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "Le champ électrostatique est conservatif : $\\oint\\vec E\\cdot d\\vec\\ell = 0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi le champ créé par **plusieurs** charges fixes est-il aussi conservatif ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que les champs des différentes charges se compensent"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que le travail total est la somme des travaux de chaque force, chacun ne dépendant que de $A$ et $B$"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que la force totale est toujours radiale"
+                },
+                {
+                  "id": "d",
+                  "md": "Ce n'est vrai que pour deux charges"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Par linéarité de l'intégrale, $W_{A\\to B} = \\sum_i\\int_A^B\\vec F_i\\cdot d\\vec\\ell$ ; chaque terme ne dépend que des extrémités, donc la somme aussi. La force totale, elle, n'est en général pas radiale."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une charge $q$ fait un aller-retour $A\\to B$ par $\\mathcal C_1$ puis $B\\to A$ par $\\mathcal C_2$. Si $W^{(1)}_{A\\to B} = 3\\ \\mathrm{mJ}$, alors le travail sur le retour $B\\to A$ par $\\mathcal C_2$ vaut ___ mJ.",
+              "answerType": "number",
+              "accepted": [
+                "-3"
+              ],
+              "explanation": "Sur le parcours fermé, le travail total est nul : $3 + W_{B\\to A} = 0$, donc $W_{B\\to A} = -3\\ \\mathrm{mJ}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour deux charges de signes opposés ($Qq<0$), si $q$ se rapproche de $Q$ ($r_B<r_A$), le travail de la force électrostatique est positif.",
+              "answer": true,
+              "explanation": "Vrai : $1/r_A - 1/r_B<0$ et $kQq<0$, donc le produit est positif. Cohérent : la force est attractive et favorise le rapprochement."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "energie-potentielle",
+      "title": "Énergie potentielle électrostatique",
+      "number": "4.4",
+      "lessons": [
+        {
+          "slug": "energie-potentielle-electrostatique",
+          "title": "Énergie potentielle électrostatique",
+          "number": "4.4.1–4.4.3",
+          "estimatedMinutes": 10,
+          "summary": "Définition de la variation d'énergie potentielle $\\Delta E_p = -W_{A\\to B}$, choix de la référence $E_p(\\infty)=0$, énergie $E_p = kQq/r$ de deux charges et énergie d'un système de charges ponctuelles.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Le caractère conservatif de la force permet maintenant d'introduire une nouvelle grandeur : l'**énergie potentielle électrostatique**. Cette grandeur n'est pas posée arbitrairement ; elle est construite à partir du travail que l'on vient d'étudier.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.4.1 Définition de l'énergie potentielle électrostatique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons qu'une charge se déplace de $A$ vers $B$ sous l'action de la force électrostatique. Si cette force fournit un travail positif, l'énergie potentielle doit diminuer ; inversement, si la force fournit un travail négatif, l'énergie potentielle augmente. On définit donc la variation d'énergie potentielle comme l'opposé du travail de la force électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Énergie potentielle électrostatique",
+              "md": "La variation de l'énergie potentielle électrostatique entre $A$ et $B$ est définie par\n$$\\boxed{E_p(B)-E_p(A) = -W_{A\\to B}.}$$\nOn écrit aussi\n$$\\boxed{\\Delta E_p = -W_{A\\to B}.}$$\nL'unité SI de $E_p$ est le joule.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le signe moins traduit une conversion d'énergie : lorsque la force électrostatique effectue un travail positif, elle fait diminuer l'énergie potentielle de la configuration.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Lors d'un déplacement de $A$ vers $B$, la force électrostatique fournit un travail $W_{A\\to B} = 4\\ \\mathrm{mJ}$. La variation $\\Delta E_p = E_p(B)-E_p(A)$ vaut ___ mJ.",
+                "answerType": "number",
+                "accepted": [
+                  "-4"
+                ],
+                "explanation": "$\\Delta E_p = -W_{A\\to B} = -4\\ \\mathrm{mJ}$ : un travail moteur fait diminuer l'énergie potentielle."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.4.2 Choix du niveau de référence de l'énergie potentielle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une variation d'énergie potentielle est physiquement déterminée, mais la valeur absolue de $E_p$ nécessite de choisir une référence. Pour une charge ponctuelle isolée, le choix usuel est\n$$\\boxed{E_p(\\infty) = 0.}$$\nCela signifie que l'on prend comme niveau zéro la situation où les deux charges sont infiniment éloignées.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Énergie potentielle de deux charges ponctuelles",
+              "steps": [
+                {
+                  "md": "Pour obtenir $E_p(r)$, on considère un déplacement depuis la distance $r$ jusqu'à l'infini. D'après la définition précédente,\n$$E_p(\\infty)-E_p(r) = -W_{r\\to\\infty}.$$"
+                },
+                {
+                  "md": "Comme $E_p(\\infty) = 0$, $\\;E_p(r) = W_{r\\to\\infty}$."
+                },
+                {
+                  "md": "Or\n$$W_{r\\to\\infty} = kQq\\left(\\frac1r-\\frac1\\infty\\right) = k\\frac{Qq}{r}.$$",
+                  "why": "On applique $W_{A\\to B} = kQq(1/r_A-1/r_B)$ avec $r_A = r$ et $r_B\\to\\infty$, où $1/r_B\\to0$."
+                },
+                {
+                  "md": "On obtient donc\n$$\\boxed{E_p(r) = k\\frac{Qq}{r}.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-energie-potentielle.svg",
+              "alt": "Graphe de Ep en fonction de r : courbe positive décroissant vers 0 pour Qq>0, courbe négative croissant vers 0 pour Qq<0.",
+              "caption": "Figure 4.4 — Énergie potentielle de deux charges ponctuelles en fonction de leur distance, référence prise à l'infini.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "L'énergie potentielle est positive pour deux charges de même signe et négative pour deux charges de signes opposés. Dans les deux cas, elle tend vers zéro lorsque $r\\to\\infty$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Deux charges de même signe se repoussent spontanément : lorsqu'elles s'éloignent, la force électrostatique effectue un travail positif et leur énergie potentielle diminue vers zéro. Deux charges de signes opposés s'attirent : leur énergie potentielle est négative et devient encore plus faible lorsqu'elles se rapprochent.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.4.3 Énergie potentielle d'un système de charges ponctuelles",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour assembler plusieurs charges ponctuelles depuis l'infini, il faut fournir ou récupérer un travail associé à chaque paire de charges. En évitant de compter deux fois la même paire, l'énergie potentielle électrostatique du système est\n$$\\boxed{E_p = \\sum_{i<j}k\\frac{q_iq_j}{r_{ij}},}$$\noù $r_{ij}$ est la distance entre les charges $q_i$ et $q_j$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Cette expression représente une énergie de *configuration*. Elle appartient à l'ensemble du système de charges, et non à une charge isolée prise séparément.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Combien de termes contient la somme $\\sum_{i<j}k\\,q_iq_j/r_{ij}$ pour un système de 3 charges ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "2"
+                  },
+                  {
+                    "id": "b",
+                    "md": "3"
+                  },
+                  {
+                    "id": "c",
+                    "md": "6"
+                  },
+                  {
+                    "id": "d",
+                    "md": "9"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Une contribution par **paire** : $(1,2)$, $(1,3)$, $(2,3)$, soit 3 termes. La condition $i<j$ évite de compter deux fois la même paire (ce qui donnerait 6)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "La valeur absolue de l'énergie potentielle $E_p$ est physiquement déterminée sans qu'il soit nécessaire de choisir une référence.",
+              "answer": false,
+              "explanation": "Faux : seule la **variation** de $E_p$ est déterminée physiquement. La valeur absolue nécessite un choix de référence, usuellement $E_p(\\infty) = 0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Avec la référence $E_p(\\infty)=0$, l'énergie potentielle de deux charges $Q$ et $q$ distantes de $r$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$k\\dfrac{Qq}{r^2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$k\\dfrac{Qq}{r}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-k\\dfrac{Qq}{r}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$k\\dfrac{Q}{r}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E_p(r) = W_{r\\to\\infty} = kQq/r$. La réponse a a la dimension d'une force (au facteur près), la réponse d est le potentiel créé par $Q$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour deux charges de signes opposés, l'énergie potentielle (référence à l'infini) est négative et diminue encore quand elles se rapprochent.",
+              "answer": true,
+              "explanation": "Vrai : $Qq<0$ donc $E_p = kQq/r<0$, et $|E_p|$ augmente quand $r$ diminue, donc $E_p$ devient plus négative."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Deux charges $q_1 = q_2 = 1\\ \\mu\\mathrm C$ sont distantes de $r = 0{,}9\\ \\mathrm m$. Avec $k = 9\\times10^9$ SI, leur énergie potentielle vaut ___ mJ.",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "$E_p = k\\,q_1q_2/r = 9\\times10^9\\times10^{-12}/0{,}9 = 10^{-2}\\ \\mathrm J = 10\\ \\mathrm{mJ}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle phrase décrit correctement l'énergie $E_p = \\sum_{i<j}k\\,q_iq_j/r_{ij}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "C'est l'énergie de la charge $q_1$ seule"
+                },
+                {
+                  "id": "b",
+                  "md": "C'est une énergie de configuration qui appartient à l'ensemble du système"
+                },
+                {
+                  "id": "c",
+                  "md": "C'est la somme des énergies propres de chaque charge"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle compte chaque paire deux fois"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cours le souligne : c'est une énergie de configuration du système, et la condition $i<j$ évite de compter deux fois chaque paire."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation au signe de la variation $\\Delta E_p$.",
+              "pairs": [
+                {
+                  "left": "Deux charges de même signe s'éloignent",
+                  "right": "$\\Delta E_p<0$"
+                },
+                {
+                  "left": "Deux charges de même signe sont rapprochées",
+                  "right": "$\\Delta E_p>0$"
+                },
+                {
+                  "left": "La charge mobile reste à distance constante de la charge source",
+                  "right": "$\\Delta E_p=0$"
+                }
+              ],
+              "explanation": "$\\Delta E_p = -W$. Charges de même signe : la force est répulsive, son travail est positif quand elles s'éloignent ($\\Delta E_p<0$) et négatif quand on les rapproche ($\\Delta E_p>0$). À $r$ constant, $W = 0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "potentiel-difference-de-potentiel",
+      "title": "Potentiel électrostatique et différence de potentiel",
+      "number": "4.5",
+      "lessons": [
+        {
+          "slug": "potentiel-electrostatique",
+          "title": "Définition du potentiel électrostatique",
+          "number": "4.5.1",
+          "estimatedMinutes": 6,
+          "summary": "Le potentiel $V(M) = E_p(M)/q$ caractérise la seule distribution source ; pour une charge ponctuelle, $V(r) = kQ/r$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "L'énergie potentielle $E_p$ dépend à la fois des charges sources et de la charge mobile $q$. On souhaite maintenant définir une grandeur qui caractérise uniquement la configuration source et le point de l'espace considéré.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.5.1 Définition du potentiel électrostatique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une charge $q$ placée en un point $M$, l'énergie potentielle est proportionnelle à $q$. On divise donc cette énergie par la charge pour obtenir une grandeur indépendante de la charge utilisée pour sonder le champ.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Potentiel électrostatique",
+              "md": "Le potentiel électrostatique au point $M$ est défini par\n$$\\boxed{V(M) = \\frac{E_p(M)}{q}.}$$\nSon unité SI est le volt :\n$$\\boxed{1\\ \\mathrm V = 1\\ \\mathrm{J\\,C^{-1}}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le potentiel $V$ est créé par les charges sources. Il ne dépend pas du signe ni de la valeur de la charge test $q$. En revanche, l'énergie potentielle d'une charge placée en ce point vaut $E_p = qV$ et dépend donc de $q$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si l'on double la charge test $q$ placée en $M$, le potentiel $V(M)$ double aussi.",
+                "answer": false,
+                "explanation": "Faux : $V(M)$ ne dépend que des charges sources. C'est $E_p = qV$ qui double."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Pour une charge ponctuelle $Q$ et avec la référence $V(\\infty) = 0$, on a\n$$E_p(r) = k\\frac{Qq}{r}.$$\nEn divisant par $q$,\n$$\\boxed{V(r) = k\\frac{Q}{r}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le potentiel est une grandeur **scalaire**. Il possède un signe mais pas de direction. Cette propriété rend la superposition des potentiels plus simple que la superposition des champs, qui nécessite une somme vectorielle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une charge $Q = 1\\ \\mathrm{nC}$ crée à la distance $r = 0{,}3\\ \\mathrm m$ (avec $k = 9\\times10^9$ SI et $V(\\infty)=0$) un potentiel de ___ V.",
+                "answerType": "number",
+                "accepted": [
+                  "30"
+                ],
+                "explanation": "$V = kQ/r = 9\\times10^9\\times10^{-9}/0{,}3 = 9/0{,}3 = 30\\ \\mathrm V$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'unité SI du potentiel électrostatique ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathrm{J}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathrm{V} = \\mathrm{J\\,C^{-1}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathrm{N\\,C^{-1}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\mathrm{C\\,J^{-1}}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$V = E_p/q$ : des joules divisés par des coulombs, soit le volt. Le $\\mathrm{N\\,C^{-1}}$ est une unité du champ."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une charge $q = -2\\ \\mu\\mathrm C$ est placée en un point où $V = 100\\ \\mathrm V$. Son énergie potentielle vaut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+2\\times10^{-4}\\ \\mathrm J$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-2\\times10^{-4}\\ \\mathrm J$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-50\\ \\mathrm J$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-2\\times10^{-8}\\ \\mathrm J$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E_p = qV = -2\\times10^{-6}\\times100 = -2\\times10^{-4}\\ \\mathrm J$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le potentiel possède un signe mais pas de direction.",
+              "answer": true,
+              "explanation": "Vrai : c'est une grandeur scalaire. Sa superposition est donc une simple somme algébrique."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour une charge ponctuelle $Q$, avec $V(\\infty)=0$, le potentiel à la distance $r$ est $V(r) = k\\,Q\\,/\\,$___ .",
+              "answerType": "text",
+              "accepted": [
+                "r"
+              ],
+              "explanation": "$V(r) = E_p(r)/q = kQ/r$ : le potentiel décroît en $1/r$ (et non en $1/r^2$ comme le champ)."
+            }
+          ]
+        },
+        {
+          "slug": "difference-de-potentiel-electron-volt",
+          "title": "Différence de potentiel et électron-volt",
+          "number": "4.5.2–4.5.3",
+          "estimatedMinutes": 9,
+          "summary": "Lien entre différence de potentiel et travail : $V_B - V_A = -W_{A\\to B}/q = -\\int_A^B\\vec E\\cdot d\\vec\\ell$ ; convention $U_{AB}$ ; le champ est orienté vers les potentiels décroissants ; l'électron-volt.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "4.5.2 Différence de potentiel et travail de la force électrostatique",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Expression de $V_B-V_A$",
+              "steps": [
+                {
+                  "md": "À partir de la définition $E_p = qV$, on écrit\n$$E_p(B)-E_p(A) = q(V_B-V_A).$$"
+                },
+                {
+                  "md": "Comme $E_p(B)-E_p(A) = -W_{A\\to B}$, $\\;q(V_B-V_A) = -W_{A\\to B}$. On obtient donc\n$$\\boxed{V_B-V_A = -\\frac{W_{A\\to B}}{q}.}$$"
+                },
+                {
+                  "md": "En utilisant $\\vec F = q\\vec E$, $\\;W_{A\\to B} = q\\displaystyle\\int_A^B\\vec E\\cdot d\\vec\\ell$, et donc\n$$\\boxed{V_B-V_A = -\\int_A^B\\vec E\\cdot d\\vec\\ell.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Différence de potentiel",
+              "md": "La différence de potentiel entre les points $A$ et $B$ est\n$$\\boxed{\\Delta V = V_B-V_A.}$$\nElle mesure la variation d'énergie potentielle par unité de charge positive entre ces deux points.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "En électrotechnique, on rencontre souvent la notation\n$$\\boxed{U_{AB} = V_A-V_B.}$$\nAvec cette convention,\n$$\\boxed{W_{A\\to B} = qU_{AB}.}$$\nIl est donc essentiel de lire l'ordre des indices avant de déterminer le signe d'une tension.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une charge $q = 2\\ \\mu\\mathrm C$ va de $A$ ($V_A = 50\\ \\mathrm V$) à $B$ ($V_B = 20\\ \\mathrm V$). Le travail de la force électrostatique vaut ___ $\\mu\\mathrm J$.",
+                "answerType": "number",
+                "accepted": [
+                  "60"
+                ],
+                "explanation": "$W_{A\\to B} = qU_{AB} = q(V_A-V_B) = 2\\times10^{-6}\\times30 = 6\\times10^{-5}\\ \\mathrm J = 60\\ \\mu\\mathrm J$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-sens-potentiel.svg",
+              "alt": "Axe orienté dans le sens du champ E : le point A en amont a un potentiel élevé, le point B en aval un potentiel plus faible.",
+              "caption": "Figure 4.5 — Pour une charge positive, le potentiel diminue lorsqu'on se déplace dans le sens du champ électrique.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure donne une règle qualitative importante : **le champ électrique est orienté vers les potentiels décroissants**. Cette idée sera démontrée mathématiquement dans la section consacrée à la relation entre $\\vec E$ et $V$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.5.3 L'électron-volt : unité d'énergie des particules chargées",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "À l'échelle atomique, le joule est une unité trop grande. On utilise alors l'électron-volt.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Électron-volt",
+              "md": "Un électron-volt est l'énergie gagnée en valeur absolue par une charge élémentaire $e$ lorsqu'elle traverse une différence de potentiel de $1\\ \\mathrm V$ :\n$$\\boxed{1\\ \\mathrm{eV} = e\\times1\\ \\mathrm V = 1{,}602\\times10^{-19}\\ \\mathrm J.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Particule accélérée par une différence de potentiel",
+              "md": "Une particule de charge $q$ traverse une différence de potentiel entre $A$ et $B$. La variation d'énergie cinétique, si seule la force électrique travaille, est\n$$\\Delta E_c = W_{A\\to B} = q(V_A-V_B).$$\nCette relation permet de déterminer directement une vitesse finale sans intégrer l'accélération le long de la trajectoire.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Un proton (charge $e$) est accéléré depuis le repos entre deux points tels que $V_A - V_B = 1000\\ \\mathrm V$. Son énergie cinétique finale vaut :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$1\\ \\mathrm{eV}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$1000\\ \\mathrm{eV}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$1000\\ \\mathrm J$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$-1000\\ \\mathrm{eV}$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$\\Delta E_c = q(V_A-V_B) = e\\times1000\\ \\mathrm V = 1000\\ \\mathrm{eV}\\approx1{,}6\\times10^{-16}\\ \\mathrm J$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle relation relie la différence de potentiel au champ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$V_B-V_A = \\int_A^B\\vec E\\cdot d\\vec\\ell$"
+                },
+                {
+                  "id": "b",
+                  "md": "$V_B-V_A = -\\int_A^B\\vec E\\cdot d\\vec\\ell$"
+                },
+                {
+                  "id": "c",
+                  "md": "$V_B-V_A = -q\\int_A^B\\vec E\\cdot d\\vec\\ell$"
+                },
+                {
+                  "id": "d",
+                  "md": "$V_B-V_A = \\vec E\\wedge\\overrightarrow{AB}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$V_B-V_A = -W_{A\\to B}/q$ et $W_{A\\to B} = q\\int_A^B\\vec E\\cdot d\\vec\\ell$, d'où le signe moins et la disparition de $q$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Avec la notation $U_{AB} = V_A - V_B$, le travail de la force électrostatique de $A$ vers $B$ s'écrit $W_{A\\to B} = qU_{AB}$.",
+              "answer": true,
+              "explanation": "Vrai : $W_{A\\to B} = -q(V_B-V_A) = q(V_A-V_B) = qU_{AB}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le champ électrique est orienté vers les potentiels croissants.",
+              "answer": false,
+              "explanation": "Faux : il est orienté vers les potentiels **décroissants** (en se déplaçant dans le sens de $\\vec E$, $V$ diminue)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un électron-volt vaut ___ $\\times10^{-19}$ J.",
+              "answerType": "number",
+              "accepted": [
+                "1.602",
+                "1.6"
+              ],
+              "explanation": "$1\\ \\mathrm{eV} = e\\times1\\ \\mathrm V = 1{,}602\\times10^{-19}\\ \\mathrm J$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Un électron ($q = -e$) passe de $A$ à $B$ avec $V_A = 0$ et $V_B = 200\\ \\mathrm V$, seule la force électrique travaillant. Que vaut $\\Delta E_c$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+200\\ \\mathrm{eV}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-200\\ \\mathrm{eV}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$0$"
+                },
+                {
+                  "id": "d",
+                  "md": "$+200\\ \\mathrm{J}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\Delta E_c = q(V_A-V_B) = (-e)(0-200) = +200\\ \\mathrm{eV}$ : un électron est accéléré vers les potentiels croissants."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque grandeur à son expression.",
+              "pairs": [
+                {
+                  "left": "$V_B-V_A$",
+                  "right": "$-W_{A\\to B}/q$"
+                },
+                {
+                  "left": "$U_{AB}$",
+                  "right": "$V_A-V_B$"
+                },
+                {
+                  "left": "$\\Delta E_c$ (seule la force électrique travaille)",
+                  "right": "$q(V_A-V_B)$"
+                },
+                {
+                  "left": "$1\\ \\mathrm{eV}$",
+                  "right": "$e\\times1\\ \\mathrm V$"
+                }
+              ],
+              "explanation": "Toutes ces relations découlent de $\\Delta E_p = -W_{A\\to B}$ et de $E_p = qV$ ; l'électron-volt est l'énergie d'une charge $e$ traversant $1\\ \\mathrm V$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "calcul-du-potentiel",
+      "title": "Calcul du potentiel électrostatique",
+      "number": "4.6",
+      "lessons": [
+        {
+          "slug": "potentiel-charges-et-distributions",
+          "title": "Potentiel de charges ponctuelles et de distributions continues",
+          "number": "4.6.1–4.6.2",
+          "estimatedMinutes": 8,
+          "summary": "Superposition algébrique $V = k\\sum Q_i/r_i$ pour des charges ponctuelles, puis $V = k\\int dq/PM$ pour une distribution continue, avec la méthode de calcul en six étapes.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Le potentiel étant scalaire, son calcul est souvent plus simple que celui du champ. On commence par la superposition de charges ponctuelles, puis on passe aux distributions continues.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.6.1 Potentiel créé par un ensemble de charges ponctuelles",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Si des charges $Q_1, Q_2, \\dots, Q_n$ sont fixes et si $r_i$ désigne la distance entre $Q_i$ et le point d'observation $M$, chaque charge crée\n$$V_i(M) = k\\frac{Q_i}{r_i}.$$\nLe potentiel total est la somme algébrique des potentiels :\n$$\\boxed{V(M) = \\sum_{i=1}^{n}V_i(M) = k\\sum_{i=1}^{n}\\frac{Q_i}{r_i}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-superposition-potentiel.svg",
+              "alt": "Trois charges Q1, Q2, Q3 aux distances r1, r2, r3 du point M, avec V(M) = k(Q1/r1 + Q2/r2 + Q3/r3).",
+              "caption": "Figure 4.6 — Le potentiel créé par plusieurs charges ponctuelles s'obtient par une somme algébrique.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Il n'est pas nécessaire de projeter les contributions sur des axes : les distances et les signes des charges suffisent pour calculer $V(M)$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Dans la somme des potentiels, on conserve le signe de chaque charge $Q_i$. Il ne faut pas remplacer $Q_i$ par $|Q_i|$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux charges $+Q$ et $-Q$ sont placées à la même distance $a$ d'un point $M$ (par exemple $M$ milieu du segment qui les joint). Que vaut $V(M)$ (référence à l'infini) ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$2kQ/a$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$-2kQ/a$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$kQ/a^2$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$V(M) = k\\dfrac{Q}{a}+k\\dfrac{-Q}{a} = 0$. On garde le signe de chaque charge : remplacer $-Q$ par $|{-Q}|$ donnerait à tort $2kQ/a$. (Le champ, lui, n'est pas nul en ce point.)"
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.6.2 Potentiel créé par une distribution continue de charges",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une distribution continue, un petit élément de charge $dq$ crée au point $M$ le potentiel élémentaire\n$$\\boxed{dV = k\\frac{dq}{PM},}$$\noù $P$ est le point source et $PM$ la distance entre l'élément $dq$ et le point d'observation $M$.\n\nEn additionnant toutes les contributions,\n$$\\boxed{V(M) = k\\int\\frac{dq}{PM}.}$$\nSelon la distribution,\n$$dq = \\lambda\\,d\\ell,\\qquad dq = \\sigma\\,dS,\\qquad dq = \\rho\\,d\\tau.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode.** Pour calculer un potentiel créé par une distribution continue :\n1. choisir un élément de charge $dq$ ;\n2. exprimer la distance $PM$ entre cet élément et le point d'observation ;\n3. écrire $dV = k\\,dq/PM$ ;\n4. remplacer $dq$ par $\\lambda\\,d\\ell$, $\\sigma\\,dS$ ou $\\rho\\,d\\tau$ ;\n5. intégrer sur toute la distribution ;\n6. vérifier l'unité, le signe et les cas limites.\n\nAucune décomposition vectorielle n'est nécessaire puisque $V$ est scalaire.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque type de distribution à l'expression de $dq$.",
+                "pairs": [
+                  {
+                    "left": "Distribution linéique",
+                    "right": "$\\lambda\\,d\\ell$"
+                  },
+                  {
+                    "left": "Distribution surfacique",
+                    "right": "$\\sigma\\,dS$"
+                  },
+                  {
+                    "left": "Distribution volumique",
+                    "right": "$\\rho\\,d\\tau$"
+                  }
+                ],
+                "explanation": "$\\lambda$ en $\\mathrm{C\\,m^{-1}}$, $\\sigma$ en $\\mathrm{C\\,m^{-2}}$, $\\rho$ en $\\mathrm{C\\,m^{-3}}$ : multipliés par l'élément de longueur, de surface ou de volume, ils donnent une charge."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Pour calculer le potentiel créé par plusieurs charges ponctuelles, il faut projeter chaque contribution sur des axes.",
+              "answer": false,
+              "explanation": "Faux : le potentiel est scalaire, on fait une somme **algébrique** $k\\sum Q_i/r_i$ ; seules les distances et les signes comptent."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Trois charges $Q_1 = 1\\ \\mathrm{nC}$, $Q_2 = -2\\ \\mathrm{nC}$, $Q_3 = 3\\ \\mathrm{nC}$ sont toutes à $0{,}9\\ \\mathrm m$ de $M$. Avec $k = 9\\times10^9$ SI, $V(M) =$ ___ V.",
+              "answerType": "number",
+              "accepted": [
+                "20"
+              ],
+              "explanation": "$V = \\dfrac{k}{0{,}9}(1-2+3)\\times10^{-9} = 10\\times2 = 20\\ \\mathrm V$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le potentiel élémentaire créé en $M$ par un élément de charge $dq$ situé en $P$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$dV = k\\dfrac{dq}{PM^2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$dV = k\\dfrac{dq}{PM}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$dV = k\\dfrac{dq}{PM^2}\\vec u$"
+                },
+                {
+                  "id": "d",
+                  "md": "$dV = k\\,dq\\cdot PM$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la généralisation de $V = kQ/r$ à un élément de charge. Les réponses a et c ressemblent au champ élémentaire."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la méthode de calcul du potentiel d'une distribution continue.",
+              "items": [
+                "Choisir un élément de charge $dq$",
+                "Exprimer la distance $PM$",
+                "Écrire $dV = k\\,dq/PM$",
+                "Remplacer $dq$ par $\\lambda\\,d\\ell$, $\\sigma\\,dS$ ou $\\rho\\,d\\tau$",
+                "Intégrer sur toute la distribution",
+                "Vérifier l'unité, le signe et les cas limites"
+              ],
+              "explanation": "C'est la méthode en six étapes du cours ; la vérification finale (unités, signe, limites) ne doit jamais être omise."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la somme $k\\sum Q_i/r_i$, on peut remplacer chaque $Q_i$ par sa valeur absolue $|Q_i|$.",
+              "answer": false,
+              "explanation": "Faux : on conserve le signe de chaque charge. Une charge négative apporte une contribution négative au potentiel."
+            }
+          ]
+        },
+        {
+          "slug": "potentiel-anneau-disque",
+          "title": "Potentiel sur l'axe d'un anneau et d'un disque",
+          "number": "4.6.3–4.6.4",
+          "estimatedMinutes": 9,
+          "summary": "Calcul du potentiel sur l'axe d'un anneau uniformément chargé, $V(z) = kQ/\\sqrt{R^2+z^2}$, puis d'un disque, $V(z) = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2}-z\\right)$ pour $z>0$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "4.6.3 Potentiel sur l'axe d'un anneau uniformément chargé",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Anneau uniformément chargé",
+              "md": "Considérons un anneau de rayon $R$, de centre $O$, portant une charge totale uniforme $Q$. On cherche le potentiel en un point $M$ de son axe situé à la distance $z$ du centre.",
+              "steps": [
+                {
+                  "md": "Tous les éléments $dq$ de l'anneau sont à la même distance de $M$ :\n$$PM = \\sqrt{R^2+z^2}.$$",
+                  "why": "Théorème de Pythagore dans le triangle $O$, $P$, $M$, rectangle en $O$."
+                },
+                {
+                  "md": "Ainsi,\n$$dV = k\\frac{dq}{\\sqrt{R^2+z^2}}.$$"
+                },
+                {
+                  "md": "La distance étant constante sur l'anneau, elle sort de l'intégrale :\n$$V(M) = \\frac{k}{\\sqrt{R^2+z^2}}\\int dq = \\frac{kQ}{\\sqrt{R^2+z^2}}.$$"
+                },
+                {
+                  "md": "Donc\n$$\\boxed{V(z) = k\\frac{Q}{\\sqrt{R^2+z^2}}.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-anneau-axe.svg",
+              "alt": "Anneau de rayon R et de centre O ; un point M sur l'axe Oz est à la distance racine de R²+z² de chaque élément dq.",
+              "caption": "Figure 4.7 — Tous les éléments d'un anneau sont à la même distance d'un point situé sur son axe.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure explique pourquoi le calcul du potentiel de l'anneau est particulièrement simple : aucune composante ne doit être projetée et la distance $PM$ est identique pour tous les éléments $dq$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que devient le potentiel de l'anneau au centre $O$ ($z = 0$) ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$kQ/R$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$kQ/R^2$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Il est infini"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$V(0) = kQ/\\sqrt{R^2} = kQ/R$ : toutes les charges sont à la distance $R$ de $O$. Le champ, lui, est nul en $O$ par symétrie, mais pas le potentiel."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.6.4 Potentiel sur l'axe d'un disque uniformément chargé",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Disque uniformément chargé",
+              "md": "Considérons un disque de rayon $R$ portant une densité surfacique uniforme $\\sigma$. Pour un point $M$ situé sur l'axe à $z>0$, on décompose le disque en anneaux élémentaires de rayon $r$ et d'épaisseur $dr$.",
+              "steps": [
+                {
+                  "md": "La charge d'un anneau élémentaire est\n$$dq = \\sigma\\,dS = \\sigma\\,2\\pi r\\,dr.$$"
+                },
+                {
+                  "md": "La distance entre cet anneau et $M$ est $\\sqrt{r^2+z^2}$. Le potentiel élémentaire est donc\n$$dV = k\\frac{\\sigma\\,2\\pi r\\,dr}{\\sqrt{r^2+z^2}}.$$",
+                  "why": "C'est le résultat de l'anneau, appliqué à un anneau de rayon $r$ et de charge $dq$."
+                },
+                {
+                  "md": "On intègre de $r = 0$ à $r = R$ :\n$$V(z) = 2\\pi k\\sigma\\int_0^R\\frac{r\\,dr}{\\sqrt{r^2+z^2}} = 2\\pi k\\sigma\\left[\\sqrt{r^2+z^2}\\right]_0^R.$$",
+                  "why": "Une primitive de $r/\\sqrt{r^2+z^2}$ est $\\sqrt{r^2+z^2}$."
+                },
+                {
+                  "md": "Comme $2\\pi k = 1/(2\\varepsilon_0)$ et $z>0$ (donc $\\sqrt{z^2} = z$),\n$$\\boxed{V(z) = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2}-z\\right).}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Ce résultat sera utilisé dans la section suivante pour retrouver le champ du disque obtenu au chapitre 3. Cette vérification montrera concrètement l'intérêt de calculer d'abord une grandeur scalaire puis d'en déduire le champ.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans le calcul du disque, la charge d'un anneau élémentaire de rayon $r$ et d'épaisseur $dr$ est $dq = \\sigma\\times$ ___ .",
+                "answerType": "expression",
+                "accepted": [
+                  "2*pi*r*dr"
+                ],
+                "variables": [
+                  "r",
+                  "dr"
+                ],
+                "placeholder": "ex. 2*pi*r*dr",
+                "explanation": "L'aire de l'anneau élémentaire est son périmètre $2\\pi r$ multiplié par son épaisseur $dr$ : $dS = 2\\pi r\\,dr$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Potentiel sur l'axe d'un anneau de rayon $R$ et de charge $Q$, à la distance $z$ du centre :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$k\\dfrac{Q}{R^2+z^2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$k\\dfrac{Q}{\\sqrt{R^2+z^2}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$k\\dfrac{Qz}{(R^2+z^2)^{3/2}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$k\\dfrac{Q}{z}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Tous les éléments sont à la distance $\\sqrt{R^2+z^2}$ de $M$. La réponse c est la composante axiale du **champ** de l'anneau."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour l'anneau, le calcul du potentiel est simple car la distance $PM$ est la même pour tous les éléments $dq$.",
+              "answer": true,
+              "explanation": "Vrai : $PM = \\sqrt{R^2+z^2}$ sort de l'intégrale, et il ne reste que $\\int dq = Q$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour le disque, comment l'a-t-on décomposé ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "En segments rectilignes parallèles"
+                },
+                {
+                  "id": "b",
+                  "md": "En anneaux élémentaires de rayon $r$ et d'épaisseur $dr$"
+                },
+                {
+                  "id": "c",
+                  "md": "En charges ponctuelles sur le bord seulement"
+                },
+                {
+                  "id": "d",
+                  "md": "En secteurs angulaires d'angle $d\\theta$ uniquement"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On réutilise le résultat de l'anneau pour chaque anneau élémentaire de charge $dq = \\sigma 2\\pi r\\,dr$, puis on intègre de $0$ à $R$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le facteur $2\\pi k$ est égal à $1/(\\,$___$\\,\\varepsilon_0)$.",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$2\\pi k = 2\\pi\\cdot\\dfrac{1}{4\\pi\\varepsilon_0} = \\dfrac{1}{2\\varepsilon_0}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour $z>0$, le potentiel sur l'axe du disque est $V(z) = \\dfrac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2}-z\\right)$, et il tend vers $0$ quand $z\\to+\\infty$.",
+              "answer": true,
+              "explanation": "Vrai : $\\sqrt{R^2+z^2}-z = \\dfrac{R^2}{\\sqrt{R^2+z^2}+z}\\to0$. Plus précisément $V\\approx\\dfrac{\\sigma R^2}{4\\varepsilon_0 z} = k\\dfrac{Q}{z}$ avec $Q = \\sigma\\pi R^2$ : loin du disque, on retrouve le potentiel d'une charge ponctuelle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "relation-champ-potentiel",
+      "title": "Relation locale entre champ électrique et potentiel",
+      "number": "4.7",
+      "lessons": [
+        {
+          "slug": "champ-gradient-du-potentiel",
+          "title": "Le champ, opposé du gradient du potentiel",
+          "number": "4.7.1–4.7.2",
+          "estimatedMinutes": 11,
+          "summary": "De $dV = -\\vec E\\cdot d\\vec\\ell$ on déduit $\\vec E = -\\overrightarrow{\\mathrm{grad}}\\,V$ ; cas à une seule variable ($E_r = -dV/dr$, $E_z = -dV/dz$) et vérification sur la charge ponctuelle, l'anneau et le disque.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Le champ $\\vec E$ et le potentiel $V$ décrivent la même interaction électrostatique sous deux formes différentes. La relation entre eux découle directement de la définition de la différence de potentiel.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.7.1 Établissement de la relation entre champ et potentiel",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Composantes du champ",
+              "steps": [
+                {
+                  "md": "Entre deux points infiniment proches séparés par $d\\vec\\ell$,\n$$dV = -\\vec E\\cdot d\\vec\\ell.$$",
+                  "why": "C'est la forme élémentaire de $V_B-V_A = -\\int_A^B\\vec E\\cdot d\\vec\\ell$."
+                },
+                {
+                  "md": "Si le déplacement est choisi dans la direction d'un axe $x$, alors $d\\vec\\ell = dx\\,\\vec e_x$ et $dV = -E_x\\,dx$, d'où\n$$E_x = -\\frac{\\partial V}{\\partial x}.$$"
+                },
+                {
+                  "md": "De la même manière,\n$$E_y = -\\frac{\\partial V}{\\partial y},\\qquad E_z = -\\frac{\\partial V}{\\partial z}.$$\nOn regroupe ces trois composantes à l'aide du gradient."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Gradient et champ",
+              "md": "En coordonnées cartésiennes,\n$$\\overrightarrow{\\mathrm{grad}}\\,V = \\frac{\\partial V}{\\partial x}\\vec e_x+\\frac{\\partial V}{\\partial y}\\vec e_y+\\frac{\\partial V}{\\partial z}\\vec e_z.$$\nLe champ électrostatique est\n$$\\boxed{\\vec E = -\\,\\overrightarrow{\\mathrm{grad}}\\,V = -\\nabla V.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Le gradient $\\overrightarrow{\\mathrm{grad}}\\,V$ pointe vers la direction où le potentiel augmente le plus rapidement. Le signe moins signifie donc que le champ électrique pointe vers la direction où le potentiel diminue le plus rapidement.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans une région, $V(x,y,z) = 5x$ (en volts, $x$ en mètres). Que vaut $\\vec E$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$5\\,\\vec e_x\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-5\\,\\vec e_x\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$-5x\\,\\vec e_x\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\vec 0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$\\vec E = -\\nabla V = -\\dfrac{\\partial V}{\\partial x}\\vec e_x = -5\\,\\vec e_x$. Le champ pointe vers les $x$ décroissants, là où $V$ diminue. Oublier le signe moins donne la réponse a."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.7.2 Cas des configurations à une seule variable spatiale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Lorsque le potentiel ne dépend que d'une coordonnée, la relation se simplifie fortement. Pour un problème radial sphérique,\n$$\\boxed{E_r = -\\frac{dV}{dr}.}$$\nPour un problème ne dépendant que de $z$,\n$$\\boxed{E_z = -\\frac{dV}{dz}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Retrouver le champ d'une charge ponctuelle",
+              "md": "À partir de $V(r) = k\\dfrac{Q}{r}$, on calcule\n$$\\frac{dV}{dr} = -k\\frac{Q}{r^2}.$$\nDonc\n$$\\boxed{\\vec E = -\\frac{dV}{dr}\\vec e_r = k\\frac{Q}{r^2}\\vec e_r,}$$\nce qui retrouve exactement le résultat du chapitre 3.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Retrouver le champ sur l'axe d'un anneau",
+              "md": "Pour $V(z) = k\\dfrac{Q}{\\sqrt{R^2+z^2}}$, on a\n$$\\frac{dV}{dz} = -kQ\\frac{z}{(R^2+z^2)^{3/2}}.$$\nDonc\n$$\\boxed{E_z = -\\frac{dV}{dz} = k\\frac{Qz}{(R^2+z^2)^{3/2}},}$$\nce qui coïncide avec le champ calculé directement par intégration vectorielle au chapitre 3.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Retrouver le champ du disque",
+              "md": "Pour $z>0$, $V(z) = \\dfrac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2}-z\\right)$. Alors\n$$\\frac{dV}{dz} = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\frac{z}{\\sqrt{R^2+z^2}}-1\\right),$$\net donc\n$$\\boxed{E_z = \\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{R^2+z^2}}\\right).}$$\nOn retrouve à nouveau le résultat du chapitre 3.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Pour une distribution compliquée, il peut être plus efficace de calculer d'abord le potentiel par une intégrale scalaire, puis d'obtenir le champ par $\\vec E = -\\nabla V$, plutôt que d'intégrer directement les composantes vectorielles de $d\\vec E$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Un potentiel ne dépend que de $z$ : $V(z) = -3z^2$. La composante $E_z$ vaut ___ (en fonction de $z$).",
+                "answerType": "expression",
+                "accepted": [
+                  "6*z"
+                ],
+                "variables": [
+                  "z"
+                ],
+                "placeholder": "ex. 6*z",
+                "explanation": "$E_z = -\\dfrac{dV}{dz} = -(-6z) = 6z$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle relation locale relie le champ et le potentiel ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec E = \\nabla V$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec E = -\\nabla V$"
+                },
+                {
+                  "id": "c",
+                  "md": "$V = -\\nabla\\cdot\\vec E$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\vec E = -V\\,\\vec e_r$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec E = -\\overrightarrow{\\mathrm{grad}}\\,V$ : le signe moins traduit que le champ pointe vers les potentiels décroissants."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le gradient de $V$ pointe dans la direction où le potentiel augmente le plus rapidement.",
+              "answer": true,
+              "explanation": "Vrai ; c'est pourquoi $\\vec E = -\\nabla V$ pointe vers la direction où $V$ diminue le plus vite."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque potentiel au champ qui s'en déduit.",
+              "pairs": [
+                {
+                  "left": "$V(r) = kQ/r$",
+                  "right": "$\\vec E = kQ\\,\\vec e_r/r^2$"
+                },
+                {
+                  "left": "$V(z) = kQ/\\sqrt{R^2+z^2}$",
+                  "right": "$E_z = kQz/(R^2+z^2)^{3/2}$"
+                },
+                {
+                  "left": "$V(z) = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2}-z\\right)$",
+                  "right": "$E_z = \\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{R^2+z^2}}\\right)$"
+                }
+              ],
+              "explanation": "Charge ponctuelle, anneau et disque : dans les trois cas on dérive le potentiel par rapport à la seule variable et on change de signe."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour un problème radial sphérique, $E_r = -\\,$___ .",
+              "answerType": "text",
+              "accepted": [
+                "dV/dr",
+                "dv/dr",
+                "d V / d r"
+              ],
+              "explanation": "Quand $V$ ne dépend que de $r$, le gradient se réduit à $\\dfrac{dV}{dr}\\vec e_r$, donc $E_r = -dV/dr$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi peut-il être plus efficace de calculer $V$ avant $\\vec E$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que $V$ est toujours nul"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que l'intégrale donnant $V$ est scalaire : pas de projection de composantes vectorielles"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que le champ ne dépend pas de la distribution"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que $\\nabla V$ est toujours constant"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On intègre une seule grandeur scalaire $k\\,dq/PM$, puis une dérivation donne le champ ; c'est souvent plus simple que d'intégrer les composantes de $d\\vec E$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après $\\vec E = -\\nabla V$, si le potentiel est uniforme (constant) dans une région, le champ y est nul.",
+              "answer": true,
+              "explanation": "Vrai : toutes les dérivées partielles d'une constante sont nulles, donc $\\vec E = \\vec 0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "surfaces-equipotentielles",
+      "title": "Surfaces équipotentielles et structure du champ électrique",
+      "number": "4.8",
+      "lessons": [
+        {
+          "slug": "equipotentielles",
+          "title": "Surfaces équipotentielles",
+          "number": "4.8.1–4.8.2",
+          "estimatedMinutes": 7,
+          "summary": "Une équipotentielle est une surface $V = $ cte ; le travail y est nul et le champ lui est perpendiculaire, orienté vers les potentiels décroissants. Exemples : charge ponctuelle et champ uniforme.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Le potentiel associe un nombre à chaque point de l'espace. Les points qui possèdent la même valeur peuvent être regroupés en courbes ou en surfaces appelées équipotentielles.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.8.1 Définition et propriétés des surfaces équipotentielles",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Surface équipotentielle",
+              "md": "Une surface équipotentielle est un ensemble de points pour lesquels\n$$\\boxed{V = \\text{constante}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Si une charge se déplace de $A$ vers $B$ sur la même équipotentielle, $V_B-V_A = 0$. Donc\n$$W_{A\\to B} = -q(V_B-V_A) = 0.$$\nAinsi, la force électrique ne fournit aucun travail pour un déplacement tangent à une équipotentielle.\n\nComme $dV = -\\vec E\\cdot d\\vec\\ell$, et que $dV = 0$ pour un déplacement tangent à l'équipotentielle, on doit avoir\n$$\\vec E\\cdot d\\vec\\ell = 0.$$\nLe champ est donc perpendiculaire à la surface équipotentielle.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Les lignes de champ électrostatique coupent les surfaces équipotentielles à angle droit, et elles sont orientées vers les potentiels décroissants.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-equipotentielles-charge.svg",
+              "alt": "Charge +Q au centre ; équipotentielles en cercles pointillés concentriques et lignes de champ radiales sortantes qui leur sont perpendiculaires.",
+              "caption": "Figure 4.8 — Pour une charge ponctuelle positive, les équipotentielles sont des sphères concentriques et les lignes de champ leur sont perpendiculaires.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Plus on s'éloigne de la charge positive, plus le potentiel $V = kQ/r$ diminue.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "point-charges",
+              "caption": "Déplace les charges et change leurs signes : les lignes de champ restent perpendiculaires aux équipotentielles et vont vers les potentiels décroissants.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une ligne de champ peut être tangente à une surface équipotentielle.",
+                "answer": false,
+                "explanation": "Faux : le champ est perpendiculaire aux équipotentielles. Penser que l'équipotentielle est parallèle au champ est une erreur fréquente signalée par le cours."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.8.2 Surfaces équipotentielles dans un champ uniforme",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans un champ uniforme dirigé selon $+x$,\n$$\\vec E = E_0\\vec e_x.$$\nLa relation $E_x = -dV/dx$ donne\n$$\\frac{dV}{dx} = -E_0.$$\nAprès intégration,\n$$V(x) = -E_0x+C.$$\nLes surfaces $V = $ constante correspondent donc à des plans $x = $ constante, perpendiculaires au champ.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch04-equipotentielles-uniforme.svg",
+              "alt": "Lignes de champ horizontales parallèles E = E0 ex et équipotentielles verticales V1 à V5 régulièrement espacées, avec V1 > V2 > V3 > V4 > V5.",
+              "caption": "Figure 4.9 — Dans un champ uniforme, les équipotentielles sont des plans parallèles et régulièrement espacés.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans un champ uniforme, les équipotentielles sont des plans parallèles et régulièrement espacés lorsque le potentiel varie linéairement. La figure permet aussi d'interpréter la norme du champ : plus le potentiel varie rapidement avec la distance, plus $|\\nabla V|$ est grand et donc plus le champ est intense.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans un champ uniforme $\\vec E = E_0\\vec e_x$ avec $E_0 = 200\\ \\mathrm{V\\,m^{-1}}$, deux équipotentielles séparées de $5\\ \\mathrm{cm}$ selon $x$ diffèrent de ___ V.",
+                "answerType": "number",
+                "accepted": [
+                  "10"
+                ],
+                "explanation": "$V(x) = -E_0x+C$ donc $|\\Delta V| = E_0|\\Delta x| = 200\\times0{,}05 = 10\\ \\mathrm V$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le travail de la force électrique pour un déplacement effectué entièrement sur une équipotentielle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Positif"
+                },
+                {
+                  "id": "b",
+                  "md": "Négatif"
+                },
+                {
+                  "id": "c",
+                  "md": "Nul"
+                },
+                {
+                  "id": "d",
+                  "md": "Il dépend du chemin"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$W_{A\\to B} = -q(V_B-V_A) = 0$ puisque $V_A = V_B$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la forme des équipotentielles d'une charge ponctuelle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Des plans parallèles"
+                },
+                {
+                  "id": "b",
+                  "md": "Des sphères concentriques centrées sur la charge"
+                },
+                {
+                  "id": "c",
+                  "md": "Des cylindres coaxiaux"
+                },
+                {
+                  "id": "d",
+                  "md": "Des demi-droites issues de la charge"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$V = kQ/r$ est constant quand $r$ est constant : sphères centrées sur la charge. Les demi-droites radiales sont les lignes de champ."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un champ uniforme $\\vec E = E_0\\vec e_x$, les équipotentielles sont les plans $x = $ constante.",
+              "answer": true,
+              "explanation": "Vrai : $V(x) = -E_0x+C$ ne dépend que de $x$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Plus les équipotentielles (pour des écarts de potentiel égaux) sont rapprochées, plus le champ est faible.",
+              "answer": false,
+              "explanation": "Faux : des équipotentielles rapprochées signifient que $V$ varie vite avec la distance, donc $|\\nabla V|$ et le champ sont **intenses**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "En suivant une ligne de champ dans son sens, le potentiel :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "augmente"
+                },
+                {
+                  "id": "b",
+                  "md": "diminue"
+                },
+                {
+                  "id": "c",
+                  "md": "reste constant"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les lignes de champ sont orientées vers les potentiels décroissants."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "methodes-et-conclusion",
+      "title": "Méthodes de résolution et contrôles de cohérence physique",
+      "number": "4.9–4.10",
+      "lessons": [
+        {
+          "slug": "methodes-coherence-conclusion",
+          "title": "Méthodes, contrôles de cohérence et conclusion",
+          "number": "4.9–4.10",
+          "estimatedMinutes": 7,
+          "summary": "Quelle relation choisir selon la question posée (travail, mouvement, potentiel d'une distribution, champ), vérifications systématiques (unités, signes, référence, limites, sens du champ) et bilan du chapitre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "4.9 Méthodes de résolution et contrôles de cohérence physique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les notions de travail, d'énergie et de potentiel sont liées, mais elles ne répondent pas toutes au même type de question. Une bonne résolution commence donc par choisir la grandeur la plus directe.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode.**\n\n**Pour un problème de travail entre deux points :**\n$$\\boxed{W_{A\\to B} = q(V_A-V_B).}$$\nSi le potentiel n'est pas connu,\n$$\\boxed{W_{A\\to B} = q\\int_A^B\\vec E\\cdot d\\vec\\ell.}$$\n**Pour un problème de mouvement sans forces dissipatives :**\n$$\\boxed{E_c(A)+E_p(A) = E_c(B)+E_p(B)},\\qquad E_p = qV.$$\n**Pour calculer le potentiel d'une distribution :**\n$$\\boxed{V(M) = k\\int\\frac{dq}{PM}.}$$\n**Pour retrouver le champ à partir du potentiel :**\n$$\\boxed{\\vec E = -\\nabla V.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque type de question à la relation la plus directe.",
+                "pairs": [
+                  {
+                    "left": "Travail entre deux points de potentiels connus",
+                    "right": "$W_{A\\to B} = q(V_A-V_B)$"
+                  },
+                  {
+                    "left": "Vitesse d'une particule (sans forces dissipatives)",
+                    "right": "$E_c+E_p$ conservée"
+                  },
+                  {
+                    "left": "Potentiel d'une distribution continue",
+                    "right": "$V(M) = k\\int dq/PM$"
+                  },
+                  {
+                    "left": "Champ connaissant le potentiel",
+                    "right": "$\\vec E = -\\nabla V$"
+                  }
+                ],
+                "explanation": "C'est la méthode du §4.9 : on choisit la grandeur qui répond le plus directement à la question."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Avant de valider un résultat, vérifier systématiquement :\n- les unités : $V$ en volts, $E_p$ et $W$ en joules, $E$ en $\\mathrm{V\\,m^{-1}}$ ou $\\mathrm{N\\,C^{-1}}$ ;\n- le signe de la charge mobile dans $E_p = qV$ et $W = q(V_A-V_B)$ ;\n- la référence choisie pour le potentiel ;\n- le comportement à grande distance ;\n- la cohérence avec le sens du champ : $\\vec E$ doit pointer vers les potentiels décroissants.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Les unités $\\mathrm{N\\,C^{-1}}$ et $\\mathrm{V\\,m^{-1}}$ sont équivalentes. En effet,\n$$1\\ \\mathrm{V\\,m^{-1}} = 1\\ \\frac{\\mathrm{J\\,C^{-1}}}{\\mathrm m} = 1\\ \\frac{\\mathrm{N\\,m}}{\\mathrm{C\\,m}} = 1\\ \\mathrm{N\\,C^{-1}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Les unités $\\mathrm{V\\,m^{-1}}$ et $\\mathrm{N\\,C^{-1}}$ sont équivalentes.",
+                "answer": true,
+                "explanation": "Vrai : $1\\ \\mathrm V = 1\\ \\mathrm{J\\,C^{-1}} = 1\\ \\mathrm{N\\,m\\,C^{-1}}$, donc $1\\ \\mathrm{V\\,m^{-1}} = 1\\ \\mathrm{N\\,C^{-1}}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.10 Conclusion",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce chapitre a construit progressivement la description énergétique de l'électrostatique. Le point de départ est le travail élémentaire $dW = \\vec F\\cdot d\\vec\\ell$. Pour la force créée par une charge ponctuelle, la composante tangentielle du déplacement ne contribue pas au travail ; seule la variation radiale intervient. L'intégration conduit alors à un travail qui dépend uniquement des positions initiale et finale. C'est cette démonstration qui justifie le caractère conservatif de la force électrostatique.\n\nLe caractère conservatif permet ensuite de définir l'énergie potentielle par $\\Delta E_p = -W$. Après introduction de l'énergie cinétique $E_c = mv^2/2$, la conservation de $E_c+E_p$ fournit une méthode puissante pour étudier le mouvement d'une particule chargée sans résoudre directement toute la dynamique.\n\nLe potentiel $V = E_p/q$ retire enfin la dépendance à la charge test et caractérise directement les sources. Grandeur scalaire, il se superpose algébriquement et se calcule simplement pour des distributions continues. La relation $\\vec E = -\\nabla V$ reconnecte les descriptions énergétique et locale : le champ est dirigé vers les potentiels décroissants et reste perpendiculaire aux surfaces équipotentielles.\n\nLe chapitre suivant pourra s'appuyer sur cette double description champ–potentiel pour introduire des outils globaux de calcul, notamment le flux du champ et le théorème de Gauss.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Pour déterminer la vitesse d'une particule chargée entre deux points (sans forces dissipatives), quelle méthode est la plus directe ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Intégrer l'accélération le long de la trajectoire"
+                },
+                {
+                  "id": "b",
+                  "md": "Écrire la conservation $E_c(A)+E_p(A) = E_c(B)+E_p(B)$ avec $E_p = qV$"
+                },
+                {
+                  "id": "c",
+                  "md": "Calculer le flux du champ"
+                },
+                {
+                  "id": "d",
+                  "md": "Calculer $\\nabla V$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La conservation de l'énergie mécanique évite de résoudre toute la dynamique."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans $E_p = qV$ et $W = q(V_A-V_B)$, le signe de la charge mobile peut être ignoré.",
+              "answer": false,
+              "explanation": "Faux : oublier le signe de $q$ est une erreur classique ; il change le signe de l'énergie et du travail."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque grandeur à son unité SI.",
+              "pairs": [
+                {
+                  "left": "Potentiel $V$",
+                  "right": "$\\mathrm V$"
+                },
+                {
+                  "left": "Énergie potentielle $E_p$",
+                  "right": "$\\mathrm J$"
+                },
+                {
+                  "left": "Champ $E$",
+                  "right": "$\\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "left": "Charge $q$",
+                  "right": "$\\mathrm C$"
+                }
+              ],
+              "explanation": "Ce sont les vérifications d'unités demandées par le cours ; $\\mathrm{V\\,m^{-1}}$ équivaut à $\\mathrm{N\\,C^{-1}}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Vous trouvez un champ qui pointe vers les potentiels **croissants**. Que conclure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le résultat est cohérent"
+                },
+                {
+                  "id": "b",
+                  "md": "Il y a probablement une erreur de signe (par exemple l'oubli du moins dans $\\vec E = -\\nabla V$)"
+                },
+                {
+                  "id": "c",
+                  "md": "La charge source est forcément négative"
+                },
+                {
+                  "id": "d",
+                  "md": "La référence du potentiel est mal choisie"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le champ doit toujours pointer vers les potentiels décroissants, quels que soient les signes des charges et la référence choisie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "revision-auto-evaluation",
+      "title": "Révision et auto-évaluation",
+      "number": "4.11",
+      "lessons": [
+        {
+          "slug": "synthese-erreurs-lexique",
+          "title": "Synthèse, erreurs fréquentes et lexique",
+          "number": "4.11.1–4.11.5",
+          "estimatedMinutes": 10,
+          "summary": "Les relations essentielles du chapitre, la carte mentale, les erreurs fréquentes, le lexique et l'auto-test express.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Cette section rassemble les relations essentielles, les pièges de signe et les réflexes de résolution nécessaires avant d'aborder la suite du cours.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.11.1 Synthèse",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**1. Travail élémentaire.** $\\;dW = \\vec F\\cdot d\\vec\\ell$. Seule la composante de la force parallèle au déplacement produit du travail.\n\n**2. Travail électrostatique.** Pour une charge $q$ déplacée dans un champ : $W_{A\\to B} = q\\int_A^B\\vec E\\cdot d\\vec\\ell$. Pour une charge source ponctuelle $Q$ :\n$$W_{A\\to B} = kQq\\left(\\frac1{r_A}-\\frac1{r_B}\\right).$$\nCe résultat ne dépend que de $A$ et $B$ : la force électrostatique est conservative.\n\n**3. Énergie potentielle.** $\\;\\Delta E_p = -W_{A\\to B}$. Avec $E_p(\\infty) = 0$ pour deux charges ponctuelles : $E_p(r) = k\\dfrac{Qq}{r}$.\n\n**4. Énergie cinétique et énergie mécanique.** $\\;E_c = \\dfrac12mv^2$, $\\;E_m = E_c+E_p$. Si seule la force électrostatique travaille : $E_m = $ constante.\n\n**5. Potentiel.** $\\;V = \\dfrac{E_p}{q}$, $\\;V_B-V_A = -\\int_A^B\\vec E\\cdot d\\vec\\ell$. Pour une charge ponctuelle : $V(r) = k\\dfrac{Q}{r}$.\n\n**6. Superposition et distribution continue.** $\\;V(M) = k\\sum_i\\dfrac{Q_i}{r_i}$, $\\;V(M) = k\\int\\dfrac{dq}{PM}$.\n\n**7. Champ à partir du potentiel.** $\\;\\vec E = -\\nabla V$. Le champ est perpendiculaire aux équipotentielles et dirigé vers les potentiels décroissants.\n\n**8. Chaîne de raisonnement.**\n$$\\vec F\\longrightarrow dW\\longrightarrow W_{A\\to B}\\longrightarrow E_p\\longrightarrow V\\longrightarrow\\vec E = -\\nabla V.$$",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.11.2 Carte mentale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "*Figure 4.10 (décrite) : carte mentale « Interaction électrostatique » à trois branches — **Travail** ($dW = \\vec F\\cdot d\\vec\\ell$, indépendance du chemin), **Énergie** ($\\Delta E_p = -W$, $E_c+E_p$ conservée) et **Potentiel** ($V = E_p/q$, superposition scalaire) — reliées à un nœud **Lien champ–potentiel** ($\\vec E = -\\nabla V$, potentiel décroissant dans le sens de $\\vec E$, équipotentielles $\\perp\\vec E$).*\n\nLa figure peut être relue de gauche à droite : le travail établit le caractère conservatif, l'énergie traduit ce travail sous forme de stockage, le potentiel ramène cette énergie à l'unité de charge, puis le gradient permet de revenir au champ.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre la chaîne de raisonnement du chapitre.",
+                "items": [
+                  "$\\vec F$",
+                  "$dW$",
+                  "$W_{A\\to B}$",
+                  "$E_p$",
+                  "$V$",
+                  "$\\vec E = -\\nabla V$"
+                ],
+                "explanation": "Force → travail élémentaire → travail entre deux points → énergie potentielle → potentiel → retour au champ par le gradient."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "4.11.3 Erreurs fréquentes",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Erreurs fréquentes.**\n- Écrire $E_p$ ou $E_c$ avant de les avoir définies ou sans préciser leur unité.\n- Confondre $W_{A\\to B}$ avec $\\Delta E_p$ : ils sont opposés, $\\Delta E_p = -W_{A\\to B}$.\n- Affirmer qu'une force est conservative sans vérifier l'indépendance du chemin.\n- Confondre potentiel $V$ en volts et énergie potentielle $E_p$ en joules.\n- Oublier le signe de la charge mobile dans $E_p = qV$ et $W = q(V_A-V_B)$.\n- Confondre $V_B-V_A$ avec la tension $U_{AB} = V_A-V_B$.\n- Additionner des potentiels comme des vecteurs ; le potentiel est scalaire.\n- Remplacer les charges $Q_i$ par leurs valeurs absolues dans $V = k\\sum Q_i/r_i$.\n- Oublier le signe moins dans $\\vec E = -\\nabla V$.\n- Penser qu'une équipotentielle est parallèle au champ ; elle lui est perpendiculaire.\n- Oublier que le choix du zéro du potentiel est une convention, tandis que les différences de potentiel sont physiquement déterminées.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.11.4 Lexique essentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le tableau 4.1 doit permettre de distinguer clairement les quatre grandeurs souvent confondues : travail, énergie potentielle, potentiel et différence de potentiel.\n\n| Terme | Idée essentielle |\n|---|---|\n| Travail élémentaire | $dW = \\vec F\\cdot d\\vec\\ell$ ; mesure l'effet de la force dans la direction du déplacement. |\n| Force conservative | Force dont le travail entre deux points est indépendant du chemin suivi. |\n| Énergie potentielle $E_p$ | Énergie associée à la position dans un champ conservatif ; $\\Delta E_p = -W$. |\n| Énergie cinétique $E_c$ | Énergie liée au mouvement ; $E_c = mv^2/2$. |\n| Énergie mécanique $E_m$ | Somme $E_c+E_p$, conservée lorsque seules des forces conservatives travaillent. |\n| Potentiel $V$ | Énergie potentielle par unité de charge : $V = E_p/q$. |\n| Différence de potentiel | Variation $V_B-V_A$ entre deux points. |\n| Tension $U_{AB}$ | Convention usuelle $U_{AB} = V_A-V_B$. |\n| Électron-volt | Unité d'énergie : $1\\ \\mathrm{eV} = 1{,}602\\times10^{-19}\\ \\mathrm J$. |\n| Gradient | Opérateur décrivant la variation spatiale maximale d'un scalaire ; $\\vec E = -\\nabla V$. |\n| Équipotentielle | Surface sur laquelle $V$ est constant ; le champ lui est perpendiculaire. |",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "4.11.5 Auto-test express",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Auto-test express",
+              "md": "Répondez sans consulter les pages précédentes.\n1. Quelle partie d'une force produit du travail pendant un déplacement élémentaire ?\n2. Pourquoi le travail électrostatique d'une charge ponctuelle ne dépend-il pas de la partie tangentielle du déplacement ?\n3. Quelle propriété du travail permet de qualifier la force électrostatique de conservative ?\n4. Quelle relation relie $\\Delta E_p$ et $W_{A\\to B}$ ?\n5. Définir l'énergie cinétique avant d'écrire la conservation de l'énergie mécanique.\n6. Quelle différence conceptuelle existe entre $E_p$ et $V$ ?\n7. Dans quel sens le potentiel varie-t-il lorsqu'on suit une ligne de champ ?\n8. Comment obtient-on le champ à partir du potentiel ?\n9. Quel est le travail de la force électrique pour un déplacement effectué entièrement sur une équipotentielle ?\n10. Quelle est l'expression du potentiel créé par une charge ponctuelle $Q$ avec $V(\\infty) = 0$ ?",
+              "solution": [
+                {
+                  "md": "(1) La composante parallèle au déplacement ; (2) elle est perpendiculaire à la force radiale, donc son produit scalaire avec la force est nul ; (3) le travail dépend seulement des points initial et final."
+                },
+                {
+                  "md": "(4) $\\Delta E_p = -W_{A\\to B}$ ; (5) $E_c = mv^2/2$ ; (6) $E_p$ dépend de la charge placée dans le champ alors que $V$ caractérise les sources et le point."
+                },
+                {
+                  "md": "(7) Il diminue ; (8) $\\vec E = -\\nabla V$ ; (9) zéro ; (10) $V = kQ/r$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la différence conceptuelle entre $E_p$ et $V$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Aucune, ce sont deux noms pour la même grandeur"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$E_p$ dépend de la charge placée dans le champ, $V$ caractérise seulement les sources et le point"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$V$ est un vecteur, $E_p$ un scalaire"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$E_p$ s'exprime en volts et $V$ en joules"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$V = E_p/q$ : diviser par la charge test retire la dépendance à cette charge. $E_p$ est en joules, $V$ en volts ; les deux sont scalaires."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "$W_{A\\to B}$ et $\\Delta E_p$ sont égaux.",
+              "answer": false,
+              "explanation": "Faux : ils sont opposés, $\\Delta E_p = -W_{A\\to B}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le choix du zéro du potentiel est une convention, alors que les différences de potentiel sont physiquement déterminées.",
+              "answer": true,
+              "explanation": "Vrai : changer la référence ajoute la même constante partout, ce qui ne modifie pas $V_B-V_A$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si seule la force électrostatique travaille, quelle grandeur reste constante ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$E_c$"
+                },
+                {
+                  "id": "b",
+                  "md": "$E_p$"
+                },
+                {
+                  "id": "c",
+                  "md": "$E_m = E_c+E_p$"
+                },
+                {
+                  "id": "d",
+                  "md": "Le potentiel $V$ au point où se trouve la particule"
+                }
+              ],
+              "answer": "c",
+              "explanation": "La force électrostatique est conservative : l'énergie mécanique $E_m = E_c+E_p$ se conserve, $E_c$ et $E_p$ s'échangent."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque terme à son idée essentielle.",
+              "pairs": [
+                {
+                  "left": "Force conservative",
+                  "right": "Travail indépendant du chemin suivi"
+                },
+                {
+                  "left": "Potentiel $V$",
+                  "right": "Énergie potentielle par unité de charge"
+                },
+                {
+                  "left": "Équipotentielle",
+                  "right": "Surface où $V$ est constant"
+                },
+                {
+                  "left": "Gradient",
+                  "right": "Variation spatiale maximale d'un scalaire"
+                }
+              ],
+              "explanation": "Ce sont les définitions du lexique (tableau 4.1)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La tension $U_{AB}$ est définie par $U_{AB} = V_A -$ ___ .",
+              "answerType": "text",
+              "accepted": [
+                "V_B",
+                "VB",
+                "V B"
+              ],
+              "explanation": "Convention usuelle : $U_{AB} = V_A-V_B$, à ne pas confondre avec $V_B-V_A$."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-travail-energie",
+          "title": "Exercices corrigés : travail et énergie",
+          "number": "4.11.6 (ex. 4.1–4.6)",
+          "estimatedMinutes": 12,
+          "summary": "Exercices corrigés 4.1 à 4.6 : travail d'une force constante, travail entre deux distances, énergie de deux charges, conservation de l'énergie mécanique, potentiel de deux charges, travail à partir d'une différence de potentiel.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Les exercices suivants suivent la progression du chapitre : travail, énergie, potentiel, distributions continues, puis relation champ–potentiel.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.1 – Travail d'une force constante",
+              "md": "Une force constante $\\vec F = 6\\ \\mathrm N\\,\\vec e_x$ déplace une particule de $A$ vers $B$ suivant un déplacement $\\overrightarrow{AB} = 0{,}50\\ \\mathrm m\\,\\vec e_x+0{,}30\\ \\mathrm m\\,\\vec e_y$. Calculer le travail de la force.",
+              "solution": [
+                {
+                  "md": "$$W_{A\\to B} = \\vec F\\cdot\\overrightarrow{AB} = 6\\times0{,}50+0\\times0{,}30 = \\boxed{3{,}0\\ \\mathrm J}.$$"
+                },
+                {
+                  "md": "La composante du déplacement selon $y$ ne contribue pas puisque la force est dirigée selon $x$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.2 – Travail entre deux distances",
+              "md": "Une charge fixe $Q = 5\\ \\mathrm{nC}$ est placée en $O$. Une charge $q = 2\\ \\mathrm{nC}$ se déplace de $r_A = 0{,}10\\ \\mathrm m$ à $r_B = 0{,}30\\ \\mathrm m$. Calculer le travail de la force électrostatique.",
+              "solution": [
+                {
+                  "md": "$$W_{A\\to B} = kQq\\left(\\frac1{r_A}-\\frac1{r_B}\\right).$$"
+                },
+                {
+                  "md": "Numériquement,\n$$W_{A\\to B} = 8{,}99\\times10^9\\,(5\\times10^{-9})(2\\times10^{-9})\\left(10-\\frac{10}{3}\\right)\\simeq\\boxed{5{,}99\\times10^{-7}\\ \\mathrm J}.$$"
+                },
+                {
+                  "md": "Le travail est positif : la force répulsive favorise l'éloignement des deux charges positives."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Reprenez l'exercice 4.1 avec $\\overrightarrow{AB} = 0{,}20\\ \\mathrm m\\,\\vec e_x+0{,}90\\ \\mathrm m\\,\\vec e_y$ (même force $6\\ \\mathrm N\\,\\vec e_x$). Le travail vaut ___ J.",
+                "answerType": "number",
+                "accepted": [
+                  "1.2"
+                ],
+                "explanation": "$W = 6\\times0{,}20+0\\times0{,}90 = 1{,}2\\ \\mathrm J$ : seule la composante selon $x$ compte."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.3 – Énergie potentielle de deux charges",
+              "md": "Deux charges $Q = -4\\ \\mathrm{nC}$ et $q = 3\\ \\mathrm{nC}$ sont séparées de $0{,}20\\ \\mathrm m$. En prenant l'énergie nulle à l'infini, déterminer leur énergie potentielle et interpréter son signe.",
+              "solution": [
+                {
+                  "md": "$$E_p = k\\frac{Qq}{r} = 8{,}99\\times10^9\\,\\frac{(-4\\times10^{-9})(3\\times10^{-9})}{0{,}20}\\simeq\\boxed{-5{,}39\\times10^{-7}\\ \\mathrm J}.$$"
+                },
+                {
+                  "md": "L'énergie est négative car les charges sont de signes opposés. La configuration liée possède une énergie inférieure à la référence choisie à l'infini."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.4 – Conservation de l'énergie mécanique",
+              "md": "Une particule de masse $m$ et de charge $q>0$ est libérée sans vitesse à une distance $r_A$ d'une charge fixe $Q>0$. Déterminer sa vitesse lorsqu'elle atteint une distance $r_B>r_A$.",
+              "solution": [
+                {
+                  "md": "Au point $A$ : $E_c(A) = 0$, $\\;E_p(A) = k\\dfrac{Qq}{r_A}$. Au point $B$ : $E_c(B) = \\dfrac12mv_B^2$, $\\;E_p(B) = k\\dfrac{Qq}{r_B}$."
+                },
+                {
+                  "md": "La conservation de $E_c+E_p$ donne\n$$\\frac12mv_B^2 = kQq\\left(\\frac1{r_A}-\\frac1{r_B}\\right).$$"
+                },
+                {
+                  "md": "Donc\n$$\\boxed{v_B = \\sqrt{\\frac{2kQq}{m}\\left(\\frac1{r_A}-\\frac1{r_B}\\right)}.}$$\nLe terme entre parenthèses est positif puisque $r_B>r_A$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.5 – Potentiel créé par deux charges",
+              "md": "Deux charges $Q_1 = 6\\ \\mathrm{nC}$ et $Q_2 = -2\\ \\mathrm{nC}$ sont situées respectivement à $r_1 = 0{,}30\\ \\mathrm m$ et $r_2 = 0{,}20\\ \\mathrm m$ d'un point $M$. Calculer $V(M)$ avec la référence à l'infini.",
+              "solution": [
+                {
+                  "md": "$$V(M) = k\\left(\\frac{Q_1}{r_1}+\\frac{Q_2}{r_2}\\right).$$"
+                },
+                {
+                  "md": "Ainsi,\n$$V(M) = 8{,}99\\times10^9\\left(\\frac{6\\times10^{-9}}{0{,}30}-\\frac{2\\times10^{-9}}{0{,}20}\\right)\\simeq\\boxed{89{,}9\\ \\mathrm V}.$$"
+                },
+                {
+                  "md": "La somme est algébrique : le potentiel négatif créé par $Q_2$ réduit le potentiel total."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.6 – Travail à partir d'une différence de potentiel",
+              "md": "Une charge $q = -3\\ \\mathrm{nC}$ passe d'un point $A$ où $V_A = 120\\ \\mathrm V$ à un point $B$ où $V_B = 20\\ \\mathrm V$. Calculer le travail de la force électrique et la variation d'énergie potentielle.",
+              "solution": [
+                {
+                  "md": "$$W_{A\\to B} = q(V_A-V_B) = (-3\\times10^{-9})(100) = \\boxed{-3{,}0\\times10^{-7}\\ \\mathrm J}.$$"
+                },
+                {
+                  "md": "Donc\n$$\\Delta E_p = -W_{A\\to B} = \\boxed{3{,}0\\times10^{-7}\\ \\mathrm J}.$$"
+                },
+                {
+                  "md": "La charge est négative : un déplacement vers un potentiel plus faible augmente ici son énergie potentielle."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exercice 4.6, si la charge était $q = +3\\ \\mathrm{nC}$ (mêmes potentiels), que deviendrait $\\Delta E_p$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$+3{,}0\\times10^{-7}\\ \\mathrm J$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-3{,}0\\times10^{-7}\\ \\mathrm J$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$-3{,}0\\times10^{-9}\\ \\mathrm J$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$W = q(V_A-V_B) = 3\\times10^{-9}\\times100 = 3\\times10^{-7}\\ \\mathrm J$, donc $\\Delta E_p = -3{,}0\\times10^{-7}\\ \\mathrm J$ : une charge positive qui descend les potentiels perd de l'énergie potentielle."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'exercice 4.2, le travail est positif parce que la force répulsive favorise l'éloignement des deux charges positives.",
+              "answer": true,
+              "explanation": "Vrai : $Qq>0$ et $r_B>r_A$, donc $kQq(1/r_A-1/r_B)>0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Deux charges $Q = 2\\ \\mathrm{nC}$ et $Q' = -1\\ \\mathrm{nC}$ sont à $0{,}30\\ \\mathrm m$ et $0{,}10\\ \\mathrm m$ d'un point $M$. Avec $k = 9\\times10^9$ SI, $V(M) =$ ___ V.",
+              "answerType": "number",
+              "accepted": [
+                "-30"
+              ],
+              "explanation": "$V = 9\\times10^9\\left(\\dfrac{2\\times10^{-9}}{0{,}30}-\\dfrac{10^{-9}}{0{,}10}\\right) = 60-90 = -30\\ \\mathrm V$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'exercice 4.4, pourquoi la vitesse $v_B$ est-elle bien définie (racine d'un nombre positif) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que $m>0$ seulement"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que $Qq>0$ et $\\frac1{r_A}-\\frac1{r_B}>0$ puisque $r_B>r_A$"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $E_p(B)>E_p(A)$"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que la particule part avec une vitesse non nulle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les charges se repoussent, la particule s'éloigne ; $E_p$ diminue et se transforme en énergie cinétique."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour une charge négative, un déplacement vers un potentiel plus faible fait diminuer son énergie potentielle.",
+              "answer": false,
+              "explanation": "Faux : $\\Delta E_p = q\\,\\Delta V$ ; avec $q<0$ et $\\Delta V<0$, $\\Delta E_p>0$. C'est le cas de l'exercice 4.6."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'exercice 4.3 ($Q = -4\\ \\mathrm{nC}$, $q = 3\\ \\mathrm{nC}$), que signifie le signe négatif de $E_p$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Une erreur de calcul"
+                },
+                {
+                  "id": "b",
+                  "md": "La configuration liée a une énergie inférieure à la référence choisie à l'infini"
+                },
+                {
+                  "id": "c",
+                  "md": "Les charges se repoussent"
+                },
+                {
+                  "id": "d",
+                  "md": "Le travail de la force est nul"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Charges de signes opposés : elles s'attirent, et il faudrait fournir un travail pour les séparer jusqu'à l'infini."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-potentiel-champ",
+          "title": "Exercices corrigés : potentiel et champ",
+          "number": "4.11.6 (ex. 4.7–4.11)",
+          "estimatedMinutes": 11,
+          "summary": "Exercices corrigés 4.7 à 4.11 : accélération d'un électron, champ obtenu à partir d'un potentiel, potentiel et champ d'un anneau, énergie de trois charges, déplacement sur une équipotentielle.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "title": "Exercice 4.7 – Accélération d'un électron",
+              "md": "Un électron part du repos et traverse une différence de potentiel de valeur absolue $500\\ \\mathrm V$ dans le sens qui l'accélère. Déterminer l'énergie cinétique gagnée en électron-volts et en joules, puis sa vitesse en régime non relativiste. On donne $m_e = 9{,}11\\times10^{-31}\\ \\mathrm{kg}$.",
+              "solution": [
+                {
+                  "md": "L'énergie gagnée vaut\n$$\\Delta E_c = 500\\ \\mathrm{eV} = 500\\times1{,}602\\times10^{-19} = 8{,}01\\times10^{-17}\\ \\mathrm J.$$"
+                },
+                {
+                  "md": "Avec $\\Delta E_c = \\frac12m_ev^2$,\n$$v = \\sqrt{\\frac{2\\Delta E_c}{m_e}} = \\sqrt{\\frac{2\\,(8{,}01\\times10^{-17})}{9{,}11\\times10^{-31}}}\\simeq\\boxed{1{,}33\\times10^7\\ \\mathrm{m\\,s^{-1}}}.$$"
+                },
+                {
+                  "md": "Cette vitesse reste suffisamment inférieure à celle de la lumière pour que l'approximation non relativiste soit raisonnable."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.8 – Champ obtenu à partir d'un potentiel",
+              "md": "Dans une région de l'espace,\n$$V(x,y) = 3x^2-4y$$\navec $V$ en volts et $x$, $y$ en mètres. Déterminer le champ électrique.",
+              "solution": [
+                {
+                  "md": "$$\\frac{\\partial V}{\\partial x} = 6x,\\qquad\\frac{\\partial V}{\\partial y} = -4.$$"
+                },
+                {
+                  "md": "Donc $\\vec E = -\\nabla V = -6x\\,\\vec e_x+4\\,\\vec e_y$. Ainsi,\n$$\\boxed{\\vec E(x,y) = (-6x\\,\\vec e_x+4\\,\\vec e_y)\\ \\mathrm{V\\,m^{-1}}.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour $V(x,y) = 3x^2-4y$, que vaut $\\vec E$ au point $(1\\ \\mathrm m,\\,0)$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$(6\\,\\vec e_x-4\\,\\vec e_y)\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$(-6\\,\\vec e_x+4\\,\\vec e_y)\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$(-3\\,\\vec e_x+4\\,\\vec e_y)\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\vec 0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$\\vec E = -6x\\,\\vec e_x+4\\,\\vec e_y$ ; en $x = 1$ : $-6\\,\\vec e_x+4\\,\\vec e_y$. La réponse a oublie le signe moins de $\\vec E = -\\nabla V$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.9 – Potentiel et champ d'un anneau",
+              "md": "Un anneau de rayon $R$ porte une charge totale $Q$. À partir du potentiel sur son axe\n$$V(z) = k\\frac{Q}{\\sqrt{R^2+z^2}},$$\nretrouver le champ axial et vérifier sa valeur au centre.",
+              "solution": [
+                {
+                  "md": "$$E_z = -\\frac{dV}{dz} = k\\frac{Qz}{(R^2+z^2)^{3/2}}.$$\nDonc\n$$\\boxed{\\vec E(z) = k\\frac{Qz}{(R^2+z^2)^{3/2}}\\vec e_z.}$$"
+                },
+                {
+                  "md": "Au centre, $z = 0$, d'où $\\boxed{\\vec E(0) = \\vec 0}$, ce qui est cohérent avec la symétrie de l'anneau."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.10 – Énergie d'un système de trois charges",
+              "md": "Trois charges sont placées aux sommets d'un triangle équilatéral de côté $a$ : $q_1 = q$, $q_2 = q$ et $q_3 = -q$. Déterminer l'énergie potentielle électrostatique du système avec la référence à l'infini.",
+              "solution": [
+                {
+                  "md": "Chaque paire est séparée de la distance $a$. L'énergie totale est la somme sur les trois paires :\n$$E_p = k\\left(\\frac{q_1q_2}{a}+\\frac{q_1q_3}{a}+\\frac{q_2q_3}{a}\\right).$$"
+                },
+                {
+                  "md": "Donc\n$$E_p = \\frac ka\\left(q^2-q^2-q^2\\right) = \\boxed{-\\frac{kq^2}{a}}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 4.11 – Déplacement sur une équipotentielle",
+              "md": "Une charge $q$ se déplace le long d'un cercle centré sur une charge ponctuelle fixe $Q$. Montrer que le travail de la force électrostatique est nul sans effectuer d'intégrale détaillée.",
+              "solution": [
+                {
+                  "md": "Sur le cercle, la distance $r$ à la charge $Q$ est constante. Le potentiel $V = k\\dfrac{Q}{r}$ est donc constant sur toute la trajectoire."
+                },
+                {
+                  "md": "Ainsi $V_B-V_A = 0$ pour deux points quelconques du cercle, et\n$$\\boxed{W_{A\\to B} = -q(V_B-V_A) = 0.}$$"
+                },
+                {
+                  "md": "Géométriquement, la force est radiale tandis que le déplacement est tangent au cercle : ils sont perpendiculaires à chaque instant."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Reprenez l'exercice 4.10 avec trois charges **identiques** $q_1 = q_2 = q_3 = q$. On trouve $E_p = n\\,\\dfrac{kq^2}{a}$ avec $n =$ ___ .",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "Trois paires, chacune de contribution $kq^2/a$ : $E_p = 3kq^2/a$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Un électron, parti du repos, est accéléré sous $500\\ \\mathrm V$. Il gagne une énergie cinétique de ___ eV.",
+              "answerType": "number",
+              "accepted": [
+                "500"
+              ],
+              "explanation": "Une charge $e$ qui traverse $500\\ \\mathrm V$ gagne $500\\ \\mathrm{eV}$ $= 8{,}01\\times10^{-17}\\ \\mathrm J$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $V(x,y) = 3x^2-4y$, quelle est la composante $E_y$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-4\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$+4\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-6x\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E_y = -\\partial V/\\partial y = -(-4) = +4\\ \\mathrm{V\\,m^{-1}}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Au centre d'un anneau uniformément chargé, le champ est nul mais le potentiel ne l'est pas.",
+              "answer": true,
+              "explanation": "Vrai : $\\vec E(0) = \\vec 0$ par symétrie (exercice 4.9), mais $V(0) = kQ/R\\neq0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Combien vaut l'énergie du système de l'exercice 4.10 ($q$, $q$, $-q$ aux sommets d'un triangle équilatéral de côté $a$) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+\\dfrac{kq^2}{a}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\dfrac{kq^2}{a}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-\\dfrac{3kq^2}{a}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Une paire répulsive ($+kq^2/a$) et deux paires attractives ($-kq^2/a$ chacune) : total $-kq^2/a$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour l'exercice 4.11, il est nécessaire de calculer l'intégrale $\\int\\vec F\\cdot d\\vec\\ell$ le long du cercle pour conclure.",
+              "answer": false,
+              "explanation": "Faux : le cercle centré sur $Q$ est une équipotentielle, donc $W = -q(V_B-V_A) = 0$ immédiatement."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source de référence : COURS-4 (F198, Pr M. El Azzaoui, ENSA Agadir), pages 2–25, suivie dans l'ordre (§4.1 à §4.11). F305 n'a pas été nécessaire : COURS-4 est complet et lisible.",
+    "Les encadrés « Objectifs », « Prérequis », « Point clé », « Question », « Attention », « Méthode », « Résultat » de la source sont rendus par des blocs remark/theorem (origin: source) avec leur intitulé en gras ; les encadrés « Intuition » de la source sont des blocs intuition marqués origin: source.",
+    "Figures 4.1 à 4.9 redessinées en TikZ d'après le cours du professeur (public/figures/electrostatique/ch04-*.svg) ; la carte mentale 4.10 reste décrite en texte. Le tableau 4.1 (lexique) est reproduit en tableau Markdown.",
+    "Toutes les démonstrations (calcul de dr = e_r·dℓ, intégration de W, Ep(r), V_B − V_A, composantes de E = −grad V) proviennent de la source ; les justifications « why » des étapes ont été ajoutées pour la pédagogie.",
+    "La conservation de l'énergie mécanique (annoncée dans les Objectifs) n'a pas de sous-section dédiée dans la source : elle n'apparaît que dans la Méthode du §4.9, la Conclusion §4.10, la Synthèse §4.11.1 et l'exercice 4.4. Contenu conservé tel quel, sans ajout de section.",
+    "Les exercices corrigés 4.1 à 4.11 (§4.11.6) sont conservés dans la section 4.11, répartis sur deux leçons (4.1–4.6 et 4.7–4.11), et l'auto-test express (§4.11.5) est un bloc exercise avec les réponses rapides de la source comme solution.",
+    "Notation : la source écrit « grad V » ; rendu par un vecteur gradient surmonté d'une flèche (équivalent à ∇V, aussi utilisé par la source).",
+    "Aucune erreur de fond relevée. Vérifications numériques des exercices (4.2 : 5,99×10⁻⁷ J ; 4.3 : −5,39×10⁻⁷ J ; 4.5 : 89,9 V ; 4.7 : 1,33×10⁷ m/s) : toutes correctes. Seule coquille : l'en-tête de page de la source « Travail, énergic et potentiel » (sans incidence sur le contenu). Les nombres décimaux de la source écrits avec un point (8.99×10⁹, 6 × 0.50) ont été harmonisés avec la virgule décimale."
+  ]
+}

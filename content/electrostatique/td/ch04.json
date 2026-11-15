@@ -1,0 +1,295 @@
+{
+  "chapter": 4,
+  "title": "Travail, énergie potentielle et potentiel électrique",
+  "sources": [
+    "TD/TD1 (1).pdf p.1 (exercices 1 et 3)",
+    "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.2-10, p.16-25 (corrections exercices 1 et 3)"
+  ],
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Superposition de charges ponctuelles",
+      "statement_md": "On place quatre charges ponctuelles aux sommets $A$, $B$, $C$ et $D$ d'un carré de côté $a=1$ m et de centre $O$, origine du repère orthonormé $(O,x,y)$.\n\n**Données.** $q_A=q=10^{-8}$ C, $q_B=-2q$, $q_C=2q$, $q_D=-q$,   $k=\\dfrac1{4\\pi\\varepsilon_0}=9\\times10^9$ SI.\n\n- **Q1.** Déterminer le champ électrique $\\vec E(O)$ au centre du carré. Préciser sa direction, son sens et sa norme.\n- **Q2.** Déterminer le potentiel électrique $V(O)$ créé par les quatre charges.\n- **Q3.** Déterminer $V(M)$ pour $M\\in x'x$ à l'intérieur du carré. En déduire $V(I)$ et $V(I')$.\n\n![Figure — schéma de l'énoncé (Superposition de charges ponctuelles)](/figures/electrostatique/td-ch04-enonce-1.svg)",
+      "solution_md": "### Avant de commencer : les relations utilisées\nLes outils mathématiques du premier chapitre permettent de construire les déplacements, les normes, les projections, les intégrales et le gradient. La loi de Coulomb et la superposition donnent les contributions des charges. Ce TD utilise aussi le potentiel électrostatique et sa relation avec le champ ; leurs formes utiles sont rappelées ici.\n\n> **Charge ponctuelle au point $P$**\n>\n> Pour un point d'observation $M\\neq P$, on pose $\\vec r=\\overrightarrow{PM}$ et $r=\\|\\vec r\\|$. Alors\n>\n> $$\\vec E_P(M)=kq_P\\frac{\\overrightarrow{PM}}{PM^3},\\qquad V_P(M)=k\\frac{q_P}{PM},$$\n>\n> avec le potentiel nul à l'infini. Le champ est un vecteur, le potentiel est un scalaire algébrique.\n\nPour une charge test non nulle $q_t$, $\\vec F=q_t\\vec E$. En divisant Coulomb par $q_t$, on retrouve $\\vec E_P=kq_P\\vec r/r^3$. Le champ d'une source positive s'éloigne de la source ; celui d'une source négative pointe vers elle.\n\n> **Superposition et distributions continues**\n>\n> $$\\vec E=\\sum_i\\vec E_i,\\qquad V=\\sum_i V_i,$$\n>\n>\n> $$d\\vec E=k\\frac{dq}{r^3}\\vec r,\\qquad dV=k\\frac{dq}{r},\\qquad \\vec E=\\int d\\vec E,\\quad V=\\int dV.$$\n>\n> Pour une distribution linéique : $dq=\\lambda\\,d\\ell$. Pour une distribution surfacique : $dq=\\sigma\\,dS$.\n\n> **Le champ comme dérivée du potentiel**\n>\n> $$\\vec E=-\\nabla V,\\qquad E_x=-\\frac{\\partial V}{\\partial x},\\quad E_y=-\\frac{\\partial V}{\\partial y},\\quad E_z=-\\frac{\\partial V}{\\partial z}.$$\n>\n> Sur un axe de symétrie où le champ est porté par $Oz$, on peut calculer sa composante par $E_z=-dV(z)/dz$. Cela demande d'abord de justifier que les composantes transversales s'annulent.\n\n> **⚠ Deux types de sommes**\n>\n> Pour le champ, on additionne les composantes **avec leur signe**. Pour le potentiel, on additionne directement les scalaires $kq_i/r_i$. On ne remplace pas les charges négatives par leurs valeurs absolues dans le potentiel.\n\n**Lire d'abord la figure de l'exercice 1 du sujet.**\n\n1. $O$ est le centre, $x'x$ est horizontal et $y'y$ vertical. Les deux vecteurs de base $\\vec e_x$ et $\\vec e_y$ indiquent les sens positifs ; la longueur du côté est $a$, donc chaque demi-côté vaut $a/2$.\n2. Dans l'ordre autour du carré : $A$ porte $+q$, $B$ porte $-2q$, $C$ porte $+2q$ et $D$ porte $-q$. **La valeur $2q$ n'a pas le même signe en $B$ et en $C$.**\n3. $I$ est le milieu de $BC$ et $I'$ celui de $AD$, d'où $I(a/2,0)$ et $I'(-a/2,0)$. Ces points ne portent aucune charge ponctuelle ; le potentiel y est bien défini.\n\n#### Q1. Champ électrique au centre du carré\n\n> **Rappel utilisé pour cette question**\n>\n> $$\\vec E_i(O)=kq_i\\frac{\\overrightarrow{P_iO}}{P_iO^3},\\qquad \\vec E(O)=\\vec E_A(O)+\\vec E_B(O)+\\vec E_C(O)+\\vec E_D(O).$$\n>\n> On utilise aussi $\\overrightarrow{P_iO}=\\overrightarrow{OO}-\\overrightarrow{OP_i}=-\\overrightarrow{OP_i}$ et, dans une base orthonormée, $\\|u_x\\vec e_x+u_y\\vec e_y\\|=\\sqrt{u_x^2+u_y^2}$. Le signe de $q_i$ est conservé dans le champ vectoriel.\n\n**Les quatre distances sont égales, mais les quatre charges ne sont pas identiques : la symétrie du carré ne suffit pas à annuler le champ.**\n\n**Étape 1. Écrire les coordonnées des sommets.**\n\nLe côté vaut $a$ et le centre est l'origine :\n\n$$A\\Big(-\\frac a2,\\frac a2\\Big),\\quad B\\Big(\\frac a2,\\frac a2\\Big),\\quad C\\Big(\\frac a2,-\\frac a2\\Big),\\quad D\\Big(-\\frac a2,-\\frac a2\\Big),\\quad O(0,0).$$\n\n**Étape 2. Calculer la distance commune $r$.**\n\nDans le triangle rectangle formé par les deux demi-côtés, Pythagore donne\n\n$$\\begin{aligned}r^2=AO^2&=\\Big(\\frac a2\\Big)^2+\\Big(\\frac a2\\Big)^2=\\frac{a^2}4+\\frac{a^2}4=\\frac{a^2}2,\\\\\nr&=\\frac a{\\sqrt2},\\qquad r^3=\\Big(\\frac a{\\sqrt2}\\Big)^3=\\frac{a^3}{2\\sqrt2}.\\end{aligned}$$\n\nLes distances $BO$, $CO$ et $DO$ ont la même valeur.\n\n**Étape 3. Calculer la contribution de $A$, de charge $+q$.**\n\nLe déplacement est « coordonnées du point d'arrivée moins coordonnées du départ » :\n\n$$\\begin{aligned}\\overrightarrow{AO}&=\\Big(0-\\Big(-\\frac a2\\Big)\\Big)\\vec e_x+\\Big(0-\\frac a2\\Big)\\vec e_y=\\frac a2\\vec e_x-\\frac a2\\vec e_y.\\end{aligned}$$\n\nOn applique la formule du champ :\n\n$$\\vec E_A(O)=\\frac{kq}{r^3}\\Big(\\frac a2\\vec e_x-\\frac a2\\vec e_y\\Big)=\\frac{kqa}{2r^3}(\\vec e_x-\\vec e_y).$$\n\nCette contribution pointe vers la droite et vers le bas, en s'éloignant de $A$.\n\n**Étape 4. Calculer la contribution de $B$, de charge $-2q$.**\n\n$$\\overrightarrow{BO}=-\\frac a2\\vec e_x-\\frac a2\\vec e_y,\\qquad \\vec E_B(O)=\\frac{k(-2q)}{r^3}\\Big(-\\frac a2\\vec e_x-\\frac a2\\vec e_y\\Big)=\\frac{kqa}{r^3}(\\vec e_x+\\vec e_y).$$\n\nLes deux composantes sont positives : le champ pointe vers la charge négative située en haut à droite.\n\n**Étape 5. Calculer la contribution de $C$, de charge $+2q$.**\n\n$$\\overrightarrow{CO}=-\\frac a2\\vec e_x+\\frac a2\\vec e_y,\\qquad \\vec E_C(O)=\\frac{k(2q)}{r^3}\\Big(-\\frac a2\\vec e_x+\\frac a2\\vec e_y\\Big)=\\frac{kqa}{r^3}(-\\vec e_x+\\vec e_y).$$\n\nLe champ s'éloigne de $C$ : il pointe vers la gauche et vers le haut.\n\n**Étape 6. Calculer la contribution de $D$, de charge $-q$.**\n\n$$\\overrightarrow{DO}=\\frac a2\\vec e_x+\\frac a2\\vec e_y,\\qquad \\vec E_D(O)=\\frac{k(-q)}{r^3}\\Big(\\frac a2\\vec e_x+\\frac a2\\vec e_y\\Big)=\\frac{kqa}{2r^3}(-\\vec e_x-\\vec e_y).$$\n\nLe champ pointe vers $D$, donc vers la gauche et vers le bas.\n\n![Figure — Au centre : les quatre contributions et leurs sens. Les deux contributions supérieures ont une norme double des contributions inférieures. Les projections…](/figures/electrostatique/td-ch04-corrige-1.svg)\n\n*Figure — Au centre : les quatre contributions et leurs sens. Les deux contributions supérieures ont une norme double des contributions inférieures. Les projections horizontales se compensent. La somme verticale est positive.*\n\n**Lire la figure, élément par élément**\n\n1. **Le carré bleu situe les sources.** $A$ et $D$ sont à gauche ; $B$ et $C$ sont à droite. Les petites marques aux sommets indiquent les positions des charges, pas les points d'application des champs tracés.\n2. **Toutes les flèches partent de $O$.** On représente les champs *au point d'observation*. $\\vec E_A$ s'éloigne de $A$ positif, tandis que $\\vec E_D$ pointe vers $D$ négatif : ces deux flèches descendent.\n3. **Les deux flèches vertes montent.** $\\vec E_B$ pointe vers $B$ négatif et $\\vec E_C$ s'éloigne de $C$ positif. Leurs normes sont doubles de celles de $\\vec E_A$ et $\\vec E_D$, car $|-2q|=|2q|=2q$ et toutes les distances sont égales.\n4. **La flèche rouge est la somme, pas une cinquième source.** Les projections horizontales s'annulent deux à deux. Les deux grandes projections vers le haut dépassent les deux petites projections vers le bas. Le résultat est dirigé vers $+Oy$.\n\n**Étape 7. Additionner les composantes avec un facteur commun.**\n\nPosons temporairement $K=kqa/(2r^3)>0$ pour alléger l'écriture. Les quatre champs sont\n\n$$\\vec E_A=K(\\vec e_x-\\vec e_y),\\quad \\vec E_B=2K(\\vec e_x+\\vec e_y),\\quad \\vec E_C=2K(-\\vec e_x+\\vec e_y),\\quad \\vec E_D=K(-\\vec e_x-\\vec e_y).$$\n\n**Lire aussi les signes dans un tableau de composantes.** Par exemple, pour $B$, on détaille la multiplication des signes :\n\n$$E_{Bx}=\\frac{k(-2q)(-a/2)}{r^3}=\\frac{k(2qa/2)}{r^3}=\\frac{kqa}{r^3}=2K,\\qquad E_{By}=\\frac{k(-2q)(-a/2)}{r^3}=2K.$$\n\nOn obtient de même les quatre lignes suivantes :\n\n| Source | Charge | Composante en $x$ | Composante en $y$ |\n|---|---|---|---|\n| $A$ | $+q$ | $+K$ | $-K$ |\n| $B$ | $-2q$ | $+2K$ | $+2K$ |\n| $C$ | $+2q$ | $-2K$ | $+2K$ |\n| $D$ | $-q$ | $-K$ | $-K$ |\n\n**On somme une colonne à la fois, sans additionner les normes des flèches obliques.**\nLa composante horizontale vaut\n\n$$E_x=K+2K-2K-K=(1+2-2-1)K=0.$$\n\nLa composante verticale vaut\n\n$$E_y=-K+2K+2K-K=(-1+2+2-1)K=2K=\\frac{kqa}{r^3}.$$\n\nOn revient à $r^3=a^3/(2\\sqrt2)$ :\n\n$$E_y=\\frac{kqa}{a^3/(2\\sqrt2)}=kqa\\,\\frac{2\\sqrt2}{a^3}=\\frac{2\\sqrt2\\,kq}{a^2}.$$\n\n> **Réponse à Q1**\n>\n> $$\\boxed{\\vec E(O)=\\frac{2\\sqrt2\\,kq}{a^2}\\,\\vec e_y.}$$\n>\n> **Direction :** l'axe $Oy$. **Sens :** vers les $y$ positifs.  \n\n> **Norme :** $E(O)=2\\sqrt2\\,kq/a^2$, puisque $q>0$.\n\n**Étape 8. Application numérique et contrôle de l'unité.**\n\n$$E(O)=\\frac{2\\sqrt2(9\\times10^9)(10^{-8})}{1^2}=2\\sqrt2\\times9\\times10^{9-8}=180\\sqrt2\\ \\mathrm{N\\,C^{-1}}\\simeq254{,}6\\ \\mathrm{N\\,C^{-1}}.$$\n\nL'unité se vérifie : $\\mathrm{N\\,m^2\\,C^{-2}\\times C/m^2=N\\,C^{-1}}$. Le champ peut aussi s'exprimer en $\\mathrm{V\\,m^{-1}}$.\n\n#### Q2. Potentiel électrique au centre $O$\n\n> **Rappel utilisé pour cette question**\n>\n> Le potentiel créé par plusieurs charges ponctuelles est\n>\n> $$V(M)=k\\sum_i\\frac{q_i}{P_iM},$$\n>\n> Chaque terme a l'unité du volt ; la charge négative apporte un potentiel négatif. On écrit la somme avec une constante additive choisie de sorte que $V(\\infty)=0$. Ici cette convention usuelle fixe la valeur de $V$ ; sans référence, le potentiel est défini à une constante près.\n\n**Le potentiel est scalaire : on additionne les charges algébriques divisées par leurs distances, sans projeter de vecteurs.**\n\nAu centre, les quatre distances sont égales à $r=a/\\sqrt2$ :\n\n$$\\begin{aligned}V(O)&=k\\Big(\\frac qr+\\frac{-2q}r+\\frac{2q}r+\\frac{-q}r\\Big)=\\frac kr[q-2q+2q-q]=\\frac{kq}r(1-2+2-1)=\\frac{kq}r\\times0.\\end{aligned}$$\n\n$$\\boxed{V(O)=0\\ \\mathrm V.}$$\n\n> **⚠ Un potentiel nul n'implique pas un champ nul**\n>\n> Nous venons de trouver $V(O)=0$ alors que $\\vec E(O)\\neq\\vec 0$. Le champ dépend des **variations spatiales** du potentiel, et non de sa valeur en un point.\n\n#### Q3. Potentiel sur $x'x$, puis en $I$ et $I'$\n\n> **Rappel utilisé pour cette question**\n>\n> Les distances dans le plan se calculent par Pythagore :\n>\n> $$P_iM=\\sqrt{(x-x_i)^2+(y-y_i)^2}.$$\n>\n> On utilise ensuite $V(M)=k\\sum_i\\frac{q_i}{P_iM}$. Le champ tangent à l'axe vérifie $E_x(x,0)=-\\frac{d}{dx}V(x,0)$ ; cela ne donne pas $E_y$. Deux charges opposées se compensent dans le potentiel lorsqu'elles sont à la **même distance** du point considéré.\n\n**Pour un point de l'axe horizontal, les charges de chaque côté vertical sont opposées et équidistantes : regrouper $A$ avec $D$, puis $B$ avec $C$.**\n\n**Étape 1. Repérer le point $M$.**\n\nOn écrit $M(x,0)$, avec $-a/2<x<a/2$ pour l'intérieur du carré.\n\n![Figure — Les distances s'égalisent par paires. Les distances à gauche et à droite ne sont généralement pas égales. Chaque compensation se fait à l'intérieur d'une paire.](/figures/electrostatique/td-ch04-corrige-2.svg)\n\n*Figure — Les distances s'égalisent par paires. Les distances à gauche et à droite ne sont généralement pas égales. Chaque compensation se fait à l'intérieur d'une paire.*\n\n**Lire la figure, élément par élément**\n\n1. **Le point rouge $M$ reste sur $x'x$.** Sa coordonnée verticale vaut zéro. Il peut se déplacer horizontalement ; le dessin ne lui impose pas d'être au centre.\n2. **Les segments orange joignent $M$ aux sources de gauche.** Les triangles ont la même base horizontale $x+a/2$ et des hauteurs opposées de même valeur absolue $a/2$. Ainsi $AM=DM=r_{\\mathrm g}$.\n3. **Les segments verts concernent la paire de droite.** On trouve de même $BM=CM=r_{\\mathrm d}$. En général $r_{\\mathrm g}\\neq r_{\\mathrm d}$ : on ne doit pas remplacer toutes les distances par une même lettre.\n4. **Chaque paire a une charge algébrique totale nulle.** À gauche, $+q-q=0$ ; à droite, $-2q+2q=0$. L'égalité des distances dans chaque paire permet la compensation des *potentiels*, même si leurs champs ne s'annulent pas.\n\n**Étape 2. Calculer les distances à gauche.**\n\n$$AM^2=\\Big(x+\\frac a2\\Big)^2+\\Big(0-\\frac a2\\Big)^2,\\qquad DM^2=\\Big(x+\\frac a2\\Big)^2+\\Big(0+\\frac a2\\Big)^2.$$\n\nLes deux seconds termes sont égaux à $a^2/4$, donc\n\n$$AM=DM=r_{\\mathrm g}=\\sqrt{\\Big(x+\\frac a2\\Big)^2+\\frac{a^2}4}.$$\n\n**Étape 3. Calculer les distances à droite.**\n\n$$BM^2=\\Big(x-\\frac a2\\Big)^2+\\Big(0-\\frac a2\\Big)^2,\\qquad CM^2=\\Big(x-\\frac a2\\Big)^2+\\Big(0+\\frac a2\\Big)^2,$$\n\nd'où\n\n$$BM=CM=r_{\\mathrm d}=\\sqrt{\\Big(x-\\frac a2\\Big)^2+\\frac{a^2}4}.$$\n\n**Étape 4. Écrire le potentiel avant toute simplification.**\n\n$$\\begin{aligned}V(M)&=k\\Big(\\frac q{r_{\\mathrm g}}-\\frac{2q}{r_{\\mathrm d}}+\\frac{2q}{r_{\\mathrm d}}-\\frac q{r_{\\mathrm g}}\\Big)\n=k\\Big[\\frac{q-q}{r_{\\mathrm g}}+\\frac{-2q+2q}{r_{\\mathrm d}}\\Big]\n=k\\Big(\\frac0{r_{\\mathrm g}}+\\frac0{r_{\\mathrm d}}\\Big)=0.\\end{aligned}$$\n\n> **Potentiel sur l'axe horizontal**\n>\n> $$\\boxed{V(x,0)=0\\qquad\\text{pour }-\\frac a2<x<\\frac a2.}$$\n>\n> La compensation reste valable aux milieux $I$ et $I'$ des côtés, qui ne coïncident avec aucune charge ponctuelle.\n\n**Étape 5. Vérifier explicitement le point $I(a/2,0)$.**\n\nÀ droite, $BI=CI=a/2$. À gauche,\n\n$$AI=DI=\\sqrt{a^2+\\frac{a^2}4}=\\frac{a\\sqrt5}2.$$\n\nAlors\n\n$$V(I)=k\\Big[\\frac{q-q}{a\\sqrt5/2}+\\frac{-2q+2q}{a/2}\\Big]=0.$$\n\n**Étape 6. Vérifier explicitement le point $I'(-a/2,0)$.**\n\nÀ gauche, $AI'=DI'=a/2$ ; à droite, $BI'=CI'=a\\sqrt5/2$. Ainsi\n\n$$V(I')=k\\Big[\\frac{q-q}{a/2}+\\frac{-2q+2q}{a\\sqrt5/2}\\Big]=0.\\qquad \\boxed{V(I)=V(I')=0\\ \\mathrm V.}$$\n\n> **⚠ Pourquoi on ne doit pas conclure que le champ s'annule sur $x'x$**\n>\n> L'égalité $V(x,0)=0$ impose seulement une variation nulle **le long de cet axe**, donc $E_x(x,0)=0$. Elle ne donne pas la dérivée transversale $\\partial V/\\partial y$. Le champ vertical peut rester non nul ; Q1 l'a montré au centre.\n\n**Vérification complète : calculer la dérivée transversale au centre.**\nOn introduit un point général $N(x,y)$, sans se limiter tout de suite à $y=0$. Pour une source $P_i(x_i,y_i)$, posons\n\n$$R_i(x,y)=\\sqrt{(x-x_i)^2+(y-y_i)^2}.$$\n\nLa contribution au potentiel s'écrit $kq_i/R_i$. En dérivant par rapport à $y$ :\n\n$$\\begin{aligned}\\frac{\\partial}{\\partial y}\\Big(\\frac1{R_i}\\Big)&=\\frac{\\partial}{\\partial y}\\Big[(x-x_i)^2+(y-y_i)^2\\Big]^{-1/2}\\\\\n&=-\\frac12\\Big[(x-x_i)^2+(y-y_i)^2\\Big]^{-3/2}2(y-y_i)=-\\frac{y-y_i}{R_i^3}.\\end{aligned}$$\n\nAu centre, $x=y=0$ et $R_i=r$ pour les quatre sommets ; ainsi\n\n$$\\begin{aligned}\\frac{\\partial V}{\\partial y}\\Big|_O&=\\frac k{r^3}\\sum_i q_iy_i\n=\\frac k{r^3}\\Big[q\\frac a2+(-2q)\\frac a2+(2q)\\Big(-\\frac a2\\Big)+(-q)\\Big(-\\frac a2\\Big)\\Big]\\\\\n&=\\frac{kqa}{r^3}\\Big(\\frac12-1-1+\\frac12\\Big)=-\\frac{kqa}{r^3}.\\end{aligned}$$\n\nPar conséquent,\n\n$$E_y(O)=-\\frac{\\partial V}{\\partial y}\\Big|_O=\\frac{kqa}{r^3}=\\frac{2\\sqrt2\\,kq}{a^2}>0.$$\n\nOn retrouve exactement Q1. **Il fallait dériver le potentiel dans le plan avant de se placer au centre ; dériver uniquement $V(x,0)=0$ ne renseigne que sur $E_x$.**",
+      "solution_source": "prof",
+      "answers": [
+        {
+          "label": "Ex 1 – Q1 : E_y(O), composante verticale du champ au centre, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "2*sqrt(2)*q/(4*pi*epsilon0*a^2)"
+          ],
+          "variables": [
+            "q",
+            "a",
+            "epsilon0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q1 : E_x(O), composante horizontale du champ au centre",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q1 : norme E(O) en N/C (application numérique)",
+          "answerType": "number",
+          "accepted": [
+            "180*sqrt(2)",
+            "254.56"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q2 : V(O) en V",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q3 : V(M) pour M(x,0) sur x'x à l'intérieur du carré",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q3 : V(I) en V",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q3 : V(I') en V",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        }
+      ],
+      "source": "TD/TD1 (1).pdf p.1, exercice 1",
+      "solution_from": "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.2-10",
+      "simulations": [
+        {
+          "scene": "point-charges",
+          "caption": "Place des charges de signes opposés aux sommets d'un carré et observe le champ et les équipotentielles au centre."
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quel est le champ $\\vec E(O)$ au centre du carré ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\vec 0$, par symétrie du carré"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{\\sqrt2\\,kq}{a^2}\\,\\vec e_y$"
+            },
+            {
+              "id": "c",
+              "md": "$-\\dfrac{2\\sqrt2\\,kq}{a^2}\\,\\vec e_y$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{2\\sqrt2\\,kq}{a^2}\\,\\vec e_y$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Les quatre distances valent $r=a/\\sqrt2$ mais les charges diffèrent. Avec $K=kqa/(2r^3)$ : $E_x=K+2K-2K-K=0$ et $E_y=-K+2K+2K-K=2K=\\frac{kqa}{r^3}=\\frac{2\\sqrt2\\,kq}{a^2}$, vers $+Oy$."
+        },
+        {
+          "prompt_md": "Q1 — Application numérique ($q=10^{-8}$ C, $a=1$ m, $k=9\\times10^9$ SI) : $E(O)\\approx$",
+          "options": [
+            {
+              "id": "a",
+              "md": "$127\\ \\mathrm{N\\,C^{-1}}$"
+            },
+            {
+              "id": "b",
+              "md": "$180\\ \\mathrm{N\\,C^{-1}}$"
+            },
+            {
+              "id": "c",
+              "md": "$255\\ \\mathrm{N\\,C^{-1}}$"
+            },
+            {
+              "id": "d",
+              "md": "$509\\ \\mathrm{N\\,C^{-1}}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$E(O)=2\\sqrt2\\times9\\times10^9\\times10^{-8}/1^2=180\\sqrt2\\simeq254{,}6\\ \\mathrm{N\\,C^{-1}}$ (ou $\\mathrm{V\\,m^{-1}}$)."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut $V(O)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$0\\ \\mathrm V$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{6\\sqrt2\\,kq}{a}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{\\sqrt2\\,kq}{a}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{2\\sqrt2\\,kq}{a}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$V(O)=\\frac{k}{r}(q-2q+2q-q)=0$ : on somme les scalaires avec leur signe. (Additionner les valeurs absolues donnerait $\\frac{6\\sqrt2\\,kq}{a}$.) Un potentiel nul n'implique pas un champ nul."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut $V(M)$ pour $M(x,0)$ sur $x'x$ à l'intérieur du carré, et en $I$, $I'$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$V(M)=\\dfrac{kq}{\\sqrt{(x+a/2)^2+a^2/4}}$, donc $V(I)\\ne V(I')$"
+            },
+            {
+              "id": "b",
+              "md": "$V(M)=0$, donc $V(I)=V(I')=0$"
+            },
+            {
+              "id": "c",
+              "md": "$V(M)=0$ mais $V(I)$ n'est pas défini"
+            },
+            {
+              "id": "d",
+              "md": "$V(M)=\\dfrac{kqx}{a^2}$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$AM=DM=r_g$ et $BM=CM=r_d$ : $V(M)=k\\left[\\frac{q-q}{r_g}+\\frac{-2q+2q}{r_d}\\right]=0$. Les milieux $I$, $I'$ ne portent pas de charge, donc $V(I)=V(I')=0$."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Potentiel et champ d'une couronne circulaire",
+      "statement_md": "Une couronne circulaire plane, de centre $O$, de rayon intérieur $a$ et de rayon extérieur $b$ ($b>a$), porte une densité surfacique uniforme $\\sigma>0$. Le point $M$ appartient à l'axe de révolution $Oz$ et a pour coordonnée $z$.\n\n- **Q1.** Calculer le potentiel $V(M)=V(z)$ créé par la couronne, en prenant $V(\\infty)=0$. Représenter qualitativement $V(z)$.\n- **Q2.** En déduire le champ électrostatique $\\vec E(M)$ sur l'axe $Oz$.\n\n![Figure — schéma de l'énoncé (Potentiel et champ d'une couronne circulaire)](/figures/electrostatique/td-ch04-enonce-2.svg)",
+      "solution_md": "**Lire d'abord la figure de l'exercice du sujet.**\n\n1. La couronne est une surface plane dans le plan $xOy$. Le dessin en perspective déforme les cercles en ellipses ; la surface réelle reste circulaire et plane.\n2. Le trou central a pour rayon $a$ et le bord extérieur pour rayon $b$. La densité $\\sigma>0$ concerne seulement la région comprise entre les deux cercles.\n3. $Oz$ est l'axe perpendiculaire au plan, passant par $O$. Le point $M$ est sur cet axe et sa coordonnée est $z$, qui peut être positive, négative ou nulle.\n4. **Ne pas confondre les rayons $a,b$, le rayon variable $\\rho$ d'une source et la distance source-observation $r$.** Ce sont trois rôles géométriques distincts.\n\n#### Q1. Potentiel de la couronne et représentation qualitative\n\n> **Rappel utilisé pour cette question**\n>\n> Une petite surface porte $dq=\\sigma\\,dS$ et crée $dV=k\\,dq/r$. En polaires, $dS=\\rho\\,d\\rho\\,d\\varphi$, avec $a\\le\\rho\\le b$ et $0\\le\\varphi\\le2\\pi$. On utilisera la dérivée composée $(\\sqrt u)'=u'/(2\\sqrt u)$, ainsi que l'identité $\\sqrt U-\\sqrt W=(U-W)/(\\sqrt U+\\sqrt W)$. Les variations de $V$ viennent du signe de $V'$.\n\n**On découpe la couronne en anneaux minces : tous les points d'un même anneau sont à la même distance du point $M$ situé sur l'axe.**\n\n**Étape 1. Distinguer le rayon variable des rayons fixes.**\n\n$a$ et $b$ sont les bords de la couronne. On suppose $0<a<b$ pour une véritable couronne. Le rayon $\\rho$ est une **variable d'intégration** qui parcourt l'intervalle $[a,b]$. Le point d'observation est $M(0,0,z)$ ; $z$ est fixé pendant l'intégration sur les charges.\n\n![Figure — Le rayon rho varie de a à b.](/figures/electrostatique/td-ch04-corrige-3.svg)\n\n*Figure — Le rayon $\\rho$ varie de $a$ à $b$.*\n\n**Lire la figure, élément par élément**\n\n1. **Les deux cercles bleus délimitent la couronne.** Le cercle intérieur a pour rayon fixe $a$ et le cercle extérieur a pour rayon fixe $b$. Le disque central blanc n'est pas chargé.\n2. **La bande verte représente un anneau mince.** Son rayon $\\rho$ peut prendre toutes les valeurs entre $a$ et $b$. Sa largeur radiale est $d\\rho$ ; la largeur exagérée du dessin sert uniquement à la rendre visible.\n3. **On transforme une surface en une somme d'anneaux.** L'aire d'un anneau élémentaire est son périmètre $2\\pi\\rho$ multiplié par son épaisseur $d\\rho$ : $dS_{\\text{anneau}}=2\\pi\\rho\\,d\\rho$.\n4. **La densité transforme l'aire en charge.** Puisque $\\sigma$ est uniforme, $dq=\\sigma\\,dS_{\\text{anneau}}=2\\pi\\sigma\\rho\\,d\\rho$. Ce $dq$ désigne l'anneau entier, alors que $\\sigma\\rho\\,d\\rho\\,d\\varphi$ désigne seulement un petit secteur.\n\n![Figure — Un petit secteur : deux longueurs perpendiculaires.](/figures/electrostatique/td-ch04-corrige-4.svg)\n\n*Figure — Un petit secteur : deux longueurs perpendiculaires.*\n\n**Lire la figure, élément par élément**\n\n1. Les deux rayons bleus encadrent un petit angle $d\\varphi$, exprimé en radians.\n2. Les deux arcs verts délimitent les rayons $\\rho$ et $\\rho+d\\rho$. La différence de ces rayons vaut l'épaisseur $d\\rho$.\n3. À l'ordre différentiel, le petit secteur se traite comme un rectangle courbé de côtés $d\\rho$ et $\\rho\\,d\\varphi$. Ainsi son aire vaut $\\rho\\,d\\rho\\,d\\varphi$, avant l'intégration sur le tour complet.\n\n**Étape 2. Justifier l'aire élémentaire.**\n\nDans un petit secteur, la longueur tangentielle est $\\rho\\,d\\varphi$ et l'épaisseur radiale est $d\\rho$. Le produit donne $dS=\\rho\\,d\\rho\\,d\\varphi$. Pour un anneau entier, on intègre sur l'angle :\n\n$$dS_{\\text{anneau}}=\\int_0^{2\\pi}\\rho\\,d\\rho\\,d\\varphi=\\rho\\,d\\rho\\int_0^{2\\pi}d\\varphi=2\\pi\\rho\\,d\\rho.$$\n\nOn peut aussi développer l'aire d'une bande d'épaisseur finie $\\Delta\\rho$ :\n\n$$\\pi\\big[(\\rho+\\Delta\\rho)^2-\\rho^2\\big]=2\\pi\\rho\\,\\Delta\\rho+\\pi(\\Delta\\rho)^2.$$\n\nÀ l'ordre différentiel, le terme quadratique disparaît devant le terme linéaire. On retrouve $dS_{\\text{anneau}}=2\\pi\\rho\\,d\\rho$.\n\n**Étape 3. Calculer la distance à $M$.**\n\nPour un point $P$ de l'anneau, $OP=\\rho$ est dans le plan de la couronne et $OM=|z|$ est perpendiculaire à ce plan. Pythagore donne\n\n$$PM^2=OP^2+OM^2=\\rho^2+z^2,\\qquad r=PM=\\sqrt{\\rho^2+z^2}.$$\n\nCette distance ne dépend pas de $\\varphi$, ce qui justifie le regroupement en anneaux.\n\n![Figure — Une même distance pour tous les points d'un anneau.](/figures/electrostatique/td-ch04-corrige-5.svg)\n\n*Figure — Une même distance pour tous les points d'un anneau.*\n\n**Lire la figure, élément par élément**\n\n1. **Le point $P$ est dans le plan de la couronne.** Sa distance au centre est $OP=\\rho$. Le point $M$ est sur l'axe perpendiculaire à ce plan et sa distance au centre est $OM=|z|$.\n2. **Le petit carré marque l'angle droit en $O$.** Il autorise l'usage de Pythagore : $PM^2=OP^2+OM^2=\\rho^2+z^2$.\n3. **L'oblique orange est une distance, pas un champ.** Sa longueur $\\sqrt{\\rho^2+z^2}$ intervient au dénominateur du potentiel élémentaire. Les autres points d'un même anneau ont exactement cette même distance à $M$.\n4. **Le dessin représente $z>0$, mais la formule est générale.** Pour un point sous le plan, $z<0$ et $OM=-z=|z|$ ; comme $OM^2=z^2$, la même expression de $PM$ reste valable.\n\n**Étape 4. Écrire puis intégrer la contribution de l'anneau.**\n\n$$dV(z)=k\\frac{dq}r=k\\frac{2\\pi\\sigma\\rho\\,d\\rho}{\\sqrt{\\rho^2+z^2}},\\qquad V(z)=2\\pi k\\sigma\\int_a^b\\frac{\\rho\\,d\\rho}{\\sqrt{\\rho^2+z^2}}.$$\n\nOn peut retrouver la même intégrale sans regrouper d'abord les anneaux :\n\n$$V(z)=\\int_{\\rho=a}^b\\int_{\\varphi=0}^{2\\pi}\\frac{k\\sigma\\rho}{\\sqrt{\\rho^2+z^2}}\\,d\\varphi\\,d\\rho=k\\sigma\\int_a^b\\frac{\\rho}{\\sqrt{\\rho^2+z^2}}\\Big(\\int_0^{2\\pi}d\\varphi\\Big)d\\rho=2\\pi k\\sigma\\int_a^b\\frac{\\rho\\,d\\rho}{\\sqrt{\\rho^2+z^2}}.$$\n\nLe facteur $2\\pi$ provient donc de l'angle qui parcourt un tour entier, et non d'un facteur supplémentaire à ajouter après le calcul par anneaux.\n\nLe choix $dV=k\\,dq/r$ correspond déjà au potentiel nul à l'infini pour chaque élément de cette distribution finie. Aucune constante supplémentaire n'est à ajouter si cette condition est respectée.\n\n**Étape 5. Démontrer la primitive.**\n\nPendant la dérivation en $\\rho$, $z$ est constant. Avec la dérivation d'une racine composée :\n\n$$\\frac{d}{d\\rho}\\sqrt{\\rho^2+z^2}=\\frac1{2\\sqrt{\\rho^2+z^2}}\\frac{d}{d\\rho}(\\rho^2+z^2)=\\frac1{2\\sqrt{\\rho^2+z^2}}(2\\rho+0)=\\frac{\\rho}{\\sqrt{\\rho^2+z^2}}.$$\n\nLa primitive est donc $\\sqrt{\\rho^2+z^2}$. On applique les bornes :\n\n$$V(z)=2\\pi k\\sigma\\Big[\\sqrt{\\rho^2+z^2}\\Big]_a^b=2\\pi k\\sigma\\Big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\Big).$$\n\nComme $2\\pi k=2\\pi/(4\\pi\\varepsilon_0)=1/(2\\varepsilon_0)$ :\n\n> **Réponse à Q1 : expression du potentiel**\n>\n> $$\\boxed{V(z)=\\frac{\\sigma}{2\\varepsilon_0}\\Big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\Big).}$$\n>\n> La formule est valable pour tout $z\\in\\mathbb{R}$ si $0<a<b$.\n\n**Étape 6. Vérifier rigoureusement la référence à l'infini.**\n\nUne différence de deux racines qui deviennent toutes deux infinies ne se traite pas en écrivant « $\\infty-\\infty=0$ ». On multiplie par la quantité conjuguée :\n\n$$\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}=\\frac{(b^2+z^2)-(a^2+z^2)}{\\sqrt{b^2+z^2}+\\sqrt{a^2+z^2}}=\\frac{b^2-a^2}{\\sqrt{b^2+z^2}+\\sqrt{a^2+z^2}}.$$\n\nLe numérateur est fixe. Le dénominateur tend vers $+\\infty$ quand $|z|\\to\\infty$. Ainsi\n\n$$\\boxed{\\lim_{z\\to+\\infty}V(z)=\\lim_{z\\to-\\infty}V(z)=0.}$$\n\n**La rationalisation par la quantité conjuguée enlève l'indétermination et rend la limite immédiate.**\n\n**Étape 7. Préparer le tracé : parité, signe et valeur au centre.**\n\nPuisque la formule ne contient que $z^2$ :\n\n$$V(-z)=V(z).$$\n\nLa courbe est symétrique par rapport à l'axe vertical. Comme $b>a>0$, on a $\\sqrt{b^2+z^2}>\\sqrt{a^2+z^2}$, d'où $V(z)>0$ pour tout $z$ fini. Au centre,\n\n$$V(0)=\\frac{\\sigma}{2\\varepsilon_0}(\\sqrt{b^2}-\\sqrt{a^2})=\\frac{\\sigma}{2\\varepsilon_0}(b-a).$$\n\n**Étape 8. Dériver pour justifier les variations.**\n\nEn dérivant chacune des deux racines par rapport à $z$ :\n\n$$V'(z)=\\frac{\\sigma}{2\\varepsilon_0}\\Big(\\frac{2z}{2\\sqrt{b^2+z^2}}-\\frac{2z}{2\\sqrt{a^2+z^2}}\\Big)=\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{b^2+z^2}}-\\frac1{\\sqrt{a^2+z^2}}\\Big).$$\n\nPuisque $b>a$, la première racine est plus grande ; son inverse est plus petit. Le terme entre parenthèses est donc **strictement négatif**. Par conséquent,\n\n$$V'(z)>0\\ \\text{si }z<0,\\qquad V'(0)=0,\\qquad V'(z)<0\\ \\text{si }z>0.$$\n\nSur l'axe, le potentiel augmente depuis sa limite 0 jusqu'à $V(0)$ sur le demi-axe négatif, puis diminue vers sa limite 0 sur le demi-axe positif. Il possède un maximum le long de cet axe en $z=0$ et une tangente horizontale en ce point. Cela ne constitue pas une affirmation de maximum dans toutes les directions de l'espace.\n\n![Figure — Allure qualitative du potentiel : exemple b=2a. La courbe représentée est calculée pour b=2a et normalisée par V(0). La parité, le maximum central et les…](/figures/electrostatique/td-ch04-corrige-6.svg)\n\n*Figure — Allure qualitative du potentiel : exemple $b=2a$. La courbe représentée est calculée pour $b=2a$ et normalisée par $V(0)$. La parité, le maximum central et les limites sont les mêmes pour toute couronne avec $0<a<b$.*\n\n**Lire la figure, élément par élément**\n\n1. **L'axe horizontal porte la position normalisée $z/a$.** Le centre de la couronne correspond à $z=0$. Les côtés gauche et droit de la courbe décrivent respectivement les points sous et au-dessus du plan.\n2. **L'axe vertical porte $V(z)/V(0)$.** La hauteur au centre vaut donc 1, quelle que soit la valeur de $\\sigma$. Pour le dessin, on a choisi $b=2a$ ; il ne s'agit pas d'une donnée supplémentaire du sujet.\n3. **La courbe orange est symétrique.** Les points $z$ et $-z$ ont le même potentiel. Elle monte pour $z<0$, atteint son maximum *sur l'axe* au centre, puis descend pour $z>0$.\n4. **Le petit trait vert horizontal est la tangente en zéro.** Il traduit $V'(0)=0$. Les extrémités de la courbe se rapprochent de l'axe horizontal sans l'atteindre à distance finie : $V(z)>0$ et $V(z)\\to0$ lorsque $|z|\\to\\infty$.\n\n**Contrôle supplémentaire : à grande distance, retrouver la charge totale.**\nLa charge totale est $Q=\\sigma\\pi(b^2-a^2)$. Pour $|z|\\gg b$, la somme des deux racines est équivalente à $2|z|$. La forme rationalisée donne\n\n$$V(z)=\\frac{\\sigma}{2\\varepsilon_0}\\,\\frac{b^2-a^2}{\\sqrt{b^2+z^2}+\\sqrt{a^2+z^2}}\\simeq\\frac{\\sigma(b^2-a^2)}{4\\varepsilon_0|z|}=\\frac{k\\,\\sigma\\pi(b^2-a^2)}{|z|}=\\frac{kQ}{|z|}.$$\n\nLe potentiel lointain est donc cohérent avec celui d'une charge ponctuelle $Q>0$.\n\n#### Q2. Déduire le champ sur l'axe $Oz$\n\n> **Rappel utilisé pour cette question**\n>\n> En électrostatique, $\\vec E=-\\nabla V$. Sur l'axe de révolution d'une couronne uniformément chargée, les contributions transversales se compensent par symétrie. Ainsi\n>\n> $$\\vec E(M)=E_z(z)\\vec e_z,\\qquad E_z(z)=-\\frac{dV(z)}{dz}.$$\n>\n> La dérivée de la restriction axiale donne la composante axiale. La symétrie justifie ensuite que les autres composantes sont nulles. Le signe de $-V'$ donne le sens du champ ; sa norme est $|E_z|$.\n\n**Le signe moins de $\\vec E=-\\nabla V$ est indispensable : le champ pointe vers les potentiels décroissants.**\n\n**Étape 1. Justifier la direction axiale par une paire de charges.**\n\nConsidérons deux petits éléments égaux de charge $dq$, diamétralement opposés sur un même anneau :\n\n$$P(\\rho\\cos\\varphi,\\rho\\sin\\varphi,0),\\qquad P'(-\\rho\\cos\\varphi,-\\rho\\sin\\varphi,0).$$\n\nLes déplacements vers $M(0,0,z)$ valent\n\n$$\\overrightarrow{PM}=-\\rho\\cos\\varphi\\,\\vec e_x-\\rho\\sin\\varphi\\,\\vec e_y+z\\vec e_z,\\qquad \\overrightarrow{P'M}=+\\rho\\cos\\varphi\\,\\vec e_x+\\rho\\sin\\varphi\\,\\vec e_y+z\\vec e_z.$$\n\nLes deux distances sont $r=\\sqrt{\\rho^2+z^2}$. Leurs champs s'ajoutent donc en\n\n$$d\\vec E_P+d\\vec E_{P'}=\\frac{k\\,dq}{r^3}(\\overrightarrow{PM}+\\overrightarrow{P'M})=\\frac{k\\,dq}{r^3}(0\\vec e_x+0\\vec e_y+2z\\vec e_z)=\\frac{2kz\\,dq}{r^3}\\vec e_z.$$\n\nEn sommant toutes ces paires sur la couronne, on obtient $E_x=E_y=0$ sur l'axe. Le champ est donc entièrement décrit par $E_z$.\n\n**Étape 2. Dériver le potentiel et appliquer le signe moins.**\n\nOn reprend la dérivée calculée en Q1 :\n\n$$V'(z)=\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{b^2+z^2}}-\\frac1{\\sqrt{a^2+z^2}}\\Big).$$\n\nOn multiplie toute la parenthèse par $-1$ :\n\n$$E_z(z)=-V'(z)=-\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{b^2+z^2}}-\\frac1{\\sqrt{a^2+z^2}}\\Big)=\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{a^2+z^2}}-\\frac1{\\sqrt{b^2+z^2}}\\Big).$$\n\n> **Réponse à Q2**\n>\n> $$\\boxed{\\vec E(M)=\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{a^2+z^2}}-\\frac1{\\sqrt{b^2+z^2}}\\Big)\\vec e_z.}$$\n>\n> Cette formule algébrique vaut au-dessus et au-dessous de la couronne.\n\n**Étape 3. Lire le signe et la valeur au centre.**\n\nLe terme entre parenthèses est strictement positif, car $a<b$. Le signe de $E_z$ est donc celui de $z$ :\n\n| $z>0$ : | $E_z>0$ | champ vers $+Oz$, |\n|---|---|---|\n| $z<0$ : | $E_z<0$ | champ vers $-Oz$, |\n| $z=0$ : | $E_z=0$ | champ nul au centre du trou. |\n\nOn trouve aussi $E_z(-z)=-E_z(z)$ : la composante est impaire, conformément à la symétrie par rapport au plan chargé. La norme vaut $|E_z(z)|$ et ne peut pas être négative.\n\n![Figure — Sur l'axe : le champ de la couronne positive s'éloigne du plan.](/figures/electrostatique/td-ch04-corrige-7.svg)\n\n*Figure — Sur l'axe : le champ de la couronne positive s'éloigne du plan.*\n\n**Lire la figure, élément par élément**\n\n1. **Les deux traits orange représentent une coupe de la surface.** Ils sont dans un même plan ; la partie blanche au milieu est le trou de la couronne. Ce ne sont pas deux fils indépendants.\n2. **Les points bleus sont deux points d'observation sur $Oz$.** Au-dessus du plan, $z>0$ ; au-dessous, $z<0$. L'axe orienté définit ce que signifient les signes de la composante $E_z$.\n3. **Les flèches vertes indiquent le sens du champ sur l'axe.** Pour $z>0$, $E_z>0$ ; pour $z<0$, $E_z<0$. Les contributions transversales se compensent par rotation autour de l'axe.\n4. **Au centre du trou, la somme est nulle.** Chaque élément chargé possède un élément opposé produisant un champ contraire. Le potentiel reste pourtant positif : sa valeur et sa dérivée n'ont pas le même rôle.\n\n**Étape 4. Vérifier le résultat par une intégration directe.**\n\nCe contrôle retrouve le champ sans utiliser la dérivation du potentiel. Pour un anneau de rayon $\\rho$ et de charge $dq=2\\pi\\sigma\\rho\\,d\\rho$, la somme des composantes axiales vaut\n\n$$dE_z=k\\frac{z\\,dq}{(\\rho^2+z^2)^{3/2}}=2\\pi k\\sigma z\\frac{\\rho\\,d\\rho}{(\\rho^2+z^2)^{3/2}}.$$\n\nOn intègre de $a$ à $b$ :\n\n$$E_z=2\\pi k\\sigma z\\int_a^b\\frac{\\rho\\,d\\rho}{(\\rho^2+z^2)^{3/2}}=2\\pi k\\sigma z\\Big[-\\frac1{\\sqrt{\\rho^2+z^2}}\\Big]_a^b=2\\pi k\\sigma z\\Big(-\\frac1{\\sqrt{b^2+z^2}}+\\frac1{\\sqrt{a^2+z^2}}\\Big).$$\n\nLa primitive se vérifie en détaillant la dérivation de la puissance composée :\n\n$$\\frac{d}{d\\rho}\\Big[-(\\rho^2+z^2)^{-1/2}\\Big]=-\\Big(-\\frac12\\Big)(\\rho^2+z^2)^{-3/2}(2\\rho)=\\frac{\\rho}{(\\rho^2+z^2)^{3/2}}.$$\n\nEn remplaçant $2\\pi k$ par $1/(2\\varepsilon_0)$, on retrouve exactement le champ encadré.\n\n> **⚠ La couronne et le disque ne se confondent pas au centre**\n>\n> Le résultat $\\vec E(O)=\\vec 0$ a été établi pour $a>0$ : le point $O$ est alors dans un trou sans charge. Pour $a=0$, on obtient un disque chargé ; le champ normal présente des limites différentes de part et d'autre de sa surface. On ne doit pas substituer simultanément $a=0$ et $z=0$ dans l'expression contenant $z/\\sqrt{a^2+z^2}$.\n\n### Bilan du TD : résultats et méthode\n\n> **Exercice 1 : charges aux sommets du carré**\n>\n> $$\\vec E(O)=\\frac{2\\sqrt2\\,kq}{a^2}\\vec e_y=180\\sqrt2\\,\\vec e_y\\ \\mathrm{N\\,C^{-1}},\\qquad V(O)=V(I)=V(I')=0,\\qquad V(x,0)=0.$$\n>\n> Le potentiel nul sur une droite n'impose pas que sa dérivée transversale soit nulle.\n\n> **Exercice 2 : couronne circulaire**\n>\n> $$V(z)=\\frac{\\sigma}{2\\varepsilon_0}\\Big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\Big),\\qquad \\vec E(z)=\\frac{\\sigma z}{2\\varepsilon_0}\\Big(\\frac1{\\sqrt{a^2+z^2}}-\\frac1{\\sqrt{b^2+z^2}}\\Big)\\vec e_z.$$\n>\n> Le potentiel est pair et positif ; la composante axiale du champ est impaire. Pour $a>0$, $V(0)>0$ mais $\\vec E(O)=\\vec 0$.\n\n**Les trois réflexes à conserver.**\n\n1. **Distinguer le scalaire et le vecteur.** Les potentiels s'additionnent algébriquement ; les champs se somment composante par composante.\n2. **Utiliser les symétries sur les contributions complètes.** Tenir compte des positions, des distances, des signes et des valeurs des charges.\n3. **Justifier les passages mathématiques.** Écrire les bornes, vérifier la primitive, détailler la dérivée composée et traiter les limites avant de conclure.",
+      "solution_source": "prof",
+      "answers": [
+        {
+          "label": "Ex 2 – Q1 : V(z) sur l'axe, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "sigma/(2*epsilon0)*(sqrt(b^2+z^2)-sqrt(a^2+z^2))"
+          ],
+          "variables": [
+            "sigma",
+            "epsilon0",
+            "a",
+            "b",
+            "z"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q2 : E_z(z), composante axiale du champ, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "sigma*z/(2*epsilon0)*(1/sqrt(a^2+z^2)-1/sqrt(b^2+z^2))"
+          ],
+          "variables": [
+            "sigma",
+            "epsilon0",
+            "a",
+            "b",
+            "z"
+          ]
+        }
+      ],
+      "source": "TD/TD1 (1).pdf p.1, exercice 3",
+      "solution_from": "TD/Correction TD1 Électrostatique ENSA Agadir Pr MORDY Yassine.pdf p.16-25",
+      "simulations": [
+        {
+          "scene": "charged-distribution",
+          "params": {
+            "shape": "disk"
+          },
+          "caption": "Champ sur l'axe d'un disque chargé : la couronne est un disque privé de sa partie centrale."
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quel est le potentiel $V(z)$ sur l'axe ($V(\\infty)=0$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\Big(\\sqrt{a^2+z^2}-\\sqrt{b^2+z^2}\\Big)$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{\\sigma}{4\\varepsilon_0}\\Big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\Big)$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\Big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\Big)$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\,(b-a)$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Anneau de rayon $\\rho$ : $dq=\\sigma\\,2\\pi\\rho\\,d\\rho$ à la distance $\\sqrt{\\rho^2+z^2}$, donc $V=\\frac{\\sigma}{2\\varepsilon_0}\\int_a^b\\frac{\\rho\\,d\\rho}{\\sqrt{\\rho^2+z^2}}=\\frac{\\sigma}{2\\varepsilon_0}\\big(\\sqrt{b^2+z^2}-\\sqrt{a^2+z^2}\\big)>0$. ($\\frac{\\sigma}{2\\varepsilon_0}(b-a)$ n'est que $V(0)$.)"
+        },
+        {
+          "prompt_md": "Q1 — Quelle est l'allure de $V(z)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Paire, maximum $V(0)=\\frac{\\sigma}{2\\varepsilon_0}(b-a)$ en $z=0$, tend vers $0$ quand $|z|\\to\\infty$"
+            },
+            {
+              "id": "b",
+              "md": "Impaire, nulle en $z=0$"
+            },
+            {
+              "id": "c",
+              "md": "Paire, minimum en $z=0$, tend vers $+\\infty$"
+            },
+            {
+              "id": "d",
+              "md": "Constante égale à $\\frac{\\sigma}{2\\varepsilon_0}(b-a)$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$V(-z)=V(z)$ ; $V'(z)=\\frac{\\sigma z}{2\\varepsilon_0}\\left(\\frac1{\\sqrt{b^2+z^2}}-\\frac1{\\sqrt{a^2+z^2}}\\right)$ est du signe de $-z$ ; la quantité conjuguée donne $V(z)=\\frac{\\sigma}{2\\varepsilon_0}\\frac{b^2-a^2}{\\sqrt{b^2+z^2}+\\sqrt{a^2+z^2}}\\to0$."
+        },
+        {
+          "prompt_md": "Q2 — Quel est le champ $\\vec E(M)$ sur l'axe ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{\\sigma z}{2\\varepsilon_0}\\Big(\\dfrac1{\\sqrt{b^2+z^2}}-\\dfrac1{\\sqrt{a^2+z^2}}\\Big)\\vec e_z$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{\\sigma z}{2\\varepsilon_0}\\Big(\\dfrac1{\\sqrt{a^2+z^2}}-\\dfrac1{\\sqrt{b^2+z^2}}\\Big)\\vec e_z$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\Big(\\dfrac1{\\sqrt{a^2+z^2}}-\\dfrac1{\\sqrt{b^2+z^2}}\\Big)\\vec e_z$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\,\\vec e_z$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Par symétrie le champ est porté par $\\vec e_z$, et $E_z=-\\frac{dV}{dz}=\\frac{\\sigma z}{2\\varepsilon_0}\\left(\\frac1{\\sqrt{a^2+z^2}}-\\frac1{\\sqrt{b^2+z^2}}\\right)$ (du signe de $z$ : il s'éloigne de la couronne). L'option avec l'ordre inverse oublie le signe $-$ de $-\\nabla V$."
+        }
+      ]
+    }
+  ]
+}

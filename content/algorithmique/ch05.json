@@ -1,0 +1,870 @@
+{
+  "slug": "structures-iteratives",
+  "number": 5,
+  "title": "Structures itératives (boucles)",
+  "description": "Boucles Pour, Tant que et Répéter…Jusqu'à : notion d'itération, les quatre éléments d'une boucle (initialisation, condition, traitement, évolution), comparaison des trois structures, et exercices d'application (accumulateurs, compteurs, validation de saisie).",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 05 - Boucles Pour, Tant que et Répéter.pdf",
+  "sections": [
+    {
+      "slug": "notion-iteration",
+      "title": "La notion d'itération",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "iteration-et-ses-elements",
+          "title": "L'itération et ses éléments",
+          "number": "5.1",
+          "estimatedMinutes": 11,
+          "summary": "Pourquoi les boucles, ce qu'est une itération, et les quatre éléments d'une boucle : initialisation, condition de répétition, traitement à répéter, évolution.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Pourquoi avons-nous besoin des boucles ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Que faire si une même instruction doit être exécutée plusieurs fois ?",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme AfficherNombres\nDébut\n    Écrire(1)\n    Écrire(2)\n    Écrire(3)\n    Écrire(4)\n    Écrire(5)\nFin\n```\n\nLes instructions **Écrire** et **Afficher** servent toutes deux à afficher des données à l'écran.",
+              "origin": "source",
+              "title": "Exemple 1 : afficher les nombres de 1 à 5"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme AfficherNombres\nDébut\n    Écrire(1)\n    Écrire(2)\n    ……\n    Écrire(10000)\nFin\n```\n\nÉcrire 10 000 lignes n'est pas raisonnable : les **structures itératives (boucles)** permettent de résoudre ce problème.",
+              "origin": "source",
+              "title": "Exemple 2 : afficher les nombres de 1 à 10 000"
+            },
+            {
+              "type": "definition",
+              "md": "Une **itération** correspond à **une exécution du traitement à répéter** dans une boucle. Chaque passage dans la boucle constitue une itération.\n\n| Itération | Valeur de i |\n|---|---|\n| 1ʳᵉ | 1 |\n| 2ᵉ | 2 |\n| 3ᵉ | 3 |\n| 4ᵉ | 4 |",
+              "origin": "source",
+              "title": "Itération"
+            },
+            {
+              "type": "heading",
+              "text": "Les éléments d'une itération",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour qu'une boucle fonctionne correctement, il faut généralement : **1. une initialisation**, **2. une condition de répétition**, **3. un traitement à répéter**, **4. une évolution**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Elle consiste à attribuer une **valeur de départ** à une ou plusieurs variables **avant** l'exécution d'une boucle. Elle permet de définir le point de départ du processus de répétition.\n\n*Exemple :* pour afficher les nombres de 1 à 5, on écrit `i ← 1` : la variable i commence avec la valeur 1. Ici, i est la variable utilisée pour contrôler la répétition, 1 est la valeur initiale, et `i ← 1` est l'initialisation de la variable.",
+              "origin": "source",
+              "title": "1. Initialisation"
+            },
+            {
+              "type": "definition",
+              "md": "C'est une **expression logique** qui permet de déterminer si une boucle doit **continuer** à exécuter ses instructions ou **s'arrêter**. Elle peut prendre deux valeurs : Vrai ou Faux.",
+              "origin": "source",
+              "title": "2. Condition de répétition"
+            },
+            {
+              "type": "remark",
+              "md": "**Quelle est la différence entre la condition d'une boucle et la condition d'une structure conditionnelle ?** Une condition est toujours une expression logique qui prend la valeur Vrai ou Faux ; c'est son **utilisation** qui change :\n- condition dans une structure conditionnelle : **décision**, elle détermine quel traitement exécuter ;\n- condition dans une boucle : **répétition** contrôlée par une condition, elle détermine si un traitement doit être répété.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Après l'initialisation `i ← 1`, nous utilisons la condition de continuation `i ≤ 3` :\n\n| Valeur de i | Condition i ≤ 3 | Décision |\n|---|---|---|\n| 1 | Vrai | Continuer |\n| 2 | Vrai | Continuer |\n| 3 | Vrai | Continuer |\n| 4 | Faux | Arrêter |",
+              "origin": "source",
+              "title": "Exemple : afficher les nombres de 1 à 3"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec `i ← 1` et la condition `i ≤ 3`, combien de fois la condition est-elle évaluée en tout (en comptant le test qui arrête la boucle) ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "Elle est évaluée pour i = 1, 2, 3 (Vrai) puis pour i = 4 (Faux) : 4 évaluations pour 3 itérations."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Ce sont les instructions qui seront exécutées plusieurs fois. Il peut être constitué d'une ou plusieurs instructions :\n1. une instruction simple : `Écrire(S)` ;\n2. plusieurs instructions : `Écrire(S)` puis `Écrire(S*S)` ;\n3. une affectation : `S ← S + i` ;\n4. une lecture : `Lire(note)` ;\n5. une structure conditionnelle : `Si valeur MOD 2 = 0 Alors Écrire(valeur) FinSi`.\n\nAffectation + lecture + écriture + condition + boucle imbriquée…",
+              "origin": "source",
+              "title": "3. Traitement à répéter"
+            },
+            {
+              "type": "definition",
+              "md": "L'**évolution** est l'instruction qui permet de **modifier une ou plusieurs variables utilisées par la boucle**, afin de faire progresser son exécution **vers sa condition d'arrêt**.\n\n*Exemple :* nous voulons afficher les nombres de 1 à 5. Nous commençons avec i = 1. Après avoir affiché 1, comment obtenir 2 ? puis 3 ? puis 4 ? En répétant `i ← i + 1` :\n```\ni ← 1\nÉcrire(i)\ni ← i + 1\nÉcrire(i)\ni ← i + 1\nÉcrire(i)\n……\n```\n\nL'évolution peut prendre différentes formes : augmentation de 2, multiplication, diminution de 1 ou 2…",
+              "origin": "source",
+              "title": "4. L'évolution de la boucle"
+            },
+            {
+              "type": "example",
+              "md": "| Instruction | Rôle |\n|---|---|\n| `i ← 1` | Initialisation |\n| `i ≤ 5` | La condition |\n| `Écrire(i)` | Le traitement à répéter |\n| `i ← i + 1` | L'évolution |",
+              "origin": "source",
+              "title": "Les quatre éléments pour afficher les nombres de 1 à 5"
+            },
+            {
+              "type": "intuition",
+              "md": "Sans évolution, la variable i resterait à 1, la condition `i ≤ 5` serait toujours vraie, et la boucle ne s'arrêterait jamais (**boucle infinie**) : l'algorithme ne serait plus *fini*.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque instruction à son rôle dans la boucle.",
+                "pairs": [
+                  {
+                    "left": "`S ← 0` (avant la boucle)",
+                    "right": "Initialisation"
+                  },
+                  {
+                    "left": "`i ≤ 10`",
+                    "right": "Condition de répétition"
+                  },
+                  {
+                    "left": "`S ← S + i`",
+                    "right": "Traitement à répéter"
+                  },
+                  {
+                    "left": "`i ← i + 1`",
+                    "right": "Évolution"
+                  }
+                ],
+                "explanation": "L'initialisation fixe le point de départ, la condition décide de continuer, le traitement est le travail répété, l'évolution rapproche la boucle de son arrêt."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Une itération est une exécution du traitement à répéter dans une boucle.",
+              "answer": true,
+              "explanation": "C'est la définition du cours : chaque passage dans la boucle est une itération."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel élément fait progresser la boucle vers sa condition d'arrêt ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'initialisation"
+                },
+                {
+                  "id": "b",
+                  "md": "La condition"
+                },
+                {
+                  "id": "c",
+                  "md": "Le traitement"
+                },
+                {
+                  "id": "d",
+                  "md": "L'évolution"
+                }
+              ],
+              "answer": "d",
+              "explanation": "L'évolution modifie les variables de la boucle (par exemple `i ← i + 1`) pour qu'à terme la condition devienne fausse."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les éléments d'une boucle tels que le cours les présente.",
+              "items": [
+                "Initialisation",
+                "Condition de répétition",
+                "Traitement à répéter",
+                "Évolution"
+              ],
+              "explanation": "On initialise avant la boucle, puis on teste la condition, on exécute le traitement, et on fait évoluer la variable avant de revenir à la condition."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La condition d'une boucle et celle d'un Si sont de nature différente : l'une n'est pas une expression logique.",
+              "answer": false,
+              "explanation": "Faux : dans les deux cas, c'est une expression logique (Vrai/Faux). Seule son utilisation change : décision ou répétition."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que se passe-t-il si l'on oublie l'évolution `i ← i + 1` dans une boucle « tant que i ≤ 5 » avec i initialisé à 1 ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La boucle s'exécute une fois"
+                },
+                {
+                  "id": "b",
+                  "md": "La boucle ne s'exécute pas"
+                },
+                {
+                  "id": "c",
+                  "md": "La boucle ne s'arrête jamais"
+                },
+                {
+                  "id": "d",
+                  "md": "La boucle s'exécute 5 fois"
+                }
+              ],
+              "answer": "c",
+              "explanation": "i reste égal à 1, la condition reste vraie indéfiniment : boucle infinie."
+            }
+          ]
+        },
+        {
+          "slug": "trois-types-de-boucles",
+          "title": "Les trois structures itératives",
+          "number": "5.2",
+          "estimatedMinutes": 9,
+          "summary": "Pour, Tant que et Répéter…Jusqu'à : le même problème (afficher 1 à 5) écrit de trois façons, où se placent les quatre éléments, et quand utiliser chaque boucle.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Comment ces éléments sont-ils intégrés dans une structure d'itération ? Il existe trois types d'itération :\n\n| Type d'itération | Principe |\n|---|---|\n| Pour | La répétition est contrôlée par un compteur / intervalle. |\n| Tant que | La condition est vérifiée **avant** le traitement. |\n| Répéter…Jusqu'à | Le traitement est exécuté **avant** de tester la condition d'arrêt. |",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Avec **Tant que** :\n\n```\nAlgorithme Af_TantQue\nVariable\n    i : Entier\nDébut\n    i ← 1\n    Tant que i ≤ 5 Faire\n        Écrire(i)\n        i ← i + 1\n    FinTantQue\nFin\n```\n\nAvec **Pour** :\n\n```\nAlgorithme Af_Pour\nVariable\n    i : Entier\nDébut\n    Pour i de 1 à 5 Faire\n        Écrire(i)\n    FinPour\nFin\n```\n\nAvec **Répéter…Jusqu'à** :\n\n```\nAlgorithme Af_Repeter\nVariable\n    i : Entier\nDébut\n    i ← 1\n    Répéter\n        Écrire(i)\n        i ← i + 1\n    Jusqu'à i > 5\nFin\n```\n\nRésultat dans les trois cas : `1 2 3 4 5`.",
+              "origin": "source",
+              "title": "Problème : afficher les nombres de 1 à 5"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans Af_Repeter, pourquoi la condition est-elle `i > 5` et non `i ≤ 5` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "C'est une erreur de la source"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Répéter…Jusqu'à s'arrête quand la condition devient vraie : c'est une condition d'arrêt"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Pour afficher 6 nombres"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Parce que i commence à 0"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Tant que utilise une condition de **continuation** (on continue tant qu'elle est vraie) ; Répéter…Jusqu'à utilise une condition d'**arrêt** (on s'arrête dès qu'elle est vraie)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "**Réalisation d'une itération : où se trouvent les éléments ?**\n\n| | Tant que | Pour | Répéter…Jusqu'à |\n|---|---|---|---|\n| Initialisation | Avant | Dans la structure | Avant |\n| Condition | Avant le traitement | Intégrée | Après le traitement |\n| Traitement | Dans la boucle | Dans la boucle | Dans la boucle |\n| Évolution | Dans la boucle | Intégrée | Dans la boucle |\n| Exécution au moins une fois ? | Pas forcément | Selon les limites | Oui |",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- **Pour** → on connaît généralement le **nombre d'itérations** ou l'intervalle.\n- **Tant que** → on veut répéter **tant qu'une condition est vraie**.\n- **Répéter…Jusqu'à** → on veut exécuter **au moins une fois**, puis tester la condition d'arrêt.",
+              "origin": "source",
+              "title": "Pourquoi avons-nous trois types d'itération ?"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque situation à la boucle la plus adaptée.",
+                "pairs": [
+                  {
+                    "left": "Afficher la table de multiplication de 7 (de 1 à 10)",
+                    "right": "Pour"
+                  },
+                  {
+                    "left": "Redemander une saisie tant qu'elle est invalide",
+                    "right": "Tant que"
+                  },
+                  {
+                    "left": "Lancer un dé au moins une fois, jusqu'à obtenir 6",
+                    "right": "Répéter…Jusqu'à"
+                  }
+                ],
+                "explanation": "Nombre de répétitions connu → Pour ; répétition tant qu'une condition est vraie (peut-être zéro fois) → Tant que ; au moins une exécution → Répéter…Jusqu'à."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle boucle exécute son traitement **au moins une fois** quoi qu'il arrive ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour"
+                },
+                {
+                  "id": "b",
+                  "md": "Tant que"
+                },
+                {
+                  "id": "c",
+                  "md": "Répéter…Jusqu'à"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Dans Répéter…Jusqu'à, le traitement est exécuté avant le test de la condition."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans quelle boucle l'initialisation et l'évolution sont-elles intégrées à la structure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour"
+                },
+                {
+                  "id": "b",
+                  "md": "Tant que"
+                },
+                {
+                  "id": "c",
+                  "md": "Répéter…Jusqu'à"
+                }
+              ],
+              "answer": "a",
+              "explanation": "`Pour i de 1 à 5` initialise i à 1 et l'augmente automatiquement à chaque itération."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une boucle Tant que peut ne jamais exécuter son traitement.",
+              "answer": true,
+              "explanation": "Oui : la condition est testée avant le traitement ; si elle est fausse dès le départ, on n'entre pas dans la boucle."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien de nombres affiche `Pour i de 1 à 5 Faire Écrire(i) FinPour` ? ___",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "i prend les valeurs 1, 2, 3, 4, 5 : cinq affichages."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "On choisit la boucle Pour quand on connaît à l'avance le nombre d'itérations.",
+              "answer": true,
+              "explanation": "C'est le critère du cours : nombre d'itérations ou intervalle connu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "les-trois-boucles",
+      "title": "Les trois boucles",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "boucle-pour",
+          "title": "La boucle Pour",
+          "number": "5.3",
+          "estimatedMinutes": 11,
+          "summary": "Syntaxe et fonctionnement de Pour…Faire (compteur sur un intervalle), puis trois exercices : moyenne de N notes, comptage de températures et contrôle qualité.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "- La structure **Pour… Faire** permet de répéter un ensemble d'instructions en faisant évoluer une variable appelée **compteur** dans un intervalle donné.\n- Elle est particulièrement adaptée lorsque le **nombre de répétitions est connu à l'avance**.\n- Pour chaque valeur du compteur dans l'intervalle, le traitement est exécuté.\n- L'évolution de la boucle est exécutée directement par le compteur.\n\nSyntaxe :\n```\nPour compteur de valeur_initiale à valeur_finale Faire\n    Instruction(s)\nFinPour\n```\n\nExemple :\n\n```\nPour i de 1 à 5 Faire\n    Écrire(i)\nFinPour\n```",
+              "origin": "source",
+              "title": "Structure d'itération Pour"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch05-pour.svg",
+              "alt": "Organigramme équivalent à la boucle Pour : i ← 1, test i ≤ N, traitement, i ← i + 1 ; l'initialisation, le test et l'incrémentation sont gérés par Pour.",
+              "caption": "Figure — ce que fait automatiquement la boucle Pour i de 1 à N.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Combien d'itérations effectue `Pour i de 3 à 8 Faire … FinPour` ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "6"
+                ],
+                "explanation": "i prend les valeurs 3, 4, 5, 6, 7, 8 : 8 − 3 + 1 = 6 itérations."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un entier N représentant un nombre d'étudiants, puis demande, à l'aide d'une boucle Pour, la note de chacun d'eux et calcule leur moyenne.",
+              "origin": "source",
+              "title": "Exercice 3 : moyenne de N notes",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme MoyenneNNotes\nVariables\n    N, i : entier\n    note, S, Moyenne : réel\nDébut\n    Lire(N)\n    S ← 0\n    Pour i de 1 à N Faire\n        Lire(note)\n        S ← S + note\n    FinPour\n    Moyenne ← S / N\n    Afficher(Moyenne)\nFin\n```"
+                },
+                {
+                  "md": "S est un **accumulateur** : initialisé à 0 avant la boucle, il reçoit chaque note à chaque itération.",
+                  "why": "Sans `S ← 0`, la première addition utiliserait une valeur indéfinie."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Une machine industrielle fait l'objet d'un relevé de température une fois par heure pendant 7 heures. Écrire un algorithme qui permet de saisir les températures relevées à chaque heure, puis de déterminer et d'afficher le nombre de relevés pour lesquels la température dépasse 50 °C.",
+              "origin": "source",
+              "title": "Exercice 4 : surveillance de température",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme SurveillanceTemperature\nVariable\n    i, Compteur : Entier\n    Temperature : Réel\nDébut\n    Compteur ← 0\n    Pour i de 1 à 7 Faire\n        Écrire(\"Saisir la température de l'heure \", i)\n        Lire(Temperature)\n        Si Temperature > 50 Alors\n            Compteur ← Compteur + 1\n        FinSi\n    FinPour\n    Écrire(\"Nombre de relevés dépassant 50°C : \", Compteur)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "SurveillanceTemperature avec les relevés 48, 52, 50, 61, 49, 55, 50 : Compteur final = ___",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "Seuls 52, 61 et 55 sont **strictement** supérieurs à 50 : Compteur = 3 (les deux 50 ne comptent pas)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Une usine fabrique 10 pièces mécaniques. Chaque pièce est soumise à un contrôle de poids. Une pièce est considérée comme non conforme si son poids est inférieur à 95 g ou supérieur à 105 g. Écrire un algorithme qui permet de saisir le poids de chaque pièce, puis de déterminer et d'afficher le nombre de pièces non conformes.",
+              "origin": "source",
+              "title": "Exercice 5 : contrôle qualité",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme ControleQualite\nVariables\n    i, Compteur : Entier\n    Poids : Réel\nDébut\n    Compteur ← 0\n    Pour i de 1 à 10 Faire\n        Écrire(\"Saisir le poids de la pièce \", i)\n        Lire(Poids)\n        Si Poids < 95 OU Poids > 105 Alors\n            Compteur ← Compteur + 1\n        FinSi\n    FinPour\n    Écrire(\"Nombre de pièces non conformes : \", Compteur)\nFin\n```"
+                }
+              ]
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "MoyenneNNotes avec N = 4 et les notes 10, 14, 8, 12 : Moyenne = ___",
+              "answerType": "number",
+              "accepted": [
+                "11"
+              ],
+              "explanation": "S = 10 + 14 + 8 + 12 = 44, puis 44 / 4 = 11."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans ControleQualite, une pièce de 105 g est-elle comptée comme non conforme ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Oui"
+                },
+                {
+                  "id": "b",
+                  "md": "Non"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La condition est `Poids < 95 OU Poids > 105` : 105 > 105 est faux et 105 < 95 aussi, donc la pièce est conforme."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans une boucle Pour, il faut écrire soi-même `i ← i + 1` dans le traitement.",
+              "answer": false,
+              "explanation": "Faux : l'évolution est exécutée directement par le compteur ; écrire en plus `i ← i + 1` fausserait le comptage."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code ?\n\n```\nS ← 0\nPour i de 1 à 4 Faire\n    S ← S + i\nFinPour\nAfficher(S)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "S = 0 + 1 + 2 + 3 + 4 = 10."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi initialise-t-on `Compteur ← 0` **avant** la boucle et non dedans ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour gagner du temps"
+                },
+                {
+                  "id": "b",
+                  "md": "Sinon le compteur serait remis à 0 à chaque itération"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que Pour l'exige"
+                },
+                {
+                  "id": "d",
+                  "md": "Ce n'est pas nécessaire"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Placé dans la boucle, `Compteur ← 0` effacerait le comptage à chaque passage : à la fin il vaudrait au plus 1."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code ?\n\n```\nP ← 1\nPour i de 1 à 4 Faire\n    P ← P * 2\nFinPour\nAfficher(P)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "16"
+              ],
+              "explanation": "P double à chaque itération : 2, 4, 8, 16."
+            }
+          ]
+        },
+        {
+          "slug": "boucle-tant-que",
+          "title": "La boucle Tant que",
+          "number": "5.4",
+          "estimatedMinutes": 11,
+          "summary": "Syntaxe et principe de Tant que (condition évaluée avant chaque traitement), affichage croissant et décroissant, validation d'une saisie et divisions successives par 2.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "La structure **Tant que** permet de répéter un traitement **tant qu'une condition est vraie**.\n\nSyntaxe :\n```\nTant que Condition Faire\n    Traitement\nFinTantQue\n```\n\n**Principe :** la condition est évaluée **avant chaque exécution** du traitement : si elle est vraie → traitement, puis retour à la condition ; si elle est fausse → fin.\n\nTant que la condition est vraie → on continue. Dès que la condition devient fausse → on s'arrête.\n\n**Éléments et ordre d'exécution :** initialisation → condition → (vraie) traitement → évolution → retour à la condition.",
+              "origin": "source",
+              "title": "Structure d'itération Tant que"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch05-tant-que.svg",
+              "alt": "Organigramme de la boucle Tant que : initialisation i ← 1, test i ≤ 5 ; si Vrai, Afficher(i) puis i ← i + 1 et retour au test ; si Faux, sortie de la boucle.",
+              "caption": "Figure — boucle Tant que : le test est fait avant chaque itération.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme Affichage\nVariable\n    i : Entier\nDébut\n    i ← 1\n    Tant que i <= 5 Faire\n        Afficher(i)\n        i ← i + 1\n    FinTantQue\nFin\n```",
+              "origin": "source",
+              "title": "Afficher les nombres de 1 à 5 avec Tant que"
+            },
+            {
+              "type": "example",
+              "md": "Initialisation ? Condition ? Instruction ? Compteur ?\n\n```\nAlgorithme CompteRebours\nVariable\n    N : Entier\nDébut\n    N ← 5\n    Tant que N > 0 Faire\n        Afficher(N)\n        N ← N - 1\n    FinTantQue\nFin\n```\n\nInitialisation : `N ← 5` ; condition : `N > 0` ; traitement : `Afficher(N)` ; évolution : `N ← N - 1` (le compteur diminue).",
+              "origin": "source",
+              "title": "Afficher les nombres de 5 à 1 avec Tant que"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans CompteRebours, quelle est la valeur de N juste après la sortie de la boucle ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "0"
+                ],
+                "explanation": "Après avoir affiché 1, N devient 0 ; la condition 0 > 0 est fausse, on sort avec N = 0."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Un gestionnaire doit saisir une quantité de produits en stock, qui ne peut pas être négative. Écrire un algorithme qui redemande la saisie tant que la quantité entrée est invalide.",
+              "origin": "source",
+              "title": "Exercice 1 : validation d'une quantité",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme ValidationQuantite\nVariables\n    quantite : entier\nDébut\n    Lire(quantite)\n    Tant que (quantite < 0) Faire\n        Afficher(\"Quantité invalide, veuillez ressaisir\")\n        Lire(quantite)\n    FinTantQue\n    Afficher(quantite)\nFin\n```"
+                },
+                {
+                  "md": "Ici, l'initialisation est la première lecture, et l'évolution est la nouvelle lecture dans la boucle.",
+                  "why": "Si la première saisie est déjà valide, on n'entre jamais dans la boucle."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un entier N strictement positif, puis calcule, à l'aide d'une boucle Tant que, le nombre de divisions entières par 2 nécessaires pour que N devienne inférieur ou égal à 1.",
+              "origin": "source",
+              "title": "Exercice 3 : divisions par 2",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme DivisionsPar2\nVariables\n    N, compteur : entier\nDébut\n    Lire(N)\n    compteur ← 0\n    Tant que (N > 1) Faire\n        N ← N div 2\n        compteur ← compteur + 1\n    FinTantQue\n    Afficher(compteur)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "DivisionsPar2 avec N = 20 affiche ___",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "20 → 10 → 5 → 2 → 1 : quatre divisions entières par 2."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans une boucle Tant que, la condition est évaluée avant chaque exécution du traitement.",
+              "answer": true,
+              "explanation": "C'est le principe du Tant que."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec ValidationQuantite, l'utilisateur saisit −3, puis −1, puis 12. Combien de fois le message « Quantité invalide » s'affiche-t-il ? ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "−3 : invalide (message), −1 : invalide (message), 12 : valide, on sort. Deux messages."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "DivisionsPar2 avec N = 1 affiche ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "1 > 1 est faux dès le départ : on n'entre pas dans la boucle, compteur reste 0."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code (dernière valeur affichée) ?\n\n```\ni ← 1\nTant que i < 20 Faire\n    i ← i * 3\nFinTantQue\nAfficher(i)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "27"
+              ],
+              "explanation": "i vaut 1, 3, 9 (tous < 20, on continue), puis 27 : 27 < 20 est faux, on sort et on affiche 27."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'évolution dans CompteRebours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`N ← 5`"
+                },
+                {
+                  "id": "b",
+                  "md": "`N > 0`"
+                },
+                {
+                  "id": "c",
+                  "md": "`Afficher(N)`"
+                },
+                {
+                  "id": "d",
+                  "md": "`N ← N - 1`"
+                }
+              ],
+              "answer": "d",
+              "explanation": "C'est l'instruction qui rapproche N de la condition d'arrêt (N > 0 devient faux)."
+            }
+          ]
+        },
+        {
+          "slug": "boucle-repeter-jusqua",
+          "title": "La boucle Répéter…Jusqu'à",
+          "number": "5.5",
+          "estimatedMinutes": 10,
+          "summary": "Syntaxe et principe de Répéter…Jusqu'à (traitement exécuté au moins une fois, condition d'arrêt), exemples et exercices, puis récapitulatif comparé des trois boucles.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "La structure **Répéter…Jusqu'à** permet de répéter un traitement **jusqu'à ce qu'une condition d'arrêt devienne vraie**.\n\nSyntaxe :\n```\nRépéter\n    Traitement\nJusqu'à Condition\n```\n\nLe traitement est exécuté **avant** le test de la condition : traitement → condition ? → si Faux : recommencer ; si Vrai : fin.\n- Le traitement est exécuté **au moins une fois**.\n- Ici, on parle plutôt de **condition d'arrêt** : on répète jusqu'à ce que la condition soit vraie.",
+              "origin": "source",
+              "title": "Structure d'itération Répéter…Jusqu'à"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch05-repeter.svg",
+              "alt": "Organigramme de la boucle Répéter…Jusqu'à : traitement, évolution, puis test i > 10 ; si Faux on recommence, si Vrai on sort.",
+              "caption": "Figure — boucle Répéter … Jusqu'à : le test est fait après le traitement.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme Hello10Fois\nVariable\n    i : entier\nDébut\n    i ← 1\n    Répéter\n        Ecrire(\"Hello\")\n        i ← i + 1\n    Jusqu'à i > 10\nFin\n```",
+              "origin": "source",
+              "title": "Afficher « Hello » 10 fois"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Avec `i ← 20` puis `Répéter Écrire(i) ; i ← i + 1 Jusqu'à i > 10`, combien de fois Écrire est-il exécuté ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "0"
+                  },
+                  {
+                    "id": "b",
+                    "md": "1"
+                  },
+                  {
+                    "id": "c",
+                    "md": "10"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Une infinité"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le traitement s'exécute d'abord (affiche 20), puis i = 21 > 10 est vrai : on s'arrête. Au moins une exécution, ici exactement une."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Un joueur lance un dé à six faces de façon répétée jusqu'à obtenir un 6. Écrire un algorithme qui lit les valeurs obtenues une à une et compte le nombre de lancers nécessaires.",
+              "origin": "source",
+              "title": "Exercice 2 : lancers de dé",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme LancersDeDe\nVariables\n    valeur, compteur : entier\nDébut\n    compteur ← 0\n    Répéter\n        Lire(valeur)\n        compteur ← compteur + 1\n    Jusqu'à (valeur = 6)\n    Afficher(compteur)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Un distributeur de billets n'accepte que des retraits multiples de 100 DH. Écrire un algorithme qui demande un montant à retirer et répète la demande jusqu'à ce que le montant saisi soit valide.",
+              "origin": "source",
+              "title": "Exercice 4 : distributeur de billets",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme RetraitDistributeur\nVariables\n    montant : entier\nDébut\n    Répéter\n        Lire(montant)\n    Jusqu'à (montant mod 100 = 0)\n    Afficher(montant)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "LancersDeDe : le joueur obtient 3, 1, 5, 6. Le compteur affiché vaut ___",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "Quatre lectures (3, 1, 5, 6), le compteur augmente à chacune ; après le 6 la condition d'arrêt est vraie."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Récapitulatif",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| | Tant que | Pour | Répéter…Jusqu'à |\n|---|---|---|---|\n| Condition | Condition de continuation | Intervalle / compteur | Condition d'arrêt |\n| Test | Avant le traitement | Contrôle par compteur | Après le traitement |\n| Initialisation | Généralement avant | Intégrée | Généralement avant |\n| Évolution | Généralement explicite | Intégrée | Généralement dans le traitement |\n| Minimum d'exécutions | 0 | Selon les bornes | 1 |\n| Utilisation typique | Nombre d'itérations inconnu | Nombre connu | Traitement à effectuer au moins une fois |",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans Répéter…Jusqu'à, la boucle s'arrête quand la condition est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Vraie"
+                },
+                {
+                  "id": "b",
+                  "md": "Fausse"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est une condition d'**arrêt** : on répète jusqu'à ce qu'elle devienne vraie (contrairement à Tant que)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "RetraitDistributeur : l'utilisateur saisit 250, puis 130, puis 400. Le montant affiché est ___",
+              "answerType": "number",
+              "accepted": [
+                "400"
+              ],
+              "explanation": "250 mod 100 = 50 et 130 mod 100 = 30 (invalides), 400 mod 100 = 0 : on s'arrête et on affiche 400."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez à chaque boucle son nombre minimum d'exécutions du traitement.",
+              "pairs": [
+                {
+                  "left": "Tant que",
+                  "right": "0"
+                },
+                {
+                  "left": "Répéter…Jusqu'à",
+                  "right": "1"
+                },
+                {
+                  "left": "Pour",
+                  "right": "Selon les bornes"
+                }
+              ],
+              "explanation": "Tant que teste avant (peut ne jamais exécuter), Répéter teste après (au moins une fois), Pour dépend de l'intervalle."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Hello10Fois affiche « Hello » exactement 10 fois.",
+              "answer": true,
+              "explanation": "i va de 1 à 10 ; après le 10ᵉ affichage, i = 11 > 10 et la boucle s'arrête."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code ?\n\n```\nx ← 100\nRépéter\n    x ← x - 30\nJusqu'à x < 0\nAfficher(x)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "-20"
+              ],
+              "explanation": "x : 100 → 70 → 40 → 10 → −20 ; la condition x < 0 n'est vraie qu'à −20."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour redemander un mot de passe jusqu'à ce qu'il soit correct (il faut le demander au moins une fois), quelle boucle est la plus naturelle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour"
+                },
+                {
+                  "id": "b",
+                  "md": "Répéter…Jusqu'à"
+                },
+                {
+                  "id": "c",
+                  "md": "Selon…Cas"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La saisie doit avoir lieu au moins une fois, puis on teste la condition d'arrêt : Répéter…Jusqu'à. (Selon…Cas n'est pas une boucle.)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives de Pr L. OUKHOUYA, « Chapitre 5 : Structures itératives » (35 p.), identiques à Bibliotheque_sources/Algorithme/Cours/Boucles/F105.",
+    "MATÉRIEL DÉPLACÉ : les exercices 1 et 2 des p. 14–16 (calculatrice simple et nom du mois, avec Selon…Cas) ne portent pas sur les boucles ; ils ont été placés au chapitre 4 (leçon « Cas multiples : Selon…Cas »). La numérotation d'origine des exercices restants (3, 4, 5 pour Pour ; 1, 2, 3, 4 pour Tant que / Répéter) est conservée dans les titres.",
+    "p. 6 : l'exemple annonce « afficher les nombres de 1 à 3 » avec la condition i ≤ 3, mais l'en-tête du tableau indique « Condition i ≤ 5 » ; harmonisé en i ≤ 3 (les valeurs du tableau, Faux pour i = 4, correspondent à i ≤ 3).",
+    "p. 4 : « trois éléments, précédés d'une initialisation » puis la liste numérotée 1 à 4 ; présenté comme quatre éléments (initialisation, condition, traitement, évolution), comme dans le reste du chapitre. p. 10 : « Comment c'est 3 éléments… » / p. 9 « Comment c'est 4 éléments » → reformulé.",
+    "p. 27 : l'énoncé dit « affiche \" Bonjour\" 10 fois » mais l'algorithme Hello10Fois affiche « Hello » ; l'énoncé est aligné sur le code (« Hello »).",
+    "Coquilles : « boule » → « boucle » (p. 6) ; « l'évolution de la boucle est exécuté » → « exécutée » ; « Exemple On doit afficher les nombre » → « nombres ». Les schémas de principe (flèches Vrai/Faux, p. 22 et 26) sont redessinés en organigrammes (Tant que, Répéter) ; organigramme équivalent de la boucle Pour ajouté.",
+    "Ajouts (origin: added) : intuition sur la boucle infinie, remarque sur l'accumulateur S, remarque sur l'initialisation par la première lecture (ValidationQuantite), questions « qu'affiche ce pseudo-code ? » dans les quiz."
+  ]
+}

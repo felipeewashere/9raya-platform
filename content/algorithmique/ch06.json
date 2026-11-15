@@ -1,0 +1,528 @@
+{
+  "slug": "tableaux",
+  "number": 6,
+  "title": "Structures de données : tableaux",
+  "description": "Tableaux à une dimension : rôle (mémoriser plusieurs valeurs), définition, caractéristiques (nom, type, taille, indices), déclaration, accès et modification d'un élément, limites des indices, parcours avec une boucle Pour et traitements courants.",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 06 - Tableaux - indices et parcours.pdf",
+  "sections": [
+    {
+      "slug": "notion-de-tableau",
+      "title": "La notion de tableau",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "tableau-definition-declaration",
+          "title": "Le tableau : définition et déclaration",
+          "number": "6.1",
+          "estimatedMinutes": 10,
+          "summary": "Pourquoi une boucle ne suffit pas pour réutiliser des valeurs, ce qu'est un tableau (nom, type, taille, indices), et comment le déclarer en pseudo-code.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "**Rappel des notions précédentes.** Avant d'étudier les tableaux, nous avons abordé :\n1. les instructions de base : déclaration des variables, affectation, lecture et affichage ;\n2. les structures conditionnelles : `Si … Alors … FinSi`, `Si … Alors … Sinon … FinSi`, `Selon … Cas` ;\n3. les structures répétitives : `Pour … Faire`, `Tant que … Faire`, `Répéter … Jusqu'à` ;\n4. **les tableaux** (ce chapitre).",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Nous souhaitons réaliser un algorithme qui permet de :\n1. saisir les notes de 5 étudiants ;\n2. calculer et afficher la moyenne de la classe ;\n3. afficher les notes des étudiants ayant obtenu une note supérieure à cette moyenne.\n\nLes deux premiers points se font avec une boucle :\n```\nAlgorithme Moyenne_Notes\nVariables\n    i : Entier\n    Note, Somme, Moyenne : Réel\nDébut\n    Somme ← 0\n    Pour i ← 1 à 5 Faire\n        Afficher \"Saisir la note de l'étudiant \", i\n        Lire Note\n        Somme ← Somme + Note\n    FinPour\n    Moyenne ← Somme / 5\n    Afficher \"La moyenne de la classe est : \", Moyenne\nFin\n```\n\nMais pour le point 3, il faudrait **revoir les 5 notes après avoir calculé la moyenne**. Or la variable Note ne contient plus que la dernière note saisie : les quatre premières ont été écrasées.",
+              "origin": "source",
+              "title": "Problème"
+            },
+            {
+              "type": "definition",
+              "md": "Nous avons besoin d'une structure permettant de **mémoriser plusieurs valeurs** pour pouvoir les réutiliser à tout moment.\n\nLa distinction essentielle :\n- **la boucle** permet de **répéter** des instructions ;\n- **le tableau** permet de **stocker** plusieurs valeurs et de les réutiliser.",
+              "origin": "source",
+              "title": "Rôle des tableaux"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans Moyenne_Notes, après la boucle, la variable Note contient encore les 5 notes saisies.",
+                "answer": false,
+                "explanation": "Faux : chaque `Lire Note` écrase la valeur précédente ; après la boucle, Note ne contient que la 5ᵉ note. C'est pour cela qu'on a besoin d'un tableau."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Un **tableau** est une structure de données qui permet de regrouper **plusieurs valeurs de même type sous un même nom**.\n\nChaque valeur du tableau est appelée un **élément** et est identifiée par un **indice**.\n\n*Exemple :* ce tableau contient 5 notes.\n\n| Indice | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| Valeur | 15 | 20 | 31 | 40 | 9 |\n\n**Remarque :** le tableau possède **un seul nom**, mais permet de stocker **plusieurs valeurs**.",
+              "origin": "source",
+              "title": "Tableau"
+            },
+            {
+              "type": "definition",
+              "md": "Pour définir un tableau, nous devons préciser :\n1. **le nom** : il permet d'identifier le tableau (exemple : Notes) ;\n2. **le type des éléments** : toutes les valeurs du tableau sont du même type (exemples : Entier, Réel, Caractère) ;\n3. **la taille** : elle correspond au nombre de cases que le tableau peut contenir (exemple : 5 éléments) ;\n4. **les indices** : ils permettent d'identifier et d'accéder individuellement aux éléments du tableau (exemple : 1, 2, 3, 4, 5).\n\n*Exemple :* nom : Notes ; type : Entier ; taille : 5 ; indices : de 1 à 5 ; `Notes = [12, 15, 10, 17, 14]`.",
+              "origin": "source",
+              "title": "Les caractéristiques d'un tableau"
+            },
+            {
+              "type": "heading",
+              "text": "Déclaration d'un tableau",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "En pseudo-code, un tableau peut être déclaré de la manière suivante :\n\n`Nom : tableau[IndiceDébut..IndiceFin] de Type`\n\n*Exemple :* `Notes : tableau[1..5] de Réel`, ce qui signifie :\n- `Notes` → nom du tableau ;\n- `1..5` → intervalle des indices ;\n- 5 → nombre de cases ;\n- `Réel` → type des éléments.",
+              "origin": "source",
+              "title": "Syntaxe générale"
+            },
+            {
+              "type": "remark",
+              "md": "La déclaration définit la **structure** du tableau, mais ne signifie pas que les valeurs ont déjà été saisies.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "1. Tableau d'entiers : `Ages : tableau[1..30] d'Entier` permet de stocker 30 valeurs entières.\n2. Tableau de réels : `Prix : tableau[1..20] de Réel` permet de stocker 20 valeurs réelles.\n3. Tableau de caractères : `Lettres : tableau[1..26] de Caractère` permet de stocker 26 caractères.\n4. Tableau de chaînes : `Noms : tableau[1..10] de Chaîne` permet de stocker 10 chaînes.\n\n**À retenir :** tous les éléments d'un même tableau sont du même type dans le modèle de tableau étudié.",
+              "origin": "source",
+              "title": "Exemples de différents tableaux"
+            },
+            {
+              "type": "example",
+              "md": "Considérons `Notes : tableau[1..5] de Réel` avec les valeurs `Notes = [12,22 ; 15 ; 10,05 ; 17 ; 14]`.\n\n| Indice | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|\n| Valeur | 12,22 | 15 | 10,05 | 17 | 14 |\n\nChaque valeur est appelée un **élément** du tableau.",
+              "origin": "source",
+              "title": "Les éléments d'un tableau"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch06-tableau-notes.svg",
+              "alt": "Le tableau Notes de 5 cases contenant 12, 15, 10, 17, 14 avec leurs indices 1 à 5 ; Notes[3] désigne la case d'indice 3 qui vaut 10.",
+              "caption": "Figure — un tableau : des cases de même type repérées par leur indice.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que déclare `Prix : tableau[1..20] de Réel` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "20 variables nommées Prix1 à Prix20"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Un tableau nommé Prix de 20 cases réelles, indicées de 1 à 20"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Un tableau de 1 case contenant le réel 20"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Un tableau déjà rempli de 20 prix"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Un seul nom (Prix), 20 cases, indices 1 à 20, éléments réels. La déclaration ne remplit pas le tableau."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Pour la déclaration `Ages : tableau[1..30] d'Entier`, associez chaque caractéristique à sa valeur.",
+              "pairs": [
+                {
+                  "left": "Nom",
+                  "right": "Ages"
+                },
+                {
+                  "left": "Type des éléments",
+                  "right": "Entier"
+                },
+                {
+                  "left": "Taille",
+                  "right": "30"
+                },
+                {
+                  "left": "Indices",
+                  "right": "de 1 à 30"
+                }
+              ],
+              "explanation": "Nom, type, taille et intervalle d'indices se lisent directement dans la déclaration."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un tableau peut contenir à la fois des entiers et des chaînes dans le modèle étudié.",
+              "answer": false,
+              "explanation": "Faux : tous les éléments d'un même tableau sont du même type."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle phrase résume la différence entre boucle et tableau ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La boucle stocke, le tableau répète"
+                },
+                {
+                  "id": "b",
+                  "md": "La boucle répète des instructions, le tableau stocke plusieurs valeurs"
+                },
+                {
+                  "id": "c",
+                  "md": "Les deux sont identiques"
+                },
+                {
+                  "id": "d",
+                  "md": "Le tableau remplace la boucle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la « distinction essentielle » du cours."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Après la déclaration `Notes : tableau[1..5] de Réel`, les cinq notes sont déjà connues.",
+              "answer": false,
+              "explanation": "Faux : la déclaration définit la structure, pas le contenu ; il faut encore saisir ou affecter les valeurs."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien de valeurs le tableau `Lettres : tableau[1..26] de Caractère` peut-il stocker ? ___",
+              "answerType": "number",
+              "accepted": [
+                "26"
+              ],
+              "explanation": "Indices de 1 à 26 : 26 cases, une par lettre de l'alphabet."
+            }
+          ]
+        },
+        {
+          "slug": "indices-acces-modification",
+          "title": "Indices : accès, modification et limites",
+          "number": "6.2",
+          "estimatedMinutes": 11,
+          "summary": "L'indice repère la position d'un élément ; lire un élément (x ← T[i]) ou le modifier (T[i] ← x) ; taille d'un tableau ; indices autorisés.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Un **indice** est un **entier** qui permet d'identifier la **position** d'un élément dans un tableau.\n\n*Exemple :* avec `Notes = [12, 15, 10, 17, 14]`, l'expression `Notes[3]` désigne : `Notes` → nom du tableau ; `3` → indice de l'élément ; `10` → valeur de l'élément. Ainsi `Notes[3] = 10` : le troisième élément du tableau contient la valeur 10.",
+              "origin": "source",
+              "title": "Indice"
+            },
+            {
+              "type": "definition",
+              "md": "Pour accéder à un élément, nous utilisons : `NomDuTableau[indice]`.\n\nAvec `Notes = [12, 15, 10, 17, 14]` : `Notes[1]` → 12 ; `Notes[3]` → 10 ; `Notes[5]` → 14.\n\nL'indice permet de sélectionner **directement** un élément du tableau. Les indices commencent à 1, conformément à la convention de déclaration utilisée.",
+              "origin": "source",
+              "title": "Accéder à un élément du tableau"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec `Notes = [12, 15, 10, 17, 14]`, `Notes[4]` vaut ___",
+                "answerType": "number",
+                "accepted": [
+                  "17"
+                ],
+                "explanation": "Le 4ᵉ élément est 17."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Nous pouvons récupérer la valeur d'un élément du tableau et l'affecter à une variable : `Variable ← NomDuTableau[indice]`.\n\n*Exemple :* `Notes = [12, 15, 10, 17, 14]` ; `x ← Notes[3]` ; résultat : x = 10. La valeur contenue dans `Notes[3]` est **copiée** dans la variable x.\n\n**Remarque :** cette opération ne modifie pas le contenu du tableau.",
+              "origin": "source",
+              "title": "Récupérer la valeur d'un élément"
+            },
+            {
+              "type": "definition",
+              "md": "Nous pouvons modifier directement la valeur d'un élément du tableau : `NomDuTableau[indice] ← NouvelleValeur`.\n\n*Exemple :* avec `Notes = [12, 15, 10, 17, 14]`, nous exécutons `Notes[3] ← 18`.\n- Avant : `Notes = [12, 15, 10, 17, 14]`\n- Après : `Notes = [12, 15, 18, 17, 14]`\n\n**Remarque :** seule la valeur de l'élément situé à l'indice 3 est modifiée. Les autres éléments restent inchangés.",
+              "origin": "source",
+              "title": "Modifier la valeur d'un élément"
+            },
+            {
+              "type": "text",
+              "md": "**Deux opérations à ne pas confondre**\n\n| Opération | Instruction | Effet |\n|---|---|---|\n| 1. Récupérer la valeur d'un élément | `x ← Notes[3]` | La valeur de Notes[3] est copiée dans x. Le tableau reste inchangé. |\n| 2. Modifier la valeur d'un élément | `Notes[3] ← x` | La valeur de x est placée dans Notes[3]. Le tableau est modifié. |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces instructions **modifie** le tableau T ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "`x ← T[2]`"
+                  },
+                  {
+                    "id": "b",
+                    "md": "`T[2] ← x`"
+                  },
+                  {
+                    "id": "c",
+                    "md": "`Afficher(T[2])`"
+                  },
+                  {
+                    "id": "d",
+                    "md": "`y ← T[2] + 1`"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le tableau n'est modifié que lorsque `T[…]` est à **gauche** de la flèche d'affectation."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "La **taille** d'un tableau correspond au nombre de cases qu'il peut contenir, c'est-à-dire l'intervalle mentionné dans la déclaration :\n\n$$\\text{Taille du tableau} = \\text{IndiceFin} - \\text{IndiceDébut} + 1$$\n\n*Exemple :* `T : tableau[1..10] d'Entier` signifie que le tableau T possède 10 cases, que chaque case peut contenir un entier, et que les indices vont de 1 à 10.",
+              "origin": "source",
+              "title": "La taille du tableau"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Un indice doit toujours appartenir à l'intervalle défini lors de la déclaration du tableau :\n\n$$\\text{IndiceDébut} \\le \\text{indice} \\le \\text{IndiceFin}$$\n\n*Exemple :* avec `T : tableau[1..5] d'Entier`, les indices autorisés sont 1, 2, 3, 4, 5. Accès valides : `T[1]`, `T[3]`, `T[5]`. Accès non valides : `T[0]`, `T[6]`, `T[10]`.",
+              "origin": "source",
+              "title": "Les indices doivent respecter les limites"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Taille du tableau déclaré `V : tableau[0..9] de Réel` : ___",
+                "answerType": "number",
+                "accepted": [
+                  "10"
+                ],
+                "explanation": "IndiceFin − IndiceDébut + 1 = 9 − 0 + 1 = 10. Attention à ne pas répondre 9."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec `Notes = [12, 15, 10, 17, 14]`, après `x ← Notes[2]`, x vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "15"
+              ],
+              "explanation": "On copie le 2ᵉ élément, 15, dans x ; le tableau ne change pas."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Avec `T = [4, 8, 6]`, que contient T après `T[1] ← T[3]` ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "[6, 8, 6]"
+                },
+                {
+                  "id": "b",
+                  "md": "[4, 8, 4]"
+                },
+                {
+                  "id": "c",
+                  "md": "[6, 8, 4]"
+                },
+                {
+                  "id": "d",
+                  "md": "[4, 6, 8]"
+                }
+              ],
+              "answer": "a",
+              "explanation": "On copie T[3] = 6 dans T[1] ; seule la case 1 change : [6, 8, 6]. Ce n'est pas un échange."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Avec `T : tableau[1..5] d'Entier`, l'accès `T[0]` est valide.",
+              "answer": false,
+              "explanation": "Faux : les indices autorisés vont de 1 à 5 ; 0 est en dehors de l'intervalle."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec `T = [5, 9, 2, 7]`, que vaut `T[2] + T[4]` ? ___",
+              "answerType": "number",
+              "accepted": [
+                "16"
+              ],
+              "explanation": "T[2] = 9 et T[4] = 7, donc 16."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Qu'est-ce qu'un indice ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La valeur d'un élément"
+                },
+                {
+                  "id": "b",
+                  "md": "Un entier qui identifie la position d'un élément"
+                },
+                {
+                  "id": "c",
+                  "md": "Le nom du tableau"
+                },
+                {
+                  "id": "d",
+                  "md": "Le type des éléments"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'indice repère la position ; la valeur est ce qui est stocké à cette position."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec `T = [3, 1, 4, 1, 5]`, après `T[2] ← T[2] + T[3]`, T[2] vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "On calcule avec les valeurs actuelles : 1 + 4 = 5, puis on range 5 dans la case 2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "parcours",
+      "title": "Parcours d'un tableau",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "parcours-tableau",
+          "title": "Parcourir un tableau",
+          "number": "6.3",
+          "estimatedMinutes": 10,
+          "summary": "Utiliser une boucle Pour dont le compteur sert d'indice pour accéder successivement aux éléments ; traitements courants (somme, moyenne, comptage, recherche, maximum, minimum).",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Pourquoi utiliser une structure répétitive avec un tableau ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Problème :** nous souhaitons afficher les cinq éléments d'un tableau.\n```\nAfficher(T[1])\nAfficher(T[2])\nAfficher(T[3])\nAfficher(T[4])\nAfficher(T[5])\n```\n\nCette méthode devient répétitive lorsque le tableau contient un grand nombre d'éléments.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "**Parcourir** un tableau consiste à **accéder successivement à ses éléments** à l'aide de leurs indices.\n```\nPour i ← 1 à 5 Faire\n    Afficher(T[i])\nFinPour\n```\n\nDéroulement avec `T = [12, 15, 10, 17, 14]` :\n\n| i | Élément | Valeur affichée |\n|---|---|---|\n| 1 | T[1] | 12 |\n| 2 | T[2] | 15 |\n| 3 | T[3] | 10 |\n| 4 | T[4] | 17 |\n| 5 | T[5] | 14 |\n\nLa variable i joue le **rôle d'indice** et change automatiquement à chaque itération.",
+              "origin": "source",
+              "title": "Parcourir un tableau"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch06-parcours-tableau.svg",
+              "alt": "Parcours d'un tableau T de 5 cases : l'indice i avance de case en case, de 1 à 5, dans une boucle Pour.",
+              "caption": "Figure — parcourir un tableau : l'indice i visite les cases une à une.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Combien d'instructions `Afficher` sont exécutées par cette boucle sur un tableau de 5 éléments ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "Une par itération, et i va de 1 à 5."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Nous pouvons effectuer différents traitements sur ses éléments, par exemple :\n- calculer la somme des éléments ;\n- calculer la moyenne ;\n- compter les éléments qui vérifient une condition ;\n- rechercher une valeur ;\n- rechercher le maximum ;\n- rechercher le minimum.\n\n**Point commun :** toutes ces opérations nécessitent généralement de **parcourir le tableau** :\n```\nPour i ← 1 à N Faire\n    Lire(T[i])          // remplir\n    …\n    S ← S + T[i]        // accumuler\n    …\n    Si T[i] = valeur …  // tester\nFinPour\n```",
+              "origin": "source",
+              "title": "Que peut-on faire avec un tableau ?"
+            },
+            {
+              "type": "example",
+              "md": "Avec un tableau, on peut désormais saisir les notes, calculer la moyenne, **puis** reparcourir les notes :\n\n```\nAlgorithme Notes_Sup_Moyenne\nVariables\n    Notes : tableau[1..5] de Réel\n    i : Entier\n    Somme, Moyenne : Réel\nDébut\n    Somme ← 0\n    Pour i ← 1 à 5 Faire\n        Afficher \"Saisir la note de l'étudiant \", i\n        Lire Notes[i]\n        Somme ← Somme + Notes[i]\n    FinPour\n    Moyenne ← Somme / 5\n    Afficher \"La moyenne de la classe est : \", Moyenne\n    Pour i ← 1 à 5 Faire\n        Si Notes[i] > Moyenne Alors\n            Afficher Notes[i]\n        FinSi\n    FinPour\nFin\n```\n\nLa première boucle remplit le tableau et accumule la somme ; la seconde **réutilise** les valeurs mémorisées.",
+              "origin": "added",
+              "title": "Retour au problème de départ : notes supérieures à la moyenne"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec les notes 8, 12, 15, 9, 16, combien de notes l'algorithme Notes_Sup_Moyenne affiche-t-il à la fin ? ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "Moyenne = (8 + 12 + 15 + 9 + 16) / 5 = 60 / 5 = 12. Seules 15 et 16 sont **strictement** supérieures à 12 (12 > 12 est faux) : 2 notes affichées."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code avec `T = [4, 7, 1, 8]` ?\n\n```\nS ← 0\nPour i ← 1 à 4 Faire\n    S ← S + T[i]\nFinPour\nAfficher(S)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "20"
+              ],
+              "explanation": "4 + 7 + 1 + 8 = 20 : c'est le calcul de la somme par parcours."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code avec `T = [5, 12, 9, 15, 3]` ?\n\n```\nc ← 0\nPour i ← 1 à 5 Faire\n    Si T[i] >= 10 Alors\n        c ← c + 1\n    FinSi\nFinPour\nAfficher(c)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "Seuls 12 et 15 sont ≥ 10 : c = 2. C'est un comptage d'éléments vérifiant une condition."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans `Pour i ← 1 à 5 Faire Afficher(T[i]) FinPour`, la variable i joue le rôle d'indice.",
+              "answer": true,
+              "explanation": "Oui : i prend successivement les valeurs 1 à 5, et T[i] désigne chaque élément à tour de rôle."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Qu'affiche ce pseudo-code avec `T = [6, 2, 9, 4]` ?\n\n```\nm ← T[1]\nPour i ← 2 à 4 Faire\n    Si T[i] > m Alors\n        m ← T[i]\n    FinSi\nFinPour\nAfficher(m)\n```\n\nRéponse : ___",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "m garde la plus grande valeur rencontrée : 6, puis 9 (> 6), 4 ne la dépasse pas. C'est la recherche du maximum."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le point commun de la somme, de la moyenne, du comptage et de la recherche du maximum dans un tableau ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Ils utilisent Selon…Cas"
+                },
+                {
+                  "id": "b",
+                  "md": "Ils nécessitent de parcourir le tableau"
+                },
+                {
+                  "id": "c",
+                  "md": "Ils modifient tous le tableau"
+                },
+                {
+                  "id": "d",
+                  "md": "Ils n'ont besoin que de T[1]"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cours le souligne : toutes ces opérations nécessitent généralement de parcourir le tableau."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives de Pr L. OUKHOUYA, « Chapitre 6 : Structures de données : tableaux » (19 p.), identiques à Bibliotheque_sources/…/Documents generaux/F059. La dernière diapositive (« Exercices d'application ») est vide dans la source : aucun exercice n'a été inventé à sa place.",
+    "p. 3 : le problème (afficher les notes supérieures à la moyenne) est posé sans solution avec tableau ; une solution complète Notes_Sup_Moyenne est ajoutée (origin: added) à la fin de la leçon 6.3, car c'est la motivation du chapitre.",
+    "p. 4 : le tableau d'exemple contient « 15, 20, 31, 40, 9 » présentés comme 5 notes (31 et 40 > 20) ; conservé tel quel (illustration de la structure). p. 18 : le schéma de parcours (« Lire(T[i]) … S S+T[i] … Condition Si T[i]=valeur ») est rendu par un bloc de pseudo-code commenté, avec la flèche d'affectation manquante rétablie (S ← S + T[i]).",
+    "p. 14 : « l'intervalle mentionnée » → « mentionné » ; « Débutintervalle ≤ indice ≤ Finintervalle » écrit IndiceDébut ≤ indice ≤ IndiceFin pour être cohérent avec la syntaxe de déclaration. La source utilise « Pour i ← 1 à 5 » dans ce chapitre (au lieu de « Pour i de 1 à 5 » au chapitre 5) ; les deux notations sont conservées comme dans la source.",
+    "Le chapitre ne traite pas encore les algorithmes de recherche et de tri (Chapitre 7 du plan) : les quiz se limitent au parcours (somme, comptage, maximum), qui sont cités dans la diapositive « Que peut-on faire avec un tableau ? »."
+  ]
+}

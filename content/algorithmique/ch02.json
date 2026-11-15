@@ -1,0 +1,1131 @@
+{
+  "slug": "demarche-et-pseudo-code",
+  "number": 2,
+  "title": "Démarche de résolution et pseudo-code",
+  "description": "Définition et caractéristiques d'un algorithme, démarche de résolution d'un problème en six étapes, structure d'un algorithme en pseudo-code (en-tête, partie déclarative, corps), types d'instructions, organigramme, et dix exercices d'application sur les affectations.",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 02 - Démarche de résolution et pseudo-code.pdf",
+  "sections": [
+    {
+      "slug": "algorithme-et-demarche",
+      "title": "Algorithme et démarche de résolution",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "definition-algorithme",
+          "title": "Définition d'un algorithme",
+          "number": "2.1",
+          "estimatedMinutes": 6,
+          "summary": "Un algorithme est une suite finie, ordonnée et non ambiguë d'instructions ; ses cinq caractéristiques.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "L'algorithmique est la discipline qui consiste à concevoir une méthode de résolution d'un problème :\n\n**Problème → Réflexion → Solution → Programme**\n\nL'algorithmique est **indépendante** de Python ou Java. Elle consiste simplement à trouver une méthode de résolution.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Un **algorithme** est une **suite finie, ordonnée et non ambiguë d'instructions** permettant de résoudre un problème ou d'obtenir un résultat.",
+              "origin": "source",
+              "title": "Algorithme"
+            },
+            {
+              "type": "definition",
+              "md": "- **Finie** : un algorithme doit toujours se terminer après un nombre limité d'étapes.\n- **Ordonnée** : les instructions doivent être exécutées dans un ordre précis. Changer l'ordre peut conduire à un résultat incorrect.\n- **Précise** : chaque instruction doit être clairement définie et réalisable.\n- **Non ambiguë** : une instruction ne doit avoir qu'une seule interprétation possible.\n- **Produit un résultat** : l'algorithme doit fournir un résultat attendu (une valeur, une décision ou une action).",
+              "origin": "source",
+              "title": "Caractéristiques d'un algorithme"
+            },
+            {
+              "type": "example",
+              "md": "$2 + 3 \\times 4 = 14$\n\nL'ordre des opérations est fixé (la multiplication d'abord) : il n'y a qu'**une seule** interprétation possible, et donc un seul résultat.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "intuition",
+              "md": "Si l'on pouvait lire $2+3\\times4$ « de gauche à droite », on trouverait $5\\times4=20$. Une règle de priorité claire supprime l'ambiguïté : c'est exactement ce qu'on exige de chaque instruction d'un algorithme.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque caractéristique à sa signification.",
+                "pairs": [
+                  {
+                    "left": "Finie",
+                    "right": "Se termine après un nombre limité d'étapes"
+                  },
+                  {
+                    "left": "Ordonnée",
+                    "right": "Les instructions s'exécutent dans un ordre précis"
+                  },
+                  {
+                    "left": "Non ambiguë",
+                    "right": "Une seule interprétation possible"
+                  },
+                  {
+                    "left": "Précise",
+                    "right": "Chaque instruction est clairement définie et réalisable"
+                  }
+                ],
+                "explanation": "Ce sont quatre des cinq caractéristiques du cours ; la cinquième est « produit un résultat »."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Un algorithme peut tourner indéfiniment sans jamais s'arrêter.",
+              "answer": false,
+              "explanation": "Faux : un algorithme est **fini**, il doit toujours se terminer après un nombre limité d'étapes."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "L'instruction « ajouter un peu de sel » ne convient pas dans un algorithme car elle n'est pas :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "finie"
+                },
+                {
+                  "id": "b",
+                  "md": "ordonnée"
+                },
+                {
+                  "id": "c",
+                  "md": "non ambiguë / précise"
+                },
+                {
+                  "id": "d",
+                  "md": "un résultat"
+                }
+              ],
+              "answer": "c",
+              "explanation": "« Un peu » peut s'interpréter de plusieurs façons : l'instruction n'est ni précise ni non ambiguë."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Changer l'ordre des instructions d'un algorithme ne change jamais son résultat.",
+              "answer": false,
+              "explanation": "Faux : c'est la caractéristique « ordonnée » du cours : changer l'ordre **peut** conduire à un résultat incorrect."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "D'après la règle de priorité, $2 + 3 \\times 4 =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "14"
+              ],
+              "explanation": "La multiplication passe avant l'addition : $3\\times4=12$, puis $2+12=14$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'algorithmique dépend du langage de programmation utilisé.",
+              "answer": false,
+              "explanation": "Faux : elle est indépendante de Python ou Java ; elle consiste à trouver une méthode de résolution."
+            }
+          ]
+        },
+        {
+          "slug": "demarche-de-resolution",
+          "title": "La démarche de résolution d'un problème",
+          "number": "2.2",
+          "estimatedMinutes": 9,
+          "summary": "Les six étapes de résolution d'un problème (comprendre, entrées/sorties, concevoir, représenter, tester, programmer), appliquées à la moyenne de trois notes et au périmètre d'un rectangle.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "1. **Comprendre le problème** : identifier l'objectif et les contraintes.\n2. **Identifier les entrées et les sorties** : déterminer les données disponibles (entrées) et le résultat attendu (sorties).\n3. **Concevoir l'algorithme** : décomposer la solution en une suite logique d'étapes.\n4. **Représenter la solution** : écrire l'algorithme en pseudo-code ou le représenter par un organigramme.\n5. **Tester et vérifier** : vérifier que l'algorithme fonctionne avec différents exemples.\n6. **Programmer** : traduire l'algorithme dans un langage de programmation (Python, C, Java, etc.).",
+              "origin": "source",
+              "title": "La démarche de résolution d'un problème"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch02-demarche-resolution.svg",
+              "alt": "Les six étapes de la démarche de résolution, reliées par des flèches : comprendre, identifier entrées et sorties, concevoir, représenter, tester, programmer.",
+              "caption": "Figure — les six étapes de la démarche de résolution d'un problème.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "$$M=\\frac{N1+N2+N3}{3}$$\n\n| Étape | Application |\n|---|---|\n| Comprendre le problème | Calculer la moyenne de trois notes. |\n| Entrées | N1, N2, N3 |\n| Sortie | Moyenne M |\n| Concevoir | Additionner les trois notes puis diviser par 3. |\n| Représenter | Écrire le pseudo-code ou l'organigramme. |\n| Tester | Vérifier avec les notes 10, 12 et 14 (résultat attendu : 12). |\n| Programmer (module 2) | Traduire l'algorithme en Python ou en C. |\n\n**Résoudre le problème :**\n1. Lire la première note.\n2. Lire la deuxième note.\n3. Lire la troisième note.\n4. Calculer la moyenne M.\n5. Afficher la moyenne.\n\n**Questions :** peut-on calculer la moyenne avant de lire les notes ? Peut-on afficher le résultat avant le calcul ?",
+              "origin": "source",
+              "title": "Problème : calculer la moyenne de trois notes"
+            },
+            {
+              "type": "remark",
+              "md": "Réponse aux deux questions : **non**. On ne peut pas calculer M sans connaître N1, N2 et N3, ni afficher M avant de l'avoir calculée. C'est la caractéristique « ordonnée » d'un algorithme.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les étapes de la démarche de résolution.",
+                "items": [
+                  "Comprendre le problème",
+                  "Identifier les entrées et les sorties",
+                  "Concevoir l'algorithme",
+                  "Représenter la solution",
+                  "Tester et vérifier",
+                  "Programmer"
+                ],
+                "explanation": "C'est l'ordre du cours : on ne programme qu'à la toute fin, après avoir conçu, représenté et testé la solution."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "En résumé, résoudre un problème, c'est : comprendre le problème, identifier les données d'entrée et le résultat attendu, concevoir une méthode de résolution, représenter cette méthode, la tester, **puis** programmer.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Appliquer la démarche au calcul du périmètre d'un rectangle : Périmètre $= 2\\times(\\text{Largeur} + \\text{Longueur})$.",
+              "origin": "source",
+              "title": "Exercice d'application 1 : périmètre d'un rectangle",
+              "solution": [
+                {
+                  "md": "**1. Comprendre le problème** : calculer le périmètre d'un rectangle à partir de sa longueur et de sa largeur."
+                },
+                {
+                  "md": "**2. Entrées et sorties** : entrées : longueur L, largeur l ; sortie : périmètre P."
+                },
+                {
+                  "md": "**3. Concevoir l'algorithme** : utiliser la formule $P = 2\\times(L + l)$."
+                },
+                {
+                  "md": "**4. Représenter la solution** : écrire l'algorithme en pseudo-code ou le représenter par un organigramme."
+                },
+                {
+                  "md": "**5. Tester et vérifier** : exemple L = 8 m, l = 5 m → $P = 2\\times(8 + 5) = 26$ m."
+                },
+                {
+                  "md": "**6. Programmer** : traduire l'algorithme dans un langage de programmation (Python, C, Java, etc.)."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour le périmètre d'un rectangle, quelles sont les **entrées** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le périmètre P"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La longueur L et la largeur l"
+                  },
+                  {
+                    "id": "c",
+                    "md": "La formule 2 × (L + l)"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Le nombre 2"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les entrées sont les données fournies : L et l. Le périmètre P est la **sortie** ; la formule fait partie de la conception."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "À quelle étape vérifie-t-on l'algorithme avec les notes 10, 12 et 14 ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Comprendre le problème"
+                },
+                {
+                  "id": "b",
+                  "md": "Concevoir l'algorithme"
+                },
+                {
+                  "id": "c",
+                  "md": "Tester et vérifier"
+                },
+                {
+                  "id": "d",
+                  "md": "Programmer"
+                }
+              ],
+              "answer": "c",
+              "explanation": "On fait tourner l'algorithme sur un exemple dont on connaît le résultat attendu (12) : c'est l'étape « Tester et vérifier »."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Moyenne des notes 10, 12 et 14 : M = ___",
+              "answerType": "number",
+              "accepted": [
+                "12"
+              ],
+              "explanation": "$(10+12+14)/3 = 36/3 = 12$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Périmètre d'un rectangle de longueur 8 m et de largeur 5 m (en m) : ___",
+              "answerType": "number",
+              "accepted": [
+                "26"
+              ],
+              "explanation": "$2\\times(8+5)=2\\times13=26$ m."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la démarche du cours, on programme avant de représenter la solution.",
+              "answer": false,
+              "explanation": "Faux : représenter (pseudo-code / organigramme) est l'étape 4, programmer est la 6ᵉ et dernière."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour le problème de la moyenne, associez chaque élément à son rôle.",
+              "pairs": [
+                {
+                  "left": "N1, N2, N3",
+                  "right": "Entrées"
+                },
+                {
+                  "left": "M",
+                  "right": "Sortie"
+                },
+                {
+                  "left": "Additionner puis diviser par 3",
+                  "right": "Conception"
+                },
+                {
+                  "left": "Traduire en Python ou en C",
+                  "right": "Programmation"
+                }
+              ],
+              "explanation": "Les entrées sont les données lues, la sortie le résultat attendu, la conception la méthode, la programmation la traduction dans un langage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pseudo-code-et-organigramme",
+      "title": "Pseudo-code et organigramme",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "structure-pseudo-code",
+          "title": "Structure d'un algorithme en pseudo-code",
+          "number": "2.3",
+          "estimatedMinutes": 11,
+          "summary": "Le pseudo-code, les trois parties d'un algorithme (en-tête, partie déclarative, corps), les principaux types d'instructions et l'exemple Calcul_Moyenne.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Le **pseudo-code** permet de décrire facilement un algorithme avec un vocabulaire simple et sans connaissance a priori du langage de programmation utilisé pour son implémentation machine.",
+              "origin": "source",
+              "title": "Pseudo-code"
+            },
+            {
+              "type": "remark",
+              "md": "Le pseudo-code **n'est pas un langage de programmation normalisé**. Il existe plusieurs façons de l'écrire. L'important est de respecter une syntaxe claire, cohérente et compréhensible. Dans ce cours, nous utiliserons une **convention unique** afin de faciliter l'apprentissage.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Structure générale d'un algorithme",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un algorithme est généralement composé de **trois parties principales** :\n\n```\nAlgorithme NomAlgorithme          ← l'en-tête\nConstantes Identificateur = valeur ← la partie déclarative\nVariables  Identificateur : type\nDébut                              ← le corps de l'algorithme\n    Instruction1\n    Instruction2\n    ……\nFin\n```",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- Donne un **nom** à l'algorithme afin de l'identifier.\n- Commence par le mot-clé **Algorithme** suivi du nom de l'algorithme.\n\nSyntaxe : `Algorithme NomAlgorithme`",
+              "origin": "source",
+              "title": "1. L'en-tête de l'algorithme"
+            },
+            {
+              "type": "definition",
+              "md": "On y déclare les entrées et les sorties : les **variables** et les **constantes** (nom, type, et valeur pour une constante).\n\n- Variable : `Nom_V : Type_V` — exemple : `Age : entier`\n- Constante : `Nom_C : Type_V = valeur` — exemple : `π : réel = 3.14`\n\nTypes de variables : entier, réel, chaîne…",
+              "origin": "source",
+              "title": "2. La partie déclarative"
+            },
+            {
+              "type": "definition",
+              "md": "Il contient l'ensemble des **instructions** permettant de résoudre le problème. Il est délimité par les mots-clés **Début** et **Fin**.\n\n```\nDébut\n    Lire age\n    age ← 20 + 2\n    Afficher age\n    ……\nFin\n```",
+              "origin": "source",
+              "title": "3. Le corps de l'algorithme"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans quelle partie d'un algorithme écrit-on `N1, N2, N3, M : Réel` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "L'en-tête"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La partie déclarative"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le corps (entre Début et Fin)"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Aucune : c'est une instruction"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "C'est une déclaration de variables : elle va dans la partie déclarative, avant Début."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Les principaux types d'instructions",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Type d'instruction | Rôle | Exemple |\n|---|---|---|\n| Entrée | Lire les données fournies par l'utilisateur. | `Lire A` |\n| Sortie | Afficher les résultats obtenus. | `Afficher Somme` |\n| Affectation (traitement) | Effectuer un calcul ou attribuer une valeur à une variable. | `Somme ← A + B` |\n| Condition | Exécuter des instructions selon une condition. | `Si Moyenne ≥ 10 Alors …` |\n| Boucle | Répéter une ou plusieurs instructions. | `Pour i ← 1 à 10 Faire …` |",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme Calcul_Moyenne\nVariable\n    N1, N2, N3, M : Réel\nDébut\n    Lire N1\n    Lire N2\n    Lire N3\n    M ← (N1 + N2 + N3) / 3\n    Afficher \"La moyenne est : \", M\nFin\n```\n\n| Partie | Contenu | Explication |\n|---|---|---|\n| En-tête | `Algorithme Calcul_Moyenne` | Donne un nom à l'algorithme. |\n| Partie déclarative | `N1, N2, N3, M : Réel` | Déclare les variables utilisées. |\n| Corps de l'algorithme | `Début … Fin` | Contient toutes les instructions de l'algorithme. |\n| Entrées | `Lire N1`, `Lire N2`, `Lire N3` | Acquisition des trois notes. |\n| Traitement | `M ← (N1 + N2 + N3) / 3` | Calcul de la moyenne. |\n| Sortie | `Afficher \"La moyenne est : \", M` | Affichage du résultat. |",
+              "origin": "source",
+              "title": "Exemple : Calcul_Moyenne"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque instruction à son type.",
+                "pairs": [
+                  {
+                    "left": "`Lire A`",
+                    "right": "Entrée"
+                  },
+                  {
+                    "left": "`Afficher Somme`",
+                    "right": "Sortie"
+                  },
+                  {
+                    "left": "`Somme ← A + B`",
+                    "right": "Affectation"
+                  },
+                  {
+                    "left": "`Pour i ← 1 à 10 Faire`",
+                    "right": "Boucle"
+                  }
+                ],
+                "explanation": "Lire = entrée (on reçoit une donnée), Afficher = sortie, ← = affectation (traitement), Pour = boucle (répétition)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Par quel mot-clé commence l'en-tête d'un algorithme ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Début"
+                },
+                {
+                  "id": "b",
+                  "md": "Variable"
+                },
+                {
+                  "id": "c",
+                  "md": "Algorithme"
+                },
+                {
+                  "id": "d",
+                  "md": "Programme"
+                }
+              ],
+              "answer": "c",
+              "explanation": "L'en-tête commence par le mot-clé **Algorithme** suivi du nom : `Algorithme NomAlgorithme`."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le pseudo-code est un langage de programmation normalisé, avec une seule syntaxe possible.",
+              "answer": false,
+              "explanation": "Faux : il n'est pas normalisé, il existe plusieurs façons de l'écrire. Le cours adopte simplement une convention unique."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les éléments d'un algorithme.",
+              "items": [
+                "Algorithme Calcul_Moyenne",
+                "Variable N1, N2, N3, M : Réel",
+                "Début",
+                "M ← (N1 + N2 + N3) / 3",
+                "Fin"
+              ],
+              "explanation": "En-tête, puis partie déclarative, puis le corps délimité par Début et Fin (les instructions sont entre les deux)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Comment déclare-t-on une constante dans la convention du cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`π : réel = 3.14`"
+                },
+                {
+                  "id": "b",
+                  "md": "`π ← 3.14`"
+                },
+                {
+                  "id": "c",
+                  "md": "`Lire π`"
+                },
+                {
+                  "id": "d",
+                  "md": "`Afficher π`"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Syntaxe : `Nom_C : Type_V = valeur`. `π ← 3.14` serait une affectation (instruction), pas une déclaration."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec N1 = 8, N2 = 11, N3 = 14, l'algorithme Calcul_Moyenne affiche M = ___",
+              "answerType": "number",
+              "accepted": [
+                "11"
+              ],
+              "explanation": "$(8+11+14)/3 = 33/3 = 11$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le corps de l'algorithme est délimité par les mots-clés Début et Fin.",
+              "answer": true,
+              "explanation": "Oui : toutes les instructions se trouvent entre Début et Fin."
+            }
+          ]
+        },
+        {
+          "slug": "organigramme",
+          "title": "L'organigramme",
+          "number": "2.4",
+          "estimatedMinutes": 8,
+          "summary": "Représentation graphique d'un algorithme : définition, intérêt, symboles normalisés, et comparaison avec le pseudo-code.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Un **organigramme** est une **représentation graphique** d'un algorithme utilisant des **symboles normalisés** reliés par des **flèches** afin d'illustrer l'enchaînement des différentes étapes de résolution d'un problème.",
+              "origin": "source",
+              "title": "Organigramme"
+            },
+            {
+              "type": "text",
+              "md": "**Pourquoi utiliser un organigramme ?**\n- Faciliter la compréhension d'un algorithme.\n- Visualiser l'ordre d'exécution des instructions.\n- Détecter plus facilement les erreurs de logique.\n- Communiquer une solution de manière claire.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Symbole | Nom | Rôle |\n|---|---|---|\n| ⬭ (ovale) | Début / Fin | Indique le début ou la fin de l'algorithme. |\n| ▭ (rectangle) | Traitement | Représente une opération ou un calcul. |\n| ▱ (parallélogramme) | Entrée / Sortie | Lire des données ou afficher un résultat. |\n| ◇ (losange) | Décision | Tester une condition (Si… Alors… Sinon). |\n| → (flèche) | Flux d'exécution | Indique l'ordre d'exécution des étapes. |",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch02-symboles-organigramme.svg",
+              "alt": "Les symboles d'un organigramme : ovale (début/fin), rectangle (traitement), parallélogramme (entrée/sortie), losange (décision) et flèche.",
+              "caption": "Figure — les symboles normalisés d'un organigramme.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel symbole utilise-t-on pour `Lire(A, B)` dans un organigramme ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "L'ovale"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le rectangle"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le parallélogramme"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Le losange"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Lire et Afficher sont des entrées/sorties : parallélogramme. Le rectangle est réservé aux traitements (calculs)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme Somme_Deux_Nombres\nVariable\n    A, B, S : Entier\nDébut\n    Lire(A, B)\n    S ← A + B\n    Afficher(\"La somme est :\", S)\nFin\n```",
+              "origin": "source",
+              "title": "Exemple : somme de deux nombres"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch02-organigramme-somme.svg",
+              "alt": "Organigramme de Somme_Deux_Nombres : Début, Lire(A, B), S ← A + B, Afficher la somme, Fin, reliés par des flèches.",
+              "caption": "Figure — l'organigramme de l'algorithme Somme_Deux_Nombres.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Pseudo-code vs organigramme",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "- Un algorithme est représenté sous forme de texte, appelé **pseudo-code**, ou bien par un **organigramme**.\n- Le contenu est exactement le même, seule la représentation change.\n- Le pseudo-code utilise des **mots-clés** (Début, Lire, Afficher…), tandis que l'organigramme utilise des **symboles** reliés par des flèches.\n- Les deux décrivent le même algorithme.\n\n| Pseudo-code | Organigramme |\n|---|---|\n| Représentation textuelle | Représentation graphique |\n| Facile à écrire | Facile à visualiser |\n| Proche des langages de programmation | Très utilisé pour expliquer un algorithme |\n| Utilise des mots-clés | Utilise des symboles normalisés |",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Récap**\n- Un algorithme est une suite finie, ordonnée et non ambiguë d'instructions permettant de résoudre un problème ou d'obtenir un résultat.\n- Démarche de résolution d'un problème : 1. comprendre le problème, 2. identifier les entrées et les sorties, 3. concevoir l'algorithme, 4. représenter la solution, 5. tester et vérifier, 6. programmer.\n- Un algorithme est représenté sous forme de texte, appelé pseudo-code, ou bien par un organigramme.\n- Un pseudo-code est composé de 3 parties : l'en-tête, la partie déclarative, le corps de l'algorithme.\n- Le pseudo-code utilise des mots-clés (Début, Lire, Afficher…), tandis que l'organigramme utilise des symboles reliés par des flèches. Les deux décrivent le même algorithme.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque symbole d'organigramme à son rôle.",
+              "pairs": [
+                {
+                  "left": "Ovale",
+                  "right": "Début / Fin"
+                },
+                {
+                  "left": "Rectangle",
+                  "right": "Traitement (opération, calcul)"
+                },
+                {
+                  "left": "Parallélogramme",
+                  "right": "Entrée / Sortie"
+                },
+                {
+                  "left": "Losange",
+                  "right": "Décision (test d'une condition)"
+                }
+              ],
+              "explanation": "C'est le tableau des symboles normalisés du cours ; la flèche, elle, indique le flux d'exécution."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un organigramme et un pseudo-code peuvent décrire exactement le même algorithme.",
+              "answer": true,
+              "explanation": "Oui : le contenu est le même, seule la représentation change (textuelle ou graphique)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans un organigramme, quel symbole représente `S ← A + B` ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Ovale"
+                },
+                {
+                  "id": "b",
+                  "md": "Rectangle"
+                },
+                {
+                  "id": "c",
+                  "md": "Parallélogramme"
+                },
+                {
+                  "id": "d",
+                  "md": "Losange"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Un calcul / une affectation est un **traitement** : rectangle."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces avantages est attribué à l'**organigramme** dans le tableau du cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Proche des langages de programmation"
+                },
+                {
+                  "id": "b",
+                  "md": "Facile à visualiser"
+                },
+                {
+                  "id": "c",
+                  "md": "Utilise des mots-clés"
+                },
+                {
+                  "id": "d",
+                  "md": "Représentation textuelle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'organigramme est une représentation graphique, facile à visualiser ; les trois autres propositions décrivent le pseudo-code."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le losange sert à afficher un résultat.",
+              "answer": false,
+              "explanation": "Faux : le losange sert à tester une condition (décision). L'affichage se représente par un parallélogramme."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "exercices-application",
+      "title": "Exercices d'application",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "trace-execution-affectations",
+          "title": "Suivre l'exécution d'une suite d'affectations",
+          "number": "2.5",
+          "estimatedMinutes": 10,
+          "summary": "Exercices d'application 1 à 4 : déterminer les valeurs des variables après une suite d'affectations, et comprendre pourquoi A ← B puis B ← A n'échange pas deux variables.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Pour trouver les valeurs finales, on exécute les instructions **une par une, dans l'ordre**, en notant à chaque ligne le contenu de chaque variable. Une nouvelle affectation **écrase** l'ancienne valeur de la variable.",
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Quelles seront les valeurs des variables A et B après exécution des instructions suivantes ?\n```\nVariables\n    A, B : Entier\nDébut\n    A ← 2\n    B ← A + 4\n    A ← 1\nFin\n```",
+              "origin": "source",
+              "title": "Exercice d'application 1",
+              "solution": [
+                {
+                  "md": "Après `A ← 2` : A = 2, B indéfini.",
+                  "why": "B n'a encore reçu aucune valeur."
+                },
+                {
+                  "md": "Après `B ← A + 4` : B = 2 + 4 = 6.",
+                  "why": "On utilise la valeur actuelle de A, c'est-à-dire 2."
+                },
+                {
+                  "md": "Après `A ← 1` : A = 1, B reste 6.",
+                  "why": "Modifier A ne recalcule pas B : B a reçu une valeur, pas une formule."
+                },
+                {
+                  "md": "Résultat : **A = 1, B = 6**."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Quelles seront les valeurs des variables A, B et C après exécution des instructions suivantes ?\n```\nVariables\n    A, B, C : Entier\nDébut\n    A ← 6\n    B ← 4\n    C ← A + B\n    A ← 2\n    C ← B – A\nFin\n```",
+              "origin": "source",
+              "title": "Exercice d'application 2",
+              "solution": [
+                {
+                  "md": "A = 6, B = 4, puis C = 6 + 4 = 10."
+                },
+                {
+                  "md": "A ← 2 : A = 2."
+                },
+                {
+                  "md": "C ← B − A = 4 − 2 = 2 (l'ancienne valeur 10 de C est perdue)."
+                },
+                {
+                  "md": "Résultat : **A = 2, B = 4, C = 2**."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "On exécute `X ← 5`, `Y ← X * 2`, `X ← 0`. Valeur finale de Y : ___",
+                "answerType": "number",
+                "accepted": [
+                  "10"
+                ],
+                "explanation": "Y reçoit 5 × 2 = 10 au moment de l'affectation ; le changement ultérieur de X ne modifie pas Y."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Quelles seront les valeurs des variables A, B et C après exécution des instructions suivantes ?\n```\nAlgorithme EXc3\nVariables\n    A, B, C : Entier\nDébut\n    A ← 3\n    B ← 10\n    C ← A + B\n    B ← A + B\n    A ← C\nFin\n```",
+              "origin": "source",
+              "title": "Exercice d'application 3",
+              "solution": [
+                {
+                  "md": "A = 3, B = 10."
+                },
+                {
+                  "md": "C ← A + B = 3 + 10 = 13."
+                },
+                {
+                  "md": "B ← A + B = 3 + 10 = 13."
+                },
+                {
+                  "md": "A ← C = 13.",
+                  "why": "A prend la valeur de C, qui vaut 13."
+                },
+                {
+                  "md": "Résultat : **A = 13, B = 13, C = 13**."
+                }
+              ]
+            },
+            {
+              "type": "remark",
+              "md": "**Correction de la source :** la diapositive de solution indique « C = 10, B = 10, A = 10 », ce qui est inexact. En exécutant les instructions ligne par ligne, on obtient **A = 13, B = 13, C = 13**.",
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Quelles seront les valeurs des variables A et B après exécution des instructions suivantes ?\n```\nDébut\n    A ← 5\n    B ← 2\n    A ← B\n    B ← A\nFin\n```",
+              "origin": "source",
+              "title": "Exercice d'application 4",
+              "solution": [
+                {
+                  "md": "A = 5, B = 2."
+                },
+                {
+                  "md": "A ← B : A = 2.",
+                  "why": "L'ancienne valeur 5 de A est perdue à ce moment-là."
+                },
+                {
+                  "md": "B ← A : B = 2.",
+                  "why": "A vaut déjà 2, donc B reçoit 2."
+                },
+                {
+                  "md": "Résultat : **A = 2, B = 2**."
+                }
+              ]
+            },
+            {
+              "type": "remark",
+              "md": "**Correction de la source :** la diapositive de solution indique « A = 2, B = 5 ». C'est faux : après `A ← B`, la valeur 5 est perdue, donc `B ← A` donne B = 2. On obtient **A = 2, B = 2**. Cet exercice montre justement que deux affectations croisées **n'échangent pas** les valeurs : il faut une variable intermédiaire (exercice suivant).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Après `A ← 7`, `B ← 3`, `A ← B`, `B ← A`, que valent A et B ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "A = 3, B = 7"
+                  },
+                  {
+                    "id": "b",
+                    "md": "A = 3, B = 3"
+                  },
+                  {
+                    "id": "c",
+                    "md": "A = 7, B = 7"
+                  },
+                  {
+                    "id": "d",
+                    "md": "A = 7, B = 3"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "`A ← B` met 3 dans A (le 7 est perdu), puis `B ← A` remet 3 dans B. Le piège est de croire que les valeurs ont été échangées."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Après `A ← 4`, `B ← A + 1`, `A ← B * 2`, la valeur de A est ___",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "B = 4 + 1 = 5, puis A = 5 × 2 = 10."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Après `A ← 3`, `B ← 10`, `C ← A + B`, `B ← A + B`, `A ← C`, la valeur de A est ___",
+              "answerType": "number",
+              "accepted": [
+                "13"
+              ],
+              "explanation": "C = 13, B = 13, puis A ← C = 13. (La source donnait 10 par erreur.)"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Lors d'une affectation, l'ancien contenu de la variable est perdu.",
+              "answer": true,
+              "explanation": "Oui : chaque nouvelle affectation remplace la valeur précédente."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Après `A ← 6`, `B ← 4`, `C ← A + B`, `A ← 2`, `C ← B – A`, que vaut C ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "10"
+                },
+                {
+                  "id": "b",
+                  "md": "2"
+                },
+                {
+                  "id": "c",
+                  "md": "−2"
+                },
+                {
+                  "id": "d",
+                  "md": "4"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C vaut d'abord 10, puis est écrasé par B − A = 4 − 2 = 2."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "`B ← A + 4` fait que B sera toujours égal à A + 4, même si A change ensuite.",
+              "answer": false,
+              "explanation": "Faux : l'affectation calcule A + 4 **au moment où elle s'exécute** et range ce nombre dans B. Un changement ultérieur de A ne modifie pas B."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Après `X ← 1`, `X ← X + 1`, `X ← X * 3`, la valeur de X est ___",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "X = 1, puis X = 1 + 1 = 2, puis X = 2 × 3 = 6. La partie droite utilise l'ancienne valeur de X."
+            }
+          ]
+        },
+        {
+          "slug": "premiers-algorithmes",
+          "title": "Écrire ses premiers algorithmes",
+          "number": "2.6",
+          "estimatedMinutes": 12,
+          "summary": "Exercices d'application 5 à 10 : permutation de deux variables, carré d'un nombre, somme et produit, cercle, budget étudiant, adaptation d'une recette.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme permettant d'**échanger** les valeurs de deux variables A et B.",
+              "origin": "source",
+              "title": "Exercice d'application 5 : permutation",
+              "solution": [
+                {
+                  "md": "Idée : sauvegarder A dans une variable intermédiaire C avant de l'écraser.",
+                  "why": "Sans C, la valeur de A serait perdue (voir l'exercice 4)."
+                },
+                {
+                  "md": "```\nAlgorithme permutation\nVariable\n    A, B, C : Entier\nDébut\n    Lire(A)\n    Lire(B)\n    C ← A\n    A ← B\n    B ← C\n    Afficher(A)\n    Afficher(\"La valeur de B est : \", B)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans l'algorithme permutation, on lit A = 4 et B = 9. Après `C ← A`, `A ← B`, `B ← C`, la valeur de B est ___",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "C = 4, A = 9, puis B ← C = 4 : les valeurs ont bien été échangées."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un programme qui demande un nombre nb à l'utilisateur, puis qui calcule et affiche le carré de ce nombre.",
+              "origin": "source",
+              "title": "Exercice d'application 6 : carré d'un nombre",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme carré\nVariable\n    nb, carr : Entier\nDébut\n    Afficher(\"Entrez un nombre : \")\n    Lire(nb)\n    carr ← nb * nb\n    Afficher(\"Son carré est : \", carr)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit deux nombres A et B, calcule leur somme S et leur produit P, puis affiche les deux résultats : $S = A + B$ et $P = A \\times B$.",
+              "origin": "source",
+              "title": "Exercice d'application 7 : somme et produit",
+              "solution": [
+                {
+                  "md": "| Étape | Application |\n|---|---|\n| Comprendre le problème | Calculer la somme et le produit de deux nombres. |\n| Entrées | A, B |\n| Sortie | Somme S, produit P |\n| Concevoir | S = A + B ; P = A × B. |\n| Représenter | Écrire le pseudo-code ou l'organigramme. |\n| Tester | Vérifier avec A = 5 et B = 3 (résultat attendu : S = 8, P = 15). |\n| Programmer | Traduire l'algorithme en Python ou en C. |"
+                },
+                {
+                  "md": "Étapes : 1. Lire A. 2. Lire B. 3. Calculer S. 4. Calculer P. 5. Afficher S et P.\n\n```\nAlgorithme SommeProduit\nVariable\n    A, B, S, P : réel\nDébut\n    Lire(A, B)\n    S ← A + B\n    P ← A × B\n    Afficher(S, P)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le rayon R d'un cercle, puis calcule et affiche son périmètre C et son aire A, avec π = 3.14 : $C = 2\\times\\pi\\times R$ et $A = \\pi\\times R^2$.",
+              "origin": "source",
+              "title": "Exercice d'application 8 : périmètre et aire d'un cercle",
+              "solution": [
+                {
+                  "md": "| Étape | Application |\n|---|---|\n| Comprendre le problème | Calculer le périmètre et l'aire d'un cercle. |\n| Entrées | R (π = 3.14) |\n| Sortie | Périmètre C, aire A |\n| Concevoir | C = 2 × π × R ; A = π × R². |\n| Tester | Vérifier avec R = 5 (résultat attendu : C = 31.4, A = 78.5). |"
+                },
+                {
+                  "md": "Étapes : 1. Lire le rayon R. 2. Calculer le périmètre C. 3. Calculer l'aire A. 4. Afficher C et A.\n\n```\nAlgorithme PerimetreAireCercle\nConstante π : réel = 3.14\nVariable\n    R, C, A : réel\nDébut\n    Lire(R)\n    C ← 2 × π × R\n    A ← π × R × R\n    Afficher(C, A)\nFin\n```\n\nTest : R = 5 → C = 31.4, A = 78.5."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec π = 3.14 et R = 10, l'algorithme PerimetreAireCercle affiche C = ___",
+                "answerType": "number",
+                "accepted": [
+                  "62.8"
+                ],
+                "explanation": "$C = 2\\times3.14\\times10 = 62.8$. (L'aire serait $3.14\\times100 = 314$.)"
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le budget mensuel BM d'un étudiant ainsi que ses dépenses de transport Tr, de repas Re, de fournitures Fo et d'Internet In, puis calcule et affiche le total des dépenses Tot et le montant restant Rest : Tot = Tr + Re + Fo + In et Rest = BM − Tot.",
+              "origin": "source",
+              "title": "Exercice d'application 9 : budget étudiant",
+              "solution": [
+                {
+                  "md": "Entrées : BM, Tr, Re, Fo, In. Sorties : Tot, Rest. Test : BM = 2000, Tr = 300, Re = 800, Fo = 150, In = 100 → Tot = 1350, Rest = 650."
+                },
+                {
+                  "md": "```\nAlgorithme BudgetEtudiant\nVariable\n    BM, Tr, Re, Fo, In, Tot, Rest : réel\nDébut\n    Lire(BM)\n    Lire(Tr)\n    Lire(Re)\n    Lire(Fo)\n    Lire(In)\n    Tot ← Tr + Re + Fo + In\n    Rest ← BM − Tot\n    Afficher(Tot, Rest)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le nombre initial de personnes N1, le nouveau nombre de personnes N2, ainsi que les quantités initiales de farine F, d'œufs O et de lait L d'une recette, puis calcule et affiche les nouvelles quantités F2, O2 et L2, sachant que : K = N2 / N1, F2 = F × K, O2 = O × K et L2 = L × K.\n\nK est le coefficient de proportionnalité = nouveau nombre de personnes / nombre initial de personnes. Nouvelle quantité = (quantité initiale × nouveau nombre de personnes) / nombre initial de personnes.",
+              "origin": "source",
+              "title": "Exercice d'application 10 : adapter une recette",
+              "solution": [
+                {
+                  "md": "Comprendre : il faut adapter les quantités d'une recette pour un nombre différent de personnes, en conservant les proportions. Entrées : N1, N2, F, O, L. Sorties : F2, O2, L2. Concevoir : on calcule K = N2 / N1, puis on multiplie chaque quantité initiale par ce coefficient."
+                },
+                {
+                  "md": "```\nAlgorithme AdapterRecette\nVariable\n    N1, N2 : entier\n    F, O, L, K, F2, O2, L2 : réel\nDébut\n    Lire(N1, N2, F, O, L)\n    K ← N2 / N1\n    F2 ← F × K\n    O2 ← O × K\n    L2 ← L × K\n    Afficher(F2)\n    Afficher(O2)\n    Afficher(L2)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Recette pour N1 = 4 personnes avec F = 200 g de farine ; on veut N2 = 6 personnes. F2 (en g) = ___",
+                "answerType": "number",
+                "accepted": [
+                  "300"
+                ],
+                "explanation": "K = 6 / 4 = 1.5, donc F2 = 200 × 1.5 = 300 g."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi l'algorithme permutation utilise-t-il une troisième variable C ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour afficher le résultat"
+                },
+                {
+                  "id": "b",
+                  "md": "Pour conserver la valeur de A avant qu'elle soit écrasée"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce qu'il faut toujours trois variables"
+                },
+                {
+                  "id": "d",
+                  "md": "Pour calculer A + B"
+                }
+              ],
+              "answer": "b",
+              "explanation": "`A ← B` détruit l'ancienne valeur de A ; on la sauvegarde d'abord dans C pour pouvoir la donner à B ensuite."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Algorithme BudgetEtudiant avec BM = 2000, Tr = 300, Re = 800, Fo = 150, In = 100 : Rest = ___",
+              "answerType": "number",
+              "accepted": [
+                "650"
+              ],
+              "explanation": "Tot = 300 + 800 + 150 + 100 = 1350, puis Rest = 2000 − 1350 = 650."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Algorithme SommeProduit avec A = 5 et B = 3 : P = ___",
+              "answerType": "number",
+              "accepted": [
+                "15"
+              ],
+              "explanation": "P = A × B = 5 × 3 = 15 (et S = 8)."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les instructions de l'algorithme carré.",
+              "items": [
+                "Afficher(\"Entrez un nombre : \")",
+                "Lire(nb)",
+                "carr ← nb * nb",
+                "Afficher(\"Son carré est : \", carr)"
+              ],
+              "explanation": "On invite l'utilisateur, on lit nb, on calcule, puis seulement on affiche : on ne peut pas utiliser une valeur avant de l'avoir obtenue."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans AdapterRecette, N1 et N2 sont déclarées entières mais K est déclaré réel.",
+              "answer": true,
+              "explanation": "Oui : la division N2 / N1 peut donner un nombre non entier (6 / 4 = 1.5), d'où le type réel pour K."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec π = 3.14 et R = 5, l'aire A = π × R × R vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "78.5"
+              ],
+              "explanation": "$3.14\\times25 = 78.5$, conforme au test du cours."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives de Pr L. OUKHOUYA, « Chapitre 2 : L'élément de base d'un algorithme » (47 p.), identiques à Bibliotheque_sources/…/F143 et aux pages correspondantes de F162. Les diapositives de séparation (« Exercices d'application – Série TD1 », « Séance 2 », « Séance 3 ») n'ont pas de contenu et ont été omises.",
+    "ERREUR DE LA SOURCE corrigée (exercice d'application 3, p. 28) : la solution affichée est « C = 10, B = 10, A = 10 ». L'exécution de A ← 3, B ← 10, C ← A + B, B ← A + B, A ← C donne A = 13, B = 13, C = 13. Le site donne 13 et signale la correction dans une remarque.",
+    "ERREUR DE LA SOURCE corrigée (exercice d'application 4, p. 30) : la solution affichée est « A = 2, B = 5 » pour A ← 5, B ← 2, A ← B, B ← A. Le résultat correct est A = 2, B = 2 (la valeur 5 est perdue après A ← B) ; c'est d'ailleurs le point de l'exercice suivant (permutation avec variable intermédiaire). Corrigé et signalé dans une remarque. À confirmer avec l'enseignante.",
+    "Coquilles / mise en forme : p. 14 « age 20+2 » (flèche d'affectation manquante) → « age ← 20 + 2 » ; « Programmer(module 2) » conservé comme « Programmer (module 2) » ; « début/fin » en minuscules harmonisés en Début/Fin ; exercice 8 : la source déclare la constante π = 3,14 mais calcule « A ← 3.14 × R × R » ; harmonisé en « A ← π × R × R » (même résultat).",
+    "p. 11 : le schéma « trois parties principales » est rendu par un bloc de pseudo-code commenté. p. 19 : l'organigramme de Somme_Deux_Nombres (image) est décrit en texte. p. 18 : les symboles sont donnés par leurs caractères Unicode (⬭ ▭ ▱ ◇ →).",
+    "Ajouts (origin: added) : réponse aux deux questions de la p. 5 (on ne peut ni calculer avant de lire, ni afficher avant de calculer), intuition sur 2 + 3 × 4, méthode de trace ligne par ligne en tête de la leçon 2.5, solutions détaillées pas à pas des exercices 1 à 4 (la source ne donnait que les valeurs finales)."
+  ]
+}

@@ -1,0 +1,891 @@
+{
+  "chapter": 4,
+  "title": "Matrices et changements de base",
+  "sources": [
+    "Bibliotheque_sources/Algebre/Corriges/Matrices et determinants/F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.1-8 (énoncés + correction, Série 4, A.U. 2020-2021)"
+  ],
+  "notes": [
+    "Énoncés et correction : Série 4 (Calcul matriciel) de l'école, A.U. 2020-2021.",
+    "Coquilles corrigées : ex.1 « a² = » -> « A² = », « 3ab² » -> « 3a²b », « nab^{n-1} » -> « na^{n-1}b » ; ex.2 B^n (n ≥ 3) affichée avec un 1 -> matrice nulle (le texte dit B^n = 0) ; ex.5 « acquis de conscience » -> « acquit » ; ex.8 « f(e2') = f(e1) - f(e2) » -> « f(e1) - f(e3) » ; le second « exercice 8 » est renuméroté 9 ; ex.9 énoncé « f(x,y,z) = (5 + y - z, …) » -> « (5x + y - z, …) », « Kerf(f-4Id) » -> « Ker(f-4Id) », « Exprimer A' en fonction de A', P » -> « de A, P », « troixième » ; correction ex.9 « (L1)+(L4) » -> « (L1)+(L3) »."
+  ],
+  "exercises": [
+    {
+      "number": "1",
+      "statement_md": "Calculer $A^n$ pour $n\\in\\mathbb{N}$ pour les matrices suivantes :\n\n$$\nA=\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}\\qquad A=\\begin{pmatrix}a&b\\\\0&a\\end{pmatrix}.\n$$",
+      "solution_md": "On va commencer par calculer les premiers termes de $A^n$ pour essayer de deviner la formule. On a\n\n$$\nA^2=\\begin{pmatrix}1&3\\\\0&4\\end{pmatrix}\\qquad A^3=\\begin{pmatrix}1&7\\\\0&8\\end{pmatrix}.\n$$\n\nIl est facile de montrer par récurrence que $A^n=\\begin{pmatrix}1&2^n-1\\\\0&2^n\\end{pmatrix}$.\n\nPour $A=\\begin{pmatrix}a&b\\\\0&a\\end{pmatrix}$, on a $A^2=\\begin{pmatrix}a^2&2ab\\\\0&a^2\\end{pmatrix}$ et $A^3=\\begin{pmatrix}a^3&3a^2b\\\\0&a^3\\end{pmatrix}$. Ceci suggère la forme suivante, à montrer facilement par récurrence : $A^n=\\begin{pmatrix}a^n&na^{n-1}b\\\\0&a^n\\end{pmatrix}$.",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.1 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.1",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Pour $A=\\begin{pmatrix}1&1\\\\0&2\\end{pmatrix}$, que vaut $A^n$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}1&2^n\\\\0&2^n\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&n\\\\0&2^n\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}1&2^n-1\\\\0&2^n\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}1&2^{n-1}\\\\0&2^n\\end{pmatrix}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$A^2=\\begin{pmatrix}1&3\\\\0&4\\end{pmatrix}$, $A^3=\\begin{pmatrix}1&7\\\\0&8\\end{pmatrix}$ suggèrent $2^n-1$ ; récurrence : $A^{n+1}=A^nA$ a pour coefficient $(1,2)$ : $1+2(2^n-1)=2^{n+1}-1$."
+        },
+        {
+          "prompt_md": "Q2 — Pour $A=\\begin{pmatrix}a&b\\\\0&a\\end{pmatrix}$, que vaut $A^n$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}a^n&na^{n-1}b\\\\0&a^n\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}a^n&b^n\\\\0&a^n\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}a^n&na^nb\\\\0&a^n\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}a^n&nab^{n-1}\\\\0&a^n\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$A^2=\\begin{pmatrix}a^2&2ab\\\\0&a^2\\end{pmatrix}$, $A^3=\\begin{pmatrix}a^3&3a^2b\\\\0&a^3\\end{pmatrix}$, puis récurrence : $a\\cdot na^{n-1}b+b\\cdot a^n=(n+1)a^nb$. (On peut aussi écrire $A=aI+bN$ avec $N^2=0$ et utiliser le binôme.)"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "statement_md": "On considère la matrice\n\n$$\nA=\\begin{pmatrix}1&1&1\\\\0&1&1\\\\0&0&1\\end{pmatrix}\n$$\n\net on pose $B=A-I$. Calculer $B^n$, $n\\in\\mathbb{N}$, et en déduire $A^n$.",
+      "solution_md": "On commence par calculer les premières valeurs de $B^n$ ; on a\n\n$$\nB=\\begin{pmatrix}0&1&1\\\\0&0&1\\\\0&0&0\\end{pmatrix},\\quad B^2=\\begin{pmatrix}0&0&1\\\\0&0&0\\\\0&0&0\\end{pmatrix},\\quad B^n=\\begin{pmatrix}0&0&0\\\\0&0&0\\\\0&0&0\\end{pmatrix}\\ \\text{pour } n\\ge3.\n$$\n\nOn en déduit alors par récurrence que, pour tout $n\\ge3$, on a $B^n=0$.\n\nPour obtenir $A^n$, on écrit $A=I+B$ et on remarque que $I$ et $B$ commutent puisque $IB=BI=B$. On peut alors appliquer la formule du binôme de Newton, ce qui est très facile ici puisque $B^n=0$ dès que $n\\ge3$. On en déduit\n\n$$\nA^n=I^n+\\binom n1I^{n-1}B+\\binom n2I^{n-2}B^2,\n$$\n\nce qui se réécrit en\n\n$$\nA^n=I+nB+\\frac{n(n-1)}{2}B^2.\n$$\n\nOn a donc\n\n$$\nA^n=\\begin{pmatrix}1&n&\\frac{n(n+1)}{2}\\\\0&1&n\\\\0&0&1\\end{pmatrix}.\n$$\n\n*Coefficient $(1,3)$ : $nB$ apporte $n$ (car $B_{13}=1$) et $\\frac{n(n-1)}{2}B^2$ apporte $\\frac{n(n-1)}{2}$, soit $n+\\frac{n(n-1)}{2}=\\frac{n(n+1)}{2}$ (le polycopié écrivait $\\frac{n(n-1)}{2}$). Vérification : le coefficient $(1,3)$ de $A^2$ vaut $3$.*",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.1 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.1-2",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Avec $B=A-I$, que valent les puissances de $B$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$B^2=\\begin{pmatrix}0&0&1\\\\0&0&0\\\\0&0&0\\end{pmatrix}$ et $B^n=0$ pour $n\\ge3$"
+            },
+            {
+              "id": "b",
+              "md": "$B^2=0$"
+            },
+            {
+              "id": "c",
+              "md": "$B^n=B$ pour tout $n\\ge1$"
+            },
+            {
+              "id": "d",
+              "md": "$B^2=\\begin{pmatrix}0&0&1\\\\0&0&0\\\\0&0&0\\end{pmatrix}$ et $B^n=B^2$ pour $n\\ge2$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$B=\\begin{pmatrix}0&1&1\\\\0&0&1\\\\0&0&0\\end{pmatrix}$ est strictement triangulaire supérieure : $B^2$ n'a plus que le coefficient $(1,3)$, et $B^3=0$."
+        },
+        {
+          "prompt_md": "Q2 — Pourquoi peut-on appliquer la formule du binôme à $A^n=(I+B)^n$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Parce que $B$ est nilpotente"
+            },
+            {
+              "id": "b",
+              "md": "Parce que $I$ et $B$ commutent"
+            },
+            {
+              "id": "c",
+              "md": "Parce que $A$ est inversible"
+            },
+            {
+              "id": "d",
+              "md": "Parce que $B$ est triangulaire"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "La formule du binôme n'est valable que pour des matrices qui commutent ; ici $IB=BI=B$. La nilpotence sert seulement à rendre la somme finie (3 termes)."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut $A^n$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}1&n&\\frac{n(n+1)}{2}\\\\0&1&n\\\\0&0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&n&\\frac{n(n-1)}{2}\\\\0&1&n\\\\0&0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}1&n&n\\\\0&1&n\\\\0&0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}1&n&n^2\\\\0&1&n\\\\0&0&1\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$A^n=I+nB+\\frac{n(n-1)}{2}B^2$. Le coefficient $(1,3)$ reçoit $n\\cdot1$ (car $B_{13}=1$) plus $\\frac{n(n-1)}{2}\\cdot1$ (car $(B^2)_{13}=1$) : $n+\\frac{n(n-1)}2=\\frac{n(n+1)}2$. Contrôle : $A^2=\\begin{pmatrix}1&2&3\\\\0&1&2\\\\0&0&1\\end{pmatrix}$. (La correction écrit $\\frac{n(n-1)}{2}$ en oubliant la contribution de $nB$ : c'est une coquille.)"
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "statement_md": "Trouver toutes les matrices $A$ de $\\mathcal{M}_2(\\mathbb{R})$ telles que $A^2=I_2$.",
+      "solution_md": "Posons $A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$, où $a,b,c,d$ sont quatre réels quelconques. Alors\n\n$$\nA^2=\\begin{pmatrix}a^2+bc&b(a+d)\\\\c(a+d)&bc+d^2\\end{pmatrix}.\n$$\n\nAinsi\n\n$$\nA^2=I_2\\iff\\begin{cases}a^2+bc=1\\\\ b(a+d)=0\\\\ c(a+d)=0\\\\ bc+d^2=1\\end{cases}\n\\iff(S_1)\\begin{cases}d=-a\\\\ bc=1-a^2\\end{cases}\\quad\\text{ou}\\quad(S_2)\\begin{cases}d\\neq-a\\\\ b=c=0\\\\ a^2=d^2=1\\end{cases}\n$$\n\nSi $b\\neq0$, le système $(S_1)$ équivaut à $A=\\begin{pmatrix}a&b\\\\ \\frac{1-a^2}{b}&-a\\end{pmatrix}$, avec $a\\in\\mathbb{R}$ et $b\\in\\mathbb{R}^*$.\n\nSi $b=0$, $(S_1)$ équivaut à $A=\\begin{pmatrix}1&0\\\\c&-1\\end{pmatrix}$ ou $A=\\begin{pmatrix}-1&0\\\\c&1\\end{pmatrix}$, avec $c\\in\\mathbb{R}$.\n\nLe système $(S_2)$ équivaut à $A=I_2$ ou $A=-I_2$.",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.2 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.2",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Avec $A=\\begin{pmatrix}a&b\\\\c&d\\end{pmatrix}$, à quoi équivaut $A^2=I_2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$a^2=d^2=1$ et $b=c=0$ uniquement"
+            },
+            {
+              "id": "b",
+              "md": "$a+d=0$ uniquement"
+            },
+            {
+              "id": "c",
+              "md": "$ad-bc=1$"
+            },
+            {
+              "id": "d",
+              "md": "$d=-a$ et $bc=1-a^2$, ou bien $b=c=0$ et $a^2=d^2=1$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$A^2=\\begin{pmatrix}a^2+bc&b(a+d)\\\\c(a+d)&bc+d^2\\end{pmatrix}$. Si $a+d=0$ : il reste $bc=1-a^2$. Si $a+d\\neq0$ : $b=c=0$ et $a^2=d^2=1$."
+        },
+        {
+          "prompt_md": "Q2 — Laquelle de ces matrices vérifie $A^2=I_2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}2&3\\\\1&-2\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}0&1\\\\1&1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}2&3\\\\-1&-2\\end{pmatrix}$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Forme $(S_1)$ : $d=-a=-2$ et $bc=1-a^2=-3$ : $3\\times(-1)=-3$. Vérification : $\\begin{pmatrix}2&3\\\\-1&-2\\end{pmatrix}^2=\\begin{pmatrix}4-3&6-6\\\\-2+2&-3+4\\end{pmatrix}=I_2$."
+        },
+        {
+          "prompt_md": "Q3 — Quelles sont les solutions telles que $a+d\\neq0$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$I_2$ seulement"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}$ et $\\begin{pmatrix}-1&0\\\\0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$I_2$ et $-I_2$ seulement"
+            },
+            {
+              "id": "d",
+              "md": "Aucune"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$b=c=0$ et $a^2=d^2=1$ avec $d\\neq-a$ : donc $d=a=\\pm1$. Les matrices $\\operatorname{diag}(1,-1)$ et $\\operatorname{diag}(-1,1)$ ont $a+d=0$ et sont dans la famille $(S_1)$."
+        }
+      ],
+      "simulations": [
+        {
+          "scene": "linear-map-2d",
+          "caption": "Cherche des matrices A telles que A² = I₂ : symétries par rapport à une droite, ±I₂… applique-les deux fois."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "statement_md": "Quelles sont les matrices qui commutent avec\n\n$$\nJ=\\begin{pmatrix}0&1&0&0\\\\0&0&1&0\\\\0&0&0&1\\\\0&0&0&0\\end{pmatrix}\\ ?\n$$",
+      "solution_md": "Soit $A=(a_{ij})$ une matrice de $\\mathcal{M}_4(\\mathbb{K})$. On résout le système résultant de $AJ=JA$ :\n\n$$\nAJ=JA\\iff\n\\begin{pmatrix}0&a_{11}&a_{12}&a_{13}\\\\0&a_{21}&a_{22}&a_{23}\\\\0&a_{31}&a_{32}&a_{33}\\\\0&a_{41}&a_{42}&a_{43}\\end{pmatrix}\n=\\begin{pmatrix}a_{21}&a_{22}&a_{23}&a_{24}\\\\a_{31}&a_{32}&a_{33}&a_{34}\\\\a_{41}&a_{42}&a_{43}&a_{44}\\\\0&0&0&0\\end{pmatrix}\n\\iff\n\\begin{cases}a_{21}=a_{31}=a_{41}=0\\\\ a_{32}=a_{42}=a_{43}=0\\\\ a_{11}=a_{22}=a_{33}=a_{44}\\\\ a_{12}=a_{23}=a_{34}\\\\ a_{13}=a_{24}\\end{cases}\n$$\n\nOn constate donc que les matrices qui commutent avec $J$ sont les matrices qui s'écrivent :\n\n$$\nA=\\begin{pmatrix}a&b&c&d\\\\0&a&b&c\\\\0&0&a&b\\\\0&0&0&a\\end{pmatrix}\n=a\\begin{pmatrix}1&0&0&0\\\\0&1&0&0\\\\0&0&1&0\\\\0&0&0&1\\end{pmatrix}\n+b\\begin{pmatrix}0&1&0&0\\\\0&0&1&0\\\\0&0&0&1\\\\0&0&0&0\\end{pmatrix}\n+c\\begin{pmatrix}0&0&1&0\\\\0&0&0&1\\\\0&0&0&0\\\\0&0&0&0\\end{pmatrix}\n+d\\begin{pmatrix}0&0&0&1\\\\0&0&0&0\\\\0&0&0&0\\\\0&0&0&0\\end{pmatrix}\n$$\n\nAutrement dit les solutions sont les matrices $A=aI+bJ+cJ^2+dJ^3$, avec $(a,b,c,d)\\in\\mathbb{K}^4$. On obtient la sous-algèbre de $\\mathcal{M}_4(\\mathbb{K})$ engendrée par $I,J,J^2,J^3$ (car $J^4=0$).",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.2 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.2-3",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelles sont les matrices qui commutent avec $J$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Les matrices $aI+bJ$, $(a,b)\\in\\mathbb{K}^2$"
+            },
+            {
+              "id": "b",
+              "md": "Toutes les matrices triangulaires supérieures"
+            },
+            {
+              "id": "c",
+              "md": "Les matrices scalaires $aI$ seulement"
+            },
+            {
+              "id": "d",
+              "md": "Les matrices $aI+bJ+cJ^2+dJ^3$, $(a,b,c,d)\\in\\mathbb{K}^4$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$AJ$ décale les colonnes de $A$ vers la droite, $JA$ décale les lignes vers le haut. L'égalité impose $a_{21}=a_{31}=a_{41}=a_{32}=a_{42}=a_{43}=0$ et des diagonales constantes : $A=\\begin{pmatrix}a&b&c&d\\\\0&a&b&c\\\\0&0&a&b\\\\0&0&0&a\\end{pmatrix}$."
+        },
+        {
+          "prompt_md": "Q2 — Quelle est la dimension de l'ensemble des matrices qui commutent avec $J$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$2$"
+            },
+            {
+              "id": "b",
+              "md": "$10$"
+            },
+            {
+              "id": "c",
+              "md": "$4$"
+            },
+            {
+              "id": "d",
+              "md": "$16$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "C'est $\\operatorname{Vect}(I,J,J^2,J^3)$ et ces quatre matrices sont libres ($J^4=0$, elles ont leurs $1$ sur des diagonales différentes). ($10$ serait la dimension des matrices triangulaires supérieures $4\\times4$.)"
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "statement_md": "Pour tout réel $t$, on pose\n\n$$\nA(t)=\\begin{pmatrix}1+\\frac{t^2}{2}&-\\frac{t^2}{2}&t\\\\[2pt] \\frac{t^2}{2}&1-\\frac{t^2}{2}&t\\\\[2pt] t&-t&1\\end{pmatrix}.\n$$\n\n**(a)**  Calculer $A(s)A(t)$, puis $(A(t)-I)^3$.\n\n**(b)**  Trouver $\\alpha_n,\\beta_n,\\gamma_n$ tels que : $\\forall n\\in\\mathbb{N}$, $A(t)^n=\\alpha_nA(t)^2+\\beta_nA(t)+\\gamma_nI$.",
+      "solution_md": "Pour tout $t$ de $\\mathbb{R}$, on a $A(t)=I+tJ+\\frac{t^2}{2}K$, avec $J=\\begin{pmatrix}0&0&1\\\\0&0&1\\\\1&-1&0\\end{pmatrix}$ et $K=\\begin{pmatrix}1&-1&0\\\\1&-1&0\\\\0&0&0\\end{pmatrix}$.\n\n**(a)**  On a $J^2=K$, $K^2=0_3$ et $JK=KJ=0_3$. Pour tous réels $s,t$, on en déduit :\n\n$$\n\\begin{aligned}\nA(t)A(s)&=\\Bigl(I+tJ+\\frac{t^2}{2}K\\Bigr)\\Bigl(I+sJ+\\frac{s^2}{2}K\\Bigr)\\\\\n&=I+(t+s)J+\\Bigl(\\frac{s^2}{2}+\\frac{t^2}{2}+st\\Bigr)K=I+(t+s)J+\\frac{(t+s)^2}{2}K=A(t+s).\n\\end{aligned}\n$$\n\nOn a : $(A(t)-I)^2=\\bigl(tJ+\\frac{t^2}{2}K\\bigr)^2=t^2K$, puis $(A(t)-I)^3=t^2\\bigl(tJ+\\frac{t^2}{2}K\\bigr)K=0$.\n\n**(b)**  On a $A(t)=I+B(t)$ avec $B(t)=A(t)-I$. On sait que $B(t)^3=0$. On en déduit, en utilisant la formule du binôme :\n\n$$\n\\begin{aligned}\nA(t)^n&=I+nB(t)+\\frac{n(n-1)}{2}B(t)^2=I+n(A(t)-I)+\\frac{n(n-1)}{2}\\bigl(A(t)^2-2A(t)+I\\bigr)\\\\\n&=\\frac{n(n-1)}{2}A(t)^2-n(n-2)A(t)+\\frac{(n-1)(n-2)}{2}I.\n\\end{aligned}\n$$\n\nC'est le résultat attendu, avec : $\\alpha_n=\\dfrac{n(n-1)}{2}$, $\\beta_n=-n(n-2)$, $\\gamma_n=\\dfrac{(n-1)(n-2)}{2}$.\n\nPar acquit de conscience, on vérifie que le résultat est correct si $n\\in\\{0,1,2\\}$.",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.3 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.3-4",
+      "answers": [
+        {
+          "label": "α_n",
+          "answerType": "expression",
+          "accepted": [
+            "n*(n-1)/2"
+          ],
+          "variables": [
+            "n"
+          ]
+        },
+        {
+          "label": "β_n",
+          "answerType": "expression",
+          "accepted": [
+            "-n*(n-2)"
+          ],
+          "variables": [
+            "n"
+          ]
+        },
+        {
+          "label": "γ_n",
+          "answerType": "expression",
+          "accepted": [
+            "(n-1)*(n-2)/2"
+          ],
+          "variables": [
+            "n"
+          ]
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q(a) — Que vaut $A(s)A(t)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$A(st)$"
+            },
+            {
+              "id": "b",
+              "md": "$A(s+t)$"
+            },
+            {
+              "id": "c",
+              "md": "$A(s)+A(t)-I$"
+            },
+            {
+              "id": "d",
+              "md": "$A(s+t)+st\\,K$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$A(t)=I+tJ+\\frac{t^2}2K$ avec $J^2=K$, $K^2=JK=KJ=0$. Le produit vaut $I+(s+t)J+\\left(\\frac{s^2}2+\\frac{t^2}2+st\\right)K=I+(s+t)J+\\frac{(s+t)^2}2K$."
+        },
+        {
+          "prompt_md": "Q(a) — Que vaut $(A(t)-I)^2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{t^2}{2}K$"
+            },
+            {
+              "id": "b",
+              "md": "$t^2J$"
+            },
+            {
+              "id": "c",
+              "md": "$t^2K$"
+            },
+            {
+              "id": "d",
+              "md": "$0$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$\\left(tJ+\\frac{t^2}2K\\right)^2=t^2J^2+t^3(JK+KJ)/2+\\frac{t^4}4K^2=t^2K$."
+        },
+        {
+          "prompt_md": "Q(a) — Que vaut $(A(t)-I)^3$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$t^3J$"
+            },
+            {
+              "id": "b",
+              "md": "$0$"
+            },
+            {
+              "id": "c",
+              "md": "$t^3K$"
+            },
+            {
+              "id": "d",
+              "md": "$I$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$(A(t)-I)^3=t^2K\\left(tJ+\\frac{t^2}2K\\right)=0$ car $KJ=K^2=0$."
+        },
+        {
+          "prompt_md": "Q(b) — Quels sont $\\alpha_n,\\beta_n,\\gamma_n$ tels que $A(t)^n=\\alpha_nA(t)^2+\\beta_nA(t)+\\gamma_nI$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\alpha_n=\\dfrac{n(n-1)}{2}$, $\\beta_n=n$, $\\gamma_n=1$"
+            },
+            {
+              "id": "b",
+              "md": "$\\alpha_n=\\dfrac{n(n-1)}{2}$, $\\beta_n=n(n-2)$, $\\gamma_n=-\\dfrac{(n-1)(n-2)}{2}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\alpha_n=\\dfrac{n(n-1)}{2}$, $\\beta_n=-n(n-2)$, $\\gamma_n=\\dfrac{(n-1)(n-2)}{2}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\alpha_n=n(n-1)$, $\\beta_n=-n(n-2)$, $\\gamma_n=\\dfrac{(n-1)(n-2)}{2}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Binôme avec $B=A(t)-I$, $B^3=0$ : $A(t)^n=I+nB+\\frac{n(n-1)}2B^2$, puis on remplace $B=A-I$, $B^2=A^2-2A+I$. Contrôle : $n=0$ donne $(0,0,1)$, $n=1$ donne $(0,1,0)$, $n=2$ donne $(1,0,0)$."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "statement_md": "On considère la matrice\n\n$$\nA=\\begin{pmatrix}1&1&1&1\\\\1&1&-1&-1\\\\1&-1&1&-1\\\\1&-1&-1&-1\\end{pmatrix}.\n$$\n\nCalculer $A^2$ et $A^3$. Montrer que $A$ est inversible et calculer $A^{-1}$.",
+      "solution_md": "On trouve\n\n$$\nA^2=\\begin{pmatrix}4&0&0&-2\\\\0&4&0&2\\\\0&0&4&2\\\\-2&2&2&4\\end{pmatrix}.\\quad\\text{De même}\\quad\nA^3=\\begin{pmatrix}2&6&6&6\\\\6&2&-6&-6\\\\6&-6&2&-6\\\\6&-6&-6&-10\\end{pmatrix}.\n$$\n\nOn remarque que $A^3=6A-4I$.\n\nAinsi $A(A^2-6I)=-4I$, donc $A$ est inversible et $A^{-1}=-\\frac14(A^2-6I)$.\n\nPar conséquent\n\n$$\nA^{-1}=\\frac12\\begin{pmatrix}1&0&0&1\\\\0&1&0&-1\\\\0&0&1&-1\\\\1&-1&-1&1\\end{pmatrix}.\n$$",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.4 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.4",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Que vaut $A^2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}4&0&0&-2\\\\0&4&0&2\\\\0&0&4&2\\\\-2&2&2&4\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$4I_4$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}4&0&0&2\\\\0&4&0&-2\\\\0&0&4&-2\\\\2&-2&-2&4\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}4&0&0&-2\\\\0&4&0&2\\\\0&0&4&2\\\\-2&2&2&0\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Produit ligne par colonne : par exemple $(A^2)_{14}=1\\cdot1+1\\cdot(-1)+1\\cdot(-1)+1\\cdot(-1)=-2$ et $(A^2)_{44}=1+1+1+1=4$."
+        },
+        {
+          "prompt_md": "Q2 — Quelle relation lie $A^3$ et $A$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$A^3=6A+4I$"
+            },
+            {
+              "id": "b",
+              "md": "$A^3=6A-4I$"
+            },
+            {
+              "id": "c",
+              "md": "$A^3=4A-6I$"
+            },
+            {
+              "id": "d",
+              "md": "$A^3=6A^2-4I$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$A^3=\\begin{pmatrix}2&6&6&6\\\\6&2&-6&-6\\\\6&-6&2&-6\\\\6&-6&-6&-10\\end{pmatrix}$ et $6A-4I$ donne bien $6-4=2$ sur la diagonale (sauf $-6-4=-10$) et $\\pm6$ ailleurs."
+        },
+        {
+          "prompt_md": "Q3 — Qu'en déduit-on pour $A^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$A^{-1}=\\dfrac14\\left(A^2-6I\\right)$"
+            },
+            {
+              "id": "b",
+              "md": "$A^{-1}=-\\dfrac14\\left(A^2-6I\\right)$"
+            },
+            {
+              "id": "c",
+              "md": "$A^{-1}=-\\dfrac14\\left(A^2+6I\\right)$"
+            },
+            {
+              "id": "d",
+              "md": "$A^{-1}=\\dfrac16\\left(A^2-4I\\right)$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$A^3-6A=-4I$ s'écrit $A(A^2-6I)=-4I$, donc $A\\cdot\\left(-\\frac14(A^2-6I)\\right)=I$. On trouve $A^{-1}=\\frac12\\begin{pmatrix}1&0&0&1\\\\0&1&0&-1\\\\0&0&1&-1\\\\1&-1&-1&1\\end{pmatrix}$."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "statement_md": "Calculer l'inverse des matrices carrées suivantes :\n\n$$\nA=\\begin{pmatrix}1&0&1\\\\2&-1&1\\\\-1&1&-1\\end{pmatrix},\\qquad B=\\begin{pmatrix}1&1&-1\\\\2&0&1\\\\2&1&-1\\end{pmatrix}.\n$$",
+      "solution_md": "Calculons le déterminant de la matrice $A$ :\n\n$$\n\\det(A)=\\begin{vmatrix}1&0&1\\\\2&-1&1\\\\-1&1&-1\\end{vmatrix}\n=+1\\begin{vmatrix}-1&1\\\\1&-1\\end{vmatrix}-0\\begin{vmatrix}2&1\\\\-1&-1\\end{vmatrix}+1\\begin{vmatrix}2&-1\\\\-1&1\\end{vmatrix}=1\\neq0.\n$$\n\nOn a $A^{-1}=\\dfrac{1}{\\det(A)}\\operatorname{com}(A)^t$, avec\n\n$$\n\\operatorname{com}(A)=\n\\begin{pmatrix}\n+\\begin{vmatrix}-1&1\\\\1&-1\\end{vmatrix}&-\\begin{vmatrix}2&1\\\\-1&-1\\end{vmatrix}&+\\begin{vmatrix}2&-1\\\\-1&1\\end{vmatrix}\\\\[8pt]\n-\\begin{vmatrix}0&1\\\\1&-1\\end{vmatrix}&+\\begin{vmatrix}1&1\\\\-1&-1\\end{vmatrix}&-\\begin{vmatrix}1&0\\\\-1&1\\end{vmatrix}\\\\[8pt]\n+\\begin{vmatrix}0&1\\\\-1&1\\end{vmatrix}&-\\begin{vmatrix}1&1\\\\2&1\\end{vmatrix}&+\\begin{vmatrix}1&0\\\\2&-1\\end{vmatrix}\n\\end{pmatrix}\n=\\begin{pmatrix}0&1&1\\\\1&0&-1\\\\1&1&-1\\end{pmatrix}.\n$$\n\nAinsi\n\n$$\nA^{-1}=\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&-1&-1\\end{pmatrix}.\n$$\n\nDe même pour la matrice $B$, on obtient\n\n$$\nB^{-1}=\\begin{pmatrix}-1&0&1\\\\4&1&-3\\\\2&1&-2\\end{pmatrix}.\n$$",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.4 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.4-5",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Que vaut $\\det A$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$1$"
+            },
+            {
+              "id": "b",
+              "md": "$-1$"
+            },
+            {
+              "id": "c",
+              "md": "$0$"
+            },
+            {
+              "id": "d",
+              "md": "$3$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Développement selon la 1re ligne : $1\\cdot\\begin{vmatrix}-1&1\\\\1&-1\\end{vmatrix}-0+1\\cdot\\begin{vmatrix}2&-1\\\\-1&1\\end{vmatrix}=0+1=1\\neq0$ : $A$ est inversible."
+        },
+        {
+          "prompt_md": "Q2 — Que vaut $A^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}0&1&1\\\\1&0&-1\\\\1&1&-1\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&-1&-1\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}0&-1&-1\\\\-1&0&-1\\\\-1&1&1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}0&1&1\\\\1&0&1\\\\-1&1&1\\end{pmatrix}$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$A^{-1}=\\frac{1}{\\det A}\\operatorname{com}(A)^t$ avec $\\operatorname{com}(A)=\\begin{pmatrix}0&1&1\\\\1&0&-1\\\\1&1&-1\\end{pmatrix}$ : il faut transposer la comatrice (piège classique)."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut $B^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}-1&4&2\\\\0&1&1\\\\1&-3&-2\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&0&-1\\\\-4&-1&3\\\\-2&-1&2\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}-1&0&1\\\\4&1&-3\\\\2&-1&-2\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}-1&0&1\\\\4&1&-3\\\\2&1&-2\\end{pmatrix}$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$\\det B=1$ et $B^{-1}=\\operatorname{com}(B)^t$. Vérification sur la 1re ligne : $(1,1,-1)\\cdot$ colonnes de $B^{-1}$ donne $(-1+4-2,\\ 0+1-1,\\ 1-3+2)=(1,0,0)$."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "statement_md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel muni d'une base $\\mathcal{B}=(\\vec e_1,\\vec e_2,\\vec e_3)$. Soit $f$ l'endomorphisme de $E$ dont la matrice dans la base $\\mathcal{B}$ est\n\n$$\nA=\\begin{pmatrix}2&-1&0\\\\-2&1&-2\\\\1&1&3\\end{pmatrix}.\n$$\n\nSoit $\\mathcal{B}'=(\\vec e_1\\,',\\vec e_2\\,',\\vec e_3\\,')$ la famille définie par\n\n$$\n\\begin{cases}\\vec e_1\\,'=\\vec e_1+\\vec e_2-\\vec e_3\\\\ \\vec e_2\\,'=\\vec e_1-\\vec e_3\\\\ \\vec e_3\\,'=\\vec e_1-\\vec e_2.\\end{cases}\n$$\n\n**(1)**  Montrer que $\\mathcal{B}'$ est une base de $E$ et déterminer $D=\\operatorname{Mat}_{\\mathcal{B}'}(f)$.\n\n**(2)**  Exprimer la matrice de passage $P$ de $\\mathcal{B}$ à $\\mathcal{B}'$ et calculer $P^{-1}$.\n\n**(3)**  Quelle relation lie les matrices $A$, $D$, $P$ et $P^{-1}$ ?\n\n**(4)**  Calculer $A^n$ pour tout $n\\in\\mathbb{N}$.",
+      "solution_md": "**a)**  $\\mathcal{B}'$ est libre et formée de trois vecteurs en dimension 3, c'est une base de $E$.\n\n$f(\\vec e_1\\,')=f(\\vec e_1)+f(\\vec e_2)-f(\\vec e_3)=\\vec e_1+\\vec e_2-\\vec e_3=\\vec e_1\\,'$,\n\n$f(\\vec e_2\\,')=f(\\vec e_1)-f(\\vec e_3)=2\\vec e_2\\,'$, et $f(\\vec e_3\\,')=3\\vec e_3\\,'$, donc\n$D=\\begin{pmatrix}1&0&0\\\\0&2&0\\\\0&0&3\\end{pmatrix}$.\n\n**b)**  Utilisons la définition de la base $\\mathcal{B}'$, on obtient :\n\n$$\nP=\\begin{pmatrix}1&1&1\\\\1&0&-1\\\\-1&-1&0\\end{pmatrix}\\quad\\text{et}\\quad P^{-1}=\\begin{pmatrix}1&1&1\\\\-1&-1&-2\\\\1&0&1\\end{pmatrix}.\n$$\n\n**c)**  $A=PDP^{-1}$.\n\n**d)**\n\n$$\n\\begin{aligned}\nA^n=PD^nP^{-1}&=\\begin{pmatrix}1&1&1\\\\1&0&-1\\\\-1&-1&0\\end{pmatrix}\\begin{pmatrix}1&0&0\\\\0&2^n&0\\\\0&0&3^n\\end{pmatrix}\\begin{pmatrix}1&1&1\\\\-1&-1&-2\\\\1&0&1\\end{pmatrix}\\\\\n&=\\begin{pmatrix}1-2^n+3^n&1-2^n&1-2^{n+1}+3^n\\\\1-3^n&1&1-3^n\\\\-1+2^n&-1+2^n&-1+2^{n+1}\\end{pmatrix}.\n\\end{aligned}\n$$",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.5 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.5-6",
+      "qcm": [
+        {
+          "prompt_md": "Q(1) — Quelle est la matrice $D=\\operatorname{Mat}_{\\mathcal{B}'}(f)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\operatorname{diag}(3,2,1)$"
+            },
+            {
+              "id": "b",
+              "md": "$\\operatorname{diag}(1,2,3)$"
+            },
+            {
+              "id": "c",
+              "md": "$\\operatorname{diag}(1,1,3)$"
+            },
+            {
+              "id": "d",
+              "md": "$\\operatorname{diag}(2,1,3)$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$f(\\vec e_1\\,')=\\vec e_1\\,'$, $f(\\vec e_2\\,')=2\\vec e_2\\,'$, $f(\\vec e_3\\,')=3\\vec e_3\\,'$ (calculs avec les colonnes de $A$). Par exemple $A\\begin{pmatrix}1\\\\0\\\\-1\\end{pmatrix}=\\begin{pmatrix}2\\\\0\\\\-2\\end{pmatrix}$."
+        },
+        {
+          "prompt_md": "Q(2) — Quelle est la matrice de passage $P$ de $\\mathcal{B}$ à $\\mathcal{B}'$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}1&1&1\\\\1&0&-1\\\\-1&-1&0\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&1&-1\\\\1&0&-1\\\\1&-1&0\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}1&1&1\\\\-1&-1&-2\\\\1&0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}1&1&1\\\\1&0&1\\\\-1&-1&0\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Les colonnes de $P$ sont les coordonnées de $\\vec e_1\\,'$, $\\vec e_2\\,'$, $\\vec e_3\\,'$ dans $\\mathcal{B}$ : $(1,1,-1)$, $(1,0,-1)$, $(1,-1,0)$. (Les écrire en lignes donne la transposée.)"
+        },
+        {
+          "prompt_md": "Q(2) — Que vaut $P^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}1&1&1\\\\-1&-1&-2\\\\1&0&1\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}1&1&-1\\\\1&0&-1\\\\1&-1&0\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}1&-1&1\\\\1&-1&0\\\\1&-2&1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}-1&-1&-1\\\\1&1&2\\\\-1&0&-1\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "On vérifie $PP^{-1}=I$ : 1re ligne de $P$ $(1,1,1)$ fois les colonnes de $P^{-1}$ : $(1-1+1,\\ 1-1+0,\\ 1-2+1)=(1,0,0)$."
+        },
+        {
+          "prompt_md": "Q(3) — Quelle relation lie $A$, $D$, $P$ et $P^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$A=P^{-1}DP$"
+            },
+            {
+              "id": "b",
+              "md": "$A=PDP^{-1}$"
+            },
+            {
+              "id": "c",
+              "md": "$D=PAP^{-1}$"
+            },
+            {
+              "id": "d",
+              "md": "$A=PDP$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Formule de changement de base : $D=\\operatorname{Mat}_{\\mathcal{B}'}(f)=P^{-1}AP$, soit $A=PDP^{-1}$."
+        },
+        {
+          "prompt_md": "Q(4) — Quelle est la première ligne de $A^n$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\left(1-2^n+3^n,\\ \\ 1-3^n,\\ \\ -1+2^n\\right)$"
+            },
+            {
+              "id": "b",
+              "md": "$\\left(1-2^n+3^n,\\ \\ 1-2^n,\\ \\ 1-2^{n+1}+3^n\\right)$"
+            },
+            {
+              "id": "c",
+              "md": "$\\left(1+2^n-3^n,\\ \\ 1-2^n,\\ \\ 1-2^{n+1}+3^n\\right)$"
+            },
+            {
+              "id": "d",
+              "md": "$\\left(1-2^n+3^n,\\ \\ 1-2^n,\\ \\ 1-2^n+3^n\\right)$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$A^n=PD^nP^{-1}$ avec $D^n=\\operatorname{diag}(1,2^n,3^n)$. Contrôle pour $n=1$ : $(1-2+3,\\ 1-2,\\ 1-4+3)=(2,-1,0)$, la première ligne de $A$."
+        }
+      ]
+    },
+    {
+      "number": "9",
+      "statement_md": "On considère $f:\\mathbb{R}^3\\to\\mathbb{R}^3$ définie par $f(x,y,z)=(5x+y-z,\\ 2x+4y-2z,\\ x-y+3z)$.\n\n**(1)**  Montrer que $f$ est une application linéaire.\n\n**(2)**  Donner la matrice $A$ de $f$ dans la base canonique.\n\n**(3)**  Soient $E_1=\\ker(f-2\\operatorname{Id})$, $E_2=\\ker(f-4\\operatorname{Id})$ et $E_3=\\ker(f-6\\operatorname{Id})$, où $\\operatorname{Id}$ désigne l'application identité de $\\mathbb{R}^3$. Donner une base et la dimension de chacun de ces sous-espaces.\n\n**(4)**  Choisir $v_1\\in E_1$, $v_2\\in E_2$ et $v_3\\in E_3$ tels que la deuxième coordonnée de $v_1$, la troisième coordonnée de $v_2$ et la première coordonnée de $v_3$ soient égales à $1$. Montrer que $\\mathcal{B}=\\{v_1,v_2,v_3\\}$ est une base de $\\mathbb{R}^3$.\n\n**(5)**  Calculer $f(v_1)$, $f(v_2)$ et $f(v_3)$. En déduire la matrice $A'$ de $f$ dans la base $\\mathcal{B}$.\n\n**(6)**  Donner la matrice de passage $P$ de la base canonique à la base $\\mathcal{B}$ et calculer $P^{-1}$.\n\n**(7)**  Exprimer $A'$ en fonction de $A$, $P$ et $P^{-1}$.\n\n**(8)**  Montrer que $A^n=P(A')^nP^{-1}$ pour $n\\ge1$. Calculer $A^n$ pour $n\\ge1$.",
+      "solution_md": "**(1)**  Montrons que $f$ est linéaire. Soient $(x,y,z)$ et $(x',y',z')\\in\\mathbb{R}^3$ et $\\lambda,\\mu\\in\\mathbb{R}$.\n\n$f((0,0,0))=(0,0,0)$.\n\n$$\n\\begin{aligned}\nf\\bigl(\\lambda(x,y,z)+\\mu(x',y',z')\\bigr)&=f(\\lambda x+\\mu x',\\ \\lambda y+\\mu y',\\ \\lambda z+\\mu z')\\\\\n&=\\bigl(5(\\lambda x+\\mu x')+(\\lambda y+\\mu y')-(\\lambda z+\\mu z'),\\\\\n&\\qquad 2(\\lambda x+\\mu x')+4(\\lambda y+\\mu y')-2(\\lambda z+\\mu z'),\\\\\n&\\qquad(\\lambda x+\\mu x')-(\\lambda y+\\mu y')+3(\\lambda z+\\mu z')\\bigr)\\\\\n&=\\lambda(5x+y-z,\\ 2x+4y-2z,\\ x-y+3z)\\\\\n&\\qquad+\\mu(5x'+y'-z',\\ 2x'+4y'-2z',\\ x'-y'+3z')\\\\\n&=\\lambda f(x,y,z)+\\mu f(x',y',z').\n\\end{aligned}\n$$\n\nDonc $f$ est une application linéaire.\n\n**(2)**  On a $f(\\vec i)=f((1,0,0))=(5,2,1)=5\\vec i+2\\vec j+\\vec k$,\n\n$f(\\vec j)=f((0,1,0))=(1,4,-1)=\\vec i+4\\vec j-\\vec k$,\n\n$f(\\vec k)=f((0,0,1))=(-1,-2,3)=-\\vec i-2\\vec j+3\\vec k$.\n\nLa matrice $A$ dans la base canonique est :\n\n$$\nA=\\begin{pmatrix}5&1&-1\\\\2&4&-2\\\\1&-1&3\\end{pmatrix}.\n$$\n\n**(3)**  Soit $(x,y,z)\\in E_1=\\ker(f-2\\operatorname{Id})\\iff(A-2I)X=0_{\\mathbb{R}^3}\\iff\\begin{pmatrix}3&1&-1\\\\2&2&-2\\\\1&-1&2\\end{pmatrix}\\begin{pmatrix}x\\\\y\\\\z\\end{pmatrix}=\\begin{pmatrix}0\\\\0\\\\0\\end{pmatrix}$\n\n$$\n\\begin{cases}3x+y-z=0&(L_1)\\\\ 2x+2y-2z=0&(L_2)\\\\ x-y+z=0&(L_3)\\end{cases}\n$$\n\n$(L_1)+(L_3)$ donne $x=0$ et de $(L_1)$, on obtient $y=z$.\n\nDonc $E_1=\\ker(f-2\\operatorname{Id})=\\{(0,y,y)\\ /\\ y\\in\\mathbb{R}\\}=\\operatorname{Vect}\\{(0,1,1)\\}$.\n\nDe même, on a $E_2=\\ker(f-4\\operatorname{Id})=\\operatorname{Vect}\\{(1,0,1)\\}$ et $E_3=\\ker(f-6\\operatorname{Id})=\\operatorname{Vect}\\{(1,1,0)\\}$.\n\n**(4)**  Montrons que $\\vec v_1$, $\\vec v_2$ et $\\vec v_3$ forment une famille libre. Soient $\\lambda$, $\\mu$ et $\\gamma\\in\\mathbb{R}$ :\n\n$$\n\\lambda\\vec v_1+\\mu\\vec v_2+\\gamma\\vec v_3=0_{\\mathbb{R}^3}\\iff\\begin{cases}\\mu+\\gamma=0&(L_1)\\\\ \\lambda+\\gamma=0&(L_2)\\\\ \\lambda+\\mu=0&(L_3)\\end{cases}\n$$\n\nDe $L_2$ et $L_3$, on a $\\gamma=-\\lambda$ et $\\mu=-\\lambda$, donc d'après $L_1$, on obtient $-2\\lambda=0$. Ainsi $(\\vec v_1,\\vec v_2,\\vec v_3)$ est une base.\n\n**(5)**  $f(\\vec v_1)=f(\\vec j+\\vec k)=f(\\vec j)+f(\\vec k)=\\begin{pmatrix}1\\\\4\\\\-1\\end{pmatrix}+\\begin{pmatrix}-1\\\\-2\\\\3\\end{pmatrix}=\\begin{pmatrix}0\\\\2\\\\2\\end{pmatrix}=2\\vec v_1$,\n\n$f(\\vec v_2)=4\\vec v_2$ et $f(\\vec v_3)=6\\vec v_3$. Donc $A'=\\begin{pmatrix}2&0&0\\\\0&4&0\\\\0&0&6\\end{pmatrix}$.\n\n**(6)**  $P=\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}$ et $P^{-1}=\\begin{pmatrix}-\\frac12&\\frac12&\\frac12\\\\ \\frac12&-\\frac12&\\frac12\\\\ \\frac12&\\frac12&-\\frac12\\end{pmatrix}$.\n\n**(7)**  $A'=P^{-1}AP$.\n\n**(8)**  $A^n=(PA'P^{-1})(PA'P^{-1})\\cdots(PA'P^{-1})$ ($n$ fois)\n\n$$\n\\begin{aligned}\n&=P(A')^nP^{-1}=\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}\\begin{pmatrix}2^n&0&0\\\\0&4^n&0\\\\0&0&6^n\\end{pmatrix}\\begin{pmatrix}-\\frac12&\\frac12&\\frac12\\\\ \\frac12&-\\frac12&\\frac12\\\\ \\frac12&\\frac12&-\\frac12\\end{pmatrix}\\\\\n&=\\begin{pmatrix}\\frac{4^n+6^n}{2}&\\frac{-4^n+6^n}{2}&\\frac{4^n-6^n}{2}\\\\[3pt] \\frac{-2^n+6^n}{2}&\\frac{2^n+6^n}{2}&\\frac{2^n-6^n}{2}\\\\[3pt] \\frac{-2^n+4^n}{2}&\\frac{2^n-4^n}{2}&\\frac{2^n+4^n}{2}\\end{pmatrix}.\n\\end{aligned}\n$$",
+      "solution_source": "prof",
+      "source": "F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.6 ; correction : F027 - Corrections-Algèbre1 Série 4 (Calcul Matriciel).pdf p.6-8",
+      "qcm": [
+        {
+          "prompt_md": "Q(1) — Pourquoi $f$ est-elle linéaire ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Parce que $f(0,0,0)=(0,0,0)$, ce qui suffit"
+            },
+            {
+              "id": "b",
+              "md": "$f(\\lambda u+\\mu u')=\\lambda f(u)+\\mu f(u')$ : chaque composante est une combinaison linéaire de $x,y,z$ sans terme constant"
+            },
+            {
+              "id": "c",
+              "md": "Parce que $f$ est bijective"
+            },
+            {
+              "id": "d",
+              "md": "Parce que $f(x,y,z)$ est un polynôme en $x,y,z$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "La correction développe $f\\bigl(\\lambda(x,y,z)+\\mu(x',y',z')\\bigr)$ et regroupe en $\\lambda f(x,y,z)+\\mu f(x',y',z')$. $f(0)=0$ est nécessaire mais pas suffisant."
+        },
+        {
+          "prompt_md": "Q(2) — Quelle est la matrice $A$ de $f$ dans la base canonique ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\begin{pmatrix}5&2&1\\\\1&4&-1\\\\-1&-2&3\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\begin{pmatrix}5&1&-1\\\\2&4&-2\\\\1&-1&3\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}5&1&-1\\\\2&4&2\\\\1&-1&3\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\begin{pmatrix}5&1&1\\\\2&4&-2\\\\-1&-1&3\\end{pmatrix}$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Les colonnes sont $f(\\vec i)=(5,2,1)$, $f(\\vec j)=(1,4,-1)$, $f(\\vec k)=(-1,-2,3)$. (Mettre ces images en lignes donne la transposée.)"
+        },
+        {
+          "prompt_md": "Q(3) — Quelles sont les bases de $E_1=\\ker(f-2\\operatorname{Id})$, $E_2=\\ker(f-4\\operatorname{Id})$, $E_3=\\ker(f-6\\operatorname{Id})$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E_1=\\operatorname{Vect}\\{(1,1,0)\\}$, $E_2=\\operatorname{Vect}\\{(1,0,1)\\}$, $E_3=\\operatorname{Vect}\\{(0,1,1)\\}$, chacun de dimension $1$"
+            },
+            {
+              "id": "b",
+              "md": "$E_1=\\operatorname{Vect}\\{(0,1,-1)\\}$, $E_2=\\operatorname{Vect}\\{(1,0,-1)\\}$, $E_3=\\operatorname{Vect}\\{(1,-1,0)\\}$, chacun de dimension $1$"
+            },
+            {
+              "id": "c",
+              "md": "$E_1=\\operatorname{Vect}\\{(0,1,1)\\}$, $E_2=\\operatorname{Vect}\\{(1,0,1)\\}$, $E_3=\\operatorname{Vect}\\{(1,1,0)\\}$, chacun de dimension $1$"
+            },
+            {
+              "id": "d",
+              "md": "$E_1=\\operatorname{Vect}\\{(0,1,1),(1,0,1)\\}$ de dimension $2$, $E_2=E_3=\\{0\\}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$(A-2I)X=0$ : $3x+y-z=0$, $x-y+z=0$, d'où $x=0$ et $y=z$. Vérifications : $A(0,1,1)^t=(0,2,2)^t$, $A(1,0,1)^t=(4,0,4)^t$, $A(1,1,0)^t=(6,6,0)^t$."
+        },
+        {
+          "prompt_md": "Q(4) — Quels vecteurs $v_1,v_2,v_3$ choisit-on ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$v_1=(1,1,0)$, $v_2=(1,0,1)$, $v_3=(0,1,1)$"
+            },
+            {
+              "id": "b",
+              "md": "$v_1=(0,1,1)$, $v_2=(1,0,1)$, $v_3=(1,1,1)$"
+            },
+            {
+              "id": "c",
+              "md": "$v_1=(0,1,1)$, $v_2=(1,0,1)$, $v_3=(1,1,0)$"
+            },
+            {
+              "id": "d",
+              "md": "$v_1=(0,2,2)$, $v_2=(4,0,4)$, $v_3=(6,6,0)$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "La 2e coordonnée de $v_1\\in E_1$, la 3e de $v_2\\in E_2$ et la 1re de $v_3\\in E_3$ valent $1$. La famille est libre : $\\mu+\\gamma=\\lambda+\\gamma=\\lambda+\\mu=0$ donne $-2\\lambda=0$, donc c'est une base."
+        },
+        {
+          "prompt_md": "Q(5) — Quelle est la matrice $A'$ de $f$ dans la base $\\mathcal{B}=(v_1,v_2,v_3)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\operatorname{diag}(6,4,2)$"
+            },
+            {
+              "id": "b",
+              "md": "$\\operatorname{diag}(1,1,1)$"
+            },
+            {
+              "id": "c",
+              "md": "$\\operatorname{diag}(2,4,6)$ à condition que $f$ soit bijective"
+            },
+            {
+              "id": "d",
+              "md": "$\\operatorname{diag}(2,4,6)$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$f(v_1)=2v_1$, $f(v_2)=4v_2$, $f(v_3)=6v_3$ : chaque $v_i$ est vecteur propre, d'où une matrice diagonale."
+        },
+        {
+          "prompt_md": "Q(6) — Que vaut $P^{-1}$, avec $P=\\begin{pmatrix}0&1&1\\\\1&0&1\\\\1&1&0\\end{pmatrix}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac12\\begin{pmatrix}-1&1&1\\\\1&-1&1\\\\1&1&-1\\end{pmatrix}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac12\\begin{pmatrix}1&-1&-1\\\\-1&1&-1\\\\-1&-1&1\\end{pmatrix}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\begin{pmatrix}-1&1&1\\\\1&-1&1\\\\1&1&-1\\end{pmatrix}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac13\\begin{pmatrix}-1&2&2\\\\2&-1&2\\\\2&2&-1\\end{pmatrix}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$P$ a pour colonnes $v_1,v_2,v_3$. Vérification : 1re ligne de $P$, $(0,1,1)$, fois 1re colonne de $\\frac12(-1,1,1)^t$ : $\\frac12(0+1+1)=1$ ; fois 2e colonne $\\frac12(1,-1,1)^t$ : $\\frac12(0-1+1)=0$."
+        },
+        {
+          "prompt_md": "Q(7) — Comment s'exprime $A'$ en fonction de $A$, $P$ et $P^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$A'=PAP^{-1}$"
+            },
+            {
+              "id": "b",
+              "md": "$A'=P^{-1}A$"
+            },
+            {
+              "id": "c",
+              "md": "$A'=P^{-1}AP$"
+            },
+            {
+              "id": "d",
+              "md": "$A'=PAP$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$P$ est la matrice de passage de la base canonique à $\\mathcal{B}$ : $\\operatorname{Mat}_{\\mathcal{B}}(f)=P^{-1}\\operatorname{Mat}_{\\text{can}}(f)P$."
+        },
+        {
+          "prompt_md": "Q(8) — Quelle est la première ligne de $A^n=P(A')^nP^{-1}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\left(\\dfrac{2^n+6^n}{2},\\ \\dfrac{6^n-2^n}{2},\\ \\dfrac{2^n-6^n}{2}\\right)$"
+            },
+            {
+              "id": "b",
+              "md": "$\\left(\\dfrac{4^n+6^n}{2},\\ \\dfrac{4^n-6^n}{2},\\ \\dfrac{6^n-4^n}{2}\\right)$"
+            },
+            {
+              "id": "c",
+              "md": "$\\left(5^n,\\ 1,\\ (-1)^n\\right)$"
+            },
+            {
+              "id": "d",
+              "md": "$\\left(\\dfrac{4^n+6^n}{2},\\ \\dfrac{6^n-4^n}{2},\\ \\dfrac{4^n-6^n}{2}\\right)$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$A^n=(PA'P^{-1})^n=P(A')^nP^{-1}$ (les $P^{-1}P$ intérieurs se simplifient), avec $(A')^n=\\operatorname{diag}(2^n,4^n,6^n)$. Contrôle $n=1$ : $(5,1,-1)$, la première ligne de $A$. (Élever les coefficients de $A$ à la puissance $n$ est faux.)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,607 @@
+{
+  "slug": "dynamique-de-groupe-et-conflits",
+  "number": 6,
+  "title": "Dynamique de groupe et gestion des conflits",
+  "description": "Séance 6 : esprit d'équipe, étapes de formation d'une équipe, confiance, leadership d'équipe, styles de gestion des conflits, réunions efficaces et pensée de groupe.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "travail-en-equipe",
+      "title": "Le travail en équipe",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "equipe-et-formation",
+          "title": "Être membre d'une équipe et formation de l'équipe",
+          "number": "6.1",
+          "estimatedMinutes": 10,
+          "summary": "Objectifs de la séance, test « bon membre d'équipe », ce qu'est une équipe et les cinq étapes de formation d'une équipe.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance permet de comprendre les différents types de personnalités et les rôles qu'elles jouent dans un groupe ou une réunion, les difficultés communes rencontrées par les leaders et la manière de les surmonter, l'art de gérer des **réunions efficaces**, d'organiser son travail, de contrôler et suivre, ainsi que les causes des **conflits** dans un groupe et les stratégies pour les gérer.\n\n**Résultats d'apprentissage.** Vous serez en mesure de : 1. identifier vos compétences en gestion d'équipe ; 2. apprécier la valeur du travail en équipe ; 3. comprendre la manière dont les équipes se forment ; 4. distinguer les étapes d'une réunion d'équipe efficace ; 5. définir des stratégies de gestion de conflits ; 6. comprendre le concept de la pensée collective et apprendre à la dépasser.",
+              "origin": "source",
+              "title": "Dynamique de groupe et gestion des conflits"
+            },
+            {
+              "type": "exercise",
+              "md": "Répondez « souvent », « parfois » ou « jamais » :\n1. Dans la plupart des projets, je préfère me fier à mes propres compétences et capacités plutôt que de travailler avec les autres.\n2. Les gens apprécient généralement de travailler avec moi dans un groupe.\n3. Je suis très flexible et peux rapidement m'adapter aux nouvelles situations et aux changements des exigences d'un groupe et de son leader.\n4. J'expose toujours mon opinion, mais je suis prêt à faire des compromis pour le bien de l'équipe.\n5. Je veux voir mes coéquipiers réussir.\n6. Je sens que la qualité de mon travail est meilleure quand je travaille avec mon équipe.\n7. J'aime travailler avec les membres de mon équipe.\n8. Je pense que les objectifs de l'équipe sont tout aussi importants que mes objectifs individuels.",
+              "origin": "source",
+              "title": "Êtes-vous un bon membre d'équipe ?"
+            },
+            {
+              "type": "definition",
+              "md": "- Pour la **première** affirmation : 3 points pour « jamais », 2 pour « parfois », 1 pour « souvent ».\n- Pour les **autres** : 3 points pour « souvent », 2 pour « parfois », 1 pour « jamais ».\n\n| Score | Interprétation |\n|---|---|\n| 18 – 24 points | Vous êtes un excellent membre d'équipe : vous savez ce qu'il faut pour travailler avec les autres et connaissez la valeur du travail d'équipe. |\n| 12 – 17 points | Vos compétences sont dans la moyenne : vous comprenez une partie de la valeur du travail en équipe mais devez approfondir d'autres domaines clés. |\n| Moins de 12 points | Vous devez développer votre compréhension de la valeur du travail en équipe et votre esprit d'équipe. |",
+              "origin": "source",
+              "title": "Barème de notation"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi la première affirmation est-elle notée « à l'envers » (3 points pour « jamais ») ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Par erreur"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que préférer se fier à soi plutôt qu'à l'équipe est le contraire de l'esprit d'équipe"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce qu'elle est plus importante"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Pour compliquer le test"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Répondre « souvent » à « je préfère travailler seul » traduit un faible esprit d'équipe : cette réponse rapporte le moins de points."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Complétez individuellement en deux minutes, puis en équipe de 3 à 5 : 1. Un des avantages principaux d'une équipe, c'est… 2. Ce qui contribue au succès d'une équipe, c'est… 3. Ce qui affaiblit la capacité d'une équipe à fonctionner correctement, c'est… 4. Un trait fondamental de la personnalité d'un leader, c'est… 5. Un trait fondamental d'un membre d'équipe, c'est… 6. La meilleure manière pour un leader de gérer un membre perturbateur, c'est…",
+              "origin": "source",
+              "title": "Les équipes sont…"
+            },
+            {
+              "type": "text",
+              "md": "Le travail en équipe requiert que la personne soit consciente de l'importance de travailler avec les autres et qu'elle entretienne les compétences requises pour travailler dans un environnement de groupe.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "| Étape | Description |\n|---|---|\n| 1. Formation | Les équipes ne sont pas immédiatement opérationnelles. Les leaders d'équipe doivent s'occuper en premier lieu de la manière dont les équipes sont formées. |\n| 2. Confrontation | Étape naturelle et prévisible du développement du groupe. Le conflit intragroupe est susceptible de se produire tant que les membres sont en désaccord sur le fonctionnement et le leadership de l'équipe. |\n| 3. Normalisation | Cette étape s'établit quand les membres de l'équipe parviennent à atteindre le niveau de cohésion nécessaire à l'interaction positive au sein du groupe. |\n| 4. Fonctionnement | Étape naturelle et prévisible. Les équipes ne commencent pas à fonctionner correctement tout de suite après avoir été officiellement formées. |\n| 5. Ajustement | L'équipe se dissout une fois sa mission accomplie ou lorsque le groupe a perdu en performance. Les leaders doivent s'assurer que cette étape ne commence que lorsque la mission assignée est accomplie. |",
+              "origin": "source",
+              "title": "Formation de l'équipe (Robbins et al.)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les étapes de formation d'une équipe.",
+                "items": [
+                  "Formation",
+                  "Confrontation",
+                  "Normalisation",
+                  "Fonctionnement",
+                  "Ajustement"
+                ],
+                "explanation": "Une équipe passe par des conflits (confrontation) avant d'atteindre la cohésion (normalisation) puis la pleine efficacité (fonctionnement)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "À quelle étape le conflit intragroupe est-il le plus probable ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Formation"
+                },
+                {
+                  "id": "b",
+                  "md": "Confrontation"
+                },
+                {
+                  "id": "c",
+                  "md": "Normalisation"
+                },
+                {
+                  "id": "d",
+                  "md": "Ajustement"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Confrontation : les membres sont en désaccord sur le fonctionnement et le leadership de l'équipe."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une équipe fonctionne correctement dès qu'elle est officiellement formée.",
+              "answer": false,
+              "explanation": "Faux : « les équipes ne commencent pas à fonctionner correctement tout de suite après avoir été officiellement formées »."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un étudiant obtient 20 points au test du bon membre d'équipe. Il est « un ___ membre d'équipe ».",
+              "answerType": "text",
+              "accepted": [
+                "excellent"
+              ],
+              "explanation": "18–24 points : excellent membre d'équipe."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quand l'étape d'ajustement doit-elle commencer, selon le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Dès la formation"
+                },
+                {
+                  "id": "b",
+                  "md": "Lorsque la mission assignée est accomplie"
+                },
+                {
+                  "id": "c",
+                  "md": "Au premier conflit"
+                },
+                {
+                  "id": "d",
+                  "md": "Jamais"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'équipe se dissout une fois la mission accomplie ; les leaders veillent à ce que cela n'arrive pas plus tôt."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Au test, répondre « souvent » à « Je veux voir mes coéquipiers réussir » rapporte 3 points.",
+              "answer": true,
+              "explanation": "Pour toutes les affirmations sauf la première, « souvent » vaut 3 points."
+            }
+          ]
+        },
+        {
+          "slug": "confiance-et-leadership-equipe",
+          "title": "Confiance et leadership d'équipe",
+          "number": "6.2",
+          "estimatedMinutes": 9,
+          "summary": "Le travail en équipe exige de ne pas être individualiste et d'inspirer confiance ; auto-évaluations de la confiance et du leadership d'équipe ; ce que le leadership exige du leader.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Discutez pendant 2 minutes avec un autre étudiant d'un sujet de votre choix avec une seule règle : **n'utilisez pas les mots « je », « moi » ou « mon »**. Votre partenaire ne vous interrompt pas mais compte le nombre de fois où il les entend.",
+              "origin": "source",
+              "title": "Activité : le travail en équipe exige de ne pas être individualiste"
+            },
+            {
+              "type": "exercise",
+              "md": "Imaginez-vous dans une équipe (travail, club, sport…) et notez-vous de 1 (fortement en désaccord) à 10 (tout à fait d'accord) ; vous pouvez garder ces réponses pour vous :\n1. J'agis équitablement avec chaque membre de mon équipe.\n2. Je vais garder pour moi ce que l'on me confie.\n3. On peut compter sur moi pour être honnête avec les autres.\n4. Je n'impose jamais mon point de vue aux autres.\n5. Je tiens toujours mes promesses.\n6. J'honore tous mes rendez-vous.\n7. Lorsqu'on me prête de l'argent, je le rends toujours et dans un délai acceptable.",
+              "origin": "source",
+              "title": "Est-ce que je mérite la confiance des autres ?"
+            },
+            {
+              "type": "exercise",
+              "md": "Répondez « plutôt vrai » ou « plutôt faux » :\n1. Lorsqu'on est leader d'équipe, il est important de tenir les membres informés, presque quotidiennement, des éléments extérieurs qui pourraient influer sur leur travail.\n2. J'aime que le travail d'équipe soit mené dans un cadre de communication ouverte afin que nos missions soient menées à bien.\n3. En général, je me sens un peu déstabilisé lorsque j'interagis avec des membres ayant des codes socioculturels différents des miens.\n4. Je préfère presque toujours communiquer en face-à-face plutôt que par e-mail.\n5. J'aime faire les choses à ma façon et à mon propre rythme.\n6. Si un nouveau membre est embauché, je voudrais que toute l'équipe soit impliquée dans son intégration.\n7. Je deviens impatient quand je travaille avec un membre ayant des codes socioculturels différents des miens.\n8. Je suggère à chaque membre, de manière personnalisée, d'apporter sa contribution à un projet.\n9. Si je devais m'absenter une semaine, l'essentiel du travail de l'équipe serait mené à bien.\n10. Déléguer m'est difficile quand il s'agit d'une tâche importante qui doit être accomplie correctement.\n11. J'aime travailler avec des gens qui parlent une autre langue que la mienne.\n12. Je suis confiant quant à mes capacités à gérer des membres de cultures différentes.",
+              "origin": "source",
+              "title": "Évaluez vos compétences en leadership d'équipe"
+            },
+            {
+              "type": "definition",
+              "md": "1 point pour chaque « plutôt vrai » aux questions **1, 2, 6, 8, 9, 11 et 12** ; 1 point pour chaque « plutôt faux » aux questions **3, 4, 5, 7 et 10**.\n\n- Score de **9 ou plus** : vous avez de vraies compétences et attributs pour être leader d'équipe.\n- Score de **3 ou moins** : vous avez besoin de développer vos compétences en leadership d'équipe.",
+              "origin": "source",
+              "title": "Notation et interprétation"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "À la question 10 (« Déléguer m'est difficile… »), quelle réponse rapporte un point ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Plutôt vrai"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Plutôt faux"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "La question 10 fait partie des items 3, 4, 5, 7, 10, pour lesquels c'est « plutôt faux » qui compte : un leader d'équipe sait déléguer."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "1. soit capable d'intégrer des membres différents dans son équipe et d'encourager réellement leurs opinions ;\n2. soit en mesure de construire une vision commune avec son équipe ;\n3. soit en mesure d'aider l'équipe à construire une confiance commune ;\n4. soit prêt à **partager** lorsque cela est nécessaire : a. le pouvoir ; b. l'information ; c. la reconnaissance pour la réussite ;\n5. soit prêt à admettre ses erreurs ;\n6. soit prêt à mettre en avant les meilleures performances de son équipe ;\n7. soit prêt à coacher les performances moins bonnes et à leur donner une autre chance ;\n8. soit prêt à prendre des décisions difficiles.",
+              "origin": "source",
+              "title": "Le leadership nécessite que le leader…"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle règle impose l'activité « Le travail en équipe exige de ne pas être individualiste » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Ne pas parler"
+                },
+                {
+                  "id": "b",
+                  "md": "Ne pas utiliser « je », « moi » ou « mon »"
+                },
+                {
+                  "id": "c",
+                  "md": "Parler en anglais"
+                },
+                {
+                  "id": "d",
+                  "md": "Ne pas regarder son partenaire"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La règle unique est de ne pas utiliser « je », « moi » ou « mon »."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Au test de leadership d'équipe, un score de ___ ou plus indique de vraies compétences de leader d'équipe.",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "9 ou plus : vraies compétences ; 3 ou moins : à développer."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Selon le cahier, un leader doit être prêt à partager :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "seulement l'information"
+                },
+                {
+                  "id": "b",
+                  "md": "le pouvoir, l'information et la reconnaissance pour la réussite"
+                },
+                {
+                  "id": "c",
+                  "md": "uniquement les erreurs"
+                },
+                {
+                  "id": "d",
+                  "md": "rien"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Point 4 : partager le pouvoir, l'information et la reconnaissance."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Admettre ses erreurs fait partie de ce que le leadership exige du leader.",
+              "answer": true,
+              "explanation": "Point 5."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Au test de leadership, « plutôt vrai » à « J'aime travailler avec des gens qui parlent une autre langue » rapporte un point.",
+              "answer": true,
+              "explanation": "La question 11 fait partie des items comptés en « plutôt vrai »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conflits-et-reunions",
+      "title": "Conflits et réunions",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "gestion-des-conflits",
+          "title": "La gestion des conflits",
+          "number": "6.3",
+          "estimatedMinutes": 10,
+          "summary": "Le questionnaire de gestion des conflits, les cinq styles (borné, passif, consensuel, conciliant, collaboratif) et le jeu de rôle Ramzi et Said.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Pensez à une équipe récente et répondez « plutôt vrai » ou « plutôt faux » :\n1. Je recule devant les sujets susceptibles de causer un conflit.\n2. Je défends ardemment mon opinion lors d'un désaccord.\n3. Je propose des solutions qui combinent les points de vue des autres.\n4. Je cède un peu quand les autres font de même.\n5. J'évite les gens qui veulent discuter d'un sujet qui fait polémique.\n6. Je transforme les disputes en une nouvelle solution à partir d'idées émergeant dans un litige.\n7. Je décortique les différents points de vue pour parvenir à un accord.\n8. J'approuve rapidement l'argument convaincant d'une personne avec qui je débats.\n9. Je garde mes opinions pour moi afin d'éviter le conflit.\n10. J'essaie de comprendre les idées des autres pour parvenir à une solution acceptable pour tous.\n11. Je suis capable de faire des compromis pour trouver des solutions à un désaccord.\n12. J'essaie de minimiser les désaccords en les faisant paraître moins graves.\n13. Je préfère me taire plutôt que de polémiquer avec une autre personne.\n14. Je hausse le ton pour amener d'autres personnes à adopter ma position.\n15. Je reste campé sur mes positions lors d'un désaccord.",
+              "origin": "source",
+              "title": "Le travail en équipe requiert une gestion appropriée des conflits"
+            },
+            {
+              "type": "definition",
+              "md": "Un point par réponse « plutôt vrai » :\n\n| Style | Questions |\n|---|---|\n| Borné | 2, 14, 15 |\n| Passif | 1, 5, 9 |\n| Consensuel | 4, 7, 11 |\n| Conciliant | 8, 12, 13 |\n| Collaboratif | 3, 6, 10 |",
+              "origin": "source",
+              "title": "Notation"
+            },
+            {
+              "type": "definition",
+              "md": "| Style | Description | Utile quand… |\n|---|---|---|\n| **Borné** | Désir de présenter ses idées personnelles au détriment de celles des autres. | situations de crise ou d'urgence. |\n| **Passif** | Indifférence à l'égard de la situation en question. | questions sans importance. |\n| **Consensuel** | Niveau modéré de coopération et de volonté individuelle d'avancer sa propre idée. | la question est importante et les parties ont des pouvoirs comparables. |\n| **Conciliant** | Volonté de céder aux autres. | l'autre partie est plus informée, le problème lui importe plus, ou le consensus et la cohésion sont cruciaux. |\n| **Collaboratif** | Fort désir de faire valoir sa volonté tout en tenant compte pleinement des autres perspectives. | l'enjeu est important, les idées des deux parties sont nécessaires et le temps pour réfléchir est conséquent. |",
+              "origin": "source",
+              "title": "Styles de gestion de conflits"
+            },
+            {
+              "type": "remark",
+              "md": "Le schéma du cahier place ces styles selon deux axes : le **désir de satisfaire ses propres intérêts** et le **degré de coopération** avec l'autre (non coopératif → coopératif). Borné : forte affirmation de soi, peu de coopération ; Passif : faible sur les deux ; Conciliant : forte coopération, faible affirmation ; Collaboratif : fort sur les deux ; Consensuel : au milieu.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "« Je hausse le ton pour amener les autres à adopter ma position » correspond au style :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Borné"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Passif"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Conciliant"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Collaboratif"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "C'est la question 14, comptée avec 2 et 15 pour le style borné."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Ramzi T., nouveau directeur marketing adjoint, a remplacé la plupart des chefs d'unités par des employés plus jeunes. Said B., ancien employé qui a gardé son poste, craint pour ses amis de longue date et sollicite une réunion. Au fil de la conversation, Ramzi interrompt Said, répète qu'il faut « du sang neuf » et « regarder vers l'avenir », sans répondre aux arguments de Said (perte d'expérience et de connaissance du marché, réticence des équipes). La réunion se termine par : Said : « Avec tout mon respect, vous n'écoutez pas… » — Ramzi (en criant) : « QUOI ?! »\n\n**Fiche de notation** (de 5 = excellentes aptitudes à 1 = faibles compétences) : Ramzi gère directement le conflit ; cherche à identifier correctement la cause du conflit ; est prêt à écouter le point de vue de l'autre ; explique correctement son propre point de vue ; utilise le style approprié ; est tolérant envers l'autre point de vue (tant qu'il est exprimé de manière courtoise et professionnelle).\n\n**Question :** quel est le style de résolution le plus approprié à ce cas : être collaboratif ou borné ?",
+              "origin": "source",
+              "title": "Jeu de rôle : Ramzi et Said"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque style à la situation où il peut être utile.",
+              "pairs": [
+                {
+                  "left": "Borné",
+                  "right": "Situation de crise ou d'urgence"
+                },
+                {
+                  "left": "Passif",
+                  "right": "Question sans importance"
+                },
+                {
+                  "left": "Conciliant",
+                  "right": "L'autre partie est plus informée ou le problème lui importe plus"
+                },
+                {
+                  "left": "Collaboratif",
+                  "right": "Enjeu important, idées des deux parties nécessaires, temps suffisant"
+                }
+              ],
+              "explanation": "C'est le tableau « Styles de gestion de conflits »."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "« Je garde mes opinions pour moi afin d'éviter le conflit » relève du style :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Passif"
+                },
+                {
+                  "id": "b",
+                  "md": "Borné"
+                },
+                {
+                  "id": "c",
+                  "md": "Consensuel"
+                },
+                {
+                  "id": "d",
+                  "md": "Collaboratif"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Question 9, avec 1 et 5 : style passif."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour le conflit entre Ramzi et Said (enjeu important, expérience de Said précieuse), quel style convient le mieux ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Borné"
+                },
+                {
+                  "id": "b",
+                  "md": "Collaboratif"
+                },
+                {
+                  "id": "c",
+                  "md": "Passif"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'enjeu est important et les idées des deux parties sont nécessaires : le style collaboratif. Ramzi, lui, adopte un style borné."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le style consensuel reflète un niveau modéré de coopération et de volonté d'avancer sa propre idée.",
+              "answer": true,
+              "explanation": "C'est sa description dans le cahier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "« Je propose des solutions qui combinent les points de vue des autres » correspond au style :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Conciliant"
+                },
+                {
+                  "id": "b",
+                  "md": "Collaboratif"
+                },
+                {
+                  "id": "c",
+                  "md": "Passif"
+                },
+                {
+                  "id": "d",
+                  "md": "Borné"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Question 3, avec 6 et 10 : style collaboratif."
+            }
+          ]
+        },
+        {
+          "slug": "reunions-et-pensee-de-groupe",
+          "title": "Réunions efficaces et pensée de groupe",
+          "number": "6.4",
+          "estimatedMinutes": 7,
+          "summary": "Les trois éléments d'une réunion réussie et le phénomène de pensée de groupe (groupthink) avec six façons de le surmonter.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Trois éléments contribuent à la réussite d'une réunion :\n- une bonne **préparation** (par exemple, la planification de la réunion) ;\n- un **déroulement** approprié (par exemple, la gestion des conflits lors de la réunion) ;\n- un **suivi** approprié (par exemple, s'assurer que les missions futures sont claires et bien communiquées).\n\nEn équipe, indiquez trois points clés sous chaque catégorie qui rendront votre réunion productive.",
+              "origin": "source",
+              "title": "Organiser des réunions"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les trois éléments d'une réunion réussie.",
+                "items": [
+                  "La préparation",
+                  "La réunion (déroulement)",
+                  "Le suivi"
+                ],
+                "explanation": "On prépare, on conduit la réunion, puis on assure le suivi des missions."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Le **groupthink** est une tendance particulière des groupes très enclins à **converger vers des opinions et des idées similaires**, et donc à ne pas profiter de la diversité des compétences de leurs membres. Autrement dit, la pensée de groupe se produit quand une équipe de plusieurs personnes **commence à penser comme une seule personne** : elle ne se remet plus en question pour trouver de nouvelles idées ou de nouveaux points de vue.\n\nLes équipes efficaces ne deviennent pas des proies de cet effet.",
+              "origin": "source",
+              "title": "La pensée de groupe (groupthink)"
+            },
+            {
+              "type": "definition",
+              "md": "1. Inclure les différents membres du groupe dès le début en leur demandant d'exprimer un point de vue ;\n2. attribuer à quelqu'un le rôle de « **l'avocat du diable** » : il contredit quand il voit que tout le monde adopte rapidement une solution, et peut même argumenter contre ses propres opinions pour inciter les gens à réfléchir ;\n3. tout au long de la discussion, personne ne devrait prendre les opinions et décisions des autres pour acquises ;\n4. si possible, alterner le leadership de l'équipe en attribuant à chacun des rôles différents lors des réunions (avocat du diable, médiateur, preneur de décision, gardien du temps…) ;\n5. méfiez-vous des situations où l'équipe arrive rapidement à des solutions faciles pour des problèmes complexes ;\n6. méfiez-vous des cas où tous les membres sont toujours d'accord avec leur chef ou entre eux.",
+              "origin": "source",
+              "title": "Comment surmonter la pensée de groupe"
+            },
+            {
+              "type": "exercise",
+              "md": "Indiquez ce que vous avez appris sur les qualités d'une équipe efficace, puis notez cinq choses (ou plus) que vous souhaitez adopter pour améliorer vos compétences en management d'équipe.",
+              "origin": "source",
+              "title": "Récapitulatif et engagement"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "La pensée de groupe se produit quand une équipe commence à penser comme une seule personne.",
+              "answer": true,
+              "explanation": "C'est la définition du cahier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le rôle de « l'avocat du diable » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Prendre les notes"
+                },
+                {
+                  "id": "b",
+                  "md": "Contredire quand tout le monde adopte rapidement une solution"
+                },
+                {
+                  "id": "c",
+                  "md": "Décider à la place du chef"
+                },
+                {
+                  "id": "d",
+                  "md": "Chronométrer la réunion"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Il pousse le groupe à réfléchir au lieu de converger trop vite."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces signes doit alerter sur une pensée de groupe ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Des désaccords argumentés"
+                },
+                {
+                  "id": "b",
+                  "md": "Tous les membres toujours d'accord avec le chef"
+                },
+                {
+                  "id": "c",
+                  "md": "Un avocat du diable actif"
+                },
+                {
+                  "id": "d",
+                  "md": "Des rôles qui tournent"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Méfiez-vous des cas où tous sont toujours d'accord avec leur chef ou entre eux."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "S'assurer que les missions futures sont claires et bien communiquées relève de :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "la préparation"
+                },
+                {
+                  "id": "b",
+                  "md": "la réunion"
+                },
+                {
+                  "id": "c",
+                  "md": "le suivi"
+                }
+              ],
+              "answer": "c",
+              "explanation": "C'est l'exemple donné pour le suivi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 6 = p. 93–112 du PDF (pages 89–108 du cahier).",
+    "ERREUR DE TRADUCTION corrigée (p. 97, étape « Normalisation ») : le cahier écrit « quand les membres de l'équipe ne sont pas en mesure d'atteindre un certain niveau de cohésion », ce qui contredit le sens de l'étape (norming = la cohésion s'installe) ; rendu par « parviennent à atteindre ». À confirmer.",
+    "p. 101, point 4 : « soit prêt à ______ lorsque cela est nécessaire » est un blanc à remplir ; complété par « partager » d'après les sous-points (partager le pouvoir, l'information, la reconnaissance).",
+    "p. 104 : le schéma des styles a des axes mal étiquetés (un seul axe nommé « désir de satisfaire ses propres intérêts », avec « coopératif / non coopératif ») ; une remarque ajoutée (origin: added) explique les deux axes usuels. Description du style collaboratif « faire valoir sa volonté avec un pair pour tenir compte… » reformulée en « tout en tenant compte pleinement des autres perspectives ».",
+    "Le dialogue Ramzi / Said (p. 106) est résumé. Le titre « La créativité du groupe – Brainstorming » répété par erreur en p. 95 n'est pas repris. Coquilles : « afin afin » → « afin », « émergeantes » → « émergeant »."
+  ]
+}

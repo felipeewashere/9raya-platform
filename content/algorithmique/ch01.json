@@ -1,0 +1,869 @@
+{
+  "slug": "informatique-codage-numeration",
+  "number": 1,
+  "title": "Informatique, codage et numération",
+  "description": "Généralités du module : informatique et traitement de l'information, architecture d'un ordinateur (RAM, CPU, périphériques, bus), données et instructions, codage binaire et bit, systèmes de numération (décimal, binaire, octal, hexadécimal), programme et algorithme.",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 01 - Informatique, codage et numération.pdf",
+  "sections": [
+    {
+      "slug": "informatique-et-ordinateur",
+      "title": "L'informatique et l'ordinateur",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "informatique-et-information",
+          "title": "Informatique et traitement de l'information",
+          "number": "Généralités",
+          "estimatedMinutes": 6,
+          "summary": "Ce qu'est l'informatique : l'information, son traitement automatique, et l'objectif du traitement (résoudre un problème bien défini).",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Avant d'écrire le moindre algorithme, il faut savoir de quoi on parle : qu'est-ce que l'informatique, et que fait réellement un ordinateur ?",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "L'**informatique** est la science du **traitement automatique de l'information** à l'aide d'ordinateurs.\n\n$$\\text{Informatique} = \\text{Information} + \\text{Traitement automatique}$$",
+              "origin": "source",
+              "title": "Informatique"
+            },
+            {
+              "type": "definition",
+              "md": "Ensemble de données ou de connaissances humaines et des communications dans le domaine technique, scientifique, économique et social : texte, image, vidéo, audio, données…",
+              "origin": "source",
+              "title": "Information"
+            },
+            {
+              "type": "definition",
+              "md": "Toutes les opérations que l'on peut effectuer sur les informations : **saisie, modification, stockage, transmission**, …",
+              "origin": "source",
+              "title": "Traitement automatique"
+            },
+            {
+              "type": "definition",
+              "md": "Il consiste en une **suite d'opérations** transformant une représentation de cette information en une **autre représentation plus facile à manipuler ou à interpréter**.\n\n**Objectif :** résoudre un problème bien défini à partir des données.",
+              "origin": "source",
+              "title": "Le traitement de l'information"
+            },
+            {
+              "type": "intuition",
+              "md": "Pensez à une calculatrice : vous tapez « 245+5x2-5 » (une représentation peu pratique), elle vous rend « 250 » (une représentation directement utilisable). C'est exactement cela, *traiter* une information : la faire passer d'une forme à une autre, plus utile.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces opérations **n'est pas** citée dans le cours comme un traitement de l'information ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "La saisie"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le stockage"
+                  },
+                  {
+                    "id": "c",
+                    "md": "La transmission"
+                  },
+                  {
+                    "id": "d",
+                    "md": "La fabrication du processeur"
+                  }
+                ],
+                "answer": "d",
+                "explanation": "Le cours cite saisie, modification, stockage, transmission… Ce sont des opérations **sur l'information**. Fabriquer un processeur concerne le matériel, pas le traitement d'une information."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "L'informatique est la science du traitement automatique de l'information à l'aide d'ordinateurs.",
+              "answer": true,
+              "explanation": "C'est la définition exacte du cours : Informatique = Information + Traitement automatique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est l'**objectif** du traitement de l'information selon le cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Stocker le plus de données possible"
+                },
+                {
+                  "id": "b",
+                  "md": "Résoudre un problème bien défini à partir des données"
+                },
+                {
+                  "id": "c",
+                  "md": "Remplacer l'être humain"
+                },
+                {
+                  "id": "d",
+                  "md": "Afficher des images"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cours le dit explicitement : *Objectif : résoudre un problème bien défini à partir des données.* Stocker ou afficher ne sont que des opérations possibles du traitement."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une vidéo et un fichier audio sont des exemples d'information.",
+              "answer": true,
+              "explanation": "L'information comprend texte, image, vidéo, audio, données… Tout ce qui peut être représenté et traité."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le traitement de l'information transforme une représentation de l'information en une autre représentation plus facile à manipuler ou à ___.",
+              "answerType": "text",
+              "accepted": [
+                "interpréter",
+                "interpreter"
+              ],
+              "explanation": "La définition du cours : « …en une autre représentation plus facile à manipuler ou à **interpréter** »."
+            }
+          ]
+        },
+        {
+          "slug": "architecture-ordinateur",
+          "title": "Architecture d'un ordinateur",
+          "number": "Généralités",
+          "estimatedMinutes": 8,
+          "summary": "Matériel et logiciel ; les trois composantes d'un ordinateur (mémoire centrale, processeur avec UAL et UC, périphériques) reliées par un bus ; échanges en binaire.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Un **ordinateur** est une machine électronique **programmable** capable de **recevoir, traiter, stocker et transmettre** des informations en exécutant un ensemble d'instructions appelé **programme**.",
+              "origin": "source",
+              "title": "Ordinateur"
+            },
+            {
+              "type": "definition",
+              "md": "L'architecture désigne le mode de fonctionnement d'un ordinateur, c'est-à-dire **comment l'information circule** dans un ordinateur.\n\nUn ordinateur se compose de deux principales parties :\n- **Partie matérielle (Hardware)** : ce sont les composants physiques de l'ordinateur.\n- **Partie logicielle (Software)** : ce sont des logiciels permettant le fonctionnement de l'ordinateur.",
+              "origin": "source",
+              "title": "Architecture d'un ordinateur"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un système d'exploitation (Windows, Linux…) fait partie du *hardware*.",
+                "answer": false,
+                "explanation": "Faux : c'est un **logiciel**, donc du *software*. Le hardware regroupe les composants **physiques** (processeur, barrettes de mémoire, clavier…)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Composantes d'un ordinateur",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- Stocke les programmes et les données **en cours d'utilisation**.\n- Contient **temporairement** les programmes et les données nécessaires à leur exécution.",
+              "origin": "source",
+              "title": "1. Mémoire centrale (RAM)"
+            },
+            {
+              "type": "definition",
+              "md": "Exécute les instructions des programmes. Il est composé de :\n- l'**UAL** (Unité Arithmétique et Logique) : réalise les opérations arithmétiques et logiques ;\n- l'**UC** (Unité de Commande) : coordonne et contrôle l'exécution des instructions.",
+              "origin": "source",
+              "title": "2. Processeur (CPU)"
+            },
+            {
+              "type": "definition",
+              "md": "Ils assurent la communication entre l'ordinateur et l'environnement extérieur. Deux catégories :\n- **périphériques d'entrée** : clavier, souris, scanner… ;\n- **périphériques de sortie** : écran, imprimante, haut-parleurs.",
+              "origin": "source",
+              "title": "3. Périphériques"
+            },
+            {
+              "type": "text",
+              "md": "Les principaux composants de l'ordinateur (mémoire centrale, unité centrale et périphériques) sont **interconnectés par un bus**, qui assure la circulation des **données**, des **adresses** et des **signaux de contrôle** entre eux.\n\nLa majorité des ordinateurs actuels, des PC personnels aux serveurs d'entreprise, reposent sur cette même architecture. Les différences entre ces systèmes concernent principalement les **performances** de leurs composants (processeur, mémoire, capacité de stockage, etc.).\n\nLes échanges d'informations au sein de l'ordinateur sont réalisés en **langage binaire**, constitué uniquement des valeurs **0 et 1**.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch01-architecture.svg",
+              "alt": "Schéma de l'architecture d'un ordinateur : le processeur (unité de commande et UAL), la mémoire centrale (programme et données) et les périphériques d'entrée et de sortie, tous reliés par le bus.",
+              "caption": "Figure — architecture d'un ordinateur : processeur, mémoire centrale et périphériques reliés par le bus.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque composant à son rôle.",
+                "pairs": [
+                  {
+                    "left": "UAL",
+                    "right": "Réalise les opérations arithmétiques et logiques"
+                  },
+                  {
+                    "left": "UC",
+                    "right": "Coordonne et contrôle l'exécution des instructions"
+                  },
+                  {
+                    "left": "RAM",
+                    "right": "Contient temporairement programmes et données en cours d'utilisation"
+                  },
+                  {
+                    "left": "Bus",
+                    "right": "Fait circuler données, adresses et signaux de contrôle"
+                  }
+                ],
+                "explanation": "UAL = calculs, UC = chef d'orchestre, RAM = mémoire de travail temporaire, bus = « autoroute » qui relie tous les composants."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces éléments est un **périphérique de sortie** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le clavier"
+                },
+                {
+                  "id": "b",
+                  "md": "La souris"
+                },
+                {
+                  "id": "c",
+                  "md": "L'imprimante"
+                },
+                {
+                  "id": "d",
+                  "md": "Le scanner"
+                }
+              ],
+              "answer": "c",
+              "explanation": "L'imprimante fait sortir l'information de l'ordinateur vers l'extérieur. Clavier, souris et scanner font entrer l'information : ce sont des périphériques d'entrée."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Le processeur (CPU) est composé de :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "la RAM et le bus"
+                },
+                {
+                  "id": "b",
+                  "md": "l'UAL et l'UC"
+                },
+                {
+                  "id": "c",
+                  "md": "l'écran et le clavier"
+                },
+                {
+                  "id": "d",
+                  "md": "le hardware et le software"
+                }
+              ],
+              "answer": "b",
+              "explanation": "D'après le cours, le CPU est composé de l'**UAL** (Unité Arithmétique et Logique) et de l'**UC** (Unité de Commande)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La mémoire centrale (RAM) conserve les données de façon définitive, même après extinction.",
+              "answer": false,
+              "explanation": "Faux : le cours précise qu'elle contient **temporairement** les programmes et les données nécessaires à leur exécution (les données *en cours d'utilisation*)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les échanges d'informations au sein de l'ordinateur se font en binaire (0 et 1).",
+              "answer": true,
+              "explanation": "C'est ce qu'affirme le cours : le langage binaire est constitué uniquement des valeurs 0 et 1."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces périphériques est un périphérique **d'entrée** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'écran"
+                },
+                {
+                  "id": "b",
+                  "md": "Les haut-parleurs"
+                },
+                {
+                  "id": "c",
+                  "md": "Le scanner"
+                },
+                {
+                  "id": "d",
+                  "md": "L'imprimante"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Le scanner fait entrer un document dans l'ordinateur. Écran, haut-parleurs et imprimante font sortir l'information : ce sont des périphériques de sortie."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "codage-et-numeration",
+      "title": "Codage et numération",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "donnees-instructions-codage",
+          "title": "Données, instructions et codage binaire",
+          "number": "Généralités",
+          "estimatedMinutes": 9,
+          "summary": "Ce que manipule un ordinateur (données et instructions), la notion de codage, le bit, et les méthodes de codage des différents types d'information.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Un ordinateur doit :\n- **représenter** les différents types d'informations : nombres, caractères, images, sons ;\n- **convertir** les nombres, les lettres, les entiers et les nombres à virgule flottante dans un langage compréhensible par les ordinateurs ;\n- **manipuler** deux catégories d'informations : les **données** et les **instructions**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Les **données** sont les **opérandes** sur lesquels portent les opérations, ou produits par celles-ci.\n\nUne addition, par exemple, peut s'appliquer à deux opérandes, donnant un résultat qui est la somme des deux opérandes. On distingue :\n- les **données numériques** → opérations arithmétiques ;\n- les **données non numériques** → les symboles constituant un texte.",
+              "origin": "source",
+              "title": "Les données"
+            },
+            {
+              "type": "definition",
+              "md": "Les **instructions** représentent les opérations (addition, par exemple) effectuées par un ordinateur. Elles sont composées de plusieurs champs :\n- le **code de l'opération** à effectuer ;\n- les **opérandes** impliqués dans l'opération.",
+              "origin": "source",
+              "title": "Les instructions"
+            },
+            {
+              "type": "example",
+              "md": "- $245+5\\times2-5=250$ ;\n- gestion des comptes clients dans une banque ;\n- recensement de la population ;\n- inscription, notes des étudiants, …",
+              "origin": "source",
+              "title": "Exemples de traitements"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'instruction « additionner 7 et 5 », que sont 7 et 5 ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le code de l'opération"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Les opérandes"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Des périphériques"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Des instructions"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "7 et 5 sont les **données** sur lesquelles porte l'opération : les opérandes. « Additionner » est le code de l'opération."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "C'est quoi le codage ?",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Le **codage** consiste à transformer une information de sa forme habituelle en une **représentation compréhensible par l'ordinateur**.\n\n**Système binaire :** cette représentation est une suite de **bits** (0 et 1).",
+              "origin": "source",
+              "title": "Codage"
+            },
+            {
+              "type": "definition",
+              "md": "- C'est l'**unité élémentaire** de l'information.\n- Il peut prendre **deux états exclusifs** : 0 ou 1.\n- Il constitue la base de toutes les données numériques manipulées par un ordinateur.",
+              "origin": "source",
+              "title": "Le bit (Binary Digit)"
+            },
+            {
+              "type": "example",
+              "md": "Le nombre 65 est représenté dans le système binaire par une suite de bits (codage) : **01000001**.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "heading",
+              "text": "Que peut représenter une suite de bits ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Type d'information | Exemple | Méthode de codage | Représentation binaire |\n|---|---|---|---|\n| Nombre entier | 25 | Binaire naturel | 00011001 |\n| Caractère | A | ASCII | 01000001 |\n| Nombre réel | 3,14 | IEEE 754 (32 bits) | 01000000010010001111010111000011 |\n| Image | Pixel rouge (R=255, G=0, B=0) | RGB (24 bits) | 11111111 00000000 00000000 |\n| Son | Échantillon audio | PCM (Pulse Code Modulation) | 10101100 01110010 … |\n| Vidéo | Une image (frame) | MPEG / H.264 (compression vidéo) | 10100110 11001100 … |",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "La même suite **01000001** représente le nombre 65 en binaire naturel **et** le caractère « A » en ASCII (le code ASCII de A est 65). Une suite de bits n'a de sens que si l'on connaît la **méthode de codage** utilisée.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Le bit peut prendre exactement ___ états.",
+                "answerType": "text",
+                "accepted": [
+                  "2",
+                  "deux"
+                ],
+                "explanation": "Deux états exclusifs : 0 ou 1. D'où le nom de système **binaire**."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Le bit est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "un groupe de 8 chiffres"
+                },
+                {
+                  "id": "b",
+                  "md": "l'unité élémentaire de l'information, valant 0 ou 1"
+                },
+                {
+                  "id": "c",
+                  "md": "un périphérique d'entrée"
+                },
+                {
+                  "id": "d",
+                  "md": "une méthode de compression vidéo"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Bit = *Binary Digit* : unité élémentaire de l'information, deux états exclusifs 0 ou 1."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque type d'information à sa méthode de codage (d'après le tableau du cours).",
+              "pairs": [
+                {
+                  "left": "Caractère",
+                  "right": "ASCII"
+                },
+                {
+                  "left": "Nombre réel",
+                  "right": "IEEE 754"
+                },
+                {
+                  "left": "Couleur d'un pixel",
+                  "right": "RGB (24 bits)"
+                },
+                {
+                  "left": "Son",
+                  "right": "PCM"
+                }
+              ],
+              "explanation": "ASCII pour les caractères, IEEE 754 pour les réels (virgule flottante), RGB pour les couleurs (8 bits par composante), PCM pour les échantillons audio."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une instruction est composée du code de l'opération et des opérandes impliqués.",
+              "answer": true,
+              "explanation": "C'est la structure en champs donnée par le cours : code de l'opération + opérandes."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un pixel rouge pur se code en RGB par 11111111 00000000 00000000, soit ___ bits au total.",
+              "answerType": "number",
+              "accepted": [
+                "24"
+              ],
+              "explanation": "Trois composantes (R, G, B) de 8 bits chacune : $3\\times 8=24$ bits, d'où « RGB (24 bits) »."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les symboles constituant un texte sont des données numériques.",
+              "answer": false,
+              "explanation": "Faux : le cours distingue les données **numériques** (opérations arithmétiques) des données **non numériques**, comme les symboles d'un texte."
+            }
+          ]
+        },
+        {
+          "slug": "systemes-de-numeration",
+          "title": "Systèmes de numération",
+          "number": "Généralités",
+          "estimatedMinutes": 10,
+          "summary": "Décimal, binaire, octal et hexadécimal : un même nombre écrit dans quatre bases, et pourquoi l'hexadécimal sert à écrire le binaire de façon compacte.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Un même nombre peut être représenté dans **différentes bases**.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Système | Base | Symboles utilisés | Exemple (nombre 26) | Pourquoi l'utiliser ? |\n|---|---|---|---|---|\n| Décimal | 10 | 0 à 9 | $26_{10}$ | Utilisé par les humains dans la vie quotidienne. |\n| Binaire | 2 | 0, 1 | $11010_{2}$ | Langage naturel des ordinateurs (bits). |\n| Octal | 8 | 0 à 7 | $32_{8}$ | Anciennement utilisé pour simplifier l'écriture du binaire. |\n| Hexadécimal | 16 | 0–9, A–F | $1A_{16}$ | Représentation compacte du binaire (programmation, adresses mémoire, couleurs RGB, etc.). |",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Les quatre écritures représentent **exactement la même valeur**. Seule la base de numération change :\n$$26_{10} = 11010_{2} = 32_{8} = 1A_{16}$$",
+              "origin": "source",
+              "title": "Une seule valeur, quatre écritures"
+            },
+            {
+              "type": "example",
+              "md": "Dans une base $b$, chaque chiffre est multiplié par une puissance de $b$ (de droite à gauche : $b^0, b^1, b^2,\\dots$).",
+              "origin": "added",
+              "title": "Vérifier les écritures de 26",
+              "steps": [
+                {
+                  "md": "Binaire : $11010_2 = 1\\times16 + 1\\times8 + 0\\times4 + 1\\times2 + 0\\times1 = 26$.",
+                  "why": "Les poids en base 2 sont 1, 2, 4, 8, 16…"
+                },
+                {
+                  "md": "Octal : $32_8 = 3\\times8 + 2 = 26$.",
+                  "why": "Les poids en base 8 sont 1, 8, 64…"
+                },
+                {
+                  "md": "Hexadécimal : $1A_{16} = 1\\times16 + 10 = 26$.",
+                  "why": "En base 16, A vaut 10, B 11, …, F 15."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "En hexadécimal, le symbole F vaut ___ en décimal.",
+                "answerType": "number",
+                "accepted": [
+                  "15"
+                ],
+                "explanation": "Les symboles hexadécimaux sont 0–9 puis A=10, B=11, C=12, D=13, E=14, **F=15**."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Pourquoi avons-nous 4 systèmes de numération ?",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "- Suite binaire : `10101111000111001010101111100010`\n- Hexadécimal : `AF1CABE2`",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "intuition",
+              "md": "Un chiffre hexadécimal correspond **exactement** à 4 bits ($16 = 2^4$). On découpe donc la suite binaire en paquets de 4 bits :\n\n`1010 1111 0001 1100 1010 1011 1110 0010` → `A F 1 C A B E 2`.\n\n32 bits deviennent 8 symboles : c'est pour cela que l'hexadécimal est la « représentation compacte du binaire ». De même, un chiffre octal correspond à 3 bits ($8 = 2^3$).",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch01-binaire-hexadecimal.svg",
+              "alt": "La suite binaire découpée en 8 paquets de 4 bits ; chaque paquet donne un chiffre hexadécimal : A F 1 C A B E 2.",
+              "caption": "Figure — chaque paquet de 4 bits donne un chiffre hexadécimal : AF1CABE2.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel chiffre hexadécimal correspond au paquet de 4 bits `1100` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "A"
+                  },
+                  {
+                    "id": "b",
+                    "md": "B"
+                  },
+                  {
+                    "id": "c",
+                    "md": "C"
+                  },
+                  {
+                    "id": "d",
+                    "md": "D"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "$1100_2 = 8+4 = 12$, et 12 s'écrit **C** en hexadécimal."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Combien de symboles différents utilise le système octal ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "2"
+                },
+                {
+                  "id": "b",
+                  "md": "8"
+                },
+                {
+                  "id": "c",
+                  "md": "10"
+                },
+                {
+                  "id": "d",
+                  "md": "16"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La base 8 utilise les 8 symboles 0 à 7."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le nombre décimal 26 s'écrit en binaire : ___",
+              "answerType": "text",
+              "accepted": [
+                "11010"
+              ],
+              "explanation": "$26 = 16 + 8 + 2$, donc $26_{10} = 11010_2$ (bits à 1 pour 16, 8 et 2)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien vaut $1A_{16}$ en décimal ? ___",
+              "answerType": "number",
+              "accepted": [
+                "26"
+              ],
+              "explanation": "$1\\times16 + A$ avec $A = 10$ : $16+10=26$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$32_8$ et $26_{10}$ représentent la même valeur.",
+              "answer": true,
+              "explanation": "$3\\times 8 + 2 = 26$ : seule la base change, pas la valeur."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque système à son usage principal d'après le cours.",
+              "pairs": [
+                {
+                  "left": "Décimal",
+                  "right": "Vie quotidienne des humains"
+                },
+                {
+                  "left": "Binaire",
+                  "right": "Langage naturel des ordinateurs"
+                },
+                {
+                  "left": "Hexadécimal",
+                  "right": "Écriture compacte du binaire (adresses, couleurs…)"
+                },
+                {
+                  "left": "Octal",
+                  "right": "Ancienne simplification de l'écriture du binaire"
+                }
+              ],
+              "explanation": "C'est la colonne « Pourquoi l'utiliser ? » du tableau du cours."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La suite binaire `1111 0010` s'écrit en hexadécimal ___",
+              "answerType": "text",
+              "accepted": [
+                "F2"
+              ],
+              "explanation": "$1111_2 = 15 = F$ et $0010_2 = 2$ : on obtient **F2**. On traduit chaque paquet de 4 bits séparément."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "programme-et-algorithme",
+      "title": "Du programme à l'algorithme",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "programme-et-algorithme",
+          "title": "Du langage machine à l'algorithme",
+          "number": "Généralités",
+          "estimatedMinutes": 8,
+          "summary": "Pourquoi on utilise des langages de programmation, ce qu'est un programme, et la différence entre algorithme et programme.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "L'informatique, c'est la science du traitement de l'information : l'ordinateur **exécute des instructions traduites en langage binaire** (0, 1).\n\n**Comment vais-je parler à un ordinateur pour exécuter ces instructions ?** Par exemple, `1+2=3` devient pour la machine une longue suite comme `101101101010101001110100…`.\n\nLes êtres humains utilisent des **langages de programmation**, beaucoup plus faciles à lire et à écrire, comme **Python, C ou Java**.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Application | Un langage emblématique utilisé |\n|---|---|\n| Facebook | PHP / Hack |\n| WhatsApp | Erlang |\n| Instagram | Python |\n| TikTok | Go / Java |",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Un **programme** est un ensemble organisé d'instructions écrites dans un **langage de programmation**, permettant à un ordinateur d'effectuer une tâche ou de résoudre un problème.",
+              "origin": "source",
+              "title": "Programme"
+            },
+            {
+              "type": "example",
+              "md": "```\n#include <stdio.h>\nint main()\n{\n    int A = 5;\n    int B = 8;\n    int S;\n    S = A + B;\n    printf(\"%d\", S);\n    return 0;\n}\n```\n\nComment avons-nous su qu'il fallait d'abord prendre A et B, ensuite les additionner, puis afficher le résultat ? Avant d'écrire un programme en Python ou en C, **comment savoir quelles instructions écrire ?**",
+              "origin": "source",
+              "title": "Exemple : un programme en C"
+            },
+            {
+              "type": "definition",
+              "md": "Avant d'écrire un programme, il faut d'abord **concevoir la solution**. Cette étape est appelée l'**algorithmique**.\n\nL'algorithmique est la discipline qui consiste à **concevoir une méthode de résolution d'un problème** (problème → solution).",
+              "origin": "source",
+              "title": "Algorithmique"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "L'algorithmique consiste à écrire du code en C ou en Python.",
+                "answer": false,
+                "explanation": "Faux : l'algorithmique consiste à **concevoir la méthode de résolution**. L'écriture en C ou Python vient après : c'est la programmation."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Algorithme vs programme",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "| Algorithme | Programme |\n|---|---|\n| Solution logique | Traduction informatique |\n| Indépendant du langage | Dépend d'un langage |\n| Compréhensible par l'humain | Exécutable par la machine |\n| Décrit les étapes pour résoudre un problème | Contient le code affichant le résultat |",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Récap des généralités**\n- Informatique : information + traitement automatique.\n- Ordinateur : hardware, software.\n- Architecture d'un ordinateur : RAM, CPU, périphériques.\n- Système numérique : système binaire (0, 1).\n- Systèmes décimal, binaire, hexadécimal, octal.\n- Un programme informatique permet la traduction des instructions en langage binaire à travers un langage de programmation.\n- L'algorithmique est la discipline qui consiste à concevoir une méthode de résolution d'un problème.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Chaque ligne du tableau oppose une caractéristique de l'algorithme à celle du programme. Reconstituez les lignes.",
+                "pairs": [
+                  {
+                    "left": "Solution logique",
+                    "right": "Traduction informatique"
+                  },
+                  {
+                    "left": "Indépendant du langage",
+                    "right": "Dépend d'un langage"
+                  },
+                  {
+                    "left": "Compréhensible par l'humain",
+                    "right": "Exécutable par la machine"
+                  }
+                ],
+                "explanation": "Algorithme (à gauche) : solution logique, indépendante du langage, lisible par l'humain. Programme (à droite) : sa traduction informatique, liée à un langage, exécutable par la machine."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi les humains utilisent-ils des langages de programmation ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que l'ordinateur ne comprend pas le binaire"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce qu'ils sont beaucoup plus faciles à lire et à écrire que le binaire"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour rendre les programmes plus lents"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce qu'ils remplacent les algorithmes"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'ordinateur, lui, exécute du binaire ; les langages (Python, C, Java…) sont faits pour être lisibles par les humains puis traduits."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un même algorithme peut être traduit en Python ou en C.",
+              "answer": true,
+              "explanation": "Oui : l'algorithme est **indépendant du langage**. Seule sa traduction (le programme) dépend du langage choisi."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le passage d'un problème à son exécution.",
+              "items": [
+                "Problème",
+                "Algorithme (méthode de résolution)",
+                "Programme (traduction dans un langage)",
+                "Exécution par la machine (en binaire)"
+              ],
+              "explanation": "On conçoit d'abord la solution (algorithmique), puis on la traduit dans un langage (programmation), et la machine l'exécute sous forme binaire."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le programme C du cours (A = 5, B = 8, S = A + B), quelle valeur est affichée ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "5"
+                },
+                {
+                  "id": "b",
+                  "md": "8"
+                },
+                {
+                  "id": "c",
+                  "md": "13"
+                },
+                {
+                  "id": "d",
+                  "md": "58"
+                }
+              ],
+              "answer": "c",
+              "explanation": "S reçoit A + B = 5 + 8 = 13, puis `printf` affiche S, donc 13."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un programme est compréhensible par l'humain mais pas exécutable par la machine.",
+              "answer": false,
+              "explanation": "C'est l'inverse dans le tableau du cours : l'**algorithme** est compréhensible par l'humain, le **programme** est exécutable par la machine."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives du cours de Pr Lamya OUKHOUYA (ENSA Agadir, AP1, 2026-2027), partie « Généralités » (17 p.). La copie Modules/Algorithme/Cours/Chapitre 01 est identique à Bibliotheque_sources/…/F357 (même texte, même nombre de pages) ; elles correspondent aussi aux pages 1–17 du document complet F162.",
+    "Numérotation : le plan du professeur (p. 2) appelle cette partie « Généralités » et numérote ensuite Chapitre 1 = Introduction & démarche, Chapitre 2 = Notions fondamentales, Chapitre 3 = Conditions, Chapitre 4 = Boucles, Chapitre 5 = Fonctions & procédures, Chapitre 6 = Tableaux, Chapitre 7 = Recherche & tri. Les fichiers découpés (et les titres de diapositives) utilisent une autre numérotation (Ch. 2 = démarche, Ch. 3 = variables, Ch. 4 = conditions, Ch. 5 = boucles, Ch. 6 = tableaux) ; le site suit la numérotation des fichiers. Les chapitres « Fonctions & procédures » et « Recherche & tri » du plan n'existent pas encore dans les sources (cours en cours d'année) : rien n'a été inventé.",
+    "Coquilles corrigées : « Hardwrae » → « Hardware » (p. 4 et récap p. 17) ; « CRU » → « CPU » (récap p. 17) ; « Système numériques » → « Système numérique ». Le titre « Pourquoi nous avons 4 systèmes de numérisation ?? » (p. 12) est rendu par « Pourquoi avons-nous 4 systèmes de numération ? ».",
+    "p. 4 : la phrase « Désigne le mode de fonctionnement d'un ordinateur… » est placée sur la diapositive juste sous « Ordinateur » mais définit l'**architecture** d'un ordinateur (titre placé en dessous) ; elle a été rattachée à « Architecture d'un ordinateur ».",
+    "p. 6 : le schéma (unité de commande, unité de traitement, programme, données, périphériques, bus) est redessiné en figure (public/figures/algorithmique/ch01-architecture.svg). Figure ajoutée : découpage binaire → hexadécimal.",
+    "Valeurs binaires du tableau p. 10 vérifiées : 25 = 00011001, 'A' = 01000001 (ASCII 65), 3,14 en IEEE 754 simple précision = 0x4048F5C3 = 01000000010010001111010111000011 (la source coupait cette suite sur deux lignes ; elle est remise d'un seul tenant). Conversion p. 12 vérifiée : 1010 1111 0001 1100 1010 1011 1110 0010 = AF1CABE2.",
+    "Ajouts pédagogiques (origin: added) : vérification des écritures de 26 dans les quatre bases, intuition du regroupement par 4 bits pour l'hexadécimal, remarque sur 01000001 = 65 = 'A'. La question de la p. 12 (« pourquoi 4 systèmes ? ») n'a pas de réponse écrite dans la source ; l'intuition ajoutée y répond à partir de l'exemple donné."
+  ]
+}

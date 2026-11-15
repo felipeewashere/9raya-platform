@@ -1,0 +1,2291 @@
+{
+  "slug": "champ-electrostatique",
+  "number": 3,
+  "title": "Champ électrostatique",
+  "description": "Définition du champ à partir de la force sur une charge test, champ d'une charge ponctuelle, principe de superposition et symétries, lignes de champ, densités de charge et distributions continues, calcul par intégration du champ d'un fil, d'un anneau et d'un disque chargés.",
+  "sourcePdf": "Bibliotheque_sources/Electrostatique/Cours/Documents generaux/F129 - COURS-3 ELECTROSTATIQUE.pdf",
+  "sections": [
+    {
+      "slug": "notion-de-champ",
+      "title": "Notion de champ électrostatique",
+      "number": "3.1–3.2",
+      "lessons": [
+        {
+          "slug": "notion-de-champ-electrostatique",
+          "title": "De la force au champ électrostatique",
+          "number": "3.1–3.2",
+          "estimatedMinutes": 8,
+          "summary": "Pourquoi décrire l'espace autour des charges, rôles de la charge source et de la charge test, définition du champ $\\vec E=\\vec F/q_0$ et relation $\\vec F=q\\vec E$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.1 Introduction",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La loi de Coulomb permet de calculer la force entre deux charges ponctuelles, mais elle décrit encore l'interaction comme une action entre deux objets. Pour étudier des configurations plus complexes, il est plus efficace de décrire directement l'espace autour des charges : c'est le rôle du **champ électrostatique**.\n\nL'idée centrale de ce chapitre est la suivante : une charge source modifie les propriétés de l'espace qui l'entoure. Lorsqu'une petite charge est placée en un point de cet espace, elle subit une force qui dépend de la valeur locale du champ. Cette description permettra ensuite d'étudier plusieurs charges, des distributions continues et des géométries usuelles sans recommencer toute l'analyse à partir des forces entre chaque paire de charges.\n\nLe chapitre procède progressivement : définition du champ, champ d'une charge ponctuelle, superposition, lignes de champ, distributions continues, puis calcul direct par intégration pour un fil, un anneau et un disque chargés.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de ce chapitre, l'étudiant devra être capable de :\n- définir le champ électrostatique à partir de la force exercée sur une charge test ;\n- calculer le champ créé par une charge ponctuelle ;\n- appliquer le principe de superposition à plusieurs charges ;\n- interpréter et tracer qualitativement des lignes de champ ;\n- distinguer les densités linéique, surfacique et volumique de charge ;\n- passer d'une somme discrète à une intégrale continue ;\n- déterminer le champ créé par des distributions simples en exploitant la symétrie ;\n- vérifier la direction, les unités et les limites d'un résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Prérequis.** Ce chapitre utilise directement la loi de Coulomb et le principe de superposition du chapitre 2, ainsi que les vecteurs, systèmes de coordonnées, éléments différentiels et intégrales du chapitre 1.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.2 Notion de champ électrostatique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cette section introduit le passage essentiel d'une description par *force entre deux charges* à une description par *champ défini en chaque point de l'espace*.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.2.1 De la force au champ",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour comprendre le champ, il faut séparer deux rôles : la **charge source**, qui crée le champ, et la **charge test**, utilisée pour sonder ce champ en un point donné.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Une source de chaleur modifie la température de l'espace qui l'entoure, même avant d'y placer un thermomètre. De manière analogue, une charge électrique crée autour d'elle un champ : la charge test ne crée pas ce champ, elle permet seulement d'en mesurer localement l'effet.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-champ-en-chaque-point.svg",
+              "alt": "Une charge source +Q et le vecteur champ en trois points M1, M2, M3 : direction et norme différentes en chaque point.",
+              "caption": "Figure 3.1 — Une charge source crée un champ $\\vec E(M)$ défini en chaque point de l'espace.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le champ est donc une grandeur attachée à chaque point $M$ : sa direction et sa norme peuvent changer lorsque le point d'observation se déplace.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans la description par le champ, quel est le rôle de la **charge test** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Elle crée le champ au point $M$."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Elle sert seulement à sonder (mesurer) le champ au point où on la place."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Elle annule le champ de la charge source."
+                  }
+                ],
+                "answer": "b",
+                "explanation": "C'est la **charge source** qui crée le champ. La charge test, comme un thermomètre pour la température, ne fait que mesurer localement l'effet du champ déjà présent."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "3.2.2 Charge test et définition du champ",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On place en un point $M$ une petite charge test positive $q_0$. Si la force électrostatique qu'elle subit vaut $\\vec F(M)$, le champ au point $M$ est défini par le rapport entre la force et la charge test.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Définition (champ électrostatique)",
+              "md": "Le champ électrostatique au point $M$ est\n$$\\boxed{\\vec E(M)=\\frac{\\vec F(M)}{q_0}},\\qquad q_0>0.$$\nSon unité SI est le newton par coulomb :\n$$[E]=\\mathrm{N\\,C^{-1}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-charge-test.svg",
+              "alt": "Charge Q et charge test positive q0 : la force F et le champ E = F/q0 ont même direction et même sens.",
+              "caption": "Figure 3.2 — Pour une charge test positive, $\\vec E=\\vec F/q_0$ et $\\vec F$ ont la même direction et le même sens.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans la figure 3.2, la charge test est choisie positive par convention : $\\vec E$ et $\\vec F$ ont alors le même sens. Une charge test négative subirait une force opposée au champ.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** La charge test doit être suffisamment petite pour ne pas modifier sensiblement la distribution de charges qui crée le champ. Le champ est une propriété de la configuration source ; il ne dépend pas de la valeur de $q_0$ utilisée pour le mesurer.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "À retenir",
+              "md": "Pour une charge quelconque $q$ placée dans un champ déjà connu,\n$$\\boxed{\\vec F=q\\,\\vec E.}$$\nSi $q>0$, $\\vec F$ a le même sens que $\\vec E$ ; si $q<0$, la force est de sens opposé.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si l'on double la charge test $q_0$ placée en $M$, le champ $\\vec E(M)$ est doublé.",
+                "answer": false,
+                "explanation": "Faux. La force $\\vec F$ double, mais le rapport $\\vec F/q_0$ reste le même : le champ est une propriété de la **configuration source**, il ne dépend pas de $q_0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "L'unité SI du champ électrostatique est le newton par ___ (donner le nom de l'unité).",
+              "answerType": "text",
+              "accepted": [
+                "coulomb",
+                "C"
+              ],
+              "explanation": "D'après $\\vec E=\\vec F/q_0$, l'unité est $\\mathrm{N\\,C^{-1}}$, le newton par coulomb."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une particule de charge $q<0$ est placée dans un champ $\\vec E$. La force qu'elle subit est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "de même sens que $\\vec E$"
+                },
+                {
+                  "id": "b",
+                  "md": "de sens opposé à $\\vec E$"
+                },
+                {
+                  "id": "c",
+                  "md": "perpendiculaire à $\\vec E$"
+                },
+                {
+                  "id": "d",
+                  "md": "nulle"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec F=q\\vec E$ avec $q<0$ : $\\vec F$ est colinéaire à $\\vec E$ mais de sens opposé."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la définition $\\vec E(M)=\\vec F(M)/q_0$, la charge test $q_0$ est choisie positive par convention.",
+              "answer": true,
+              "explanation": "Vrai. Avec $q_0>0$, le champ et la force ont le même sens, ce qui fixe le sens de $\\vec E$ sans ambiguïté."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La charge test peut être aussi grande qu'on veut : cela ne change rien à la mesure du champ.",
+              "answer": false,
+              "explanation": "Faux. Elle doit être **suffisamment petite** pour ne pas modifier sensiblement la distribution de charges source (une grosse charge déplacerait les charges sources et fausserait la mesure)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque notion à son rôle.",
+              "pairs": [
+                {
+                  "left": "Charge source",
+                  "right": "Crée le champ dans l'espace qui l'entoure"
+                },
+                {
+                  "left": "Charge test $q_0$",
+                  "right": "Sonde le champ en un point sans le perturber"
+                },
+                {
+                  "left": "$\\vec E(M)$",
+                  "right": "Grandeur vectorielle attachée à chaque point $M$"
+                },
+                {
+                  "left": "$\\vec F=q\\vec E$",
+                  "right": "Force subie par une charge $q$ placée dans le champ"
+                }
+              ],
+              "explanation": "Le champ sépare la propriété de la source (contenue dans $\\vec E$) de la réponse de la charge placée dans ce champ ($\\vec F=q\\vec E$)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une charge test $q_0=2\\times10^{-9}\\ \\mathrm{C}$ subit en $M$ une force de norme $F=6\\times10^{-6}\\ \\mathrm{N}$. La norme du champ en $M$ vaut $E=$ ___ $\\mathrm{N\\,C^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "3000",
+                "3e3"
+              ],
+              "explanation": "$E=F/q_0=6\\times10^{-6}/(2\\times10^{-9})=3\\times10^{3}\\ \\mathrm{N\\,C^{-1}}$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "champ-charge-ponctuelle",
+      "title": "Champ créé par une charge ponctuelle",
+      "number": "3.3",
+      "lessons": [
+        {
+          "slug": "champ-charge-ponctuelle",
+          "title": "Champ créé par une charge ponctuelle",
+          "number": "3.3",
+          "estimatedMinutes": 8,
+          "summary": "Expression vectorielle $\\vec E=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{r^2}\\vec e_r$, sens sortant ou entrant selon le signe de $Q$, décroissance en $1/r^2$ et application numérique.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "La définition précédente combinée à la loi de Coulomb permet d'obtenir immédiatement l'expression du champ créé par une charge ponctuelle.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.3.1 Expression vectorielle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Plaçons une charge source $Q$ en $O$ et considérons un point d'observation $M$ tel que $OM=r$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-geometrie-charge-ponctuelle.svg",
+              "alt": "Charge Q en O, vecteur r = OM, vecteur unitaire e_r et champ E(M) porté par la droite OM.",
+              "caption": "Figure 3.3 — Géométrie du champ créé par une charge ponctuelle placée en $O$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.3 fixe la géométrie : $\\vec e_r=\\vec r/r$ est le vecteur unitaire radial dirigé de la charge source vers le point $M$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (champ d'une charge ponctuelle)",
+              "md": "Le champ créé en $M$ par une charge ponctuelle $Q$ placée en $O$ vaut\n$$\\boxed{\\vec E(M)=\\frac{1}{4\\pi\\varepsilon_0}\\,\\frac{Q}{r^2}\\,\\vec e_r}$$\nou, de manière équivalente,\n$$\\boxed{\\vec E(M)=\\frac{1}{4\\pi\\varepsilon_0}\\,\\frac{Q}{r^3}\\,\\vec r.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "D'où vient cette expression",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "D'après la loi de Coulomb (chapitre 2), une charge test $q_0$ placée en $M$ subit $\\vec F=\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q\\,q_0}{r^2}\\vec e_r$."
+                },
+                {
+                  "md": "Par définition, $\\vec E(M)=\\vec F/q_0$ : la charge $q_0$ se simplifie et il reste $\\vec E(M)=\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{r^2}\\vec e_r$."
+                },
+                {
+                  "md": "Comme $\\vec e_r=\\vec r/r$, on a aussi $\\dfrac{\\vec e_r}{r^2}=\\dfrac{\\vec r}{r^3}$, d'où la seconde forme.",
+                  "why": "Les deux écritures sont identiques ; la seconde évite d'introduire le vecteur unitaire."
+                }
+              ]
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le signe de $Q$ est déjà contenu dans la formule :\n- si $Q>0$, le champ est dirigé vers l'extérieur ;\n- si $Q<0$, le champ est dirigé vers la charge.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une charge $Q<0$ est placée en $O$. En un point $M$, le champ $\\vec E(M)$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "dirigé de $O$ vers $M$ (sortant)"
+                  },
+                  {
+                    "id": "b",
+                    "md": "dirigé de $M$ vers $O$ (vers la charge)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "perpendiculaire à $OM$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Avec $Q<0$, le coefficient de $\\vec e_r$ est négatif : $\\vec E$ est opposé à $\\vec e_r$, donc dirigé **vers la charge**."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "3.3.2 Sens du champ et dépendance en distance",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le signe de la charge fixe le sens radial du champ, tandis que la distance fixe sa norme selon une loi en $1/r^2$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-sens-radial.svg",
+              "alt": "Flèches radiales sortantes autour de +Q, entrantes autour de -Q.",
+              "caption": "Figure 3.4 — Sens radial du champ d'une charge ponctuelle positive (sortant) ou négative (entrant).",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.4 permet de mémoriser le sens du champ sans règle supplémentaire : les flèches s'éloignent d'une charge positive et se dirigent vers une charge négative.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-decroissance-1-r2.svg",
+              "alt": "Courbe de E en fonction de r décroissant en 1/r², avec les points E(r) et E(2r) = E(r)/4.",
+              "caption": "Figure 3.5 — Décroissance en $1/r^2$ de la norme du champ d'une charge ponctuelle : $E(2r)=E(r)/4$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Comme le montre la figure 3.5, doubler la distance à la charge divise le champ par quatre ; cette propriété fournit un contrôle rapide des résultats numériques.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Champ créé par une charge ponctuelle",
+              "md": "Une charge $Q=+5\\ \\mathrm{nC}$ est placée à l'origine. Calculons le champ au point $M(0{,}30,\\,0)$, en mètres.",
+              "steps": [
+                {
+                  "md": "$E=k\\dfrac{Q}{r^2}=8{,}99\\times10^{9}\\,\\dfrac{5\\times10^{-9}}{0{,}30^2}\\simeq 4{,}99\\times10^{2}\\ \\mathrm{N\\,C^{-1}}.$",
+                  "why": "$k=\\frac{1}{4\\pi\\varepsilon_0}\\simeq 8{,}99\\times10^9\\ \\mathrm{N\\,m^2\\,C^{-2}}$ et $r=0{,}30\\ \\mathrm{m}$."
+                },
+                {
+                  "md": "Comme $Q>0$ et $M$ est sur l'axe $+x$, le champ est sortant, donc selon $+\\vec e_x$ :\n$$\\boxed{\\vec E(M)\\simeq 4{,}99\\times10^{2}\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_x.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Le champ d'une charge ponctuelle vaut $E_0$ à la distance $r$. À la distance $3r$, il vaut $E_0/$___.",
+                "answerType": "number",
+                "accepted": [
+                  "9"
+                ],
+                "explanation": "$E\\propto 1/r^2$ : multiplier la distance par 3 divise le champ par $3^2=9$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Doubler la distance à une charge ponctuelle divise la norme du champ par deux.",
+              "answer": false,
+              "explanation": "Faux : la norme varie en $1/r^2$, donc doubler la distance divise le champ par **quatre**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces expressions est le champ créé en $M$ par une charge $Q$ placée en $O$ (avec $\\vec r=\\overrightarrow{OM}$) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{r}\\vec e_r$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{r^3}\\vec r$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{r^2}\\vec r$"
+                },
+                {
+                  "id": "d",
+                  "md": "$4\\pi\\varepsilon_0\\dfrac{Q}{r^2}\\vec e_r$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\dfrac{Q}{r^3}\\vec r=\\dfrac{Q}{r^2}\\dfrac{\\vec r}{r}=\\dfrac{Q}{r^2}\\vec e_r$. La réponse c donnerait une norme en $1/r$ (car $\\|\\vec r\\|=r$), la réponse a décroît aussi en $1/r$, et d place $4\\pi\\varepsilon_0$ au numérateur."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une charge $Q=+2\\ \\mathrm{nC}$ est à l'origine. Avec $k=9\\times10^{9}$ SI, la norme du champ à $r=0{,}30\\ \\mathrm{m}$ vaut ___ $\\mathrm{N\\,C^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "200"
+              ],
+              "explanation": "$E=kQ/r^2=9\\times10^9\\times2\\times10^{-9}/0{,}09=18/0{,}09=200\\ \\mathrm{N\\,C^{-1}}$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation au sens du champ en $M$.",
+              "pairs": [
+                {
+                  "left": "$Q>0$ en $O$",
+                  "right": "$\\vec E$ dirigé de $O$ vers $M$"
+                },
+                {
+                  "left": "$Q<0$ en $O$",
+                  "right": "$\\vec E$ dirigé de $M$ vers $O$"
+                },
+                {
+                  "left": "$Q=0$",
+                  "right": "$\\vec E=\\vec 0$"
+                }
+              ],
+              "explanation": "Le signe de $Q$ est contenu dans la formule : sortant si $Q>0$, entrant si $Q<0$ ; une charge nulle ne crée pas de champ."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le vecteur $\\vec e_r$ utilisé dans l'expression du champ est dirigé de la charge source vers le point d'observation $M$.",
+              "answer": true,
+              "explanation": "Vrai : $\\vec e_r=\\vec r/r$ avec $\\vec r=\\overrightarrow{OM}$, donc de la source $O$ vers $M$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "principe-de-superposition",
+      "title": "Principe de superposition du champ",
+      "number": "3.4",
+      "lessons": [
+        {
+          "slug": "superposition-du-champ",
+          "title": "Principe de superposition du champ",
+          "number": "3.4",
+          "estimatedMinutes": 7,
+          "summary": "Champ de $N$ charges ponctuelles comme somme vectorielle des champs individuels ; exploiter la symétrie (annulation au milieu de deux charges identiques) avant de calculer.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Lorsqu'il existe plusieurs charges sources, le champ total en un point est obtenu en additionnant vectoriellement les champs produits séparément par chacune d'elles.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Plusieurs haut-parleurs peuvent contribuer simultanément au niveau sonore en un point ; chaque source possède sa propre contribution et l'effet global résulte de leur combinaison. Pour le champ électrique, la combinaison est vectorielle : direction et sens comptent autant que la norme.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (superposition)",
+              "md": "Pour $N$ charges ponctuelles $q_1,\\dots,q_N$, le champ total en $M$ vaut\n$$\\boxed{\\vec E(M)=\\sum_{i=1}^{N}\\vec E_i(M)}$$\navec\n$$\\vec E_i(M)=\\frac{1}{4\\pi\\varepsilon_0}\\,\\frac{q_i}{r_i^2}\\,\\vec u_i.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Ici $r_i$ est la distance de la charge $q_i$ au point $M$ et $\\vec u_i$ le vecteur unitaire dirigé de $q_i$ vers $M$.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-superposition.svg",
+              "alt": "Deux charges q1 et q2 créent en M les champs E1 et E2 ; le champ total est la diagonale du parallélogramme.",
+              "caption": "Figure 3.6 — Construction vectorielle du champ total par superposition : $\\vec E=\\vec E_1+\\vec E_2$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.6 rappelle que la superposition porte sur les *vecteurs* champ. L'addition directe des normes n'est correcte que lorsque toutes les contributions sont colinéaires et orientées de manière compatible.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "En un point $M$, deux charges créent des champs de normes $E_1=3\\ \\mathrm{N\\,C^{-1}}$ et $E_2=4\\ \\mathrm{N\\,C^{-1}}$. La norme du champ total est forcément $7\\ \\mathrm{N\\,C^{-1}}$.",
+                "answer": false,
+                "explanation": "Faux : on additionne les **vecteurs**, pas les normes. On n'obtient $7$ que si les deux champs sont colinéaires et de même sens ; s'ils sont perpendiculaires, $E=\\sqrt{3^2+4^2}=5\\ \\mathrm{N\\,C^{-1}}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "3.4.1 Exploiter la symétrie avant de calculer",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La géométrie d'une configuration permet souvent de prévoir la direction du champ, voire d'identifier une annulation complète avant toute intégration ou tout calcul numérique.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-annulation-symetrie.svg",
+              "alt": "Deux charges +Q en A et B ; au milieu O, les champs E_A et E_B sont opposés et E(O) = 0.",
+              "caption": "Figure 3.7 — Annulation du champ au milieu de deux charges positives identiques.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans la figure 3.7, les deux champs ont même norme et des sens opposés au milieu du segment : la symétrie permet donc de conclure immédiatement que $\\vec E(O)=\\vec 0$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Méthode.** Avant tout calcul de champ dû à plusieurs charges :\n1. dessiner le sens de chaque contribution ;\n2. rechercher une symétrie ou une compensation ;\n3. choisir un repère adapté ;\n4. calculer les composantes restantes ;\n5. additionner les composantes et vérifier le sens du résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux charges $+Q$ et $-Q$ sont placées en $x=-a$ et $x=+a$. Au milieu $O$, le champ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "nul par symétrie"
+                  },
+                  {
+                    "id": "b",
+                    "md": "non nul, dirigé selon $+\\vec e_x$ (vers $-Q$)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "non nul, dirigé selon $-\\vec e_x$ (vers $+Q$)"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le champ de $+Q$ en $O$ s'éloigne de $+Q$ : selon $+\\vec e_x$. Le champ de $-Q$ en $O$ est dirigé vers $-Q$ : aussi selon $+\\vec e_x$. Les deux contributions s'**ajoutent** ; l'annulation n'a lieu que pour deux charges **identiques**."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes de la méthode du cours pour calculer le champ dû à plusieurs charges.",
+              "items": [
+                "Dessiner le sens de chaque contribution",
+                "Rechercher une symétrie ou une compensation",
+                "Choisir un repère adapté",
+                "Calculer les composantes restantes",
+                "Additionner les composantes et vérifier le sens du résultat"
+              ],
+              "explanation": "On commence par la géométrie (sens, symétries), puis seulement on choisit un repère et on calcule ; la vérification du sens vient en dernier."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Deux charges identiques $+Q$ placées en $x=-a$ et $x=+a$ créent un champ nul au milieu $O$.",
+              "answer": true,
+              "explanation": "Vrai : en $O$, les deux champs ont même norme $kQ/a^2$ et des sens opposés, donc $\\vec E(O)=\\vec 0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "En $M$, $\\vec E_1=300\\,\\vec e_x$ et $\\vec E_2=400\\,\\vec e_y$ (en $\\mathrm{N\\,C^{-1}}$). La norme du champ total vaut ___ $\\mathrm{N\\,C^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "500"
+              ],
+              "explanation": "$\\vec E=300\\vec e_x+400\\vec e_y$, donc $E=\\sqrt{300^2+400^2}=500\\ \\mathrm{N\\,C^{-1}}$ (et non $700$ : on additionne les vecteurs)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans quel cas peut-on additionner directement les **normes** des champs ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Toujours"
+                },
+                {
+                  "id": "b",
+                  "md": "Lorsque toutes les contributions sont colinéaires et de même sens"
+                },
+                {
+                  "id": "c",
+                  "md": "Lorsque les charges sont toutes positives"
+                },
+                {
+                  "id": "d",
+                  "md": "Jamais"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La somme est vectorielle. Elle se réduit à une somme de normes seulement si toutes les contributions sont colinéaires et orientées de manière compatible. Des charges toutes positives peuvent très bien créer des champs de directions différentes."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans $\\vec E_i(M)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{q_i}{r_i^2}\\vec u_i$, chaque terme ne dépend que de la charge $q_i$ et de sa position par rapport à $M$.",
+              "answer": true,
+              "explanation": "Vrai : c'est le sens du principe de superposition, chaque source contribue comme si elle était seule."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lignes-de-champ",
+      "title": "Lignes de champ",
+      "number": "3.5",
+      "lessons": [
+        {
+          "slug": "lignes-de-champ",
+          "title": "Lignes de champ",
+          "number": "3.5",
+          "estimatedMinutes": 6,
+          "summary": "Définition d'une ligne de champ (tangente à $\\vec E$), règles de lecture et configurations simples : charge positive, charge négative, dipôle.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Les lignes de champ donnent une représentation géométrique du champ vectoriel et permettent de visualiser simultanément sa direction et son organisation dans l'espace.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.5.1 Définition et règles de lecture",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une ligne de champ est construite de manière à être tangente au vecteur champ en chacun de ses points.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Définition (ligne de champ)",
+              "md": "Une **ligne de champ** est une courbe orientée telle que, en tout point $M$, sa tangente possède la direction et le sens du vecteur $\\vec E(M)$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-ligne-tangente.svg",
+              "alt": "Une ligne de champ orientée et le vecteur E(M) tangent à la ligne au point M.",
+              "caption": "Figure 3.8 — Une ligne de champ est tangente au vecteur $\\vec E$ en chaque point.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.8 montre que les lignes de champ ne sont pas des trajectoires matérielles imposées : elles servent d'abord à représenter la direction locale du champ.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "À retenir",
+              "md": "Pour lire correctement un diagramme de lignes de champ :\n- les lignes sortent des charges positives et entrent dans les charges négatives ;\n- deux lignes de champ ne se croisent jamais ;\n- une plus forte concentration graphique de lignes indique qualitativement un champ plus intense ;\n- la tangente à une ligne donne la direction locale de $\\vec E$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Pourquoi deux lignes ne peuvent-elles pas se croiser ? Au point de croisement, il y aurait **deux tangentes**, donc deux directions pour $\\vec E$ au même point. Or le champ a une seule valeur en chaque point.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Deux lignes de champ peuvent se croiser en un point où le champ est intense.",
+                "answer": false,
+                "explanation": "Faux : au croisement, le champ aurait deux directions différentes au même point, ce qui est impossible. Deux lignes de champ ne se croisent jamais."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "3.5.2 Configurations simples",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les diagrammes les plus simples permettent de relier immédiatement le signe des charges à l'organisation du champ.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-lignes-charge-ponctuelle.svg",
+              "alt": "Lignes de champ radiales sortantes d'une charge positive et entrantes d'une charge négative.",
+              "caption": "Figure 3.9 — Lignes de champ d'une charge ponctuelle positive et d'une charge ponctuelle négative.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.9 reprend sous forme continue la lecture déjà obtenue avec les vecteurs : le champ est radial, sortant pour une charge positive et entrant pour une charge négative.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-dipole.svg",
+              "alt": "Lignes de champ courbes partant de la charge + et aboutissant sur la charge −.",
+              "caption": "Figure 3.10 — Organisation qualitative des lignes de champ d'un dipôle électrique.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "point-charges",
+              "caption": "Déplace les charges et change leur signe : observe les lignes de champ (sortantes de +, entrantes vers −) et la superposition des champs.",
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.10 illustre un dipôle : les lignes partent de la charge positive et se terminent sur la charge négative. Cette configuration sera utile pour reconnaître qualitativement des distributions plus complexes.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour un dipôle électrique, les lignes de champ :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "partent de la charge négative et aboutissent sur la charge positive"
+                  },
+                  {
+                    "id": "b",
+                    "md": "partent de la charge positive et se terminent sur la charge négative"
+                  },
+                  {
+                    "id": "c",
+                    "md": "forment des cercles fermés autour de chaque charge"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les lignes sortent des charges positives et entrent dans les charges négatives : dans un dipôle, elles vont de $+$ vers $-$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Une ligne de champ est une courbe orientée telle qu'en chaque point $M$ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "elle est perpendiculaire à $\\vec E(M)$"
+                },
+                {
+                  "id": "b",
+                  "md": "sa tangente a la direction et le sens de $\\vec E(M)$"
+                },
+                {
+                  "id": "c",
+                  "md": "elle représente la trajectoire de toute particule chargée"
+                },
+                {
+                  "id": "d",
+                  "md": "sa courbure est proportionnelle à $E(M)$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la définition du cours. Les lignes de champ ne sont pas des trajectoires matérielles imposées ; elles représentent la direction locale du champ."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Sur un diagramme, une région où les lignes de champ sont plus resserrées correspond qualitativement à un champ plus intense.",
+              "answer": true,
+              "explanation": "Vrai : une plus forte concentration graphique de lignes indique un champ plus intense."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque configuration à l'allure de ses lignes de champ.",
+              "pairs": [
+                {
+                  "left": "Charge ponctuelle positive",
+                  "right": "Lignes radiales sortantes"
+                },
+                {
+                  "left": "Charge ponctuelle négative",
+                  "right": "Lignes radiales entrantes"
+                },
+                {
+                  "left": "Dipôle",
+                  "right": "Lignes courbes allant de $+$ vers $-$"
+                }
+              ],
+              "explanation": "Le signe de la charge fixe l'orientation : sortant pour $+$, entrant pour $-$ ; un dipôle combine les deux."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les lignes de champ indiquent toujours la trajectoire suivie par une charge lâchée dans le champ.",
+              "answer": false,
+              "explanation": "Faux : le cours précise que les lignes de champ ne sont pas des trajectoires matérielles imposées. Elles donnent la direction de la force (donc de l'accélération), pas forcément celle de la vitesse."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi deux lignes de champ ne peuvent-elles pas se croiser ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que le champ est toujours nul au croisement"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que le champ aurait deux directions différentes au même point"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que les lignes sont toujours parallèles"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la réponse de l'auto-test du cours : en un point, $\\vec E$ a une seule direction, donc une seule tangente possible."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "distributions-continues",
+      "title": "Distributions continues de charges",
+      "number": "3.6",
+      "lessons": [
+        {
+          "slug": "densites-de-charge",
+          "title": "Densités de charge",
+          "number": "3.6.1",
+          "estimatedMinutes": 6,
+          "summary": "Passage au continu : densités linéique $\\lambda$, surfacique $\\sigma$ et volumique $\\rho$, éléments de charge $dq$ et unités associées.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Lorsque le nombre de charges microscopiques est très grand et leur espacement très faible devant les dimensions du problème, il devient naturel de remplacer la somme discrète par une description continue.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.6.1 Densités de charge",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Selon la géométrie, la charge peut être répartie essentiellement le long d'une ligne, sur une surface ou dans un volume.\n\n**Tableau 3.1 – Densités de charge et élément de charge associé**\n\n| Distribution | Densité | Élément de charge | Unité SI |\n|---|---|---|---|\n| Linéique | $\\lambda$ | $dq=\\lambda\\,d\\ell$ | $\\mathrm{C\\,m^{-1}}$ |\n| Surfacique | $\\sigma$ | $dq=\\sigma\\,dS$ | $\\mathrm{C\\,m^{-2}}$ |\n| Volumique | $\\rho$ | $dq=\\rho\\,d\\tau$ | $\\mathrm{C\\,m^{-3}}$ |\n\nLe tableau 3.1 montre que la densité appropriée dépend directement de la dimension géométrique de la distribution. Dans la suite, $\\rho$ désigne la densité volumique de charge ; la coordonnée radiale cylindrique reste notée $\\varrho$ comme au chapitre 1.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque densité à son unité SI.",
+                "pairs": [
+                  {
+                    "left": "$\\lambda$",
+                    "right": "$\\mathrm{C\\,m^{-1}}$"
+                  },
+                  {
+                    "left": "$\\sigma$",
+                    "right": "$\\mathrm{C\\,m^{-2}}$"
+                  },
+                  {
+                    "left": "$\\rho$",
+                    "right": "$\\mathrm{C\\,m^{-3}}$"
+                  }
+                ],
+                "explanation": "Une densité est une charge par unité de longueur ($\\lambda$), de surface ($\\sigma$) ou de volume ($\\rho$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-densites.svg",
+              "alt": "Élément dl d'une ligne, dS d'une surface et dτ d'un volume, avec les charges élémentaires associées.",
+              "caption": "Figure 3.11 — Éléments de charge pour une distribution linéique, surfacique ou volumique.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.11 relie directement les densités aux éléments différentiels du chapitre 1 : le passage au continu consiste à considérer une infinité de petits éléments $dq$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – charge totale d'une tige non uniforme (exercice 3.5 du cours)",
+              "md": "Une tige portée par $0\\le x\\le L$ possède une densité $\\lambda(x)=\\lambda_0x/L$. Déterminer sa charge totale.",
+              "steps": [
+                {
+                  "md": "Un élément $dx$ porte $dq=\\lambda(x)\\,dx$ ; la charge totale est la somme (intégrale) de tous ces éléments."
+                },
+                {
+                  "md": "$$Q=\\int_0^L\\lambda(x)\\,dx=\\frac{\\lambda_0}{L}\\int_0^L x\\,dx=\\frac{\\lambda_0}{L}\\,\\frac{L^2}{2}=\\boxed{\\frac{\\lambda_0L}{2}}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une surface d'aire $S=0{,}5\\ \\mathrm{m^2}$ porte une densité uniforme $\\sigma=4\\times10^{-6}\\ \\mathrm{C\\,m^{-2}}$. Sa charge totale vaut $Q=$ ___ $\\mu\\mathrm{C}$.",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "Densité uniforme : $Q=\\sigma S=4\\times10^{-6}\\times0{,}5=2\\times10^{-6}\\ \\mathrm{C}=2\\ \\mu\\mathrm{C}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Une charge est répartie dans tout le volume d'une boule. L'élément de charge s'écrit :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$dq=\\lambda\\,d\\ell$"
+                },
+                {
+                  "id": "b",
+                  "md": "$dq=\\sigma\\,dS$"
+                },
+                {
+                  "id": "c",
+                  "md": "$dq=\\rho\\,d\\tau$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Répartition en volume : densité volumique $\\rho$ et élément de volume $d\\tau$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans ce cours, $\\rho$ désigne la densité volumique de charge et $\\varrho$ la coordonnée radiale cylindrique.",
+              "answer": true,
+              "explanation": "Vrai : le cours distingue les deux symboles pour éviter toute confusion (c'est d'ailleurs une erreur fréquente signalée en 3.9.3)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un fil de longueur $2\\ \\mathrm{m}$ porte une densité uniforme $\\lambda=3\\ \\mathrm{nC\\,m^{-1}}$. Sa charge totale vaut ___ nC.",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "$Q=\\lambda\\ell=3\\times2=6\\ \\mathrm{nC}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une tige $0\\le x\\le L$ de densité $\\lambda(x)=\\lambda_0x/L$ porte la charge $Q=$ ___ (en fonction de $\\lambda_0$ et $L$).",
+              "answerType": "expression",
+              "accepted": [
+                "lambda0*L/2"
+              ],
+              "variables": [
+                "lambda0",
+                "L"
+              ],
+              "placeholder": "ex. lambda0*L/2",
+              "explanation": "$Q=\\frac{\\lambda_0}{L}\\int_0^Lx\\,dx=\\frac{\\lambda_0}{L}\\frac{L^2}{2}=\\frac{\\lambda_0L}{2}$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque objet chargé à la densité adaptée.",
+              "pairs": [
+                {
+                  "left": "Fil fin chargé",
+                  "right": "densité linéique $\\lambda$"
+                },
+                {
+                  "left": "Plaque mince chargée",
+                  "right": "densité surfacique $\\sigma$"
+                },
+                {
+                  "left": "Nuage de charges dans un volume",
+                  "right": "densité volumique $\\rho$"
+                }
+              ],
+              "explanation": "La densité appropriée dépend de la dimension géométrique de la distribution : 1D, 2D ou 3D."
+            }
+          ]
+        },
+        {
+          "slug": "champ-distribution-continue",
+          "title": "Du champ élémentaire à l'intégrale",
+          "number": "3.6.2",
+          "estimatedMinutes": 6,
+          "summary": "Contribution élémentaire $d\\vec E$ d'un élément $dq$, champ d'une distribution continue comme intégrale, et méthode de calcul par intégration directe.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.6.2 Du champ élémentaire à l'intégrale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On note $P$ le point source portant l'élément $dq$ et $M$ le point où l'on cherche le champ ; cette distinction évite de confondre variable d'intégration et point d'observation.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-element-dq.svg",
+              "alt": "Une distribution chargée, l'élément dq au point source P, le vecteur PM et la contribution dE(M).",
+              "caption": "Figure 3.12 — Contribution élémentaire $d\\vec E$ créée en $M$ par l'élément $dq$ situé au point source $P$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans la figure 3.12, chaque élément $dq$ crée en $M$ une contribution\n$$d\\vec E(M)=\\frac{1}{4\\pi\\varepsilon_0}\\,\\frac{dq}{PM^2}\\,\\vec u_{PM}.$$\nLe champ total est obtenu en intégrant toutes les contributions sur la distribution.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "C'est exactement le principe de superposition : l'élément $dq$ se comporte comme une charge ponctuelle, et la somme $\\sum_i$ devient une intégrale $\\int$ lorsque les charges sont infiniment nombreuses et infiniment petites.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (distribution continue)",
+              "md": "Pour une distribution continue de charge,\n$$\\boxed{\\vec E(M)=\\frac{1}{4\\pi\\varepsilon_0}\\int\\frac{dq}{PM^2}\\,\\vec u_{PM}.}$$\nLa nature de l'intégrale dépend de la distribution : $dq=\\lambda\\,d\\ell$, $dq=\\sigma\\,dS$ ou $dq=\\rho\\,d\\tau$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans $d\\vec E(M)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{dq}{PM^2}\\vec u_{PM}$, sur quel point porte l'intégration ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Sur le point d'observation $M$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Sur le point source $P$, qui parcourt la distribution"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Sur les deux à la fois"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$M$ est fixé (c'est là qu'on cherche le champ) ; c'est $P$, et donc $dq$, qui parcourt toute la distribution. D'où l'importance de bien distinguer les deux points."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "**Méthode.** Pour calculer un champ par intégration directe :\n1. choisir un repère adapté à la géométrie ;\n2. choisir un élément source $dq$ ;\n3. écrire $\\overrightarrow{PM}$, sa norme et le vecteur unitaire associé ;\n4. écrire $d\\vec E$ ;\n5. exploiter la symétrie pour supprimer les composantes qui se compensent ;\n6. intégrer uniquement les composantes utiles ;\n7. vérifier unités, direction et cas limites.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans la méthode du cours, on exploite la symétrie **avant** d'intégrer, pour n'intégrer que les composantes utiles.",
+                "answer": true,
+                "explanation": "Vrai : les étapes 5 et 6 éliminent d'abord les composantes qui se compensent, puis on intègre seulement les composantes restantes."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la méthode de calcul d'un champ par intégration directe.",
+              "items": [
+                "Choisir un repère adapté à la géométrie",
+                "Choisir un élément source $dq$",
+                "Écrire $\\overrightarrow{PM}$, sa norme et le vecteur unitaire",
+                "Écrire $d\\vec E$",
+                "Supprimer par symétrie les composantes qui se compensent",
+                "Intégrer les composantes utiles",
+                "Vérifier unités, direction et cas limites"
+              ],
+              "explanation": "C'est la chaîne « géométrie → symétrie → $dq$ → $d\\vec E$ → composante utile → intégrale → vérifications »."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le vecteur $\\vec u_{PM}$ est dirigé du point d'observation $M$ vers le point source $P$.",
+              "answer": false,
+              "explanation": "Faux : $\\vec u_{PM}$ est le vecteur unitaire de $\\overrightarrow{PM}$, donc dirigé de la source $P$ vers $M$ (comme $\\vec e_r$ pour une charge ponctuelle)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour une plaque chargée en surface avec la densité $\\sigma$, l'intégrale du champ porte sur :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\lambda\\,d\\ell$ le long d'une courbe"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\sigma\\,dS$ sur la surface"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\rho\\,d\\tau$ dans un volume"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On remplace $dq$ par $\\sigma\\,dS$ : l'intégrale devient une intégrale de surface."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le champ d'une distribution continue est obtenu en sommant (intégrant) les **vecteurs** $d\\vec E$, pas leurs normes.",
+              "answer": true,
+              "explanation": "Vrai : c'est encore le principe de superposition, qui est vectoriel. Additionner les normes $dE$ sans projection est une erreur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "applications-par-integration",
+      "title": "Applications classiques par intégration",
+      "number": "3.7",
+      "lessons": [
+        {
+          "slug": "fil-rectiligne-charge",
+          "title": "Champ d'un fil rectiligne chargé",
+          "number": "3.7.1",
+          "estimatedMinutes": 9,
+          "summary": "Calcul par intégration du champ d'un segment uniformément chargé sur sa médiatrice, puis limite du fil infini $E=\\lambda/(2\\pi\\varepsilon_0a)$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.7 Applications classiques par intégration",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les exemples suivants montrent comment la symétrie et le choix de l'élément de charge transforment une intégrale vectorielle en un calcul scalaire beaucoup plus simple.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.7.1 Fil rectiligne uniformément chargé",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons un segment de longueur $2L$, porté par l'axe $Ox$, de densité uniforme $\\lambda$, et cherchons le champ au point $M(0,a)$ de sa médiatrice.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-segment-charge.svg",
+              "alt": "Segment [-L, L] sur Ox, élément dx en P(x,0), point M(0,a), distance r, champ dE et sa projection dE_y, angle α.",
+              "caption": "Figure 3.13 — Géométrie du calcul du champ d'un segment uniformément chargé : position $x$, élément $dx$ et projection $dE_y$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.13 distingue clairement la *position* $x$ de l'élément source et sa petite *longueur* $dx$. Pour l'élément $dq=\\lambda\\,dx$ situé en $P(x,0)$, le champ élémentaire $d\\vec E$ fait un angle $\\alpha$ avec l'axe vertical. Dans le triangle rectangle $OMP$,\n$$r=\\sqrt{x^2+a^2},\\qquad \\cos\\alpha=\\frac{a}{r}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour l'élément situé en $P(x,0)$ et le point $M(0,a)$, on a $\\cos\\alpha=a/r$ avec $r=$ ___ .",
+                "answerType": "expression",
+                "accepted": [
+                  "sqrt(x^2+a^2)"
+                ],
+                "variables": [
+                  "x",
+                  "a"
+                ],
+                "explanation": "Le triangle $OMP$ est rectangle en $O$, de côtés $|x|$ et $a$ : $r=PM=\\sqrt{x^2+a^2}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "La composante utile est donc la projection verticale de $d\\vec E$ :\n$$dE_y=dE\\cos\\alpha=\\left(k\\frac{\\lambda\\,dx}{r^2}\\right)\\frac{a}{r}=k\\lambda a\\,\\frac{dx}{(x^2+a^2)^{3/2}}.$$\nL'élément symétrique situé en $-x$ produit une composante horizontale opposée mais la même composante verticale ; c'est pourquoi l'intégration peut être effectuée sur $[0,L]$ puis multipliée par 2. Ainsi,\n$$E_y=2k\\lambda a\\int_0^L\\frac{dx}{(x^2+a^2)^{3/2}}=\\boxed{\\frac{2k\\lambda L}{a\\sqrt{L^2+a^2}}}.$$\nLe champ est porté par $\\vec e_y$ si $\\lambda>0$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Calcul de l'intégrale",
+              "steps": [
+                {
+                  "md": "Une primitive de $\\dfrac{1}{(x^2+a^2)^{3/2}}$ est $\\dfrac{x}{a^2\\sqrt{x^2+a^2}}$.",
+                  "why": "On le vérifie en dérivant, ou on l'obtient avec le changement de variable $x=a\\tan\\theta$."
+                },
+                {
+                  "md": "$$\\int_0^L\\frac{dx}{(x^2+a^2)^{3/2}}=\\left[\\frac{x}{a^2\\sqrt{x^2+a^2}}\\right]_0^L=\\frac{L}{a^2\\sqrt{L^2+a^2}}.$$"
+                },
+                {
+                  "md": "En multipliant par $2k\\lambda a$ : $E_y=\\dfrac{2k\\lambda L}{a\\sqrt{L^2+a^2}}$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat (fil infini)",
+              "md": "Dans la limite $L\\to\\infty$, on retrouve le champ d'un fil rectiligne infini :\n$$\\boxed{E=\\frac{\\lambda}{2\\pi\\varepsilon_0a}.}$$\nCe résultat sera retrouvé beaucoup plus rapidement par le théorème de Gauss au chapitre 5.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "charged-distribution",
+              "params": {
+                "shape": "wire"
+              },
+              "caption": "Observe le champ d'un fil chargé : sur la médiatrice, les composantes parallèles au fil se compensent.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exercice 3.8 du cours – limite d'un fil très long",
+              "md": "À partir du résultat du segment $E=\\dfrac{2k\\lambda L}{a\\sqrt{L^2+a^2}}$, retrouver la limite lorsque $L\\gg a$ et interpréter physiquement.",
+              "steps": [
+                {
+                  "md": "Si $L\\gg a$, alors $\\sqrt{L^2+a^2}\\simeq L$. Donc\n$$E\\simeq\\frac{2k\\lambda}{a}=\\boxed{\\frac{\\lambda}{2\\pi\\varepsilon_0a}}.$$",
+                  "why": "$2k=\\frac{2}{4\\pi\\varepsilon_0}=\\frac{1}{2\\pi\\varepsilon_0}$."
+                },
+                {
+                  "md": "Le champ devient indépendant de la longueur totale : localement, le segment se comporte comme un fil infini."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Comment le champ d'un fil infini dépend-il de la distance $a$ au fil ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "En $1/a^2$, comme une charge ponctuelle"
+                  },
+                  {
+                    "id": "b",
+                    "md": "En $1/a$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Il ne dépend pas de $a$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$E=\\dfrac{\\lambda}{2\\pi\\varepsilon_0a}$ décroît en $1/a$, moins vite qu'une charge ponctuelle (en $1/r^2$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Sur la médiatrice d'un segment uniformément chargé, les composantes du champ parallèles au segment se compensent deux à deux.",
+              "answer": true,
+              "explanation": "Vrai : les éléments situés en $x$ et $-x$ donnent des composantes horizontales opposées et la même composante verticale ; seule $E_y$ subsiste."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi peut-on intégrer sur $[0,L]$ puis multiplier par 2 ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que le champ est nul pour $x<0$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que les éléments en $x$ et $-x$ ont la même composante verticale"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que la densité n'est définie que pour $x>0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Par symétrie, chaque moitié du segment apporte la même contribution verticale."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour le segment de longueur $2L$ vu depuis $M(0,a)$ : $E_y=\\dfrac{2k\\lambda L}{a\\sqrt{L^2+a^2}}$. Avec $k\\lambda=1$ (unités SI), $L=3$ et $a=4$, on trouve $E_y=$ ___ .",
+              "answerType": "number",
+              "accepted": [
+                "0.3",
+                "3/10"
+              ],
+              "explanation": "$E_y=\\dfrac{2\\times1\\times3}{4\\sqrt{9+16}}=\\dfrac{6}{4\\times5}=0{,}3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Le champ d'un fil infini de densité $\\lambda$ à la distance $a$ vaut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{\\lambda}{2\\pi\\varepsilon_0a}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{\\lambda}{4\\pi\\varepsilon_0a^2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{\\lambda}{2\\varepsilon_0}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$E=2k\\lambda/a$ avec $k=\\frac{1}{4\\pi\\varepsilon_0}$, d'où $E=\\frac{\\lambda}{2\\pi\\varepsilon_0a}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Lorsque $L\\gg a$, le champ du segment dépend fortement de sa longueur totale $L$.",
+              "answer": false,
+              "explanation": "Faux : $\\sqrt{L^2+a^2}\\simeq L$ et $E\\simeq\\frac{\\lambda}{2\\pi\\varepsilon_0a}$, indépendant de $L$ : localement, le segment se comporte comme un fil infini."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque grandeur de la figure 3.13 à son expression.",
+              "pairs": [
+                {
+                  "left": "$r=PM$",
+                  "right": "$\\sqrt{x^2+a^2}$"
+                },
+                {
+                  "left": "$\\cos\\alpha$",
+                  "right": "$a/r$"
+                },
+                {
+                  "left": "$dq$",
+                  "right": "$\\lambda\\,dx$"
+                },
+                {
+                  "left": "$dE_y$",
+                  "right": "$k\\lambda a\\,dx/(x^2+a^2)^{3/2}$"
+                }
+              ],
+              "explanation": "Triangle rectangle $OMP$ : $r=\\sqrt{x^2+a^2}$, $\\cos\\alpha=a/r$ ; puis $dE_y=dE\\cos\\alpha=k\\frac{\\lambda dx}{r^2}\\frac{a}{r}$."
+            }
+          ]
+        },
+        {
+          "slug": "anneau-charge",
+          "title": "Champ d'un anneau chargé sur son axe",
+          "number": "3.7.2",
+          "estimatedMinutes": 7,
+          "summary": "Compensation des composantes transversales et champ $E_z=kQz/(R^2+z^2)^{3/2}$ sur l'axe d'un anneau uniformément chargé ; cas du centre et des grandes distances.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.7.2 Anneau uniformément chargé",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons un anneau de rayon $R$, de charge totale $Q$, situé dans le plan $xOy$, et cherchons le champ sur son axe $Oz$ au point $M(0,0,z)$. La géométrie de la figure 3.14 permet d'identifier immédiatement la composante qui subsiste après sommation.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-anneau-axe.svg",
+              "alt": "Anneau de rayon R, éléments opposés dq et dq', champs dE et dE' en M(0,0,z), composantes transversales opposées, champ total selon Oz.",
+              "caption": "Figure 3.14 — Champ d'un anneau uniformément chargé sur son axe : les composantes transversales se compensent, seules les composantes axiales s'ajoutent.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.14 montre deux éléments de charge symétriques $dq$ et $dq'$. Ils créent en $M$ des champs de même norme. Leurs composantes perpendiculaires à l'axe $Oz$ sont opposées et s'annulent, tandis que leurs composantes selon $Oz$ sont de même sens et s'ajoutent. Pour chaque élément,\n$$dE_z=dE\\cos\\alpha,\\qquad \\cos\\alpha=\\frac{z}{s},\\qquad s=\\sqrt{R^2+z^2}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Sur l'axe d'un anneau uniformément chargé, quelle composante du champ subsiste ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "La composante transversale (perpendiculaire à l'axe)"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La composante axiale selon $Oz$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Aucune : le champ est nul partout sur l'axe"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les composantes transversales de deux éléments diamétralement opposés se compensent ; les composantes axiales s'ajoutent."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Comme tous les éléments $dq$ de l'anneau sont à la même distance $s$ de $M$,\n$$dE_z=k\\frac{dq}{s^2}\\,\\frac{z}{s}=k\\,\\frac{z\\,dq}{(R^2+z^2)^{3/2}}.$$\nEn sommant sur tout l'anneau, $\\int dq=Q$, d'où\n$$\\boxed{\\vec E(M)=k\\,\\frac{Qz}{(R^2+z^2)^{3/2}}\\,\\vec e_z.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Au centre de l'anneau ($z=0$), le champ est nul par symétrie. Très loin de l'anneau ($z\\gg R$), le champ devient approximativement celui d'une charge ponctuelle $Q$ placée au centre.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "charged-distribution",
+              "params": {
+                "shape": "ring"
+              },
+              "caption": "Déplace le point M sur l'axe de l'anneau : champ nul au centre, comportement en $1/z^2$ loin de l'anneau.",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Pour $z\\gg R$ : $(R^2+z^2)^{3/2}\\simeq z^3$, donc $E_z\\simeq k\\dfrac{Qz}{z^3}=k\\dfrac{Q}{z^2}$, exactement le champ d'une charge ponctuelle $Q$ à la distance $z$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exercice 3.6 du cours – champ au centre d'un anneau",
+              "md": "Un anneau de rayon $R$ porte uniformément une charge totale $Q$. Sans calcul intégral détaillé, déterminer le champ en son centre et justifier.",
+              "steps": [
+                {
+                  "md": "À chaque élément $dq$ correspond un élément diamétralement opposé produisant au centre un champ de même norme et de sens opposé."
+                },
+                {
+                  "md": "Toutes les contributions se compensent donc deux à deux : $\\boxed{\\vec E(O)=\\vec 0.}$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exercice 3.7 du cours – champ sur l'axe d'un anneau",
+              "md": "Un anneau de rayon $R=0{,}10\\ \\mathrm{m}$ porte une charge $Q=20\\ \\mathrm{nC}$. Calculer la norme du champ sur l'axe à $z=0{,}10\\ \\mathrm{m}$.",
+              "steps": [
+                {
+                  "md": "$E=k\\dfrac{Qz}{(R^2+z^2)^{3/2}}$."
+                },
+                {
+                  "md": "Avec $R=z=0{,}10\\ \\mathrm{m}$ : $(R^2+z^2)^{3/2}=(0{,}02)^{3/2}\\simeq2{,}83\\times10^{-3}\\ \\mathrm{m^3}$, donc\n$$E=8{,}99\\times10^{9}\\,\\frac{20\\times10^{-9}\\times0{,}10}{(0{,}10^2+0{,}10^2)^{3/2}}\\simeq\\boxed{6{,}36\\times10^{3}\\ \\mathrm{N\\,C^{-1}}}.$$",
+                  "why": "Le numérateur vaut $8{,}99\\times10^9\\times2\\times10^{-9}\\simeq17{,}98$ ; $17{,}98/2{,}83\\times10^{-3}\\simeq6{,}36\\times10^{3}$. (La source imprime $6{,}36\\times10^{2}$ : erreur de puissance de 10, corrigée.)"
+                },
+                {
+                  "md": "Pour $Q>0$ et $z>0$, le champ est dirigé selon $+\\vec e_z$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le champ sur l'axe d'un anneau chargé est maximal au centre de l'anneau.",
+                "answer": false,
+                "explanation": "Faux : au centre ($z=0$), le champ est **nul** par symétrie ; il croît d'abord avec $z$, puis décroît comme $kQ/z^2$ loin de l'anneau."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour un anneau de rayon $R$ et de charge $Q$, sur l'axe : $E_z=k\\dfrac{Qz}{(R^2+z^2)^{p}}$ avec $p=$ ___ .",
+              "answerType": "number",
+              "accepted": [
+                "3/2",
+                "1.5"
+              ],
+              "explanation": "$dE_z=k\\frac{dq}{s^2}\\frac{z}{s}=k\\frac{z\\,dq}{s^3}$ et $s^3=(R^2+z^2)^{3/2}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tous les éléments $dq$ d'un anneau sont à la même distance $s=\\sqrt{R^2+z^2}$ du point $M(0,0,z)$ de l'axe.",
+              "answer": true,
+              "explanation": "Vrai, et c'est ce qui rend le calcul immédiat : $s$ et $\\cos\\alpha$ sont constants, il ne reste qu'à sommer $\\int dq=Q$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Très loin de l'anneau ($z\\gg R$), le champ sur l'axe vaut approximativement :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$k\\dfrac{Q}{z^2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$k\\dfrac{Q}{R^2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$k\\dfrac{Qz}{R^3}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$(R^2+z^2)^{3/2}\\simeq z^3$, donc $E_z\\simeq kQ/z^2$ : l'anneau se comporte comme une charge ponctuelle $Q$ placée au centre."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Anneau de rayon $R=0{,}10\\ \\mathrm{m}$, $Q=20\\ \\mathrm{nC}$, $k=9\\times10^9$ SI. Au centre ($z=0$), $E=$ ___ $\\mathrm{N\\,C^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "Au centre, les contributions se compensent deux à deux (et la formule donne bien $E_z=0$ pour $z=0$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $Q>0$, au point $M(0,0,z)$ avec $z<0$ (sous l'anneau), le champ est dirigé selon :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+\\vec e_z$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\vec e_z$"
+                },
+                {
+                  "id": "c",
+                  "md": "une direction transversale"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E_z=kQz/(R^2+z^2)^{3/2}$ est du signe de $z$ : négatif pour $z<0$. Le champ s'éloigne de l'anneau positif, donc vers le bas."
+            }
+          ]
+        },
+        {
+          "slug": "disque-charge",
+          "title": "Champ d'un disque chargé sur son axe",
+          "number": "3.7.3",
+          "estimatedMinutes": 8,
+          "summary": "Décomposition d'un disque en anneaux élémentaires, champ $E_z=\\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{z^2+R^2}}\\right)$ sur l'axe et ses limites (plan infini, charge ponctuelle).",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.7.3 Disque uniformément chargé",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un disque uniformément chargé peut être décomposé en une infinité d'anneaux concentriques. Cette décomposition, représentée sur la figure 3.15, permet de réutiliser directement le résultat obtenu pour un anneau.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch03-disque-anneaux.svg",
+              "alt": "Disque de rayon R découpé en anneaux ; anneau élémentaire de rayon r et d'épaisseur dr ; point M(0,0,z) à la distance s.",
+              "caption": "Figure 3.15 — Décomposition d'un disque uniformément chargé en anneaux élémentaires de rayon $r$ et d'épaisseur $dr$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 3.15 isole un anneau élémentaire de rayon $r$ et d'épaisseur $dr$. Son aire vaut $dS=2\\pi r\\,dr$, donc sa charge est\n$$dQ=\\sigma\\,dS=\\sigma\\,2\\pi r\\,dr.$$\nPour un élément de cet anneau, la distance au point $M$ est $s=\\sqrt{r^2+z^2}$ et\n$$\\cos\\alpha=\\frac{z}{s}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la charge $dQ$ d'un anneau élémentaire de rayon $r$ et d'épaisseur $dr$ d'un disque de densité $\\sigma$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\sigma\\,dr$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\sigma\\,\\pi r^2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\sigma\\,2\\pi r\\,dr$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\sigma\\,2\\pi\\,dr$"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "L'anneau est une bande de longueur $2\\pi r$ et de largeur $dr$ : $dS=2\\pi r\\,dr$, donc $dQ=\\sigma\\,2\\pi r\\,dr$. Oublier ce facteur géométrique est une erreur fréquente."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Après sommation autour de l'anneau, les composantes transversales se compensent. Il ne reste que la composante axiale :\n$$dE_z=k\\frac{dQ}{s^2}\\cos\\alpha=k\\,\\frac{z\\,dQ}{(r^2+z^2)^{3/2}}.$$\nEn remplaçant $dQ=\\sigma2\\pi r\\,dr$ puis en intégrant de $r=0$ à $r=R$, pour $z>0$,\n$$\\boxed{\\vec E(M)=\\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{z^2+R^2}}\\right)\\vec e_z.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Détail de l'intégration",
+              "steps": [
+                {
+                  "md": "$$E_z=k\\sigma2\\pi z\\int_0^R\\frac{r\\,dr}{(r^2+z^2)^{3/2}}.$$"
+                },
+                {
+                  "md": "Une primitive de $\\dfrac{r}{(r^2+z^2)^{3/2}}$ est $-\\dfrac{1}{\\sqrt{r^2+z^2}}$, d'où $\\displaystyle\\int_0^R\\frac{r\\,dr}{(r^2+z^2)^{3/2}}=\\frac{1}{z}-\\frac{1}{\\sqrt{R^2+z^2}}$ (pour $z>0$)."
+                },
+                {
+                  "md": "Avec $k\\,2\\pi=\\dfrac{1}{2\\varepsilon_0}$ : $E_z=\\dfrac{\\sigma}{2\\varepsilon_0}\\,z\\left(\\dfrac{1}{z}-\\dfrac{1}{\\sqrt{R^2+z^2}}\\right)=\\dfrac{\\sigma}{2\\varepsilon_0}\\left(1-\\dfrac{z}{\\sqrt{z^2+R^2}}\\right)$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Lorsque $R\\to\\infty$ à distance $z$ finie, on obtient $E\\to\\sigma/(2\\varepsilon_0)$. Ce cas limite correspond au plan infini uniformément chargé et sera retrouvé simplement avec le théorème de Gauss.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "charged-distribution",
+              "params": {
+                "shape": "disk"
+              },
+              "caption": "Fais varier le rayon du disque : près du disque, le champ tend vers $\\sigma/(2\\varepsilon_0)$, celui d'un plan infini.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exercice 3.9 du cours – problème de synthèse : disque chargé",
+              "md": "Un disque de rayon $R$ porte une densité surfacique uniforme $\\sigma>0$. À partir de\n$$E_z(z)=\\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{z^2+R^2}}\\right),\\qquad z>0,$$\nétudier les limites $z\\to0^+$ et $z\\gg R$. Interpréter les deux résultats.",
+              "steps": [
+                {
+                  "md": "Lorsque $z\\to0^+$, $\\dfrac{z}{\\sqrt{z^2+R^2}}\\to0$, donc $E_z\\to\\boxed{\\dfrac{\\sigma}{2\\varepsilon_0}}$. Au voisinage immédiat du centre du disque, le champ tend vers celui d'un plan très étendu."
+                },
+                {
+                  "md": "Pour $z\\gg R$, on utilise\n$$\\frac{z}{\\sqrt{z^2+R^2}}=\\frac{1}{\\sqrt{1+R^2/z^2}}\\simeq1-\\frac{R^2}{2z^2}.$$\nDonc $E_z\\simeq\\dfrac{\\sigma R^2}{4\\varepsilon_0z^2}$.",
+                  "why": "Développement limité $(1+u)^{-1/2}\\simeq1-u/2$ avec $u=R^2/z^2\\ll1$."
+                },
+                {
+                  "md": "Comme $Q=\\sigma\\pi R^2$ et $k=1/(4\\pi\\varepsilon_0)$, $\\boxed{E_z\\simeq k\\dfrac{Q}{z^2}}$. Très loin du disque, toute la distribution se comporte donc comme une charge ponctuelle $Q$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Au voisinage immédiat du centre d'un disque de densité $\\sigma$ ($z\\to0^+$), $E_z\\to\\dfrac{\\sigma}{n\\,\\varepsilon_0}$ avec $n=$ ___ .",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$\\frac{z}{\\sqrt{z^2+R^2}}\\to0$, donc $E_z\\to\\frac{\\sigma}{2\\varepsilon_0}$ : c'est le champ d'un plan infini."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Pour calculer le champ d'un disque sur son axe, on le décompose en anneaux concentriques et on réutilise le résultat de l'anneau.",
+              "answer": true,
+              "explanation": "Vrai : chaque anneau de rayon $r$ et de charge $dQ=\\sigma2\\pi r\\,dr$ crée $dE_z=k\\frac{z\\,dQ}{(r^2+z^2)^{3/2}}$, puis on intègre de $0$ à $R$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque limite du champ d'un disque à son interprétation.",
+              "pairs": [
+                {
+                  "left": "$z\\to0^+$ : $E_z\\to\\frac{\\sigma}{2\\varepsilon_0}$",
+                  "right": "Comportement d'un plan très étendu"
+                },
+                {
+                  "left": "$z\\gg R$ : $E_z\\simeq k\\frac{Q}{z^2}$",
+                  "right": "Comportement d'une charge ponctuelle"
+                },
+                {
+                  "left": "$R\\to\\infty$ à $z$ fixé",
+                  "right": "Plan infini : $E=\\frac{\\sigma}{2\\varepsilon_0}$"
+                }
+              ],
+              "explanation": "Près du disque ou pour un disque infini, on voit un plan ; très loin, on voit une charge ponctuelle $Q=\\sigma\\pi R^2$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $z\\gg R$, $\\dfrac{1}{\\sqrt{1+R^2/z^2}}\\simeq1-\\dfrac{R^2}{n\\,z^2}$ avec $n=$ ___ .",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$(1+u)^{-1/2}\\simeq1-\\frac{u}{2}$ avec $u=R^2/z^2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Le champ d'un plan infini uniformément chargé ($\\sigma$) :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "décroît en $1/z^2$"
+                },
+                {
+                  "id": "b",
+                  "md": "décroît en $1/z$"
+                },
+                {
+                  "id": "c",
+                  "md": "a une norme $\\sigma/(2\\varepsilon_0)$ indépendante de la distance"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Limite $R\\to\\infty$ du disque : $E\\to\\sigma/(2\\varepsilon_0)$, sans dépendance en $z$. Ce résultat sera retrouvé avec le théorème de Gauss."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Avec $\\sigma>0$ et $z>0$, le champ du disque sur l'axe est dirigé selon $-\\vec e_z$.",
+              "answer": false,
+              "explanation": "Faux : $1-\\frac{z}{\\sqrt{z^2+R^2}}>0$, donc $E_z>0$ : le champ est selon $+\\vec e_z$, il s'éloigne du disque positif."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conclusion-et-revision",
+      "title": "Conclusion, révision et auto-évaluation",
+      "number": "3.8–3.9",
+      "lessons": [
+        {
+          "slug": "conclusion-synthese-champ",
+          "title": "Conclusion et synthèse du chapitre",
+          "number": "3.8–3.9.2",
+          "estimatedMinutes": 7,
+          "summary": "Le fil directeur du chapitre : définition du champ, charge ponctuelle, superposition, lignes de champ, distributions continues, résultats classiques et réflexe de résolution.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.8 Conclusion",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce chapitre a introduit le champ électrostatique comme l'outil naturel pour décrire l'action des charges dans l'espace. La relation $\\vec F=q\\vec E$ sépare désormais la propriété de la source, contenue dans $\\vec E$, de la réponse de la charge placée dans ce champ.\n\nPour des charges ponctuelles, le champ se déduit directement de la loi de Coulomb et obéit au principe de superposition. Les lignes de champ fournissent une lecture géométrique de sa direction et de son organisation. Le passage aux distributions continues repose ensuite sur une idée unique : remplacer la somme des contributions ponctuelles par l'intégrale des contributions élémentaires $d\\vec E$.\n\nLes exemples du fil, de l'anneau et du disque montrent que la symétrie doit toujours être exploitée avant l'intégration : elle permet d'identifier les composantes qui s'annulent et celles qui s'ajoutent. Cette habitude sera essentielle au chapitre suivant, où le potentiel électrostatique offrira une autre manière, souvent plus simple, de décrire le même champ.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.9 Révision et auto-évaluation",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cette section regroupe l'essentiel du chapitre sous une forme directement utilisable pour réviser, vérifier les acquis et s'entraîner avant d'aborder le potentiel électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.9.1 Synthèse",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La synthèse suivante rassemble le fil directeur du chapitre et les relations à maîtriser.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Synthèse (1 à 3)",
+              "md": "**1. Définition du champ.** Une charge source crée un champ dans l'espace. Une charge test positive $q_0$ permet de le mesurer :\n$$\\boxed{\\vec E=\\frac{\\vec F}{q_0}},\\qquad\\boxed{\\vec F=q\\vec E}.$$\n**2. Charge ponctuelle.** Pour une charge $Q$ placée en $O$ :\n$$\\boxed{\\vec E(M)=k\\frac{Q}{r^2}\\vec e_r=k\\frac{Q}{r^3}\\vec r},\\qquad k=\\frac{1}{4\\pi\\varepsilon_0}.$$\nLe champ sort d'une charge positive et entre dans une charge négative ; sa norme décroît comme $1/r^2$.\n\n**3. Superposition.** Pour plusieurs charges :\n$$\\boxed{\\vec E(M)=\\sum_i\\vec E_i(M)}.$$\nLa somme est vectorielle ; la symétrie doit être recherchée avant le calcul.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "D'après la synthèse, la symétrie doit être recherchée **après** avoir calculé toutes les contributions.",
+                "answer": false,
+                "explanation": "Faux : la symétrie doit être recherchée **avant** le calcul, pour identifier les composantes qui s'annulent et n'intégrer que les composantes utiles."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Synthèse (4 à 7)",
+              "md": "**4. Lignes de champ.** La tangente à une ligne de champ donne la direction de $\\vec E$. Les lignes sortent des charges positives, entrent dans les charges négatives et ne se croisent jamais.\n\n**5. Distribution continue.**\n$$\\boxed{dq=\\lambda d\\ell},\\qquad\\boxed{dq=\\sigma dS},\\qquad\\boxed{dq=\\rho d\\tau}.$$\nChaque élément $dq$ produit\n$$\\boxed{d\\vec E=k\\frac{dq}{PM^2}\\vec u_{PM}},$$\net le champ total est obtenu par intégration.\n\n**6. Résultats classiques.**\n$$\\text{fil infini : }E=\\frac{\\lambda}{2\\pi\\varepsilon_0a},$$\n$$\\text{anneau, sur l'axe : }E_z=k\\frac{Qz}{(R^2+z^2)^{3/2}},$$\n$$\\text{disque, sur l'axe : }E_z=\\frac{\\sigma}{2\\varepsilon_0}\\left(1-\\frac{z}{\\sqrt{z^2+R^2}}\\right).$$\n**7. Réflexe de résolution.** Toujours suivre la chaîne :\n$$\\text{géométrie}\\to\\text{symétrie}\\to dq\\to d\\vec E\\to\\text{composante utile}\\to\\text{intégrale}\\to\\text{vérifications}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La boîte de synthèse doit permettre de reconstruire le raisonnement du chapitre sans apprendre les résultats isolément : chaque formule découle d'une géométrie, d'une symétrie et du principe de superposition.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.9.2 Carte mentale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La carte mentale suivante organise les notions du chapitre autour de l'idée centrale de champ créé par une distribution de charges.\n\n*Figure 3.16 – Carte mentale du chapitre 3 :* au centre, **Champ électrostatique $\\vec E(M)$**, avec trois branches :\n- **Définir** : $\\vec E=\\vec F/q_0$ et $\\vec F=q\\vec E$ ;\n- **Construire** : charge ponctuelle ($\\propto Q/r^2$), superposition ($\\sum\\vec E_i$), et **distribution continue** ($dq=\\lambda d\\ell,\\ \\sigma dS,\\ \\rho d\\tau$ → $d\\vec E$ → intégrer : fil, anneau, disque) ;\n- **Visualiser** : lignes de champ, symétries.\n\nLa figure 3.16 peut être utilisée comme parcours de révision : définir le champ, construire les contributions, visualiser la géométrie, puis passer au continu et intégrer lorsque la source n'est plus ponctuelle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre le « réflexe de résolution » du chapitre.",
+                "items": [
+                  "géométrie",
+                  "symétrie",
+                  "$dq$",
+                  "$d\\vec E$",
+                  "composante utile",
+                  "intégrale",
+                  "vérifications"
+                ],
+                "explanation": "C'est la chaîne de la synthèse : on part de la géométrie et de la symétrie avant d'écrire $dq$ et $d\\vec E$, puis on n'intègre que la composante utile et on vérifie."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque distribution à son champ sur l'axe (ou à la distance $a$).",
+              "pairs": [
+                {
+                  "left": "Fil infini",
+                  "right": "$\\dfrac{\\lambda}{2\\pi\\varepsilon_0a}$"
+                },
+                {
+                  "left": "Anneau",
+                  "right": "$k\\dfrac{Qz}{(R^2+z^2)^{3/2}}$"
+                },
+                {
+                  "left": "Disque",
+                  "right": "$\\dfrac{\\sigma}{2\\varepsilon_0}\\left(1-\\dfrac{z}{\\sqrt{z^2+R^2}}\\right)$"
+                },
+                {
+                  "left": "Charge ponctuelle",
+                  "right": "$k\\dfrac{Q}{r^2}$"
+                }
+              ],
+              "explanation": "Ce sont les résultats classiques du chapitre (synthèse, point 6) et le champ d'une charge ponctuelle (point 2)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La relation $\\vec F=q\\vec E$ sépare la propriété de la source (dans $\\vec E$) de la réponse de la charge placée dans le champ.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'idée centrale de la conclusion du chapitre."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel outil du chapitre suivant offrira une autre manière, souvent plus simple, de décrire le même champ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La loi de Coulomb"
+                },
+                {
+                  "id": "b",
+                  "md": "Le potentiel électrostatique"
+                },
+                {
+                  "id": "c",
+                  "md": "La densité volumique de charge"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La conclusion annonce le potentiel électrostatique (chapitre 4)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La constante $k$ vaut $\\dfrac{1}{4\\pi\\varepsilon_0}$, soit environ $8{,}99\\times10^{n}$ SI avec $n=$ ___ .",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "$k\\simeq8{,}99\\times10^{9}\\ \\mathrm{N\\,m^2\\,C^{-2}}$, valeur utilisée dans tous les exemples numériques du chapitre."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour passer d'une somme discrète à une distribution continue, on remplace $\\sum_i\\vec E_i$ par l'intégrale des contributions élémentaires $d\\vec E$.",
+              "answer": true,
+              "explanation": "Vrai : c'est « l'idée unique » du passage au continu soulignée dans la conclusion."
+            }
+          ]
+        },
+        {
+          "slug": "erreurs-lexique-auto-test",
+          "title": "Erreurs fréquentes, lexique et auto-test",
+          "number": "3.9.3–3.9.5",
+          "estimatedMinutes": 7,
+          "summary": "Les pièges classiques d'un calcul de champ, le vocabulaire essentiel du chapitre et l'auto-test express avec ses réponses.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.9.3 Erreurs fréquentes",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les erreurs suivantes sont fréquentes et doivent devenir des points de contrôle automatiques avant de valider un calcul de champ.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Erreurs fréquentes.**\n- Confondre le champ $\\vec E$ avec la force $\\vec F$ : ils sont reliés par $\\vec F=q\\vec E$.\n- Faire dépendre le champ de la charge test $q_0$.\n- Oublier que le champ d'une charge négative est dirigé vers la charge.\n- Additionner les normes $E_i$ au lieu des vecteurs $\\vec E_i$.\n- Tracer des lignes de champ qui se croisent.\n- Confondre $\\rho$ densité volumique de charge et $\\varrho$ coordonnée cylindrique.\n- Intégrer avant d'avoir identifié les composantes qui s'annulent par symétrie.\n- Oublier le facteur géométrique d'un élément : $dq=\\sigma2\\pi r\\,dr$ pour un anneau élémentaire d'un disque.\n- Ne pas vérifier les limites : centre de l'anneau, grande distance, fil très long ou disque très grand.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Un étudiant écrit, pour un anneau élémentaire d'un disque, $dq=\\sigma\\,dr$. Quelle erreur fréquente commet-il ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Il confond champ et force"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Il oublie le facteur géométrique $2\\pi r$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Il additionne les normes au lieu des vecteurs"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "L'aire de l'anneau élémentaire est $dS=2\\pi r\\,dr$, donc $dq=\\sigma2\\pi r\\,dr$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "3.9.4 Lexique essentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le tableau 3.2 regroupe le vocabulaire minimal à maîtriser pour décrire correctement un champ électrostatique et son calcul.\n\n**Tableau 3.2 – Lexique essentiel du chapitre 3**\n\n| Terme | Idée essentielle |\n|---|---|\n| Champ électrostatique | Grandeur vectorielle définie en chaque point de l'espace par $\\vec E=\\vec F/q_0$ pour une charge test positive. |\n| Charge test | Petite charge utilisée pour sonder le champ sans perturber sensiblement la distribution source. |\n| Superposition | Principe selon lequel le champ total est la somme vectorielle des champs créés séparément par les sources. |\n| Ligne de champ | Courbe orientée dont la tangente donne la direction et le sens de $\\vec E$. |\n| Densité linéique $\\lambda$ | Charge par unité de longueur ; $dq=\\lambda d\\ell$. |\n| Densité surfacique $\\sigma$ | Charge par unité de surface ; $dq=\\sigma dS$. |\n| Densité volumique $\\rho$ | Charge par unité de volume ; $dq=\\rho d\\tau$. |\n| Point source $P$ | Position de l'élément $dq$ qui contribue au champ. |\n| Point d'observation $M$ | Point où l'on cherche la valeur du champ. |\n| Symétrie | Propriété géométrique permettant de prévoir la direction du champ et d'annuler certaines composantes avant le calcul. |\n\nLe tableau 3.2 sert d'aide-mémoire : chaque terme doit pouvoir être associé à une représentation géométrique et, lorsque c'est pertinent, à une relation mathématique.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "3.9.5 Auto-test express",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cet auto-test permet de vérifier rapidement si les idées essentielles sont maîtrisées avant de passer aux exercices. Répondez sans consulter les pages précédentes.\n1. Pourquoi choisit-on une charge test positive pour définir le sens de $\\vec E$ ?\n2. Quelle est l'unité SI du champ électrique ?\n3. Comment varie le champ d'une charge ponctuelle si la distance est doublée ?\n4. Deux charges positives identiques sont symétriques par rapport à un point $O$. Que peut-on dire du champ en $O$ ?\n5. Pourquoi deux lignes de champ ne peuvent-elles pas se croiser ?\n6. Donner les expressions de $dq$ pour une ligne, une surface et un volume chargés.\n7. Quelle composante du champ d'un anneau subsiste sur son axe ?",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Réponses rapides :** (1) pour que la force et le champ aient le même sens par convention ; (2) $\\mathrm{N\\,C^{-1}}$ ; (3) il est divisé par 4 ; (4) $\\vec E(O)=\\vec 0$ ; (5) le champ ne peut avoir deux directions différentes au même point ; (6) $dq=\\lambda d\\ell$, $dq=\\sigma dS$, $dq=\\rho d\\tau$ ; (7) la composante axiale, les composantes transverses se compensant par symétrie.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque terme du lexique à son idée essentielle.",
+                "pairs": [
+                  {
+                    "left": "Point source $P$",
+                    "right": "Position de l'élément $dq$ qui contribue au champ"
+                  },
+                  {
+                    "left": "Point d'observation $M$",
+                    "right": "Point où l'on cherche la valeur du champ"
+                  },
+                  {
+                    "left": "Charge test",
+                    "right": "Petite charge qui sonde le champ sans perturber la source"
+                  },
+                  {
+                    "left": "Symétrie",
+                    "right": "Permet de prévoir la direction du champ avant le calcul"
+                  }
+                ],
+                "explanation": "Ce sont les définitions du tableau 3.2."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Le champ électrostatique en un point dépend de la valeur de la charge test utilisée pour le mesurer.",
+              "answer": false,
+              "explanation": "Faux, et c'est une erreur fréquente du cours : le champ est une propriété de la distribution source, indépendante de $q_0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces énoncés est une **erreur** selon le cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Additionner les vecteurs $\\vec E_i$"
+                },
+                {
+                  "id": "b",
+                  "md": "Additionner les normes $E_i$ de contributions non colinéaires"
+                },
+                {
+                  "id": "c",
+                  "md": "Vérifier le cas limite à grande distance"
+                },
+                {
+                  "id": "d",
+                  "md": "Chercher la symétrie avant d'intégrer"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On additionne des **vecteurs**. Additionner les normes n'est correct que pour des contributions colinéaires de même sens."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le champ d'une charge ponctuelle vaut $E_0$ à la distance $d$. À la distance $2d$, il vaut $E_0$ divisé par ___ .",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "$E\\propto1/r^2$ : doubler la distance divise le champ par $2^2=4$ (question 3 de l'auto-test)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque distribution à son élément de charge.",
+              "pairs": [
+                {
+                  "left": "Ligne chargée",
+                  "right": "$dq=\\lambda\\,d\\ell$"
+                },
+                {
+                  "left": "Surface chargée",
+                  "right": "$dq=\\sigma\\,dS$"
+                },
+                {
+                  "left": "Volume chargé",
+                  "right": "$dq=\\rho\\,d\\tau$"
+                }
+              ],
+              "explanation": "Question 6 de l'auto-test."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Sur l'axe d'un anneau uniformément chargé, c'est la composante axiale du champ qui subsiste.",
+              "answer": true,
+              "explanation": "Vrai (question 7) : les composantes transverses se compensent par symétrie."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-corriges",
+          "title": "Exercices corrigés",
+          "number": "3.9.6",
+          "estimatedMinutes": 9,
+          "summary": "Exercices corrigés du cours : champ d'une charge ponctuelle négative, force dans un champ uniforme, superposition sur deux axes et annulation par symétrie.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "3.9.6 Exercices corrigés",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les exercices suivants réinvestissent progressivement la définition du champ, la superposition, les lignes de champ et le calcul par intégration.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Les exercices 3.5 à 3.9 du cours sont traités dans les leçons correspondantes : exercice 3.5 (tige non uniforme) dans « Densités de charge », exercices 3.6 et 3.7 dans « Champ d'un anneau chargé sur son axe », exercice 3.8 dans « Champ d'un fil rectiligne chargé » et exercice 3.9 dans « Champ d'un disque chargé sur son axe ».",
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 3.1 – Champ d'une charge ponctuelle",
+              "md": "Une charge $Q=-8\\ \\mathrm{nC}$ est placée à l'origine. Calculer le champ au point $M(0{,}20,\\,0)$ en mètres et préciser son sens.",
+              "solution": [
+                {
+                  "md": "$$E=k\\frac{|Q|}{r^2}=8{,}99\\times10^{9}\\,\\frac{8\\times10^{-9}}{0{,}20^2}\\simeq1{,}80\\times10^{3}\\ \\mathrm{N\\,C^{-1}}.$$"
+                },
+                {
+                  "md": "Comme $Q<0$, le champ est dirigé vers l'origine. Au point situé sur $+x$ :\n$$\\boxed{\\vec E(M)\\simeq-1{,}80\\times10^{3}\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_x.}$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exercice 3.1 ($Q<0$ à l'origine, $M$ sur l'axe $+x$), le champ en $M$ est dirigé selon :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$+\\vec e_x$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-\\vec e_x$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$+\\vec e_y$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le champ d'une charge négative est dirigé vers la charge, donc de $M$ vers l'origine : selon $-\\vec e_x$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 3.2 – Force dans un champ connu",
+              "md": "Une particule de charge $q=-3\\ \\mathrm{nC}$ est placée dans un champ uniforme $\\vec E=2{,}5\\times10^{4}\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_y$. Déterminer la force électrostatique.",
+              "solution": [
+                {
+                  "md": "$$\\vec F=q\\vec E=(-3\\times10^{-9})(2{,}5\\times10^{4})\\,\\vec e_y=\\boxed{-7{,}5\\times10^{-5}\\ \\mathrm{N}\\,\\vec e_y}.$$"
+                },
+                {
+                  "md": "La charge étant négative, la force est opposée au champ."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 3.3 – Superposition sur deux axes",
+              "md": "Au point $M$, deux charges sources créent les champs\n$$\\vec E_1=300\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_x,\\qquad\\vec E_2=400\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_y.$$\nDéterminer le champ total, sa norme et son angle avec $Ox$.",
+              "solution": [
+                {
+                  "md": "$$\\vec E=(300\\,\\vec e_x+400\\,\\vec e_y)\\ \\mathrm{N\\,C^{-1}},\\qquad E=\\sqrt{300^2+400^2}=500\\ \\mathrm{N\\,C^{-1}}.$$"
+                },
+                {
+                  "md": "Enfin,\n$$\\tan\\alpha=\\frac{400}{300}=\\frac{4}{3},\\qquad\\alpha\\simeq53{,}1^\\circ.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans un champ $\\vec E=10^{4}\\ \\mathrm{N\\,C^{-1}}\\,\\vec e_y$, une charge $q=-2\\ \\mathrm{nC}$ subit une force de composante $F_y=$ ___ $\\times10^{-5}\\ \\mathrm{N}$.",
+                "answerType": "number",
+                "accepted": [
+                  "-2"
+                ],
+                "explanation": "$F_y=qE=(-2\\times10^{-9})(10^4)=-2\\times10^{-5}\\ \\mathrm{N}$ : la force est opposée au champ car $q<0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 3.4 – Annulation par symétrie",
+              "md": "Deux charges identiques $+Q$ sont placées en $x=-a$ et $x=+a$. Déterminer le champ au milieu $O$ puis expliquer ce résultat sans calcul.",
+              "solution": [
+                {
+                  "md": "Les deux charges sont à la même distance de $O$ et créent des champs de même norme, dirigés en sens opposés :\n$$\\boxed{\\vec E(O)=\\vec 0.}$$"
+                },
+                {
+                  "md": "Le résultat découle directement de la symétrie de la configuration."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Une charge $Q=-8\\ \\mathrm{nC}$ est à l'origine. Avec $k=9\\times10^{9}$ SI, la norme du champ en $M(0{,}20,\\,0)$ vaut ___ $\\mathrm{N\\,C^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "1800",
+                "1.8e3"
+              ],
+              "explanation": "$E=k|Q|/r^2=9\\times10^9\\times8\\times10^{-9}/0{,}04=72/0{,}04=1800\\ \\mathrm{N\\,C^{-1}}$ (le cours, avec $k=8{,}99\\times10^9$, trouve $\\simeq1{,}80\\times10^3$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$\\vec E_1=300\\,\\vec e_x$ et $\\vec E_2=400\\,\\vec e_y$ (en $\\mathrm{N\\,C^{-1}}$). L'angle $\\alpha$ du champ total avec $Ox$ vérifie :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\tan\\alpha=\\dfrac{3}{4}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\tan\\alpha=\\dfrac{4}{3}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\cos\\alpha=\\dfrac{4}{5}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\tan\\alpha=E_y/E_x=400/300=4/3$, d'où $\\alpha\\simeq53{,}1^\\circ$ (et $\\cos\\alpha=3/5$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une particule de charge $q=-3\\ \\mathrm{nC}$ dans le champ $\\vec E=2{,}5\\times10^4\\,\\vec e_y\\ \\mathrm{N\\,C^{-1}}$ subit une force selon $+\\vec e_y$.",
+              "answer": false,
+              "explanation": "Faux : $\\vec F=q\\vec E=-7{,}5\\times10^{-5}\\ \\mathrm{N}\\,\\vec e_y$, opposée au champ car la charge est négative."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Deux charges $+Q$ sont placées en $x=-a$ et $x=+a$. On étudie le champ au milieu $O$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Le champ créé en $O$ par la charge située en $x=-a$ est dirigé selon :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$+\\vec e_x$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$-\\vec e_x$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "La charge est positive : son champ s'éloigne d'elle, donc vers $+x$ en $O$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Le champ créé en $O$ par la charge située en $x=+a$ est dirigé selon :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$+\\vec e_x$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$-\\vec e_x$"
+                    }
+                  ],
+                  "answer": "b",
+                  "explanation": "Il s'éloigne de la charge en $x=+a$, donc vers $-x$ en $O$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Les deux champs ont la même norme ; la norme du champ total en $O$ vaut donc ___ .",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "Mêmes normes, sens opposés : $\\vec E(O)=\\vec 0$."
+                }
+              ],
+              "explanation": "C'est l'exercice 3.4 : l'annulation découle directement de la symétrie de la configuration."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : COURS-3 (F129, Pr M. EL AZZAOUI, ENSA Agadir), 18 pages, suivi intégralement et dans l'ordre (3.1 à 3.9.6). F362 n'a pas été nécessaire : aucune partie manquante.",
+    "Correction numérique : exercice 3.7 (anneau R = z = 0,10 m, Q = 20 nC), la source imprime E ≃ 6,36×10² N/C ; le calcul donne 8,99×10⁹ × 2×10⁻⁹ / (0,02)^{3/2} ≃ 17,98 / 2,83×10⁻³ ≃ 6,36×10³ N/C. Corrigé en 6,36×10³ N/C (signalé dans le 'why' de l'étape). À confirmer avec l'enseignant.",
+    "Exercices 3.5 à 3.9 (section 3.9.6) déplacés comme exemples résolus dans les leçons qui traitent leur notion (3.5 → Densités de charge ; 3.6 et 3.7 → Anneau ; 3.8 → Fil ; 3.9 → Disque), avec leur numéro d'origine dans le titre. La leçon « Exercices corrigés » garde 3.1 à 3.4 et renvoie aux autres.",
+    "Section 3.1 (Introduction, Objectifs, Prérequis) regroupée avec 3.2 dans la première leçon ; 3.8 (Conclusion) regroupée avec la révision 3.9.",
+    "Figures 3.1 à 3.15 redessinées en TikZ d'après les schémas du cours (public/figures/electrostatique/ch03-*.svg, sources output/figures/electrostatique/src) ; la carte mentale (fig. 3.16) est restituée sous forme de liste.",
+    "Ajouts pédagogiques (origin: added) : démonstration courte du champ d'une charge ponctuelle à partir de Coulomb, détail du calcul des intégrales du fil (primitive x/(a²√(x²+a²))) et du disque (primitive −1/√(r²+z²)), intuitions sur le non-croisement des lignes de champ, sur ∑ → ∫ et sur la limite z ≫ R de l'anneau, remarque précisant r_i et u_i dans le théorème de superposition.",
+    "Les encadrés « Attention », « Point clé » et « Erreurs fréquentes » de la source sont rendus en blocs remark ; « À retenir », « Résultat » et « Synthèse » en blocs theorem (kind propriete)."
+  ]
+}

@@ -1,0 +1,2923 @@
+{
+ "slug": "cinematique-du-point-materiel",
+ "number": 1,
+ "title": "Cinématique du point matériel",
+ "description": "Solide et point matériel, repère d'espace et de temps, référentiels ; coordonnées cartésiennes, cylindriques et sphériques ; trajectoire, vitesse, accélération, base de Frenet ; mouvements rectiligne uniforme, circulaire et sinusoïdal.",
+ "sourcePdf": "Modules/Mecanique du point/Cours/Chapitre 01 - Cinématique du point matériel.pdf",
+ "sections": [
+  {
+   "slug": "repere-espace-temps-referentiel",
+   "title": "Repère d'espace, repère du temps et référentiel",
+   "number": "I",
+   "lessons": [
+    {
+     "slug": "solide-et-point-materiel",
+     "title": "Solide et point matériel",
+     "number": "I.1",
+     "estimatedMinutes": 6,
+     "summary": "Ce qu'étudie la cinématique, la différence entre un solide (6 paramètres) et un point matériel (3 paramètres), et quand le modèle du point est valable.",
+     "blocks": [
+      {
+       "type": "definition",
+       "md": "La **cinématique** est l'étude du mouvement **indépendamment des causes** (forces) qui le provoquent.",
+       "origin": "source",
+       "title": "Cinématique"
+      },
+      {
+       "type": "heading",
+       "text": "1 – Solide – Point matériel",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Un **solide** $(S)$ est un système continu de points $M$ tel que\n$$\\forall (P,Q)\\in(S),\\quad \\|\\overrightarrow{PQ}\\| = PQ = C^{te},\\quad \\forall t.$$\nC'est un corps **indéformable** : la distance entre deux points quelconques du solide reste constante au cours du temps.",
+       "origin": "source",
+       "title": "Solide"
+      },
+      {
+       "type": "text",
+       "md": "La position d'un solide est donnée parfaitement par **6 paramètres** :\n- **3 positions** $(x,y,z)$, souvent celles du barycentre $G(x,y,z)$ ;\n- **3 angles** $(\\theta,\\varphi,\\psi)$ : l'orientation de $(S)$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Combien de paramètres faut-il pour fixer parfaitement la position d'un solide ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "$3$"
+         },
+         {
+          "id": "b",
+          "md": "$6$"
+         },
+         {
+          "id": "c",
+          "md": "$9$"
+         },
+         {
+          "id": "d",
+          "md": "$2$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$3$ coordonnées de position (par exemple celles de $G$) et $3$ angles d'orientation, soit $6$. Le chiffre $3$ correspond au **point matériel**."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "definition",
+       "md": "Un **point matériel** est un corps dont la position est donnée **uniquement par 3 paramètres**.",
+       "origin": "source",
+       "title": "Point matériel"
+      },
+      {
+       "type": "text",
+       "md": "**Le modèle du point matériel.** C'est un **modèle mathématique**, valable si :\n- **1er cas** : l'effet de **rotation propre** est négligeable ;\n- **2e cas** : la **dimension du corps** solide est négligeable devant celle de la trajectoire.\n\nLes 3 paramètres peuvent être : $(x,y,z)$, coordonnées **cartésiennes** ; $(\\rho,\\varphi,z)$, coordonnées **cylindriques** ; $(r,\\theta,\\varphi)$, coordonnées **sphériques**.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-point-materiel.svg",
+       "alt": "Un corps de dimensions a et b à gauche, une trajectoire circulaire de rayon R beaucoup plus grand à droite, sur laquelle le corps est réduit au point M.",
+       "caption": "Figure — le corps est assimilé à un point matériel $M$ quand ses dimensions $a,b$ sont négligeables devant celles de la trajectoire.",
+       "origin": "source"
+      },
+      {
+       "type": "intuition",
+       "md": "La Terre autour du Soleil peut être traitée comme un point matériel : son rayon ($\\approx 6\\,400$ km) est minuscule devant le rayon de son orbite ($\\approx 150$ millions de km). La même Terre ne peut pas être un point si l'on étudie sa rotation sur elle-même.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Une bille qui roule sans glisser sur une table, dont on veut étudier la rotation propre, peut être modélisée par un point matériel.",
+        "answer": false,
+        "explanation": "Faux : le modèle du point matériel suppose que l'effet de **rotation propre** est négligeable. Si c'est justement la rotation qui nous intéresse, il faut le modèle du solide."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "La cinématique étudie le mouvement en tenant compte des forces qui le provoquent.",
+       "answer": false,
+       "explanation": "Faux : la cinématique décrit le mouvement **indépendamment des causes**. L'étude avec les forces, c'est la **dynamique** (chapitre 3)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Un solide est défini par la propriété :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\forall (P,Q)\\in(S)$, $PQ$ est constante au cours du temps"
+        },
+        {
+         "id": "b",
+         "md": "tous ses points ont la même vitesse"
+        },
+        {
+         "id": "c",
+         "md": "il ne tourne pas sur lui-même"
+        },
+        {
+         "id": "d",
+         "md": "sa masse est concentrée en $G$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "C'est la définition du cours : la distance entre deux points quelconques reste constante, le corps est **indéformable**. Les points d'un solide qui tourne n'ont pas tous la même vitesse."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "La position d'un point matériel est donnée par ___ paramètres.",
+       "answerType": "number",
+       "accepted": [
+        "3"
+       ],
+       "explanation": "Trois paramètres : par exemple $(x,y,z)$, $(\\rho,\\varphi,z)$ ou $(r,\\theta,\\varphi)$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque triplet au système de coordonnées correspondant.",
+       "pairs": [
+        {
+         "left": "$(x,y,z)$",
+         "right": "cartésiennes"
+        },
+        {
+         "left": "$(\\rho,\\varphi,z)$",
+         "right": "cylindriques"
+        },
+        {
+         "left": "$(r,\\theta,\\varphi)$",
+         "right": "sphériques"
+        }
+       ],
+       "explanation": "Ce sont les trois systèmes usuels étudiés dans la partie 4 du chapitre."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Parmi les 6 paramètres d'un solide, les 3 angles $(\\theta,\\varphi,\\psi)$ décrivent :",
+       "options": [
+        {
+         "id": "a",
+         "md": "la position du barycentre"
+        },
+        {
+         "id": "b",
+         "md": "l'orientation du solide"
+        },
+        {
+         "id": "c",
+         "md": "la vitesse du solide"
+        },
+        {
+         "id": "d",
+         "md": "la forme du solide"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Les 3 positions $(x,y,z)$ placent le solide (souvent via $G$) ; les 3 angles donnent son **orientation**."
+      }
+     ]
+    },
+    {
+     "slug": "repere-d-espace-et-produits-de-vecteurs",
+     "title": "Repère d'espace et produits de vecteurs",
+     "number": "I.2",
+     "estimatedMinutes": 8,
+     "summary": "Le repère d'espace (base orthonormée directe) et les rappels sur le produit scalaire et le produit vectoriel.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2 – Repère d'espace et du temps",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Un **repère d'espace** est un système de 3 axes lié à 3 vecteurs unitaires $(\\vec u_1,\\vec u_2,\\vec u_3)$ formant une **base orthonormée directe** :\n- **ortho** : $\\vec u_i\\perp\\vec u_j$ $(i\\neq j)$ ;\n- **normée** : $\\|\\vec u_i\\| = 1$ $(i=1,2,3)$ ;\n- **directe** : règle du tire-bouchon ou de la main droite.\n\nAutrement dit : $\\vec u_i\\cdot\\vec u_j = 0$ si $i\\neq j$ et $\\vec u_i\\cdot\\vec u_j=1$ si $i=j$.",
+       "origin": "source",
+       "title": "Repère d'espace"
+      },
+      {
+       "type": "text",
+       "md": "Pour une base directe, les produits vectoriels suivent l'**ordre circulaire** $(\\vec u_1,\\vec u_2,\\vec u_3)$ :\n$$\\vec u_1\\wedge\\vec u_2=\\vec u_3,\\qquad \\vec u_2\\wedge\\vec u_3=\\vec u_1,\\qquad \\vec u_3\\wedge\\vec u_1=\\vec u_2.$$",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-base-directe.svg",
+       "alt": "Trièdre direct (u1, u2, u3) issu de O, avec une flèche courbe de u1 vers u2 et les trois produits vectoriels dans l'ordre circulaire.",
+       "caption": "Figure — base orthonormée directe : les produits vectoriels suivent l'ordre circulaire $(\\vec u_1,\\vec u_2,\\vec u_3)$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Dans une base orthonormée directe, $\\vec u_3\\wedge\\vec u_1 = $ ___ (écrire u1, u2 ou u3)",
+        "answerType": "text",
+        "accepted": [
+         "u2",
+         "u_2",
+         "vec u_2",
+         "e2"
+        ],
+        "explanation": "Ordre circulaire : $1\\to2\\to3\\to1$. $\\vec u_3\\wedge\\vec u_1$ suit cet ordre, donc il vaut $\\vec u_2$ (et $\\vec u_1\\wedge\\vec u_3=-\\vec u_2$)."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Remarque : rappels sur les produits de vecteurs",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Soient $\\vec A=(A_x,A_y,A_z)$ et $\\vec B=(B_x,B_y,B_z)$, et $\\theta$ l'angle entre $\\vec A$ et $\\vec B$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "$$\\vec A\\cdot\\vec B=\\|\\vec A\\|\\,\\|\\vec B\\|\\cos\\theta = A_xB_x+A_yB_y+A_zB_z,$$\n$$\\|\\vec A\\|=\\sqrt{A_x^2+A_y^2+A_z^2},\\qquad \\vec A\\cdot\\vec B=\\vec B\\cdot\\vec A.$$",
+       "origin": "source",
+       "title": "Produit scalaire"
+      },
+      {
+       "type": "definition",
+       "md": "$$\\vec A\\wedge\\vec B=\\|\\vec A\\|\\,\\|\\vec B\\|\\sin\\theta\\;\\vec u_\\perp,\\qquad \\vec u_\\perp\\perp(\\vec A,\\vec B),$$\nle sens de $\\vec u_\\perp$ étant donné par la rotation de $\\vec A$ vers $\\vec B$ (tire-bouchon). En composantes :\n$$\\begin{pmatrix}A_x\\\\A_y\\\\A_z\\end{pmatrix}\\wedge\\begin{pmatrix}B_x\\\\B_y\\\\B_z\\end{pmatrix}=\\begin{pmatrix}+(A_yB_z-A_zB_y)\\\\-(A_xB_z-A_zB_x)\\\\+(A_xB_y-A_yB_x)\\end{pmatrix}.$$",
+       "origin": "source",
+       "title": "Produit vectoriel"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-produit-vectoriel.svg",
+       "alt": "Deux vecteurs A et B issus de O faisant un angle θ, le parallélogramme qu'ils forment et le vecteur A∧B perpendiculaire à leur plan.",
+       "caption": "Figure — $\\vec A\\wedge\\vec B$ est perpendiculaire au plan de $(\\vec A,\\vec B)$ ; sa norme est l'aire du parallélogramme.",
+       "origin": "source"
+      },
+      {
+       "type": "simulation",
+       "scene": "vector-products",
+       "caption": "Fais varier $\\vec A$ et $\\vec B$ : observe le signe de $\\vec A\\cdot\\vec B$ et la direction de $\\vec A\\wedge\\vec B$.",
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "Sur les figures, le symbole $\\otimes$ désigne un vecteur perpendiculaire à la feuille, **sortant vers l'arrière** (et $\\odot$ un vecteur pointant vers l'avant).",
+       "origin": "source"
+      },
+      {
+       "type": "example",
+       "md": "Calculer $\\vec A\\wedge\\vec B$ pour $\\vec A=(1,2,0)$ et $\\vec B=(0,1,3)$.",
+       "origin": "added",
+       "title": "Calcul d'un produit vectoriel",
+       "steps": [
+        {
+         "md": "1re composante : $A_yB_z-A_zB_y = 2\\cdot3-0\\cdot1=6$."
+        },
+        {
+         "md": "2e composante : $-(A_xB_z-A_zB_x)=-(1\\cdot3-0\\cdot0)=-3$."
+        },
+        {
+         "md": "3e composante : $A_xB_y-A_yB_x=1\\cdot1-2\\cdot0=1$. Donc $\\vec A\\wedge\\vec B=(6,-3,1)$."
+        },
+        {
+         "md": "Vérification : $(6,-3,1)\\cdot(1,2,0)=0$ et $(6,-3,1)\\cdot(0,1,3)=0$.",
+         "why": "Le produit vectoriel est perpendiculaire aux deux vecteurs."
+        }
+       ]
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $\\vec A=(1,2,3)$ et $\\vec B=(2,0,-1)$, $\\vec A\\cdot\\vec B=$ ___",
+        "answerType": "number",
+        "accepted": [
+         "-1"
+        ],
+        "explanation": "$A_xB_x+A_yB_y+A_zB_z = 2+0-3=-1$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans une base orthonormée, $\\vec u_1\\cdot\\vec u_1 = 0$.",
+       "answer": false,
+       "explanation": "Faux : $\\vec u_i\\cdot\\vec u_i=\\|\\vec u_i\\|^2=1$ (base **normée**). C'est $\\vec u_i\\cdot\\vec u_j$ avec $i\\ne j$ qui est nul."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Dans une base orthonormée directe, $\\vec u_2\\wedge\\vec u_1$ vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec u_3$"
+        },
+        {
+         "id": "b",
+         "md": "$-\\vec u_3$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec 0$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec u_1$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec u_1\\wedge\\vec u_2=\\vec u_3$ et le produit vectoriel est antisymétrique : $\\vec u_2\\wedge\\vec u_1=-\\vec u_3$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si $\\vec A$ et $\\vec B$ ont pour normes $2$ et $3$ et font un angle $\\theta=\\pi/2$, alors $\\|\\vec A\\wedge\\vec B\\|=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "6"
+       ],
+       "explanation": "$\\|\\vec A\\wedge\\vec B\\|=\\|\\vec A\\|\\|\\vec B\\|\\sin\\theta=2\\cdot3\\cdot1=6$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le produit vectoriel $\\vec A\\wedge\\vec B$ est perpendiculaire à la fois à $\\vec A$ et à $\\vec B$.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec A\\wedge\\vec B$ est porté par $\\vec u_\\perp$, orthogonal au plan $(\\vec A,\\vec B)$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "La norme de $\\vec A=(2,-1,2)$ vaut ___",
+       "answerType": "number",
+       "accepted": [
+        "3"
+       ],
+       "explanation": "$\\sqrt{4+1+4}=\\sqrt9=3$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque propriété d'une base orthonormée directe à sa traduction.",
+       "pairs": [
+        {
+         "left": "ortho",
+         "right": "$\\vec u_i\\cdot\\vec u_j=0$ si $i\\neq j$"
+        },
+        {
+         "left": "normée",
+         "right": "$\\|\\vec u_i\\|=1$"
+        },
+        {
+         "left": "directe",
+         "right": "règle du tire-bouchon (main droite)"
+        }
+       ],
+       "explanation": "Ce sont les trois conditions de la définition du repère d'espace."
+      }
+     ]
+    },
+    {
+     "slug": "repere-du-temps-et-referentiel",
+     "title": "Repère du temps et référentiel",
+     "number": "I.3",
+     "estimatedMinutes": 6,
+     "summary": "Le temps absolu, la notion de référentiel (solide de référence + horloge) et les exemples usuels de référentiels.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "3 – Repère du temps et référentiel",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Le **repère du temps** permet de dater les événements en utilisant le paramètre $t$. On suppose que le temps est **absolu**, c'est-à-dire **invariant par un changement de référentiel**.",
+       "origin": "source",
+       "title": "Repère du temps"
+      },
+      {
+       "type": "definition",
+       "md": "Un **référentiel** est l'association d'un **corps solide** (repère d'espace, coordonnées $(x,y,z)$) et d'une **horloge** (temps $t$) :\n$$\\text{solide}+\\text{horloge}\\;\\longrightarrow\\;(x,y,z,t)\\;\\longrightarrow\\;(x(t),y(t),z(t)).$$\nLe mouvement de $M$ est alors décrit par ses coordonnées en fonction du temps.",
+       "origin": "source",
+       "title": "Référentiel"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Un référentiel est constitué :",
+        "options": [
+         {
+          "id": "a",
+          "md": "d'un repère d'espace seulement"
+         },
+         {
+          "id": "b",
+          "md": "d'un solide de référence et d'une horloge"
+         },
+         {
+          "id": "c",
+          "md": "d'une base orthonormée et d'une masse"
+         },
+         {
+          "id": "d",
+          "md": "d'un point matériel et de sa trajectoire"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Référentiel = solide de référence (repère d'espace) + horloge (repère du temps)."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Exemples de référentiels",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "1. **Référentiel de Copernic** : centré sur le barycentre du système solaire (la phrase est inachevée à cet endroit dans la source ; ce référentiel est détaillé au chapitre 3).\n2. **Référentiel héliocentrique** : lié au Soleil.\n3. **Référentiel géocentrique** : en mouvement de translation elliptique par rapport au référentiel héliocentrique.\n4. **Référentiel terrestre** (ou du laboratoire) : son origine est un point lié à la Terre.",
+       "origin": "source"
+      },
+      {
+       "type": "intuition",
+       "md": "Le même mouvement peut sembler très différent selon le référentiel : un passager assis dans un train est immobile dans le référentiel du train, mais se déplace à $200$ km/h dans le référentiel terrestre. C'est pour cela qu'on précise toujours « par rapport à $R$ ».",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Dans ce cours, le temps dépend du référentiel choisi.",
+        "answer": false,
+        "explanation": "Faux : on suppose le temps **absolu**, invariant par changement de référentiel (mécanique classique)."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "L'hypothèse du temps absolu signifie que deux référentiels différents mesurent la même date pour un même événement.",
+       "answer": true,
+       "explanation": "Vrai : le temps est invariant par changement de référentiel."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Quel référentiel est centré sur le barycentre du système solaire ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "le référentiel de Copernic"
+        },
+        {
+         "id": "b",
+         "md": "le référentiel géocentrique"
+        },
+        {
+         "id": "c",
+         "md": "le référentiel terrestre"
+        },
+        {
+         "id": "d",
+         "md": "le référentiel du laboratoire"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Copernic : barycentre du système solaire. Géocentrique : centre de la Terre. Terrestre (= laboratoire) : un point lié à la Terre."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque référentiel à sa description.",
+       "pairs": [
+        {
+         "left": "héliocentrique",
+         "right": "lié au Soleil"
+        },
+        {
+         "left": "géocentrique",
+         "right": "en translation elliptique par rapport à l'héliocentrique"
+        },
+        {
+         "left": "terrestre",
+         "right": "origine en un point lié à la Terre"
+        }
+       ],
+       "explanation": "Ce sont les exemples du cours."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le référentiel du laboratoire est un autre nom du :",
+       "options": [
+        {
+         "id": "a",
+         "md": "référentiel de Copernic"
+        },
+        {
+         "id": "b",
+         "md": "référentiel héliocentrique"
+        },
+        {
+         "id": "c",
+         "md": "référentiel géocentrique"
+        },
+        {
+         "id": "d",
+         "md": "référentiel terrestre"
+        }
+       ],
+       "answer": "d",
+       "explanation": "Le cours écrit : « réf. terrestre (ou du laboratoire) »."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le référentiel géocentrique est en rotation autour du Soleil, ses axes tournant avec la Terre.",
+       "answer": false,
+       "explanation": "Faux : le cours dit qu'il est en mouvement de **translation** elliptique par rapport au référentiel héliocentrique ; ses axes gardent la même direction."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "systemes-de-coordonnees",
+   "title": "Systèmes usuels de coordonnées",
+   "number": "I.4",
+   "lessons": [
+    {
+     "slug": "coordonnees-cartesiennes",
+     "title": "Coordonnées cartésiennes",
+     "number": "I.4.1",
+     "estimatedMinutes": 8,
+     "summary": "Vecteur position, déplacement élémentaire (deux méthodes), longueur, surfaces et volume élémentaires en coordonnées cartésiennes.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4 – Systèmes usuels de coordonnées",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Vue d'ensemble : on repère un point $M$ de trois façons. En **cylindriques**, $(\\rho,\\varphi,z)$ (notées aussi $(r,\\theta,z)$), où $P$ est la projection de $M$ sur le plan $(xOy)$ : $\\rho=OP$, $\\varphi=(\\vec e_x,\\overrightarrow{OP})$, $z=\\overline{PM}$. En **sphériques**, $(r,\\theta,\\varphi)$ avec $r=OM$, $\\theta=(\\vec e_z,\\overrightarrow{OM})$, $\\varphi=(\\vec e_x,\\overrightarrow{OP})$.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-reperage-point.svg",
+       "alt": "Repère Oxyz, point M, sa projection P sur le plan xOy, avec les longueurs ρ = OP, r = OM, z et les angles φ (dans le plan xOy) et θ (depuis l'axe Oz).",
+       "caption": "Figure — les trois façons de repérer $M$ : $(x,y,z)$, $(\\rho,\\varphi,z)$ et $(r,\\theta,\\varphi)$.",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "4.1 – Coordonnées cartésiennes",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Soit $R(O,x,y,z)$ un référentiel lié à la base cartésienne $(\\vec e_x,\\vec e_y,\\vec e_z)$. $M$ a pour coordonnées $(x,y,z)$ ; $P$ est sa projection dans le plan $(xOy)$.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-cartesiennes.svg",
+       "alt": "Repère Oxyz avec la base (e_x, e_y, e_z) en O, le point M(x,y,z), sa projection P et les coordonnées x, y, z reportées sur les axes.",
+       "caption": "Figure — coordonnées cartésiennes de $M$ et base fixe $(\\vec e_x,\\vec e_y,\\vec e_z)$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "$$\\overrightarrow{OM}=\\overrightarrow{OP}+\\overrightarrow{PM} = x\\,\\vec e_x+y\\,\\vec e_y+z\\,\\vec e_z.$$\n$x$, $y$ et $z$ sont des **distances algébriques** ($>0$ ou $<0$) ; en S.I. elles s'expriment en m.",
+       "origin": "source",
+       "title": "Vecteur position"
+      },
+      {
+       "type": "definition",
+       "md": "Le déplacement élémentaire dans $R$ est\n$$d\\vec l_{/R}=d\\overrightarrow{OM}_{/R}=\\overrightarrow{MM'},$$ avec $M'$ très proche de $M$ sur la trajectoire.",
+       "origin": "source",
+       "title": "Déplacement élémentaire"
+      },
+      {
+       "type": "text",
+       "md": "**Méthode ①.** Soit $M(x,y,z)$ et $M'(x',y',z')$ avec $x'=x+dx$, $y'=y+dy$, $z'=z+dz$. Alors\n$$\\overrightarrow{MM'}=(x'-x)\\vec e_x+(y'-y)\\vec e_y+(z'-z)\\vec e_z\\;\\Rightarrow\\; d\\overrightarrow{OM}=dx\\,\\vec e_x+dy\\,\\vec e_y+dz\\,\\vec e_z.$$",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Méthode ②.** On différencie $d\\overrightarrow{OM}=d(x\\vec e_x+y\\vec e_y+z\\vec e_z)$ avec les propriétés\n$$(f+g)'=f'+g',\\quad(\\alpha f)'=\\alpha f'\\;;\\qquad d(f+g)=df+dg,\\quad d(\\alpha f)=\\alpha\\,df\\quad(\\alpha=C^{te}).$$\nTous les vecteurs $\\vec e_x,\\vec e_y,\\vec e_z$ sont **fixes** (constants) : $d\\vec e_x/_R=d\\vec e_y/_R=d\\vec e_z/_R=\\vec 0$. D'où\n$$d\\overrightarrow{OM}=dx\\,\\vec e_x+dy\\,\\vec e_y+dz\\,\\vec e_z.$$",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "Un **vecteur constant** garde ses 3 propriétés : module, sens et direction. Un **scalaire constant** ne garde que sa valeur (module).",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "En coordonnées cartésiennes, $d\\vec e_x\\neq\\vec 0$ quand $M$ se déplace.",
+        "answer": false,
+        "explanation": "Faux : la base cartésienne est **fixe** dans $R$, ses vecteurs ne dépendent pas de la position de $M$ : $d\\vec e_x=\\vec 0$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "text",
+       "md": "**Longueur élémentaire :**\n$$dl=\\|d\\overrightarrow{OM}\\|=\\sqrt{(dx)^2+(dy)^2+(dz)^2}.$$\n**Surfaces élémentaires :** $dS_x=dy\\,dz$ (à $x$ fixé), $dS_y=dx\\,dz$ (à $y$ fixé), $dS_z=dx\\,dy$ (à $z$ fixé).\n\n**Volume élémentaire** ($d\\tau$ ou $dV$) :\n$$d^3\\tau=dx\\,dy\\,dz,\\qquad V=\\iiint d^3\\tau.$$",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Si $dx=3$ mm, $dy=4$ mm et $dz=0$, la longueur élémentaire vaut $dl=$ ___ mm.",
+        "answerType": "number",
+        "accepted": [
+         "5"
+        ],
+        "explanation": "$dl=\\sqrt{3^2+4^2+0}=5$ mm."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "En cartésiennes, le vecteur position s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\overrightarrow{OM}=x\\vec e_x+y\\vec e_y+z\\vec e_z$"
+        },
+        {
+         "id": "b",
+         "md": "$\\overrightarrow{OM}=\\rho\\vec e_\\rho+z\\vec e_z$"
+        },
+        {
+         "id": "c",
+         "md": "$\\overrightarrow{OM}=r\\vec e_r$"
+        },
+        {
+         "id": "d",
+         "md": "$\\overrightarrow{OM}=x+y+z$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Les deux autres écritures vectorielles sont celles des cylindriques et des sphériques ; la dernière n'est pas un vecteur."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Les coordonnées cartésiennes $x,y,z$ sont toujours positives.",
+       "answer": false,
+       "explanation": "Faux : ce sont des **distances algébriques**, positives ou négatives."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La surface élémentaire à $z$ fixé vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$dy\\,dz$"
+        },
+        {
+         "id": "b",
+         "md": "$dx\\,dz$"
+        },
+        {
+         "id": "c",
+         "md": "$dx\\,dy$"
+        },
+        {
+         "id": "d",
+         "md": "$dx\\,dy\\,dz$"
+        }
+       ],
+       "answer": "c",
+       "explanation": "À $z$ fixé, on se déplace dans un plan parallèle à $(xOy)$ : $dS_z=dx\\,dy$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Le volume élémentaire en cartésiennes est $d^3\\tau=$ ___",
+       "answerType": "text",
+       "accepted": [
+        "dx dy dz",
+        "dxdydz",
+        "dx.dy.dz",
+        "dx*dy*dz",
+        "dxdy dz"
+       ],
+       "explanation": "$d^3\\tau=dx\\,dy\\,dz$ : c'est le volume d'un petit pavé de côtés $dx$, $dy$, $dz$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Les deux méthodes (différence $\\overrightarrow{MM'}$ et différentiation de $\\overrightarrow{OM}$) donnent le même $d\\overrightarrow{OM}$.",
+       "answer": true,
+       "explanation": "Vrai : toutes deux donnent $dx\\,\\vec e_x+dy\\,\\vec e_y+dz\\,\\vec e_z$."
+      }
+     ]
+    },
+    {
+     "slug": "coordonnees-cylindriques-base",
+     "title": "Coordonnées cylindriques : base mobile",
+     "number": "I.4.2",
+     "estimatedMinutes": 7,
+     "summary": "Définition des coordonnées cylindriques, de la base locale $(\\vec e_\\rho,\\vec e_\\varphi,\\vec e_z)$ et de ses projections dans la base cartésienne.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4.2 – Coordonnées cylindriques",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Les coordonnées cylindriques de $M$ sont $\\big(OP,\\,(\\vec e_x,\\overrightarrow{OP}),\\,\\overline{PM}\\big)$, notées $(\\rho,\\varphi,z)$, où $P$ est la projection de $M$ sur le plan $(xOy)$.",
+       "origin": "source",
+       "title": "Coordonnées cylindriques"
+      },
+      {
+       "type": "definition",
+       "md": "La base cylindrique est $(\\vec e_\\rho,\\vec e_\\varphi,\\vec e_z)$ avec :\n- $\\vec e_\\rho=\\dfrac{\\overrightarrow{OP}}{\\|\\overrightarrow{OP}\\|}$, et $\\rho=OP$ ;\n- $\\vec e_\\varphi$ : obtenu par rotation de $\\vec e_\\rho$ autour de $(Oz)$ d'angle $\\frac{\\pi}{2}$ ; tout simplement $\\vec e_\\varphi=\\vec e_z\\wedge\\vec e_\\rho$.",
+       "origin": "source",
+       "title": "Base cylindrique"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-cylindriques.svg",
+       "alt": "Point M sur un cylindre d'axe Oz de rayon ρ, sa projection P, l'angle φ dans le plan xOy et la base locale (e_ρ, e_φ, e_z) dessinée en M.",
+       "caption": "Figure — coordonnées cylindriques $(\\rho,\\varphi,z)$ et base locale $(\\vec e_\\rho,\\vec e_\\varphi,\\vec e_z)$ attachée à $M$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "$$\\overrightarrow{OM}=\\rho\\,\\vec e_\\rho+z\\,\\vec e_z.$$",
+       "origin": "source",
+       "title": "Vecteur position"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "En cylindriques, le vecteur position est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\rho\\vec e_\\rho+\\varphi\\vec e_\\varphi+z\\vec e_z$"
+         },
+         {
+          "id": "b",
+          "md": "$\\rho\\vec e_\\rho+z\\vec e_z$"
+         },
+         {
+          "id": "c",
+          "md": "$\\rho\\vec e_\\rho$"
+         },
+         {
+          "id": "d",
+          "md": "$z\\vec e_z$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\overrightarrow{OM}=\\overrightarrow{OP}+\\overrightarrow{PM}=\\rho\\vec e_\\rho+z\\vec e_z$. L'angle $\\varphi$ n'apparaît pas comme composante : il est « caché » dans la direction de $\\vec e_\\rho$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "⚠ La base cylindrique est une **base mobile** (ou **locale**) : elle change quand $M$ se déplace, donc\n$$d\\vec e_\\rho/_R\\neq\\vec 0\\qquad\\text{et}\\qquad d\\vec e_\\varphi/_R\\neq\\vec 0.$$",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec e_\\rho=\\cos\\varphi\\,\\vec e_x+\\sin\\varphi\\,\\vec e_y,\\qquad \\vec e_\\varphi=-\\sin\\varphi\\,\\vec e_x+\\cos\\varphi\\,\\vec e_y.$$",
+       "origin": "source",
+       "title": "Projection dans la base cartésienne"
+      },
+      {
+       "type": "intuition",
+       "md": "Vue de dessus (plan $(xOy)$), $\\vec e_\\rho$ pointe de l'axe $Oz$ vers $M$ et $\\vec e_\\varphi$ est tangent au cercle de rayon $\\rho$, dans le sens des $\\varphi$ croissants. Quand $M$ tourne, les deux vecteurs tournent avec lui.",
+       "origin": "added"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-cylindriques-dessus.svg",
+       "alt": "Vue de dessus du plan xOy : P à la distance ρ de O dans la direction φ, e_ρ pointant de O vers P et e_φ tourné de 90° dans le sens direct.",
+       "caption": "Figure — vue de dessus : $\\vec e_\\rho$ et $\\vec e_\\varphi$ tournent avec $P$ ; $\\vec e_\\varphi$ s'obtient en tournant $\\vec e_\\rho$ de $\\pi/2$.",
+       "origin": "source"
+      },
+      {
+       "type": "simulation",
+       "scene": "cylindrical-coords",
+       "caption": "Fais tourner la figure et déplace $M$ : la base $(\\vec e_\\rho,\\vec e_\\varphi,\\vec e_z)$ change avec $\\varphi$, sauf $\\vec e_z$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $\\varphi=\\pi/2$, $\\vec e_\\rho=$ ___ (écrire ex, ey, -ex ou -ey)",
+        "answerType": "text",
+        "accepted": [
+         "ey",
+         "e_y",
+         "vec e_y"
+        ],
+        "explanation": "$\\vec e_\\rho=\\cos\\frac\\pi2\\vec e_x+\\sin\\frac\\pi2\\vec e_y=\\vec e_y$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec e_z$ est un vecteur de la base cylindrique qui ne dépend pas de la position de $M$.",
+       "answer": true,
+       "explanation": "Vrai : seuls $\\vec e_\\rho$ et $\\vec e_\\varphi$ tournent avec $M$ ; $\\vec e_z$ reste fixe."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "$\\vec e_\\varphi$ s'écrit dans la base cartésienne :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\cos\\varphi\\vec e_x+\\sin\\varphi\\vec e_y$"
+        },
+        {
+         "id": "b",
+         "md": "$-\\sin\\varphi\\vec e_x+\\cos\\varphi\\vec e_y$"
+        },
+        {
+         "id": "c",
+         "md": "$\\sin\\varphi\\vec e_x-\\cos\\varphi\\vec e_y$"
+        },
+        {
+         "id": "d",
+         "md": "$\\cos\\varphi\\vec e_x-\\sin\\varphi\\vec e_y$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "C'est $\\vec e_\\rho$ tourné de $+\\pi/2$ : $\\cos(\\varphi+\\frac\\pi2)=-\\sin\\varphi$, $\\sin(\\varphi+\\frac\\pi2)=\\cos\\varphi$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Quelle relation est correcte ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec e_\\varphi=\\vec e_z\\wedge\\vec e_\\rho$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec e_\\varphi=\\vec e_\\rho\\wedge\\vec e_z$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec e_\\varphi=\\vec e_\\rho\\cdot\\vec e_z$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec e_\\varphi=\\vec e_z+\\vec e_\\rho$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "La base $(\\vec e_\\rho,\\vec e_\\varphi,\\vec e_z)$ est directe : ordre circulaire $\\vec e_z\\wedge\\vec e_\\rho=\\vec e_\\varphi$. Le second choix donne $-\\vec e_\\varphi$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Une base « locale » est une base qui dépend du point $M$ considéré.",
+       "answer": true,
+       "explanation": "Vrai : c'est pour cela que ses vecteurs varient quand $M$ bouge."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si $\\rho=2$ et $z=-1$, alors $\\|\\overrightarrow{OM}\\|^2=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$\\|\\overrightarrow{OM}\\|^2=\\rho^2+z^2=4+1=5$ car $\\vec e_\\rho\\perp\\vec e_z$."
+      }
+     ]
+    },
+    {
+     "slug": "coordonnees-cylindriques-deplacement",
+     "title": "Coordonnées cylindriques : dérivées et déplacement",
+     "number": "I.4.2",
+     "estimatedMinutes": 10,
+     "summary": "Dérivées des vecteurs $\\vec e_\\rho$ et $\\vec e_\\varphi$, dérivée d'un vecteur de module constant, déplacement et volume élémentaires en cylindriques.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "Dérivées des vecteurs de la base cylindrique",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Rappel : $(\\cos x)'=-\\sin x$, soit $d\\cos x=-\\sin x\\,dx$ et $d\\sin x=\\cos x\\,dx$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$d\\vec e_\\rho=d(\\cos\\varphi)\\,\\vec e_x+d(\\sin\\varphi)\\,\\vec e_y$ (car $\\vec e_x$, $\\vec e_y$ sont fixes)."
+        },
+        {
+         "md": "$d\\vec e_\\rho=(-\\sin\\varphi\\,\\vec e_x+\\cos\\varphi\\,\\vec e_y)\\,d\\varphi=d\\varphi\\,\\vec e_\\varphi$."
+        },
+        {
+         "md": "De même on peut montrer que $d\\vec e_\\varphi=-d\\varphi\\,\\vec e_\\rho$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul de $d\\vec e_\\rho$"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$d\\vec e_\\rho=d\\varphi\\,\\vec e_\\varphi,\\qquad d\\vec e_\\varphi=-d\\varphi\\,\\vec e_\\rho$$\n$$\\frac{d\\vec e_\\rho}{dt}=\\dot\\varphi\\,\\vec e_\\varphi,\\qquad \\frac{d\\vec e_\\varphi}{dt}=-\\dot\\varphi\\,\\vec e_\\rho.$$",
+       "origin": "source",
+       "title": "Dérivées de la base cylindrique"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "$\\dfrac{d\\vec e_\\varphi}{dt}$ vaut :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\dot\\varphi\\,\\vec e_\\rho$"
+         },
+         {
+          "id": "b",
+          "md": "$-\\dot\\varphi\\,\\vec e_\\rho$"
+         },
+         {
+          "id": "c",
+          "md": "$\\dot\\varphi\\,\\vec e_\\varphi$"
+         },
+         {
+          "id": "d",
+          "md": "$\\vec 0$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$d\\vec e_\\varphi=d(-\\sin\\varphi\\vec e_x+\\cos\\varphi\\vec e_y)=-d\\varphi(\\cos\\varphi\\vec e_x+\\sin\\varphi\\vec e_y)=-d\\varphi\\,\\vec e_\\rho$. Attention au signe moins."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "La dérivée d'un vecteur $\\vec A$ de **module constant** est un vecteur **perpendiculaire** à $\\vec A$.",
+       "origin": "source",
+       "title": "Remarque : dérivée d'un vecteur de module constant"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec A^{\\,2}=\\vec A\\cdot\\vec A=\\|\\vec A\\|^2=C^{te}$."
+        },
+        {
+         "md": "Donc $d(\\vec A^{\\,2})=0$, c'est-à-dire $2\\vec A\\cdot d\\vec A=0$.",
+         "why": "La source écrit « d(A²) = cte » ; la différentielle d'une constante est nulle."
+        },
+        {
+         "md": "$\\Rightarrow \\vec A\\cdot d\\vec A=0\\Rightarrow \\vec A\\perp d\\vec A$. Géométriquement, l'extrémité de $\\vec A$ reste sur un cercle."
+        }
+       ],
+       "origin": "source",
+       "title": "En effet"
+      },
+      {
+       "type": "heading",
+       "text": "Déplacement élémentaire (par rapport à $R$)",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Méthode ①.** $\\overrightarrow{OM}=\\rho\\vec e_\\rho+z\\vec e_z\\Rightarrow d\\overrightarrow{OM}=d(\\rho\\vec e_\\rho)+d(z\\vec e_z)=d\\rho\\,\\vec e_\\rho+\\rho\\,d\\vec e_\\rho+dz\\,\\vec e_z$, et comme $d\\vec e_\\rho=d\\varphi\\,\\vec e_\\varphi$ :",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$d\\overrightarrow{OM}=d\\rho\\,\\vec e_\\rho+\\rho\\,d\\varphi\\,\\vec e_\\varphi+dz\\,\\vec e_z.$$",
+       "origin": "source",
+       "title": "Déplacement élémentaire en cylindriques"
+      },
+      {
+       "type": "text",
+       "md": "**Méthode ②.** On passe de $M(\\rho,\\varphi,z)$ à $M'(\\rho+d\\rho,\\varphi+d\\varphi,z+dz)$ et on lit le déplacement associé à chaque variation :\n- $\\rho\\to\\rho+d\\rho$ : déplacement $d\\rho$ selon $\\vec e_\\rho$ ;\n- $\\varphi\\to\\varphi+d\\varphi$ : arc de cercle de rayon $\\rho$, longueur $\\rho\\,d\\varphi$ selon $\\vec e_\\varphi$ (vu de dessus) ;\n- $z\\to z+dz$ : déplacement $dz$ selon $\\vec e_z$.\nOn retrouve le même $d\\overrightarrow{OM}$.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-deplacement-cylindrique.svg",
+       "alt": "Vue de dessus : passage de P(ρ, φ) à P'(ρ+dρ, φ+dφ) ; l'arc de longueur ρ dφ et le segment radial dρ forment un petit rectangle.",
+       "caption": "Figure — déplacement élémentaire dans le plan : $d\\rho$ selon $\\vec e_\\rho$ et $\\rho\\,d\\varphi$ selon $\\vec e_\\varphi$ (et $dz$ selon $\\vec e_z$).",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "En cylindriques, la composante de $d\\overrightarrow{OM}$ selon $\\vec e_\\varphi$ est ___",
+        "answerType": "text",
+        "accepted": [
+         "rho dphi",
+         "ρdφ",
+         "ρ dφ",
+         "rho*dphi",
+         "rhodphi"
+        ],
+        "explanation": "C'est la longueur de l'arc de rayon $\\rho$ et d'angle $d\\varphi$ : $\\rho\\,d\\varphi$. Écrire $d\\varphi$ seul est une erreur fréquente (ce n'est pas une longueur)."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "definition",
+       "md": "$$d\\tau=\\rho\\,d\\rho\\,d\\varphi\\,dz.$$",
+       "origin": "source",
+       "title": "Volume élémentaire"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$x=\\rho\\cos\\varphi,\\qquad y=\\rho\\sin\\varphi,\\qquad z=z\\qquad\\text{donc}\\qquad \\rho=\\sqrt{x^2+y^2}.$$",
+       "origin": "source",
+       "title": "Relation entre cartésiennes et cylindriques"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "$\\dfrac{d\\vec e_\\rho}{dt}$ vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec 0$"
+        },
+        {
+         "id": "b",
+         "md": "$\\dot\\varphi\\,\\vec e_\\varphi$"
+        },
+        {
+         "id": "c",
+         "md": "$-\\dot\\varphi\\,\\vec e_\\varphi$"
+        },
+        {
+         "id": "d",
+         "md": "$\\dot\\rho\\,\\vec e_\\rho$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$d\\vec e_\\rho=d\\varphi\\,\\vec e_\\varphi$, on divise par $dt$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Si $\\|\\vec A\\|$ est constant, alors $\\vec A\\cdot\\dfrac{d\\vec A}{dt}=0$.",
+       "answer": true,
+       "explanation": "Vrai : c'est la remarque du cours, obtenue en dérivant $\\vec A\\cdot\\vec A=C^{te}$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Le volume élémentaire en cylindriques est $d\\tau=$ ___ $\\,d\\rho\\,d\\varphi\\,dz$ (facteur manquant).",
+       "answerType": "text",
+       "accepted": [
+        "rho",
+        "ρ"
+       ],
+       "explanation": "$d\\tau=\\rho\\,d\\rho\\,d\\varphi\\,dz$ : le côté selon $\\vec e_\\varphi$ mesure $\\rho\\,d\\varphi$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Le point de coordonnées cartésiennes $(3,4,7)$ a pour coordonnée cylindrique $\\rho=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$\\rho=\\sqrt{x^2+y^2}=\\sqrt{9+16}=5$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque variation à la longueur du déplacement qu'elle produit.",
+       "pairs": [
+        {
+         "left": "$d\\rho$",
+         "right": "$d\\rho$ selon $\\vec e_\\rho$"
+        },
+        {
+         "left": "$d\\varphi$",
+         "right": "$\\rho\\,d\\varphi$ selon $\\vec e_\\varphi$"
+        },
+        {
+         "left": "$dz$",
+         "right": "$dz$ selon $\\vec e_z$"
+        }
+       ],
+       "explanation": "Méthode ② du cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Dans $d(\\rho\\vec e_\\rho)$, on peut écrire simplement $d\\rho\\,\\vec e_\\rho$.",
+       "answer": false,
+       "explanation": "Faux : $\\vec e_\\rho$ varie, donc $d(\\rho\\vec e_\\rho)=d\\rho\\,\\vec e_\\rho+\\rho\\,d\\vec e_\\rho=d\\rho\\,\\vec e_\\rho+\\rho\\,d\\varphi\\,\\vec e_\\varphi$."
+      }
+     ]
+    },
+    {
+     "slug": "coordonnees-spheriques-base",
+     "title": "Coordonnées sphériques : base et relations",
+     "number": "I.4.3",
+     "estimatedMinutes": 8,
+     "summary": "Définition des coordonnées sphériques $(r,\\theta,\\varphi)$, de la base locale $(\\vec e_r,\\vec e_\\theta,\\vec e_\\varphi)$ et relations avec les autres coordonnées.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4.3 – Coordonnées sphériques",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Le point $M$ est repéré par $(r,\\theta,\\varphi)$ avec\n$$r=OM\\geq0,\\qquad \\theta=(\\vec e_z,\\overrightarrow{OM})\\in[0,\\pi],\\qquad \\varphi=(\\vec e_x,\\overrightarrow{OP})\\in[0,2\\pi],$$\noù $P$ est la projection de $M$ sur le plan $(xOy)$.",
+       "origin": "source",
+       "title": "Coordonnées sphériques"
+      },
+      {
+       "type": "definition",
+       "md": "$(\\vec e_r,\\vec e_\\theta,\\vec e_\\varphi)$ forme la **base sphérique**, orthonormée directe ; c'est une **base mobile**, dite aussi **base locale**. On a $\\vec e_r=\\dfrac{\\overrightarrow{OM}}{\\|\\overrightarrow{OM}\\|}$ et\n$$\\overrightarrow{OM}=r\\,\\vec e_r.$$",
+       "origin": "source",
+       "title": "Base sphérique"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-spheriques.svg",
+       "alt": "Point M à la distance r de O, θ mesuré depuis l'axe Oz, φ mesuré dans le plan xOy jusqu'à la projection P, et base locale (e_r, e_θ, e_φ) en M.",
+       "caption": "Figure — coordonnées sphériques $(r,\\theta,\\varphi)$ et base locale $(\\vec e_r,\\vec e_\\theta,\\vec e_\\varphi)$.",
+       "origin": "source"
+      },
+      {
+       "type": "simulation",
+       "scene": "spherical-coords",
+       "caption": "Fais varier $r$, $\\theta$ et $\\varphi$ et fais tourner la figure : observe la base $(\\vec e_r,\\vec e_\\theta,\\vec e_\\varphi)$ en $M$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Quel est l'intervalle de variation de l'angle $\\theta$ en sphériques ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "$[0,2\\pi]$"
+         },
+         {
+          "id": "b",
+          "md": "$[0,\\pi]$"
+         },
+         {
+          "id": "c",
+          "md": "$[0,\\pi/2]$"
+         },
+         {
+          "id": "d",
+          "md": "$[-\\pi,\\pi]$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\theta$ est mesuré depuis $\\vec e_z$ : de $0$ (pôle nord) à $\\pi$ (pôle sud). C'est $\\varphi$ qui parcourt $[0,2\\pi]$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Relation entre différentes coordonnées",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Dans le plan méridien $(\\vec e_\\rho,\\vec e_z)$ : $\\rho=r\\sin\\theta$, $z=r\\cos\\theta$. Donc\n$$x=r\\sin\\theta\\cos\\varphi,\\qquad y=r\\sin\\theta\\sin\\varphi,\\qquad z=r\\cos\\theta.$$",
+       "origin": "source",
+       "title": "Projections"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-plan-meridien.svg",
+       "alt": "Plan méridien (ρ, z) : M à la distance r de O, θ mesuré depuis Oz, projections ρ = r sin θ et z = r cos θ, base (e_r, e_θ) en M.",
+       "caption": "Figure — dans le plan méridien : $\\rho=r\\sin\\theta$, $z=r\\cos\\theta$.",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec e_r=\\sin\\theta\\,\\vec e_\\rho+\\cos\\theta\\,\\vec e_z,\\qquad \\vec e_\\theta=\\cos\\theta\\,\\vec e_\\rho-\\sin\\theta\\,\\vec e_z,$$\navec $\\vec e_\\rho=\\cos\\varphi\\,\\vec e_x+\\sin\\varphi\\,\\vec e_y$, $\\vec e_\\varphi=-\\sin\\varphi\\,\\vec e_x+\\cos\\varphi\\,\\vec e_y$. En cartésiennes :\n$$\\vec e_r=\\sin\\theta\\cos\\varphi\\,\\vec e_x+\\sin\\theta\\sin\\varphi\\,\\vec e_y+\\cos\\theta\\,\\vec e_z,$$\n$$\\vec e_\\theta=\\cos\\theta\\cos\\varphi\\,\\vec e_x+\\cos\\theta\\sin\\varphi\\,\\vec e_y-\\sin\\theta\\,\\vec e_z.$$",
+       "origin": "source",
+       "title": "Vecteurs de la base sphérique"
+      },
+      {
+       "type": "remark",
+       "md": "Le vecteur $\\vec e_\\varphi$ est le même en cylindriques et en sphériques.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un point a pour coordonnées sphériques $r=2$, $\\theta=\\pi/2$, $\\varphi=0$. Sa coordonnée $x$ vaut ___",
+        "answerType": "number",
+        "accepted": [
+         "2"
+        ],
+        "explanation": "$x=r\\sin\\theta\\cos\\varphi=2\\cdot1\\cdot1=2$ (le point est sur l'axe $Ox$)."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "En sphériques, $\\overrightarrow{OM}=r\\vec e_r+\\theta\\vec e_\\theta+\\varphi\\vec e_\\varphi$.",
+       "answer": false,
+       "explanation": "Faux : $\\overrightarrow{OM}=r\\,\\vec e_r$ seulement ; les angles fixent la direction de $\\vec e_r$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La relation entre $\\rho$ (cylindrique) et les sphériques est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\rho=r\\cos\\theta$"
+        },
+        {
+         "id": "b",
+         "md": "$\\rho=r\\sin\\theta$"
+        },
+        {
+         "id": "c",
+         "md": "$\\rho=r\\sin\\varphi$"
+        },
+        {
+         "id": "d",
+         "md": "$\\rho=r$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Dans le plan méridien, $\\rho$ est le côté opposé à l'angle $\\theta$ mesuré depuis $Oz$ : $\\rho=r\\sin\\theta$, et $z=r\\cos\\theta$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $r=4$ et $\\theta=\\pi/3$, $z=r\\cos\\theta=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$z=4\\cos\\frac\\pi3=4\\cdot\\frac12=2$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "$\\vec e_\\theta$ exprimé dans $(\\vec e_\\rho,\\vec e_z)$ :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\sin\\theta\\vec e_\\rho+\\cos\\theta\\vec e_z$"
+        },
+        {
+         "id": "b",
+         "md": "$\\cos\\theta\\vec e_\\rho-\\sin\\theta\\vec e_z$"
+        },
+        {
+         "id": "c",
+         "md": "$\\cos\\theta\\vec e_\\rho+\\sin\\theta\\vec e_z$"
+        },
+        {
+         "id": "d",
+         "md": "$-\\sin\\theta\\vec e_\\rho+\\cos\\theta\\vec e_z$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Le premier choix est $\\vec e_r$. $\\vec e_\\theta$ est perpendiculaire à $\\vec e_r$, orienté vers les $\\theta$ croissants (vers le bas pour $\\theta<\\pi/2$) : $\\cos\\theta\\vec e_\\rho-\\sin\\theta\\vec e_z$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque coordonnée sphérique à sa définition.",
+       "pairs": [
+        {
+         "left": "$r$",
+         "right": "$OM\\ge0$"
+        },
+        {
+         "left": "$\\theta$",
+         "right": "$(\\vec e_z,\\overrightarrow{OM})\\in[0,\\pi]$"
+        },
+        {
+         "left": "$\\varphi$",
+         "right": "$(\\vec e_x,\\overrightarrow{OP})\\in[0,2\\pi]$"
+        }
+       ],
+       "explanation": "Définitions du cours."
+      }
+     ]
+    },
+    {
+     "slug": "coordonnees-spheriques-deplacement",
+     "title": "Coordonnées sphériques : déplacement élémentaire",
+     "number": "I.4.3",
+     "estimatedMinutes": 9,
+     "summary": "Différentielles de $\\vec e_r$ et $\\vec e_\\theta$, déplacement, volume et surface élémentaires en sphériques.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "Projection et différentiation",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec e_r=\\sin\\theta\\,\\vec e_\\rho+\\cos\\theta\\,\\vec e_z$."
+        },
+        {
+         "md": "$d\\vec e_r=d\\theta\\cos\\theta\\,\\vec e_\\rho+\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi-d\\theta\\sin\\theta\\,\\vec e_z$",
+         "why": "On utilise $d\\vec e_\\rho=d\\varphi\\,\\vec e_\\varphi$ et $d\\vec e_z=\\vec 0$."
+        },
+        {
+         "md": "$=d\\theta\\,(\\cos\\theta\\,\\vec e_\\rho-\\sin\\theta\\,\\vec e_z)+\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$, et la parenthèse est $\\vec e_\\theta$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul de $d\\vec e_r/_R$"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec e_\\theta=\\cos\\theta\\,\\vec e_\\rho-\\sin\\theta\\,\\vec e_z\\Rightarrow d\\vec e_\\theta=d(\\cos\\theta)\\,\\vec e_\\rho+\\cos\\theta\\,d\\vec e_\\rho-d(\\sin\\theta)\\,\\vec e_z$"
+        },
+        {
+         "md": "$=-d\\theta\\sin\\theta\\,\\vec e_\\rho+d\\varphi\\cos\\theta\\,\\vec e_\\varphi-d\\theta\\cos\\theta\\,\\vec e_z$"
+        },
+        {
+         "md": "$=-d\\theta\\,(\\sin\\theta\\,\\vec e_\\rho+\\cos\\theta\\,\\vec e_z)+d\\varphi\\cos\\theta\\,\\vec e_\\varphi$, et la parenthèse est $\\vec e_r$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul de $d\\vec e_\\theta$"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$d\\vec e_r=d\\theta\\,\\vec e_\\theta+\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi,\\qquad d\\vec e_\\theta=-d\\theta\\,\\vec e_r+\\cos\\theta\\,d\\varphi\\,\\vec e_\\varphi.$$",
+       "origin": "source",
+       "title": "Différentielles de la base sphérique"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si seul $\\theta$ varie ($d\\varphi=0$), alors $d\\vec e_r=d\\theta\\,\\vec e_\\theta$.",
+        "answer": true,
+        "explanation": "Vrai : le terme $\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$ disparaît. On retrouve le même schéma qu'en polaires ($d\\vec e_\\rho=d\\varphi\\,\\vec e_\\varphi$)."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Déplacement élémentaire (sphériques)",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Méthode ①.** $\\overrightarrow{OM}=r\\vec e_r\\Rightarrow d\\overrightarrow{OM}/_R=dr\\,\\vec e_r+r\\,d\\vec e_r=dr\\,\\vec e_r+r\\,d\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$.\n\n**Méthode ②.** $M(r,\\theta,\\varphi)\\to M'(r+dr,\\theta+d\\theta,\\varphi+d\\varphi)$ : les déplacements associés sont $dr\\,\\vec e_r$, $r\\,d\\theta\\,\\vec e_\\theta$ (arc de rayon $r$) et $r\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$ (arc de rayon $\\rho=r\\sin\\theta$).",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$d\\overrightarrow{OM}/_R=dr\\,\\vec e_r+r\\,d\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$$\n$$d\\tau=r^2\\,dr\\,\\sin\\theta\\,d\\theta\\,d\\varphi,\\qquad dS=r^2\\sin\\theta\\,d\\theta\\,d\\varphi\\;\\;(\\text{à }r\\text{ fixé}).$$",
+       "origin": "source",
+       "title": "Déplacement, volume et surface élémentaires"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-surface-sphere.svg",
+       "alt": "Sphère de centre O et de rayon r ; un petit élément de surface dS limité par deux méridiens et deux parallèles, de côtés r dθ et r sin θ dφ.",
+       "caption": "Figure — élément de surface sur la sphère : $dS=r\\,d\\theta\\times r\\sin\\theta\\,d\\varphi=r^2\\sin\\theta\\,d\\theta\\,d\\varphi$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pourquoi le déplacement associé à $d\\varphi$ vaut-il $r\\sin\\theta\\,d\\varphi$ et non $r\\,d\\varphi$ ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "parce que $M$ décrit alors un cercle de rayon $\\rho=r\\sin\\theta$ autour de $Oz$"
+         },
+         {
+          "id": "b",
+          "md": "parce que $\\varphi\\in[0,2\\pi]$"
+         },
+         {
+          "id": "c",
+          "md": "c'est une convention"
+         },
+         {
+          "id": "d",
+          "md": "parce que $\\theta$ est petit"
+         }
+        ],
+        "answer": "a",
+        "explanation": "Quand seul $\\varphi$ varie, $M$ tourne autour de l'axe $Oz$ sur un cercle de rayon $\\rho=r\\sin\\theta$ : l'arc vaut $\\rho\\,d\\varphi$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Vérification : en intégrant $dS$ sur toute la sphère, $\\int_0^{2\\pi}\\!\\int_0^\\pi r^2\\sin\\theta\\,d\\theta\\,d\\varphi=4\\pi r^2$, l'aire bien connue de la sphère. De même $\\iiint d\\tau=\\frac43\\pi R^3$.",
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "fill_blank",
+       "prompt": "Le volume élémentaire en sphériques est $d\\tau=r^2\\,dr\\,$ ___ $\\,d\\theta\\,d\\varphi$.",
+       "answerType": "text",
+       "accepted": [
+        "sin theta",
+        "sinθ",
+        "sin θ",
+        "sin(theta)",
+        "sin(θ)"
+       ],
+       "explanation": "$d\\tau=r^2\\sin\\theta\\,dr\\,d\\theta\\,d\\varphi$ : produit des trois côtés $dr$, $r\\,d\\theta$, $r\\sin\\theta\\,d\\varphi$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La composante de $d\\overrightarrow{OM}$ selon $\\vec e_\\theta$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$d\\theta$"
+        },
+        {
+         "id": "b",
+         "md": "$r\\,d\\theta$"
+        },
+        {
+         "id": "c",
+         "md": "$r\\sin\\theta\\,d\\theta$"
+        },
+        {
+         "id": "d",
+         "md": "$r^2d\\theta$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Arc de cercle de rayon $r$ et d'angle $d\\theta$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$d\\vec e_\\theta=-d\\theta\\,\\vec e_r+\\cos\\theta\\,d\\varphi\\,\\vec e_\\varphi$.",
+       "answer": true,
+       "explanation": "Vrai : résultat du calcul du cours."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "L'aire de la sphère de rayon $R$ vaut $4\\pi R^2$. En intégrant $dS=R^2\\sin\\theta\\,d\\theta\\,d\\varphi$, l'intégrale $\\int_0^\\pi\\sin\\theta\\,d\\theta$ vaut ___",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$\\int_0^\\pi\\sin\\theta\\,d\\theta=[-\\cos\\theta]_0^\\pi=2$, puis $\\times2\\pi R^2$ donne $4\\pi R^2$."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre le calcul de $d\\overrightarrow{OM}$ par la méthode ①.",
+       "items": [
+        "$\\overrightarrow{OM}=r\\vec e_r$",
+        "$d\\overrightarrow{OM}=dr\\,\\vec e_r+r\\,d\\vec e_r$",
+        "$d\\vec e_r=d\\theta\\,\\vec e_\\theta+\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$",
+        "$d\\overrightarrow{OM}=dr\\,\\vec e_r+r\\,d\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$"
+       ],
+       "explanation": "On différencie le produit $r\\vec e_r$, puis on remplace $d\\vec e_r$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "description-cinematique",
+   "title": "Description cinématique",
+   "number": "II",
+   "lessons": [
+    {
+     "slug": "trajectoire-equation-horaire-phase",
+     "title": "Trajectoire, équation horaire et plan de phase",
+     "number": "II.1",
+     "estimatedMinutes": 9,
+     "summary": "Équation de la trajectoire, équation horaire, trajectoire, hodographe, trajectoire et portrait de phase ; application au pendule non amorti.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "II – Description cinématique",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Quelques définitions",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "C'est une relation **indépendante du temps** entre les coordonnées du point $M$ : par exemple $y=f(x)$, ou l'ellipse $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$.",
+       "origin": "source",
+       "title": "Équation de la trajectoire"
+      },
+      {
+       "type": "definition",
+       "md": "C'est un ensemble de relations entre les coordonnées et le **temps** : $x(t),y(t),z(t)$ ou $\\rho(t),\\varphi(t),z(t)$.",
+       "origin": "source",
+       "title": "Équation horaire"
+      },
+      {
+       "type": "definition",
+       "md": "Ensemble des positions occupées par le point $M$ au cours de son mouvement ; ces positions sont données par l'extrémité du vecteur position $\\overrightarrow{OM}$ (par exemple $\\overrightarrow{OM}=x\\vec e_x+y\\vec e_y$ dans le plan).",
+       "origin": "source",
+       "title": "Trajectoire"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-trajectoire.svg",
+       "alt": "Courbe (Γ) dans le plan xOy, avec trois positions M(t1), M(t2), M(t3) et leurs vecteurs position issus de O.",
+       "caption": "Figure — la trajectoire $(\\Gamma)$ est décrite par l'extrémité du vecteur position $\\overrightarrow{OM}(t)$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "$x(t)=2t$, $y(t)=4t^2$ est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "une équation de la trajectoire"
+         },
+         {
+          "id": "b",
+          "md": "une équation horaire"
+         },
+         {
+          "id": "c",
+          "md": "un hodographe"
+         },
+         {
+          "id": "d",
+          "md": "un portrait de phase"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Les coordonnées sont données en fonction de $t$ : c'est l'équation horaire. En éliminant $t$ on obtient l'équation de la trajectoire $y=x^2$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "definition",
+       "md": "L'ensemble des points $N$ tels que $\\overrightarrow{ON}=\\vec V$ : c'est la courbe décrite par l'extrémité du vecteur vitesse, d'équation $V_y=f(V_x)$ (avec $\\vec V=V_x\\vec e_x+V_y\\vec e_y$).",
+       "origin": "source",
+       "title": "Hodographe"
+      },
+      {
+       "type": "definition",
+       "md": "Ensemble des points $P$ dans le plan $(x,\\dot x)$ (**plan de phase**) : $\\dot x=f(x)$.",
+       "origin": "source",
+       "title": "Trajectoire de phase"
+      },
+      {
+       "type": "definition",
+       "md": "Ensemble de trajectoires de phase pour **différentes conditions initiales**.",
+       "origin": "source",
+       "title": "Portrait de phase"
+      },
+      {
+       "type": "example",
+       "md": "Considérons un pendule non amorti, d'équation horaire $\\theta(t)=\\theta_m\\cos(\\omega t+\\varphi)$ (ou $x(t)=x_{max}\\cos(\\omega t+\\varphi)$). Trouver sa trajectoire de phase.",
+       "origin": "source",
+       "title": "Application directe : pendule non amorti",
+       "steps": [
+        {
+         "md": "$\\dot\\theta(t)=-\\theta_m\\,\\omega\\sin(\\omega t+\\varphi)$."
+        },
+        {
+         "md": "Donc $\\cos^2(\\omega t+\\varphi)=\\dfrac{\\theta^2}{\\theta_m^2}$ et $\\sin^2(\\omega t+\\varphi)=\\dfrac{\\dot\\theta^2}{(\\theta_m\\omega)^2}$."
+        },
+        {
+         "md": "$\\Rightarrow\\;\\dfrac{\\theta^2}{\\theta_m^2}+\\dfrac{\\dot\\theta^2}{(\\theta_m\\omega)^2}=1$ : une **ellipse** dans le plan $(\\theta,\\dot\\theta)$.",
+         "why": "On a utilisé $\\cos^2+\\sin^2=1$ pour éliminer le temps."
+        },
+        {
+         "md": "Les valeurs de $\\theta_m$ (ou $X_m$) et $\\varphi$ sont déterminées par les **C.I.** (conditions initiales). Chaque C.I. donne une ellipse : l'ensemble de ces ellipses emboîtées est le portrait de phase."
+        }
+       ]
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-portrait-phase.svg",
+       "alt": "Plan de phase (θ, θ point) : trois ellipses emboîtées parcourues dans le sens horaire, chacune passant par un point de conditions initiales C.I.1, C.I.2, C.I.3.",
+       "caption": "Figure — portrait de phase du pendule non amorti : une ellipse par jeu de conditions initiales.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $\\theta(t)=0{,}2\\cos(5t)$, la trajectoire de phase est l'ellipse $\\dfrac{\\theta^2}{a^2}+\\dfrac{\\dot\\theta^2}{b^2}=1$ avec $b=$ ___",
+        "answerType": "number",
+        "accepted": [
+         "1"
+        ],
+        "explanation": "$b=\\theta_m\\omega=0{,}2\\times5=1$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "L'équation de la trajectoire contient le temps $t$.",
+       "answer": false,
+       "explanation": "Faux : elle est **indépendante du temps** ; c'est l'équation horaire qui contient $t$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque notion à sa description.",
+       "pairs": [
+        {
+         "left": "trajectoire",
+         "right": "courbe décrite par l'extrémité de $\\overrightarrow{OM}$"
+        },
+        {
+         "left": "hodographe",
+         "right": "courbe décrite par l'extrémité de $\\vec V$ (avec $\\overrightarrow{ON}=\\vec V$)"
+        },
+        {
+         "left": "trajectoire de phase",
+         "right": "courbe dans le plan $(x,\\dot x)$"
+        },
+        {
+         "left": "portrait de phase",
+         "right": "plusieurs trajectoires de phase pour différentes C.I."
+        }
+       ],
+       "explanation": "Définitions du cours."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Pour $x(t)=\\cos t$, $y(t)=\\sin t$, l'équation de la trajectoire est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$y=x$"
+        },
+        {
+         "id": "b",
+         "md": "$x^2+y^2=1$"
+        },
+        {
+         "id": "c",
+         "md": "$y=\\tan t$"
+        },
+        {
+         "id": "d",
+         "md": "$x^2-y^2=1$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\cos^2t+\\sin^2t=1$ élimine $t$ : cercle de rayon 1."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Pour un pendule non amorti, la trajectoire de phase est une ellipse.",
+       "answer": true,
+       "explanation": "Vrai : $\\frac{\\theta^2}{\\theta_m^2}+\\frac{\\dot\\theta^2}{(\\theta_m\\omega)^2}=1$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $x(t)=3\\cos(2t)$, le demi-axe de l'ellipse de phase selon $\\dot x$ vaut ___",
+       "answerType": "number",
+       "accepted": [
+        "6"
+       ],
+       "explanation": "$\\dot x_{max}=x_{max}\\,\\omega=3\\times2=6$."
+      }
+     ]
+    },
+    {
+     "slug": "vitesse-d-un-point",
+     "title": "Vitesse par rapport à un référentiel",
+     "number": "II.2",
+     "estimatedMinutes": 8,
+     "summary": "Définition du vecteur vitesse et ses expressions en coordonnées cartésiennes, cylindriques et sphériques.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2 – Vitesse par rapport à un référentiel",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Soit $R(O,x,y,z)$ le référentiel d'étude. On définit la vitesse du point $M$ dans $R$ par\n$$\\vec V_{M/R}=\\left.\\frac{d\\overrightarrow{OM}}{dt}\\right|_R\\qquad(\\mathrm{m\\cdot s^{-1}})\\ \\text{(S.I.)}.$$",
+       "origin": "source",
+       "title": "Vitesse"
+      },
+      {
+       "type": "remark",
+       "md": "1) $\\vec V_{M/R}=\\left.\\dfrac{d\\overrightarrow{AM}}{dt}\\right|_R$ pour tout point $A$ **fixe dans $R$** (car $\\overrightarrow{OM}=\\overrightarrow{OA}+\\overrightarrow{AM}$ avec $\\overrightarrow{OA}$ constant).\n\n2) $\\vec V_{M/R}=\\dfrac{d\\overrightarrow{OM}/_R}{dt}$ : on peut l'obtenir en **divisant** le déplacement élémentaire par $dt$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Pour calculer $\\vec V_{M/R}$, on peut dériver $\\overrightarrow{AM}$ au lieu de $\\overrightarrow{OM}$, avec $A$ n'importe quel point mobile.",
+        "answer": false,
+        "explanation": "Faux : $A$ doit être **fixe dans $R$**, sinon $\\overrightarrow{OA}$ varie et sa dérivée s'ajoute."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "heading",
+       "text": "Expression en coordonnées",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$\\overrightarrow{OM}=x\\vec e_x+y\\vec e_y+z\\vec e_z\\;\\Rightarrow\\;\\vec V_{M/R}=\\dot x\\,\\vec e_x+\\dot y\\,\\vec e_y+\\dot z\\,\\vec e_z.$",
+       "origin": "source",
+       "title": "Cartésiennes"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$\\overrightarrow{OM}=\\rho\\vec e_\\rho+z\\vec e_z\\;\\Rightarrow\\;\\vec V_{M/R}=\\dot\\rho\\,\\vec e_\\rho+\\rho\\dot\\varphi\\,\\vec e_\\varphi+\\dot z\\,\\vec e_z.$",
+       "origin": "source",
+       "title": "Cylindriques"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "On utilise la remarque relative au déplacement élémentaire, $d\\overrightarrow{OM}/_R=dr\\,\\vec e_r+r\\,d\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,d\\varphi\\,\\vec e_\\varphi$ :\n$$\\vec V_{M/R}=\\frac{d\\overrightarrow{OM}/_R}{dt}=\\dot r\\,\\vec e_r+r\\dot\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,\\dot\\varphi\\,\\vec e_\\varphi.$$",
+       "origin": "source",
+       "title": "Sphériques"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "En cylindriques, avec $\\rho=2$ m constant, $\\dot\\varphi=3$ rad/s et $\\dot z=0$, la norme de la vitesse vaut ___ m/s.",
+        "answerType": "number",
+        "accepted": [
+         "6"
+        ],
+        "explanation": "$\\vec V_{M/R}=\\rho\\dot\\varphi\\,\\vec e_\\varphi$, de norme $2\\times3=6$ m/s."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "En cylindriques, la composante orthoradiale de la vitesse est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\dot\\varphi$"
+        },
+        {
+         "id": "b",
+         "md": "$\\rho\\dot\\varphi$"
+        },
+        {
+         "id": "c",
+         "md": "$\\dot\\rho$"
+        },
+        {
+         "id": "d",
+         "md": "$\\rho\\dot\\rho$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec V_{M/R}=\\dot\\rho\\vec e_\\rho+\\rho\\dot\\varphi\\vec e_\\varphi+\\dot z\\vec e_z$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "L'unité S.I. de la vitesse est le ___",
+       "answerType": "text",
+       "accepted": [
+        "m/s",
+        "m.s-1",
+        "m·s-1",
+        "m s-1",
+        "m.s^-1",
+        "m·s^-1"
+       ],
+       "explanation": "$\\mathrm{m\\cdot s^{-1}}$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "En sphériques, $\\vec V_{M/R}=\\dot r\\vec e_r+r\\dot\\theta\\vec e_\\theta+r\\sin\\theta\\,\\dot\\varphi\\vec e_\\varphi$.",
+       "answer": true,
+       "explanation": "Vrai : on divise $d\\overrightarrow{OM}$ par $dt$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque système à l'expression de $\\vec V_{M/R}$.",
+       "pairs": [
+        {
+         "left": "cartésiennes",
+         "right": "$\\dot x\\vec e_x+\\dot y\\vec e_y+\\dot z\\vec e_z$"
+        },
+        {
+         "left": "cylindriques",
+         "right": "$\\dot\\rho\\vec e_\\rho+\\rho\\dot\\varphi\\vec e_\\varphi+\\dot z\\vec e_z$"
+        },
+        {
+         "left": "sphériques",
+         "right": "$\\dot r\\vec e_r+r\\dot\\theta\\vec e_\\theta+r\\sin\\theta\\dot\\varphi\\vec e_\\varphi$"
+        }
+       ],
+       "explanation": "Les trois expressions du cours."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si $x(t)=3t^2$, $y=z=0$, la vitesse à $t=2$ s vaut ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "12"
+       ],
+       "explanation": "$\\dot x=6t=12$ m/s."
+      }
+     ]
+    },
+    {
+     "slug": "acceleration-d-un-point",
+     "title": "Accélération",
+     "number": "II.3",
+     "estimatedMinutes": 10,
+     "summary": "Définition de l'accélération, expressions en cartésiennes et cylindriques (composantes radiale, orthoradiale, axiale) et loi des aires.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "3 – Accélération",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "On définit l'accélération de $M$ par rapport à $R$ par\n$$\\vec a_{M/R}=\\left.\\frac{d\\vec V_{M/R}}{dt}\\right|_R=\\left.\\frac{d^2\\overrightarrow{OM}}{dt^2}\\right|_R\\qquad(\\mathrm{m\\cdot s^{-2}})\\ \\text{S.I.}$$",
+       "origin": "source",
+       "title": "Accélération"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec a_{M/R}=\\ddot x\\,\\vec e_x+\\ddot y\\,\\vec e_y+\\ddot z\\,\\vec e_z.$$",
+       "origin": "source",
+       "title": "Accélération en coordonnées cartésiennes"
+      },
+      {
+       "type": "heading",
+       "text": "Accélération en coordonnées cylindriques",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "On a $\\vec V_{M/R}=\\dot\\rho\\,\\vec e_\\rho+\\rho\\dot\\varphi\\,\\vec e_\\varphi+\\dot z\\,\\vec e_z$."
+        },
+        {
+         "md": "$\\vec a_{M/R}=\\ddot\\rho\\,\\vec e_\\rho+\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi+\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi+\\rho\\ddot\\varphi\\,\\vec e_\\varphi-\\rho\\dot\\varphi^2\\,\\vec e_\\rho+\\ddot z\\,\\vec e_z$",
+         "why": "On dérive chaque produit et on utilise $\\dot{\\vec e}_\\rho=\\dot\\varphi\\vec e_\\varphi$, $\\dot{\\vec e}_\\varphi=-\\dot\\varphi\\vec e_\\rho$."
+        },
+        {
+         "md": "$\\vec a_{M/R}=(\\ddot\\rho-\\rho\\dot\\varphi^2)\\,\\vec e_\\rho+(2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi)\\,\\vec e_\\varphi+\\ddot z\\,\\vec e_z$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec a_{M/R}=a_\\rho\\vec e_\\rho+a_\\varphi\\vec e_\\varphi+a_z\\vec e_z$$\navec $a_\\rho=\\ddot\\rho-\\rho\\dot\\varphi^2$ (composante **radiale**), $a_\\varphi=2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi$ (composante **orthoradiale**), $a_z=\\ddot z$ (composante **axiale**).",
+       "origin": "source",
+       "title": "Composantes cylindriques"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pour un mouvement circulaire ($\\rho=R$ constant) à vitesse angulaire constante, $a_\\rho$ vaut :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$0$"
+         },
+         {
+          "id": "b",
+          "md": "$-R\\dot\\varphi^2$"
+         },
+         {
+          "id": "c",
+          "md": "$R\\ddot\\varphi$"
+         },
+         {
+          "id": "d",
+          "md": "$2R\\dot\\varphi$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\dot\\rho=\\ddot\\rho=0$, donc $a_\\rho=-R\\dot\\varphi^2$ : l'accélération est dirigée vers l'axe, même si la vitesse a une norme constante."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$a_\\varphi=\\frac1\\rho\\,\\frac{d(\\rho^2\\dot\\varphi)}{dt}.$$ Si $a_\\varphi=0$, alors $\\rho^2\\dot\\varphi=C^{te}$ (**loi des aires**).",
+       "origin": "source",
+       "title": "Remarque : loi des aires"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\dfrac{d(\\rho^2\\dot\\varphi)}{dt}=2\\rho\\dot\\rho\\dot\\varphi+\\rho^2\\ddot\\varphi$"
+        },
+        {
+         "md": "$=\\rho\\,[2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi]=\\rho\\,a_\\varphi$."
+        }
+       ],
+       "origin": "source",
+       "title": "En effet"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si $a_\\varphi=0$ pendant tout le mouvement, alors $\\rho^2\\dot\\varphi$ reste constant.",
+        "answer": true,
+        "explanation": "Vrai : $\\frac{d(\\rho^2\\dot\\varphi)}{dt}=\\rho a_\\varphi=0$. C'est la loi des aires."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "exercise",
+       "md": "Calculer $\\vec a_{M/R}$ en coordonnées sphériques. (Pas de solution dans la source ; la solution ci-dessous est ajoutée.)",
+       "origin": "source",
+       "title": "EX",
+       "solution": [
+        {
+         "md": "On part de $\\vec V_{M/R}=\\dot r\\,\\vec e_r+r\\dot\\theta\\,\\vec e_\\theta+r\\sin\\theta\\,\\dot\\varphi\\,\\vec e_\\varphi$ et des dérivées $\\dot{\\vec e}_r=\\dot\\theta\\vec e_\\theta+\\sin\\theta\\dot\\varphi\\vec e_\\varphi$, $\\dot{\\vec e}_\\theta=-\\dot\\theta\\vec e_r+\\cos\\theta\\dot\\varphi\\vec e_\\varphi$, $\\dot{\\vec e}_\\varphi=-\\dot\\varphi(\\sin\\theta\\,\\vec e_r+\\cos\\theta\\,\\vec e_\\theta)$."
+        },
+        {
+         "md": "$a_r=\\ddot r-r\\dot\\theta^2-r\\sin^2\\theta\\,\\dot\\varphi^2$."
+        },
+        {
+         "md": "$a_\\theta=r\\ddot\\theta+2\\dot r\\dot\\theta-r\\sin\\theta\\cos\\theta\\,\\dot\\varphi^2$."
+        },
+        {
+         "md": "$a_\\varphi=r\\sin\\theta\\,\\ddot\\varphi+2\\dot r\\dot\\varphi\\sin\\theta+2r\\dot\\theta\\dot\\varphi\\cos\\theta$."
+        }
+       ]
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "fill_blank",
+       "prompt": "L'unité S.I. de l'accélération est le m·s^___ (exposant).",
+       "answerType": "number",
+       "accepted": [
+        "-2"
+       ],
+       "explanation": "$\\mathrm{m\\cdot s^{-2}}$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La composante orthoradiale de l'accélération en cylindriques est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\ddot\\rho-\\rho\\dot\\varphi^2$"
+        },
+        {
+         "id": "b",
+         "md": "$2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi$"
+        },
+        {
+         "id": "c",
+         "md": "$\\rho\\ddot\\varphi$"
+        },
+        {
+         "id": "d",
+         "md": "$\\ddot z$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Le terme $2\\dot\\rho\\dot\\varphi$ est souvent oublié : il vient des deux termes $\\dot\\rho\\dot\\varphi$ obtenus en dérivant $\\rho\\dot\\varphi\\vec e_\\varphi$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "En cylindriques, $a_\\rho=\\ddot\\rho$.",
+       "answer": false,
+       "explanation": "Faux : $a_\\rho=\\ddot\\rho-\\rho\\dot\\varphi^2$ ; le terme $-\\rho\\dot\\varphi^2$ vient de la rotation de la base."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $\\rho=2$ m constant et $\\dot\\varphi=3$ rad/s constant, $|a_\\rho|=$ ___ m/s².",
+       "answerType": "number",
+       "accepted": [
+        "18"
+       ],
+       "explanation": "$|a_\\rho|=\\rho\\dot\\varphi^2=2\\times9=18$ m/s²."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque composante cylindrique de l'accélération à son nom.",
+       "pairs": [
+        {
+         "left": "$a_\\rho$",
+         "right": "radiale"
+        },
+        {
+         "left": "$a_\\varphi$",
+         "right": "orthoradiale"
+        },
+        {
+         "left": "$a_z$",
+         "right": "axiale"
+        }
+       ],
+       "explanation": "Vocabulaire du cours."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La loi des aires s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\rho\\dot\\varphi=C^{te}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\rho^2\\dot\\varphi=C^{te}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\rho^2\\ddot\\varphi=0$"
+        },
+        {
+         "id": "d",
+         "md": "$\\dot\\rho=0$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Elle découle de $a_\\varphi=\\frac1\\rho\\frac{d(\\rho^2\\dot\\varphi)}{dt}=0$."
+      }
+     ]
+    },
+    {
+     "slug": "base-de-frenet",
+     "title": "Abscisse curviligne et base de Frenet",
+     "number": "II.4",
+     "estimatedMinutes": 7,
+     "summary": "L'abscisse curviligne, les vecteurs tangent $\\vec T$, normal $\\vec N$ et binormal $\\vec B$, et la vitesse $\\vec V=\\dot s\\,\\vec T$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "4) Expression intrinsèque – Base de Frenet",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Soit $(T)$ la trajectoire du point $M$ en mouvement par rapport à $R$, **orientée dans le sens du mouvement**. Considérons un point $A$ fixe de $(T)$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "$$s=\\overset{\\frown}{AM},$$ longueur de l'arc de trajectoire de $A$ à $M$.",
+       "origin": "source",
+       "title": "Abscisse curviligne"
+      },
+      {
+       "type": "definition",
+       "md": "- $\\vec T$ : vecteur **tangent** à la trajectoire dans le sens du mouvement ;\n- $\\vec N$ : la **normale** à la trajectoire ($\\perp\\vec T$), orientée vers le **centre du cercle** de rayon de courbure $R_c$ ;\n- $\\vec B=\\vec T\\wedge\\vec N$.\n$(\\vec T,\\vec N,\\vec B)$ est une base orthonormée directe.",
+       "origin": "source",
+       "title": "Base de Frenet"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-frenet.svg",
+       "alt": "Trajectoire orientée (T) avec un point fixe A, l'abscisse curviligne s, deux positions M et M' avec leurs vecteurs T (tangent) et N (vers le centre de courbure), le cercle de courbure de centre C et de rayon R_c en M, et B perpendiculaire au plan.",
+       "caption": "Figure — base de Frenet : $\\vec T$ tangent dans le sens du mouvement, $\\vec N$ vers le centre de courbure $C$, $\\vec B=\\vec T\\wedge\\vec N$.",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "$(\\vec e_r,\\vec e_\\theta)$ : base **polaire** ; $(\\vec T,\\vec N)$ : base de **Frenet**. En un même point $M$, la base polaire dépend de $O$, la base de Frenet ne dépend que de la trajectoire.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-polaire-frenet.svg",
+       "alt": "Au même point M d'une trajectoire : la base polaire (e_r, e_θ) liée à la direction OM et la base de Frenet (T, N) liée à la trajectoire.",
+       "caption": "Figure — en un même point $M$, la base polaire $(\\vec e_r,\\vec e_\\theta)$ et la base de Frenet $(\\vec T,\\vec N)$ sont en général différentes.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Le vecteur $\\vec N$ de Frenet est orienté :",
+        "options": [
+         {
+          "id": "a",
+          "md": "vers l'origine $O$"
+         },
+         {
+          "id": "b",
+          "md": "vers le centre de courbure de la trajectoire"
+         },
+         {
+          "id": "c",
+          "md": "dans le sens du mouvement"
+         },
+         {
+          "id": "d",
+          "md": "toujours vers le bas"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\vec N$ pointe vers le centre du cercle de courbure (concavité de la trajectoire). Ce n'est pas $-\\vec e_r$, qui pointe vers $O$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "On écrit $\\vec T=\\dfrac{\\vec V}{\\|\\vec V\\|}$ et\n$$\\vec V=\\left.\\frac{d\\overrightarrow{AM}}{dt}\\right|_R=\\frac{d\\overrightarrow{AM}}{ds}\\cdot\\frac{ds}{dt}=\\dot s\\,\\vec T,\\qquad \\dot s=V.$$",
+       "origin": "source",
+       "title": "Vitesse dans la base de Frenet"
+      },
+      {
+       "type": "simulation",
+       "scene": "frenet-helix",
+       "caption": "Lance le mouvement sur l'hélice : $\\vec V$ reste porté par $\\vec T$ et l'accélération a une composante selon $\\vec N$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Dans la base de Frenet, la vitesse n'a qu'une seule composante, selon $\\vec T$.",
+        "answer": true,
+        "explanation": "Vrai : $\\vec V=\\dot s\\,\\vec T$, puisque $\\vec T$ est par définition tangent à la trajectoire dans le sens du mouvement."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "La base de Frenet dépend du choix de l'origine $O$.",
+       "answer": false,
+       "explanation": "Faux : elle ne dépend que de la trajectoire (c'est la base polaire qui dépend de $O$)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Le vecteur binormal est $\\vec B=\\vec T\\wedge$ ___ (écrire T, N ou B)",
+       "answerType": "text",
+       "accepted": [
+        "N",
+        "vec N"
+       ],
+       "explanation": "$\\vec B=\\vec T\\wedge\\vec N$, pour que $(\\vec T,\\vec N,\\vec B)$ soit directe."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "$\\dot s$ représente :",
+       "options": [
+        {
+         "id": "a",
+         "md": "la norme de la vitesse $V$"
+        },
+        {
+         "id": "b",
+         "md": "l'accélération tangentielle"
+        },
+        {
+         "id": "c",
+         "md": "le rayon de courbure"
+        },
+        {
+         "id": "d",
+         "md": "l'abscisse curviligne"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\vec V=\\dot s\\,\\vec T$ donc $\\dot s=V$ (mouvement orienté dans le sens de $\\vec T$)."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec T=\\dfrac{\\vec V}{\\|\\vec V\\|}$.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec T$ est le vecteur unitaire de la vitesse."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque vecteur de Frenet à sa description.",
+       "pairs": [
+        {
+         "left": "$\\vec T$",
+         "right": "tangent, dans le sens du mouvement"
+        },
+        {
+         "left": "$\\vec N$",
+         "right": "normal, vers le centre de courbure"
+        },
+        {
+         "left": "$\\vec B$",
+         "right": "$\\vec T\\wedge\\vec N$"
+        }
+       ],
+       "explanation": "Définitions du cours."
+      }
+     ]
+    },
+    {
+     "slug": "vitesse-acceleration-frenet",
+     "title": "Accélération tangentielle et normale",
+     "number": "II.4",
+     "estimatedMinutes": 9,
+     "summary": "Dérivée de $\\vec T$, décomposition $\\vec a=a_T\\vec T+a_N\\vec N$, rayon de courbure et formule $R_c=V^3/\\|\\vec V\\wedge\\vec a\\|$.",
+     "blocks": [
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Si $d\\alpha$ est l'angle dont tourne $\\vec T$ quand $M$ parcourt $ds$, on a $ds=R_c\\,d\\alpha$ et\n$$\\vec N=\\frac{d\\vec T}{d\\alpha}=\\frac{d\\vec T}{ds}\\cdot\\frac{ds}{d\\alpha}=R_c\\,\\frac{d\\vec T}{ds}=R_c\\,\\frac{d\\vec T}{dt}\\cdot\\frac1{\\dot s}.$$\nDonc $\\dfrac{d\\vec T}{dt}=\\dfrac{\\dot s}{R_c}\\,\\vec N$.",
+       "origin": "source",
+       "title": "Dérivée de $\\vec T$"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-angle-frenet.svg",
+       "alt": "Arc de cercle de centre C et de rayon R_c entre M et M' ; l'angle dα au centre, la longueur d'arc ds, et les tangentes T en M et en M'.",
+       "caption": "Figure — quand $M$ parcourt $ds$, $\\vec T$ tourne de $d\\alpha$ : $ds=R_c\\,d\\alpha$.",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "Expression de $\\vec V$ et $\\vec a$",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec V=V\\,\\vec T=\\dot s\\,\\vec T$ $\\left(V=\\dfrac{ds}{dt}\\right)$."
+        },
+        {
+         "md": "$\\vec a=\\left.\\dfrac{d\\vec V}{dt}\\right|_R=\\ddot s\\,\\vec T+\\dot s\\,\\dfrac{d\\vec T}{dt}$."
+        },
+        {
+         "md": "$\\vec a=\\ddot s\\,\\vec T+\\dfrac{\\dot s^2}{R_c}\\,\\vec N=\\dfrac{dV}{dt}\\,\\vec T+\\dfrac{V^2}{R_c}\\,\\vec N=a_T\\vec T+a_N\\vec N$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec a=a_T\\,\\vec T+a_N\\,\\vec N,\\qquad a_T=\\frac{dV}{dt}=\\ddot s\\ \\ (\\text{accélération tangentielle}),\\qquad a_N=\\frac{V^2}{R_c}\\ \\ (\\text{accélération normale}).$$\nOn en tire le rayon de courbure : $R_c=\\dfrac{V^2}{a_N}$.",
+       "origin": "source",
+       "title": "Accélération dans la base de Frenet"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Une voiture roule à $V=20$ m/s dans un virage de rayon $R_c=100$ m. Son accélération normale vaut $a_N=$ ___ m/s².",
+        "answerType": "number",
+        "accepted": [
+         "4"
+        ],
+        "explanation": "$a_N=V^2/R_c=400/100=4$ m/s²."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "$a_T$ mesure le changement de **norme** de la vitesse (on accélère ou on freine), $a_N$ le changement de **direction** (on tourne). Un mouvement uniforme ($V$ constant) a $a_T=0$ mais peut avoir $a_N\\neq0$.",
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "On a $\\vec V=V\\,\\vec T$ et $\\vec a=a_T\\vec T+a_N\\vec N$, donc\n$$\\vec V\\wedge\\vec a=V\\,a_N\\,\\vec B=\\frac{V^3}{R_c}\\,\\vec B\\;\\Rightarrow\\;\\|\\vec V\\wedge\\vec a\\|=\\frac{V^3}{R_c}\\;\\Rightarrow\\;R_c=\\frac{V^3}{\\|\\vec V\\wedge\\vec a\\|}.$$\n✔ Cette formule est valable quel que soit le système de coordonnées.",
+       "origin": "source",
+       "title": "Remarque : rayon de courbure"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Un mouvement à vitesse de norme constante a forcément une accélération nulle.",
+        "answer": false,
+        "explanation": "Faux : $a_T=dV/dt=0$, mais $a_N=V^2/R_c$ est non nul dès que la trajectoire est courbe."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "L'accélération tangentielle vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$V^2/R_c$"
+        },
+        {
+         "id": "b",
+         "md": "$dV/dt$"
+        },
+        {
+         "id": "c",
+         "md": "$V/R_c$"
+        },
+        {
+         "id": "d",
+         "md": "$\\dot s^2$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$a_T=dV/dt=\\ddot s$ ; $V^2/R_c$ est l'accélération normale."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si $V=3$ m/s et $a_N=1{,}5$ m/s², alors $R_c=$ ___ m.",
+       "answerType": "number",
+       "accepted": [
+        "6"
+       ],
+       "explanation": "$R_c=V^2/a_N=9/1{,}5=6$ m."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "L'accélération normale $a_N$ est toujours positive ou nulle.",
+       "answer": true,
+       "explanation": "Vrai : $a_N=V^2/R_c\\ge0$ car $\\vec N$ est orienté vers le centre de courbure."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La formule $R_c=V^3/\\|\\vec V\\wedge\\vec a\\|$ vient de :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec V\\wedge\\vec a=V\\,a_N\\,\\vec B$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec V\\cdot\\vec a=V\\,a_T$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec a=\\ddot s\\vec T$"
+        },
+        {
+         "id": "d",
+         "md": "$ds=R_c\\,d\\alpha$ seulement"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Seule la composante normale de $\\vec a$ contribue au produit vectoriel avec $\\vec V$ (car $\\vec T\\wedge\\vec T=\\vec 0$)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $\\vec V=(2,0,0)$ et $\\vec a=(0,4,0)$ (en unités S.I.), $R_c=$ ___ m.",
+       "answerType": "number",
+       "accepted": [
+        "1"
+       ],
+       "explanation": "$\\vec V\\wedge\\vec a=(0,0,8)$ donc $\\|\\vec V\\wedge\\vec a\\|=8$ ; $V^3=2^3=8$ ; $R_c=8/8=1$ m. (Ici $\\vec a\\perp\\vec V$, on peut aussi faire $V^2/a_N=4/4=1$.)"
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre l'obtention de $\\vec a$ dans la base de Frenet.",
+       "items": [
+        "$\\vec V=\\dot s\\,\\vec T$",
+        "$\\vec a=\\ddot s\\,\\vec T+\\dot s\\,\\dfrac{d\\vec T}{dt}$",
+        "$\\dfrac{d\\vec T}{dt}=\\dfrac{\\dot s}{R_c}\\vec N$",
+        "$\\vec a=\\ddot s\\,\\vec T+\\dfrac{\\dot s^2}{R_c}\\vec N$"
+       ],
+       "explanation": "On dérive le produit $\\dot s\\vec T$ puis on remplace $d\\vec T/dt$."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "mouvements-usuels",
+   "title": "Étude de quelques mouvements usuels",
+   "number": "III",
+   "lessons": [
+    {
+     "slug": "mouvement-rectiligne-uniforme",
+     "title": "Mouvement rectiligne uniforme",
+     "number": "III.1",
+     "estimatedMinutes": 5,
+     "summary": "Le mouvement rectiligne uniforme et son équation horaire $x(t)=x_0+V_0(t-t_0)$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "III – Étude de quelques mouvements usuels",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Mouvement rectiligne uniforme (MRU)",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Le mouvement se fait suivant $(Ox)$ : $\\vec V=V_x\\,\\vec e_x$. Il est **uniforme** : $V=\\|\\vec V\\|=C^{te}=V_0$, donc $\\vec V=V_x\\vec e_x=V_0\\vec e_x$.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-mru.svg",
+       "alt": "Axe Ox avec le point M à l'abscisse x(t) et son vecteur vitesse V = V0 e_x constant porté par l'axe.",
+       "caption": "Figure — mouvement rectiligne uniforme suivant $(Ox)$ : $\\vec V=V_0\\,\\vec e_x$ constant.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$V_x=\\dfrac{dx}{dt}=V_0\\Rightarrow dx=V_0\\,dt$."
+        },
+        {
+         "md": "Intégration : $\\displaystyle\\int_{x_0}^{x}dx=\\int_{t_0}^{t}V_0\\,dt$."
+        },
+        {
+         "md": "$x-x_0=V_0(t-t_0)$."
+        }
+       ],
+       "origin": "source",
+       "title": "Équation horaire"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$x(t)=x_0+V_0\\,(t-t_0).$$ Le graphe de $x(t)$ est une droite de pente $V_0$ passant par $(t_0,x_0)$.",
+       "origin": "source",
+       "title": "Équation horaire du MRU"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un mobile en MRU a $x_0=2$ m à $t_0=0$ et $V_0=3$ m/s. À $t=4$ s, $x=$ ___ m.",
+        "answerType": "number",
+        "accepted": [
+         "14"
+        ],
+        "explanation": "$x=2+3\\times4=14$ m."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Dans un MRU, l'accélération est nulle.",
+        "answer": true,
+        "explanation": "Vrai : $\\vec V$ est constant (norme et direction), donc $\\vec a=d\\vec V/dt=\\vec 0$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Un mouvement rectiligne est forcément uniforme.",
+       "answer": false,
+       "explanation": "Faux : « rectiligne » concerne la trajectoire (droite), « uniforme » la norme de la vitesse (constante). Une chute libre est rectiligne mais accélérée."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Sur le graphe $x(t)$ d'un MRU, la pente de la droite est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$x_0$"
+        },
+        {
+         "id": "b",
+         "md": "$V_0$"
+        },
+        {
+         "id": "c",
+         "md": "$t_0$"
+        },
+        {
+         "id": "d",
+         "md": "$0$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$x(t)=x_0+V_0(t-t_0)$ : pente $V_0$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Un mobile en MRU passe de $x=1$ m à $t=0$ à $x=9$ m à $t=4$ s. Sa vitesse $V_0=$ ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$V_0=(9-1)/4=2$ m/s."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre l'obtention de l'équation horaire du MRU.",
+       "items": [
+        "$\\dfrac{dx}{dt}=V_0$",
+        "$dx=V_0\\,dt$",
+        "$\\int_{x_0}^x dx=\\int_{t_0}^t V_0\\,dt$",
+        "$x(t)=x_0+V_0(t-t_0)$"
+       ],
+       "explanation": "Séparation puis intégration entre l'instant initial et l'instant $t$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "MRU avec $x_0=5$ m, $t_0=1$ s, $V_0=-2$ m/s : à $t=3$ s, $x=$ ___ m.",
+       "answerType": "number",
+       "accepted": [
+        "1"
+       ],
+       "explanation": "$x=5-2(3-1)=1$ m."
+      }
+     ]
+    },
+    {
+     "slug": "mouvement-circulaire",
+     "title": "Mouvement circulaire",
+     "number": "III.2",
+     "estimatedMinutes": 9,
+     "summary": "Trajectoire, vitesse et accélération d'un point sur un cercle en coordonnées polaires ; cas uniforme et accélération centripète.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2) Mouvement circulaire",
+       "origin": "source"
+      },
+      {
+       "type": "example",
+       "md": "Un point $M$ décrit un cercle de centre $O$ et de rayon $R$ dans le plan $(O,x,y)$ ; on le repère par l'angle $\\theta$.\n1) Donner l'équation cartésienne et polaire de la trajectoire.\n2) Déterminer $\\vec V$ et $\\vec a$ dans $R(O,x,y)$.\n3) Que deviennent $\\vec V$ et $\\vec a$ si le mouvement est uniforme ?",
+       "origin": "source",
+       "title": "Exemple",
+       "steps": [
+        {
+         "md": "1) $x=R\\cos\\theta$ et $y=R\\sin\\theta\\Rightarrow x^2+y^2=R^2$ en cartésiennes ; $r(\\theta)=R$ en polaires.",
+         "why": "$\\cos^2\\theta+\\sin^2\\theta=1$ élimine $\\theta$."
+        },
+        {
+         "md": "2) $\\vec V=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\left.\\dfrac{d(R\\vec e_r)}{dt}\\right|_R=R\\dot\\theta\\,\\vec e_\\theta$."
+        },
+        {
+         "md": "$\\vec a=\\dfrac{d\\vec V}{dt}=R\\,[-\\dot\\theta^2\\,\\vec e_r+\\ddot\\theta\\,\\vec e_\\theta]$.",
+         "why": "On dérive $R\\dot\\theta\\vec e_\\theta$ avec $\\dot{\\vec e}_\\theta=-\\dot\\theta\\vec e_r$."
+        },
+        {
+         "md": "3) Mouvement uniforme : $\\dot\\theta=C^{te}=\\omega$, $\\ddot\\theta=0$. Donc $\\vec V=R\\dot\\theta\\,\\vec e_\\theta=R\\omega\\,\\vec e_\\theta$ et $\\vec a=-R\\dot\\theta^2\\vec e_r=-R\\omega^2\\vec e_r$."
+        }
+       ]
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-mouvement-circulaire.svg",
+       "alt": "Cercle de centre O et de rayon R ; le point M repéré par θ, la base polaire (e_r, e_θ) en M, la vitesse V tangente et l'accélération a dirigée vers O.",
+       "caption": "Figure — mouvement circulaire : $\\vec V=R\\dot\\theta\\,\\vec e_\\theta$ tangente ; en mouvement uniforme, $\\vec a=-R\\omega^2\\,\\vec e_r$ pointe vers $O$.",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$\\vec V=R\\omega\\,\\vec e_\\theta,\\qquad \\vec a=-R\\omega^2\\,\\vec e_r.$$ L'accélération est **centripète** (dirigée vers $O$).",
+       "origin": "source",
+       "title": "Mouvement circulaire uniforme"
+      },
+      {
+       "type": "simulation",
+       "scene": "circular-motion",
+       "caption": "Change la vitesse angulaire : la vitesse reste tangente, l'accélération normale $R\\omega^2$ pointe vers le centre.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un point tourne sur un cercle de rayon $R=0{,}5$ m à $\\omega=4$ rad/s (uniforme). La norme de son accélération vaut ___ m/s².",
+        "answerType": "number",
+        "accepted": [
+         "8"
+        ],
+        "explanation": "$a=R\\omega^2=0{,}5\\times16=8$ m/s², dirigée vers le centre."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "On retrouve le résultat de Frenet : ici $\\vec T=\\vec e_\\theta$, $\\vec N=-\\vec e_r$, $R_c=R$ et $a_N=V^2/R=R\\omega^2$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pour un mouvement circulaire **non** uniforme, la composante de $\\vec a$ selon $\\vec e_\\theta$ vaut :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$0$"
+         },
+         {
+          "id": "b",
+          "md": "$R\\ddot\\theta$"
+         },
+         {
+          "id": "c",
+          "md": "$-R\\dot\\theta^2$"
+         },
+         {
+          "id": "d",
+          "md": "$R\\dot\\theta$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\vec a=R[-\\dot\\theta^2\\vec e_r+\\ddot\\theta\\vec e_\\theta]$ : la composante orthoradiale (tangentielle) est $R\\ddot\\theta$, nulle seulement si le mouvement est uniforme."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans un mouvement circulaire uniforme, l'accélération est nulle.",
+       "answer": false,
+       "explanation": "Faux : $\\vec a=-R\\omega^2\\vec e_r$, accélération centripète non nulle."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "L'équation polaire de la trajectoire circulaire de rayon $R$ centrée en $O$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$r(\\theta)=R\\theta$"
+        },
+        {
+         "id": "b",
+         "md": "$r(\\theta)=R$"
+        },
+        {
+         "id": "c",
+         "md": "$r(\\theta)=R\\cos\\theta$"
+        },
+        {
+         "id": "d",
+         "md": "$x+y=R$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "La distance à $O$ est constante."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Cercle de rayon $R=2$ m, $\\omega=3$ rad/s : $V=$ ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "6"
+       ],
+       "explanation": "$V=R\\omega=6$ m/s."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "L'accélération centripète est dirigée :",
+       "options": [
+        {
+         "id": "a",
+         "md": "selon $+\\vec e_r$"
+        },
+        {
+         "id": "b",
+         "md": "selon $-\\vec e_r$, vers le centre"
+        },
+        {
+         "id": "c",
+         "md": "selon $\\vec e_\\theta$"
+        },
+        {
+         "id": "d",
+         "md": "selon $\\vec e_z$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec a=-R\\omega^2\\vec e_r$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Dans un mouvement circulaire, $\\vec V$ est toujours porté par $\\vec e_\\theta$.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec V=R\\dot\\theta\\vec e_\\theta$ car $r=R$ est constant ($\\dot r=0$)."
+      }
+     ]
+    },
+    {
+     "slug": "mouvement-sinusoidal",
+     "title": "Mouvement sinusoïdal",
+     "number": "III.3",
+     "estimatedMinutes": 5,
+     "summary": "Les solutions sinusoïdales de l'équation $\\ddot x+\\omega_0^2x=0$ et le rôle des conditions initiales.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "3) Mouvement sinusoïdal",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Un mouvement sinusoïdal est solution de\n$$\\ddot x+\\omega_0^2\\,x=0\\qquad(\\text{ou}\\ \\ \\ddot\\theta+\\omega_0^2\\,\\theta=0).$$\n- $x(t)=x_{max}\\cos(\\omega_0t+\\varphi)$, ou de façon équivalente $x(t)=A\\cos(\\omega_0 t)+B\\sin(\\omega_0 t)$ ;\n- $\\theta(t)=\\theta_m\\cos(\\omega_0t+\\varphi)$.\n$x_{max}$ et $\\varphi$ (ou $A$ et $B$) sont déterminés à l'aide des **C.I.**",
+       "origin": "source",
+       "title": "Équation et solution"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch01-oscillateurs.svg",
+       "alt": "À gauche une masse m accrochée à un ressort horizontal, repérée par x(t) ; à droite un pendule repéré par l'angle θ.",
+       "caption": "Figure — deux oscillateurs harmoniques : masse–ressort ($\\ddot x+\\omega_0^2x=0$) et pendule aux petits angles ($\\ddot\\theta+\\omega_0^2\\theta=0$).",
+       "origin": "source"
+      },
+      {
+       "type": "example",
+       "md": "Trouver $x(t)$ solution de $\\ddot x+\\omega_0^2x=0$ avec $x(0)=x_0$ et $\\dot x(0)=0$.",
+       "origin": "added",
+       "title": "Utiliser les conditions initiales",
+       "steps": [
+        {
+         "md": "On écrit $x(t)=A\\cos\\omega_0t+B\\sin\\omega_0t$, donc $\\dot x(t)=-A\\omega_0\\sin\\omega_0t+B\\omega_0\\cos\\omega_0t$."
+        },
+        {
+         "md": "$x(0)=A=x_0$ et $\\dot x(0)=B\\omega_0=0\\Rightarrow B=0$."
+        },
+        {
+         "md": "D'où $x(t)=x_0\\cos(\\omega_0t)$."
+        }
+       ]
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $\\ddot x+9x=0$, la pulsation $\\omega_0$ vaut ___ rad/s.",
+        "answerType": "number",
+        "accepted": [
+         "3"
+        ],
+        "explanation": "$\\omega_0^2=9\\Rightarrow\\omega_0=3$ rad/s."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "Mouvement hélicoïdal : exercice 04 du TD ; mouvement spiral : exercice 03 du TD (renvois de la source, non détaillés dans le cours).",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "$x(t)=A\\cos\\omega_0t+B\\sin\\omega_0t$ et $x(t)=x_{max}\\cos(\\omega_0t+\\varphi)$ sont deux écritures de la même famille de solutions.",
+        "answer": true,
+        "explanation": "Vrai : en développant $x_{max}\\cos(\\omega_0t+\\varphi)$, on obtient $A=x_{max}\\cos\\varphi$ et $B=-x_{max}\\sin\\varphi$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "Laquelle de ces fonctions est solution de $\\ddot x+4x=0$ ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\cos(4t)$"
+        },
+        {
+         "id": "b",
+         "md": "$\\cos(2t)$"
+        },
+        {
+         "id": "c",
+         "md": "$e^{2t}$"
+        },
+        {
+         "id": "d",
+         "md": "$t^2$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\omega_0^2=4$, $\\omega_0=2$ : $\\frac{d^2}{dt^2}\\cos 2t=-4\\cos2t$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Solution de $\\ddot x+\\omega_0^2x=0$ avec $x(0)=0{,}1$ m et $\\dot x(0)=0$ : l'amplitude $x_{max}=$ ___ m.",
+       "answerType": "number",
+       "accepted": [
+        "0.1"
+       ],
+       "explanation": "$x(t)=0{,}1\\cos\\omega_0t$ : amplitude $0{,}1$ m."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Les constantes $x_{max}$ et $\\varphi$ sont fixées par l'équation différentielle elle-même.",
+       "answer": false,
+       "explanation": "Faux : elles sont déterminées par les **conditions initiales**."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $x(t)=A\\cos\\omega_0t+B\\sin\\omega_0t$ avec $x(0)=0$ et $\\dot x(0)=6$, $\\omega_0=3$ : $B=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$x(0)=A=0$ ; $\\dot x(0)=B\\omega_0=6\\Rightarrow B=2$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Combien de constantes faut-il déterminer dans la solution générale ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "1"
+        },
+        {
+         "id": "b",
+         "md": "2"
+        },
+        {
+         "id": "c",
+         "md": "3"
+        },
+        {
+         "id": "d",
+         "md": "aucune"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Équation du second ordre : deux constantes ($x_{max},\\varphi$ ou $A,B$), fixées par deux C.I. ($x(0)$ et $\\dot x(0)$)."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "reviewNotes": [
+  "Source de référence : notes de cours ENSA Agadir (« Méca Cours », PDF manuscrit de 39 pages, mp/cours/Méca Cours (1).pdf), via la copie nettoyée Modules/Mecanique du point/Cours/Chapitre 01 (pages 1–16 = source PDF p. 1–15).",
+  "§I.3 : la phrase « Réf. de Copernic : barycentre de … » est inachevée dans la source ; complétée en « centré sur le barycentre du système solaire » (définition donnée par la même source au chapitre 3).",
+  "§I.4.1 : la source écrit le vecteur position avec un 2e terme erroné ; corrigé par la relation de Chasles en OM = OP + PM.",
+  "§I.4.1 : la note en marge « module pp?s » (scalaire constant) est partiellement illisible ; rendue par « un scalaire constant ne garde que sa valeur ».",
+  "§I.4.2 (remarque vecteur de module constant) : « d(A²) = cte » corrigé en d(A²) = 0.",
+  "§I.4.2 (méthode ①) : la ligne intermédiaire de la source omet le terme ρ de_ρ = ρ dφ e_φ ; le calcul est présenté complet (le résultat final de la source était correct).",
+  "Vue d'ensemble des coordonnées (source p. 3) : le 3e angle sphérique est écrit (e_x, OM) dans la source alors que la figure le mesure entre e_x et OP ; harmonisé en φ = (e_x, OP) comme dans la définition du §4.3.",
+  "§II.1 Hodographe : la source écrit « OM = V » ; corrigé en ON = V (la définition porte sur les points N).",
+  "§II.3 EX « Calculer a en sphériques » : pas de solution dans la source ; la solution (composantes standard a_r, a_θ, a_φ) est ajoutée.",
+  "§III.3 : les renvois « mvt hélicoïdal : ex. 04 » et « mvt spiral : ex. 03 » renvoient au TD (non traité ici).",
+  "Exemples ajoutés (origin: added) : calcul d'un produit vectoriel (§I.2), utilisation des C.I. pour le mouvement sinusoïdal (§III.3).",
+  "Le chapitre compte 16 leçons : les systèmes de coordonnées sont denses et ont été découpés en 5 leçons courtes."
+ ]
+}

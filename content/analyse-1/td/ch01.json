@@ -1,0 +1,934 @@
+{
+  "chapter": 1,
+  "title": "Les nombres réels, topologie de ℝ",
+  "sources": [
+    "Bibliotheque_sources/Analyse/TD/TD1.pdf p.1-2 (TD d'Analyse I n°1, Pr. Said TAARABTI, ENSA Agadir, A.U. 2026/2027) ; copie identique : analyse/TD1_Analyse1_ENSA_Agadir_Taarabti_260925_130625.pdf"
+  ],
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Maximum et minimum",
+      "statement_md": "Pour $x,y\\in\\mathbb{R}$, on note $\\max(x,y)$ le plus grand des deux nombres $x$ et $y$, et $\\min(x,y)$ le plus petit.\n\n1. Montrer que $\\max(x,y)+\\min(x,y)=x+y$.\n2. Démontrer que\n$$\\max(x,y)=\\frac{x+y+|x-y|}{2}\\qquad\\text{et}\\qquad\\min(x,y)=\\frac{x+y-|x-y|}{2}.$$\n3. En déduire une formule donnant $\\max(x,y,z)$ pour $x,y,z\\in\\mathbb{R}$, à l'aide de valeurs absolues.",
+      "solution_md": "**1.** Si $x\\ge y$, alors $\\max(x,y)=x$ et $\\min(x,y)=y$, donc $\\max(x,y)+\\min(x,y)=x+y$. Si $x<y$, alors $\\max(x,y)=y$ et $\\min(x,y)=x$ et la somme vaut encore $y+x$.\n\n**2.** Si $x\\ge y$, alors $|x-y|=x-y$, donc\n$$\\frac{x+y+|x-y|}{2}=\\frac{2x}{2}=x=\\max(x,y),\\qquad \\frac{x+y-|x-y|}{2}=\\frac{2y}{2}=y=\\min(x,y).$$\nSi $x<y$, alors $|x-y|=y-x$, et les deux expressions valent respectivement $y=\\max(x,y)$ et $x=\\min(x,y)$.\n\n**3.** On a $\\max(x,y,z)=\\max\\big(\\max(x,y),z\\big)$. En appliquant la question 2 avec $m=\\max(x,y)=\\frac{x+y+|x-y|}{2}$ :\n$$\\max(x,y,z)=\\frac{m+z+|m-z|}{2}=\\frac{x+y+2z+|x-y|+\\big|x+y-2z+|x-y|\\big|}{4}.$$",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 1 – Q3 : max(x,y,z)",
+          "answerType": "expression",
+          "accepted": [
+            "(x+y+2*z+abs(x-y)+abs(x+y-2*z+abs(x-y)))/4"
+          ],
+          "variables": [
+            "x",
+            "y",
+            "z"
+          ]
+        }
+      ],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.1",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quel argument permet de montrer $\\max(x,y)+\\min(x,y)=x+y$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Une récurrence sur $x$"
+            },
+            {
+              "id": "b",
+              "md": "Une distinction de cas $x\\ge y$ / $x<y$ : la somme vaut toujours $x+y$"
+            },
+            {
+              "id": "c",
+              "md": "L'inégalité triangulaire $|x+y|\\le|x|+|y|$"
+            },
+            {
+              "id": "d",
+              "md": "Le fait que $\\max(x,y)=|x|$ et $\\min(x,y)=-|y|$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Si $x\\ge y$ : $\\max=x$, $\\min=y$. Si $x<y$ : $\\max=y$, $\\min=x$. Dans les deux cas la somme est $x+y$."
+        },
+        {
+          "prompt_md": "Q2 — Si $x\\ge y$, que vaut $\\dfrac{x+y-|x-y|}{2}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$x$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{x+y}{2}$"
+            },
+            {
+              "id": "c",
+              "md": "$y$"
+            },
+            {
+              "id": "d",
+              "md": "$x-y$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Si $x\\ge y$, $|x-y|=x-y$, donc $\\frac{x+y-(x-y)}{2}=\\frac{2y}{2}=y=\\min(x,y)$."
+        },
+        {
+          "prompt_md": "Q3 — Quelle formule donne $\\max(x,y,z)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{x+y+z+|x-y|+|y-z|}{3}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{x+y+2z+|x-y|-\\big|x+y-2z+|x-y|\\big|}{4}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{x+y+2z+|x-y|+\\big|x+y-2z+|x-y|\\big|}{4}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{x+y+z+|x-y|+|x-z|+|y-z|}{2}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$\\max(x,y,z)=\\max(m,z)$ avec $m=\\frac{x+y+|x-y|}{2}$, donc $\\max(x,y,z)=\\frac{m+z+|m-z|}{2}=\\frac{x+y+2z+|x-y|+\\big|x+y-2z+|x-y|\\big|}{4}$. (Le signe $-$ devant la valeur absolue donnerait un $\\min$.)"
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Majorant, minorant, bornes",
+      "statement_md": "**a)** Soit $A$ une partie non vide de $\\mathbb{R}$. Montrer que si $A$ admet un majorant $M$ (resp. un minorant $m$) qui appartient à $A$, alors $M$ (resp. $m$) est la borne supérieure (resp. la borne inférieure) de $A$.\n\n**b)** Soit $B$ une partie non vide et bornée de $\\mathbb{R}$. Montrer que pour toute partie non vide $A\\subset B$, on a :\n$$\\inf B\\le\\inf A\\le\\sup A\\le\\sup B.$$\n\n**c)** Soient $A$ et $B$ deux parties non vides et bornées de $\\mathbb{R}$. On définit les ensembles\n$$A+B=\\{a+b\\mid a\\in A,\\ b\\in B\\}\\qquad\\text{et}\\qquad -A=\\{-a\\mid a\\in A\\}.$$\nMontrer que :\n\n- (i) $\\inf(A+B)=\\inf A+\\inf B$ ;\n- (ii) $\\sup(A+B)=\\sup A+\\sup B$ ;\n- (iii) $\\sup(-A)=-\\inf A$.",
+      "solution_md": "**a)** $M$ est un majorant de $A$. Si $M'$ est un majorant quelconque de $A$, alors $M'\\ge M$ puisque $M\\in A$. Donc $M$ est le plus petit des majorants de $A$ : $M=\\sup A$ (et c'est même le maximum de $A$). De même, si $m$ est un minorant de $A$ appartenant à $A$, tout minorant $m'$ de $A$ vérifie $m'\\le m$, donc $m=\\inf A$.\n\n**b)** $A$ est non vide et bornée (car $A\\subset B$ et $B$ est bornée), donc $\\inf A$ et $\\sup A$ existent. Soit $a\\in A$ : on a $\\inf A\\le a\\le\\sup A$, d'où $\\inf A\\le\\sup A$. Pour tout $a\\in A$, on a $a\\in B$ donc $a\\le\\sup B$ : $\\sup B$ est un majorant de $A$, donc $\\sup A\\le\\sup B$. De même $\\inf B$ est un minorant de $A$, donc $\\inf B\\le\\inf A$.\n\n**c)** (i) $A+B$ est non vide. Pour $a\\in A$ et $b\\in B$, on a $a\\ge\\inf A$ et $b\\ge\\inf B$, donc $a+b\\ge\\inf A+\\inf B$ : $\\inf A+\\inf B$ est un minorant de $A+B$, et donc $\\inf(A+B)$ existe. Soit $\\varepsilon>0$. Par caractérisation de la borne inférieure, il existe $a\\in A$ tel que $a<\\inf A+\\frac{\\varepsilon}{2}$ et $b\\in B$ tel que $b<\\inf B+\\frac{\\varepsilon}{2}$. Alors $a+b\\in A+B$ et $a+b<\\inf A+\\inf B+\\varepsilon$. Ainsi $\\inf(A+B)=\\inf A+\\inf B$.\n\n(ii) Même raisonnement : $a+b\\le\\sup A+\\sup B$ pour tous $a\\in A$, $b\\in B$, et pour $\\varepsilon>0$ il existe $a\\in A$, $b\\in B$ avec $a>\\sup A-\\frac{\\varepsilon}{2}$ et $b>\\sup B-\\frac{\\varepsilon}{2}$, donc $a+b>\\sup A+\\sup B-\\varepsilon$. Ainsi $\\sup(A+B)=\\sup A+\\sup B$.\n\n(iii) Pour tout $a\\in A$, $a\\ge\\inf A$ donc $-a\\le-\\inf A$ : $-\\inf A$ est un majorant de $-A$. Soit $\\varepsilon>0$ : il existe $a\\in A$ tel que $a<\\inf A+\\varepsilon$, c'est-à-dire $-a>-\\inf A-\\varepsilon$ avec $-a\\in -A$. Donc $\\sup(-A)=-\\inf A$.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.1",
+      "qcm": [
+        {
+          "prompt_md": "a) — $M$ est un majorant de $A$ et $M\\in A$. Quel argument montre que $M=\\sup A$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Tout majorant $M'$ de $A$ vérifie $M'\\ge M$ car $M\\in A$"
+            },
+            {
+              "id": "b",
+              "md": "$A$ est fermée donc atteint sa borne supérieure"
+            },
+            {
+              "id": "c",
+              "md": "$M$ est le plus grand des majorants de $A$"
+            },
+            {
+              "id": "d",
+              "md": "Toute partie majorée de $\\mathbb{R}$ a un maximum"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$M$ est un majorant ; si $M'$ est un autre majorant, il majore en particulier $M\\in A$, donc $M'\\ge M$. $M$ est donc le plus petit des majorants : $M=\\sup A$ (c'est même $\\max A$)."
+        },
+        {
+          "prompt_md": "b) — Pourquoi a-t-on $\\sup A\\le\\sup B$ lorsque $A\\subset B$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Car $\\sup A\\in A\\subset B$"
+            },
+            {
+              "id": "b",
+              "md": "Car $\\inf A\\le\\sup A$"
+            },
+            {
+              "id": "c",
+              "md": "Car $A$ et $B$ ont le même nombre d'éléments"
+            },
+            {
+              "id": "d",
+              "md": "Car $\\sup B$ majore $B$, donc majore $A$, et $\\sup A$ est le plus petit majorant de $A$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Tout $a\\in A$ est dans $B$, donc $a\\le\\sup B$ : $\\sup B$ est un majorant de $A$. Comme $\\sup A$ est le plus petit majorant de $A$, $\\sup A\\le\\sup B$. (Attention : $\\sup A$ n'appartient pas forcément à $A$.)"
+        },
+        {
+          "prompt_md": "c)(i) — Pour montrer $\\inf(A+B)=\\inf A+\\inf B$, quelle est l'étape clé après avoir vu que $\\inf A+\\inf B$ minore $A+B$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Prendre $a=\\inf A$ et $b=\\inf B$, qui sont dans $A$ et $B$"
+            },
+            {
+              "id": "b",
+              "md": "Pour $\\varepsilon>0$, trouver $a<\\inf A+\\frac\\varepsilon2$ et $b<\\inf B+\\frac\\varepsilon2$, d'où $a+b<\\inf A+\\inf B+\\varepsilon$"
+            },
+            {
+              "id": "c",
+              "md": "Pour $\\varepsilon>0$, trouver $a>\\inf A-\\frac\\varepsilon2$ et $b>\\inf B-\\frac\\varepsilon2$"
+            },
+            {
+              "id": "d",
+              "md": "Utiliser $\\inf(A+B)\\le\\inf A\\cdot\\inf B$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Caractérisation de la borne inférieure : il existe $a\\in A$, $b\\in B$ avec $a<\\inf A+\\frac\\varepsilon2$, $b<\\inf B+\\frac\\varepsilon2$. Alors $a+b\\in A+B$ et $a+b<\\inf A+\\inf B+\\varepsilon$ : aucun minorant ne dépasse $\\inf A+\\inf B$."
+        },
+        {
+          "prompt_md": "c)(ii) — Pour $\\sup(A+B)=\\sup A+\\sup B$, quelle approximation utilise-t-on pour $\\varepsilon>0$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$a>\\sup A-\\frac\\varepsilon2$ et $b>\\sup B-\\frac\\varepsilon2$, donc $a+b>\\sup A+\\sup B-\\varepsilon$"
+            },
+            {
+              "id": "b",
+              "md": "$a<\\sup A+\\frac\\varepsilon2$ et $b<\\sup B+\\frac\\varepsilon2$"
+            },
+            {
+              "id": "c",
+              "md": "$a>\\sup A-\\varepsilon$ et $b>\\sup B-\\varepsilon$, donc $a+b>\\sup A+\\sup B-\\varepsilon$"
+            },
+            {
+              "id": "d",
+              "md": "$a=\\sup A$ et $b=\\sup B$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$\\sup A+\\sup B$ majore $A+B$. Pour $\\varepsilon>0$ on choisit $a>\\sup A-\\frac\\varepsilon2$ et $b>\\sup B-\\frac\\varepsilon2$ : $a+b>\\sup A+\\sup B-\\varepsilon$. (Avec $\\varepsilon$ au lieu de $\\frac\\varepsilon2$ on n'obtiendrait que $-2\\varepsilon$.)"
+        },
+        {
+          "prompt_md": "c)(iii) — Que vaut $\\sup(-A)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\sup A$"
+            },
+            {
+              "id": "b",
+              "md": "$-\\sup A$"
+            },
+            {
+              "id": "c",
+              "md": "$-\\inf A$"
+            },
+            {
+              "id": "d",
+              "md": "$\\inf A$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$a\\ge\\inf A\\Rightarrow -a\\le-\\inf A$ : $-\\inf A$ majore $-A$. Et pour $\\varepsilon>0$, un $a<\\inf A+\\varepsilon$ donne $-a>-\\inf A-\\varepsilon$. Donc $\\sup(-A)=-\\inf A$."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Partie entière – propriétés de base",
+      "statement_md": "Pour $x\\in\\mathbb{R}$, on note $E(x)$ la partie entière de $x$, c'est-à-dire l'unique entier vérifiant $E(x)\\le x<E(x)+1$. Montrer que :\n\n1. la fonction $x\\mapsto E(x)$ est croissante sur $\\mathbb{R}$ ;\n2. $\\forall a\\in\\mathbb{Z},\\ \\forall x\\in\\mathbb{R},\\quad E(x+a)=E(x)+a$ ;\n3. $\\forall x,y\\in\\mathbb{R},\\quad E(x)+E(y)\\le E(x+y)\\le E(x)+E(y)+1$ ;\n4. $\\forall x\\in\\mathbb{R}\\setminus\\mathbb{Z},\\quad E(-x)=-E(x)-1$. Que vaut $E(-x)$ lorsque $x\\in\\mathbb{Z}$ ?",
+      "solution_md": "**Propriété utile.** Pour $k\\in\\mathbb{Z}$ et $y\\in\\mathbb{R}$ : $k\\le y\\iff k\\le E(y)$. En effet, si $k\\le E(y)$ alors $k\\le y$ ; si $k\\le y$, alors $k\\le y<E(y)+1$ donc $k<E(y)+1$ et, comme ce sont des entiers, $k\\le E(y)$. Autrement dit, $E(y)$ est le plus grand entier inférieur ou égal à $y$.\n\n**1.** Soient $x\\le y$. Alors $E(x)\\le x\\le y$ et $E(x)\\in\\mathbb{Z}$, donc $E(x)\\le E(y)$ d'après la propriété. La fonction $E$ est croissante.\n\n**2.** De $E(x)\\le x<E(x)+1$ on tire $E(x)+a\\le x+a<E(x)+a+1$, avec $E(x)+a\\in\\mathbb{Z}$. Par unicité de la partie entière, $E(x+a)=E(x)+a$.\n\n**3.** $E(x)+E(y)\\le x+y$ et $E(x)+E(y)\\in\\mathbb{Z}$, donc $E(x)+E(y)\\le E(x+y)$. D'autre part $E(x+y)\\le x+y<E(x)+1+E(y)+1$, donc l'entier $E(x+y)$ est strictement inférieur à l'entier $E(x)+E(y)+2$, d'où $E(x+y)\\le E(x)+E(y)+1$.\n\n**4.** Si $x\\notin\\mathbb{Z}$, alors $E(x)<x<E(x)+1$ (inégalités strictes car $x\\ne E(x)$). Donc $-E(x)-1<-x<-E(x)$, soit\n$$\\big(-E(x)-1\\big)\\le -x<\\big(-E(x)-1\\big)+1,$$\net par unicité $E(-x)=-E(x)-1$.\n\nSi $x\\in\\mathbb{Z}$, alors $-x\\in\\mathbb{Z}$ et $E(-x)=-x=-E(x)$.\n\n![Figure — graphe de la partie entière : E(x) ≤ x < E(x) + 1, la fonction est croissante et constante sur chaque [k, k+1[.](/figures/analyse-1/td-ch01-partie-entiere.svg)",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 3 – Q4 : E(-x) pour x entier",
+          "answerType": "expression",
+          "accepted": [
+            "-x"
+          ],
+          "variables": [
+            "x"
+          ]
+        }
+      ],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.1",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelle propriété de $E$ permet de montrer que $E$ est croissante ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E$ est continue sur $\\mathbb{R}$"
+            },
+            {
+              "id": "b",
+              "md": "$E(x+y)=E(x)+E(y)$"
+            },
+            {
+              "id": "c",
+              "md": "$E(x)\\ge x$ pour tout $x$"
+            },
+            {
+              "id": "d",
+              "md": "$E(y)$ est le plus grand entier $\\le y$ : si $k\\in\\mathbb{Z}$ et $k\\le y$, alors $k\\le E(y)$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Si $x\\le y$ : $E(x)\\le x\\le y$ et $E(x)\\in\\mathbb{Z}$, donc $E(x)\\le E(y)$ puisque $E(y)$ est le plus grand entier inférieur ou égal à $y$."
+        },
+        {
+          "prompt_md": "Q2 — Pour $a\\in\\mathbb{Z}$, pourquoi $E(x+a)=E(x)+a$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Par linéarité de $E$"
+            },
+            {
+              "id": "b",
+              "md": "Car $E(x)+a\\le x+a<E(x)+a+1$ avec $E(x)+a\\in\\mathbb{Z}$, puis unicité de la partie entière"
+            },
+            {
+              "id": "c",
+              "md": "Car $E(a)=a$ et $E$ est additive"
+            },
+            {
+              "id": "d",
+              "md": "Car $E$ est croissante"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "On ajoute $a$ à $E(x)\\le x<E(x)+1$ ; l'entier $E(x)+a$ vérifie la définition de $E(x+a)$, d'où l'égalité par unicité. ($E$ n'est pas additive en général.)"
+        },
+        {
+          "prompt_md": "Q3 — Quel encadrement est vrai pour tous $x,y\\in\\mathbb{R}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E(x)+E(y)\\le E(x+y)\\le E(x)+E(y)+1$"
+            },
+            {
+              "id": "b",
+              "md": "$E(x)+E(y)-1\\le E(x+y)\\le E(x)+E(y)$"
+            },
+            {
+              "id": "c",
+              "md": "$E(x+y)=E(x)+E(y)$"
+            },
+            {
+              "id": "d",
+              "md": "$E(x)+E(y)\\le E(x+y)\\le E(x)+E(y)+2$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$E(x)+E(y)\\le x+y$ donne la minoration. Et $E(x+y)\\le x+y<E(x)+E(y)+2$ : l'entier $E(x+y)$ est $<E(x)+E(y)+2$, donc $\\le E(x)+E(y)+1$. (Ex. : $E(0{,}5)+E(0{,}5)=0<1=E(1)$.)"
+        },
+        {
+          "prompt_md": "Q4 — Que vaut $E(-x)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$-E(x)$ pour tout $x\\in\\mathbb{R}$"
+            },
+            {
+              "id": "b",
+              "md": "$-E(x)-1$ si $x\\notin\\mathbb{Z}$, et $-E(x)+1$ si $x\\in\\mathbb{Z}$"
+            },
+            {
+              "id": "c",
+              "md": "$-E(x)+1$ si $x\\notin\\mathbb{Z}$, et $-E(x)$ si $x\\in\\mathbb{Z}$"
+            },
+            {
+              "id": "d",
+              "md": "$-E(x)-1$ si $x\\notin\\mathbb{Z}$, et $-E(x)$ si $x\\in\\mathbb{Z}$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Si $x\\notin\\mathbb{Z}$ : $E(x)<x<E(x)+1$, donc $-E(x)-1<-x<-E(x)$ et $E(-x)=-E(x)-1$ (ex. $E(-2{,}5)=-3$). Si $x\\in\\mathbb{Z}$ : $E(-x)=-x=-E(x)$."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Partie entière et produit",
+      "statement_md": "(i) Montrer que si $x$ et $y$ sont deux réels positifs, alors $E(x)\\,E(y)\\le E(xy)$.\n\n(ii) Montrer que si $x$ et $y$ sont deux réels négatifs, alors $E(xy)\\le E(x)\\,E(y)$.\n\n(iii) Que peut-on dire lorsque $x$ et $y$ sont de signes opposés ? (On pourra chercher des exemples.)",
+      "solution_md": "**(i)** Si $x,y\\ge0$, alors $0\\le E(x)\\le x$ et $0\\le E(y)\\le y$ (car $0$ est un entier inférieur ou égal à $x$, donc à $E(x)$). En multipliant ces inégalités entre nombres positifs : $E(x)E(y)\\le xy$. Comme $E(x)E(y)\\in\\mathbb{Z}$, on obtient $E(x)E(y)\\le E(xy)$.\n\n**(ii)** Si $x,y\\le0$, alors $E(x)\\le x\\le0$ et $E(y)\\le y\\le0$, donc $-E(x)\\ge-x\\ge0$ et $-E(y)\\ge-y\\ge0$. En multipliant : $E(x)E(y)=\\big(-E(x)\\big)\\big(-E(y)\\big)\\ge(-x)(-y)=xy\\ge E(xy)$.\n\n**(iii)** On ne peut rien dire en général : les deux inégalités sont possibles.\n\n- $x=\\frac12$, $y=-1$ : $E(x)E(y)=0\\times(-1)=0$ et $E(xy)=E\\left(-\\frac12\\right)=-1$, donc $E(xy)<E(x)E(y)$.\n- $x=2$, $y=-\\frac12$ : $E(x)E(y)=2\\times(-1)=-2$ et $E(xy)=E(-1)=-1$, donc $E(xy)>E(x)E(y)$.\n- $x=1$, $y=-1$ : $E(x)E(y)=-1=E(xy)$ (égalité).",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.1",
+      "qcm": [
+        {
+          "prompt_md": "(i) — Pour $x,y\\ge0$, quelle est l'étape clé pour obtenir $E(x)E(y)\\le E(xy)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E(xy)=E(x)E(y)$ pour des réels positifs"
+            },
+            {
+              "id": "b",
+              "md": "$0\\le E(x)\\le x$ et $0\\le E(y)\\le y$, on multiplie : $E(x)E(y)\\le xy$, puis $E(x)E(y)\\in\\mathbb{Z}$"
+            },
+            {
+              "id": "c",
+              "md": "$E(x)\\le x$ et $E(y)\\le y$ suffisent, sans condition de signe"
+            },
+            {
+              "id": "d",
+              "md": "$E$ est croissante donc $E(x)E(y)\\le E(x)+E(y)$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Pour multiplier des inégalités il faut des nombres positifs : $0\\le E(x)\\le x$, $0\\le E(y)\\le y$ donnent $E(x)E(y)\\le xy$. L'entier $E(x)E(y)$ est $\\le xy$, donc $\\le E(xy)$."
+        },
+        {
+          "prompt_md": "(ii) — Pour $x,y\\le0$, quelle inégalité obtient-on ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E(xy)\\le E(x)E(y)$"
+            },
+            {
+              "id": "b",
+              "md": "$E(x)E(y)\\le E(xy)$"
+            },
+            {
+              "id": "c",
+              "md": "$E(xy)=E(x)E(y)$"
+            },
+            {
+              "id": "d",
+              "md": "$E(xy)\\le E(x)+E(y)$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$-E(x)\\ge-x\\ge0$ et $-E(y)\\ge-y\\ge0$ ; en multipliant : $E(x)E(y)\\ge xy\\ge E(xy)$."
+        },
+        {
+          "prompt_md": "(iii) — Pour $x=\\frac12$ et $y=-1$ (signes opposés), que trouve-t-on ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$E(xy)=E(x)E(y)=0$"
+            },
+            {
+              "id": "b",
+              "md": "$E(xy)=0>E(x)E(y)=-1$"
+            },
+            {
+              "id": "c",
+              "md": "$E(xy)=-1<E(x)E(y)=0$"
+            },
+            {
+              "id": "d",
+              "md": "$E(xy)=-1=E(x)E(y)$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$E(\\frac12)E(-1)=0\\times(-1)=0$ et $E(-\\frac12)=-1$. Avec $x=2$, $y=-\\frac12$ on a l'inégalité inverse ($-1>-2$) : on ne peut rien dire en général pour des signes opposés."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Identités sur la partie entière",
+      "statement_md": "Soit $x\\in\\mathbb{R}$. Montrer que :\n\n1. $E(x)+E\\left(x+\\dfrac12\\right)=E(2x)$ ;\n2. $E(x)+E\\left(x+\\dfrac13\\right)+E\\left(x+\\dfrac23\\right)=E(3x)$ ;\n3. pour tout $n\\in\\mathbb{N}^*$, $E\\left(\\dfrac{E(nx)}{n}\\right)=E(x)$.\n\n*Indication : pour 1. et 2., écrire $x=E(x)+r$ avec $r\\in[0,1[$ et discuter selon la position de $r$.*",
+      "solution_md": "On note $p=E(x)$ et $r=x-p\\in[0,1[$. On utilise $E(k+t)=k+E(t)$ pour $k\\in\\mathbb{Z}$ (exercice 3).\n\n**1.** On a $E\\left(x+\\frac12\\right)=p+E\\left(r+\\frac12\\right)$ et $E(2x)=2p+E(2r)$.\n\n- Si $r\\in\\left[0,\\frac12\\right[$ : $r+\\frac12\\in\\left[\\frac12,1\\right[$ et $2r\\in[0,1[$, donc $E(x)+E\\left(x+\\frac12\\right)=p+p=2p=E(2x)$.\n- Si $r\\in\\left[\\frac12,1\\right[$ : $r+\\frac12\\in\\left[1,\\frac32\\right[$ et $2r\\in[1,2[$, donc $E(x)+E\\left(x+\\frac12\\right)=p+p+1=2p+1=E(2x)$.\n\n**2.** On a $E(3x)=3p+E(3r)$.\n\n- Si $r\\in\\left[0,\\frac13\\right[$ : $r+\\frac13<1$, $r+\\frac23<1$ et $3r\\in[0,1[$ ; la somme vaut $p+p+p=3p=E(3x)$.\n- Si $r\\in\\left[\\frac13,\\frac23\\right[$ : $r+\\frac13\\in\\left[\\frac23,1\\right[$, $r+\\frac23\\in\\left[1,\\frac43\\right[$ et $3r\\in[1,2[$ ; la somme vaut $p+p+(p+1)=3p+1=E(3x)$.\n- Si $r\\in\\left[\\frac23,1\\right[$ : $r+\\frac13\\in\\left[1,\\frac43\\right[$, $r+\\frac23\\in\\left[\\frac43,\\frac53\\right[$ et $3r\\in[2,3[$ ; la somme vaut $p+(p+1)+(p+1)=3p+2=E(3x)$.\n\n**3.** Soit $n\\in\\mathbb{N}^*$. Comme $p\\le x$, on a $np\\le nx$ avec $np\\in\\mathbb{Z}$, donc $np\\le E(nx)$. Par ailleurs $E(nx)\\le nx<n(p+1)$. Ainsi $np\\le E(nx)<n(p+1)$, et en divisant par $n>0$ :\n$$p\\le\\frac{E(nx)}{n}<p+1,$$\ndonc $E\\left(\\dfrac{E(nx)}{n}\\right)=p=E(x)$.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.2",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — On écrit $x=p+r$, $p=E(x)$, $r\\in[0,1[$. Si $r\\in\\left[\\frac12,1\\right[$, que valent $E(x)+E\\left(x+\\frac12\\right)$ et $E(2x)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Tous deux $2p$"
+            },
+            {
+              "id": "b",
+              "md": "$2p$ et $2p+1$"
+            },
+            {
+              "id": "c",
+              "md": "Tous deux $2p+2$"
+            },
+            {
+              "id": "d",
+              "md": "Tous deux $2p+1$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$r+\\frac12\\in\\left[1,\\frac32\\right[$ donc $E(x+\\frac12)=p+1$ ; $2r\\in[1,2[$ donc $E(2x)=2p+1$. La somme $p+(p+1)=2p+1=E(2x)$."
+        },
+        {
+          "prompt_md": "Q2 — Si $r\\in\\left[\\frac23,1\\right[$, que vaut $E(x)+E\\left(x+\\frac13\\right)+E\\left(x+\\frac23\\right)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$3p$"
+            },
+            {
+              "id": "b",
+              "md": "$3p+1$"
+            },
+            {
+              "id": "c",
+              "md": "$3p+2$"
+            },
+            {
+              "id": "d",
+              "md": "$3p+3$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$r+\\frac13\\in\\left[1,\\frac43\\right[$ et $r+\\frac23\\in\\left[\\frac43,\\frac53\\right[$ : somme $p+(p+1)+(p+1)=3p+2$, et $3r\\in[2,3[$ donne aussi $E(3x)=3p+2$."
+        },
+        {
+          "prompt_md": "Q3 — Quel encadrement permet de conclure $E\\left(\\frac{E(nx)}{n}\\right)=E(x)$ (avec $p=E(x)$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$p-1<\\dfrac{E(nx)}{n}\\le p$"
+            },
+            {
+              "id": "b",
+              "md": "$p\\le\\dfrac{E(nx)}{n}<p+1$"
+            },
+            {
+              "id": "c",
+              "md": "$p\\le\\dfrac{E(nx)}{n}\\le p+1$"
+            },
+            {
+              "id": "d",
+              "md": "$np\\le nx<np+1$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$np\\le nx$ et $np\\in\\mathbb{Z}$ donnent $np\\le E(nx)$ ; $E(nx)\\le nx<n(p+1)$. Donc $np\\le E(nx)<n(p+1)$, et après division par $n$ : $p\\le\\frac{E(nx)}{n}<p+1$."
+        }
+      ]
+    },
+    {
+      "number": "6",
+      "title": "Approximations décimales",
+      "statement_md": "Soit $x\\in\\mathbb{R}$. Pour tout $n\\in\\mathbb{N}$, on pose\n$$u_n=\\frac{E(10^nx)}{10^n}.$$\n\n**a)** Expliciter les quatre premiers termes $u_0,u_1,u_2,u_3$ dans le cas particulier $x=\\pi$ (on rappelle que $\\pi\\approx3{,}14159265$).\n\n**b)** On revient au cas général. Montrer que $(u_n)_{n\\in\\mathbb{N}}$ est une suite de nombres rationnels, que\n$$\\forall n\\in\\mathbb{N},\\qquad x-\\frac{1}{10^n}<u_n\\le x,$$\net en déduire que $(u_n)$ converge vers $x$.\n\n**c)** Qu'en déduit-on sur la place de $\\mathbb{Q}$ dans $\\mathbb{R}$ ?",
+      "solution_md": "**a)** $u_0=E(\\pi)=3$, $u_1=\\frac{E(31{,}4159\\ldots)}{10}=\\frac{31}{10}=3{,}1$, $u_2=\\frac{E(314{,}159\\ldots)}{100}=3{,}14$, $u_3=\\frac{E(3141{,}59\\ldots)}{1000}=3{,}141$.\n\n**b)** $E(10^nx)\\in\\mathbb{Z}$ et $10^n\\in\\mathbb{N}^*$, donc $u_n\\in\\mathbb{Q}$. Par définition de la partie entière,\n$$E(10^nx)\\le10^nx<E(10^nx)+1,$$\net en divisant par $10^n>0$ : $u_n\\le x<u_n+\\frac{1}{10^n}$, c'est-à-dire $x-\\frac{1}{10^n}<u_n\\le x$.\n\nOn en déduit $0\\le x-u_n<\\frac{1}{10^n}=\\left(\\frac{1}{10}\\right)^n$, et $\\left(\\frac1{10}\\right)^n\\to0$ (suite géométrique de raison $\\frac1{10}\\in\\,]-1,1[$). Par le théorème d'encadrement, $u_n\\to x$.\n\n**c)** Tout réel est limite d'une suite de rationnels : $\\mathbb{Q}$ est dense dans $\\mathbb{R}$. Par exemple, si $a<b$, en prenant $x=\\frac{a+b}{2}$ et $n$ tel que $\\frac{1}{10^n}<\\frac{b-a}{2}$, on obtient un rationnel $u_n$ avec $a<x-\\frac1{10^n}<u_n\\le x<b$ : tout intervalle ouvert non vide contient un rationnel.",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 6 – a) : u0 pour x = pi",
+          "answerType": "number",
+          "accepted": [
+            "3"
+          ]
+        },
+        {
+          "label": "Ex 6 – a) : u1 pour x = pi",
+          "answerType": "number",
+          "accepted": [
+            "3.1",
+            "31/10"
+          ]
+        },
+        {
+          "label": "Ex 6 – a) : u2 pour x = pi",
+          "answerType": "number",
+          "accepted": [
+            "3.14",
+            "314/100"
+          ]
+        },
+        {
+          "label": "Ex 6 – a) : u3 pour x = pi",
+          "answerType": "number",
+          "accepted": [
+            "3.141",
+            "3141/1000"
+          ]
+        }
+      ],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.2",
+      "qcm": [
+        {
+          "prompt_md": "a) — Pour $x=\\pi$, que vaut $u_2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$3{,}1$"
+            },
+            {
+              "id": "b",
+              "md": "$3{,}15$"
+            },
+            {
+              "id": "c",
+              "md": "$3{,}142$"
+            },
+            {
+              "id": "d",
+              "md": "$3{,}14$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$u_2=\\frac{E(314{,}159\\ldots)}{100}=\\frac{314}{100}=3{,}14$ (troncature, pas arrondi : $3{,}15$ ou $3{,}142$ sont faux)."
+        },
+        {
+          "prompt_md": "b) — Quel encadrement de $u_n$ obtient-on à partir de la définition de la partie entière ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$x-\\dfrac{1}{10^n}<u_n\\le x$"
+            },
+            {
+              "id": "b",
+              "md": "$x\\le u_n<x+\\dfrac{1}{10^n}$"
+            },
+            {
+              "id": "c",
+              "md": "$x-\\dfrac{1}{10^n}\\le u_n<x$"
+            },
+            {
+              "id": "d",
+              "md": "$|u_n-x|\\le\\dfrac{1}{2\\cdot10^n}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$E(10^nx)\\le10^nx<E(10^nx)+1$, divisé par $10^n$ : $u_n\\le x<u_n+\\frac1{10^n}$, d'où $x-\\frac1{10^n}<u_n\\le x$, et $u_n\\to x$ par encadrement."
+        },
+        {
+          "prompt_md": "c) — Qu'en déduit-on sur $\\mathbb{Q}$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\mathbb{Q}$ est fini dans tout intervalle borné"
+            },
+            {
+              "id": "b",
+              "md": "$\\mathbb{Q}$ est un intervalle de $\\mathbb{R}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\mathbb{Q}$ est dense dans $\\mathbb{R}$ : tout réel est limite d'une suite de rationnels"
+            },
+            {
+              "id": "d",
+              "md": "$\\mathbb{Q}=\\mathbb{R}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Chaque $u_n$ est rationnel et $u_n\\to x$ : tout réel est limite de rationnels, donc $\\mathbb{Q}$ est dense dans $\\mathbb{R}$ (tout intervalle ouvert non vide contient un rationnel)."
+        }
+      ]
+    },
+    {
+      "number": "7",
+      "title": "Parties de ℕ",
+      "statement_md": "Soit $A$ une partie de $\\mathbb{N}$. Démontrer que $A$ admet un plus petit élément si et seulement si $A$ est non vide.\n\n*Indication : pour le sens réciproque, on pourra raisonner par l'absurde et montrer par récurrence que, pour tout $n\\in\\mathbb{N}$, aucun des entiers $0,1,\\dots,n$ n'appartient à $A$.*",
+      "solution_md": "**Sens direct.** Si $A$ admet un plus petit élément, celui-ci appartient à $A$, donc $A\\neq\\emptyset$.\n\n**Sens réciproque.** Supposons $A$ non vide et sans plus petit élément. Montrons par récurrence la propriété $\\mathcal{P}(n)$ : « aucun des entiers $0,1,\\dots,n$ n'appartient à $A$ ».\n\n- $\\mathcal{P}(0)$ : si $0\\in A$, alors $0$ est le plus petit élément de $A$ (tout entier naturel est $\\ge0$), ce qui est exclu. Donc $0\\notin A$.\n- Hérédité : supposons $\\mathcal{P}(n)$. Si $n+1\\in A$, alors tout $a\\in A$ vérifie $a\\notin\\{0,\\dots,n\\}$, donc $a\\ge n+1$ : $n+1$ serait le plus petit élément de $A$, ce qui est exclu. Donc $n+1\\notin A$ et $\\mathcal{P}(n+1)$ est vraie.\n\nAinsi, pour tout $n\\in\\mathbb{N}$, $n\\notin A$ : $A=\\emptyset$, ce qui contredit l'hypothèse. Donc $A$ admet un plus petit élément.",
+      "solution_source": "ia",
+      "answers": [],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.2",
+      "qcm": [
+        {
+          "prompt_md": "Sens direct — Pourquoi une partie $A\\subset\\mathbb{N}$ qui a un plus petit élément est-elle non vide ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Car $0\\in A$"
+            },
+            {
+              "id": "b",
+              "md": "Car $\\mathbb{N}$ est bien ordonné"
+            },
+            {
+              "id": "c",
+              "md": "Car le plus petit élément appartient à $A$"
+            },
+            {
+              "id": "d",
+              "md": "Car $A$ est minorée par $0$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Un plus petit élément de $A$ est, par définition, un élément de $A$ : donc $A\\ne\\emptyset$."
+        },
+        {
+          "prompt_md": "Sens réciproque — On suppose $A\\ne\\emptyset$ sans plus petit élément. Quelle propriété $\\mathcal{P}(n)$ montre-t-on par récurrence ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "« $n\\in A$ »"
+            },
+            {
+              "id": "b",
+              "md": "« aucun des entiers $0,1,\\dots,n$ n'appartient à $A$ »"
+            },
+            {
+              "id": "c",
+              "md": "« $A$ contient un élément $\\le n$ »"
+            },
+            {
+              "id": "d",
+              "md": "« $n$ minore $A$ et $n\\in A$ »"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$\\mathcal{P}(0)$ : si $0\\in A$, $0$ serait le plus petit élément. Hérédité : si $n+1\\in A$ alors que $0,\\dots,n\\notin A$, $n+1$ serait le plus petit élément. Donc aucun entier n'est dans $A$ : $A=\\emptyset$, contradiction."
+        }
+      ]
+    },
+    {
+      "number": "8",
+      "title": "Bornes et extremums",
+      "statement_md": "Pour chacun des ensembles suivants, déterminer, s'ils existent, la borne inférieure, la borne supérieure, le minimum et le maximum :\n\n1. $A=\\left\\{\\sin\\left(\\dfrac{\\pi}{2n}\\right)\\;\\middle|\\;n\\in\\mathbb{N}^*\\right\\}$ ;\n2. $B=\\{x\\in\\mathbb{R}\\mid E(x)=2\\}$ ;\n3. $C=\\{n^m\\mid(n,m)\\in\\mathbb{N}^2\\}$ (avec la convention $0^0=1$) ;\n4. $D=\\left\\{\\dfrac{2xy}{x^2+y^2}\\;\\middle|\\;(x,y)\\in(\\mathbb{R}_+^*)^2\\right\\}$ ;\n5. $E=\\left]0,1\\right[\\cap\\mathbb{Q}$ ;\n6. $F=\\left\\{\\dfrac{1}{1-2^{-n}}\\;\\middle|\\;n\\in\\mathbb{N}^*\\right\\}$ ;\n7. $G=\\{u_n\\mid n\\in\\mathbb{N}\\}$, où $u_n=2^n$ si $n$ est pair et $u_n=2^{-n}$ si $n$ est impair.",
+      "solution_md": "**1.** Pour $n\\ge1$, $\\frac{\\pi}{2n}\\in\\left]0,\\frac\\pi2\\right]$ et $\\sin$ est strictement croissante et positive sur cet intervalle ; la suite $n\\mapsto\\frac{\\pi}{2n}$ décroît, donc $n\\mapsto\\sin\\left(\\frac{\\pi}{2n}\\right)$ décroît. Le plus grand élément est obtenu pour $n=1$ : $\\sin\\frac\\pi2=1$. Donc $\\max A=\\sup A=1$. Tous les éléments sont $>0$ et $\\sin\\left(\\frac{\\pi}{2n}\\right)\\to\\sin0=0$ : $0$ est un minorant et, pour tout $\\varepsilon>0$, il existe un élément $<\\varepsilon$. Donc $\\inf A=0$, et $0\\notin A$ : $A$ n'a pas de minimum.\n\n**2.** $E(x)=2\\iff2\\le x<3$, donc $B=[2,3[$. $\\inf B=\\min B=2$, $\\sup B=3$ et $B$ n'a pas de maximum ($3\\notin B$).\n\n**3.** Tous les éléments sont $\\ge0$ et $0=0^1\\in C$ : $\\min C=\\inf C=0$. Pour tout $n\\in\\mathbb{N}$, $n=n^1\\in C$ : $C$ n'est pas majorée, donc pas de borne supérieure (dans $\\mathbb{R}$) ni de maximum.\n\n**4.** Pour $x,y>0$ : $(x-y)^2\\ge0$ donne $x^2+y^2\\ge2xy$, donc $0<\\frac{2xy}{x^2+y^2}\\le1$, avec égalité pour $x=y$. Ainsi $\\max D=\\sup D=1$. Avec $x=1$ et $y=t>0$ : $\\frac{2t}{1+t^2}\\le2t$, qui est $<\\varepsilon$ dès que $t<\\frac\\varepsilon2$. Donc $\\inf D=0$, non atteint : pas de minimum.\n\n**5.** $0$ minore et $1$ majore $E$. Pour $n\\ge2$, $\\frac1n$ et $1-\\frac1n$ sont des rationnels de $]0,1[$ qui tendent vers $0$ et $1$. Donc $\\inf E=0$ et $\\sup E=1$ ; ni $0$ ni $1$ n'appartiennent à $E$ : pas de minimum ni de maximum.\n\n**6.** $n\\mapsto1-2^{-n}$ est croissante à valeurs dans $\\left[\\frac12,1\\right[$, donc $n\\mapsto\\frac{1}{1-2^{-n}}$ est décroissante, à valeurs $>1$. Pour $n=1$ : $\\frac{1}{1-\\frac12}=2$, donc $\\max F=\\sup F=2$. Comme $\\frac{1}{1-2^{-n}}\\to1$ et que tous les éléments sont $>1$, $\\inf F=1$, non atteint : pas de minimum.\n\n**7.** $u_{2k}=4^k\\to+\\infty$ : $G$ n'est pas majorée (pas de borne supérieure ni de maximum). Tous les éléments sont $>0$ et $u_{2k+1}=2^{-(2k+1)}\\to0$, donc $\\inf G=0$, non atteint : pas de minimum.",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 8 – Q1 : inf A",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q1 : sup A",
+          "answerType": "number",
+          "accepted": [
+            "1"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q2 : inf B",
+          "answerType": "number",
+          "accepted": [
+            "2"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q2 : sup B",
+          "answerType": "number",
+          "accepted": [
+            "3"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q3 : inf C",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q4 : inf D",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q4 : sup D",
+          "answerType": "number",
+          "accepted": [
+            "1"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q5 : inf E",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q5 : sup E",
+          "answerType": "number",
+          "accepted": [
+            "1"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q6 : inf F",
+          "answerType": "number",
+          "accepted": [
+            "1"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q6 : sup F",
+          "answerType": "number",
+          "accepted": [
+            "2"
+          ]
+        },
+        {
+          "label": "Ex 8 – Q7 : inf G",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        }
+      ],
+      "source": "Bibliotheque_sources/Analyse/TD/TD1.pdf p.2",
+      "simulations": [
+        {
+          "scene": "sup-inf",
+          "caption": "Visualise sur la droite réelle la borne inférieure et la borne supérieure d'une partie, atteintes ou non."
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Pour $A=\\left\\{\\sin\\frac{\\pi}{2n}\\mid n\\in\\mathbb{N}^*\\right\\}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\sup A=\\max A=1$, $\\inf A=0$, pas de minimum"
+            },
+            {
+              "id": "b",
+              "md": "$\\sup A=1$ non atteint, $\\inf A=\\min A=0$"
+            },
+            {
+              "id": "c",
+              "md": "$\\sup A=\\max A=1$, $\\inf A=\\min A=\\sin\\frac\\pi4$"
+            },
+            {
+              "id": "d",
+              "md": "$\\sup A=\\frac\\pi2$, $\\inf A=0$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "La suite $\\sin\\frac{\\pi}{2n}$ décroît, vaut $1$ pour $n=1$ et tend vers $0$ sans l'atteindre (tous les termes sont $>0$)."
+        },
+        {
+          "prompt_md": "Q2 — Pour $B=\\{x\\in\\mathbb{R}\\mid E(x)=2\\}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$B=[2,3]$, $\\min B=2$, $\\max B=3$"
+            },
+            {
+              "id": "b",
+              "md": "$B=]2,3]$, $\\inf B=2$, $\\max B=3$"
+            },
+            {
+              "id": "c",
+              "md": "$B=[2,3[$, $\\min B=2$, $\\sup B=3$, pas de maximum"
+            },
+            {
+              "id": "d",
+              "md": "$B=\\{2\\}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$E(x)=2\\iff2\\le x<3$, donc $B=[2,3[$ : $\\min B=2$, $\\sup B=3\\notin B$."
+        },
+        {
+          "prompt_md": "Q3 — Pour $C=\\{n^m\\mid(n,m)\\in\\mathbb{N}^2\\}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\min C=1$, $C$ non majorée"
+            },
+            {
+              "id": "b",
+              "md": "$\\min C=0$, $C$ non majorée"
+            },
+            {
+              "id": "c",
+              "md": "$\\inf C=0$ non atteint, $\\sup C=+\\infty$ atteint"
+            },
+            {
+              "id": "d",
+              "md": "$\\min C=0$, $\\max C=1$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$0=0^1\\in C$ et tous les éléments sont $\\ge0$ : $\\min C=0$. Comme $n=n^1\\in C$ pour tout $n$, $C$ n'est pas majorée."
+        },
+        {
+          "prompt_md": "Q4 — Pour $D=\\left\\{\\frac{2xy}{x^2+y^2}\\mid x,y>0\\right\\}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\max D=2$, $\\inf D=0$"
+            },
+            {
+              "id": "b",
+              "md": "$\\max D=1$, $\\min D=0$"
+            },
+            {
+              "id": "c",
+              "md": "$\\sup D=1$ non atteint, $\\inf D=0$"
+            },
+            {
+              "id": "d",
+              "md": "$\\max D=1$, $\\inf D=0$ non atteint"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$(x-y)^2\\ge0$ donne $0<\\frac{2xy}{x^2+y^2}\\le1$, égalité pour $x=y$. Avec $x=1$, $y=t\\to0^+$ : $\\frac{2t}{1+t^2}\\to0$, jamais nul."
+        },
+        {
+          "prompt_md": "Q5 — Pour $E=\\left]0,1\\right[\\cap\\mathbb{Q}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\inf E=0$, $\\sup E=1$, ni minimum ni maximum"
+            },
+            {
+              "id": "b",
+              "md": "$\\min E=0$, $\\max E=1$"
+            },
+            {
+              "id": "c",
+              "md": "$E$ n'a pas de borne supérieure car $\\mathbb{Q}$ n'est pas complet"
+            },
+            {
+              "id": "d",
+              "md": "$\\inf E=\\frac12$, $\\sup E=1$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$0$ minore, $1$ majore, et $\\frac1n,\\,1-\\frac1n\\in E$ tendent vers $0$ et $1$. Ni $0$ ni $1$ n'est dans $E$. (Les bornes sont prises dans $\\mathbb{R}$.)"
+        },
+        {
+          "prompt_md": "Q6 — Pour $F=\\left\\{\\frac{1}{1-2^{-n}}\\mid n\\in\\mathbb{N}^*\\right\\}$ :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\min F=1$, $\\sup F=2$"
+            },
+            {
+              "id": "b",
+              "md": "$\\inf F=1$ non atteint, $\\max F=2$"
+            },
+            {
+              "id": "c",
+              "md": "$\\inf F=\\frac12$, $\\max F=2$"
+            },
+            {
+              "id": "d",
+              "md": "$\\inf F=1$, $\\sup F=+\\infty$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$1-2^{-n}$ croît dans $\\left[\\frac12,1\\right[$, donc $\\frac1{1-2^{-n}}$ décroît : valeur max $2$ (pour $n=1$), limite $1$ jamais atteinte."
+        },
+        {
+          "prompt_md": "Q7 — Pour $G=\\{u_n\\}$ ($u_n=2^n$ si $n$ pair, $2^{-n}$ si $n$ impair) :",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\inf G=0$ non atteint, $G$ non majorée"
+            },
+            {
+              "id": "b",
+              "md": "$\\min G=\\frac12$, $G$ non majorée"
+            },
+            {
+              "id": "c",
+              "md": "$\\inf G=0$, $\\max G=1$"
+            },
+            {
+              "id": "d",
+              "md": "$\\min G=0$, $\\sup G=+\\infty$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$u_{2k}=4^k\\to+\\infty$ : pas de majorant. Tous les termes sont $>0$ et $u_{2k+1}=2^{-(2k+1)}\\to0$ : $\\inf G=0$, non atteint."
+        }
+      ]
+    }
+  ]
+}

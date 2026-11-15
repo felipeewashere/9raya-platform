@@ -1,0 +1,3548 @@
+{
+  "slug": "polynomes-fractions-rationnelles",
+  "number": 5,
+  "title": "Polynômes et fractions rationnelles",
+  "description": "Polynômes à coefficients dans $\\mathbb{K}$ : opérations et degré, divisibilité et division euclidienne, pgcd, théorème de Bézout, ppcm, racines et multiplicité, polynômes irréductibles, factorisation dans $\\mathbb{R}$ et $\\mathbb{C}$, fractions rationnelles et décomposition en éléments simples.",
+  "sourcePdf": "Modules/Algebre/Cours/Chapitre 05 - Polynômes et fractions rationnelles.pdf",
+  "sections": [
+    {
+      "slug": "definitions",
+      "title": "Définitions",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "definition-notations",
+          "title": "Définition et notations",
+          "number": "1.1",
+          "estimatedMinutes": 8,
+          "summary": "Ce qu'est un polynôme à coefficients dans $\\mathbb{K}$, l'ensemble $\\mathbb{K}[X]$, le polynôme nul, le degré et les polynômes constants.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Définition",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Polynôme",
+              "md": "Un **polynôme** à coefficients dans $\\mathbb{K}$ est une expression de la forme\n\n$$P(X) = a_nX^n + a_{n-1}X^{n-1} + \\dots + a_1X + a_0 \\tag{1}$$\n\navec $n \\in \\mathbb{N}$ et $a_0, a_1, \\dots, a_n \\in \\mathbb{K}$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Dans tout le chapitre, $\\mathbb{K}$ désigne $\\mathbb{R}$ ou $\\mathbb{C}$. Le cours écrit indifféremment $P(x)$ ou $P(X)$ : on note ici $X$ l'indéterminée, et $P(x)$ la valeur obtenue en remplaçant $X$ par un nombre $x$.",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Un polynôme est entièrement décrit par la **liste finie de ses coefficients** $(a_0, a_1, \\dots, a_n)$ : les puissances de $X$ ne servent qu'à « ranger » ces coefficients. C'est l'objet le plus simple qu'on puisse fabriquer avec seulement des additions et des multiplications. Tout le chapitre montre que les polynômes se comportent comme les entiers : on peut les diviser, calculer des pgcd, les décomposer en « facteurs premiers »…",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemples de polynômes (figure du cours)",
+              "md": "La figure du cours représente les courbes des fonctions polynomiales $y = x^3$, $y = -2x^3 + 8x^2 + 3$ et $y = x^4 - 4x^3 + 1$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Notations",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Notations",
+              "md": "- L'ensemble des polynômes à coefficients dans $\\mathbb{K}$ est noté $\\mathbb{K}[X]$.\n- Si **tous les coefficients** sont **nuls**, $P$ est appelé **polynôme nul** et il est noté $0$.\n- Le **degré** d'un polynôme $P$, noté $\\deg P$, est le plus **grand** entier $n$ tel que $a_n$ est non nul.\n- Par convention, on note le degré du polynôme nul par : $\\deg(0) = -\\infty$.\n- Un polynôme de degré $0$ s'écrit $P(X) = a_0$ ; il est appelé **polynôme constant**.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Le degré est l'exposant du **plus grand terme réellement présent** : un coefficient nul « devant » ne compte pas. Le polynôme nul n'a aucun coefficient non nul, d'où la convention $\\deg(0) = -\\infty$ : elle permettra à la formule $\\deg(PQ) = \\deg P + \\deg Q$ (leçon 1.3) de rester vraie même si l'un des facteurs est nul.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On considère $P(X) = a_3X^3 + 2X - 7$ avec $a_3 = 0$. Quel est $\\deg P$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$3$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$-\\infty$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Puisque $a_3 = 0$, on a $P(X) = 2X - 7$ : le plus grand entier $n$ tel que $a_n \\neq 0$ est $n = 1$. La réponse $3$ est le piège : l'exposant écrit ne compte que si son coefficient est non nul. $0$ serait le degré d'une constante non nulle et $-\\infty$ celui du polynôme nul."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemples",
+              "md": "1. $P(X) = 2X^3 - 1$.\n2. $P(X) = X^4 - 3X^2 + 4$.\n3. $P(X) = 100$.",
+              "steps": [
+                {
+                  "md": "$P(X) = 2X^3 - 1$ : le plus grand exposant de coefficient non nul est $3$, donc $\\deg P = 3$.",
+                  "why": "Définition du degré."
+                },
+                {
+                  "md": "$P(X) = X^4 - 3X^2 + 4$ : $\\deg P = 4$ (les coefficients de $X^3$ et $X$ sont nuls, cela ne change rien).",
+                  "why": "Seul compte le plus grand $n$ avec $a_n \\neq 0$."
+                },
+                {
+                  "md": "$P(X) = 100$ : c'est un **polynôme constant**, de degré $0$.",
+                  "why": "$P = a_0$ avec $a_0 = 100 \\neq 0$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Le degré de $P(X) = X^4 - 3X^2 + 4$ est ___.",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "Le plus grand exposant dont le coefficient est non nul est $4$ (coefficient $1$). Répondre $2$ reviendrait à regarder le terme $-3X^2$, qui n'est pas le terme de plus haut degré."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est, par convention, le degré du polynôme nul ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\infty$"
+                },
+                {
+                  "id": "c",
+                  "md": "$1$"
+                },
+                {
+                  "id": "d",
+                  "md": "Il n'y a pas de convention : le degré n'est pas défini."
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le cours pose $\\deg(0) = -\\infty$. Ce n'est pas $0$ : le degré $0$ est réservé aux constantes **non nulles** comme $P = 100$. La convention existe précisément pour que les formules sur les degrés restent vraies avec le polynôme nul."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le polynôme constant $P = 100$ est de degré $0$.",
+              "answer": true,
+              "explanation": "$P = a_0$ avec $a_0 = 100 \\neq 0$ : le plus grand $n$ tel que $a_n \\neq 0$ est $0$. C'est un polynôme constant."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$P(X) = 3X^2 + \\dfrac{1}{X}$ est un polynôme de $\\mathbb{R}[X]$.",
+              "answer": false,
+              "explanation": "Dans un polynôme, les exposants sont des entiers naturels ($n \\in \\mathbb{N}$). Or $\\frac{1}{X} = X^{-1}$ a un exposant négatif : cette expression n'est pas de la forme (1). (Ce sera une fraction rationnelle, partie 4.)"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque polynôme à son degré.",
+              "pairs": [
+                {
+                  "left": "$2X^3 - 1$",
+                  "right": "$3$"
+                },
+                {
+                  "left": "$X^4 - 3X^2 + 4$",
+                  "right": "$4$"
+                },
+                {
+                  "left": "$100$",
+                  "right": "$0$"
+                },
+                {
+                  "left": "le polynôme nul $0$",
+                  "right": "$-\\infty$"
+                }
+              ],
+              "explanation": "Le degré est le plus grand exposant de coefficient non nul : $3$ pour $2X^3 - 1$, $4$ pour $X^4 - 3X^2 + 4$, $0$ pour la constante non nulle $100$, et $-\\infty$ par convention pour le polynôme nul."
+            }
+          ]
+        },
+        {
+          "slug": "operations",
+          "title": "Opérations sur les polynômes",
+          "number": "1.2",
+          "estimatedMinutes": 10,
+          "summary": "Égalité, somme, multiplication par un scalaire et produit de polynômes, avec leurs propriétés de calcul.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Opérations sur les polynômes",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Égalité",
+              "md": "Soient deux polynômes $P = \\sum_{i=0}^{n} a_iX^i$ et $Q = \\sum_{i=0}^{n} b_iX^i$. L'**égalité** entre $P$ et $Q$ équivaut à l'égalité entre **tous** les coefficients de $P$ et $Q$ :\n\n$$P = Q \\iff a_i = b_i \\quad \\forall i \\in \\{0, \\dots, n\\} \\tag{2}$$",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Addition",
+              "md": "Soit un polynôme $P = \\sum_{i=0}^{n} a_iX^i$ de degré $n$ et un polynôme $Q = \\sum_{i=0}^{m} b_iX^i$ de degré $m$. La **somme** $P + Q$ est aussi un polynôme dont les coefficients sont donnés par :\n\n$$(P+Q)(X) = \\sum_{i=0}^{\\max(n,m)} c_iX^i \\quad \\text{tel que } c_i = a_i + b_i \\tag{3}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Dans (2) et (3), on complète par des zéros : $a_i = 0$ pour $i > n$ et $b_i = 0$ pour $i > m$. Par exemple $(X^2 + 1) + (3X) = X^2 + 3X + 1$.",
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "title": "Multiplication par un scalaire",
+              "md": "Soit $P = \\sum_i a_iX^i$ un polynôme de $\\mathbb{K}[X]$ et $\\lambda$ un scalaire dans $\\mathbb{K}$. La multiplication de $P$ par le scalaire $\\lambda$ est aussi un polynôme, noté $\\lambda P$, dont les coefficients sont :\n\n$$(\\lambda P)(X) = \\sum_i b_iX^i \\quad \\text{tel que } b_i = \\lambda a_i \\tag{4}$$",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Multiplication",
+              "md": "Soit $P = \\sum_{i=0}^{n} a_iX^i$ un polynôme de degré $n$ et $Q = \\sum_{i=0}^{m} b_iX^i$ un polynôme de degré $m$. Le produit $PQ$ est aussi un **polynôme**, donné par la formule suivante :\n\n$$(PQ)(X) = \\sum_{k=0}^{n+m} c_kX^k \\quad \\text{tel que } c_k = \\sum_{i+j=k} a_ib_j \\tag{5}$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "La formule (5) n'est rien d'autre que « développer puis regrouper ». Comme $a_iX^i \\cdot b_jX^j = a_ib_j\\,X^{i+j}$, le coefficient de $X^k$ dans $PQ$ récupère **tous** les produits $a_ib_j$ dont les exposants s'additionnent en $k$. Par exemple $c_2 = a_0b_2 + a_1b_1 + a_2b_0$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour $P = 1 + 2X$ et $Q = 3 + X + X^2$, le coefficient de $X^2$ dans $PQ$ vaut ___.",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "$c_2 = a_0b_2 + a_1b_1 + a_2b_0 = 1\\cdot 1 + 2 \\cdot 1 + 0 \\cdot 3 = 3$. On vérifie : $PQ = 3 + 7X + 3X^2 + 2X^3$. L'erreur classique est de ne prendre qu'un seul produit (par exemple $a_0b_2 = 1$) au lieu de la somme sur tous les couples $i + j = 2$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemple",
+              "md": "Soient les polynômes $P(X) = -5X^3 + 2X - 5$ et $Q(X) = -2X^2 + 9X$.\n\n1. Est-ce que $P = Q$ ?\n2. Calculer le polynôme $4P$.\n3. Évaluer l'expression du polynôme $P + Q$.\n4. Donner le **coefficient** de $X^3$ du polynôme $P \\times Q$.",
+              "steps": [
+                {
+                  "md": "$P \\neq Q$ : par exemple le coefficient de $X^3$ vaut $-5$ dans $P$ et $0$ dans $Q$.",
+                  "why": "D'après (2), il suffit qu'un seul coefficient diffère."
+                },
+                {
+                  "md": "$4P = -20X^3 + 8X - 20$.",
+                  "why": "Formule (4) : chaque coefficient est multiplié par $4$."
+                },
+                {
+                  "md": "$P + Q = -5X^3 - 2X^2 + (2 + 9)X - 5 = -5X^3 - 2X^2 + 11X - 5$.",
+                  "why": "Formule (3) : on additionne les coefficients de même degré."
+                },
+                {
+                  "md": "Coefficients : $a_0 = -5,\\ a_1 = 2,\\ a_2 = 0,\\ a_3 = -5$ et $b_0 = 0,\\ b_1 = 9,\\ b_2 = -2,\\ b_3 = 0$. Alors $c_3 = a_0b_3 + a_1b_2 + a_2b_1 + a_3b_0 = 0 + 2\\cdot(-2) + 0 + 0 = -4$.",
+                  "why": "Formule (5) avec $k = 3$."
+                },
+                {
+                  "md": "Vérification : $PQ = 10X^5 - 45X^4 - 4X^3 + 28X^2 - 45X$, le coefficient de $X^3$ est bien $-4$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Propriétés",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soient $P$, $Q$ et $R$ des polynômes de $\\mathbb{K}[X]$. On a alors :\n\n- $P + Q = Q + P$ (commutativité) ;\n- $P + 0 = P$ (élément neutre) ;\n- $P + (Q + R) = (P + Q) + R$ (associativité) ;\n- $1 \\cdot P = P$ ;\n- $P \\times Q = Q \\times P$ ;\n- $(P \\times Q) \\times R = P \\times (Q \\times R)$ ;\n- $P \\times (Q + R) = P \\times Q + P \\times R$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Ces règles disent qu'on calcule avec les polynômes **exactement comme avec des nombres** : on peut réordonner une somme ou un produit, regrouper comme on veut et développer (distributivité). C'est ce qui justifie tous les développements et factorisations de la suite.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle propriété justifie l'égalité $X \\times (X^2 + 1) = X^3 + X$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$P \\times (Q + R) = P \\times Q + P \\times R$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$P + Q = Q + P$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$(P \\times Q) \\times R = P \\times (Q \\times R)$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$P + 0 = P$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "On distribue $X$ sur la somme $X^2 + 1$ : $X \\cdot X^2 + X \\cdot 1 = X^3 + X$, c'est la distributivité. La commutativité de l'addition ou l'associativité du produit ne permettent pas, à elles seules, de « développer » un produit par une somme."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec $P = -5X^3 + 2X - 5$ et $Q = -2X^2 + 9X$, on a $P - Q =$ ___.",
+              "answerType": "expression",
+              "accepted": [
+                "-5x^3 + 2x^2 - 7x - 5"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$P - Q = -5X^3 - (-2X^2) + (2 - 9)X - 5 = -5X^3 + 2X^2 - 7X - 5$. Attention au signe : soustraire $-2X^2$ donne $+2X^2$, et $2X - 9X = -7X$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le coefficient de $X^2$ dans $(X^2 + X + 1)(X - 1)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$2$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-1$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Avec $a_0 = a_1 = a_2 = 1$ et $b_0 = -1,\\ b_1 = 1$ : $c_2 = a_1b_1 + a_2b_0 = 1 - 1 = 0$. En effet $(X^2+X+1)(X-1) = X^3 - 1$. Répondre $1$ ou $-1$, c'est n'avoir gardé qu'un seul des deux produits qui contribuent à $X^2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P = \\sum_i a_iX^i$ et $\\lambda \\in \\mathbb{K}$, le coefficient de $X^i$ dans $\\lambda P$ est $\\lambda + a_i$.",
+              "answer": false,
+              "explanation": "D'après (4), le coefficient est $b_i = \\lambda a_i$ (un produit), pas $\\lambda + a_i$. Par exemple $4(-5X^3) = -20X^3$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque égalité (vraie pour tous $P, Q, R \\in \\mathbb{K}[X]$) à son nom.",
+              "pairs": [
+                {
+                  "left": "$P + Q = Q + P$",
+                  "right": "Commutativité de l'addition"
+                },
+                {
+                  "left": "$P + 0 = P$",
+                  "right": "$0$ est élément neutre pour $+$"
+                },
+                {
+                  "left": "$P + (Q + R) = (P + Q) + R$",
+                  "right": "Associativité de l'addition"
+                },
+                {
+                  "left": "$P \\times (Q + R) = P \\times Q + P \\times R$",
+                  "right": "Distributivité"
+                },
+                {
+                  "left": "$1 \\cdot P = P$",
+                  "right": "$1$ est élément neutre pour $\\times$"
+                }
+              ],
+              "explanation": "Ce sont les propriétés de la proposition : elles font de $\\mathbb{K}[X]$ un ensemble où l'on calcule comme dans $\\mathbb{Z}$. La distributivité est la seule qui mélange les deux opérations."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soient $P = 2X^2 - X + 3$ et $Q = X^2 + 4X$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Calculer $P + Q =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "3x^2 + 3x + 3"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "On additionne degré par degré : $(2+1)X^2 + (-1+4)X + (3+0) = 3X^2 + 3X + 3$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le coefficient de $X^2$ dans $PQ$ vaut ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1"
+                  ],
+                  "explanation": "$a_0 = 3,\\ a_1 = -1,\\ a_2 = 2$ et $b_0 = 0,\\ b_1 = 4,\\ b_2 = 1$ : $c_2 = a_0b_2 + a_1b_1 + a_2b_0 = 3 - 4 + 0 = -1$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le degré de $PQ$ vaut ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "4"
+                  ],
+                  "explanation": "$PQ = 2X^4 + 7X^3 - X^2 + 12X$, de degré $4 = 2 + 2$."
+                }
+              ],
+              "explanation": "Somme : on additionne les coefficients de même degré (3). Produit : $c_k = \\sum_{i+j=k} a_ib_j$ (5), ce qui donne $PQ = 2X^4 + 7X^3 - X^2 + 12X$."
+            }
+          ]
+        },
+        {
+          "slug": "degre-vocabulaire",
+          "title": "Degré et vocabulaire",
+          "number": "1.3",
+          "estimatedMinutes": 12,
+          "summary": "Degré d'un produit et d'une somme ; monôme, terme dominant, coefficient dominant, polynôme unitaire ; mini exercices.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Propriété degré",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Degré d'un produit, degré d'une somme",
+              "md": "Soient $P$ et $Q$ deux polynômes de $\\mathbb{K}[X]$.\n\n**Degré produit :**\n\n$$\\deg(P \\times Q) = \\deg P + \\deg Q \\tag{6}$$\n\n**Degré somme :**\n\n$$\\deg(P + Q) \\leqslant \\max(\\deg P, \\deg Q) \\tag{7}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "Si $P = 0$ ou $Q = 0$, alors $PQ = 0$ et les deux membres de (6) valent $-\\infty$.",
+                  "why": "Convention $\\deg 0 = -\\infty$ et $-\\infty + n = -\\infty$."
+                },
+                {
+                  "md": "Sinon, soient $n = \\deg P$, $m = \\deg Q$, donc $a_n \\neq 0$ et $b_m \\neq 0$. Pour $k > n + m$, tout couple $(i, j)$ avec $i + j = k$ vérifie $i > n$ ou $j > m$, donc $a_ib_j = 0$ et $c_k = 0$.",
+                  "why": "Formule (5) du produit."
+                },
+                {
+                  "md": "Pour $k = n + m$, le seul couple qui contribue est $(n, m)$ : $c_{n+m} = a_nb_m \\neq 0$. Donc $\\deg(PQ) = n + m$.",
+                  "why": "Un produit de deux nombres non nuls est non nul."
+                },
+                {
+                  "md": "Pour la somme : si $i > \\max(n, m)$, alors $a_i = b_i = 0$, donc $c_i = a_i + b_i = 0$. Ainsi $\\deg(P + Q) \\leqslant \\max(n, m)$.",
+                  "why": "Formule (3) de la somme."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "L'inégalité (7) peut être stricte : avec $P = X^2 + 1$ et $Q = -X^2 + X$, on a $P + Q = X + 1$, de degré $1 < 2$. Les termes dominants se sont annulés.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $\\deg P = 3$ et $\\deg Q = 3$. Que peut-on affirmer en général ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\deg(P + Q) = 3$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\deg(P + Q) \\leqslant 3$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\deg(P + Q) = 6$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\deg(P + Q) \\geqslant 3$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "D'après (7), $\\deg(P+Q) \\leqslant \\max(3, 3) = 3$, et l'inégalité peut être stricte si les termes dominants s'annulent (ex. $X^3$ et $-X^3 + 1$ donnent $1$). L'égalité $= 3$ n'est donc pas garantie, et $6$ est le degré du **produit**, pas de la somme."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Vocabulaire",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Vocabulaire",
+              "md": "- Un polynôme contenant un **seul terme** de la forme $a_kX^k$ ($a_k \\neq 0$) est appelé un **monôme**.\n- Pour un polynôme de la forme $P(X) = a_nX^n + \\dots + a_1X + a_0$ (avec $a_n \\neq 0$), on appelle **terme dominant** le monôme $a_nX^n$ et le coefficient $a_n$ est appelé le **coefficient dominant**.\n- Dans le cas où le coefficient dominant est $1$, on dit que le polynôme est **unitaire**.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemples",
+              "md": "- $P(X) = \\underbrace{3X^4}_{\\text{terme dominant}} + 4X^3 + \\underbrace{2X^2}_{\\text{monôme}} + 1$\n- $P(X) = X^2 - 1$.",
+              "steps": [
+                {
+                  "md": "Pour $3X^4 + 4X^3 + 2X^2 + 1$ : le terme dominant est $3X^4$, le coefficient dominant est $3$ ; ce polynôme n'est donc **pas** unitaire. Chacun des termes $4X^3$, $2X^2$, $1$ est un monôme."
+                },
+                {
+                  "md": "Pour $X^2 - 1$ : le terme dominant est $X^2$, le coefficient dominant est $1$ : ce polynôme est **unitaire**."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le polynôme $P(X) = 2X^3 + X^2 - 1$ est unitaire.",
+                "answer": false,
+                "explanation": "Son coefficient dominant (celui du terme de plus haut degré $2X^3$) vaut $2 \\neq 1$. Le fait qu'un autre coefficient ($X^2$) vaille $1$ ne compte pas."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Mini exercices 1",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Mini exercices 1",
+              "md": "Soient $P(X) = 3X^3 - 2$, $Q(X) = X^2 + X - 1$ et $R(X) = aX + b$.\n\n1. Calculer $P + Q$, $P \\times Q$, $(P + Q) \\times R$.\n2. Donner $a$ et $b$ pour **minimiser** le degré de $P - QR$.\n3. Montrer que si $\\deg P \\neq \\deg Q$, alors $\\deg(P + Q) = \\max(\\deg P, \\deg Q)$.\n4. Soit $P_1 = (X + 1)^4$.\n   - Développer $P_1$.\n   - Quel est son terme dominant ?\n   - $P_1$ est-il unitaire ?",
+              "solution": [
+                {
+                  "md": "**1.** $P + Q = 3X^3 + X^2 + X - 3$ ; $P \\times Q = 3X^5 + 3X^4 - 3X^3 - 2X^2 - 2X + 2$ ; $(P+Q) \\times R = 3aX^4 + (a + 3b)X^3 + (a + b)X^2 + (b - 3a)X - 3b$.",
+                  "why": "Formules (3) et (5)."
+                },
+                {
+                  "md": "**2.** $QR = aX^3 + (a + b)X^2 + (b - a)X - b$, donc $P - QR = (3 - a)X^3 - (a + b)X^2 + (a - b)X + (b - 2)$."
+                },
+                {
+                  "md": "On annule le coefficient de $X^3$ : $a = 3$ ; puis celui de $X^2$ : $a + b = 0$, soit $b = -3$. Il reste $P - QR = 6X - 5$.",
+                  "why": "Le coefficient de $X$, $a - b = 6$, ne peut plus être annulé : le degré minimal est $1$."
+                },
+                {
+                  "md": "**3.** Supposons $n = \\deg P > \\deg Q$ (l'autre cas est symétrique). Le coefficient de $X^n$ dans $P + Q$ est $a_n + 0 = a_n \\neq 0$, et tous les coefficients de degré $> n$ sont nuls. Donc $\\deg(P + Q) = n = \\max(\\deg P, \\deg Q)$.",
+                  "why": "Comme $\\deg Q < n$, le coefficient $b_n$ est nul."
+                },
+                {
+                  "md": "**4.** $P_1 = (X+1)^4 = X^4 + 4X^3 + 6X^2 + 4X + 1$. Son terme dominant est $X^4$, son coefficient dominant est $1$ : $P_1$ est unitaire.",
+                  "why": "Formule du binôme (coefficients $1, 4, 6, 4, 1$)."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $\\deg P = 4$ et $\\deg Q = 3$, alors $\\deg(PQ) =$ ___.",
+              "answerType": "number",
+              "accepted": [
+                "7"
+              ],
+              "explanation": "D'après (6), $\\deg(PQ) = \\deg P + \\deg Q = 4 + 3 = 7$. Répondre $12$ serait confondre avec un produit des degrés, et $4$ serait la règle de la somme."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le degré de $(X + 1)^4 - X^4$ est ___.",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$(X+1)^4 = X^4 + 4X^3 + 6X^2 + 4X + 1$, donc $(X+1)^4 - X^4 = 4X^3 + 6X^2 + 4X + 1$, de degré $3$. Les termes dominants se sont annulés : c'est un cas où (7) est une inégalité stricte."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le coefficient dominant de $P(X) = 1 - 2X + 5X^3 - X^2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$5$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-2$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Le terme de plus haut degré est $5X^3$, donc le coefficient dominant est $5$. Les pièges : $1$ est le premier coefficient **écrit** (c'est $a_0$) et $-1$ le dernier écrit ; l'ordre d'écriture ne compte pas, seul le degré compte."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $\\deg P \\neq \\deg Q$, alors $\\deg(P + Q) = \\max(\\deg P, \\deg Q)$.",
+              "answer": true,
+              "explanation": "C'est la question 3 des mini exercices : le terme dominant du polynôme de plus grand degré ne peut pas être compensé par l'autre, dont le coefficient correspondant est nul."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour $P(X) = a_nX^n + \\dots + a_0$ avec $a_n \\neq 0$, associez chaque objet à son nom.",
+              "pairs": [
+                {
+                  "left": "$a_nX^n$",
+                  "right": "Terme dominant"
+                },
+                {
+                  "left": "$a_n$",
+                  "right": "Coefficient dominant"
+                },
+                {
+                  "left": "Un polynôme réduit à un seul terme $a_kX^k$, $a_k \\neq 0$",
+                  "right": "Monôme"
+                },
+                {
+                  "left": "Un polynôme de coefficient dominant $1$",
+                  "right": "Polynôme unitaire"
+                }
+              ],
+              "explanation": "Le terme dominant est le monôme de plus haut degré, et son coefficient est le coefficient dominant ; un polynôme est unitaire quand ce coefficient vaut $1$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soient $P = X^3 + 2X$, $Q = X^2 - 1$ et $R = aX + b$. On cherche $a$ et $b$ qui minimisent $\\deg(P - QR)$. On a $QR = aX^3 + bX^2 - aX - b$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Pour annuler le coefficient de $X^3$ dans $P - QR$, il faut $a =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "Le coefficient de $X^3$ dans $P - QR$ est $1 - a$, nul pour $a = 1$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Pour annuler ensuite le coefficient de $X^2$, il faut $b =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "Le coefficient de $X^2$ dans $P - QR$ est $0 - b = -b$, nul pour $b = 0$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Avec ces valeurs, $P - QR =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "3x"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$P - QR = X^3 + 2X - (X^3 - X) = 3X$, de degré $1$ : on ne peut pas faire mieux puisque le coefficient de $X$ vaut $2 + a = 3 \\neq 0$."
+                }
+              ],
+              "explanation": "On annule les coefficients de $P - QR$ du plus haut degré vers le bas. On obtient $X^3 + 2X = (X^2 - 1)\\cdot X + 3X$ : c'est exactement une division euclidienne (leçon 2.2)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "arithmetique",
+      "title": "Arithmétique sur les polynômes",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "divisibilite",
+          "title": "Divisibilité",
+          "number": "2.1",
+          "estimatedMinutes": 8,
+          "summary": "La relation « $P$ divise $Q$ » dans $\\mathbb{K}[X]$, ses propriétés, et pourquoi ce n'est « presque » une relation d'ordre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Division",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les opérations **arithmétiques** présentent une grande **similarité** avec celles des entiers relatifs $\\mathbb{Z}$. Par exemple, on peut généraliser la notion de **division euclidienne**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Division",
+              "md": "Soient $P$ et $Q$ deux polynômes de $\\mathbb{K}[X]$. On dit que $P$ **divise** $Q$, et on note $P \\mid Q$, s'il existe un polynôme $R \\in \\mathbb{K}[X]$ tel que :\n\n$$Q = P \\times R \\tag{8}$$\n\nOn dit aussi que $Q$ est un **multiple** de $P$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Relations communes",
+              "md": "Pour tout $P \\in \\mathbb{K}[X]$ :\n\n- $P \\mid P$ ;\n- $1 \\mid P$ ;\n- $P \\mid 0$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemples",
+              "md": "- $X^2 - 1 = (X - 1)(X + 1)$, donc $X - 1 \\mid X^2 - 1$.\n- $X^2 - 1 = (2X + 2) \\times \\frac{1}{2}(X - 1)$, donc $2X + 2 \\mid X^2 - 1$ aussi.\n- Les relations communes : $P = P \\times 1$, $P = 1 \\times P$ et $0 = P \\times 0$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans $\\mathbb{R}[X]$, le polynôme constant $2$ divise $X^2 + 1$.",
+                "answer": true,
+                "explanation": "$X^2 + 1 = 2 \\times \\left(\\tfrac{1}{2}X^2 + \\tfrac{1}{2}\\right)$ et $\\tfrac{1}{2}X^2 + \\tfrac{1}{2} \\in \\mathbb{R}[X]$. Contrairement à $\\mathbb{Z}$ (où $2 \\nmid 1$), toute constante **non nulle** divise tous les polynômes, car on peut diviser par elle dans $\\mathbb{K}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Relation d'ordre (ou presque !)",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Soient $P$, $Q$ et $R$ trois polynômes de $\\mathbb{K}[X]$. On a alors :\n\n- $P \\mid P$ ;\n- si $P \\mid Q$ et $Q \\mid P$, alors **il existe** un scalaire $\\lambda \\in \\mathbb{K}^*$ tel que $P = \\lambda Q$ ;\n- $(P \\mid Q)$ et $(Q \\mid R)$ $\\Longrightarrow$ $P \\mid R$ ;\n- si $P \\mid Q$ et $P \\mid R$, alors $P \\mid (\\alpha Q + \\beta R)$ pour tous $\\alpha, \\beta \\in \\mathbb{K}$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "**Réflexivité :** $P = P \\times 1$, donc $P \\mid P$."
+                },
+                {
+                  "md": "**Transitivité :** si $Q = PA$ et $R = QB$, alors $R = P(AB)$, donc $P \\mid R$.",
+                  "why": "Associativité du produit."
+                },
+                {
+                  "md": "**Combinaison :** si $Q = PA$ et $R = PB$, alors $\\alpha Q + \\beta R = P(\\alpha A + \\beta B)$, donc $P \\mid \\alpha Q + \\beta R$.",
+                  "why": "Distributivité."
+                },
+                {
+                  "md": "**Divisibilité mutuelle :** soit $Q = PA$ et $P = QB$. Si $Q = 0$, alors $P = 0 \\cdot B = 0$ et $P = 1 \\cdot Q$. Sinon $Q = QBA$, soit $Q(1 - BA) = 0$."
+                },
+                {
+                  "md": "Comme $Q \\neq 0$, la formule (6) impose $1 - BA = 0$, donc $BA = 1$ et $\\deg A + \\deg B = 0$ : $A$ et $B$ sont des constantes non nulles. Ainsi $P = \\lambda Q$ avec $\\lambda = B \\in \\mathbb{K}^*$.",
+                  "why": "$\\deg(Q(1-BA)) = \\deg Q + \\deg(1 - BA)$ vaut $-\\infty$ seulement si $1 - BA = 0$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Pourquoi « ou presque » ? Une relation d'ordre devrait vérifier : $P \\mid Q$ et $Q \\mid P$ $\\Rightarrow$ $P = Q$. Ici ce n'est pas le cas : $X + 1$ et $2X + 2$ se divisent mutuellement mais sont différents ; ils ne diffèrent que d'une **constante non nulle**. C'est pour cela qu'on imposera au pgcd et au ppcm d'être **unitaires** : cela choisit un représentant unique.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que peut-on dire des polynômes $X - 1$ et $3X - 3$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Ils se divisent mutuellement et $3X - 3 = 3(X - 1)$."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Aucun des deux ne divise l'autre."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Seul $X - 1$ divise $3X - 3$."
+                  },
+                  {
+                    "id": "d",
+                    "md": "Ils sont égaux."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$3X - 3 = (X - 1) \\times 3$ et $X - 1 = (3X - 3) \\times \\tfrac{1}{3}$ : chacun divise l'autre, et ils diffèrent du facteur $\\lambda = 3$. Ils ne sont pas égaux (coefficients différents), et $3X - 3$ divise bien $X - 1$ car $\\tfrac13 \\in \\mathbb{K}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "$X + 1$ divise $X^2 + 2X + 1$.",
+              "answer": true,
+              "explanation": "$X^2 + 2X + 1 = (X + 1)(X + 1)$ : on a $Q = P \\times R$ avec $R = X + 1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On suppose $P \\mid Q$ et $P \\mid R$. Lequel des polynômes suivants est **nécessairement** divisible par $P$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$2Q - 5R$"
+                },
+                {
+                  "id": "b",
+                  "md": "$Q + 1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$QR + 1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$R + X$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "D'après la propriété, $P \\mid \\alpha Q + \\beta R$ pour tous scalaires $\\alpha, \\beta$ ; ici $\\alpha = 2$, $\\beta = -5$. Ajouter $1$ ou $X$ casse la divisibilité en général : par exemple avec $P = X$, $Q = R = X$, on a $X \\nmid X + 1$ et $X \\nmid X^2 + 1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tout $P \\in \\mathbb{K}[X]$, on a $P \\mid 0$.",
+              "answer": true,
+              "explanation": "$0 = P \\times 0$ : le polynôme nul est multiple de tout polynôme."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Compléter : $X^2 - 1 = (X - 1) \\times$ ___.",
+              "answerType": "expression",
+              "accepted": [
+                "x + 1"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$(X - 1)(X + 1) = X^2 - 1$, ce qui montre $X - 1 \\mid X^2 - 1$ et $X + 1 \\mid X^2 - 1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P \\mid Q$ et $Q \\mid P$, alors $P = Q$.",
+              "answer": false,
+              "explanation": "On a seulement $P = \\lambda Q$ avec $\\lambda \\in \\mathbb{K}^*$. Contre-exemple : $P = X + 1$ et $Q = 2X + 2$ se divisent mutuellement mais $P \\neq Q$. C'est le « ou presque » du titre."
+            }
+          ]
+        },
+        {
+          "slug": "division-euclidienne",
+          "title": "Division euclidienne",
+          "number": "2.2",
+          "estimatedMinutes": 12,
+          "summary": "Théorème de la division euclidienne $A = QB + R$ avec $\\deg R < \\deg B$, sa démonstration et deux exemples de calcul.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Division euclidienne",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Division euclidienne",
+              "md": "Soient $A$ et $B$ deux polynômes de $\\mathbb{K}[X]$ avec $B \\neq 0$. Alors il existe deux polynômes **uniques** $Q$ et $R$ tels que :\n\n$$A = Q \\times B + R \\quad \\text{avec} \\quad \\deg R < \\deg B \\tag{9}$$",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Vocabulaire",
+              "md": "- L'écriture (9) est appelée **division euclidienne** de $A$ par $B$.\n- $Q$ est appelé le **quotient**.\n- $R$ est appelé le **reste**.\n- On remarque que $R = 0 \\iff B \\mid A$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Proposer une démonstration par récurrence sur le degré de $A$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Une démonstration (récurrence sur $\\deg A$, puis unicité)",
+              "steps": [
+                {
+                  "md": "Notons $m = \\deg B \\geqslant 0$ et $b_m \\neq 0$ son coefficient dominant. **Initialisation :** si $\\deg A < m$ (en particulier si $A = 0$), on prend $Q = 0$ et $R = A$.",
+                  "why": "Alors $A = 0 \\times B + A$ avec $\\deg A < \\deg B$."
+                },
+                {
+                  "md": "**Hérédité :** soit $n \\geqslant m$. On suppose l'existence acquise pour tout polynôme de degré $< n$, et on prend $A$ de degré $n$, de coefficient dominant $a_n$. On pose $A_1 = A - \\dfrac{a_n}{b_m}X^{n-m}B$."
+                },
+                {
+                  "md": "Le terme de degré $n$ de $\\dfrac{a_n}{b_m}X^{n-m}B$ est $a_nX^n$ : il s'élimine, donc $\\deg A_1 < n$.",
+                  "why": "On « tue » le terme dominant de $A$."
+                },
+                {
+                  "md": "Par hypothèse de récurrence, $A_1 = Q_1B + R_1$ avec $\\deg R_1 < m$. Alors $A = \\left(Q_1 + \\dfrac{a_n}{b_m}X^{n-m}\\right)B + R_1$ : c'est l'existence.",
+                  "why": "On ajoute $\\frac{a_n}{b_m}X^{n-m}B$ des deux côtés."
+                },
+                {
+                  "md": "**Unicité :** si $A = QB + R = Q'B + R'$ avec $\\deg R, \\deg R' < m$, alors $(Q - Q')B = R' - R$. Le membre de droite est de degré $< m$.",
+                  "why": "Formule (7) sur le degré d'une somme."
+                },
+                {
+                  "md": "Si $Q \\neq Q'$, le membre de gauche serait de degré $\\deg(Q - Q') + m \\geqslant m$ : impossible. Donc $Q = Q'$, puis $R = R'$.",
+                  "why": "Formule (6) sur le degré d'un produit."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "C'est la division « posée » de l'école primaire : à chaque étape on élimine le terme dominant du reste en lui retranchant un monôme fois $B$. Le degré du reste diminue strictement à chaque étape, donc le calcul s'arrête dès que ce degré passe sous $\\deg B$.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Méthode de calcul : exemples",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 1",
+              "md": "Calculer la division euclidienne de $A = 2X^4 - X^3 - 2X^2 + 3X - 1$ par $B = X^2 - X + 1$.",
+              "steps": [
+                {
+                  "md": "$2X^4 \\div X^2 = 2X^2$. On retranche $2X^2 B = 2X^4 - 2X^3 + 2X^2$ : il reste $X^3 - 4X^2 + 3X - 1$.",
+                  "why": "On élimine le terme dominant $2X^4$."
+                },
+                {
+                  "md": "$X^3 \\div X^2 = X$. On retranche $X \\cdot B = X^3 - X^2 + X$ : il reste $-3X^2 + 2X - 1$."
+                },
+                {
+                  "md": "$-3X^2 \\div X^2 = -3$. On retranche $-3B = -3X^2 + 3X - 3$ : il reste $-X + 2$, de degré $1 < 2$ : on s'arrête."
+                },
+                {
+                  "md": "Quotient $Q = 2X^2 + X - 3$, reste $R = -X + 2$ : $\\;2X^4 - X^3 - 2X^2 + 3X - 1 = (2X^2 + X - 3)(X^2 - X + 1) + (-X + 2)$.",
+                  "why": "On peut vérifier en développant le membre de droite."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Le quotient de la division euclidienne de $X^2 + 3X + 5$ par $X + 1$ est ___.",
+                "answerType": "expression",
+                "accepted": [
+                  "x + 2"
+                ],
+                "variables": [
+                  "x"
+                ],
+                "explanation": "$X^2 \\div X = X$ ; on retranche $X(X+1) = X^2 + X$, reste $2X + 5$. Puis $2X \\div X = 2$ ; on retranche $2X + 2$, reste $3$. Donc $X^2 + 3X + 5 = (X + 2)(X + 1) + 3$ : quotient $X + 2$, reste $3$. Ne pas confondre avec le reste."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 2",
+              "md": "Calculer la division euclidienne de $A = X^4 - 3X^3 + X + 1$ par $B = X^2 + 2$.",
+              "steps": [
+                {
+                  "md": "$X^4 \\div X^2 = X^2$. On retranche $X^2B = X^4 + 2X^2$ : il reste $-3X^3 - 2X^2 + X + 1$."
+                },
+                {
+                  "md": "$-3X^3 \\div X^2 = -3X$. On retranche $-3X \\cdot B = -3X^3 - 6X$ : il reste $-2X^2 + 7X + 1$."
+                },
+                {
+                  "md": "$-2X^2 \\div X^2 = -2$. On retranche $-2B = -2X^2 - 4$ : il reste $7X + 5$, de degré $1 < 2$."
+                },
+                {
+                  "md": "Quotient $Q = X^2 - 3X - 2$, reste $R = 7X + 5$ : $\\;X^4 - 3X^3 + X + 1 = (X^2 - 3X - 2)(X^2 + 2) + 7X + 5$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "steps",
+              "prompt": "On effectue la division euclidienne de $A = X^3 + 2X^2 - X + 3$ par $B = X^2 + 1$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Quel est le premier terme du quotient ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$X$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$X^3$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$2X$"
+                    },
+                    {
+                      "id": "d",
+                      "md": "$X^2$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$X^3 \\div X^2 = X$ : c'est le monôme qui élimine le terme dominant de $A$. $X^2$ serait le résultat de $X^3 \\div X$, pas de $X^3 \\div X^2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le quotient complet $Q$ vaut ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x + 2"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "Après avoir retranché $X(X^2+1)$, il reste $2X^2 - 2X + 3$ ; puis $2X^2 \\div X^2 = 2$. Donc $Q = X + 2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le reste $R$ vaut ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "-2x + 1"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$2X^2 - 2X + 3 - 2(X^2 + 1) = -2X + 1$, de degré $1 < 2$."
+                }
+              ],
+              "explanation": "$X^3 + 2X^2 - X + 3 = (X + 2)(X^2 + 1) + (-2X + 1)$ ; on vérifie en développant : $(X+2)(X^2+1) = X^3 + 2X^2 + X + 2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la division euclidienne de $A$ par $B$ avec $\\deg B = 3$, quel peut être le degré du reste $R$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\deg R \\in \\{-\\infty, 0, 1, 2\\}$"
+                },
+                {
+                  "id": "b",
+                  "md": "N'importe quel entier $\\leqslant 3$"
+                },
+                {
+                  "id": "c",
+                  "md": "Exactement $2$"
+                },
+                {
+                  "id": "d",
+                  "md": "N'importe quel entier $< \\deg A$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le théorème impose $\\deg R < \\deg B = 3$, et $R$ peut être nul ($-\\infty$). Le degré $3$ est exclu (sinon on pourrait encore diviser), et rien n'impose $\\deg R = 2$ : le reste peut être une constante ou nul."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le reste de la division euclidienne de $A$ par $B$ ($B \\neq 0$) est nul si et seulement si $B \\mid A$.",
+              "answer": true,
+              "explanation": "Si $R = 0$, alors $A = QB$ donc $B \\mid A$. Réciproquement si $A = SB$, l'écriture $A = SB + 0$ vérifie (9) et, par unicité, $R = 0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $\\deg A = 7$ et $\\deg B = 3$, le quotient de la division euclidienne de $A$ par $B$ est de degré ___.",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "$A = QB + R$ avec $\\deg R < 3$ : le terme de degré $7$ vient de $QB$, donc $\\deg Q + 3 = 7$, soit $\\deg Q = 4$. Répondre $7/3$ ou $10$ confond avec une division ou un produit des degrés."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettre dans l'ordre les étapes de la preuve d'existence de la division euclidienne (récurrence sur $\\deg A$, avec $m = \\deg B$).",
+              "items": [
+                "Si $\\deg A < m$, on prend $Q = 0$ et $R = A$.",
+                "Sinon, avec $n = \\deg A$, on pose $A_1 = A - \\frac{a_n}{b_m}X^{n-m}B$.",
+                "Le terme de degré $n$ s'élimine, donc $\\deg A_1 < \\deg A$.",
+                "Par hypothèse de récurrence, $A_1 = Q_1B + R_1$ avec $\\deg R_1 < m$.",
+                "On conclut : $A = \\left(Q_1 + \\frac{a_n}{b_m}X^{n-m}\\right)B + R_1$."
+              ],
+              "explanation": "On traite d'abord le cas de base, puis on réduit le degré en éliminant le terme dominant, on applique l'hypothèse de récurrence au polynôme obtenu et on remonte à $A$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le reste de la division euclidienne de $X^4 - 3X^3 + X + 1$ par $X^2 + 2$ est ___.",
+              "answerType": "expression",
+              "accepted": [
+                "7x + 5"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "C'est l'exemple 2 : $X^4 - 3X^3 + X + 1 = (X^2 - 3X - 2)(X^2 + 2) + 7X + 5$. Le quotient est $X^2 - 3X - 2$, le reste $7X + 5$ (de degré $1 < 2$)."
+            }
+          ]
+        },
+        {
+          "slug": "pgcd-algorithme-euclide",
+          "title": "PGCD et algorithme d'Euclide",
+          "number": "2.3",
+          "estimatedMinutes": 10,
+          "summary": "Définition du pgcd (unitaire) de deux polynômes, ses premières propriétés, et son calcul par l'algorithme d'Euclide.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "PGCD",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "PGCD",
+              "md": "Soient $P$ et $Q$ deux polynômes de $\\mathbb{K}[X]$, avec $P \\neq 0$ et $Q \\neq 0$. Il existe alors un **unique** polynôme **unitaire** de plus grand degré qui divise à la fois $P$ et $Q$.\n\nCet unique polynôme est appelé **pgcd** (plus grand commun diviseur) et il est noté $\\operatorname{pgcd}(P, Q)$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Remarques.**\n\n- $\\operatorname{pgcd}(P, Q)$ est un polynôme **unitaire**.\n- Si $P \\mid Q$ et $P \\neq 0$, alors $\\operatorname{pgcd}(P, Q) = \\dfrac{1}{a_n}P$, où $a_n$ est le coefficient dominant de $P$.\n- Pour tout $\\lambda \\in \\mathbb{K}^*$, on a : $$\\operatorname{pgcd}(P, Q) = \\operatorname{pgcd}(\\lambda P, Q) \\tag{10}$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si $D$ divise $P$ et $Q$, alors $2D$, $-D$, $\\frac{1}{3}D$… aussi : les diviseurs communs de plus grand degré forment toute une famille $\\lambda D$. Imposer « unitaire » choisit **un seul** représentant de cette famille ; c'est ce qui rend le pgcd unique.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Soient $P = 2X - 4$ et $Q = (X - 2)(X + 5)$. Que vaut $\\operatorname{pgcd}(P, Q)$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$X - 2$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$2X - 4$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$(X - 2)(X + 5)$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$Q = (2X - 4)\\cdot\\frac{1}{2}(X + 5)$, donc $P \\mid Q$ et la deuxième remarque donne $\\operatorname{pgcd}(P,Q) = \\frac{1}{2}P = X - 2$. La réponse $2X - 4$ divise bien les deux mais n'est **pas unitaire** ; $(X-2)(X+5)$ ne divise pas $P$ (degré trop grand)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Méthode de calcul du PGCD",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Algorithme d'Euclide.** Vous avez appris en arithmétique dans $\\mathbb{Z}$ que :\n\n$$\\operatorname{pgcd}(a, b) = \\operatorname{pgcd}(b, r) \\tag{11}$$\n\noù $r$ est le reste de la division euclidienne de $a$ par $b$. La généralisation de cet algorithme s'applique aussi aux **polynômes** ; ainsi on a :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "title": "Algorithme d'Euclide (version polynôme)",
+              "md": "Soient $A$ et $B$ deux polynômes de $\\mathbb{K}[X]$ et $(Q, R)$ le résultat de la division euclidienne de $A$ par $B$ (i.e. $A = Q \\times B + R$). Alors on a :\n\n$$\\operatorname{pgcd}(A, B) = \\operatorname{pgcd}(B, R) \\tag{12}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Pourquoi ça marche",
+              "steps": [
+                {
+                  "md": "Si $D \\mid A$ et $D \\mid B$, alors $D \\mid A - QB = R$.",
+                  "why": "Combinaison $\\alpha A + \\beta B$ de la leçon 2.1 (avec des polynômes : $A - QB$ s'écrit $D(A' - QB')$)."
+                },
+                {
+                  "md": "Si $D \\mid B$ et $D \\mid R$, alors $D \\mid QB + R = A$."
+                },
+                {
+                  "md": "Les couples $(A, B)$ et $(B, R)$ ont donc exactement les **mêmes diviseurs communs**, donc le même pgcd (le diviseur commun unitaire de plus grand degré)."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "En pratique, on répète la division : $A$ par $B$, puis $B$ par le reste $R_1$, puis $R_1$ par $R_2$, etc. Les degrés des restes diminuent strictement, donc on finit par obtenir un reste nul. Le pgcd est le **dernier reste non nul**, rendu **unitaire** (divisé par son coefficient dominant) si nécessaire.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exemples de calcul",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 1",
+              "md": "Utiliser l'algorithme d'Euclide pour calculer le **pgcd** des deux polynômes $A = X^4 - 1$ et $B = X^3 - 1$.",
+              "steps": [
+                {
+                  "md": "$X^4 - 1 = (X^3 - 1) \\cdot X + (X - 1)$.",
+                  "why": "Division euclidienne de $A$ par $B$ : reste $X - 1$."
+                },
+                {
+                  "md": "$X^3 - 1 = (X - 1) \\cdot (X^2 + X + 1) + 0$.",
+                  "why": "Division de $B$ par le reste précédent : reste nul."
+                },
+                {
+                  "md": "**Conclusion :** le pgcd est le dernier reste **non nul**. Alors $\\operatorname{pgcd}(X^4 - 1, X^3 - 1) = X - 1$.",
+                  "why": "$X - 1$ est déjà unitaire."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 2",
+              "md": "Utiliser l'algorithme d'Euclide pour calculer le **pgcd** des deux polynômes $A = X^3 - 2X^2 + 3$ et $B = X^2 - 1$.",
+              "steps": [
+                {
+                  "md": "$X^3 - 2X^2 + 3 = (X^2 - 1) \\cdot (X - 2) + (X + 1)$."
+                },
+                {
+                  "md": "$X^2 - 1 = (X + 1) \\cdot (X - 1) + 0$."
+                },
+                {
+                  "md": "**Conclusion :** le pgcd est le dernier reste **non nul**. Alors $\\operatorname{pgcd}(X^3 - 2X^2 + 3, X^2 - 1) = X + 1$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "steps",
+              "prompt": "Calculer $\\operatorname{pgcd}(A, B)$ pour $A = X^3 + 2X^2 + 2X + 1$ et $B = X^2 + 3X + 2$ par l'algorithme d'Euclide.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le reste $R_1$ de la division euclidienne de $A$ par $B$ est ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "3x + 3"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$A = (X - 1)B + 3X + 3$ : on retranche $X \\cdot B = X^3 + 3X^2 + 2X$ (reste $-X^2 + 1$), puis $-B$ (reste $3X + 3$)."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Quel est le reste de la division de $B$ par $R_1 = 3X + 3$ ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$0$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$2$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$X + 2$"
+                    },
+                    {
+                      "id": "d",
+                      "md": "$-1$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$X^2 + 3X + 2 = (X+1)(X+2) = (3X + 3)\\cdot\\frac{1}{3}(X + 2) + 0$ : le reste est nul, l'algorithme s'arrête."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Donc $\\operatorname{pgcd}(A, B) =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x + 1"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "Le dernier reste non nul est $3X + 3$ ; on le rend unitaire en divisant par $3$ : $X + 1$. Répondre $3X + 3$ est l'erreur classique : un pgcd est toujours unitaire."
+                }
+              ],
+              "explanation": "Algorithme d'Euclide : $A = (X-1)B + (3X+3)$, puis $B = (3X+3)\\cdot\\frac{X+2}{3} + 0$. Le dernier reste non nul, normalisé, donne $\\operatorname{pgcd}(A,B) = X + 1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $A = QB + R$ est la division euclidienne de $A$ par $B$, alors $\\operatorname{pgcd}(A, B) = \\operatorname{pgcd}(B, R)$.",
+              "answer": true,
+              "explanation": "C'est la propriété (12) : $(A, B)$ et $(B, R)$ ont les mêmes diviseurs communs, donc le même pgcd. C'est le moteur de l'algorithme d'Euclide."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que vaut $\\operatorname{pgcd}(X^4 - 1, 3X^2 + 3)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$X^2 + 1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$3X^2 + 3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$X^4 - 1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$X^4 - 1 = (X^2 + 1)(X^2 - 1)$, donc $3X^2 + 3 = 3(X^2+1)$ divise $X^4 - 1$. Par (10) et la deuxième remarque, le pgcd est $X^2 + 1$. $3X^2 + 3$ divise bien les deux mais n'est pas unitaire ; $X^4 - 1$ ne divise pas $3X^2 + 3$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\operatorname{pgcd}\\big((X - 1)^2(X + 3),\\ (X - 1)(X + 3)^2\\big) =$ ___ (forme développée ou factorisée).",
+              "answerType": "expression",
+              "accepted": [
+                "(x - 1)*(x + 3)",
+                "x^2 + 2x - 3"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$(X-1)(X+3)$ divise les deux, et c'est le plus grand diviseur commun unitaire : $(X-1)^2$ ne divise pas le second, $(X+3)^2$ ne divise pas le premier. Développé : $X^2 + 2X - 3$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettre dans l'ordre les étapes de l'algorithme d'Euclide pour calculer $\\operatorname{pgcd}(A, B)$.",
+              "items": [
+                "Effectuer la division euclidienne $A = Q_1B + R_1$.",
+                "Si $R_1 \\neq 0$, diviser $B$ par $R_1$ : $B = Q_2R_1 + R_2$.",
+                "Continuer en divisant chaque reste par le suivant jusqu'à obtenir un reste nul.",
+                "Retenir le dernier reste non nul.",
+                "Le diviser par son coefficient dominant pour obtenir un polynôme unitaire."
+              ],
+              "explanation": "On applique (12) de façon répétée : $\\operatorname{pgcd}(A,B) = \\operatorname{pgcd}(B,R_1) = \\operatorname{pgcd}(R_1,R_2) = \\dots$ jusqu'au reste nul ; le pgcd est le dernier reste non nul, normalisé."
+            }
+          ]
+        },
+        {
+          "slug": "polynomes-premiers-bezout",
+          "title": "Polynômes premiers entre eux et théorème de Bézout",
+          "number": "2.4",
+          "estimatedMinutes": 12,
+          "summary": "Polynômes premiers entre eux, théorème de Bézout $PU + QV = \\operatorname{pgcd}(P,Q)$ et ses corollaires.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Polynômes premiers",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Polynômes premiers entre eux",
+              "md": "Soient $P$ et $Q$ deux polynômes de $\\mathbb{K}[X]$. On dit que $P$ et $Q$ sont **premiers** entre eux si\n\n$$\\operatorname{pgcd}(P, Q) = 1$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Pour deux polynômes quelconques $P$ et $Q$ (qui ne sont pas forcément premiers entre eux), on peut construire deux polynômes $P'$ et $Q'$ qui sont premiers entre eux. Il suffit de calculer $\\operatorname{pgcd}(P, Q)$ :\n\n$$K = \\operatorname{pgcd}(P, Q) \\Longrightarrow \\begin{cases} P = K \\times P' \\\\ Q = K \\times Q' \\end{cases} \\tag{13}$$\n\nAlors forcément $P'$ et $Q'$ sont premiers entre eux.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple",
+              "md": "$P = X^2 - 1 = (X - 1)(X + 1)$ et $Q = X^2 - 2X + 1 = (X - 1)^2$. Ici $K = \\operatorname{pgcd}(P, Q) = X - 1$, d'où $P' = X + 1$ et $Q' = X - 1$.",
+              "steps": [
+                {
+                  "md": "Un diviseur commun $D$ de $X + 1$ et $X - 1$ divise leur différence $(X + 1) - (X - 1) = 2$.",
+                  "why": "Combinaison $\\alpha Q + \\beta R$ avec $\\alpha = 1$, $\\beta = -1$."
+                },
+                {
+                  "md": "Donc $D$ est une constante non nulle, et le pgcd unitaire vaut $1$ : $P'$ et $Q'$ sont bien premiers entre eux."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$X$ et $X + 1$ sont premiers entre eux.",
+                "answer": true,
+                "explanation": "Tout diviseur commun divise $(X + 1) - X = 1$, donc est une constante non nulle : le pgcd (unitaire) vaut $1$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Théorème de Bézout",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème de Bézout",
+              "md": "Soient $P$ et $Q$ deux polynômes de $\\mathbb{K}[X]$ tels que $P \\neq 0$ et $Q \\neq 0$. Soit $D = \\operatorname{pgcd}(P, Q)$ leur pgcd. Alors il existe deux polynômes $U$ et $V$ dans $\\mathbb{K}[X]$ tels que :\n\n$$PU + QV = D \\tag{14}$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La preuve découle directement en **remontant** l'algorithme d'Euclide.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Remonter l'algorithme d'Euclide",
+              "md": "Reprenons les exemples de la leçon précédente.",
+              "steps": [
+                {
+                  "md": "Exemple 1 : $X^4 - 1 = (X^3 - 1)\\cdot X + (X - 1)$, et $X - 1$ est le pgcd. On isole le reste : $X - 1 = (X^4 - 1)\\cdot 1 + (X^3 - 1)\\cdot(-X)$.",
+                  "why": "Ici $U = 1$ et $V = -X$."
+                },
+                {
+                  "md": "Exemple 2 : $X^3 - 2X^2 + 3 = (X^2 - 1)(X - 2) + (X + 1)$, d'où $X + 1 = (X^3 - 2X^2 + 3)\\cdot 1 + (X^2 - 1)\\cdot(2 - X)$.",
+                  "why": "Ici $U = 1$ et $V = 2 - X$."
+                },
+                {
+                  "md": "Lorsque l'algorithme comporte plusieurs divisions, on exprime chaque reste à l'aide des deux précédents et on substitue de proche en proche, jusqu'à écrire le dernier reste non nul en fonction de $P$ et $Q$ (puis on divise par son coefficient dominant)."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Si $P$ et $Q$ dans $\\mathbb{K}[X]$ sont **premiers entre eux**, alors il existe deux polynômes $U$ et $V$ tels que :\n\n$$PU + QV = 1 \\tag{15}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "La réciproque est vraie : si $PU + QV = 1$, tout diviseur commun de $P$ et $Q$ divise $1$, donc est une constante, et $\\operatorname{pgcd}(P, Q) = 1$. Trouver une relation $PU + QV = 1$ est donc une façon de **prouver** que $P$ et $Q$ sont premiers entre eux.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Corollaires de Bézout",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Soient $P$, $Q$ et $R$ tels que $P \\neq 0$ et $Q \\neq 0$. Alors on a la propriété suivante :\n\n$$R \\mid P \\ \\text{ et } \\ R \\mid Q \\Longrightarrow R \\mid \\operatorname{pgcd}(P, Q) \\tag{16}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "Par Bézout, $\\operatorname{pgcd}(P, Q) = PU + QV$.",
+                  "why": "Théorème (14)."
+                },
+                {
+                  "md": "Si $P = RA$ et $Q = RB$, alors $\\operatorname{pgcd}(P, Q) = R(AU + BV)$, donc $R \\mid \\operatorname{pgcd}(P, Q)$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Soient $P$, $Q$ et $R$ des polynômes de $\\mathbb{K}[X]$. Alors :\n\n$$P \\mid QR \\ \\text{ et } \\ \\operatorname{pgcd}(P, Q) = 1 \\Longrightarrow P \\mid R \\tag{17}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "Comme $\\operatorname{pgcd}(P, Q) = 1$, il existe $U, V$ avec $PU + QV = 1$.",
+                  "why": "Corollaire (15)."
+                },
+                {
+                  "md": "On multiplie par $R$ : $R = P(UR) + (QR)V$."
+                },
+                {
+                  "md": "$P$ divise $P(UR)$ et $P$ divise $QR$, donc $P$ divise la somme $R$.",
+                  "why": "Si $P$ divise deux polynômes, il divise toute combinaison de ceux-ci à coefficients polynomiaux."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $X - 1$ divise $(X + 2)R$. Que peut-on conclure ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$X - 1 \\mid R$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$X - 1 \\mid X + 2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "On ne peut rien conclure sur $R$."
+                  },
+                  {
+                    "id": "d",
+                    "md": "$R = X - 1$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$X - 1$ et $X + 2$ sont premiers entre eux (un diviseur commun divise leur différence $3$). Le corollaire (17) donne alors $X - 1 \\mid R$. En revanche $X - 1$ ne divise pas $X + 2$, et $R$ n'a aucune raison d'être égal à $X - 1$ (ce peut être n'importe quel multiple)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "À partir de $X^4 - 1 = (X^3 - 1)X + (X - 1)$, on obtient $X - 1 = (X^4 - 1)\\cdot 1 + (X^3 - 1)\\cdot V$ avec $V =$ ___.",
+              "answerType": "expression",
+              "accepted": [
+                "-x"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "On isole le reste : $X - 1 = (X^4 - 1) - (X^3 - 1)X$, donc $V = -X$. Répondre $X$ oublie le changement de signe."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous polynômes $P, Q, R$ : si $P \\mid QR$, alors $P \\mid Q$ ou $P \\mid R$.",
+              "answer": false,
+              "explanation": "Contre-exemple : $P = X^2 - 1$, $Q = X - 1$, $R = X + 1$. On a $P \\mid QR = X^2 - 1$ mais $P$ (de degré 2) ne divise ni $Q$ ni $R$ (de degré 1). Le corollaire (17) demande l'hypothèse $\\operatorname{pgcd}(P, Q) = 1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel couple $(U, V)$ vérifie $X \\cdot U + (X + 1)\\cdot V = 1$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$(U, V) = (-1, 1)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$(U, V) = (1, -1)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$(U, V) = (1, 1)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$(U, V) = (X, -X)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$-X + (X + 1) = 1$. Avec $(1, -1)$ on obtient $X - X - 1 = -1$ (bon signe à inverser), avec $(1,1)$ on obtient $2X + 1$, et avec $(X, -X)$ on obtient $-X$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les polynômes $U$ et $V$ du théorème de Bézout sont uniques.",
+              "answer": false,
+              "explanation": "Le théorème affirme seulement leur **existence**. Par exemple $X\\cdot(-1) + (X+1)\\cdot 1 = 1$ mais aussi $X \\cdot X + (X + 1)(1 - X) = X^2 + 1 - X^2 = 1$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque énoncé à son nom dans le cours.",
+              "pairs": [
+                {
+                  "left": "$PU + QV = \\operatorname{pgcd}(P, Q)$",
+                  "right": "Théorème de Bézout (14)"
+                },
+                {
+                  "left": "$\\operatorname{pgcd}(P, Q) = 1 \\Rightarrow \\exists\\, U, V,\\ PU + QV = 1$",
+                  "right": "Corollaire (15)"
+                },
+                {
+                  "left": "$R \\mid P$ et $R \\mid Q \\Rightarrow R \\mid \\operatorname{pgcd}(P, Q)$",
+                  "right": "Corollaire (16)"
+                },
+                {
+                  "left": "$P \\mid QR$ et $\\operatorname{pgcd}(P, Q) = 1 \\Rightarrow P \\mid R$",
+                  "right": "Corollaire (17)"
+                }
+              ],
+              "explanation": "Le théorème (14) est l'identité de Bézout ; (15) est son cas particulier premier entre eux ; (16) et (17) s'en déduisent en multipliant ou en factorisant l'identité."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soient $A = X^3 + 2X^2 + 2X + 1$ et $B = X^2 + 3X + 2$. On a vu que $\\operatorname{pgcd}(A, B) = X + 1$ et que la première division donne le reste $3X + 3$. On cherche $U, V$ avec $AU + BV = X + 1$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Dans $A = Q_1B + (3X + 3)$, le quotient vaut $Q_1 =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x - 1"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$(X - 1)(X^2 + 3X + 2) = X^3 + 2X^2 - X - 2$, et $A - (X^3 + 2X^2 - X - 2) = 3X + 3$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "De $3X + 3 = A - (X - 1)B$, on déduit $X + 1 = AU + BV$ avec $U =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "1/3"
+                  ],
+                  "explanation": "On divise par $3$ : $X + 1 = \\frac{1}{3}A - \\frac{1}{3}(X - 1)B$, donc $U = \\frac13$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Et $V =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "-(x - 1)/3",
+                    "(1 - x)/3"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$V = -\\frac{1}{3}(X - 1) = \\frac{1 - X}{3}$. Vérification : $\\frac13(3X + 3) = X + 1$."
+                }
+              ],
+              "explanation": "On remonte l'algorithme d'Euclide : le dernier reste non nul $3X + 3$ s'écrit $A - (X-1)B$ ; on le rend unitaire en divisant par $3$, ce qui donne $U = \\frac13$ et $V = \\frac{1 - X}{3}$."
+            }
+          ]
+        },
+        {
+          "slug": "ppcm",
+          "title": "PPCM et mini exercices",
+          "number": "2.5",
+          "estimatedMinutes": 12,
+          "summary": "Le ppcm de deux polynômes, sa propriété caractéristique, et des mini exercices d'arithmétique (diviseurs, divisions, pgcd, Bézout).",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "PPCM",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "PPCM",
+              "md": "Soient $P$, $Q$ deux polynômes **non nuls** de $\\mathbb{K}[X]$. Alors il existe un **unique** polynôme $M$ **unitaire** de plus petit degré tel que :\n\n$$P \\mid M \\quad \\text{et} \\quad Q \\mid M$$\n\nLe polynôme $M$ est appelé le **ppcm** (plus petit commun multiple) et noté $\\operatorname{ppcm}(P, Q)$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple",
+              "md": "Donner le **ppcm** de :\n\n1. $P = X^2(X - 2)^2(X^2 + 1)^4$ ;\n2. $Q = (X + 1)(X - 2)^3(X^2 + 1)^3$.",
+              "steps": [
+                {
+                  "md": "Un multiple commun doit contenir chaque facteur avec au moins l'exposant qu'il a dans $P$ **et** celui qu'il a dans $Q$ : on prend pour chaque facteur l'exposant **maximal**.",
+                  "why": "Comme pour le ppcm d'entiers écrits en produit de facteurs premiers ; cela sera justifié par la factorisation (partie 3)."
+                },
+                {
+                  "md": "$X$ : $\\max(2, 0) = 2$ ; $X + 1$ : $\\max(0, 1) = 1$ ; $X - 2$ : $\\max(2, 3) = 3$ ; $X^2 + 1$ : $\\max(4, 3) = 4$."
+                },
+                {
+                  "md": "$\\operatorname{ppcm}(P, Q) = X^2(X + 1)(X - 2)^3(X^2 + 1)^4$, qui est bien unitaire."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\operatorname{ppcm}\\big(X^2(X + 1),\\ X(X + 1)^2\\big) =$ ___ (forme factorisée ou développée).",
+                "answerType": "expression",
+                "accepted": [
+                  "x^2*(x + 1)^2"
+                ],
+                "variables": [
+                  "x"
+                ],
+                "explanation": "On prend chaque facteur avec l'exposant maximal : $X^2$ et $(X+1)^2$, d'où $X^2(X+1)^2 = X^4 + 2X^3 + X^2$. Le produit $X^3(X+1)^3$ est un multiple commun mais pas le plus petit ; $X(X+1)$ est le pgcd, pas le ppcm."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Propriété PPCM",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le **ppcm** est le plus petit des polynômes qui vérifie cette propriété. Ainsi :\n\n$$P \\mid M \\ \\text{ et } \\ Q \\mid M \\Longrightarrow \\operatorname{ppcm}(P, Q) \\mid M \\tag{18}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Justification de (18)",
+              "steps": [
+                {
+                  "md": "Notons $m = \\operatorname{ppcm}(P, Q)$ et effectuons la division euclidienne $M = Sm + T$ avec $\\deg T < \\deg m$.",
+                  "why": "Théorème (9)."
+                },
+                {
+                  "md": "$P$ divise $M$ et $m$, donc $P$ divise $T = M - Sm$ ; de même $Q \\mid T$. Ainsi $T$ est un multiple commun de $P$ et $Q$."
+                },
+                {
+                  "md": "Si $T \\neq 0$, alors $T$ divisé par son coefficient dominant serait un multiple commun **unitaire** de degré $< \\deg m$ : contradiction avec la définition du ppcm. Donc $T = 0$ et $m \\mid M$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Mini exercices",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Mini exercices",
+              "md": "1. Donner les diviseurs de $P(X) = X^4 + 2X^2 + 1$.\n2. Montrer que $(X - 1)$ divise $X^n - 1$ (pour $n \\geqslant 1$).\n3. Calculer les divisions euclidiennes des polynômes suivants :\n   - $P(X) = X^4 - 1$ et $Q(X) = X^3 - 1$ ;\n   - $P(X) = 4X^3 + 2X^2 - X - 5$ et $Q(X) = X^2 + X$.\n4. Déterminer le pgcd de $P(X) = X^5 + X^3 + X^2 + 1$ et $Q(X) = 2X^3 + 3X^2 + 2X + 3$.\n   - Trouver les polynômes $U$ et $V$ de Bézout.",
+              "solution": [
+                {
+                  "md": "**1.** $X^4 + 2X^2 + 1 = (X^2 + 1)^2$. Dans $\\mathbb{R}[X]$, ses diviseurs sont les $\\lambda$, $\\lambda(X^2 + 1)$ et $\\lambda(X^2 + 1)^2$ avec $\\lambda \\in \\mathbb{R}^*$. Dans $\\mathbb{C}[X]$, comme $X^2 + 1 = (X - i)(X + i)$, ce sont les $\\lambda(X - i)^a(X + i)^b$ avec $0 \\leqslant a, b \\leqslant 2$.",
+                  "why": "$X^2 + 1$ est irréductible dans $\\mathbb{R}[X]$ (voir partie 3)."
+                },
+                {
+                  "md": "**2.** $X^n - 1 = (X - 1)(X^{n-1} + X^{n-2} + \\dots + X + 1)$, donc $X - 1 \\mid X^n - 1$.",
+                  "why": "En développant, les termes intermédiaires se télescopent : il reste $X^n - 1$."
+                },
+                {
+                  "md": "**3.** $X^4 - 1 = (X^3 - 1)\\cdot X + (X - 1)$ : quotient $X$, reste $X - 1$. Et $4X^3 + 2X^2 - X - 5 = (X^2 + X)(4X - 2) + (X - 5)$ : quotient $4X - 2$, reste $X - 5$."
+                },
+                {
+                  "md": "**4.** Factorisations : $P = X^3(X^2 + 1) + (X^2 + 1) = (X^2 + 1)(X^3 + 1)$ et $Q = X^2(2X + 3) + (2X + 3) = (2X + 3)(X^2 + 1)$. Par l'algorithme d'Euclide : $P = \\left(\\tfrac12X^2 - \\tfrac34X + \\tfrac98\\right)Q - \\tfrac{19}{8}(X^2 + 1)$, puis $Q = (X^2 + 1)(2X + 3) + 0$. Donc $\\operatorname{pgcd}(P, Q) = X^2 + 1$.",
+                  "why": "Dernier reste non nul $-\\frac{19}{8}(X^2+1)$, rendu unitaire."
+                },
+                {
+                  "md": "**Bézout :** on isole le reste : $-\\tfrac{19}{8}(X^2 + 1) = P - \\left(\\tfrac12X^2 - \\tfrac34X + \\tfrac98\\right)Q$. On multiplie par $-\\tfrac{8}{19}$ : $X^2 + 1 = PU + QV$ avec $U = -\\dfrac{8}{19}$ et $V = \\dfrac{4X^2 - 6X + 9}{19}$.",
+                  "why": "Vérification : $-8(X^3 + 1) + (2X + 3)(4X^2 - 6X + 9) = -8X^3 - 8 + 8X^3 + 27 = 19$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le ppcm de $P = X^2(X - 2)^2(X^2 + 1)^4$ et $Q = (X + 1)(X - 2)^3(X^2 + 1)^3$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$X^2(X + 1)(X - 2)^3(X^2 + 1)^4$"
+                },
+                {
+                  "id": "b",
+                  "md": "$(X - 2)^2(X^2 + 1)^3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$X^2(X + 1)(X - 2)^5(X^2 + 1)^7$"
+                },
+                {
+                  "id": "d",
+                  "md": "$X^2(X + 1)(X - 2)^2(X^2 + 1)^3$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Chaque facteur apparaît avec son exposant **maximal**. La réponse b prend les exposants minimaux des facteurs communs : c'est le pgcd. La réponse c est le produit $PQ$, un multiple commun mais pas le plus petit. La réponse d n'est pas multiple de $Q$ ($(X-2)^3 \\nmid (X-2)^2$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P \\mid M$ et $Q \\mid M$, alors $\\operatorname{ppcm}(P, Q) \\mid M$.",
+              "answer": true,
+              "explanation": "C'est la propriété (18) : tout multiple commun est un multiple du ppcm (on le prouve en divisant $M$ par le ppcm : le reste serait un multiple commun de degré trop petit)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous polynômes unitaires $P$ et $Q$, on a $\\operatorname{ppcm}(P, Q) = PQ$.",
+              "answer": false,
+              "explanation": "Contre-exemple : $\\operatorname{ppcm}(X, X) = X \\neq X^2$. Le produit $PQ$ est toujours un multiple commun, mais pas forcément le plus petit (il l'est lorsque $P$ et $Q$ sont premiers entre eux)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le quotient de la division euclidienne de $4X^3 + 2X^2 - X - 5$ par $X^2 + X$ est ___.",
+              "answerType": "expression",
+              "accepted": [
+                "4x - 2"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$4X^3 \\div X^2 = 4X$ ; on retranche $4X^3 + 4X^2$ : reste $-2X^2 - X - 5$. Puis $-2$ ; on retranche $-2X^2 - 2X$ : reste $X - 5$. Quotient $4X - 2$, reste $X - 5$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Compléter : $X^5 - 1 = (X - 1)\\times$ ___.",
+              "answerType": "expression",
+              "accepted": [
+                "x^4 + x^3 + x^2 + x + 1"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "C'est le mini exercice 2 avec $n = 5$ : $(X - 1)(X^4 + X^3 + X^2 + X + 1) = X^5 - 1$ (les termes intermédiaires s'annulent)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que vaut $\\operatorname{pgcd}(X^5 + X^3 + X^2 + 1,\\ 2X^3 + 3X^2 + 2X + 3)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$X^2 + 1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$2X^2 + 2$"
+                },
+                {
+                  "id": "c",
+                  "md": "$1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$(X^2 + 1)(2X + 3)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$P = (X^2 + 1)(X^3 + 1)$ et $Q = (X^2 + 1)(2X + 3)$, et l'algorithme d'Euclide donne $X^2 + 1$. $2X^2 + 2$ n'est pas unitaire ; $(X^2+1)(2X+3) = Q$ ne divise pas $P$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "racines-factorisation",
+      "title": "Racine d'un polynôme, factorisation",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "racines-derivee",
+          "title": "Racine d'un polynôme et dérivée",
+          "number": "3.1",
+          "estimatedMinutes": 9,
+          "summary": "Racine d'un polynôme, lien avec la divisibilité par $X - \\alpha$, et polynôme dérivé.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Racine d'un polynôme",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Racine",
+              "md": "Soient $P \\in \\mathbb{K}[X]$ et $\\alpha \\in \\mathbb{K}$. On dit que $\\alpha$ est une **racine** de $P$ si :\n\n$$P(\\alpha) = 0 \\tag{19}$$",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "$$P(\\alpha) = 0 \\iff (X - \\alpha) \\text{ divise } P \\tag{20}$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Preuve :** appliquer la division euclidienne de $P$ par $X - \\alpha$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Preuve détaillée",
+              "steps": [
+                {
+                  "md": "Division euclidienne de $P$ par $X - \\alpha$ (de degré $1$) : $P = (X - \\alpha)Q + R$ avec $\\deg R < 1$, donc $R = c$ est une constante.",
+                  "why": "Théorème (9)."
+                },
+                {
+                  "md": "On évalue en $\\alpha$ : $P(\\alpha) = (\\alpha - \\alpha)Q(\\alpha) + c = c$.",
+                  "why": "Le facteur $\\alpha - \\alpha$ est nul."
+                },
+                {
+                  "md": "Donc $P(\\alpha) = 0 \\iff c = 0 \\iff R = 0 \\iff (X - \\alpha) \\mid P$.",
+                  "why": "Le reste est nul si et seulement si le diviseur divise (leçon 2.2)."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "La preuve montre un fait très utile : **le reste de la division euclidienne de $P$ par $X - \\alpha$ est la constante $P(\\alpha)$.**",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Le reste de la division euclidienne de $X^3 + X + 1$ par $X - 2$ est ___.",
+                "answerType": "number",
+                "accepted": [
+                  "11"
+                ],
+                "explanation": "Le reste est $P(2) = 8 + 2 + 1 = 11$. Attention à évaluer en $2$ (racine de $X - 2$) et non en $-2$, ce qui donnerait $-9$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Dérivée",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "title": "Polynôme dérivé",
+              "md": "Soit $P = a_nX^n + \\dots + a_1X + a_0 \\in \\mathbb{K}[X]$ un polynôme. La dérivée de $P$ est aussi un polynôme, dont l'expression est donnée par :\n\n$$P'(X) = na_nX^{n-1} + (n-1)a_{n-1}X^{n-2} + \\dots + 2a_2X + a_1 = \\sum_{k=1}^{n} ka_kX^{k-1}$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Si $\\deg P = n \\geqslant 1$, alors $\\deg P' = n - 1$ ; si $P$ est constant, $P' = 0$. Les règles usuelles de dérivation restent valables, en particulier $(PQ)' = P'Q + PQ'$ et $\\big((X - \\alpha)^k\\big)' = k(X - \\alpha)^{k-1}$. On note $P''$, $P'''$, puis $P^{(k)}$ les dérivées successives.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "La dérivée de $P = 3X^4 - 2X^2 + 5X - 7$ est $P' =$ ___.",
+                "answerType": "expression",
+                "accepted": [
+                  "12x^3 - 4x + 5"
+                ],
+                "variables": [
+                  "x"
+                ],
+                "explanation": "$P' = 4\\cdot 3X^3 - 2 \\cdot 2X + 5 = 12X^3 - 4X + 5$ : chaque $a_kX^k$ devient $ka_kX^{k-1}$ et la constante $-7$ disparaît."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Lequel des nombres suivants est une racine de $P(X) = X^3 - 2X^2 - X + 2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-2$"
+                },
+                {
+                  "id": "c",
+                  "md": "$3$"
+                },
+                {
+                  "id": "d",
+                  "md": "$1$"
+                }
+              ],
+              "answer": "d",
+              "explanation": "$P(1) = 1 - 2 - 1 + 2 = 0$. En revanche $P(0) = 2$, $P(-2) = -12$ et $P(3) = 8$. (Les racines de $P = (X-1)(X+1)(X-2)$ sont $1$, $-1$ et $2$.)"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$X + 1$ divise $X^5 + 1$.",
+              "answer": true,
+              "explanation": "$X + 1 = X - (-1)$ et $(-1)^5 + 1 = 0$ : $-1$ est racine, donc d'après (20) $X + 1 \\mid X^5 + 1$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le reste de la division euclidienne de $X^4 - 3X + 5$ par $X + 1$ est ___.",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "Le reste vaut $P(-1) = 1 + 3 + 5 = 9$ (car $X + 1 = X - (-1)$). Évaluer en $1$ donnerait $3$ : c'est l'erreur de signe classique."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La dérivée de $X^5 - X^3 + 2X$ est ___.",
+              "answerType": "expression",
+              "accepted": [
+                "5x^4 - 3x^2 + 2"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$(X^5)' = 5X^4$, $(X^3)' = 3X^2$, $(2X)' = 2$, d'où $5X^4 - 3X^2 + 2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $\\deg P = 4$, quel est le degré de $P'$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$4$"
+                },
+                {
+                  "id": "c",
+                  "md": "$5$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le terme dominant $a_4X^4$ devient $4a_4X^3$ avec $4a_4 \\neq 0$, donc $\\deg P' = 3$. La dérivation fait baisser le degré de $1$ (elle ne le conserve pas)."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soit $P = X^3 - 3X + 2$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$P(1) =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "$1 - 3 + 2 = 0$ : $1$ est racine de $P$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Donc $P = (X - 1)Q$ avec $Q =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x^2 + x - 2"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "Division de $P$ par $X - 1$ : $(X-1)(X^2 + X - 2) = X^3 - 3X + 2$, reste nul."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$Q(1) =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "$1 + 1 - 2 = 0$ : $1$ est encore racine de $Q$, donc $(X - 1)^2 \\mid P$."
+                }
+              ],
+              "explanation": "$P = (X - 1)(X^2 + X - 2) = (X - 1)^2(X + 2)$ : la racine $1$ « apparaît deux fois ». C'est la notion de multiplicité, étudiée dans la leçon suivante."
+            }
+          ]
+        },
+        {
+          "slug": "multiplicite",
+          "title": "Multiplicité d'une racine",
+          "number": "3.2",
+          "estimatedMinutes": 10,
+          "summary": "Racines simples, doubles, d'ordre $k$ ; caractérisations par factorisation et par les dérivées successives.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Propriétés des racines",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Multiplicité",
+              "md": "Soit $\\alpha$ une **racine** du polynôme $P \\in \\mathbb{K}[X]$ (non nul). On dit que $\\alpha$ est de **multiplicité** $k \\in \\mathbb{N}$ si $k$ est le plus grand entier tel que :\n\n$$(X - \\alpha)^k \\text{ divise } P \\tag{21}$$\n\n- Si $k = 1$, on parle d'une racine **simple**.\n- Si $k = 2$, on dit que la racine est **double**.\n- D'une manière générale, on dit que la racine est **d'ordre** $k$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "On démontre l'**équivalence** entre les propriétés suivantes :\n\n1. $\\alpha$ est une racine d'ordre $k$ de $P$.\n2. Il existe $Q \\in \\mathbb{K}[X]$ tel que $P = (X - \\alpha)^kQ$ avec $Q(\\alpha) \\neq 0$.\n3. Pour tout $j \\in \\{0, \\dots, k - 1\\}$, $P^{(j)}(\\alpha) = 0$, et $P^{(k)}(\\alpha) \\neq 0$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration de 1 ⟺ 2",
+              "steps": [
+                {
+                  "md": "**1 ⟹ 2 :** comme $(X - \\alpha)^k \\mid P$, on écrit $P = (X - \\alpha)^kQ$. Si on avait $Q(\\alpha) = 0$, alors $(X - \\alpha) \\mid Q$ par (20), donc $(X - \\alpha)^{k+1} \\mid P$ : contradiction avec la maximalité de $k$. Donc $Q(\\alpha) \\neq 0$."
+                },
+                {
+                  "md": "**2 ⟹ 1 :** on a $(X - \\alpha)^k \\mid P$. Supposons par l'absurde $P = (X - \\alpha)^{k+1}S$."
+                },
+                {
+                  "md": "Alors $(X - \\alpha)^k\\big(Q - (X - \\alpha)S\\big) = 0$, donc $Q = (X - \\alpha)S$.",
+                  "why": "Un produit de polynômes est nul seulement si un facteur est nul (formule (6) sur les degrés)."
+                },
+                {
+                  "md": "On en déduit $Q(\\alpha) = 0$ : contradiction. Donc $k$ est bien le plus grand exposant possible : $\\alpha$ est d'ordre $k$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "L'équivalence avec le point 3 (critère par les dérivées) est admise ici ; elle se démontre avec la formule de Taylor pour les polynômes. C'est le critère le plus pratique : on dérive et on évalue en $\\alpha$ jusqu'à trouver une dérivée non nulle.",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Graphiquement (pour une racine réelle) : en une racine **simple**, la courbe **traverse** l'axe des abscisses ; en une racine **double**, elle le **touche** sans le traverser (tangente horizontale) ; en une racine **triple**, elle le traverse en s'aplatissant. Le critère 3 traduit cela : $P'(\\alpha) = 0$ signifie une tangente horizontale.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algebre-1/ch05-multiplicite-racines.svg",
+              "alt": "Graphe de P=(X+2)(X−1)²(X−3) : la courbe traverse l'axe en −2 et 3 (racines simples) et le touche en 1 (racine double).",
+              "caption": "Figure — racines simples −2 et 3, racine double 1.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Utiliser les deux critères",
+              "md": "Déterminer la multiplicité de la racine $1$ de $P = X^3 - 3X + 2$.",
+              "steps": [
+                {
+                  "md": "$P(1) = 1 - 3 + 2 = 0$ ; $P' = 3X^2 - 3$, $P'(1) = 0$ ; $P'' = 6X$, $P''(1) = 6 \\neq 0$.",
+                  "why": "Critère 3 : la première dérivée non nulle en $1$ est la dérivée seconde."
+                },
+                {
+                  "md": "Donc $1$ est une racine d'ordre $2$ (double)."
+                },
+                {
+                  "md": "Vérification par le critère 2 : $P = (X - 1)^2(X + 2)$ et $Q = X + 2$ vérifie $Q(1) = 3 \\neq 0$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $P(1) = 0$, $P'(1) = 0$, $P''(1) = 0$ et $P'''(1) = 4$. Quelle est la multiplicité de la racine $1$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$3$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$4$"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Critère 3 : $P^{(j)}(1) = 0$ pour $j = 0, 1, 2$ et $P^{(3)}(1) \\neq 0$, donc $k = 3$. Répondre $4$ revient à compter toutes les dérivées écrites ; répondre $2$, à oublier que $P$ lui-même ($j = 0$) compte."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "steps",
+              "prompt": "Soit $P = X^4 - 2X^3 + 2X - 1$. On veut la multiplicité de la racine $1$ (on a bien $P(1) = 0$).",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$P' = 4X^3 - 6X^2 + 2$. Alors $P'(1) =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "$4 - 6 + 2 = 0$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$P'' = 12X^2 - 12X$. Alors $P''(1) =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "0"
+                  ],
+                  "explanation": "$12 - 12 = 0$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$P''' = 24X - 12$. Alors $P'''(1) =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "12"
+                  ],
+                  "explanation": "$24 - 12 = 12 \\neq 0$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "La multiplicité de la racine $1$ est donc :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$3$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$2$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$4$"
+                    },
+                    {
+                      "id": "d",
+                      "md": "$1$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$P(1) = P'(1) = P''(1) = 0$ et $P'''(1) \\neq 0$ : racine d'ordre $3$."
+                }
+              ],
+              "explanation": "Par le critère des dérivées, $1$ est racine triple. En effet $P = (X - 1)^3(X + 1)$, et $Q = X + 1$ vérifie $Q(1) = 2 \\neq 0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P = (X - \\alpha)^2Q$ avec $Q \\in \\mathbb{K}[X]$, alors $\\alpha$ est forcément une racine double de $P$.",
+              "answer": false,
+              "explanation": "Il faut en plus $Q(\\alpha) \\neq 0$ (critère 2). Par exemple avec $Q = X - \\alpha$, on a $P = (X - \\alpha)^3$ et $\\alpha$ est racine triple."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque polynôme à la multiplicité de la racine $1$.",
+              "pairs": [
+                {
+                  "left": "$(X - 1)(X + 1)$",
+                  "right": "Racine simple"
+                },
+                {
+                  "left": "$(X - 1)^2(X + 3)$",
+                  "right": "Racine double"
+                },
+                {
+                  "left": "$(X - 1)^2(X^2 - 1)$",
+                  "right": "Racine triple"
+                },
+                {
+                  "left": "$X^2 + 1$",
+                  "right": "$1$ n'est pas racine"
+                }
+              ],
+              "explanation": "On écrit $P = (X-1)^kQ$ avec $Q(1) \\neq 0$. Attention au troisième : $(X-1)^2(X^2 - 1) = (X-1)^3(X+1)$, donc la racine $1$ est triple, pas double. Enfin $1^2 + 1 = 2 \\neq 0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Graphiquement, au voisinage d'une racine réelle **double** $\\alpha$, la courbe de $x \\mapsto P(x)$ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "touche l'axe des abscisses en $\\alpha$ sans le traverser"
+                },
+                {
+                  "id": "b",
+                  "md": "traverse l'axe avec une tangente non horizontale"
+                },
+                {
+                  "id": "c",
+                  "md": "présente une asymptote verticale en $\\alpha$"
+                },
+                {
+                  "id": "d",
+                  "md": "ne passe pas par le point $(\\alpha, 0)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$P = (X - \\alpha)^2Q$ avec $Q(\\alpha) \\neq 0$ : près de $\\alpha$, $P$ a le signe de $Q(\\alpha)$ des deux côtés, et $P'(\\alpha) = 0$ (tangente horizontale). La traversée avec tangente oblique caractérise une racine simple ; une fonction polynomiale n'a jamais d'asymptote verticale."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La multiplicité de la racine $0$ de $P = X^5 - X^3$ est ___.",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$P = X^3(X^2 - 1)$ et $Q = X^2 - 1$ vérifie $Q(0) = -1 \\neq 0$ : la racine $0$ est d'ordre $3$. Répondre $5$ confond avec le degré de $P$."
+            }
+          ]
+        },
+        {
+          "slug": "alembert-gauss-nombre-racines",
+          "title": "Théorème de d'Alembert-Gauss et nombre de racines",
+          "number": "3.3",
+          "estimatedMinutes": 9,
+          "summary": "Tout polynôme complexe non constant a une racine ; un polynôme de degré $n$ a au plus $n$ racines.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Théorème de d'Alembert-Gauss",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème de d'Alembert-Gauss",
+              "md": "- Tout polynôme à **coefficients complexes** de degré $n \\geqslant 1$ a au moins une racine dans $\\mathbb{C}$.\n- Si on compte chaque racine avec sa **multiplicité**, alors il admet exactement $n$ racines.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Dans $\\mathbb{R}$, une équation comme $x^2 + 1 = 0$ n'a pas de solution. Dans $\\mathbb{C}$, ce problème disparaît : **toute** équation polynomiale non constante a des solutions. C'est ce qui permettra de factoriser complètement n'importe quel polynôme de $\\mathbb{C}[X]$ en facteurs de degré $1$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemple : le second degré",
+              "md": "Pour un polynôme du deuxième degré $P(X) = aX^2 + bX + c$ à coefficients réels ($a \\neq 0$, $b, c \\in \\mathbb{R}$), avec $\\Delta = b^2 - 4ac$ :\n\n1. $\\Delta > 0 \\Longrightarrow x_1 = \\dfrac{-b + \\sqrt{\\Delta}}{2a}$ et $x_2 = \\dfrac{-b - \\sqrt{\\Delta}}{2a}$ ;\n2. $\\Delta < 0 \\Longrightarrow x_1 = \\dfrac{-b + i\\sqrt{-\\Delta}}{2a}$ et $x_2 = \\dfrac{-b - i\\sqrt{-\\Delta}}{2a}$ ;\n3. $\\Delta = 0$ : une seule racine **double** $x = \\dfrac{-b}{2a}$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelles sont les racines complexes de $X^2 + 2X + 5$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$-1 + 2i$ et $-1 - 2i$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-1 + 4i$ et $-1 - 4i$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$1 + 2i$ et $1 - 2i$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Il n'y en a pas : $\\Delta < 0$."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\Delta = 4 - 20 = -16$, $\\sqrt{-\\Delta} = 4$, donc $x = \\frac{-2 \\pm 4i}{2} = -1 \\pm 2i$. La réponse b oublie de diviser $4i$ par $2a = 2$ ; la c se trompe de signe sur $-b$. Et $\\Delta < 0$ signifie « pas de racine **réelle** », mais d'Alembert-Gauss garantit deux racines complexes."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "D'autres corps",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour des corps différents des **nombres complexes**, nous avons un résultat **plus faible** :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $P \\in \\mathbb{K}[X]$ de degré $n \\geqslant 1$. Alors $P$ admet **au plus** $n$ racines dans $\\mathbb{K}$.",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "Soient $\\alpha_1, \\dots, \\alpha_r$ des racines **distinctes** de $P$ dans $\\mathbb{K}$. Montrons par récurrence que $(X - \\alpha_1)\\cdots(X - \\alpha_j)$ divise $P$ pour $j = 1, \\dots, r$."
+                },
+                {
+                  "md": "Pour $j = 1$, c'est la proposition (20)."
+                },
+                {
+                  "md": "Si $P = (X - \\alpha_1)\\cdots(X - \\alpha_j)S$ avec $j < r$, on évalue en $\\alpha_{j+1}$ : $0 = (\\alpha_{j+1} - \\alpha_1)\\cdots(\\alpha_{j+1} - \\alpha_j)\\,S(\\alpha_{j+1})$.",
+                  "why": "$\\alpha_{j+1}$ est racine de $P$."
+                },
+                {
+                  "md": "Les facteurs $\\alpha_{j+1} - \\alpha_i$ sont non nuls (racines distinctes), donc $S(\\alpha_{j+1}) = 0$ et $(X - \\alpha_{j+1}) \\mid S$ : la propriété passe au rang $j + 1$."
+                },
+                {
+                  "md": "Finalement $(X - \\alpha_1)\\cdots(X - \\alpha_r) \\mid P$ avec $P \\neq 0$, donc $r \\leqslant \\deg P = n$.",
+                  "why": "Si $P = DT$ avec $T \\neq 0$, alors $\\deg P = \\deg D + \\deg T \\geqslant \\deg D$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemple",
+              "md": "Soit le polynôme $P(X) = 3X^3 - 2X^2 + 6X - 4$. Ce polynôme peut être écrit comme : $P(X) = 3\\left(X - \\tfrac{2}{3}\\right)(X^2 + 2)$.\n\n- On peut remarquer qu'il n'admet qu'une seule racine dans $\\mathbb{R}$ : $\\alpha = \\frac{2}{3}$.\n- Or, dans $\\mathbb{C}$, il admet **trois** racines : $\\left\\{\\frac{2}{3}, -i\\sqrt{2}, i\\sqrt{2}\\right\\}$.",
+              "steps": [
+                {
+                  "md": "Vérification de la factorisation : $3\\left(X - \\frac23\\right)(X^2 + 2) = (3X - 2)(X^2 + 2) = 3X^3 + 6X - 2X^2 - 4$."
+                },
+                {
+                  "md": "$X^2 + 2 > 0$ pour tout réel, donc la seule racine réelle est $\\frac23$ : $1 \\leqslant 3$ racines, conformément au théorème."
+                },
+                {
+                  "md": "Dans $\\mathbb{C}$ : $X^2 + 2 = (X - i\\sqrt2)(X + i\\sqrt2)$, d'où exactement $3$ racines, conformément à d'Alembert-Gauss."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un polynôme réel de degré $3$ peut avoir $4$ racines réelles distinctes.",
+                "answer": false,
+                "explanation": "Un polynôme de degré $n \\geqslant 1$ a **au plus** $n$ racines dans $\\mathbb{K}$ : ici au plus $3$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Combien de racines dans $\\mathbb{C}$, comptées avec multiplicité, possède $P = (X^2 + 1)^2(X - 3)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$5$"
+                },
+                {
+                  "id": "b",
+                  "md": "$1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$3$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\deg P = 4 + 1 = 5$, donc exactement $5$ racines avec multiplicité : $i$ (double), $-i$ (double) et $3$ (simple). Répondre $1$ ne compte que les racines réelles ; $3$ compte les racines distinctes sans multiplicité."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tout polynôme de $\\mathbb{R}[X]$ de degré $\\geqslant 1$ a au moins une racine réelle.",
+              "answer": false,
+              "explanation": "$X^2 + 1$ n'a aucune racine réelle. D'Alembert-Gauss garantit une racine dans $\\mathbb{C}$, pas dans $\\mathbb{R}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La racine double de $4X^2 - 12X + 9$ est ___.",
+              "answerType": "number",
+              "accepted": [
+                "3/2",
+                "1.5"
+              ],
+              "explanation": "$\\Delta = 144 - 144 = 0$, donc racine double $x = \\frac{-b}{2a} = \\frac{12}{8} = \\frac32$. En effet $4X^2 - 12X + 9 = (2X - 3)^2$. Répondre $3$ oublie le facteur $2a$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour $P = aX^2 + bX + c$ à coefficients réels ($a \\neq 0$), associez le signe de $\\Delta$ à la nature des racines.",
+              "pairs": [
+                {
+                  "left": "$\\Delta > 0$",
+                  "right": "Deux racines réelles distinctes"
+                },
+                {
+                  "left": "$\\Delta < 0$",
+                  "right": "Deux racines complexes non réelles, conjuguées"
+                },
+                {
+                  "left": "$\\Delta = 0$",
+                  "right": "Une racine réelle double"
+                }
+              ],
+              "explanation": "Formules de l'exemple du cours : $\\frac{-b \\pm \\sqrt\\Delta}{2a}$ si $\\Delta > 0$, $\\frac{-b \\pm i\\sqrt{-\\Delta}}{2a}$ si $\\Delta < 0$, et $\\frac{-b}{2a}$ (double) si $\\Delta = 0$. Dans tous les cas : $2$ racines avec multiplicité."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Combien de racines **réelles** possède $P = 3X^3 - 2X^2 + 6X - 4$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$0$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$P = 3(X - \\frac23)(X^2 + 2)$ et $X^2 + 2$ ne s'annule pas sur $\\mathbb{R}$ : une seule racine réelle, $\\frac23$. Le nombre $3$ est le nombre de racines **complexes**."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P \\in \\mathbb{K}[X]$ est de degré $\\leqslant n$ et admet $n + 1$ racines distinctes, alors $P = 0$.",
+              "answer": true,
+              "explanation": "Si $\\deg P \\geqslant 1$, $P$ aurait au plus $\\deg P \\leqslant n$ racines ; si $P$ est une constante non nulle, il n'a aucune racine. Le seul cas restant est $P = 0$."
+            }
+          ]
+        },
+        {
+          "slug": "polynomes-irreductibles",
+          "title": "Polynômes irréductibles",
+          "number": "3.4",
+          "estimatedMinutes": 9,
+          "summary": "Les « polynômes premiers » : définition, exemples dans $\\mathbb{R}[X]$ et $\\mathbb{C}[X]$, lemme d'Euclide.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Polynômes irréductibles",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Polynôme irréductible",
+              "md": "Un polynôme $P \\in \\mathbb{K}[X]$ de degré $n \\geqslant 1$ est dit **irréductible** si, pour chaque $Q \\in \\mathbb{K}[X]$ divisant $P$, on a :\n\n- $Q \\in \\mathbb{K}^*$ ($Q$ est une constante) ;\n- ou $\\exists \\lambda \\in \\mathbb{K}^*$ tel que $Q = \\lambda P$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Remarques.**\n\n1. Les seuls diviseurs d'un polynôme irréductible sont des **constantes**, ou lui-même (à une constante près).\n2. La notion de polynôme irréductible remplace celle des nombres **premiers** dans $\\mathbb{Z}$.\n3. Dans le cas où $P$ est **réductible**, on peut alors le factoriser comme produit de deux polynômes (ou plus) : $$P = AB \\quad \\text{où} \\quad \\deg A \\geqslant 1 \\ \\text{et} \\ \\deg B \\geqslant 1 \\tag{22}$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Un nombre premier n'a pas d'autres diviseurs que $\\pm 1$ et $\\pm$ lui-même. De même, un polynôme irréductible ne peut pas s'écrire comme produit de deux polynômes de degré $\\geqslant 1$ : il est une « brique de base ». Mais attention : être irréductible **dépend du corps** $\\mathbb{K}$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemples",
+              "md": "- Tous les polynômes de degré $1$ sont forcément **irréductibles**.\n- $X^2 - 1$ est réductible car $X^2 - 1 = (X - 1)(X + 1)$.\n- $X^2 + 1$ est irréductible dans $\\mathbb{R}[X]$.\n- Cependant, il est **réductible** dans $\\mathbb{C}[X]$ car $$X^2 + 1 = (X - i)(X + i) \\tag{23}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Pourquoi $X^2 + 1$ est irréductible dans $\\mathbb{R}[X]$",
+              "steps": [
+                {
+                  "md": "Supposons $X^2 + 1 = AB$ avec $A, B \\in \\mathbb{R}[X]$, $\\deg A \\geqslant 1$ et $\\deg B \\geqslant 1$. Comme $\\deg A + \\deg B = 2$, on a $\\deg A = 1$ : $A = a(X - \\alpha)$ avec $a \\neq 0$ et $\\alpha \\in \\mathbb{R}$.",
+                  "why": "Formule (6)."
+                },
+                {
+                  "md": "Alors $\\alpha$ est une racine réelle de $X^2 + 1$, donc $\\alpha^2 + 1 = 0$. Impossible puisque $\\alpha^2 + 1 \\geqslant 1$."
+                },
+                {
+                  "md": "Par le même raisonnement, un polynôme de degré $1$ est toujours irréductible : un produit $AB$ avec $\\deg A, \\deg B \\geqslant 1$ serait de degré $\\geqslant 2$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Le même argument montre qu'un polynôme **de degré 2** de $\\mathbb{R}[X]$ est irréductible si et seulement s'il n'a pas de racine réelle, c'est-à-dire si son discriminant vérifie $\\Delta < 0$. (Attention : pour un degré $\\geqslant 4$, « pas de racine » ne suffit plus, ex. $(X^2 + 1)^2$.)",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$X^2 + X + 1$ est irréductible dans $\\mathbb{R}[X]$.",
+                "answer": true,
+                "explanation": "C'est un polynôme de degré $2$ avec $\\Delta = 1 - 4 = -3 < 0$ : il n'a pas de racine réelle, donc pas de facteur de degré $1$ dans $\\mathbb{R}[X]$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "lemme",
+              "title": "Lemme d'Euclide",
+              "md": "Pour un polynôme **irréductible** $P \\in \\mathbb{K}[X]$ et $A, B \\in \\mathbb{K}[X]$, on a :\n\n$$P \\mid AB \\Longrightarrow P \\mid A \\ \\text{ ou } \\ P \\mid B \\tag{24}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration",
+              "steps": [
+                {
+                  "md": "Supposons $P \\mid AB$ et $P \\nmid A$. Le polynôme $D = \\operatorname{pgcd}(P, A)$ divise $P$, qui est irréductible : $D$ est une constante, ou $D = \\lambda P$.",
+                  "why": "Définition d'un polynôme irréductible."
+                },
+                {
+                  "md": "Si $D = \\lambda P$, alors $P \\mid D$ et $D \\mid A$, donc $P \\mid A$ : exclu. Donc $D$ est une constante unitaire : $D = 1$.",
+                  "why": "Transitivité de la divisibilité."
+                },
+                {
+                  "md": "$P$ et $A$ sont premiers entre eux et $P \\mid AB$ : par le corollaire (17), $P \\mid B$."
+                }
+              ],
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces polynômes est irréductible dans $\\mathbb{R}[X]$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$X^2 + 4$"
+                },
+                {
+                  "id": "b",
+                  "md": "$X^2 - 4$"
+                },
+                {
+                  "id": "c",
+                  "md": "$X^3 + 1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$X^2 + 2X + 1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$X^2 + 4$ est de degré $2$ avec $\\Delta = -16 < 0$. Les autres sont réductibles : $X^2 - 4 = (X-2)(X+2)$, $X^3 + 1$ a la racine $-1$ donc $X + 1 \\mid X^3 + 1$, et $X^2 + 2X + 1 = (X+1)^2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$X^2 + 1$ est irréductible dans $\\mathbb{C}[X]$.",
+              "answer": false,
+              "explanation": "Dans $\\mathbb{C}[X]$, $X^2 + 1 = (X - i)(X + i)$ (formule (23)) : c'est un produit de deux polynômes de degré $1$. L'irréductibilité dépend du corps."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tout polynôme de degré $1$ est irréductible.",
+              "answer": true,
+              "explanation": "Si $P = AB$ avec $\\deg A, \\deg B \\geqslant 1$, alors $\\deg P \\geqslant 2$. Un polynôme de degré $1$ ne peut donc pas être réductible."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque polynôme à son statut.",
+              "pairs": [
+                {
+                  "left": "$X - 5$",
+                  "right": "Irréductible dans $\\mathbb{R}[X]$ et dans $\\mathbb{C}[X]$"
+                },
+                {
+                  "left": "$X^2 + 1$",
+                  "right": "Irréductible dans $\\mathbb{R}[X]$, réductible dans $\\mathbb{C}[X]$"
+                },
+                {
+                  "left": "$X^2 - 1$",
+                  "right": "Réductible dans $\\mathbb{R}[X]$ et dans $\\mathbb{C}[X]$"
+                }
+              ],
+              "explanation": "Degré $1$ : toujours irréductible. $X^2 + 1$ n'a pas de racine réelle mais se factorise en $(X-i)(X+i)$. $X^2 - 1 = (X-1)(X+1)$ avec des facteurs réels."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans $\\mathbb{R}[X]$, on sait que $X^2 + 1$ divise $A\\cdot(X - 3)$. Que peut-on conclure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$X^2 + 1 \\mid A$"
+                },
+                {
+                  "id": "b",
+                  "md": "$X^2 + 1 \\mid X - 3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$A = X^2 + 1$"
+                },
+                {
+                  "id": "d",
+                  "md": "Rien sur $A$."
+                }
+              ],
+              "answer": "a",
+              "explanation": "$X^2 + 1$ est irréductible dans $\\mathbb{R}[X]$ : par le lemme d'Euclide, il divise $A$ ou $X - 3$. Il ne peut pas diviser $X - 3$ (degré $2 > 1$, et $X - 3 \\neq 0$), donc il divise $A$. Mais $A$ peut être n'importe quel multiple, pas forcément $X^2 + 1$ lui-même."
+            }
+          ]
+        },
+        {
+          "slug": "factorisation-r-c",
+          "title": "Factorisation dans ℝ et ℂ",
+          "number": "3.5",
+          "estimatedMinutes": 12,
+          "summary": "Factorisation en produit d'irréductibles ; forme complète dans $\\mathbb{C}[X]$ et dans $\\mathbb{R}[X]$ ; exemples et mini exercices.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Factorisation",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Tout polynôme non constant $P \\in \\mathbb{K}[X]$ se factorise en produit de polynômes irréductibles :\n\n$$P = \\lambda P_1^{r_1}P_2^{r_2}\\cdots P_m^{r_m} = \\lambda\\prod_{k=1}^{m}P_k^{r_k} \\tag{25}$$\n\noù $\\lambda \\in \\mathbb{K}^*$, $m \\in \\mathbb{N}^*$, $r_i \\in \\mathbb{N}^*$ et les $P_i$ sont **irréductibles**.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Si l'on impose aux $P_i$ d'être **unitaires** et deux à deux distincts, cette factorisation est **unique** (à l'ordre des facteurs près) et $\\lambda$ est le coefficient dominant de $P$ — exactement comme la décomposition d'un entier en facteurs premiers.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "- Les seuls polynômes irréductibles dans $\\mathbb{C}[X]$ sont les polynômes de degré $\\mathbf{1}$.\n- Pour un polynôme de $\\mathbb{C}[X]$ de degré $n \\geqslant 1$, la factorisation s'écrit comme : $$P = \\lambda(X - \\alpha_1)^{k_1}(X - \\alpha_2)^{k_2}\\cdots(X - \\alpha_r)^{k_r} \\tag{26}$$",
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "title": "Démonstration du premier point",
+              "steps": [
+                {
+                  "md": "Soit $P \\in \\mathbb{C}[X]$ de degré $\\geqslant 2$. Par d'Alembert-Gauss, $P$ a une racine $\\alpha \\in \\mathbb{C}$, donc $(X - \\alpha) \\mid P$.",
+                  "why": "Proposition (20)."
+                },
+                {
+                  "md": "$X - \\alpha$ n'est ni une constante, ni de la forme $\\lambda P$ (son degré $1$ est $< \\deg P$) : $P$ n'est pas irréductible."
+                },
+                {
+                  "md": "Les irréductibles de $\\mathbb{C}[X]$ sont donc de degré $1$ ; on obtient (26) en appliquant (25)."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Factorisation dans ℝ et ℂ",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Factorisation dans ℂ",
+              "md": "Les seuls polynômes irréductibles dans $\\mathbb{C}[X]$ sont les polynômes de degré $1$. Ainsi tout polynôme se décompose selon la forme suivante :\n\n$$P(X) = \\lambda(X - \\alpha_1)^{r_1}(X - \\alpha_2)^{r_2}\\cdots(X - \\alpha_k)^{r_k} \\tag{27}$$\n\noù les $(\\alpha_i)_{1 \\leqslant i \\leqslant k}$ sont les **racines** de $P$ et les $r_i$ leurs degrés de **multiplicité**.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Décomposition dans ℝ",
+              "md": "Malheureusement, on n'a pas cette décomposition, puisqu'un polynôme de degré $\\geqslant 2$ peut aussi être **irréductible**. Ainsi on obtient une décomposition plus faible :\n\n$$P(X) = \\lambda(X - \\alpha_1)^{r_1}(X - \\alpha_2)^{r_2}\\cdots(X - \\alpha_k)^{r_k}\\,Q_1^{l_1}\\cdots Q_m^{l_m} \\tag{28}$$\n\noù, comme dans $\\mathbb{C}$, les $\\alpha_i$ sont les racines (réelles), et en plus les $(Q_i)_{1 \\leqslant i \\leqslant m}$ sont des polynômes irréductibles.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "On peut montrer que les $Q_i$ de (28) sont des polynômes **de degré 2 à discriminant strictement négatif** : si $z \\in \\mathbb{C} \\setminus \\mathbb{R}$ est racine d'un polynôme réel, $\\bar z$ l'est aussi, et $(X - z)(X - \\bar z) = X^2 - 2\\operatorname{Re}(z)X + |z|^2$ est un polynôme réel. En pratique : on cherche les racines réelles, puis on regroupe les racines complexes conjuguées deux à deux.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algebre-1/ch05-racines-conjuguees.svg",
+              "alt": "Plan complexe : les racines −1+2i et −1−2i de X²+2X+5, symétriques par rapport à l'axe réel.",
+              "caption": "Figure — un polynôme réel a ses racines non réelles par paires conjuguées.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exemple de décomposition",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 1",
+              "md": "On considère le polynôme $P(X) = 2X^4(X - 1)^3(X^2 + 1)^2(X^2 + X + 1)$.\n\n- Peut-on décomposer le polynôme $P$ dans $\\mathbb{R}[X]$ ?\n- Exprimer les $\\alpha_i$, $r_i$, $Q_i$ et $l_i$ selon l'expression (28).\n- Décomposer ce polynôme dans $\\mathbb{C}$.",
+              "steps": [
+                {
+                  "md": "$X^2 + 1$ ($\\Delta = -4$) et $X^2 + X + 1$ ($\\Delta = -3$) sont irréductibles dans $\\mathbb{R}[X]$ : l'écriture donnée est **déjà** la décomposition de $P$ dans $\\mathbb{R}[X]$.",
+                  "why": "Un polynôme de degré 2 à $\\Delta < 0$ est irréductible sur $\\mathbb{R}$."
+                },
+                {
+                  "md": "Selon (28) : $\\lambda = 2$ ; $\\alpha_1 = 0$, $r_1 = 4$ ; $\\alpha_2 = 1$, $r_2 = 3$ ; $Q_1 = X^2 + 1$, $l_1 = 2$ ; $Q_2 = X^2 + X + 1$, $l_2 = 1$."
+                },
+                {
+                  "md": "Dans $\\mathbb{C}$ : $X^2 + 1 = (X - i)(X + i)$ et $X^2 + X + 1 = (X - j)(X - \\bar{j})$ avec $j = -\\frac12 + i\\frac{\\sqrt3}{2}$.",
+                  "why": "Racines $\\frac{-1 \\pm i\\sqrt3}{2}$ de $X^2 + X + 1$."
+                },
+                {
+                  "md": "$P = 2X^4(X - 1)^3(X - i)^2(X + i)^2(X - j)(X - \\bar{j})$. On compte $4 + 3 + 2 + 2 + 1 + 1 = 13 = \\deg P$ racines avec multiplicité.",
+                  "why": "Conforme à d'Alembert-Gauss."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exemple 1, quelle est la multiplicité de la racine $i$ de $P$ dans $\\mathbb{C}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$2$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$4$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$i$ n'est pas racine de $P$."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$(X^2 + 1)^2 = (X - i)^2(X + i)^2$, et les autres facteurs ne s'annulent pas en $i$ : la racine $i$ est double. La réponse $4$ confond avec l'exposant de $X$ ; et $i$ est bien racine dans $\\mathbb{C}$, même si elle ne l'est pas dans $\\mathbb{R}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Mini exercice",
+              "md": "- Trouver le polynôme (**de degré minimal**) tel que $\\frac12$ est une racine simple, $\\sqrt2$ est une racine double de ce polynôme, et $i$ est une racine triple.\n- Soit $P \\in \\mathbb{C}[X]$. Montrer que si $P$ admet une racine double, alors $P$ et $P'$ ne sont pas **premiers** entre eux.\n- Factoriser le polynôme $Q(X) = 3(X^2 - 1)\\left(X^2 - X + \\frac14\\right)$ dans $\\mathbb{R}[X]$.",
+              "solution": [
+                {
+                  "md": "**1.** Dans $\\mathbb{C}[X]$ : $P = (X - \\frac12)(X - \\sqrt2)^2(X - i)^3$, de degré $6$ (unique à une constante non nulle près).",
+                  "why": "Il doit être divisible par $(X - \\frac12)$, $(X - \\sqrt2)^2$ et $(X - i)^3$, qui sont premiers entre eux deux à deux."
+                },
+                {
+                  "md": "Si l'on exige des coefficients **réels**, $\\bar i = -i$ doit aussi être racine triple : $P = (X - \\frac12)(X - \\sqrt2)^2(X^2 + 1)^3$, de degré $9$."
+                },
+                {
+                  "md": "**2.** Si $\\alpha$ est racine double : $P = (X - \\alpha)^2Q$. Alors $P' = 2(X - \\alpha)Q + (X - \\alpha)^2Q' = (X - \\alpha)\\big(2Q + (X - \\alpha)Q'\\big)$.",
+                  "why": "Dérivée d'un produit."
+                },
+                {
+                  "md": "Ainsi $X - \\alpha$ divise $P$ et $P'$ ; par (16) il divise $\\operatorname{pgcd}(P, P')$, qui est donc de degré $\\geqslant 1$ : $P$ et $P'$ ne sont pas premiers entre eux."
+                },
+                {
+                  "md": "**3.** $X^2 - 1 = (X - 1)(X + 1)$ et $X^2 - X + \\frac14 = \\left(X - \\frac12\\right)^2$ ($\\Delta = 0$). Donc $Q(X) = 3(X - 1)(X + 1)\\left(X - \\frac12\\right)^2$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la factorisation de $X^4 - 1$ en produit d'irréductibles de $\\mathbb{R}[X]$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$(X - 1)(X + 1)(X^2 + 1)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$(X^2 - 1)(X^2 + 1)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$(X - 1)(X + 1)(X - i)(X + i)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$(X - 1)^2(X + 1)^2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$X^4 - 1 = (X^2 - 1)(X^2 + 1) = (X-1)(X+1)(X^2+1)$ et $X^2 + 1$ est irréductible sur $\\mathbb{R}$. La réponse b est juste mais incomplète ($X^2 - 1$ est réductible) ; la c est la factorisation dans $\\mathbb{C}[X]$ ; la d est fausse (elle vaut $(X^2 - 1)^2$)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le polynôme de $\\mathbb{C}[X]$ de degré minimal ayant $\\frac12$ pour racine simple, $\\sqrt2$ pour racine double et $i$ pour racine triple est de degré ___.",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "$(X - \\frac12)(X - \\sqrt2)^2(X - i)^3$ : $1 + 2 + 3 = 6$. Le degré $9$ correspond à l'exigence supplémentaire de coefficients réels (il faut alors ajouter $(X + i)^3$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans $\\mathbb{R}[X]$, tout polynôme irréductible est de degré $1$.",
+              "answer": false,
+              "explanation": "C'est vrai dans $\\mathbb{C}[X]$, pas dans $\\mathbb{R}[X]$ : $X^2 + 1$ est irréductible dans $\\mathbb{R}[X]$ et de degré $2$. C'est pour cela que la décomposition (28) contient des facteurs $Q_i$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Factoriser $P = X^3 - X^2 + X - 1$ dans $\\mathbb{R}[X]$ puis dans $\\mathbb{C}[X]$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Une racine réelle évidente de $P$ est ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "$P(1) = 1 - 1 + 1 - 1 = 0$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On a donc $P = (X - 1)\\times$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x^2 + 1"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$P = X^2(X - 1) + (X - 1) = (X - 1)(X^2 + 1)$, et $X^2 + 1$ est irréductible sur $\\mathbb{R}$ : c'est la factorisation dans $\\mathbb{R}[X]$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "La factorisation de $P$ dans $\\mathbb{C}[X]$ est :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$(X - 1)(X - i)(X + i)$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$(X - 1)(X^2 + 1)$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$(X - 1)(X - i)^2$"
+                    },
+                    {
+                      "id": "d",
+                      "md": "$(X + 1)(X - i)(X + i)$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Dans $\\mathbb{C}[X]$, $X^2 + 1 = (X - i)(X + i)$ n'est plus irréductible. La réponse b n'est donc pas complète dans $\\mathbb{C}[X]$."
+                }
+              ],
+              "explanation": "Dans $\\mathbb{R}[X]$ : $P = (X - 1)(X^2 + 1)$. Dans $\\mathbb{C}[X]$ : $P = (X - 1)(X - i)(X + i)$, trois racines simples, conformément à (27)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour $P = 2X^4(X - 1)^3(X^2 + 1)^2(X^2 + X + 1)$ écrit sous la forme (28), associez chaque élément à sa valeur.",
+              "pairs": [
+                {
+                  "left": "Multiplicité $r_1$ de la racine $\\alpha_1 = 0$",
+                  "right": "$4$"
+                },
+                {
+                  "left": "Multiplicité $r_2$ de la racine $\\alpha_2 = 1$",
+                  "right": "$3$"
+                },
+                {
+                  "left": "Exposant $l_1$ du facteur $Q_1 = X^2 + 1$",
+                  "right": "$2$"
+                },
+                {
+                  "left": "Exposant $l_2$ du facteur $Q_2 = X^2 + X + 1$",
+                  "right": "$1$"
+                }
+              ],
+              "explanation": "On lit directement les exposants : $X^4$, $(X - 1)^3$, $(X^2 + 1)^2$ et $(X^2 + X + 1)^1$ ; et $\\lambda = 2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $P \\in \\mathbb{C}[X]$ admet une racine double $\\alpha$, alors $X - \\alpha$ divise à la fois $P$ et $P'$.",
+              "answer": true,
+              "explanation": "Avec $P = (X - \\alpha)^2Q$, on a $P' = (X - \\alpha)(2Q + (X - \\alpha)Q')$. C'est la clé du mini exercice : $P$ et $P'$ ne sont pas premiers entre eux."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fractions-rationnelles",
+      "title": "Fractions rationnelles",
+      "number": "4",
+      "lessons": [
+        {
+          "slug": "definition-fractions-rationnelles",
+          "title": "Définition",
+          "number": "4.1",
+          "estimatedMinutes": 6,
+          "summary": "Ce qu'est une fraction rationnelle $P/Q$, et comment la mettre sous forme irréductible.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Définition",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Fraction rationnelle",
+              "md": "On appelle **fraction rationnelle** à coefficients dans $\\mathbb{K}$ une expression de la forme :\n\n$$F = \\frac{P}{Q} \\tag{29}$$\n\noù $P$ et $Q$ sont deux polynômes de $\\mathbb{K}[X]$ et $Q \\neq 0$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "L'ensemble des fractions rationnelles est noté $\\mathbb{K}(X)$. Comme pour les fractions de nombres, on peut simplifier par un facteur commun : $\\frac{PK}{QK} = \\frac{P}{Q}$ si $K \\neq 0$. En divisant $P$ et $Q$ par leur pgcd (remarque (13)), on obtient une **forme irréductible** $\\frac{P'}{Q'}$ avec $\\operatorname{pgcd}(P', Q') = 1$. Tout polynôme $P$ est une fraction rationnelle : $P = \\frac{P}{1}$.",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Les fractions rationnelles sont aux polynômes ce que les rationnels $\\mathbb{Q}$ sont aux entiers $\\mathbb{Z}$ : on s'autorise à diviser. Toute l'arithmétique des parties précédentes (division euclidienne, pgcd, factorisation) va servir à les simplifier et à les **décomposer** en morceaux élémentaires.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemples",
+              "md": "1. $F_1(X) = \\dfrac{X^2 + 1}{3X^2 - 2X + 1}$.\n2. $F_2(X) = \\dfrac{X - 1}{X^2 - 1}$.\n3. $F_3(X) = \\dfrac{X^2 - 1}{X^2 + 2X + 1}$.",
+              "steps": [
+                {
+                  "md": "$F_1$ est déjà irréductible : $X^2 + 1$ et $3X^2 - 2X + 1$ n'ont aucune racine complexe commune (les racines $\\pm i$ du numérateur n'annulent pas le dénominateur : $3i^2 - 2i + 1 = -2 - 2i \\neq 0$), donc aucun facteur commun.",
+                  "why": "Un facteur commun de degré $\\geqslant 1$ aurait une racine dans $\\mathbb{C}$ (d'Alembert-Gauss)."
+                },
+                {
+                  "md": "$F_2 = \\dfrac{X - 1}{(X - 1)(X + 1)} = \\dfrac{1}{X + 1}$.",
+                  "why": "$\\operatorname{pgcd}(X - 1, X^2 - 1) = X - 1$."
+                },
+                {
+                  "md": "$F_3 = \\dfrac{(X - 1)(X + 1)}{(X + 1)^2} = \\dfrac{X - 1}{X + 1}$.",
+                  "why": "$\\operatorname{pgcd}(X^2 - 1, X^2 + 2X + 1) = X + 1$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "On a $F_2(X) = \\dfrac{X - 1}{X^2 - 1} = \\dfrac{1}{D(X)}$ avec $D(X) =$ ___.",
+                "answerType": "expression",
+                "accepted": [
+                  "x + 1"
+                ],
+                "variables": [
+                  "x"
+                ],
+                "explanation": "$X^2 - 1 = (X - 1)(X + 1)$ ; on simplifie par le facteur commun $X - 1$ et il reste $\\frac{1}{X + 1}$. Répondre $X^2 - 1$ revient à ne pas simplifier, et $X - 1$ à simplifier par le mauvais facteur."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "$\\dfrac{X^3 + 1}{0}$ est une fraction rationnelle.",
+              "answer": false,
+              "explanation": "La définition (29) exige un dénominateur $Q \\neq 0$, comme pour les fractions de nombres."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la forme irréductible de $F_3 = \\dfrac{X^2 - 1}{X^2 + 2X + 1}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{X - 1}{X + 1}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{X - 1}{(X + 1)^2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{-1}{2X + 1}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\frac{(X-1)(X+1)}{(X+1)^2} = \\frac{X - 1}{X + 1}$. La réponse b oublie de simplifier aussi le dénominateur ; la réponse c « simplifie » les $X^2$ terme à terme, ce qui est interdit (on ne simplifie que des **facteurs**, pas des termes d'une somme)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tout polynôme $P \\in \\mathbb{K}[X]$ est une fraction rationnelle.",
+              "answer": true,
+              "explanation": "$P = \\frac{P}{1}$ avec $1 \\neq 0$ : c'est une fraction rationnelle de dénominateur constant."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour simplifier $F_3$, on divise numérateur et dénominateur par $\\operatorname{pgcd}(X^2 - 1, X^2 + 2X + 1) =$ ___.",
+              "answerType": "expression",
+              "accepted": [
+                "x + 1"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "$X^2 - 1 = (X-1)(X+1)$ et $X^2 + 2X + 1 = (X+1)^2$ : le plus grand diviseur commun unitaire est $X + 1$. (L'algorithme d'Euclide donne : $X^2 - 1 = 1\\cdot(X^2 + 2X + 1) + (-2X - 2)$, puis $X^2 + 2X + 1 = (-2X - 2)\\cdot(-\\frac12X - \\frac12) + 0$.)"
+            }
+          ]
+        },
+        {
+          "slug": "decomposition-elements-simples",
+          "title": "Décomposition en éléments simples",
+          "number": "4.2",
+          "estimatedMinutes": 12,
+          "summary": "Théorème de décomposition en éléments simples : partie polynomiale et éléments simples ; deux exemples à vérifier.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Décomposition en éléments simples",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Décomposition en éléments simples",
+              "md": "Soit $F = \\dfrac{P}{Q}$ une fraction rationnelle telle que :\n\n- $\\operatorname{pgcd}(P, Q) = 1$ ;\n- $Q = (X - \\alpha_1)^{r_1}(X - \\alpha_2)^{r_2}\\cdots(X - \\alpha_k)^{r_k}$.\n\nAlors $F$ peut se décomposer en éléments simples d'une manière **unique** comme suit :\n\n$$F = E + \\underbrace{\\sum_{i=1}^{k}}_{\\text{somme racines}}\\ \\underbrace{\\sum_{j=0}^{r_i - 1}}_{\\text{somme degrés}} \\frac{a_{ij}}{(X - \\alpha_i)^{r_i - j}} \\tag{30}$$\n\n- $E$ s'appelle la **partie polynomiale**.\n- Les termes $\\dfrac{a_{ij}}{(X - \\alpha_i)^{r_i - j}}$ (avec $a_{ij} \\in \\mathbb{K}$) sont les **éléments simples**.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Concrètement, chaque racine $\\alpha_i$ de multiplicité $r_i$ du dénominateur fournit $r_i$ termes : $$\\frac{a_{i0}}{(X - \\alpha_i)^{r_i}} + \\frac{a_{i1}}{(X - \\alpha_i)^{r_i - 1}} + \\dots + \\frac{a_{i,r_i-1}}{X - \\alpha_i}$$ La partie polynomiale $E$ est le **quotient** de la division euclidienne de $P$ par $Q$ (donc $E = 0$ si $\\deg P < \\deg Q$). Cette forme suppose $Q$ scindé (produit de facteurs de degré 1) : c'est toujours le cas dans $\\mathbb{C}[X]$ (d'Alembert-Gauss).",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Une fraction compliquée est découpée en une somme de morceaux très simples, chacun n'ayant qu'**une seule** racine au dénominateur. Par exemple $\\frac{1}{(X - 1)(X + 1)} = \\frac{1/2}{X - 1} - \\frac{1/2}{X + 1}$. Ces morceaux sont beaucoup plus faciles à manipuler (en analyse, on saura par exemple les intégrer un par un).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la forme de la décomposition en éléments simples de $F = \\dfrac{1}{(X - 1)^2(X + 2)}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\dfrac{a}{(X - 1)^2} + \\dfrac{b}{X - 1} + \\dfrac{c}{X + 2}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\dfrac{a}{(X - 1)^2} + \\dfrac{c}{X + 2}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\dfrac{b}{X - 1} + \\dfrac{c}{X + 2}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\dfrac{a}{(X - 1)^2} + \\dfrac{b}{X - 1} + \\dfrac{c}{(X + 2)^2} + \\dfrac{d}{X + 2}$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "La racine double $1$ donne $r_1 = 2$ termes (puissances $2$ et $1$), la racine simple $-2$ en donne $1$ ; et $E = 0$ car $\\deg 1 < \\deg Q$. La réponse b oublie la puissance $1$ de $X - 1$, la c oublie la puissance $2$, et la d ajoute une puissance $2$ pour $-2$ qui n'est que racine simple."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exemples de décomposition",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 1",
+              "md": "Soit la fraction $F(X) = \\dfrac{1}{X^2 + 1}$. Vérifier alors que :\n\n$$F(X) = \\frac{a}{X + i} + \\frac{b}{X - i} \\quad \\text{où } a = \\frac{1}{2}i \\text{ et } b = -\\frac{1}{2}i \\tag{31}$$",
+              "steps": [
+                {
+                  "md": "Dans $\\mathbb{C}[X]$, $X^2 + 1 = (X + i)(X - i)$ : deux racines simples $-i$ et $i$, et $E = 0$ car $\\deg 1 < 2$."
+                },
+                {
+                  "md": "On réduit au même dénominateur : $\\dfrac{a}{X + i} + \\dfrac{b}{X - i} = \\dfrac{a(X - i) + b(X + i)}{X^2 + 1} = \\dfrac{(a + b)X + i(b - a)}{X^2 + 1}$."
+                },
+                {
+                  "md": "Avec $a = \\frac{i}{2}$ et $b = -\\frac{i}{2}$ : $a + b = 0$ et $i(b - a) = i \\cdot (-i) = 1$. On retrouve bien $\\dfrac{1}{X^2 + 1}$.",
+                  "why": "$i \\cdot (-i) = -i^2 = 1$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple 2",
+              "md": "Soit la fraction $F(X) = \\dfrac{X^4 - 8X^2 + 9X - 7}{(X - 2)^2(X + 3)}$. Vérifier que :\n\n$$F(X) = X + 1 + \\frac{-1}{(X - 2)^2} + \\frac{2}{X - 2} + \\frac{-1}{X + 3} \\tag{32}$$",
+              "steps": [
+                {
+                  "md": "Dénominateur développé : $(X - 2)^2(X + 3) = X^3 - X^2 - 8X + 12$."
+                },
+                {
+                  "md": "Division euclidienne : $X^4 - 8X^2 + 9X - 7 = (X + 1)(X^3 - X^2 - 8X + 12) + (X^2 + 5X - 19)$. Donc $E = X + 1$.",
+                  "why": "La partie polynomiale est le quotient."
+                },
+                {
+                  "md": "Partie restante : $\\dfrac{-1}{(X-2)^2} + \\dfrac{2}{X - 2} + \\dfrac{-1}{X + 3}$ a pour numérateur (sur $(X-2)^2(X+3)$) : $-(X + 3) + 2(X - 2)(X + 3) - (X - 2)^2$."
+                },
+                {
+                  "md": "$= -X - 3 + 2X^2 + 2X - 12 - X^2 + 4X - 4 = X^2 + 5X - 19$ : c'est bien le reste. L'égalité (32) est vérifiée."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Dans la formule (30), associez chaque objet à son rôle.",
+              "pairs": [
+                {
+                  "left": "$E$",
+                  "right": "Partie polynomiale"
+                },
+                {
+                  "left": "$\\dfrac{a_{ij}}{(X - \\alpha_i)^{r_i - j}}$",
+                  "right": "Élément simple"
+                },
+                {
+                  "left": "$\\alpha_i$",
+                  "right": "Racine du dénominateur $Q$"
+                },
+                {
+                  "left": "$r_i$",
+                  "right": "Multiplicité de $\\alpha_i$ dans $Q$"
+                }
+              ],
+              "explanation": "La première somme parcourt les racines $\\alpha_i$ de $Q$, la seconde les puissances de $1$ à $r_i$ ; $E$ est le quotient de la division euclidienne de $P$ par $Q$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $F = \\dfrac{P}{Q}$ (irréductible) avec $Q = (X - 1)^3(X + 2)^2X$, la décomposition (30) comporte ___ éléments simples (coefficients $a_{ij}$).",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "Chaque racine fournit autant de termes que sa multiplicité : $3 + 2 + 1 = 6$. Répondre $3$ revient à compter seulement les racines distinctes."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $\\deg P < \\deg Q$, la partie polynomiale $E$ de $\\frac{P}{Q}$ est nulle.",
+              "answer": true,
+              "explanation": "$E$ est le quotient de la division euclidienne de $P$ par $Q$ ; si $\\deg P < \\deg Q$, alors $P = 0 \\cdot Q + P$, donc $E = 0$ (c'est le cas de l'exemple 1)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La partie polynomiale de $\\dfrac{X^4 - 8X^2 + 9X - 7}{(X - 2)^2(X + 3)}$ est ___.",
+              "answerType": "expression",
+              "accepted": [
+                "x + 1"
+              ],
+              "variables": [
+                "x"
+              ],
+              "explanation": "Quotient de la division par $X^3 - X^2 - 8X + 12$ : $X^4 \\div X^3 = X$, reste $X^3 - 3X - 7$ ; puis $+1$, reste $X^2 + 5X - 19$. Donc $E = X + 1$. Répondre $X$ oublie la deuxième étape de la division."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On écrit dans $\\mathbb{C}$ : $\\dfrac{1}{X^2 + 1} = \\dfrac{a}{X + i} + \\dfrac{b}{X - i}$. Que vaut $b$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-\\dfrac{i}{2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{i}{2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{1}{2}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-\\dfrac{1}{2}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Il faut $a + b = 0$ et $i(b - a) = 1$, soit $b - a = -i$, d'où $b = -\\frac{i}{2}$ (et $a = \\frac{i}{2}$). La réponse $\\frac{i}{2}$ échange $a$ et $b$ ; les réponses réelles $\\pm\\frac12$ sont celles de $\\frac{1}{X^2 - 1}$, pas de $\\frac{1}{X^2+1}$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "On décompose $F = \\dfrac{1}{X^2 - 1} = \\dfrac{a}{X - 1} + \\dfrac{b}{X + 1}$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "En réduisant au même dénominateur, $a(X + 1) + b(X - 1) = 1$. En prenant $X = 1$, on trouve $a =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "1/2",
+                    "0.5"
+                  ],
+                  "explanation": "$a \\cdot 2 + b \\cdot 0 = 1$, donc $a = \\frac12$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "En prenant $X = -1$, on trouve $b =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1/2",
+                    "-0.5"
+                  ],
+                  "explanation": "$a \\cdot 0 + b \\cdot (-2) = 1$, donc $b = -\\frac12$."
+                }
+              ],
+              "explanation": "$\\frac{1}{X^2 - 1} = \\frac{1/2}{X - 1} - \\frac{1/2}{X + 1}$. Vérification : $\\frac12(X + 1) - \\frac12(X - 1) = 1$."
+            }
+          ]
+        },
+        {
+          "slug": "methode-calcul-exemple",
+          "title": "Méthode de calcul et exemple détaillé",
+          "number": "4.3",
+          "estimatedMinutes": 12,
+          "summary": "La méthode en cinq étapes pour décomposer une fraction rationnelle, appliquée à un exemple complet.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Méthode de calcul",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Méthode de calcul**\n\n1. Calculer la division euclidienne de $P$ par $Q$.\n2. Déterminer la partie polynomiale de cette division.\n3. Factoriser le dénominateur $Q$ en facteurs irréductibles.\n4. Écrire la formule générale de la décomposition.\n5. Utiliser l'**égalité polynomiale** pour calculer les coefficients.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Les étapes 1–2 séparent $F$ en $E + \\frac{R}{Q}$ avec $\\deg R < \\deg Q$ : seule la fraction $\\frac{R}{Q}$ reste à décomposer. Les étapes 3–4 donnent la **forme** de la décomposition (combien de termes et lesquels), avec des coefficients inconnus. L'étape 5 les calcule : deux polynômes sont égaux si et seulement si tous leurs coefficients sont égaux (égalité (2)).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettre dans l'ordre les étapes de la méthode de décomposition de $F = \\frac{P}{Q}$.",
+                "items": [
+                  "Calculer la division euclidienne de $P$ par $Q$.",
+                  "Déterminer la partie polynomiale $E$ (le quotient).",
+                  "Factoriser le dénominateur $Q$ en facteurs irréductibles.",
+                  "Écrire la forme générale de la décomposition avec des coefficients inconnus.",
+                  "Identifier les coefficients grâce à l'égalité polynomiale."
+                ],
+                "explanation": "On ne peut écrire la forme de la décomposition qu'après avoir factorisé $Q$ (elle dépend des racines et de leurs multiplicités), et on ne peut identifier les coefficients qu'une fois cette forme écrite."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Exemple détaillé",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple détaillé",
+              "md": "Décomposer la fraction :\n\n$$F(X) = \\frac{P}{Q} = \\frac{X^5 - 2X^3 + 4X^2 - 8X + 11}{X^3 - 3X + 2} \\tag{33}$$",
+              "steps": [
+                {
+                  "md": "**Division euclidienne :** $$X^5 - 2X^3 + 4X^2 - 8X + 11 = \\underbrace{(X^2 + 1)}_{E}Q(X) + 2X^2 - 5X + 9 \\tag{34}$$",
+                  "why": "Le quotient $X^2 + 1$ est la partie polynomiale, le reste $2X^2 - 5X + 9$ est de degré $2 < 3$."
+                },
+                {
+                  "md": "**Décomposition de $Q$ :** on peut vérifier que $Q$ admet deux racines, $1$ et $-2$ : $$Q(X) = (X - 1)^2(X + 2) \\tag{35}$$",
+                  "why": "$Q(1) = 1 - 3 + 2 = 0$, $Q'(1) = 3 - 3 = 0$ (racine double), $Q(-2) = -8 + 6 + 2 = 0$."
+                },
+                {
+                  "md": "**Écriture théorique :** $$\\frac{P(X)}{Q(X)} = E(X) + \\frac{a}{(X - 1)^2} + \\frac{b}{X - 1} + \\frac{c}{X + 2} \\tag{36}$$"
+                },
+                {
+                  "md": "**Détermination des coefficients :** $$\\frac{a}{(X-1)^2} + \\frac{b}{X-1} + \\frac{c}{X+2} = \\frac{(b + c)X^2 + (a + b - 2c)X + 2a - 2b + c}{(X - 1)^2(X + 2)} \\tag{37}$$",
+                  "why": "Numérateur : $a(X + 2) + b(X - 1)(X + 2) + c(X - 1)^2$, puis on développe et on regroupe."
+                },
+                {
+                  "md": "L'expression (37) doit être égale à $\\dfrac{2X^2 - 5X + 9}{(X - 1)^2(X + 2)}$. On conclut alors que : $$\\begin{cases} b + c = 2 \\\\ a + b - 2c = -5 \\\\ 2a - 2b + c = 9 \\end{cases} \\tag{38}$$",
+                  "why": "Égalité des coefficients de $X^2$, $X$ et $1$."
+                },
+                {
+                  "md": "On trouve : $a = 2$, $b = -1$ et $c = 3$. D'où $$F(X) = X^2 + 1 + \\frac{2}{(X - 1)^2} - \\frac{1}{X - 1} + \\frac{3}{X + 2}$$",
+                  "why": "Vérification : $b + c = 2$, $a + b - 2c = 2 - 1 - 6 = -5$, $2a - 2b + c = 4 + 2 + 3 = 9$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Astuce de calcul.** On peut obtenir certains coefficients sans résoudre de système. Pour $\\frac{R}{Q} = \\frac{2X^2 - 5X + 9}{(X - 1)^2(X + 2)}$ :\n\n- on multiplie par $(X - 1)^2$ et on remplace $X$ par $1$ : $a = \\dfrac{2 - 5 + 9}{1 + 2} = 2$ ;\n- on multiplie par $X + 2$ et on remplace $X$ par $-2$ : $c = \\dfrac{8 + 10 + 9}{(-3)^2} = 3$ ;\n- le coefficient de $X^2$ donne $b + c = 2$, d'où $b = -1$.",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "steps",
+              "prompt": "Décomposer $F = \\dfrac{X^3 + 2}{X^2 - 1}$ en éléments simples dans $\\mathbb{R}(X)$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "La partie polynomiale (quotient de $X^3 + 2$ par $X^2 - 1$) est $E =$ ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$X^3 + 2 = X(X^2 - 1) + (X + 2)$ : quotient $X$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le reste de cette division est ___.",
+                  "answerType": "expression",
+                  "accepted": [
+                    "x + 2"
+                  ],
+                  "variables": [
+                    "x"
+                  ],
+                  "explanation": "$X^3 + 2 - X(X^2 - 1) = X + 2$, de degré $1 < 2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On écrit $\\dfrac{X + 2}{(X - 1)(X + 1)} = \\dfrac{a}{X - 1} + \\dfrac{b}{X + 1}$. Alors $a =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "3/2",
+                    "1.5"
+                  ],
+                  "explanation": "$a(X + 1) + b(X - 1) = X + 2$ ; en $X = 1$ : $2a = 3$, donc $a = \\frac32$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Et $b =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1/2",
+                    "-0.5"
+                  ],
+                  "explanation": "En $X = -1$ : $-2b = 1$, donc $b = -\\frac12$."
+                }
+              ],
+              "explanation": "$F = X + \\dfrac{3/2}{X - 1} - \\dfrac{1/2}{X + 1}$. Vérification : $\\frac32(X + 1) - \\frac12(X - 1) = X + 2$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "En développant $a(X + 2) + b(X - 1)(X + 2) + c(X - 1)^2$, le coefficient de $X$ est ___ (en fonction de $a$, $b$, $c$).",
+              "answerType": "expression",
+              "accepted": [
+                "a + b - 2*c"
+              ],
+              "variables": [
+                "a",
+                "b",
+                "c"
+              ],
+              "explanation": "$a(X + 2)$ apporte $a$ ; $b(X^2 + X - 2)$ apporte $b$ ; $c(X^2 - 2X + 1)$ apporte $-2c$. Total : $a + b - 2c$. Écrire $a + b + c$ oublie le $-2X$ de $(X - 1)^2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi commence-t-on par la division euclidienne de $P$ par $Q$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour obtenir $F = E + \\frac{R}{Q}$ avec $\\deg R < \\deg Q$ : il ne reste à décomposer que $\\frac{R}{Q}$, sans partie polynomiale."
+                },
+                {
+                  "id": "b",
+                  "md": "Pour trouver les racines de $Q$."
+                },
+                {
+                  "id": "c",
+                  "md": "Pour rendre $P$ et $Q$ premiers entre eux."
+                },
+                {
+                  "id": "d",
+                  "md": "Pour rendre $Q$ unitaire."
+                }
+              ],
+              "answer": "a",
+              "explanation": "La division donne la partie polynomiale $E$ (le quotient) et un reste de degré $< \\deg Q$, qui se décompose uniquement en éléments simples. Les racines de $Q$ s'obtiennent en factorisant $Q$ (étape 3), et la division ne change ni le pgcd ni le coefficient dominant de $Q$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "On décompose $\\dfrac{X + 5}{(X - 1)^2(X + 2)} = \\dfrac{a}{(X - 1)^2} + \\dfrac{b}{X - 1} + \\dfrac{c}{X + 2}$ avec l'astuce de calcul.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On multiplie par $(X - 1)^2$ et on fait $X = 1$ : $a =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$a = \\frac{1 + 5}{1 + 2} = \\frac{6}{3} = 2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On multiplie par $X + 2$ et on fait $X = -2$ : $c =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "1/3"
+                  ],
+                  "explanation": "$c = \\frac{-2 + 5}{(-2 - 1)^2} = \\frac{3}{9} = \\frac13$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Le numérateur $X + 5$ n'a pas de terme en $X^2$, donc $b + c = 0$ et $b =$ ___.",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1/3"
+                  ],
+                  "explanation": "D'après (37), le coefficient de $X^2$ du numérateur est $b + c$ ; il vaut $0$, donc $b = -\\frac13$."
+                }
+              ],
+              "explanation": "$\\frac{X + 5}{(X-1)^2(X+2)} = \\frac{2}{(X-1)^2} - \\frac{1/3}{X - 1} + \\frac{1/3}{X + 2}$. Vérification : $2(X + 2) - \\frac13(X - 1)(X + 2) + \\frac13(X - 1)^2 = 2X + 4 - X + 1 = X + 5$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La décomposition en éléments simples d'une fraction rationnelle (sous les hypothèses du théorème) est unique.",
+              "answer": true,
+              "explanation": "Le théorème (30) affirme l'existence **et l'unicité** : c'est ce qui permet d'identifier les coefficients sans ambiguïté, quelle que soit la méthode de calcul utilisée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Numérotation : le cours ne numérote que les 4 parties ; les numéros de leçons (1.1, …, 4.3) sont les nôtres. Les numéros d'équations (1)–(38) du cours sont conservés via \\tag.",
+    "Le texte extrait de la page de titre contient « MII Groupes » et « December 12, 2020 » (métadonnées sans rapport) ; ignorés.",
+    "Le cours mélange P(x) et P(X) ; uniformisé en X (indéterminée). Convention « 𝕂 = ℝ ou ℂ » ajoutée (implicite dans le cours).",
+    "p.3 : « Une polynôme … est expression » → « Un polynôme … est une expression ».",
+    "p.4 : « Noations » → « Notations » ; « note degP » → « noté deg P ».",
+    "p.5 : dans « Addition », Q était écrit Σ a_i x^i → corrigé en Σ b_i X^i ; bornes de sommation complétées (i = 0) ; « ∀i ∈ [0, n] » écrit ∀i ∈ {0, …, n}.",
+    "p.7 : « Ese qu'on possède que P = Q » → « Est-ce que P = Q ? » ; « Evaluler » → « Évaluer ».",
+    "p.9 : « deux polynômes P et Q deux polynômes dans 𝕂 » → « deux polynômes de 𝕂[X] ».",
+    "p.11 (Mini exercices 1) : item 3 « Montrer que deg P ≠ deg Q, alors … » → « Montrer que si deg P ≠ deg Q, alors … » ; un « P1 » parasite après « Quel est son terme dominant ? » supprimé.",
+    "p.13 : « il existe un réel λ ∈ 𝕂 tel que P = λQ » → « un scalaire λ ∈ 𝕂* » (λ doit être non nul ; si P = Q = 0 tout λ convient).",
+    "p.14 : « il existent », « tel que », « R est note » corrigés ; « On remarque que si R = 0 ⟺ B | A » → « R = 0 ⟺ B | A ».",
+    "p.17 : (10) « Pour tout λ ∈ 𝕂 » → « λ ∈ 𝕂* » (λ = 0 rendrait l'égalité fausse).",
+    "p.18 : « La génération de cet algorithme » → « La généralisation » ; « division euclidienne de a et b » → « de a par b ».",
+    "p.21 : « (qui ne sont forcément premiers entre eux) » → « pas forcément ».",
+    "p.22 : Bézout (14) imprimé « PU + QV = K » → corrigé en « PU + QV = D » (D = pgcd(P,Q) défini juste avant) ; « and » → « et » ; « il exisent » → « il existe ».",
+    "Titre de partie « Arithmétiques sur les polynômes » → « Arithmétique sur les polynômes ».",
+    "p.29 : Proposition, point 2 « Q(α) = 0 » → « Q(α) ≠ 0 » ; point 3 « ∀k ∈ 0,…,k−1, P^k(α) = 0 et P^k(α) ≠ 0 » → « ∀j ∈ {0,…,k−1}, P^(j)(α) = 0 et P^(k)(α) ≠ 0 ». Le point 3 est laissé admis (preuve via la formule de Taylor, non vue dans le cours) ; seule l'équivalence 1 ⟺ 2 est démontrée (ajout).",
+    "p.30 : « Si on compte chaque racine avec son degré » → « avec sa multiplicité » ; cas Δ < 0 « (−b ± i√Δ)/2a » → « (−b ± i√(−Δ))/2a » ; définition Δ = b² − 4ac ajoutée.",
+    "p.31 : « P(X) = 3(X − 2/3(X² + 2)) » (parenthèse mal placée) → « 3(X − 2/3)(X² + 2) » ; « une seule racine de ℝ » → « dans ℝ » ; « Pour des corps différent » → « différents ».",
+    "p.34 : Théorème (25) « les P_i sont réductibles » → « irréductibles » ; Corollaire « Les seuls polynômes dans ℂ[X] sont les polynômes de degré 1 » → « Les seuls polynômes irréductibles dans ℂ[X] … ».",
+    "p.35 : « est décompose » → « se décompose » ; « on as pas » → « on n'a pas » ; « Ainsi obtient » → « Ainsi on obtient ».",
+    "p.37–38 : « fraction continue dans 𝕂[X] » → « fraction rationnelle » (terme correct, cohérent avec le titre du chapitre) ; F₃ avait une parenthèse non fermée « (X² + 2X + 1 ».",
+    "p.38 : borne de la somme intérieure « r_k − 1 » → « r_i − 1 » ; notation des éléments simples harmonisée : a_ij/(X − α_i)^j → a_ij/(X − α_i)^(r_i − j) (cohérente avec (30)).",
+    "p.41 : « faction » → « fraction ».",
+    "p.42 (IMPORTANT) : dans (37), le coefficient de X du numérateur est imprimé « (a + b + c) » ; le bon coefficient est « (a + b − 2c) » (car c(X − 1)² = c(X² − 2X + 1)). Corrigé dans (37) et dans la 2e équation du système (38) (« a + b + c = −5 » → « a + b − 2c = −5 »). Les valeurs finales du cours a = 2, b = −1, c = 3 sont justes (elles vérifient le système corrigé, pas le système imprimé). Conclusion F = X² + 1 + 2/(X−1)² − 1/(X−1) + 3/(X+2) ajoutée.",
+    "Mini exercice p.36 « polynôme de degré minimal (racines 1/2 simple, √2 double, i triple) » : le corps n'est pas précisé ; la solution donne le cas ℂ[X] (degré 6) et le cas à coefficients réels (degré 9).",
+    "Mini exercice p.26 « diviseurs de X⁴ + 2X² + 1 » : le corps n'est pas précisé ; la solution traite ℝ[X] et ℂ[X].",
+    "Ajouts (origin: added) : toutes les solutions détaillées des exemples et mini exercices (steps/solution — le cours ne les rédige pas, sauf pp. 15–16, 19–20, 41–42) ; démonstrations ajoutées : degré produit/somme, propriétés de la divisibilité, division euclidienne (le cours demande « Proposer une démonstration par récurrence »), algorithme d'Euclide (12), corollaires (16) et (17), propriété (18) du ppcm, proposition (20), multiplicité 1 ⟺ 2, « au plus n racines », irréductibilité de X² + 1 sur ℝ, lemme d'Euclide, irréductibles de ℂ[X].",
+    "Énoncés ajoutés hors cours (remarques marquées added, à valider) : réciproque du corollaire de Bézout (PU + QV = 1 ⟹ premiers entre eux) ; unicité de la factorisation avec P_i unitaires distincts ; « un polynôme de degré 2 de ℝ[X] est irréductible ⟺ Δ < 0 » ; « les Q_i de (28) sont de degré 2 à Δ < 0 » (justification esquissée seulement) ; règles de dérivation (PQ)' = P'Q + PQ' ; reste de la division par X − α égal à P(α) ; astuce « multiplier puis évaluer » pour les coefficients des éléments simples ; notation 𝕂(X).",
+    "Widget wish : un widget « décomposition en éléments simples » (saisie de P/Q, affichage de E et des éléments simples) serait utile pour la partie 4 ; remplacé ici par des exemples statiques et le widget poly-division pour l'étape de division."
+  ]
+}

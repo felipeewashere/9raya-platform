@@ -1,0 +1,1348 @@
+{
+ "slug": "changement-de-referentiel",
+ "number": 2,
+ "title": "Changement de référentiel et mouvement relatif",
+ "description": "Référentiels absolu et relatif, mouvements de translation et de rotation, lois de composition des vitesses et des accélérations (Coriolis, entraînement), méthode du point coïncident, application au tube parabolique en rotation.",
+ "sourcePdf": "Modules/Mecanique du point/Cours/Chapitre 02 - Changement de référentiel et mouvement relatif.pdf",
+ "sections": [
+  {
+   "slug": "position-du-probleme",
+   "title": "Position du problème",
+   "number": "I",
+   "lessons": [
+    {
+     "slug": "referentiel-absolu-et-relatif",
+     "title": "Référentiel absolu et référentiel relatif",
+     "number": "I",
+     "estimatedMinutes": 6,
+     "summary": "Le vocabulaire du changement de référentiel : grandeurs absolues (dans $R$) et relatives (dans $R'$).",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "I – Position du problème",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Vocabulaire.** Soient deux référentiels $R(O,x,y,z)$ et $R'(O',x',y',z')$. On suppose que :\n1. le référentiel $R$ est **fixe**, dit **référentiel absolu** ;\n2. le référentiel $R'$ est **mobile** (ou en mouvement), dit **référentiel relatif**.\n\nLe point $M$ est repéré par $\\overrightarrow{OM}$ dans $R$ et par $\\overrightarrow{O'M}$ dans $R'$, avec $\\overrightarrow{OM}=\\overrightarrow{OO'}+\\overrightarrow{O'M}$.",
+       "origin": "source"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch02-deux-referentiels.svg",
+       "alt": "Référentiel fixe R(O,x,y,z) à gauche et référentiel mobile R'(O',x',y',z') à droite, avec les vecteurs OM, O'M et OO' vers un même point M.",
+       "caption": "Figure — un même point $M$ repéré dans $R$ par $\\overrightarrow{OM}$ et dans $R'$ par $\\overrightarrow{O'M}$, avec $\\overrightarrow{OM}=\\overrightarrow{OO'}+\\overrightarrow{O'M}$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "⚠ Toute grandeur calculée dans $R$ est dite **absolue** ; toute grandeur calculée dans $R'$ est dite **relative**.\n$$\\vec V_{M/R}=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\vec V_a\\ \\ \\text{(vitesse absolue)},\\qquad \\vec a_{M/R}=\\left.\\dfrac{d\\vec V_{M/R}}{dt}\\right|_R=\\vec a_a=\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R\\ \\ \\text{(accélération absolue)},$$\n$$\\vec V_{M/R'}=\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}=\\vec V_r\\ \\ \\text{(vitesse relative)},\\qquad \\vec a_{M/R'}=\\left.\\dfrac{d\\vec V_{M/R'}}{dt}\\right|_{R'}=\\vec a_r=\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}\\ \\ \\text{(accélération relative)}.$$",
+       "origin": "source",
+       "title": "Grandeurs absolues et relatives"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "La vitesse relative $\\vec V_r$ est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "la dérivée de $\\overrightarrow{OM}$ dans $R$"
+         },
+         {
+          "id": "b",
+          "md": "la dérivée de $\\overrightarrow{O'M}$ dans $R'$"
+         },
+         {
+          "id": "c",
+          "md": "la vitesse de $O'$ dans $R$"
+         },
+         {
+          "id": "d",
+          "md": "la dérivée de $\\overrightarrow{O'M}$ dans $R$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "« Relative » = calculée dans le référentiel mobile $R'$ : $\\vec V_r=\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Exemple : un passager marche dans un train. Le quai est le référentiel absolu $R$, le train le référentiel relatif $R'$. La vitesse du passager par rapport au train est relative ; par rapport au quai, elle est absolue.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "La vitesse de $M$ calculée dans le référentiel fixe $R$ est appelée vitesse absolue.",
+        "answer": true,
+        "explanation": "Vrai : toute grandeur calculée dans $R$ est absolue."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque grandeur à sa définition.",
+       "pairs": [
+        {
+         "left": "\\vec V_a",
+         "right": "\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R"
+        },
+        {
+         "left": "\\vec V_r",
+         "right": "\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}"
+        },
+        {
+         "left": "\\vec a_a",
+         "right": "\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R"
+        },
+        {
+         "left": "\\vec a_r",
+         "right": "\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}"
+        }
+       ],
+       "explanation": "Indice $a$ : dérivée dans $R$ ; indice $r$ : dérivée dans $R'$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le référentiel relatif $R'$ est supposé fixe.",
+       "answer": false,
+       "explanation": "Faux : $R'$ est **mobile** ; c'est $R$ qui est supposé fixe (absolu)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "La relation de Chasles donne $\\overrightarrow{OM}=\\overrightarrow{OO'}+$ ___ (écrire le vecteur, ex. O'M)",
+       "answerType": "text",
+       "accepted": [
+        "O'M",
+        "vec O'M",
+        "O’M"
+       ],
+       "explanation": "$\\overrightarrow{OM}=\\overrightarrow{OO'}+\\overrightarrow{O'M}$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "L'accélération absolue est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R$"
+        },
+        {
+         "id": "c",
+         "md": "$\\left.\\dfrac{d\\vec V_r}{dt}\\right|_R$"
+        },
+        {
+         "id": "d",
+         "md": "$\\left.\\dfrac{d\\vec V_a}{dt}\\right|_{R'}$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Absolue : vitesse absolue dérivée dans $R$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Une grandeur relative est une grandeur calculée dans $R'$.",
+       "answer": true,
+       "explanation": "Vrai, c'est la définition du cours."
+      }
+     ]
+    },
+    {
+     "slug": "translation-et-rotation-de-r-prime",
+     "title": "Mouvements de translation et de rotation",
+     "number": "I",
+     "estimatedMinutes": 7,
+     "summary": "Les deux types de mouvement de $R'$ par rapport à $R$ : translation ($\\vec\\Omega=\\vec 0$) et rotation pure ($\\vec V_{O'/R}=\\vec 0$) ; le vecteur rotation.",
+     "blocks": [
+      {
+       "type": "text",
+       "md": "⚠ On distingue **2 types** de mouvement de $R'$ par rapport à $R$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Les axes de $R'$ **gardent la même direction** :\n$$\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R=\\left.\\dfrac{d\\vec e_{y'}}{dt}\\right|_R=\\left.\\dfrac{d\\vec e_{z'}}{dt}\\right|_R=\\vec 0\\;;\\qquad \\vec\\Omega_{R'/R}=\\vec 0\\ \\ (\\text{vecteur rotation}),\\qquad \\vec V_{O'/R}\\neq\\vec 0.$$",
+       "origin": "source",
+       "title": "1) Mouvement de translation"
+      },
+      {
+       "type": "definition",
+       "md": "$$\\vec\\Omega_{R'/R}\\neq\\vec 0\\qquad\\text{et}\\qquad \\vec V_{O'/R}=\\vec 0.$$",
+       "origin": "source",
+       "title": "2) Mouvement de rotation pure"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "$R'$ est en translation par rapport à $R$ lorsque :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec\\Omega_{R'/R}=\\vec 0$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec V_{O'/R}=\\vec 0$"
+         },
+         {
+          "id": "c",
+          "md": "$O'=O$"
+         },
+         {
+          "id": "d",
+          "md": "les axes de $R'$ tournent"
+         }
+        ],
+        "answer": "a",
+        "explanation": "Translation : les axes gardent la même direction, donc pas de rotation, $\\vec\\Omega_{R'/R}=\\vec 0$. Le point $O'$, lui, peut bouger."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "example",
+       "md": "Soit $O'=O$ et $z=z'$ : $R'$ tourne autour de l'axe commun d'un angle $\\theta(t)$ (angle entre $Ox$ et $Ox'$). Alors\n$$\\vec\\Omega_{R'/R}=\\dot\\theta\\,\\vec e_z=\\dot\\theta\\,\\vec e_{z'}.$$\n(Même résultat si $O'$ est fixe et $\\vec e_{z'}=\\vec e_z$.)",
+       "origin": "source",
+       "title": "Cas simple : rotation autour de $Oz$"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch02-rotation-oz.svg",
+       "alt": "Vue de dessus : axes x, y fixes et axes x', y' tournés de l'angle θ autour de l'axe commun z = z' sortant de la feuille.",
+       "caption": "Figure — $R'$ tourne autour de $(Oz)$ : $\\vec\\Omega_{R'/R}=\\dot\\theta\\,\\vec e_z$.",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "D'une manière générale, $\\vec\\Omega_{R'/R}$ possède 3 composantes (voir cours de 2e année).",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "**Question :** quelles sont les relations entre les grandeurs calculées dans $R$ et celles calculées dans $R'$ ? C'est l'objet des lois de composition.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un manège tourne autour de l'axe vertical $Oz$ avec $\\theta(t)=2t$ (rad). Le vecteur rotation vaut $\\vec\\Omega_{R'/R}=$ ___ $\\vec e_z$.",
+        "answerType": "number",
+        "accepted": [
+         "2"
+        ],
+        "explanation": "$\\vec\\Omega_{R'/R}=\\dot\\theta\\,\\vec e_z=2\\,\\vec e_z$ rad/s."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans un mouvement de rotation pure, l'origine $O'$ est immobile dans $R$.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec V_{O'/R}=\\vec 0$ et $\\vec\\Omega_{R'/R}\\neq\\vec 0$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Dans un mouvement de translation, $O'$ est forcément immobile.",
+       "answer": false,
+       "explanation": "Faux : $\\vec V_{O'/R}\\neq\\vec 0$ en général ; ce sont les **directions** des axes qui ne changent pas."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Une cabine de grande roue (qui reste verticale) est, par rapport au sol :",
+       "options": [
+        {
+         "id": "a",
+         "md": "en translation (circulaire)"
+        },
+        {
+         "id": "b",
+         "md": "en rotation pure"
+        },
+        {
+         "id": "c",
+         "md": "immobile"
+        },
+        {
+         "id": "d",
+         "md": "en rotation autour de son centre"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Les axes de la cabine gardent la même direction : c'est une translation, même si son centre décrit un cercle. Ce type de mouvement existe aussi pour le référentiel géocentrique."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $\\theta(t)=\\omega t$, la norme de $\\vec\\Omega_{R'/R}$ vaut ___ (en fonction de omega)",
+       "answerType": "text",
+       "accepted": [
+        "omega",
+        "ω",
+        "w"
+       ],
+       "explanation": "$\\|\\vec\\Omega_{R'/R}\\|=|\\dot\\theta|=\\omega$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque mouvement de $R'$ à ses caractéristiques.",
+       "pairs": [
+        {
+         "left": "translation",
+         "right": "$\\vec\\Omega_{R'/R}=\\vec 0$, $\\vec V_{O'/R}\\neq\\vec 0$"
+        },
+        {
+         "left": "rotation pure",
+         "right": "$\\vec\\Omega_{R'/R}\\neq\\vec 0$, $\\vec V_{O'/R}=\\vec 0$"
+        }
+       ],
+       "explanation": "Les deux cas du cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lois-de-composition",
+   "title": "Lois de composition",
+   "number": "II",
+   "lessons": [
+    {
+     "slug": "composition-des-vitesses",
+     "title": "Loi de composition des vitesses",
+     "number": "II.1",
+     "estimatedMinutes": 11,
+     "summary": "Démonstration de $\\vec V_a=\\vec V_r+\\vec V_e$ et expression de la vitesse d'entraînement $\\vec V_e=\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "II – Loi de composition",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Loi de composition des vitesses",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Cherchons la relation entre $\\vec V_a$ et $\\vec V_r$ :\n$$\\vec V_a=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\left.\\dfrac{d\\overrightarrow{OO'}}{dt}\\right|_R+\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R=\\vec V_{O'/R}+\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R,$$\net le dernier terme n'est ni $\\vec V_a$ ni $\\vec V_r$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "On a $\\overrightarrow{O'M}=x'\\,\\vec e_{x'}+y'\\,\\vec e_{y'}+z'\\,\\vec e_{z'}$."
+        },
+        {
+         "md": "Donc $\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R=\\underbrace{\\dot x'\\,\\vec e_{x'}+\\dot y'\\,\\vec e_{y'}+\\dot z'\\,\\vec e_{z'}}_{\\vec V_r}+\\underbrace{x'\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R+y'\\left.\\dfrac{d\\vec e_{y'}}{dt}\\right|_R+z'\\left.\\dfrac{d\\vec e_{z'}}{dt}\\right|_R}_{\\vec A}$",
+         "why": "Dans $R'$ les vecteurs $\\vec e_{x'},\\vec e_{y'},\\vec e_{z'}$ sont fixes : $\\vec V_r=\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}=\\dot x'\\vec e_{x'}+\\dot y'\\vec e_{y'}+\\dot z'\\vec e_{z'}$."
+        },
+        {
+         "md": "D'où $\\vec V_a=\\vec V_r+\\vec V_{O'/R}+\\vec A$, où $\\vec V_{O'/R}$ **traduit la translation** et $\\vec A$ **traduit la rotation**."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul"
+      },
+      {
+       "type": "text",
+       "md": "- Si $R'$ est en mouvement de **translation** : $\\vec A=\\vec 0$, d'où $\\vec V_a=\\vec V_r+\\vec V_{O'/R}$.\n- Si $R'$ est en **rotation pure** : $\\vec V_{O'/R}=\\vec 0$ ; il reste à calculer $\\vec A=x'\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R+y'\\left.\\dfrac{d\\vec e_{y'}}{dt}\\right|_R+z'\\left.\\dfrac{d\\vec e_{z'}}{dt}\\right|_R$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si $R'$ est en translation par rapport à $R$, alors $\\vec V_a=\\vec V_r+\\vec V_{O'/R}$.",
+        "answer": true,
+        "explanation": "Vrai : les vecteurs de base de $R'$ ne tournent pas, donc $\\vec A=\\vec 0$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "Cas simple : $z=z'$, $\\vec\\Omega_{R'/R}=\\dot\\theta\\,\\vec e_z$, $\\vec e_{x'}=\\cos\\theta\\,\\vec e_x+\\sin\\theta\\,\\vec e_y$."
+        },
+        {
+         "md": "$\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R=\\dot\\theta(-\\sin\\theta\\,\\vec e_x+\\cos\\theta\\,\\vec e_y)=\\dot\\theta\\,\\vec e_{y'}$ ; de même $\\left.\\dfrac{d\\vec e_{y'}}{dt}\\right|_R=-\\dot\\theta\\,\\vec e_{x'}$ et $\\left.\\dfrac{d\\vec e_{z'}}{dt}\\right|_R=\\vec 0$."
+        },
+        {
+         "md": "Donc $\\vec A=x'\\dot\\theta\\,\\vec e_{y'}-y'\\dot\\theta\\,\\vec e_{x'}+0$."
+        },
+        {
+         "md": "Comme $(\\vec e_{x'},\\vec e_{y'},\\vec e_{z'})$ est une base directe ($\\vec e_{z'}\\wedge\\vec e_{x'}=\\vec e_{y'}$, $\\vec e_{z'}\\wedge\\vec e_{y'}=-\\vec e_{x'}$) : $\\vec A=x'\\dot\\theta\\,\\vec e_{z'}\\wedge\\vec e_{x'}+y'\\dot\\theta\\,\\vec e_{z'}\\wedge\\vec e_{y'}+z'\\dot\\theta\\,\\vec e_{z'}\\wedge\\vec e_{z'}$.",
+         "why": "Le dernier terme est nul ; il est ajouté pour factoriser."
+        },
+        {
+         "md": "$\\vec A=\\dot\\theta\\,\\vec e_{z'}\\wedge(x'\\vec e_{x'}+y'\\vec e_{y'}+z'\\vec e_{z'})=\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul de $\\vec A$ (rotation autour de $Oz$)"
+      },
+      {
+       "type": "text",
+       "md": "D'où, pour la rotation, $\\vec V_a=\\vec V_r+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$ (cette relation est valable pour tout mouvement de rotation).",
+       "origin": "source"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "Pour un mouvement quelconque de $R'$ par rapport à $R$ :\n$$\\vec V_a=\\vec V_r+\\vec V_e\\qquad\\text{avec}\\qquad \\vec V_e=\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$$\n(vitesse d'**entraînement**, méthode directe), et $\\vec\\Omega_{R'/R}=-\\vec\\Omega_{R/R'}$.",
+       "origin": "source",
+       "title": "Loi de composition des vitesses"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "$R'$ tourne autour de $Oz$ ($O'=O$) avec $\\vec\\Omega_{R'/R}=2\\,\\vec e_z$ rad/s. Un point $M$ immobile dans $R'$ situé en $\\overrightarrow{O'M}=3\\,\\vec e_{x'}$ m a une vitesse absolue de norme ___ m/s.",
+        "answerType": "number",
+        "accepted": [
+         "6"
+        ],
+        "explanation": "$\\vec V_r=\\vec 0$ et $\\vec V_e=2\\vec e_z\\wedge3\\vec e_{x'}=6\\,\\vec e_{y'}$ : norme $6$ m/s."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "La vitesse d'entraînement s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec V_{O'/R}-\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{OM}$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec V_r+\\vec V_{O'/R}$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Expression du cours (méthode directe)."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec V_a=\\vec V_r+\\vec V_e$ est valable quel que soit le mouvement de $R'$ par rapport à $R$.",
+       "answer": true,
+       "explanation": "Vrai : c'est la loi de composition des vitesses pour un mouvement quelconque."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec\\Omega_{R'/R}=\\vec\\Omega_{R/R'}$.",
+       "answer": false,
+       "explanation": "Faux : $\\vec\\Omega_{R'/R}=-\\vec\\Omega_{R/R'}$ (si $R'$ tourne dans un sens par rapport à $R$, $R$ tourne en sens inverse par rapport à $R'$)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Dans le calcul, $\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R=\\dot\\theta\\,\\vec e_{?}$ : l'indice manquant est ___ (x', y' ou z')",
+       "answerType": "text",
+       "accepted": [
+        "y'",
+        "y’",
+        "y"
+       ],
+       "explanation": "$\\vec e_{x'}$ tourne à la vitesse $\\dot\\theta$ : sa dérivée est $\\dot\\theta\\,\\vec e_{y'}=\\vec\\Omega_{R'/R}\\wedge\\vec e_{x'}$."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre la démonstration de la loi de composition des vitesses.",
+       "items": [
+        "$\\vec V_a=\\vec V_{O'/R}+\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R$",
+        "$\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R=\\vec V_r+\\vec A$",
+        "$\\vec A=\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$",
+        "$\\vec V_a=\\vec V_r+\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$"
+       ],
+       "explanation": "Chasles, dérivation de $\\overrightarrow{O'M}$ dans sa base mobile, identification de $\\vec A$, conclusion."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Un train roule à $20$ m/s (translation) ; un passager y marche vers l'avant à $1$ m/s. Sa vitesse absolue vaut ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "21"
+       ],
+       "explanation": "Translation : $\\vec V_a=\\vec V_r+\\vec V_{O'/R}$, ici $1+20=21$ m/s."
+      }
+     ]
+    },
+    {
+     "slug": "formule-de-derivation-vectorielle",
+     "title": "Formule de dérivation vectorielle",
+     "number": "II.1",
+     "estimatedMinutes": 6,
+     "summary": "La relation $\\frac{d\\vec X}{dt}\\big|_R=\\frac{d\\vec X}{dt}\\big|_{R'}+\\vec\\Omega_{R'/R}\\wedge\\vec X$ et son usage pour retrouver la loi des vitesses.",
+     "blocks": [
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Pour tout vecteur $\\vec X$ :\n$$\\left.\\dfrac{d\\vec X}{dt}\\right|_R=\\left.\\dfrac{d\\vec X}{dt}\\right|_{R'}+\\vec\\Omega_{R'/R}\\wedge\\vec X.$$",
+       "origin": "source",
+       "title": "Relation de dérivation"
+      },
+      {
+       "type": "text",
+       "md": "On peut retrouver facilement la loi de composition des vitesses avec cette relation.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec V_a=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\left.\\dfrac{d\\overrightarrow{OO'}}{dt}\\right|_R+\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R$"
+        },
+        {
+         "md": "$=\\vec V_{O'/R}+\\underbrace{\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}}_{\\vec V_r}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$",
+         "why": "On applique la relation de dérivation à $\\vec X=\\overrightarrow{O'M}$."
+        },
+        {
+         "md": "D'où $\\vec V_a=\\vec V_r+\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}=\\vec V_r+\\vec V_e$."
+        }
+       ],
+       "origin": "source",
+       "title": "En effet"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pour un vecteur $\\vec u$ **fixe dans $R'$**, $\\left.\\dfrac{d\\vec u}{dt}\\right|_R$ vaut :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec 0$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec\\Omega_{R'/R}\\wedge\\vec u$"
+         },
+         {
+          "id": "c",
+          "md": "$\\vec u\\wedge\\vec\\Omega_{R'/R}$"
+         },
+         {
+          "id": "d",
+          "md": "$\\left.\\dfrac{d\\vec u}{dt}\\right|_{R'}$, non nul"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\left.\\dfrac{d\\vec u}{dt}\\right|_{R'}=\\vec 0$, il reste $\\vec\\Omega_{R'/R}\\wedge\\vec u$. Exemple : $\\left.\\dfrac{d\\vec e_{x'}}{dt}\\right|_R=\\dot\\theta\\vec e_z\\wedge\\vec e_{x'}=\\dot\\theta\\vec e_{y'}$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Le terme $\\vec\\Omega_{R'/R}\\wedge\\vec X$ est la correction due à la rotation de la base de $R'$ : un vecteur immobile dans $R'$ « tourne » quand on le regarde depuis $R$.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si $R'$ est en translation par rapport à $R$, un vecteur a la même dérivée dans $R$ et dans $R'$.",
+        "answer": true,
+        "explanation": "Vrai : $\\vec\\Omega_{R'/R}=\\vec 0$, donc le terme correctif disparaît."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "La formule de dérivation vectorielle fait intervenir $\\vec V_{O'/R}$.",
+       "answer": false,
+       "explanation": "Faux : elle ne fait intervenir que $\\vec\\Omega_{R'/R}$. La vitesse de $O'$ apparaît seulement quand on dérive $\\overrightarrow{OO'}$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "$\\left.\\dfrac{d\\vec\\Omega_{R'/R}}{dt}\\right|_R$ est égal à :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\left.\\dfrac{d\\vec\\Omega_{R'/R}}{dt}\\right|_{R'}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec 0$ toujours"
+        },
+        {
+         "id": "c",
+         "md": "$2\\vec\\Omega_{R'/R}$"
+        },
+        {
+         "id": "d",
+         "md": "$-\\left.\\dfrac{d\\vec\\Omega_{R'/R}}{dt}\\right|_{R'}$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\vec\\Omega_{R'/R}\\wedge\\vec\\Omega_{R'/R}=\\vec 0$ : la dérivée de $\\vec\\Omega$ est la même dans les deux référentiels."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "$R'$ tourne avec $\\vec\\Omega_{R'/R}=3\\vec e_z$. Pour $\\vec X=\\vec e_{x'}$ (fixe dans $R'$), $\\left.\\dfrac{d\\vec X}{dt}\\right|_R=$ ___ $\\vec e_{y'}$.",
+       "answerType": "number",
+       "accepted": [
+        "3"
+       ],
+       "explanation": "$3\\vec e_z\\wedge\\vec e_{x'}=3\\vec e_{y'}$ (car $\\vec e_z=\\vec e_{z'}$)."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque terme de $\\vec V_a=\\vec V_{O'/R}+\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$ à son rôle.",
+       "pairs": [
+        {
+         "left": "$\\vec V_{O'/R}$",
+         "right": "translation de l'origine de R'"
+        },
+        {
+         "left": "$\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}$",
+         "right": "vitesse relative"
+        },
+        {
+         "left": "$\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$",
+         "right": "effet de la rotation de R'"
+        }
+       ],
+       "explanation": "$\\vec V_{O'/R}$ traduit la translation, $\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}$ la rotation ; ces deux termes forment ensemble $\\vec V_e$, et le terme restant est $\\vec V_r$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La relation de dérivation permet de retrouver la loi de composition des vitesses en une ligne.",
+       "answer": true,
+       "explanation": "Vrai : on l'applique à $\\vec X=\\overrightarrow{O'M}$."
+      }
+     ]
+    },
+    {
+     "slug": "composition-des-accelerations",
+     "title": "Loi de composition des accélérations",
+     "number": "II.2",
+     "estimatedMinutes": 11,
+     "summary": "Démonstration de $\\vec a_a=\\vec a_r+\\vec a_c+\\vec a_e$, accélération de Coriolis et accélération d'entraînement.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2) Loi de composition des accélérations",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Cherchons la relation entre $\\vec a_a$ et $\\vec a_r$ :\n$$\\vec a_a=\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R=\\left.\\frac{d}{dt}\\left(\\vec V_r+\\vec V_{O'/R}+\\vec\\Omega_{R'/R}\\wedge\\overrightarrow{O'M}\\right)\\right|_R$$\n$$\\vec a_a=\\left.\\dfrac{d\\vec V_r}{dt}\\right|_R+\\left.\\dfrac{d\\vec V_{O'/R}}{dt}\\right|_R+\\left.\\dfrac{d\\vec\\Omega}{dt}\\right|_R\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R.$$",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\left.\\dfrac{d\\vec V_r}{dt}\\right|_R=\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}+\\vec\\Omega\\wedge\\vec V_r=\\vec a_r+\\vec\\Omega\\wedge\\vec V_r$",
+         "why": "Relation de dérivation appliquée à $\\vec V_r$."
+        },
+        {
+         "md": "$\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_R=\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}+\\vec\\Omega\\wedge\\overrightarrow{O'M}=\\vec V_r+\\vec\\Omega\\wedge\\overrightarrow{O'M}$",
+         "why": "Relation de dérivation appliquée à $\\overrightarrow{O'M}$."
+        },
+        {
+         "md": "$\\Rightarrow\\;\\vec a_a=\\vec a_r+\\vec\\Omega\\wedge\\vec V_r+\\vec a_{O'/R}+\\left.\\dfrac{d\\vec\\Omega}{dt}\\right|_R\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge(\\vec V_r+\\vec\\Omega\\wedge\\overrightarrow{O'M})$"
+        },
+        {
+         "md": "$\\vec a_a=\\vec a_r+2\\vec\\Omega\\wedge\\vec V_r+\\vec a_{O'/R}+\\left.\\dfrac{d\\vec\\Omega}{dt}\\right|_R\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})$."
+        }
+       ],
+       "origin": "source",
+       "title": "Calcul"
+      },
+      {
+       "type": "definition",
+       "md": "On pose :\n$$\\vec a_c=2\\vec\\Omega_{R'/R}\\wedge\\vec V_r\\quad:\\ \\text{accélération de Coriolis (complémentaire)},$$\n$$\\vec a_e=\\vec a_{O'/R}+\\left.\\dfrac{d\\vec\\Omega}{dt}\\right|_R\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})\\quad:\\ \\text{accélération d'entraînement}.$$",
+       "origin": "source",
+       "title": "Accélérations de Coriolis et d'entraînement"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "$$\\vec a_a=\\vec a_r+\\vec a_c+\\vec a_e.$$",
+       "origin": "source",
+       "title": "Loi de composition des accélérations"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "L'accélération de Coriolis vaut :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec\\Omega_{R'/R}\\wedge\\vec V_r$"
+         },
+         {
+          "id": "b",
+          "md": "$2\\vec\\Omega_{R'/R}\\wedge\\vec V_r$"
+         },
+         {
+          "id": "c",
+          "md": "$2\\vec\\Omega_{R'/R}\\wedge\\vec V_a$"
+         },
+         {
+          "id": "d",
+          "md": "$\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Le facteur 2 vient des deux termes $\\vec\\Omega\\wedge\\vec V_r$ apparus dans le calcul. Le dernier choix est le terme centripète de $\\vec a_e$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "**N.B.** $\\vec a_a=\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R$ et $\\vec a_r=\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}$, **mais** $\\vec a_e\\neq\\left.\\dfrac{d\\vec V_e}{dt}\\right|_{R',R}$ : l'accélération d'entraînement n'est pas la dérivée de la vitesse d'entraînement.",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "Conséquence pour la dynamique (développée au chapitre 4) : le PFD classique $m\\vec a_a=\\vec F$ donne $m(\\vec a_r+\\vec a_c+\\vec a_e)=\\vec F$, soit\n$$m\\vec a_r=\\vec F+(-m\\vec a_c)+(-m\\vec a_e)=\\vec F+\\vec F_c+\\vec F_e.$$",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Si $R'$ est en translation par rapport à $R$, $\\vec a_c=\\vec 0$.",
+        "answer": true,
+        "explanation": "Vrai : $\\vec\\Omega_{R'/R}=\\vec 0$ donc $\\vec a_c=2\\vec\\Omega_{R'/R}\\wedge\\vec V_r=\\vec 0$, et $\\vec a_e=\\vec a_{O'/R}$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "$\\vec a_e$ est toujours égale à la dérivée de $\\vec V_e$.",
+       "answer": false,
+       "explanation": "Faux : c'est la mise en garde du N.B. du cours."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "$R'$ tourne avec $\\vec\\Omega_{R'/R}=2\\vec e_z$ rad/s ; $M$ se déplace dans $R'$ avec $\\vec V_r=3\\vec e_{x'}$ m/s. $\\|\\vec a_c\\|=$ ___ m/s².",
+       "answerType": "number",
+       "accepted": [
+        "12"
+       ],
+       "explanation": "$\\vec a_c=2\\cdot2\\vec e_z\\wedge3\\vec e_{x'}=12\\vec e_{y'}$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Pour une rotation **uniforme** autour d'un axe fixe passant par $O'=O$, $\\vec a_e$ se réduit à :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\vec 0$"
+        },
+        {
+         "id": "b",
+         "md": "$\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec a_{O'/R}$"
+        },
+        {
+         "id": "d",
+         "md": "$2\\vec\\Omega\\wedge\\vec V_r$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec a_{O'/R}=\\vec 0$ ($O'$ fixe) et $d\\vec\\Omega/dt=\\vec 0$ (rotation uniforme) : il reste le terme centripète."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque terme à son nom.",
+       "pairs": [
+        {
+         "left": "$2\\vec\\Omega_{R'/R}\\wedge\\vec V_r$",
+         "right": "accélération de Coriolis"
+        },
+        {
+         "left": "$\\vec a_{O'/R}+\\dot{\\vec\\Omega}\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})$",
+         "right": "accélération d'entraînement"
+        },
+        {
+         "left": "$\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}$",
+         "right": "accélération relative"
+        }
+       ],
+       "explanation": "Définitions du cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Si $M$ est immobile dans $R'$, l'accélération de Coriolis est nulle.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec V_r=\\vec 0$."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre la démonstration.",
+       "items": [
+        "$\\vec a_a=\\frac{d}{dt}(\\vec V_r+\\vec V_{O'/R}+\\vec\\Omega\\wedge\\overrightarrow{O'M})\\big|_R$",
+        "On dérive chaque terme (relation de dérivation pour $\\vec V_r$ et $\\overrightarrow{O'M}$)",
+        "On regroupe les deux termes $\\vec\\Omega\\wedge\\vec V_r$",
+        "$\\vec a_a=\\vec a_r+\\vec a_c+\\vec a_e$"
+       ],
+       "explanation": "C'est le plan du calcul du cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "point-coincident",
+   "title": "Méthode du point coïncident",
+   "number": "III",
+   "lessons": [
+    {
+     "slug": "methode-du-point-coincident",
+     "title": "Méthode du point coïncident",
+     "number": "III",
+     "estimatedMinutes": 6,
+     "summary": "Le point coïncident $M_c$ : fixe dans $R'$ et confondu avec $M$ à l'instant $t$ ; il donne directement $\\vec V_e$ et $\\vec a_e$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "III – Méthode du point coïncident",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Une telle méthode permet de calculer $\\vec V_e$ et $\\vec a_e$.",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "Le **point coïncident** est le point matériel $M_c$ qui est **confondu à chaque instant avec le point $M$** mais **fixe dans $R'$** ($M_c=M$, fixe dans $R'$). On écrit :\n$$\\vec V_e=\\left.\\frac{d\\overrightarrow{OM}}{dt}\\right|_{R}^{M=M_c},\\qquad \\vec a_e=\\left.\\frac{d^2\\overrightarrow{OM}}{dt^2}\\right|_R^{M=M_c}=\\left.\\frac{d\\vec V_e(M_c)}{dt}\\right|_R.$$",
+       "origin": "source",
+       "title": "Point coïncident"
+      },
+      {
+       "type": "intuition",
+       "md": "Pour trouver $\\vec V_e$, on « gèle » le mouvement relatif : on imagine $M$ collé à $R'$ à l'instant considéré, et on calcule sa vitesse et son accélération dans $R$. Exemple : la vitesse d'entraînement d'un passager dans un manège est la vitesse du point du manège où il se trouve.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Le point coïncident est fixe dans $R$.",
+        "answer": false,
+        "explanation": "Faux : il est fixe dans $R'$ (le référentiel relatif) et coïncide avec $M$ à l'instant $t$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "example",
+       "md": "$R'$ tourne uniformément à $\\omega$ autour de $Oz$ ($O'=O$). $M$ est à la distance $\\rho$ de l'axe. Trouver $\\vec V_e$ et $\\vec a_e$ par le point coïncident.",
+       "origin": "added",
+       "title": "Manège",
+       "steps": [
+        {
+         "md": "Le point coïncident, fixe dans $R'$, décrit dans $R$ un cercle de rayon $\\rho$ à la vitesse angulaire $\\omega$."
+        },
+        {
+         "md": "$\\vec V_e=\\rho\\omega\\,\\vec e_\\varphi$ et $\\vec a_e=-\\rho\\omega^2\\,\\vec e_\\rho$ (mouvement circulaire uniforme)."
+        }
+       ]
+      },
+      {
+       "type": "simulation",
+       "scene": "rotating-rod",
+       "caption": "Fais glisser l'anneau sur la tige en rotation : compare la vitesse relative (le long de la tige), la vitesse d'entraînement (celle du point coïncident) et leur somme.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Dans l'exemple du manège avec $\\rho=2$ m et $\\omega=3$ rad/s, $\\|\\vec a_e\\|=$ ___ m/s².",
+        "answerType": "number",
+        "accepted": [
+         "18"
+        ],
+        "explanation": "$\\rho\\omega^2=2\\times9=18$ m/s²."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "Le point coïncident $M_c$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "fixe dans $R$ et confondu avec $O'$"
+        },
+        {
+         "id": "b",
+         "md": "fixe dans $R'$ et confondu avec $M$ à l'instant $t$"
+        },
+        {
+         "id": "c",
+         "md": "le barycentre de $R'$"
+        },
+        {
+         "id": "d",
+         "md": "le point $M$ à $t=0$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Définition du cours."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La vitesse d'entraînement est la vitesse absolue du point coïncident.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec V_e=\\vec V_{M_c/R}$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La méthode du point coïncident permet de calculer l'accélération de Coriolis.",
+       "answer": false,
+       "explanation": "Faux : elle donne $\\vec V_e$ et $\\vec a_e$. Le point coïncident est fixe dans $R'$, il n'a pas de vitesse relative ; $\\vec a_c$ se calcule par $2\\vec\\Omega_{R'/R}\\wedge\\vec V_r$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Une perle à $\\rho=0{,}5$ m de l'axe d'une tige tournant à $\\omega=4$ rad/s : $\\|\\vec V_e\\|=$ ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$\\rho\\omega=0{,}5\\times4=2$ m/s."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Pour une rotation uniforme autour d'un axe fixe, la trajectoire du point coïncident dans $R$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "une droite"
+        },
+        {
+         "id": "b",
+         "md": "un cercle centré sur l'axe"
+        },
+        {
+         "id": "c",
+         "md": "une parabole"
+        },
+        {
+         "id": "d",
+         "md": "un point"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Fixe dans $R'$, il tourne avec $R'$ autour de l'axe."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "applications-changement-referentiel",
+   "title": "Applications",
+   "number": "IV",
+   "lessons": [
+    {
+     "slug": "tube-parabolique-vitesses",
+     "title": "Application : tube parabolique (vitesses)",
+     "number": "IV",
+     "estimatedMinutes": 10,
+     "summary": "Un point glisse dans un tube parabolique $z=a\\rho^2$ tournant autour de $Oz$ : vecteur rotation, trajectoire, vitesses d'entraînement, absolue et relative.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "IV – Applications",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "Exercice ① : exercice du TD (énoncé non reproduit dans la source).",
+       "origin": "source"
+      },
+      {
+       "type": "example",
+       "md": "Un tube ayant la forme de la parabole $z=a\\rho^2$ tourne autour de l'axe fixe $(Oz)$ ; on note $\\varphi(t)$ l'angle de rotation. Un point $M$ glisse dans le tube. On attache $R'$ au tube ($O'=O$).\n\n**Rq** : la trajectoire de $M$ dans $R'$ est une **parabole** (le profil du tube). Dans $R$, c'est une courbe qui s'enroule en montant sur le paraboloïde.",
+       "origin": "source",
+       "title": "Exercice ② (TD) : tube parabolique — énoncé"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch02-tube-parabolique.svg",
+       "alt": "Tube en forme de parabole z = aρ² dans un plan vertical qui tourne d'un angle φ autour de Oz ; la bille M, sa projection H sur le plan xOy et le cercle horizontal (en pointillés verts) décrit par le point coïncident.",
+       "caption": "Figure — tube parabolique tournant autour de $(Oz)$ ; en pointillés, le cercle de rayon $\\rho$ décrit par le point coïncident.",
+       "origin": "source"
+      },
+      {
+       "type": "exercise",
+       "md": "1) Donner le vecteur rotation instantané. 2) Écrire les coordonnées cartésiennes de $M$ et l'équation de la trajectoire $f(x,y,z)=0$.",
+       "origin": "source",
+       "title": "Questions 1 et 2",
+       "solution": [
+        {
+         "md": "1) $\\vec\\Omega_{R'/R}=\\dot\\varphi\\,\\vec e_z$."
+        },
+        {
+         "md": "2) $x=\\rho\\cos\\varphi$, $y=\\rho\\sin\\varphi$, $z=a\\rho^2$."
+        },
+        {
+         "md": "On a $x^2+y^2=\\rho^2$ or $\\rho^2=\\dfrac za$. D'où $x^2+y^2=\\dfrac za$ : $M$ reste sur un **paraboloïde** de révolution.",
+         "why": "On élimine $\\rho$ et $\\varphi$."
+        }
+       ]
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch02-paraboloide-trajectoire.svg",
+       "alt": "Paraboloïde de révolution z = a(x²+y²) dessiné par quelques cercles horizontaux ; une courbe bleue qui part du fond et s'enroule en montant sur sa surface.",
+       "caption": "Figure — allure de la trajectoire de $M$ dans $R$ : elle s'enroule sur le paraboloïde $z=a(x^2+y^2)$ (ici quand $\\rho$ augmente).",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Si $a=2$ m⁻¹ et $\\rho=0{,}5$ m, alors $z=$ ___ m.",
+        "answerType": "number",
+        "accepted": [
+         "0.5"
+        ],
+        "explanation": "$z=a\\rho^2=2\\times0{,}25=0{,}5$ m."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "exercise",
+       "md": "3) Quelle est la trajectoire du point coïncident dans $R$ ? (La source note aussi l'hypothèse $z(0)=0$.) 4) Calculer $\\vec V_e$ et $\\vec a_e$.",
+       "origin": "source",
+       "title": "Questions 3 et 4",
+       "solution": [
+        {
+         "md": "3) La trajectoire du point coïncident dans $R$ est un **cercle** de rayon $\\rho$ et de centre $H$, projection de $M$ sur $(Oz)$."
+        },
+        {
+         "md": "4) Vecteur position : $\\overrightarrow{OM}=\\rho\\,\\vec e_\\rho+z\\,\\vec e_z$. Le point coïncident est fixe dans $R'$, donc $\\rho$ (et $z$) est une constante."
+        },
+        {
+         "md": "$\\vec V_e=\\left.\\dfrac{d}{dt}(\\rho\\vec e_\\rho+z\\vec e_z)\\right|_R^{M=M_c}=\\rho\\dot\\varphi\\,\\vec e_\\varphi$."
+        },
+        {
+         "md": "$\\vec a_e=\\left.\\dfrac{d\\vec V_e}{dt}\\right|_R^{M=M_c}=\\rho\\ddot\\varphi\\,\\vec e_\\varphi-\\rho\\dot\\varphi^2\\,\\vec e_\\rho$."
+        }
+       ]
+      },
+      {
+       "type": "exercise",
+       "md": "5) Calculer $\\vec V_a$ et $\\vec V_r$, et en déduire $\\vec V_e$.",
+       "origin": "source",
+       "title": "Question 5",
+       "solution": [
+        {
+         "md": "$\\vec V_a=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R=\\dot\\rho\\,\\vec e_\\rho+\\rho\\dot\\varphi\\,\\vec e_\\varphi+\\dot z\\,\\vec e_z$, or $z=a\\rho^2\\Rightarrow\\dot z=2a\\rho\\dot\\rho$."
+        },
+        {
+         "md": "D'où $\\vec V_a=\\dot\\rho\\,\\vec e_\\rho+\\rho\\dot\\varphi\\,\\vec e_\\varphi+2a\\rho\\dot\\rho\\,\\vec e_z$."
+        },
+        {
+         "md": "$\\vec V_r=\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}=\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_{R'}=\\dot\\rho\\,\\vec e_\\rho+2a\\rho\\dot\\rho\\,\\vec e_z$.",
+         "why": "$O'=O$, et dans $R'$ les vecteurs $\\vec e_\\rho$, $\\vec e_z$ sont fixes (le tube ne tourne pas dans $R'$)."
+        },
+        {
+         "md": "Déduction de $\\vec V_e$ par la loi de composition : $\\vec V_e=\\vec V_a-\\vec V_r=\\rho\\dot\\varphi\\,\\vec e_\\varphi$ ✔ (même résultat que par le point coïncident)."
+        }
+       ]
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Dans cet exercice, la vitesse relative $\\vec V_r$ n'a pas de composante selon :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec e_\\rho$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec e_\\varphi$"
+         },
+         {
+          "id": "c",
+          "md": "$\\vec e_z$"
+         },
+         {
+          "id": "d",
+          "md": "aucune, elle en a trois"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Dans $R'$, $M$ reste dans le plan du tube : il n'a pas de mouvement selon $\\vec e_\\varphi$. La composante $\\rho\\dot\\varphi$ est entièrement dans $\\vec V_e$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans $R'$ (lié au tube), la trajectoire de $M$ est une parabole.",
+       "answer": true,
+       "explanation": "Vrai : c'est le profil du tube, $z=a\\rho^2$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "L'équation de la surface sur laquelle se trouve $M$ dans $R$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$x^2+y^2=az$"
+        },
+        {
+         "id": "b",
+         "md": "$x^2+y^2=\\dfrac za$"
+        },
+        {
+         "id": "c",
+         "md": "$z=ax$"
+        },
+        {
+         "id": "d",
+         "md": "$x^2+y^2+z^2=a$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\rho^2=x^2+y^2$ et $\\rho^2=z/a$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Avec $\\rho=1$ m et $\\dot\\varphi=2$ rad/s, $\\|\\vec V_e\\|=$ ___ m/s.",
+       "answerType": "number",
+       "accepted": [
+        "2"
+       ],
+       "explanation": "$\\vec V_e=\\rho\\dot\\varphi\\vec e_\\varphi$, norme $2$ m/s."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "$\\dot z$ s'exprime en fonction de $\\rho$ et $\\dot\\rho$ par :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$a\\dot\\rho^2$"
+        },
+        {
+         "id": "b",
+         "md": "$2a\\rho\\dot\\rho$"
+        },
+        {
+         "id": "c",
+         "md": "$2a\\dot\\rho$"
+        },
+        {
+         "id": "d",
+         "md": "$a\\rho\\dot\\rho$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "On dérive $z=a\\rho^2$ : $\\dot z=2a\\rho\\dot\\rho$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La trajectoire du point coïncident dans $R$ est un cercle de centre $O$.",
+       "answer": false,
+       "explanation": "Faux : c'est un cercle de rayon $\\rho$ centré en $H$, projection de $M$ sur $(Oz)$, à la hauteur $z$."
+      }
+     ]
+    },
+    {
+     "slug": "tube-parabolique-accelerations",
+     "title": "Application : tube parabolique (accélérations)",
+     "number": "IV",
+     "estimatedMinutes": 9,
+     "summary": "Accélérations absolue, relative et de Coriolis du point dans le tube parabolique, et vérification de $\\vec a_e$ par la loi de composition.",
+     "blocks": [
+      {
+       "type": "exercise",
+       "md": "6) Calculer $\\vec a_a$, $\\vec a_r$ et $\\vec a_c$, puis retrouver $\\vec a_e$ par la loi de composition des accélérations.",
+       "origin": "source",
+       "title": "Question 6",
+       "solution": [
+        {
+         "md": "$\\vec a_a=\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R$ : $a_\\rho=\\ddot\\rho-\\rho\\dot\\varphi^2$, $a_\\varphi=2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi$, $a_z=2a(\\dot\\rho^2+\\rho\\ddot\\rho)$."
+        },
+        {
+         "md": "$\\vec a_r=\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}$ : $a_{r\\rho}=\\ddot\\rho$, $a_{r\\varphi}=0$, $a_{rz}=2a(\\dot\\rho^2+\\rho\\ddot\\rho)$.",
+         "why": "On dérive $\\dot\\rho\\vec e_\\rho+2a\\rho\\dot\\rho\\vec e_z$ avec $\\vec e_\\rho$, $\\vec e_z$ fixes dans $R'$."
+        },
+        {
+         "md": "$\\vec a_c=2\\vec\\Omega_{R'/R}\\wedge\\vec V_r=2\\dot\\varphi\\,\\vec e_z\\wedge(\\dot\\rho\\,\\vec e_\\rho+2a\\rho\\dot\\rho\\,\\vec e_z)=2\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi+0$."
+        },
+        {
+         "md": "D'après la loi de composition des accélérations : $\\vec a_e=\\vec a_a-\\vec a_r-\\vec a_c$.",
+         "why": "La source écrit « a_e = a_a + a_r + a_c » ; c'est bien a_a − a_r − a_c qui donne le résultat."
+        },
+        {
+         "md": "$\\Rightarrow\\;\\vec a_e=-\\rho\\dot\\varphi^2\\,\\vec e_\\rho+\\rho\\ddot\\varphi\\,\\vec e_\\varphi$ (même résultat trouvé par la méthode du point coïncident)."
+        }
+       ]
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Avec $\\dot\\rho=0{,}5$ m/s et $\\dot\\varphi=2$ rad/s, $\\|\\vec a_c\\|=$ ___ m/s².",
+        "answerType": "number",
+        "accepted": [
+         "2"
+        ],
+        "explanation": "$\\|\\vec a_c\\|=2\\dot\\rho\\dot\\varphi=2\\times0{,}5\\times2=2$ m/s²."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Bilan de la vérification selon $\\vec e_\\varphi$ : $a_\\varphi=2\\dot\\rho\\dot\\varphi+\\rho\\ddot\\varphi$ se partage entre Coriolis ($2\\dot\\rho\\dot\\varphi$) et entraînement ($\\rho\\ddot\\varphi$) ; l'accélération relative n'a pas de composante orthoradiale.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "Selon $\\vec e_z$, l'accélération absolue et l'accélération relative sont égales dans cet exercice.",
+        "answer": true,
+        "explanation": "Vrai : $a_z=a_{rz}=2a(\\dot\\rho^2+\\rho\\ddot\\rho)$, car $\\vec a_c$ et $\\vec a_e$ n'ont pas de composante selon $\\vec e_z$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "L'accélération de Coriolis du point dans le tube est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$2\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi$"
+        },
+        {
+         "id": "b",
+         "md": "$-\\rho\\dot\\varphi^2\\vec e_\\rho$"
+        },
+        {
+         "id": "c",
+         "md": "$2a\\rho\\dot\\rho\\,\\vec e_z$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec 0$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$2\\dot\\varphi\\vec e_z\\wedge\\dot\\rho\\vec e_\\rho=2\\dot\\rho\\dot\\varphi\\vec e_\\varphi$ ; le terme selon $\\vec e_z$ donne $\\vec e_z\\wedge\\vec e_z=\\vec 0$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La loi de composition donne $\\vec a_e=\\vec a_a+\\vec a_r+\\vec a_c$.",
+       "answer": false,
+       "explanation": "Faux : de $\\vec a_a=\\vec a_r+\\vec a_c+\\vec a_e$ on tire $\\vec a_e=\\vec a_a-\\vec a_r-\\vec a_c$ (coquille de la source corrigée)."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Rotation uniforme ($\\ddot\\varphi=0$) avec $\\rho=0{,}2$ m et $\\dot\\varphi=5$ rad/s : $\\|\\vec a_e\\|=$ ___ m/s².",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$\\vec a_e=-\\rho\\dot\\varphi^2\\vec e_\\rho$ : $0{,}2\\times25=5$ m/s²."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La composante radiale de l'accélération relative vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\ddot\\rho-\\rho\\dot\\varphi^2$"
+        },
+        {
+         "id": "b",
+         "md": "$\\ddot\\rho$"
+        },
+        {
+         "id": "c",
+         "md": "$0$"
+        },
+        {
+         "id": "d",
+         "md": "$2\\dot\\rho\\dot\\varphi$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Dans $R'$, le tube ne tourne pas : pas de terme $-\\rho\\dot\\varphi^2$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque accélération à son expression (tube parabolique).",
+       "pairs": [
+        {
+         "left": "\\vec a_c",
+         "right": "$2\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi$"
+        },
+        {
+         "left": "\\vec a_e",
+         "right": "$-\\rho\\dot\\varphi^2\\vec e_\\rho+\\rho\\ddot\\varphi\\vec e_\\varphi$"
+        },
+        {
+         "left": "\\vec a_r",
+         "right": "$\\ddot\\rho\\,\\vec e_\\rho+2a(\\dot\\rho^2+\\rho\\ddot\\rho)\\vec e_z$"
+        }
+       ],
+       "explanation": "Résultats de la question 6."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "reviewNotes": [
+  "Source de référence : notes de cours ENSA Agadir (« Méca Cours », mp/cours/Méca Cours (1).pdf, p. 16–23), via la copie nettoyée Modules/Mecanique du point/Cours/Chapitre 02 (pages 1–6).",
+  "§I (translation) : la source note les dérivées des vecteurs de R' « /R' » ; pour exprimer que les axes de R' ne tournent pas, il s'agit de dérivées par rapport à R (dans R' elles sont toujours nulles). Corrigé en dérivées dans R.",
+  "§II.1 : le facteur intermédiaire « + z' θ̇ e_z' ∧ e_z' » (nul) est conservé dans la preuve pour la factorisation, comme dans la source.",
+  "§III : la formule du point coïncident est écrite avec la notation « |_R, M=M_c » de la source.",
+  "N.B. de la source (fin de §II.2) « PFD : m a_a = F … m a_r = F + F_c + F_e » : laissé à sa place sous forme de remarque (transition vers le chapitre 4, où il est démontré en détail).",
+  "§IV Exercice ① : renvoi au TD, énoncé non reproduit dans la source (rien à transcrire).",
+  "§IV Exercice ② : annotation « axe fixe » près de M de lecture incertaine ; la question 3 commence dans la source par « Hypothèse : z(0) = 0 » sans suite, puis donne la trajectoire du point coïncident (cercle de centre H) — conservé ainsi.",
+  "§IV Exercice ② question 6 : « a_e = a_a + a_r + a_c » corrigé en a_e = a_a − a_r − a_c (c'est cette relation qui donne le résultat de la source).",
+  "Source p. 21 = copie pâle de la p. 22 (même contenu) : transcrite une seule fois.",
+  "Ajouts (origin: added) : exemple du manège pour le point coïncident ; intuitions (train, manège)."
+ ]
+}

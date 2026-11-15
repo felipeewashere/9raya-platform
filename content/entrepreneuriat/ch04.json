@@ -1,0 +1,646 @@
+{
+  "slug": "communication-ecrite",
+  "number": 4,
+  "title": "Communication écrite",
+  "description": "Séance 4 : analyse du destinataire et choix du ton, lettre de motivation (contenu et forme), rédaction d'un CV, lettre professionnelle, relecture et codes de rédaction des e-mails.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "lettres",
+      "title": "Préparer et rédiger une lettre",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "avant-ecriture",
+          "title": "Avant l'écriture : destinataire et ton",
+          "number": "4.1",
+          "estimatedMinutes": 8,
+          "summary": "Objectifs de la séance, l'analyse du destinataire (neuf questions) et le choix d'un ton informel ou formel.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance porte sur les principales techniques de **rédaction des écrits professionnels**, la manière d'écrire des **lettres** et de répondre à divers types de courrier, les techniques essentielles de rédaction d'un **CV** professionnel, et la communication écrite via les technologies modernes (**e-mail**, etc.).\n\n**Résultats d'apprentissage.** Vous serez en mesure de : 1. analyser les interlocuteurs avec qui vous communiquez par écrit ; 2. choisir un ton approprié pour vos messages écrits ; 3. identifier certains types de communication écrite du monde professionnel ; 4. comprendre certaines règles pour rédiger de bonnes lettres professionnelles ; 5. identifier certains principes clés de rédaction de CV ; 6. écrire des e-mails utiles et courtois.",
+              "origin": "source",
+              "title": "Communication écrite"
+            },
+            {
+              "type": "text",
+              "md": "Il est important de savoir deux choses avant de commencer à rédiger : vous devez d'abord **connaître votre destinataire** ; ensuite, il est souvent utile de **commencer par un plan**. Cela vous aidera à choisir le ton à utiliser.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Certains destinataires nécessitent une lettre simple et directe, d'autres des écrits plus formels. Avant de rédiger, posez-vous les questions suivantes :\n1. Un courrier est-il la meilleure façon de communiquer votre message ?\n2. S'agit-il d'un nouveau message ou de la suite d'une conversation précédente ?\n3. Qui va lire mon message ? Âge, sexe, niveau d'enseignement, poste, etc. ?\n4. Quelle est votre position vis-à-vis du lecteur (collègue, subordonné, patron, client, etc.) ?\n5. Le destinataire va-t-il garder ce courrier pour lui ou le partager ?\n6. Quelle est mon expérience précédente avec le destinataire ? Que sais-je de lui ?\n7. Quel type de formule de salutation mon destinataire a-t-il l'habitude d'employer ?\n8. Votre destinataire préfère-t-il recevoir une information par écrit ou par d'autres formes de communication ?\n9. Préfère-t-il des messages longs et détaillés ou concis et brefs ?",
+              "origin": "source",
+              "title": "L'analyse du destinataire"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Avant de rédiger, il faut se demander si un courrier est vraiment la meilleure façon de communiquer son message.",
+                "answer": true,
+                "explanation": "C'est la première question de l'analyse du destinataire."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Les différents types de communication écrite exigent des tons différents.\n\n**Informel (extrait d'un e-mail) :** « Cher Jamil, merci pour les précisions concernant les procédures à suivre. Je n'hésiterai pas à vous contacter au cas où je rencontre plus de difficulté. Merci pour votre considération. Cordialement, Hassan »\n\n**Formel (courrier d'une entreprise à un client, extrait) :** « Monsieur Kaissi, merci infiniment de nous avoir alertés quant à la mauvaise gestion du service délivré par notre équipe de vente en date du 5 octobre. Veuillez accepter nos sincères excuses. Soyez assuré que nous allons tout mettre en œuvre pour satisfaire nos clients à l'avenir… Cordialement, Jazouli Amine, Directeur du Service Clientèle »\n\n**Autre exemple formel : un communiqué de presse.** « Professeur Bilal Hatim, chercheur mondialement reconnu dans l'architecture arabe, a été nommé Doyen de l'Architecture et de l'Ingénierie à l'université… »",
+              "origin": "source",
+              "title": "Choisir un ton"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une lettre d'excuses d'un directeur du service clientèle à un client relève du ton :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "informel"
+                  },
+                  {
+                    "id": "b",
+                    "md": "formel"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "C'est l'exemple de ton formel du cahier (Monsieur Kaissi)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelles sont les deux choses à savoir avant de commencer à rédiger ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La date et l'heure"
+                },
+                {
+                  "id": "b",
+                  "md": "Connaître son destinataire et commencer par un plan"
+                },
+                {
+                  "id": "c",
+                  "md": "Le nombre de pages et la police"
+                },
+                {
+                  "id": "d",
+                  "md": "Le prix du timbre et l'adresse"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Connaître son destinataire, puis faire un plan : cela aide à choisir le ton."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La position de l'auteur vis-à-vis du lecteur (patron, client, collègue…) influence le ton du message.",
+              "answer": true,
+              "explanation": "C'est la question 4 de l'analyse du destinataire."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces questions fait partie de l'analyse du destinataire ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Quelle est ma couleur préférée ?"
+                },
+                {
+                  "id": "b",
+                  "md": "Le destinataire préfère-t-il des messages longs ou brefs ?"
+                },
+                {
+                  "id": "c",
+                  "md": "Combien de fautes vais-je faire ?"
+                },
+                {
+                  "id": "d",
+                  "md": "Quel stylo utiliser ?"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la question 9 : longueur préférée des messages."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un communiqué de presse est un exemple de communication informelle.",
+              "answer": false,
+              "explanation": "Faux : le cahier le présente comme un autre exemple de communication formelle."
+            }
+          ]
+        },
+        {
+          "slug": "lettre-de-motivation",
+          "title": "La lettre de motivation",
+          "number": "4.2",
+          "estimatedMinutes": 11,
+          "summary": "Les points à aborder dans une lettre de motivation, un exemple faible et un exemple réussi, la forme type d'une lettre et l'exercice de rédaction.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Lorsque vous postulez à un emploi, vous devez généralement envoyer un **curriculum vitae** ainsi qu'une **lettre de motivation**. Assurez-vous que les points suivants sont abordés :\n1. Indiquez l'objet de votre lettre : pourquoi écrivez-vous cette lettre ?\n2. Si la lettre répond à une annonce, indiquez où vous l'avez vue.\n3. Si elle ne répond à aucune annonce, votre premier paragraphe devra être très puissant pour motiver le recruteur à poursuivre sa lecture.\n4. Mettez en évidence certaines de vos expériences pour montrer que vous êtes le candidat le plus adéquat.\n5. Montrez votre intérêt à rejoindre l'entreprise et la plus-value que vous allez apporter.\n6. Assurez-vous que vos coordonnées figurent sur la page, même si elles se trouvent aussi dans le CV.\n7. Vérifiez tout : orthographe, ponctuation, clarté de l'écriture et qualité de l'impression.\n8. Demandez à quelqu'un de relire votre lettre et votre CV et de vous donner ses feedbacks.",
+              "origin": "source",
+              "title": "Une lettre de motivation"
+            },
+            {
+              "type": "example",
+              "md": "« Cher Raji, Mes amis travaillent dans votre entreprise et m'ont dit que ça ne vous dérangerait pas que je vous appelle par votre prénom. Veuillez trouver ci-joint mon curriculum vitae pour le poste de chef comptable au sein de votre entreprise. Comme vous pouvez le voir sur mon curriculum vitae, j'ai travaillé en tant que comptable dans une entreprise semblable à la vôtre. Depuis mon arrivée dans cette structure, l'ensemble de mes efforts et contributions ont été remarqués par toute l'entreprise. Vous trouverez ci-joint une lettre de recommandation du Directeur du département comptabilité. Je crois sincèrement que mon expérience aidera votre entreprise à croître et à se développer. […] Malik Amr. »",
+              "origin": "added",
+              "title": "Exercice : relever les points forts et faibles d'une lettre",
+              "steps": [
+                {
+                  "md": "Points faibles : ton trop familier (« Cher Raji », l'excuse du prénom), aucune coordonnée de l'expéditeur, affirmations vagues (« mes efforts ont été remarqués ») sans réalisation précise, pas de source de l'annonce, formule finale incohérente (« Cher Raji » puis « Monsieur »).",
+                  "why": "Comparer avec la liste des 8 points à aborder."
+                },
+                {
+                  "md": "Points forts : poste visé clairement indiqué, expérience dans une entreprise semblable, lettre de recommandation jointe, formule de disponibilité pour un entretien."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "md": "Malek Amro (adresse, e-mail) — Casablanca, le 21 novembre 2014 — À l'attention de M. Raji Marzouk, Directeur Général, Redwan Food Company.\n\n« Monsieur le Directeur Général, M. Jamil Daou, un ancien collègue, m'a fait parvenir une copie de l'annonce pour le poste vacant de chef comptable au sein de votre entreprise. Mon estime pour votre organisation, pour laquelle je voudrais travailler, m'a motivé à vous faire parvenir ma candidature.\n\nComme indiqué dans mon curriculum vitae, j'ai une solide expérience en comptabilité. Durant les trois dernières années, j'ai supervisé un groupe de cinq experts comptables juniors […]. Actuellement, je travaille en étroite collaboration avec le département informatique sur les étapes finales de la mise en œuvre d'un nouveau logiciel de pointe en comptabilité. […] Je crois que mon expérience et mes qualifications seront un atout pour Redwan Food Company.\n\nJe reste à votre disposition pour toute information complémentaire. Dans l'attente de vous rencontrer, veuillez agréer, Monsieur le Directeur Général, l'expression de mes salutations distinguées. »",
+              "origin": "source",
+              "title": "Une bonne lettre de motivation"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Qu'apporte la bonne lettre de Malek Amro par rapport à la première ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Un ton plus familier"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La source de l'annonce et des réalisations précises"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Plus de compliments sur l'entreprise"
+                  },
+                  {
+                    "id": "d",
+                    "md": "L'absence de coordonnées"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Elle indique comment l'annonce a été connue (M. Jamil Daou) et cite des faits précis (supervision de cinq comptables, nouveau logiciel)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "- **En-tête de l'expéditeur :** nom complet, lieu et date, titre et entreprise (optionnels), adresse postale, ville et pays, téléphone portable, e-mail, statut marital et nombre d'enfants (le cas échéant), permis (si positif).\n- **Destinataire :** « À l'attention de » M./Mme/Dr + nom complet, poste, entreprise, adresse, ville, pays.\n- **Objet :** « Candidature pour le poste … » ou « Candidature spontanée ».\n- **Formule d'appel :** « Madame / Monsieur + nom ». Sans alinéas ; marges ne dépassant pas un pouce.\n- **Premier paragraphe :** présentez-vous de manière amicale et indiquez le but de la lettre ; accrochez l'attention du destinataire ; une ou deux phrases pour le but, les détails au développement.\n- **Développement :** justifiez l'importance du point principal, puis donnez des informations de fond et des détails ; proposez solutions, conseils, suggestions. Paragraphes brefs et concis ; le CV étant joint, ne relevez que les expériences qui apportent un plus par rapport au profil du poste.\n- **Dernier paragraphe :** reformulez l'objet, demandez une action, rappelez où vous joindre, clôturez de manière cordiale ; soyez proactif (proposez des dates d'entretien ou annoncez que vous rappellerez).\n- **Clôture :** « Cordialement », laissez 4 lignes et signez votre nom ; citez les pièces jointes.",
+              "origin": "source",
+              "title": "La forme d'une lettre de motivation"
+            },
+            {
+              "type": "exercise",
+              "md": "Rédigez une courte lettre à un client indiquant que le modèle Porsche est arrivé dans votre salle d'exposition et que vous l'invitez à vous rendre visite la semaine prochaine entre 9 h et 17 h, en utilisant la forme ci-dessus comme modèle.",
+              "origin": "source",
+              "title": "Exercice"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si la lettre de motivation répond à une annonce, il faut indiquer où on l'a vue.",
+              "answer": true,
+              "explanation": "C'est le point 2 de la liste."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que faut-il faire dans le **dernier paragraphe** d'une lettre de motivation ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Raconter toute sa carrière"
+                },
+                {
+                  "id": "b",
+                  "md": "Reformuler l'objet, demander une action et rappeler où vous joindre"
+                },
+                {
+                  "id": "c",
+                  "md": "Lister ses loisirs"
+                },
+                {
+                  "id": "d",
+                  "md": "Critiquer son employeur actuel"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le dernier paragraphe reformule l'objet, demande une action (entretien) et clôt cordialement."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le développement, quelles expériences faut-il mettre en avant ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Toutes, dans l'ordre chronologique"
+                },
+                {
+                  "id": "b",
+                  "md": "Uniquement celles qui apportent un plus par rapport au profil du poste"
+                },
+                {
+                  "id": "c",
+                  "md": "Aucune, le CV suffit"
+                },
+                {
+                  "id": "d",
+                  "md": "Les plus anciennes"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le CV est joint : on ne relève que les expériences pertinentes pour le poste."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le cahier conseille de demander à quelqu'un de relire sa lettre et son CV.",
+              "answer": true,
+              "explanation": "Point 8 : demander des feedbacks."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les parties d'une lettre de motivation.",
+              "items": [
+                "Coordonnées de l'expéditeur et date",
+                "Destinataire et objet",
+                "Premier paragraphe (présentation et but)",
+                "Développement",
+                "Dernier paragraphe et clôture"
+              ],
+              "explanation": "C'est la structure de « La forme d'une lettre de motivation »."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cv-et-emails",
+      "title": "CV, relecture et e-mails",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "rediger-un-cv",
+          "title": "Rédiger un curriculum vitae",
+          "number": "4.3",
+          "estimatedMinutes": 10,
+          "summary": "Les dix conseils de rédaction d'un CV, le guide de questions pour le construire, un CV réussi, un CV faible et les erreurs à éviter.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Il y a plus d'une façon de rédiger un CV : cela dépend de votre expérience, de vos aspirations et du poste visé.\n1. Mettez l'information la plus importante en premier ;\n2. utilisez la taille de police appropriée (généralement 11) ;\n3. une photo n'est généralement pas fournie dans la plupart des milieux professionnels ;\n4. omettez les informations non pertinentes (religion, etc.) ;\n5. pour la plupart des emplois, un CV ne doit pas dépasser quatre pages ; si vous n'avez pas encore (ou peu) d'expérience professionnelle, une page est suffisante ;\n6. mettez à jour votre CV régulièrement ;\n7. soyez sobre dans le design ;\n8. soyez professionnel ;\n9. pas besoin de tout énumérer ;\n10. dites la vérité !",
+              "origin": "source",
+              "title": "Conseils pour rédiger un CV"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour un étudiant sans expérience professionnelle, le cahier juge suffisant un CV de ___ page(s).",
+                "answerType": "text",
+                "accepted": [
+                  "1",
+                  "une"
+                ],
+                "explanation": "Une page suffit si vous n'avez pas encore (ou peu) d'expérience."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Si vous avez travaillé (temps partiel, stage d'été, entreprise familiale, bénévolat), quelles compétences pouvez-vous mettre en avant ? Questions pour vous aider :\n1. Votre formation vous a-t-elle permis d'acquérir des compétences spécifiques ?\n2. Avez-vous des compétences en informatique ? Lesquelles ?\n3. Savez-vous utiliser des types particuliers de matériel ?\n4. Quelles langues parlez-vous, et à quel niveau (débutant, intermédiaire, courant, bilingue…) ?\n5. Quels talents spéciaux avez-vous ?\n6. Quelles compétences organisationnelles avez-vous ? Avez-vous travaillé en équipe ? Quel était votre rôle ?\n7. Avez-vous produit avec succès des rapports ou documents de recherche ?\n\n*Exemples de compétences professionnelles :* bon esprit d'équipe ; expérience préalable dans la direction d'équipe ; expérience dans la rédaction de rapports de recherche ; excellente maîtrise d'un logiciel de statistique ; succès dans la gestion d'une équipe de cinq personnes sur six mois ; connaissance du droit du travail ; bonne maîtrise de l'anglais (score au TOEFL) ; implication directe dans des projets stratégiques.\n\nPuis : quel est votre **objectif** (type d'emploi recherché) ? Vos **expériences** antérieures (y compris temps partiel, stages, bénévolat, entreprise familiale) ? Votre **niveau d'études** ? Vos **prix et récompenses** ?",
+              "origin": "source",
+              "title": "Un guide de rédaction d'un CV captivant"
+            },
+            {
+              "type": "example",
+              "md": "- **Profil :** web designer expérimenté, vaste expérience en conception web et maintenance informatique ; a dirigé plusieurs équipes ; prix internationaux.\n- **Expérience :** Web Designer Senior, société XYZ, Casablanca (2010-2011) : conception et maintenance de sites de clients, responsable d'une dizaine de grands comptes, supervision de cinq designers. *Réalisations :* refonte d'un site primée au niveau national ; taux de rétention des clients de 100 % ; migration vers une nouvelle plate-forme sans interruption ; unité la plus performante. Designer, JJJ Société, Paris (2007-2009) : équipe de 7 designers ; employé de l'année deux années consécutives ; deux contrats clés supplémentaires ; prix international.\n- **Formation :** Université internationale de conception graphique, Tanger (2006).\n- **Compétences :** Dreamweaver, Photoshop, Flash, Illustrator, JavaScript, X/HTML ; leadership d'équipe ; trois langues (arabe, français, anglais).\n- **Références :** trois personnes avec leurs coordonnées.",
+              "origin": "source",
+              "title": "Un CV réussi (Amer Kais)"
+            },
+            {
+              "type": "example",
+              "md": "- **Objectif :** « Je voudrais un emploi dans votre entreprise parce que je crois que j'ai les compétences pour réussir et exceller… »\n- **Expérience :** listes vagues et répétées (« prise en charge des responsabilités du département », « assistance des employés en cas de besoin ») sans réalisation chiffrée ; la plus ancienne expérience est placée en premier.\n- **Compétences :** « J'ai une expertise phénoménale de… », « d'exceptionnelles compétences en leadership ».\n- **Loisirs :** ski, échecs, basket, couchers de soleil, organisation de fêtes au travail.\n- Coordonnées placées à la fin.",
+              "origin": "source",
+              "title": "Un CV faible (même candidat)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel défaut du CV faible est corrigé par le CV réussi ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le CV réussi n'a pas de compétences"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le CV réussi remplace les formulations vagues par des réalisations précises"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le CV réussi ajoute des loisirs"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Le CV réussi met les coordonnées à la fin"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Taux de rétention de 100 %, prix national, équipe de cinq designers : des faits plutôt que « assistance en cas de besoin »."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Exemples réels d'extraits de CV à ne **pas** imiter :\n- raisons de la démission (« La responsabilité me rend anxieux », « La direction insistait pour que les employés commencent à 8 h 45 », « J'étais le bouc émissaire – tout comme dans mes trois emplois précédents ») ;\n- responsabilités formulées de façon incompréhensible ou anecdotique (« mené à la victoire l'équipe de la comptabilité au tournoi de tasses de café empilées ») ;\n- requêtes inappropriées (« Merci de me contacter après 17 h 30 car mon employeur n'est pas au courant… », « Pourquoi faire aujourd'hui ce que l'on peut faire demain ? ») ;\n- informations hors sujet (« Allergie mineure aux chats roux », « Dons du sang : 53 litres depuis 2004 ») ;\n- erreurs de frappe qui changent le sens (« Université, août 1008 – mai 2012 », « budget annuel des démenses d'exploitation », « une vitesse de trappe rapide », « mélodique » au lieu de « méthodique »).",
+              "origin": "source",
+              "title": "Attention au sens de l'humour sur un CV"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Le cahier recommande de joindre une photo au CV dans la plupart des milieux professionnels.",
+              "answer": false,
+              "explanation": "Faux : « une photo n'est généralement pas fournie dans la plupart des milieux professionnels »."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle taille de police le cahier recommande-t-il généralement pour un CV ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "8"
+                },
+                {
+                  "id": "b",
+                  "md": "11"
+                },
+                {
+                  "id": "c",
+                  "md": "16"
+                },
+                {
+                  "id": "d",
+                  "md": "20"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Conseil 2 : généralement 11."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces informations faut-il **omettre** d'un CV selon le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Les langues parlées"
+                },
+                {
+                  "id": "b",
+                  "md": "La religion"
+                },
+                {
+                  "id": "c",
+                  "md": "Les compétences informatiques"
+                },
+                {
+                  "id": "d",
+                  "md": "La formation"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Conseil 4 : omettez les informations non pertinentes (religion, etc.)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "« Dites la vérité ! » fait partie des dix conseils de rédaction d'un CV.",
+              "answer": true,
+              "explanation": "C'est le dixième conseil."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi « Développer le budget annuel des démenses d'exploitation » est-il cité comme mauvais exemple ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que c'est trop long"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce qu'une faute de frappe change le sens"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que c'est hors sujet"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que c'est trop modeste"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« Démenses » au lieu de « dépenses » : une erreur de frappe qui modifie le sens global et décrédibilise le candidat."
+            }
+          ]
+        },
+        {
+          "slug": "apres-redaction-et-emails",
+          "title": "Lettre professionnelle, relecture et e-mails",
+          "number": "4.4",
+          "estimatedMinutes": 10,
+          "summary": "La structure d'une lettre professionnelle, la liste de relecture (contenu, format, citations), les erreurs fréquentes dans les e-mails et les dix-sept codes de rédaction des e-mails.",
+          "blocks": [
+            {
+              "type": "example",
+              "md": "Fouzia Merhi, consultante externe, écrit à Karim Sammy, directeur général, pour expliquer l'échec du système de contrôle de l'entreprise suite à la découverte d'une fraude. Les paragraphes de la lettre suivent une structure annotée :\n- **Introduction :** rapport préliminaire demandé, rapport complet annoncé pour le 20 décembre ;\n- **Analyse des causes / effets :** le comptable s'occupait aussi de la trésorerie (violation majeure du contrôle interne), d'où un détournement estimé à 23 000 DH et la falsification des registres ;\n- **Comparer et contraster :** l'ancien système comporte des lacunes graves ; le nouveau rendra un tel complot extrêmement difficile ;\n- **Classification :** quatre recommandations : (1) séparation des tâches, (2) recrutement soigneux, (3) renforcement de l'audit interne, (4) nomination d'un auditeur externe compétent ;\n- **Illustration :** l'expérience du cabinet avec ces mesures dans des entreprises similaires ;\n- **Fermeture :** disponibilité pour toute information complémentaire, signature, annexes, copie (CC).",
+              "origin": "source",
+              "title": "Exemple de lettre professionnelle"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans la lettre de Fouzia Merhi, quelle cause principale de la fraude est identifiée ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Un logiciel défectueux"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le comptable s'occupait aussi des opérations de trésorerie"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Un cambriolage"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Une erreur du client"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le cumul des fonctions de comptable et de caissier viole le contrôle interne ; d'où la recommandation de séparer les tâches."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "**Contenu :** vérifiez l'orthographe et la ponctuation ; les erreurs grammaticales ; la structure des mots ; les répétitions de mots ou de phrases ; l'utilisation inappropriée de « très » et « trop » ; que chaque paragraphe est complet et cohérent ; que l'ordre des paragraphes est logique ; la pertinence des titres et sous-titres ; le sens global du texte (en prenant un point de vue externe).\n\n**Format :** taille et type de police (pages lisibles ?) ; le résultat final correspond à ce que vous voyez à l'écran ; toutes les pages sont présentes ; l'ordre des pages.\n\n**Citations :** exactitude des citations et de leur source ; bonne attribution de chaque citation ; droits d'utilisation.",
+              "origin": "source",
+              "title": "Après la rédaction : révision et relecture"
+            },
+            {
+              "type": "heading",
+              "text": "La communication du 21ᵉ siècle : les e-mails",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "1. Un étudiant à son enseignante, envoyé à 00 h 09, **sans objet**, en **translittération** (« Bghit nsouwel 3la les cours li lazem nakhoud le semestre prochain… »).\n2. Un demandeur d'emploi au DRH, objet « HAUTE PRIROTE _ offre d'emploi », formule « Salut », **majuscules** pour insister (« TOUS mes certificats », « VEUILLEZ ME REPONDRE »), signature « A +. Bassim ».\n\nRédiger des courriels professionnels exige la maîtrise de certains codes et règles.",
+              "origin": "source",
+              "title": "Deux e-mails à ne pas écrire"
+            },
+            {
+              "type": "definition",
+              "md": "1. La concision est reine : évitez les longs e-mails.\n2. Incluez une signature électronique avec des informations pertinentes (nom, prénom, fonction, société, adresse…).\n3. Vérifiez les erreurs d'orthographe et de ponctuation.\n4. Répondez rapidement autant que possible (un e-mail ne doit pas rester sans réponse plus de **48 heures**).\n5. Prenez votre temps pour rédiger un courriel délicat.\n6. Ne joignez pas de fichier très volumineux sauf demande du destinataire.\n7. Utilisez la majuscule en début de phrase.\n8. Relisez votre e-mail avant de l'envoyer ; utilisez le correcteur d'orthographe.\n9. N'abusez pas des fonctions « Répondre à tous » et « CC ».\n10. Ne transmettez pas de courriels en masse, de publicités ou de chaînes d'e-mails.\n11. Soyez prudent avec les confirmations de réception et de lecture ; évitez-les autant que possible.\n12. Soyez prudent dans le transfert des e-mails émis par d'autres personnes.\n13. Un e-mail n'est pas privé et reste toujours quelque part dans le système : évitez les e-mails à titre personnel.\n14. Renseignez toujours la ligne « objet ».\n15. N'utilisez pas de translittération (écrire des mots arabes en lettres latines).\n16. Si l'e-mail contient une pièce jointe, vérifiez qu'elle y est avant l'envoi.\n17. Mentionnez la pièce jointe dans le corps de l'e-mail pour que le destinataire y prête attention.",
+              "origin": "source",
+              "title": "Les codes à respecter dans la rédaction des e-mails"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "D'après les codes de l'e-mail, un message ne doit pas rester sans réponse plus de ___ heures.",
+                "answerType": "number",
+                "accepted": [
+                  "48"
+                ],
+                "explanation": "Code 4 : répondez rapidement, au plus tard sous 48 heures."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "« Monsieur XXXXXX, C'est avec grand intérêt que je postule par la présente à l'offre d'emploi de Directeur des Relations Publiques au sein de votre entreprise. En ma qualité de Directeur des Relations Publiques dans la société La Rivière du Nil, j'ai notamment eu l'occasion de rédiger de nombreux articles pour le site de l'entreprise, de gérer ceux des auteurs invités, de concevoir et d'envoyer un bulletin hebdomadaire électronique aux abonnés (360 000 personnes). […] Vous trouverez ci-joint mon CV ainsi que quelques-uns de mes articles. […] Selma Pacha, 123 rue Maroc, Selma@email.com, Tél. »\n\nQue pensez-vous de cet e-mail ? Quels sont ses points forts ? (Poste visé dès la première phrase, réalisations chiffrées, pièces jointes annoncées, signature complète.)",
+              "origin": "source",
+              "title": "Exemple de lettre de motivation électronique"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous voulez adopter pour améliorer vos compétences en communication écrite.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle erreur commet l'étudiant dans le premier e-mail ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Il met trop de pièces jointes"
+                },
+                {
+                  "id": "b",
+                  "md": "Il écrit en translittération et sans objet"
+                },
+                {
+                  "id": "c",
+                  "md": "Il répond à tous"
+                },
+                {
+                  "id": "d",
+                  "md": "Il est trop formel"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Codes 14 (renseigner l'objet) et 15 (pas de translittération) ne sont pas respectés."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Selon les codes du cahier, un e-mail professionnel est privé et disparaît une fois lu.",
+              "answer": false,
+              "explanation": "Faux : « Un e-mail n'est pas privé et reste toujours quelque part dans le système. »"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque partie de la lettre de Fouzia Merhi à son contenu.",
+              "pairs": [
+                {
+                  "left": "Analyse des causes / effets",
+                  "right": "Cumul comptable-trésorerie → détournement de fonds"
+                },
+                {
+                  "left": "Comparer et contraster",
+                  "right": "Ancien système lacunaire vs nouveau système"
+                },
+                {
+                  "left": "Classification",
+                  "right": "Quatre recommandations numérotées"
+                },
+                {
+                  "left": "Fermeture",
+                  "right": "Disponibilité, signature, annexes"
+                }
+              ],
+              "explanation": "Les annotations dans la marge de la lettre montrent la fonction de chaque paragraphe."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces vérifications fait partie de la rubrique **Format** de la relecture ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'orthographe"
+                },
+                {
+                  "id": "b",
+                  "md": "Que toutes les pages sont présentes"
+                },
+                {
+                  "id": "c",
+                  "md": "L'attribution des citations"
+                },
+                {
+                  "id": "d",
+                  "md": "Les répétitions de mots"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Format : police, rendu final, présence et ordre des pages. L'orthographe et les répétitions relèvent du contenu ; l'attribution, des citations."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Il faut mentionner la pièce jointe dans le corps de l'e-mail.",
+              "answer": true,
+              "explanation": "Code 17 : pour que le destinataire y prête attention."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 4 = p. 53–74 du PDF (pages 49–70 du cahier).",
+    "Les lettres et CV d'exemple (p. 58–67, 69, 73) sont longs : ils sont reproduits en partie ou résumés en gardant les éléments utiles à l'analyse (ce qui fait la différence entre bon et mauvais exemple). Les coordonnées fictives (adresses, téléphones) sont omises.",
+    "Exercice « points forts / points faibles » de la première lettre (p. 58) : le cahier ne donne pas de corrigé ; une analyse ajoutée (origin: added) est fondée sur la liste des 8 points de la p. 57 et sur la « bonne lettre » de la p. 59. Les points forts de l'e-mail de Selma Pacha (p. 73) sont également ajoutés entre parenthèses.",
+    "Incohérences du cahier conservées sans conséquence : le candidat s'appelle « Malik Amr » puis « Malek Amro / Malik Amro » ; « Monsieur le Direction Général » → « Directeur Général ». Le CV réussi date l'expérience 2010-2011 (p. 66) puis 2012-2013 dans la version de la séance 7 (p. 124)."
+  ]
+}

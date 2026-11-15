@@ -1,0 +1,2513 @@
+{
+  "slug": "charges-loi-de-coulomb",
+  "number": 2,
+  "title": "Charges électriques et loi de Coulomb",
+  "description": "La charge électrique (quantification, conservation), conducteurs et isolants, électrisation par frottement, contact et influence, loi de Coulomb vectorielle, dépendance en 1/r², action-réaction, principe de superposition et systèmes de charges ponctuelles.",
+  "sourcePdf": "Bibliotheque_sources/Electrostatique/Cours/Documents generaux/F259 - COURS-2 ELECTROSTATIQUE.pdf",
+  "sections": [
+    {
+      "slug": "introduction",
+      "title": "Introduction",
+      "number": "2.1",
+      "lessons": [
+        {
+          "slug": "introduction-objectifs",
+          "title": "Pourquoi les corps s'attirent-ils ?",
+          "number": "2.1",
+          "estimatedMinutes": 5,
+          "summary": "La question de départ de l'électrostatique, le plan du chapitre, ses objectifs et ses prérequis.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "L'électrostatique commence par une question simple : **pourquoi certains corps s'attirent-ils ou se repoussent-ils après avoir été frottés, touchés ou simplement approchés ?** La réponse repose sur une propriété fondamentale de la matière : la **charge électrique**.\n\nCe chapitre introduit progressivement cette grandeur, sa conservation et sa quantification. Il distingue ensuite le comportement des conducteurs et des isolants, puis décrit les principaux modes d'électrisation. Enfin, la loi de Coulomb permettra de calculer quantitativement la force exercée entre charges ponctuelles et le principe de superposition permettra d'étendre ce calcul à plusieurs charges.\n\nL'objectif n'est pas de mémoriser une succession de formules, mais de construire une méthode de raisonnement : **identifier les charges, comprendre leur interaction, définir correctement la géométrie, puis calculer la force résultante**.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de ce chapitre, l'étudiant devra être capable de :\n- définir la charge électrique et son unité ;\n- expliquer la quantification et la conservation de la charge ;\n- distinguer conducteur et isolant du point de vue du déplacement des charges ;\n- expliquer l'électrisation par frottement, contact et influence ;\n- appliquer la loi de Coulomb sous forme scalaire et vectorielle ;\n- interpréter le signe du produit $q_1q_2$ ;\n- appliquer le principe de superposition à un système de charges ponctuelles ;\n- construire une résultante de forces par décomposition vectorielle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre la méthode de raisonnement annoncée par le chapitre.",
+                "items": [
+                  "Identifier les charges",
+                  "Comprendre leur interaction",
+                  "Définir correctement la géométrie",
+                  "Calculer la force résultante"
+                ],
+                "explanation": "C'est l'ordre donné dans l'introduction : on identifie d'abord **qui** interagit, puis **comment** (attraction/répulsion), ensuite on pose la géométrie (positions, distances, vecteurs unitaires) et seulement à la fin on calcule."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "**Prérequis.** Les outils du chapitre 1 seront utilisés directement : vecteur position, vecteur unitaire, norme, décomposition d'un vecteur et somme vectorielle.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Le chapitre suit une logique « de la particule à la force » : on part de **ce qu'est** une charge, on voit **comment** un corps se charge, puis on calcule **la force** entre charges, d'abord pour deux charges (Coulomb), puis pour plusieurs (superposition).",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle grandeur est au cœur de l'électrostatique selon l'introduction du chapitre ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La masse"
+                },
+                {
+                  "id": "b",
+                  "md": "La charge électrique"
+                },
+                {
+                  "id": "c",
+                  "md": "La température"
+                },
+                {
+                  "id": "d",
+                  "md": "Le courant électrique"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les attractions et répulsions observées après frottement, contact ou rapprochement s'expliquent par une propriété fondamentale de la matière : la **charge électrique**."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque outil du chapitre à ce qu'il permet de faire.",
+              "pairs": [
+                {
+                  "left": "Loi de Coulomb",
+                  "right": "Calculer la force entre deux charges ponctuelles"
+                },
+                {
+                  "left": "Principe de superposition",
+                  "right": "Étendre le calcul à plusieurs charges"
+                },
+                {
+                  "left": "Modes d'électrisation",
+                  "right": "Expliquer comment un corps se charge"
+                }
+              ],
+              "explanation": "Coulomb traite l'interaction de **deux** charges ponctuelles ; la superposition l'étend à **plusieurs** charges ; frottement, contact et influence décrivent **comment** un corps acquiert ou sépare ses charges."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le chapitre suppose connus le vecteur unitaire, la norme et la décomposition d'un vecteur (chapitre 1).",
+              "answer": true,
+              "explanation": "Vrai : ce sont les prérequis annoncés. La loi de Coulomb s'écrit avec un vecteur unitaire et la superposition demande une somme vectorielle."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'objectif principal du chapitre est de mémoriser une succession de formules.",
+              "answer": false,
+              "explanation": "Faux : le cours insiste sur une **méthode de raisonnement** (identifier les charges, comprendre l'interaction, poser la géométrie, calculer), pas sur la mémorisation."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "la-charge-electrique",
+      "title": "La charge électrique",
+      "number": "2.2",
+      "lessons": [
+        {
+          "slug": "charge-propriete-matiere",
+          "title": "La charge, une propriété de la matière",
+          "number": "2.2.1",
+          "estimatedMinutes": 7,
+          "summary": "Proton, électron, neutron ; définition de la charge électrique et de son unité, le coulomb ; corps neutre, positif ou négatif.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Cette section introduit la grandeur fondamentale de l'électrostatique : la charge électrique, son origine microscopique, sa quantification et sa conservation.\n\nOn commence par relier les phénomènes observés à la structure électrique de la matière.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Après avoir frotté un ballon sur un tissu, il peut attirer de petits morceaux de papier ou rester collé quelques instants à une paroi. Le frottement n'a pas créé une nouvelle force mystérieuse : il a modifié la répartition des charges électriques entre les matériaux. L'objet possède alors un **déséquilibre de charge** capable de produire une interaction électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La matière est constituée d'atomes. À l'échelle élémentaire, trois particules suffisent pour introduire les phénomènes électrostatiques : le proton, l'électron et le neutron. Le **proton** porte une charge positive, l'**électron** une charge négative de même valeur absolue, tandis que le **neutron** est électriquement neutre :\n$$\\text{proton} : +e,\\qquad \\text{électron} : -e,\\qquad \\text{neutron} : 0.$$\n\nLa figure 2.1 met surtout en évidence le rôle des signes. Dans les phénomènes électrostatiques usuels, ce sont principalement les **électrons** qui peuvent être transférés d'un corps à un autre ; les protons restent liés aux noyaux atomiques.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-atome.svg",
+              "alt": "Atome schématique : noyau formé de protons et de neutrons, électrons sur des orbites autour du noyau.",
+              "caption": "Figure 2.1 — Les signes des charges élémentaires : proton positif, électron négatif, neutron neutre.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans les phénomènes électrostatiques usuels (frottement, contact), quelles particules passent d'un corps à l'autre ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Les protons"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Les neutrons"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Les électrons"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Les noyaux entiers"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Ce sont principalement les **électrons** qui sont transférés ; les protons restent liés aux noyaux atomiques, et les neutrons ne portent pas de charge."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "title": "Définition (charge électrique)",
+              "md": "La **charge électrique**, notée généralement $q$ ou $Q$, est une grandeur scalaire algébrique caractérisant l'état électrique d'un corps. Son unité SI est le **coulomb**, de symbole $\\mathrm{C}$.\n\nUn corps est :\n- **neutre** si sa charge totale est nulle ;\n- **positif** s'il présente un déficit d'électrons ;\n- **négatif** s'il présente un excès d'électrons.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Dire qu'un corps est neutre ne signifie pas qu'il ne contient aucune charge. Cela signifie que la somme algébrique de toutes ses charges positives et négatives est nulle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un corps chargé positivement a gagné des protons.",
+                "answer": false,
+                "explanation": "Faux : un corps positif présente un **déficit d'électrons**. Les protons restent liés aux noyaux ; c'est la perte d'électrons qui rend le corps positif."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque particule à sa charge.",
+              "pairs": [
+                {
+                  "left": "Proton",
+                  "right": "$+e$"
+                },
+                {
+                  "left": "Électron",
+                  "right": "$-e$"
+                },
+                {
+                  "left": "Neutron",
+                  "right": "$0$"
+                }
+              ],
+              "explanation": "Le proton et l'électron portent des charges opposées de même valeur absolue $e$ ; le neutron est électriquement neutre."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "L'unité SI de la charge électrique est le ___.",
+              "answerType": "text",
+              "accepted": [
+                "coulomb",
+                "C"
+              ],
+              "explanation": "La charge s'exprime en **coulombs** (symbole $\\mathrm{C}$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Un corps présente un excès d'électrons. Il est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "neutre"
+                },
+                {
+                  "id": "b",
+                  "md": "positif"
+                },
+                {
+                  "id": "c",
+                  "md": "négatif"
+                },
+                {
+                  "id": "d",
+                  "md": "conducteur"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Un excès d'électrons (charges $-e$) donne une charge totale négative. « Conducteur » décrit la mobilité des charges, pas le signe de la charge."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un corps neutre ne contient aucune charge électrique.",
+              "answer": false,
+              "explanation": "Faux, c'est le piège signalé par le cours : un corps neutre contient des charges positives et négatives dont la **somme algébrique** est nulle."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "La charge électrique est une grandeur :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "vectorielle"
+                },
+                {
+                  "id": "b",
+                  "md": "scalaire toujours positive"
+                },
+                {
+                  "id": "c",
+                  "md": "scalaire algébrique"
+                },
+                {
+                  "id": "d",
+                  "md": "sans unité"
+                }
+              ],
+              "answer": "c",
+              "explanation": "La charge est un **scalaire algébrique** : un nombre avec un signe ($+$ ou $-$), exprimé en coulombs. Elle n'a pas de direction."
+            }
+          ]
+        },
+        {
+          "slug": "quantification-conservation",
+          "title": "Quantification et conservation de la charge",
+          "number": "2.2.2–2.2.3",
+          "estimatedMinutes": 8,
+          "summary": "La charge élémentaire e, la relation q = Ne, le calcul d'un nombre d'électrons, et la conservation de la charge totale d'un système isolé.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "2.2.2 Quantification de la charge",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La charge électrique n'apparaît pas sous n'importe quelle valeur à l'échelle microscopique. Elle est construite à partir de la charge élémentaire $e$ :\n$$\\boxed{e = 1{,}602\\,176\\,634\\times10^{-19}\\ \\mathrm{C}.}$$\n\nPour un système contenant un excès ou un déficit entier de charges élémentaires,\n$$\\boxed{q = Ne,\\qquad N\\in\\mathbb{Z}.}$$\n\nLa figure 2.2 représente un axe des charges gradué en $\\dots,-2e,-e,0,+e,+2e,\\dots$ : le nombre $N$ change par valeurs entières. À l'échelle macroscopique, $e$ est si petit que les charges mesurées peuvent souvent être traitées comme des grandeurs continues.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-quantification.svg",
+              "alt": "Axe des charges gradué en -2e, -e, 0, +e, +2e : la charge varie par sauts de e.",
+              "caption": "Figure 2.2 — Quantification de la charge électrique à l'échelle microscopique.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Nombre d'électrons correspondant à une charge",
+              "md": "Un corps porte une charge $q=-3{,}2\\times10^{-9}\\ \\mathrm{C}$. Le nombre d'électrons excédentaires vaut approximativement\n$$N=\\frac{|q|}{e}=\\frac{3{,}2\\times10^{-9}}{1{,}602\\times10^{-19}}\\simeq 2{,}0\\times10^{10}.$$\nLe signe négatif indique un **excès** d'électrons.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Un corps porte la charge $q=-1{,}6\\times10^{-18}\\ \\mathrm{C}$. En prenant $e\\simeq1{,}6\\times10^{-19}\\ \\mathrm{C}$, le nombre d'électrons excédentaires est $N=$ ___.",
+                "answerType": "number",
+                "accepted": [
+                  "10"
+                ],
+                "explanation": "$N=|q|/e=1{,}6\\times10^{-18}/1{,}6\\times10^{-19}=10$. Le signe $-$ indique un excès d'électrons."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.2.3 Conservation de la charge",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Après la quantification, il faut comprendre ce qui arrive à la charge lorsqu'elle se déplace d'un corps à un autre.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si un électron quitte un objet pour rejoindre un autre objet, le premier perd une charge négative et le second gagne exactement cette même charge négative. La charge n'a pas disparu et elle n'est pas apparue de nulle part : elle a seulement été **transférée**.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (conservation de la charge)",
+              "md": "Dans un système électriquement isolé, la charge totale reste constante :\n$$\\boxed{Q_{\\text{tot, avant}} = Q_{\\text{tot, après}}.}$$\nLa charge peut être redistribuée entre les constituants du système, mais sa somme algébrique est conservée.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-transfert.svg",
+              "alt": "Deux corps neutres avant transfert ; après transfert d'électrons, l'un porte +2e et l'autre -2e, la somme reste nulle.",
+              "caption": "Figure 2.3 — La charge se transfère d'un corps à l'autre sans modification de la charge totale du système.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.3 montre deux corps avant et après un transfert d'électrons : la répartition change, la charge totale du système ne change pas. Elle doit être lue comme un **bilan** : on peut déplacer des électrons entre les corps, mais il faut retrouver la même charge totale avant et après l'opération.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux corps isolés portent $+5\\ \\mathrm{nC}$ et $-1\\ \\mathrm{nC}$. Après un échange d'électrons, le premier porte $+1\\ \\mathrm{nC}$. Que porte le second ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$-1\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$+3\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$+4\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$+5\\ \\mathrm{nC}$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "La charge totale est conservée : $5+(-1)=4\\ \\mathrm{nC}$ avant, donc après $1+Q_2=4$, soit $Q_2=+3\\ \\mathrm{nC}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "À l'échelle microscopique, une charge peut valoir $1{,}5\\,e$.",
+              "answer": false,
+              "explanation": "Faux : la charge est quantifiée, $q=Ne$ avec $N\\in\\mathbb{Z}$. Une charge de $1{,}5\\,e$ n'existe pas pour un système de particules usuelles."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un corps porte $q=+8\\times10^{-19}\\ \\mathrm{C}$. Avec $e\\simeq1{,}6\\times10^{-19}\\ \\mathrm{C}$, il lui manque ___ électrons.",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "$N=q/e=8\\times10^{-19}/1{,}6\\times10^{-19}=5$. Le signe positif signifie que ce sont des électrons **manquants**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi peut-on souvent traiter la charge comme une grandeur continue à l'échelle macroscopique ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que la charge n'est pas quantifiée"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que $e$ est extrêmement petit devant les charges mesurées"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que les électrons ne bougent pas"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que $N$ est toujours nul"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$e\\approx1{,}6\\times10^{-19}\\ \\mathrm{C}$ : une charge de quelques nC correspond à des milliards de charges élémentaires, si bien que le « pas » $e$ devient imperceptible."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un système isolé, un frottement peut créer une charge totale non nulle à partir de corps initialement neutres.",
+              "answer": false,
+              "explanation": "Faux : la charge totale est conservée. Le frottement **transfère** des électrons : un corps devient négatif, l'autre positif, et la somme reste nulle."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle relation exprime la conservation de la charge d'un système isolé ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$q=Ne$"
+                },
+                {
+                  "id": "b",
+                  "md": "$Q_{\\text{tot, avant}}=Q_{\\text{tot, après}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec F_{2\\to1}=-\\vec F_{1\\to2}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$F\\propto 1/r^2$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La conservation porte sur la charge **totale** avant et après. $q=Ne$ exprime la quantification ; les deux autres relations concernent la force de Coulomb."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La charge élémentaire vaut $e\\simeq1{,}602\\times10^{\\,\\text{?}}\\ \\mathrm{C}$ : l'exposant manquant est ___.",
+              "answerType": "number",
+              "accepted": [
+                "-19"
+              ],
+              "explanation": "$e=1{,}602\\,176\\,634\\times10^{-19}\\ \\mathrm{C}$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conducteurs-et-isolants",
+      "title": "Conducteurs et isolants",
+      "number": "2.3",
+      "lessons": [
+        {
+          "slug": "conducteurs-isolants",
+          "title": "Conducteurs et isolants",
+          "number": "2.3",
+          "estimatedMinutes": 5,
+          "summary": "La différence entre conducteur et isolant tient à la mobilité des charges, pas à leur présence.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Cette section compare les matériaux selon la mobilité des charges qu'ils contiennent, propriété essentielle pour comprendre leur comportement électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Déposez une petite charge sur une tige métallique et sur une règle en plastique. Sur le métal, les charges libres peuvent se déplacer et se redistribuer. Sur le plastique, elles restent beaucoup plus localisées près de la zone où elles ont été déposées. La différence essentielle n'est donc pas la présence ou l'absence de charges, mais leur **mobilité**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Définition (conducteur, isolant)",
+              "md": "Un **conducteur** est un matériau dans lequel certaines charges électriques peuvent se déplacer facilement à l'échelle macroscopique. Un **isolant** est un matériau dans lequel les charges sont beaucoup moins mobiles et restent essentiellement liées à leur voisinage microscopique.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-conducteur-isolant.svg",
+              "alt": "À gauche, un conducteur où les charges se déplacent ; à droite, un isolant où la charge reste localisée dans une zone.",
+              "caption": "Figure 2.4 — Différence qualitative entre conducteur et isolant : mobilité ou localisation des charges.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Comme le montre la figure 2.4, un conducteur autorise une redistribution à grande distance par rapport à la zone initialement chargée. Dans un isolant, la charge reste davantage attachée à la région où elle a été déposée.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Qu'est-ce qui distingue fondamentalement un conducteur d'un isolant ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le conducteur contient des charges, l'isolant n'en contient pas"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La mobilité des charges"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le signe des charges"
+                  },
+                  {
+                    "id": "d",
+                    "md": "La masse du matériau"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les deux matériaux contiennent des charges ; dans le conducteur, certaines peuvent **se déplacer** facilement à l'échelle macroscopique, alors que dans l'isolant elles restent localisées."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Les propriétés détaillées des conducteurs en équilibre électrostatique seront étudiées au chapitre 6. Ici, seule l'idée de **mobilité des charges** est nécessaire pour comprendre les modes d'électrisation.",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Un isolant ne contient aucune charge électrique.",
+              "answer": false,
+              "explanation": "Faux : un isolant contient des charges, mais elles sont peu mobiles et restent liées à leur voisinage microscopique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On dépose une charge à une extrémité d'une tige métallique. Que se passe-t-il ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La charge reste à l'endroit du dépôt"
+                },
+                {
+                  "id": "b",
+                  "md": "La charge disparaît"
+                },
+                {
+                  "id": "c",
+                  "md": "La charge se redistribue sur la tige"
+                },
+                {
+                  "id": "d",
+                  "md": "La charge change de signe"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Le métal est un conducteur : ses charges mobiles se redistribuent à grande distance de la zone initialement chargée."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque matériau à son comportement.",
+              "pairs": [
+                {
+                  "left": "Tige métallique",
+                  "right": "Charges mobiles qui se redistribuent"
+                },
+                {
+                  "left": "Règle en plastique",
+                  "right": "Charges localisées près du dépôt"
+                }
+              ],
+              "explanation": "C'est l'exemple de l'intuition du cours : le métal est conducteur, le plastique isolant."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un isolant, une charge déposée reste essentiellement attachée à la région où elle a été déposée.",
+              "answer": true,
+              "explanation": "Vrai : c'est la définition de l'isolant (charges peu mobiles)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "modes-d-electrisation",
+      "title": "Modes d'électrisation",
+      "number": "2.4",
+      "lessons": [
+        {
+          "slug": "frottement-contact",
+          "title": "Électrisation par frottement et par contact",
+          "number": "2.4.1–2.4.2",
+          "estimatedMinutes": 7,
+          "summary": "Électriser un corps ; le frottement transfère des électrons entre matériaux ; le contact redistribue les charges entre conducteurs.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Électriser un corps signifie modifier sa charge nette ou, dans certains cas, séparer temporairement ses charges positives et négatives. Trois mécanismes sont particulièrement importants.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.4.1 Électrisation par frottement",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le frottement constitue le premier mécanisme d'électrisation étudié et met directement en jeu un transfert d'électrons entre matériaux.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Lorsque deux matériaux différents sont frottés, certains électrons peuvent passer de l'un à l'autre. L'un gagne des électrons et devient négatif ; l'autre en perd et devient positif. Les deux charges créées sont opposées et leur somme reste compatible avec la conservation de la charge.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-frottement.svg",
+              "alt": "Matériau A qui devient positif en perdant des électrons, matériau B qui devient négatif en les gagnant.",
+              "caption": "Figure 2.5 — Électrisation par frottement : transfert d'électrons entre deux matériaux.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.5 représente le mécanisme essentiel : le matériau A perd des électrons et devient **positif**, le matériau B les gagne et devient **négatif**. Le frottement facilite le transfert, mais la charge totale du couple de corps reste conservée.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Après frottement de deux corps initialement neutres, si l'un porte $-4\\ \\mathrm{nC}$, l'autre porte $+4\\ \\mathrm{nC}$ (système isolé).",
+                "answer": true,
+                "explanation": "Vrai : la charge totale était nulle et reste nulle ; les électrons gagnés par l'un ont été perdus par l'autre."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.4.2 Électrisation par contact",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Lors d'un contact conducteur, les charges mobiles se redistribuent jusqu'à atteindre un nouvel équilibre compatible avec la conservation de la charge.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si un conducteur chargé touche un conducteur neutre, les charges mobiles se redistribuent sur l'ensemble formé par les deux conducteurs. Après séparation, le second conducteur peut donc rester chargé : il y a eu transfert par contact.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans le cas symétrique de la figure 2.6, deux sphères conductrices **identiques**, l'une de charge $Q$ et l'autre neutre, sont mises en contact puis séparées : chacune porte alors $Q/2$. Les deux sphères se partagent la charge totale. La relation $Q/2$ est liée à cette symétrie ; elle ne doit pas être appliquée automatiquement à deux conducteurs de formes ou de tailles différentes.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-contact.svg",
+              "alt": "Une sphère de charge Q et une sphère neutre identiques ; après contact puis séparation, chacune porte Q/2.",
+              "caption": "Figure 2.6 — Deux sphères conductrices identiques : partage de la charge après contact.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Deux sphères conductrices identiques portent $+8\\ \\mathrm{nC}$ et $-2\\ \\mathrm{nC}$. On les met en contact puis on les sépare. Charge finale de chacune ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$+3\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$+4\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$+5\\ \\mathrm{nC}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$+8\\ \\mathrm{nC}$ et $-2\\ \\mathrm{nC}$ (inchangées)"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Charge totale conservée : $8-2=6\\ \\mathrm{nC}$. Les sphères étant **identiques**, elles se la partagent : $6/2=3\\ \\mathrm{nC}$ chacune."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "On frotte deux matériaux différents. Le matériau qui **perd** des électrons devient :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "négatif"
+                },
+                {
+                  "id": "b",
+                  "md": "positif"
+                },
+                {
+                  "id": "c",
+                  "md": "neutre"
+                },
+                {
+                  "id": "d",
+                  "md": "conducteur"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Perdre des électrons (charges $-e$) crée un déficit d'électrons : le corps devient **positif**."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une sphère conductrice portant $Q=12\\ \\mathrm{nC}$ touche une sphère identique neutre, puis on les sépare. Chacune porte alors ___ nC.",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "Charge totale $12\\ \\mathrm{nC}$ conservée, partagée également entre deux sphères identiques : $6\\ \\mathrm{nC}$ chacune."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Après contact, deux conducteurs quelconques (de tailles différentes) se partagent toujours la charge totale en deux moitiés égales.",
+              "answer": false,
+              "explanation": "Faux : le partage en $Q/2$ découle de la **symétrie** de deux conducteurs identiques. Pour des conducteurs de formes ou de tailles différentes, le partage n'est pas égal en général."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Lors d'une électrisation par frottement, la charge totale du couple de corps est conservée.",
+              "answer": true,
+              "explanation": "Vrai : le frottement facilite un transfert d'électrons, sans création de charge."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le rôle de la mobilité des charges dans l'électrisation par contact ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Aucun"
+                },
+                {
+                  "id": "b",
+                  "md": "Elle permet aux charges de se redistribuer sur l'ensemble des deux conducteurs"
+                },
+                {
+                  "id": "c",
+                  "md": "Elle crée de nouvelles charges"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle rend les corps neutres"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Au contact, les charges **mobiles** des conducteurs se redistribuent sur l'ensemble formé par les deux corps, jusqu'à un nouvel équilibre compatible avec la conservation de la charge."
+            }
+          ]
+        },
+        {
+          "slug": "influence",
+          "title": "Électrisation par influence",
+          "number": "2.4.3",
+          "estimatedMinutes": 6,
+          "summary": "Un corps chargé approché d'un conducteur neutre sépare ses charges sans contact ; récapitulatif des trois modes d'électrisation.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "L'influence montre qu'un conducteur peut redistribuer ses charges sous l'action d'un corps chargé sans qu'il y ait nécessairement contact.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Approchez une charge positive d'un conducteur neutre sans le toucher. Les électrons mobiles du conducteur sont attirés vers la charge extérieure : le côté proche devient localement plus négatif et le côté opposé plus positif. Le conducteur reste globalement neutre, mais ses charges sont **séparées**.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-influence.svg",
+              "alt": "Une charge positive extérieure attire les électrons du conducteur neutre : charges négatives du côté proche, positives du côté opposé.",
+              "caption": "Figure 2.7 — Influence électrostatique : séparation des charges dans un conducteur neutre.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.7 montre qu'une influence peut produire une polarisation du conducteur sans modifier sa charge totale. Une mise à la terre permettrait ensuite, dans certaines configurations, de rendre cette électrisation permanente ; ce mécanisme sera repris lors de l'étude des conducteurs.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On approche (sans contact) une charge positive d'un conducteur neutre isolé. Quelle est la charge totale du conducteur ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Positive"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Négative"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Nulle"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Elle dépend de la distance"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Par influence, les charges sont seulement **séparées** (côté proche négatif, côté opposé positif) ; aucune charge n'entre ni ne sort, donc la charge totale reste nulle."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**À retenir.** Les trois mécanismes ne doivent pas être confondus :\n- **frottement** : transfert d'électrons entre matériaux ;\n- **contact** : transfert et redistribution entre corps en contact ;\n- **influence** : séparation des charges mobiles sans contact direct.\n\nDans tous les cas, le raisonnement doit respecter la conservation de la charge.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque mode d'électrisation à son mécanisme.",
+                "pairs": [
+                  {
+                    "left": "Frottement",
+                    "right": "Transfert d'électrons entre matériaux"
+                  },
+                  {
+                    "left": "Contact",
+                    "right": "Transfert et redistribution entre corps en contact"
+                  },
+                  {
+                    "left": "Influence",
+                    "right": "Séparation des charges mobiles sans contact direct"
+                  }
+                ],
+                "explanation": "C'est le tableau « À retenir » du cours. Seule l'influence n'implique aucun contact."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "L'électrisation par influence nécessite un contact entre le corps chargé et le conducteur.",
+              "answer": false,
+              "explanation": "Faux : l'influence agit **sans contact direct** ; c'est ce qui la distingue de l'électrisation par contact."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On approche une charge positive d'un conducteur neutre. Le côté du conducteur le plus proche de la charge devient :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "localement plus positif"
+                },
+                {
+                  "id": "b",
+                  "md": "localement plus négatif"
+                },
+                {
+                  "id": "c",
+                  "md": "neutre"
+                },
+                {
+                  "id": "d",
+                  "md": "isolant"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les électrons mobiles sont attirés vers la charge positive extérieure : le côté proche devient localement plus négatif, le côté opposé plus positif."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Par simple influence (sans mise à la terre), un conducteur isolé initialement neutre reste globalement neutre.",
+              "answer": true,
+              "explanation": "Vrai : l'influence polarise le conducteur (séparation des charges) sans modifier sa charge totale."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Selon le cours, qu'est-ce qui peut rendre permanente une électrisation par influence ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Un frottement"
+                },
+                {
+                  "id": "b",
+                  "md": "Une mise à la terre"
+                },
+                {
+                  "id": "c",
+                  "md": "L'éloignement de la charge extérieure"
+                },
+                {
+                  "id": "d",
+                  "md": "Un chauffage"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Une **mise à la terre** permet, dans certaines configurations, de rendre l'électrisation par influence permanente ; ce mécanisme sera repris dans l'étude des conducteurs."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Classez ces modes d'électrisation dans l'ordre où le cours les présente.",
+              "items": [
+                "Frottement",
+                "Contact",
+                "Influence"
+              ],
+              "explanation": "Le cours étudie successivement le frottement (2.4.1), le contact (2.4.2) et l'influence (2.4.3)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "loi-de-coulomb",
+      "title": "Loi de Coulomb",
+      "number": "2.5",
+      "lessons": [
+        {
+          "slug": "enonce-loi-de-coulomb",
+          "title": "Énoncé de la loi de Coulomb",
+          "number": "2.5.1–2.5.2",
+          "estimatedMinutes": 9,
+          "summary": "Répulsion et attraction selon le signe des charges ; écriture vectorielle de la force de Coulomb avec r₁₂ et u₁₂ ; constantes ε₀ et k.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Après avoir identifié les charges, cette section quantifie leur interaction en reliant la force électrique aux charges et à leur distance.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.5.1 Intuition expérimentale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Avant d'écrire la loi, on cherche d'abord à comprendre qualitativement comment le signe des charges et leur éloignement modifient l'interaction.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Deux petites sphères chargées suspendues à des fils se repoussent si elles portent des charges de même signe et s'attirent si leurs charges sont de signes opposés. Si on augmente la quantité de charge, l'interaction devient plus forte. Si on éloigne les sphères, elle devient rapidement plus faible. La loi de Coulomb quantifie exactement ces observations.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-coulomb-signes.svg",
+              "alt": "Deux charges positives qui se repoussent ; une charge positive et une charge négative qui s'attirent.",
+              "caption": "Figure 2.8 — Le signe des charges détermine le caractère attractif ou répulsif de l'interaction.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.8 donne la première lecture qualitative de Coulomb : **même signe : répulsion** ; **signes opposés : attraction**. La formule devra retrouver automatiquement ces deux cas grâce au signe du produit $q_1q_2$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.5.2 Énoncé de la loi",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons deux charges ponctuelles $q_1$ et $q_2$ placées aux points $M_1$ et $M_2$. On définit, comme au chapitre 1,\n$$\\vec r_{12}=\\overrightarrow{M_1M_2}=\\vec r_2-\\vec r_1,\\qquad r_{12}=\\|\\vec r_{12}\\|,\\qquad \\vec u_{12}=\\frac{\\vec r_{12}}{r_{12}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-coulomb-geometrie.svg",
+              "alt": "Charge q1 en M1, charge q2 en M2, vecteur r12 de M1 vers M2 et vecteur unitaire u12 de même sens.",
+              "caption": "Figure 2.9 — Géométrie utilisée dans l'écriture vectorielle de la loi de Coulomb.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (loi de Coulomb)",
+              "md": "La force exercée par la charge $q_1$ sur la charge $q_2$ vaut\n$$\\boxed{\\vec F_{1\\to2}=\\frac{1}{4\\pi\\varepsilon_0}\\,\\frac{q_1q_2}{r_{12}^2}\\,\\vec u_{12}}$$\noù\n$$\\varepsilon_0\\simeq 8{,}854\\times10^{-12}\\ \\mathrm{F\\,m^{-1}},\\qquad k=\\frac{1}{4\\pi\\varepsilon_0}\\simeq 8{,}99\\times10^{9}\\ \\mathrm{N\\,m^2\\,C^{-2}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.9 fixe la convention : $\\vec u_{12}$ pointe de $q_1$ vers $q_2$. Le signe de $q_1q_2$ décide ensuite si la force est dans le même sens que $\\vec u_{12}$ ou dans le sens opposé.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**À retenir.**\n\n| Signe de $q_1q_2$ | Sens de $\\vec F_{1\\to2}$ | Interaction |\n|---|---|---|\n| $q_1q_2>0$ | même sens que $\\vec u_{12}$ | répulsion |\n| $q_1q_2<0$ | sens opposé à $\\vec u_{12}$ | attraction |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "$q_1=+2\\ \\mathrm{nC}$ et $q_2=-5\\ \\mathrm{nC}$. La force $\\vec F_{1\\to2}$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "dans le sens de $\\vec u_{12}$ : répulsion"
+                  },
+                  {
+                    "id": "b",
+                    "md": "dans le sens opposé à $\\vec u_{12}$ : attraction"
+                  },
+                  {
+                    "id": "c",
+                    "md": "nulle"
+                  },
+                  {
+                    "id": "d",
+                    "md": "perpendiculaire à $\\vec u_{12}$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$q_1q_2<0$, donc $\\vec F_{1\\to2}$ est dirigée selon $-\\vec u_{12}$, c'est-à-dire de $q_2$ vers $q_1$ : la charge $q_2$ est attirée vers $q_1$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** La distance qui apparaît au dénominateur est $r_{12}^2$, tandis que la direction est portée par le vecteur unitaire $\\vec u_{12}$. Il ne faut jamais remplacer $\\vec u_{12}$ par $\\vec r_{12}$ sans modifier la puissance de la distance.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Puisque $\\vec u_{12}=\\vec r_{12}/r_{12}$, on peut aussi écrire $\\vec F_{1\\to2}=k\\,\\dfrac{q_1q_2}{r_{12}^{3}}\\,\\vec r_{12}$ : le passage de $\\vec u_{12}$ à $\\vec r_{12}$ fait passer la puissance de $2$ à $3$, et la force varie toujours en $1/r_{12}^2$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "L'écriture $\\vec F_{1\\to2}=k\\,\\dfrac{q_1q_2}{r_{12}^2}\\,\\vec r_{12}$ est correcte.",
+                "answer": false,
+                "explanation": "Faux : c'est l'erreur signalée par le cours. Avec $\\vec r_{12}$ (de norme $r_{12}$) au lieu de $\\vec u_{12}$, il faut $r_{12}^3$ au dénominateur ; sinon la force varierait en $1/r$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans la loi de Coulomb $\\vec F_{1\\to2}=k\\frac{q_1q_2}{r_{12}^2}\\vec u_{12}$, le vecteur $\\vec u_{12}$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "unitaire, dirigé de $q_2$ vers $q_1$"
+                },
+                {
+                  "id": "b",
+                  "md": "unitaire, dirigé de $q_1$ vers $q_2$"
+                },
+                {
+                  "id": "c",
+                  "md": "égal à $\\vec r_{12}$"
+                },
+                {
+                  "id": "d",
+                  "md": "perpendiculaire à $M_1M_2$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec u_{12}=\\vec r_{12}/r_{12}$ avec $\\vec r_{12}=\\overrightarrow{M_1M_2}$ : il est unitaire et pointe de $q_1$ vers $q_2$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque grandeur à sa valeur approchée.",
+              "pairs": [
+                {
+                  "left": "$\\varepsilon_0$",
+                  "right": "$8{,}854\\times10^{-12}\\ \\mathrm{F\\,m^{-1}}$"
+                },
+                {
+                  "left": "$k=\\dfrac{1}{4\\pi\\varepsilon_0}$",
+                  "right": "$8{,}99\\times10^{9}\\ \\mathrm{N\\,m^2\\,C^{-2}}$"
+                },
+                {
+                  "left": "$e$",
+                  "right": "$1{,}602\\times10^{-19}\\ \\mathrm{C}$"
+                }
+              ],
+              "explanation": "Ce sont les constantes du cours : permittivité du vide $\\varepsilon_0$, constante de Coulomb $k$, charge élémentaire $e$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $q_1q_2>0$, la force $\\vec F_{1\\to2}$ a le même sens que $\\vec u_{12}$ : l'interaction est répulsive.",
+              "answer": true,
+              "explanation": "Vrai : $q_2$ est poussée dans le sens de $\\vec u_{12}$, c'est-à-dire en s'éloignant de $q_1$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans la loi de Coulomb, la distance $r_{12}$ apparaît au dénominateur à la puissance ___ (écriture avec $\\vec u_{12}$).",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\vec F_{1\\to2}=k\\,q_1q_2\\,\\vec u_{12}/r_{12}^{2}$ : c'est une loi en $1/r^2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Unité de $k$ dans le SI :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathrm{N\\,m^2\\,C^{-2}}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathrm{F\\,m^{-1}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathrm{N\\,C^{-1}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\mathrm{C^2\\,N^{-1}\\,m^{-2}}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$F=k\\,q_1q_2/r^2$ donne $k=F r^2/(q_1q_2)$ en $\\mathrm{N\\,m^2\\,C^{-2}}$. $\\varepsilon_0$ s'exprime en $\\mathrm{F\\,m^{-1}}$ (équivalent à $\\mathrm{C^2\\,N^{-1}\\,m^{-2}}$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Deux charges négatives s'attirent.",
+              "answer": false,
+              "explanation": "Faux : deux charges de même signe (même négatives) ont $q_1q_2>0$ et se **repoussent**."
+            }
+          ]
+        },
+        {
+          "slug": "dependance-1-r2-action-reaction",
+          "title": "Dépendance en 1/r² et action-réaction",
+          "number": "2.5.3–2.5.4",
+          "estimatedMinutes": 6,
+          "summary": "Doubler la distance divise la force par quatre ; les forces entre deux charges sont opposées (action-réaction).",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "2.5.3 Dépendance en $1/r^2$",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La dépendance en distance constitue un point central de la loi de Coulomb et fournit un contrôle simple des ordres de grandeur.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si la distance entre deux charges est doublée sans modifier les charges, la force ne devient pas deux fois plus faible : elle devient **quatre fois plus faible**. Cette décroissance rapide est caractéristique d'une loi en $1/r^2$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-loi-inverse-carre.svg",
+              "alt": "Courbe décroissante de F en fonction de r ; à la distance 2r la force vaut F(r)/4.",
+              "caption": "Figure 2.10 — La loi en 1/r² : doubler la distance divise la force par quatre.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.10 trace $F$ en fonction de $r$ : la courbe décroît rapidement et $F(2r)=F(r)/4$. Elle constitue un réflexe de vérification utile. Si un calcul prédit qu'une force augmente lorsque les charges s'éloignent, ou qu'elle est simplement divisée par deux lorsque la distance double, il contient probablement une erreur.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Effet de la distance",
+              "md": "Deux charges fixes exercent une force de norme $F_0$ lorsqu'elles sont séparées par $r_0$. À la distance $3r_0$,\n$$F=F_0\\left(\\frac{r_0}{3r_0}\\right)^2=\\frac{F_0}{9}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Deux charges exercent une force $F_0$ à la distance $r_0$. À la distance $2r_0$, la force vaut $F_0/$___.",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "$F\\propto1/r^2$ : $F=F_0\\,(r_0/2r_0)^2=F_0/4$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.5.4 Action et réaction",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La force exercée par $q_1$ sur $q_2$ et celle exercée par $q_2$ sur $q_1$ ont même norme et des sens opposés :\n$$\\boxed{\\vec F_{2\\to1}=-\\vec F_{1\\to2}.}$$\n\nLa figure 2.11 rappelle qu'une interaction met toujours en jeu les deux charges : chacune agit sur l'autre.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-action-reaction.svg",
+              "alt": "Deux charges q1 et q2 ; F(2 sur 1) appliquée à q1 et F(1 sur 2) appliquée à q2, de même norme et de sens opposés.",
+              "caption": "Figure 2.11 — Paire action-réaction associée à l'interaction électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $|q_1|=10\\,|q_2|$, alors la force exercée par $q_1$ sur $q_2$ est dix fois plus intense que celle exercée par $q_2$ sur $q_1$.",
+                "answer": false,
+                "explanation": "Faux : $\\vec F_{2\\to1}=-\\vec F_{1\\to2}$, les deux forces ont **même norme** $k|q_1q_2|/r^2$, quelles que soient les valeurs des charges."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Deux charges exercent une force $F_0$ à la distance $r_0$. À la distance $r_0/3$, la force vaut ___ $\\times F_0$.",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "$F=F_0\\,(r_0/(r_0/3))^2=9F_0$ : rapprocher les charges augmente fortement la force."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Un calcul donne : « quand la distance double, la force est divisée par 2 ». Que conclure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le résultat est correct"
+                },
+                {
+                  "id": "b",
+                  "md": "Il y a probablement une erreur : la force devrait être divisée par 4"
+                },
+                {
+                  "id": "c",
+                  "md": "La force devrait être multipliée par 2"
+                },
+                {
+                  "id": "d",
+                  "md": "La force devrait rester constante"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La loi de Coulomb est en $1/r^2$ : doubler $r$ divise $F$ par $2^2=4$. Une division par 2 signale une erreur (souvent $r$ au lieu de $r^2$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\vec F_{2\\to1}=-\\vec F_{1\\to2}$ : les deux forces ont même norme et des sens opposés.",
+              "answer": true,
+              "explanation": "Vrai : c'est le principe d'action-réaction appliqué à l'interaction électrostatique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Les deux forces d'une paire action-réaction $\\vec F_{1\\to2}$ et $\\vec F_{2\\to1}$ s'appliquent :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "toutes les deux sur $q_1$"
+                },
+                {
+                  "id": "b",
+                  "md": "toutes les deux sur $q_2$"
+                },
+                {
+                  "id": "c",
+                  "md": "l'une sur $q_2$, l'autre sur $q_1$"
+                },
+                {
+                  "id": "d",
+                  "md": "sur le milieu de $M_1M_2$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$\\vec F_{1\\to2}$ est exercée **sur** $q_2$ et $\\vec F_{2\\to1}$ **sur** $q_1$ : chaque charge agit sur l'autre. Elles ne se compensent donc pas sur un même objet."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Deux charges exercent une force $F_0$ à la distance $r_0$. Associez chaque distance à la force.",
+              "pairs": [
+                {
+                  "left": "$r_0/2$",
+                  "right": "$4F_0$"
+                },
+                {
+                  "left": "$2r_0$",
+                  "right": "$F_0/4$"
+                },
+                {
+                  "left": "$3r_0$",
+                  "right": "$F_0/9$"
+                },
+                {
+                  "left": "$4r_0$",
+                  "right": "$F_0/16$"
+                }
+              ],
+              "explanation": "$F=F_0\\,(r_0/r)^2$. Par exemple pour $3r_0$ : $(1/3)^2=1/9$."
+            }
+          ]
+        },
+        {
+          "slug": "methode-application-coulomb",
+          "title": "Méthode d'application de la loi de Coulomb",
+          "number": "2.5.5",
+          "estimatedMinutes": 7,
+          "summary": "Procédure en six étapes pour calculer la force entre deux charges, et exemple numérique complet.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Une procédure systématique permet d'appliquer la loi vectorielle sans confondre géométrie, signe des charges et direction de la force.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode.** Pour calculer la force exercée par $q_1$ sur $q_2$ :\n1. placer clairement $M_1$ et $M_2$ dans le repère ;\n2. calculer $\\vec r_{12}=\\vec r_2-\\vec r_1$ ;\n3. déterminer $r_{12}=\\|\\vec r_{12}\\|$ puis $\\vec u_{12}=\\vec r_{12}/r_{12}$ ;\n4. appliquer la loi de Coulomb en conservant le signe de $q_1q_2$ ;\n5. vérifier le sens physique : attraction ou répulsion ;\n6. vérifier les unités et l'ordre de grandeur.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les étapes de la méthode.",
+                "items": [
+                  "Placer $M_1$ et $M_2$ dans le repère",
+                  "Calculer $\\vec r_{12}=\\vec r_2-\\vec r_1$",
+                  "Déterminer $r_{12}$ puis $\\vec u_{12}$",
+                  "Appliquer la loi de Coulomb avec le signe de $q_1q_2$",
+                  "Vérifier le sens physique (attraction ou répulsion)",
+                  "Vérifier unités et ordre de grandeur"
+                ],
+                "explanation": "On construit d'abord la géométrie (étapes 1 à 3), on applique la loi (4), puis on contrôle le résultat (5 et 6)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Force entre deux charges ponctuelles",
+              "md": "On place $q_1=+2\\ \\mathrm{nC}$ en $M_1(0,0)$ et $q_2=-3\\ \\mathrm{nC}$ en $M_2(0{,}40;0)$, les distances étant exprimées en mètres.\n\nOn a $\\vec u_{12}=\\vec e_x$ et $r_{12}=0{,}40\\ \\mathrm{m}$. Donc\n$$\\vec F_{1\\to2}=k\\,\\frac{(2\\times10^{-9})(-3\\times10^{-9})}{0{,}40^2}\\,\\vec e_x\\simeq-3{,}37\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x.$$\nLe signe négatif indique que la force sur $q_2$ est dirigée vers $q_1$ : l'interaction est attractive.",
+              "origin": "source",
+              "steps": [
+                {
+                  "md": "$\\vec r_{12}=\\vec r_2-\\vec r_1=0{,}40\\,\\vec e_x\\ \\mathrm{m}$, donc $r_{12}=0{,}40\\ \\mathrm{m}$ et $\\vec u_{12}=\\vec e_x$.",
+                  "why": "Étapes 1 à 3 de la méthode : géométrie d'abord."
+                },
+                {
+                  "md": "$q_1q_2=(2\\times10^{-9})(-3\\times10^{-9})=-6\\times10^{-18}\\ \\mathrm{C^2}$ ; on garde le signe.",
+                  "why": "Étape 4 : les nC sont convertis en coulombs."
+                },
+                {
+                  "md": "$\\vec F_{1\\to2}=8{,}99\\times10^9\\times\\dfrac{-6\\times10^{-18}}{0{,}16}\\,\\vec e_x\\simeq-3{,}37\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$."
+                },
+                {
+                  "md": "La force sur $q_2$ pointe vers $-\\vec e_x$, c'est-à-dire vers $q_1$ : attraction, cohérent avec des charges de signes opposés.",
+                  "why": "Étape 5 : contrôle du sens physique."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exemple, on remplace $q_2$ par $+3\\ \\mathrm{nC}$ (même position). La force $\\vec F_{1\\to2}$ devient :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$-3{,}37\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$+3{,}37\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$+3{,}37\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_y$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\vec 0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Même norme, mais $q_1q_2>0$ : la force est dans le sens de $\\vec u_{12}=\\vec e_x$ (répulsion, $q_2$ s'éloigne de $q_1$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "$q_1$ est en $M_1(1,0)$ et $q_2$ en $M_2(1,2)$ (en m). Que vaut $\\vec u_{12}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec e_x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\vec e_y$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\vec e_y$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\tfrac12\\vec e_y$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$\\vec r_{12}=\\vec r_2-\\vec r_1=2\\,\\vec e_y$, $r_{12}=2\\ \\mathrm{m}$, donc $\\vec u_{12}=\\vec e_y$. Un vecteur unitaire est de norme 1, d'où le rejet de $\\tfrac12\\vec e_y$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$q_1=q_2=1\\ \\mu\\mathrm{C}$ à $r=1\\ \\mathrm{m}$. Avec $k=9\\times10^{9}\\ \\mathrm{N\\,m^2\\,C^{-2}}$, la norme de la force vaut $F=$ ___ $\\times10^{-3}$ N.",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "$F=k\\,q_1q_2/r^2=9\\times10^9\\times(10^{-6})^2/1^2=9\\times10^{-3}\\ \\mathrm{N}$. Penser à convertir les $\\mu\\mathrm{C}$ en coulombs."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la méthode, on vérifie le sens physique (attraction ou répulsion) après avoir appliqué la loi de Coulomb.",
+              "answer": true,
+              "explanation": "Vrai : l'étape 5 contrôle que le sens obtenu est cohérent avec le signe de $q_1q_2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Avant d'appliquer la loi de Coulomb à des charges données en nC, il faut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "les laisser en nC"
+                },
+                {
+                  "id": "b",
+                  "md": "les convertir en coulombs"
+                },
+                {
+                  "id": "c",
+                  "md": "prendre leur valeur absolue"
+                },
+                {
+                  "id": "d",
+                  "md": "les diviser par $e$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La loi s'applique en unités SI : $1\\ \\mathrm{nC}=10^{-9}\\ \\mathrm{C}$. On garde par ailleurs le **signe** des charges dans l'écriture vectorielle."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'écriture vectorielle, si l'on obtient $\\vec F_{1\\to2}=-\\lambda\\,\\vec u_{12}$ avec $\\lambda>0$, l'interaction est attractive.",
+              "answer": true,
+              "explanation": "Vrai : la force sur $q_2$ est dirigée vers $q_1$ (sens opposé à $\\vec u_{12}$), ce qui correspond à $q_1q_2<0$, une attraction."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "principe-de-superposition",
+      "title": "Principe de superposition",
+      "number": "2.6",
+      "lessons": [
+        {
+          "slug": "superposition-composantes",
+          "title": "Superposition et décomposition en composantes",
+          "number": "2.6",
+          "estimatedMinutes": 7,
+          "summary": "La force totale est la somme vectorielle des forces dues à chaque charge ; calcul pratique par composantes.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Lorsque plusieurs charges agissent simultanément, chaque interaction est calculée séparément avant d'être combinée avec les autres.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Si plusieurs personnes tirent simultanément un anneau avec des cordes, chaque traction existe indépendamment des autres et le mouvement dépend de la somme vectorielle des forces. Pour une charge soumise à plusieurs charges sources, le raisonnement est analogue : on calcule chaque interaction séparément, puis on additionne les forces.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (principe de superposition)",
+              "md": "Si une charge $q$ subit les actions de $N$ charges $q_1,\\dots,q_N$, la force électrostatique totale est la somme vectorielle des forces produites séparément par chaque charge :\n$$\\boxed{\\vec F_{\\text{tot}}=\\sum_{i=1}^{N}\\vec F_{i\\to q}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-superposition.svg",
+              "alt": "Une charge q soumise aux forces de q1 et q2 ; la force totale est la diagonale du parallélogramme construit sur les deux forces.",
+              "caption": "Figure 2.12 — Principe de superposition : la force totale est une somme vectorielle.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure 2.12 insiste sur le caractère vectoriel de la superposition : on n'additionne pas simplement les normes des forces, sauf si toutes les forces sont colinéaires et orientées de manière compatible.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "point-charges",
+              "caption": "Déplace les charges et change leurs signes : observe les lignes de champ, l'attraction ou la répulsion, et la superposition des effets de plusieurs charges.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Deux forces de normes $3\\ \\mu\\mathrm{N}$ et $4\\ \\mu\\mathrm{N}$ agissant sur une même charge donnent toujours une résultante de norme $7\\ \\mu\\mathrm{N}$.",
+                "answer": false,
+                "explanation": "Faux : on additionne des **vecteurs**. La norme vaut $7\\ \\mu\\mathrm{N}$ seulement si les forces sont colinéaires et de même sens ; perpendiculaires, elles donneraient $\\sqrt{3^2+4^2}=5\\ \\mu\\mathrm{N}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.6.1 Décomposition en composantes",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "En pratique, pour plusieurs charges dans un plan, on calcule chaque force puis on la projette :\n$$\\vec F_i=F_{ix}\\,\\vec e_x+F_{iy}\\,\\vec e_y,$$\npuis\n$$\\boxed{F_x=\\sum_i F_{ix},\\qquad F_y=\\sum_i F_{iy}.}$$\nEnfin,\n$$F=\\sqrt{F_x^2+F_y^2}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Méthode.** Pour éviter les erreurs de signe, il est préférable de :\n1. dessiner d'abord le **sens réel** de chaque force ;\n2. écrire ensuite les composantes avec leurs signes ;\n3. additionner les composantes seulement à la fin.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une charge subit $\\vec F_1=(2\\,\\vec e_x+1\\,\\vec e_y)\\ \\mu\\mathrm{N}$ et $\\vec F_2=(-2\\,\\vec e_x+2\\,\\vec e_y)\\ \\mu\\mathrm{N}$. La norme de la résultante vaut ___ $\\mu$N.",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "$F_x=2-2=0$, $F_y=1+2=3$, donc $F=\\sqrt{0^2+3^2}=3\\ \\mu\\mathrm{N}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Le principe de superposition affirme que la force totale sur $q$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "la somme des normes des forces"
+                },
+                {
+                  "id": "b",
+                  "md": "la somme vectorielle des forces exercées séparément par chaque charge"
+                },
+                {
+                  "id": "c",
+                  "md": "la plus grande des forces"
+                },
+                {
+                  "id": "d",
+                  "md": "la force exercée par la charge la plus proche"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec F_{\\text{tot}}=\\sum_i\\vec F_{i\\to q}$ : chaque force est calculée comme si les autres charges n'existaient pas, puis on fait la somme **vectorielle**."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la méthode recommandée pour éviter les erreurs de signe.",
+              "items": [
+                "Dessiner le sens réel de chaque force",
+                "Écrire les composantes avec leurs signes",
+                "Additionner les composantes à la fin"
+              ],
+              "explanation": "C'est l'ordre de la méthode du §2.6.1 : le dessin fixe les signes avant tout calcul."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Résultante de $\\vec F_1=6\\ \\mu\\mathrm{N}\\,\\vec e_x$ et $\\vec F_2=8\\ \\mu\\mathrm{N}\\,\\vec e_y$ : $F=$ ___ $\\mu$N.",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "$F=\\sqrt{6^2+8^2}=\\sqrt{100}=10\\ \\mu\\mathrm{N}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "On peut additionner directement les normes des forces lorsqu'elles sont toutes colinéaires et de même sens.",
+              "answer": true,
+              "explanation": "Vrai : c'est le seul cas mentionné par le cours où la somme des normes donne la norme de la résultante."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une charge subit $\\vec F_1=5\\ \\mu\\mathrm{N}\\,\\vec e_x$ et $\\vec F_2=-5\\ \\mu\\mathrm{N}\\,\\vec e_x$. La force totale est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$10\\ \\mu\\mathrm{N}\\,\\vec e_x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\vec 0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$5\\ \\mu\\mathrm{N}\\,\\vec e_x$"
+                },
+                {
+                  "id": "d",
+                  "md": "$5\\sqrt2\\ \\mu\\mathrm{N}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les deux forces sont colinéaires mais de sens opposés : $F_x=5-5=0$, la résultante est nulle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "systemes-de-charges-ponctuelles",
+      "title": "Systèmes de charges ponctuelles",
+      "number": "2.7",
+      "lessons": [
+        {
+          "slug": "systemes-charges-ponctuelles",
+          "title": "Symétrie et exemples dans le plan",
+          "number": "2.7",
+          "estimatedMinutes": 10,
+          "summary": "Configuration symétrique à trois charges (résultante verticale) et exemple numérique avec deux forces perpendiculaires.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Cette section met en pratique Coulomb et la superposition sur des configurations où la géométrie et la symétrie permettent de simplifier le calcul.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.7.1 Exemple symétrique : trois charges",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons deux charges identiques $+Q$ situées symétriquement par rapport à l'axe vertical (en $(-a,0)$ et $(+a,0)$) et une charge $q$ placée au point $M(0,h)$, au-dessus du milieu $O$ du segment qui les relie.\n\nLa figure 2.13 construit explicitement la somme vectorielle par le parallélogramme : $\\vec F=\\vec F_1+\\vec F_2$. Les composantes horizontales sont opposées et se compensent, tandis que les composantes verticales s'ajoutent ; la résultante est donc portée par l'axe $Oy$ et s'écrit $\\vec F=\\vec F_y$. L'angle $\\alpha$ est mesuré entre l'axe vertical $+Oy$ et l'une des forces individuelles ; on lit alors $\\cos\\alpha=h/r$.\n\nSi la distance de chaque charge $+Q$ au point $M$ vaut\n$$r=\\sqrt{a^2+h^2},$$\nalors, pour $q$ et $Q$ de même signe,\n$$F_1=F_2=k\\,\\frac{|Qq|}{r^2}.$$\nAvec $\\cos\\alpha=h/r$, la résultante verticale est\n$$\\boxed{F_y=2F_1\\cos\\alpha=2k\\,\\frac{|Qq|\\,h}{(a^2+h^2)^{3/2}}.}$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch02-symetrie-trois-charges.svg",
+              "alt": "Deux charges +Q en (-a,0) et (+a,0), une charge q en M(0,h) ; les forces F1 et F2 ont des composantes horizontales opposées et la résultante est verticale.",
+              "caption": "Figure 2.13 — Somme vectorielle des forces dans une configuration symétrique : les composantes horizontales se compensent, la résultante est verticale.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans cette configuration symétrique, pourquoi la résultante est-elle verticale ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Parce que $q$ est positive"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que les composantes horizontales des deux forces sont opposées et se compensent"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce que $h>a$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Parce que les forces sont colinéaires"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les deux charges $+Q$ sont symétriques par rapport à $Oy$ : leurs forces ont des composantes horizontales opposées (qui s'annulent) et des composantes verticales égales (qui s'ajoutent)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Avant tout calcul long, rechercher une symétrie. Elle peut annuler certaines composantes et simplifier fortement le problème.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "D'où vient la puissance $3/2$ ? On multiplie $F_1\\propto 1/r^2$ par $\\cos\\alpha=h/r$ : on obtient $h/r^3$, et $r^3=(a^2+h^2)^{3/2}$. Contrôle : en $h=0$ (point $O$), $F_y=0$, ce qui est cohérent car les deux forces sont alors opposées.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.7.2 Exemple numérique dans le plan",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un exemple numérique permet maintenant d'appliquer directement la décomposition en composantes dans un repère cartésien.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Résultante de deux forces perpendiculaires",
+              "md": "Une charge $q=+1\\ \\mathrm{nC}$ est placée à l'origine. Une charge $q_1=+2\\ \\mathrm{nC}$ est située en $(-0{,}30\\ \\mathrm{m};0)$ et une charge $q_2=+3\\ \\mathrm{nC}$ en $(0;-0{,}40\\ \\mathrm{m})$.\n\nLes deux charges repoussent $q$. Les forces sont donc dirigées selon $+x$ et $+y$ :\n$$F_1=k\\,\\frac{|q_1q|}{0{,}30^2}\\simeq2{,}00\\times10^{-7}\\ \\mathrm{N},\\qquad F_2=k\\,\\frac{|q_2q|}{0{,}40^2}\\simeq1{,}69\\times10^{-7}\\ \\mathrm{N}.$$\nAinsi,\n$$\\vec F\\simeq(2{,}00\\,\\vec e_x+1{,}69\\,\\vec e_y)\\times10^{-7}\\ \\mathrm{N},$$\net\n$$F\\simeq2{,}62\\times10^{-7}\\ \\mathrm{N}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Le symbole $\\times$ dans l'écriture $10^{-7}$ désigne ici une multiplication numérique, et non un produit vectoriel. Dans ce cours, le produit vectoriel entre vecteurs est noté $\\wedge$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exemple numérique, pourquoi la force due à $q_1$ (située en $(-0{,}30;0)$) est-elle dirigée selon $+\\vec e_x$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Parce que $q_1$ attire $q$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que $q_1$ et $q$ sont de même signe : $q$ est repoussée loin de $q_1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce que $q_1$ est plus grande que $q$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Par convention, toutes les forces sont selon $+\\vec e_x$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$q_1q>0$ : répulsion. $q$ est poussée dans la direction qui l'éloigne de $q_1$, c'est-à-dire de $(-0{,}30;0)$ vers l'origine et au-delà, selon $+\\vec e_x$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Configuration symétrique avec $a=3$ et $h=4$ (en m). La distance de chaque charge $+Q$ au point $M$ vaut $r=$ ___ m.",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "$r=\\sqrt{a^2+h^2}=\\sqrt{9+16}=5\\ \\mathrm{m}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la configuration symétrique, la résultante vaut $F_y=2F_1\\cos\\alpha$ avec :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\cos\\alpha=a/r$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\cos\\alpha=h/r$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\cos\\alpha=h/a$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\cos\\alpha=r/h$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\alpha$ est mesuré entre l'axe $+Oy$ et une force individuelle ; le côté adjacent est $h$ et l'hypoténuse $r$, d'où $\\cos\\alpha=h/r$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Au point $O$ (milieu des deux charges $+Q$, $h=0$), la force résultante sur $q$ est nulle.",
+              "answer": true,
+              "explanation": "Vrai : la formule donne $F_y=0$ pour $h=0$ ; les deux forces sont alors de même norme et opposées."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'écriture $\\vec F\\simeq(2{,}00\\,\\vec e_x+1{,}69\\,\\vec e_y)\\times10^{-7}\\ \\mathrm{N}$, le symbole $\\times$ désigne :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "un produit vectoriel"
+                },
+                {
+                  "id": "b",
+                  "md": "une multiplication numérique"
+                },
+                {
+                  "id": "c",
+                  "md": "un produit scalaire"
+                },
+                {
+                  "id": "d",
+                  "md": "une dérivée"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la remarque du cours : ici $\\times$ est une multiplication numérique ; le produit vectoriel est noté $\\wedge$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Avant tout calcul long, le cours recommande de rechercher une symétrie.",
+              "answer": true,
+              "explanation": "Vrai (« Point clé ») : une symétrie peut annuler certaines composantes et simplifier fortement le problème."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exemple numérique : $F_1\\simeq2{,}00\\times10^{-7}\\ \\mathrm{N}$ selon $\\vec e_x$ et $F_2\\simeq1{,}69\\times10^{-7}\\ \\mathrm{N}$ selon $\\vec e_y$. Pourquoi $F\\neq3{,}69\\times10^{-7}\\ \\mathrm{N}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "À cause d'une erreur d'arrondi"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que les forces sont perpendiculaires : $F=\\sqrt{F_1^2+F_2^2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $q$ est négative"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que $k$ change avec la distance"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les forces sont perpendiculaires ; la norme de la somme vaut $\\sqrt{2{,}00^2+1{,}69^2}\\times10^{-7}\\simeq2{,}62\\times10^{-7}\\ \\mathrm{N}$, pas la somme des normes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "conclusion-et-revision",
+      "title": "Conclusion, révision et auto-évaluation",
+      "number": "2.8–2.9",
+      "lessons": [
+        {
+          "slug": "conclusion-synthese-coulomb",
+          "title": "Conclusion et synthèse du chapitre",
+          "number": "2.8–2.9.5",
+          "estimatedMinutes": 10,
+          "summary": "Bilan du chapitre, synthèse des relations, carte mentale, erreurs fréquentes, lexique et auto-test express.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "2.8 Conclusion",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce chapitre a établi les bases physiques de l'électrostatique. La charge électrique est une grandeur algébrique quantifiée à l'échelle microscopique et conservée dans un système isolé. Selon le matériau, les charges peuvent être mobiles ou localisées, ce qui permet de comprendre les mécanismes d'électrisation par frottement, contact et influence.\n\nLa loi de Coulomb fournit ensuite la première relation quantitative fondamentale du cours : elle relie la force électrostatique aux charges, à leur distance et à la direction qui les sépare. Son écriture vectorielle montre que le signe de $q_1q_2$ encode naturellement l'attraction ou la répulsion, tandis que la dépendance en $1/r^2$ traduit la décroissance rapide de l'interaction avec la distance.\n\nEnfin, le principe de superposition permet de passer d'une interaction entre deux charges à un système comportant plusieurs charges. Cette idée sera essentielle au chapitre suivant : plutôt que de calculer directement la force pour chaque charge test, on introduira une grandeur attachée à chaque point de l'espace, le **champ électrostatique**.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.9.1 Synthèse",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cette section rassemble, dans un même parcours de révision, les connaissances essentielles du chapitre, une carte mentale, les erreurs à éviter, le vocabulaire à maîtriser, un auto-test rapide et des exercices corrigés. La synthèse suivante rassemble les relations et les raisonnements indispensables à maîtriser avant de passer au champ électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Synthèse complète du chapitre.**\n\n1. **Charge électrique.** La charge $q$ est une grandeur scalaire algébrique exprimée en coulombs. À l'échelle microscopique, $q=Ne$, $e=1{,}602\\,176\\,634\\times10^{-19}\\ \\mathrm{C}$. Un corps positif présente un déficit d'électrons ; un corps négatif présente un excès d'électrons.\n2. **Conservation.** Dans un système isolé, $Q_{\\text{tot, avant}}=Q_{\\text{tot, après}}$. Une électrisation correspond à un transfert ou à une redistribution des charges, jamais à une création arbitraire de charge.\n3. **Conducteur / isolant.** Dans un conducteur, certaines charges sont mobiles et peuvent se redistribuer. Dans un isolant, elles restent beaucoup plus localisées.\n4. **Modes d'électrisation.** Frottement : transfert d'électrons entre matériaux ; contact : transfert puis redistribution entre corps en contact ; influence : séparation des charges mobiles sans contact direct.\n5. **Géométrie de Coulomb.** $\\vec r_{12}=\\vec r_2-\\vec r_1$, $r_{12}=\\|\\vec r_{12}\\|$, $\\vec u_{12}=\\vec r_{12}/r_{12}$.\n6. **Loi de Coulomb.** $\\vec F_{1\\to2}=k\\,\\dfrac{q_1q_2}{r_{12}^2}\\,\\vec u_{12}$, $k\\simeq8{,}99\\times10^9\\ \\mathrm{N\\,m^2\\,C^{-2}}$. Si $q_1q_2>0$, l'interaction est répulsive ; si $q_1q_2<0$, elle est attractive. Doubler la distance divise la force par quatre.\n7. **Action-réaction.** $\\vec F_{2\\to1}=-\\vec F_{1\\to2}$.\n8. **Superposition.** $\\vec F_{\\text{tot}}=\\sum_i\\vec F_i$. Les forces s'additionnent vectoriellement. Dans le plan, on somme d'abord les composantes $x$ et $y$, puis on calcule la norme de la résultante.\n9. **Réflexes de résolution.** Faire un schéma, repérer les signes des charges, prévoir attraction ou répulsion, définir les vecteurs unitaires, chercher les symétries, calculer chaque force séparément, puis effectuer la somme vectorielle et vérifier l'ordre de grandeur.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.9.2 Carte mentale",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La carte mentale du cours organise les notions du chapitre sous forme d'un parcours de raisonnement, « de la charge élémentaire au calcul de la force résultante » :\n- **Charge** : $q=Ne$ ; conservation ;\n- **Électrisation** : frottement, contact, influence ;\n- **Interaction** : Coulomb $\\propto q_1q_2/r^2$ ; attraction / répulsion ;\n- **Plusieurs charges** : superposition ; décomposition en composantes.\n\nElle peut être relue comme une méthode : identifier d'abord l'état électrique des corps, comprendre comment cet état a été obtenu, calculer ensuite chaque interaction par Coulomb, puis appliquer la superposition si plusieurs charges interviennent.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre la méthode suggérée par la carte mentale.",
+                "items": [
+                  "Identifier l'état électrique des corps",
+                  "Comprendre comment cet état a été obtenu",
+                  "Calculer chaque interaction par Coulomb",
+                  "Appliquer la superposition"
+                ],
+                "explanation": "C'est la lecture « méthode » de la carte mentale : de l'état électrique des corps jusqu'à la résultante."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "2.9.3 Erreurs fréquentes",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Erreurs fréquentes.** Les erreurs suivantes sont particulièrement fréquentes lors des premiers calculs électrostatiques et doivent être identifiées avant de poursuivre :\n- confondre **corps neutre** et **absence de charges** ;\n- oublier que le signe de $q_1q_2$ détermine attraction ou répulsion ;\n- utiliser $r$ au lieu de $r^2$ dans la loi de Coulomb ;\n- additionner directement les normes des forces alors que leurs directions sont différentes ;\n- confondre $\\vec r_{12}$, $r_{12}$ et $\\vec u_{12}$ ;\n- donner une charge macroscopique sans convertir nC, µC ou mC en coulombs ;\n- appliquer automatiquement $Q/2$ après contact à deux conducteurs non identiques ;\n- négliger la recherche d'une symétrie avant d'effectuer les calculs.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.9.4 Lexique essentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le tableau 2.1 du cours rassemble le vocabulaire minimal à maîtriser pour relire le chapitre et formuler correctement un raisonnement électrostatique.\n\n| Terme | Idée essentielle |\n|---|---|\n| Charge électrique | Grandeur algébrique caractérisant l'état électrique d'un corps ; elle s'exprime en coulombs (C). |\n| Charge élémentaire | Valeur $e=1{,}602\\,176\\,634\\times10^{-19}\\ \\mathrm{C}$ ; le proton porte $+e$ et l'électron $-e$. |\n| Quantification | Propriété selon laquelle une charge microscopique s'écrit $q=Ne$ avec $N\\in\\mathbb{Z}$. |\n| Conservation | Dans un système isolé, la charge totale reste constante même si les charges se redistribuent. |\n| Conducteur | Matériau dans lequel certaines charges peuvent se déplacer facilement à l'échelle macroscopique. |\n| Isolant | Matériau dans lequel les charges restent essentiellement localisées. |\n| Influence | Redistribution des charges d'un conducteur provoquée par une charge extérieure sans contact direct. |\n| Loi de Coulomb | Relation donnant la force électrostatique entre deux charges ponctuelles en fonction des charges et de leur distance. |\n| Superposition | Principe selon lequel la force totale est la somme vectorielle des forces produites séparément par chaque charge source. |\n\nLe tableau sert d'aide-mémoire : chaque terme doit pouvoir être associé à une définition physique et, lorsque c'est pertinent, à une relation mathématique.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "2.9.5 Auto-test express",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Auto-test express",
+              "md": "Répondez sans regarder les pages précédentes.\n1. Que signifie physiquement le signe négatif d'une charge ?\n2. Quelle différence fondamentale distingue un conducteur d'un isolant ?\n3. Un corps neutre contient-il des charges électriques ?\n4. Si la distance entre deux charges est multipliée par 2, par quel facteur la force est-elle modifiée ?\n5. Quelle information contient le signe de $q_1q_2$ dans la loi de Coulomb ?\n6. Pourquoi le principe de superposition impose-t-il une somme vectorielle ?",
+              "solution": [
+                {
+                  "md": "**Réponses rapides :** (1) excès d'électrons ; (2) mobilité des charges ; (3) oui, mais leur somme est nulle ; (4) force divisée par 4 ; (5) attraction ou répulsion ; (6) parce que chaque force possède une direction et un sens."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour deux conducteurs de tailles différentes mis en contact, on peut appliquer directement la règle du partage en $Q/2$.",
+                "answer": false,
+                "explanation": "Faux : c'est l'une des erreurs fréquentes listées par le cours. Le partage en $Q/2$ ne vaut que pour deux conducteurs **identiques**."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque terme du lexique à son idée essentielle.",
+              "pairs": [
+                {
+                  "left": "Quantification",
+                  "right": "$q=Ne$ avec $N\\in\\mathbb{Z}$"
+                },
+                {
+                  "left": "Conservation",
+                  "right": "Charge totale constante dans un système isolé"
+                },
+                {
+                  "left": "Influence",
+                  "right": "Redistribution sans contact direct"
+                },
+                {
+                  "left": "Superposition",
+                  "right": "Somme vectorielle des forces de chaque source"
+                }
+              ],
+              "explanation": "Ce sont les définitions du tableau 2.1 (lexique essentiel)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces affirmations est une **erreur fréquente** signalée par le cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Convertir les nC en coulombs"
+                },
+                {
+                  "id": "b",
+                  "md": "Chercher une symétrie avant de calculer"
+                },
+                {
+                  "id": "c",
+                  "md": "Utiliser $r$ au lieu de $r^2$ dans la loi de Coulomb"
+                },
+                {
+                  "id": "d",
+                  "md": "Écrire les composantes avec leur signe"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Utiliser $r$ au lieu de $r^2$ est une erreur listée au §2.9.3 ; les trois autres propositions sont au contraire de bons réflexes."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Au chapitre suivant, on introduira une grandeur attachée à chaque point de l'espace : le champ électrostatique.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'ouverture proposée par la conclusion (§2.8)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si la distance entre deux charges est multipliée par 2, la force est divisée par ___.",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "Loi en $1/r^2$ : $2^2=4$ (question 4 de l'auto-test)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que signifie physiquement le signe négatif d'une charge ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Un déficit d'électrons"
+                },
+                {
+                  "id": "b",
+                  "md": "Un excès d'électrons"
+                },
+                {
+                  "id": "c",
+                  "md": "L'absence de charges"
+                },
+                {
+                  "id": "d",
+                  "md": "Un excès de neutrons"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Un corps négatif présente un **excès d'électrons** (réponse 1 de l'auto-test)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une électrisation peut créer de la charge de façon arbitraire.",
+              "answer": false,
+              "explanation": "Faux : une électrisation est un transfert ou une redistribution de charges, jamais une création arbitraire (synthèse, point 2)."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-corriges-1",
+          "title": "Exercices corrigés : quantification, contact et Coulomb",
+          "number": "2.9.6 (Ex. 2.1–2.4)",
+          "estimatedMinutes": 10,
+          "summary": "Nombre d'électrons manquants, partage de charge par contact, force entre deux charges, superposition sur une droite.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Les exercices suivants réinvestissent progressivement la quantification, la conservation, la loi de Coulomb et la superposition ; les corrigés permettent de vérifier la méthode de résolution étape par étape.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.1 – Quantification d'une charge",
+              "md": "Un petit corps porte la charge $q=+8{,}01\\times10^{-10}\\ \\mathrm{C}$. Estimer le nombre d'électrons manquants.",
+              "solution": [
+                {
+                  "md": "$$N=\\frac{q}{e}\\simeq\\frac{8{,}01\\times10^{-10}}{1{,}602\\times10^{-19}}\\simeq5{,}0\\times10^{9}.$$"
+                },
+                {
+                  "md": "Le signe positif signifie qu'environ $5{,}0\\times10^9$ électrons manquent au corps."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.2 – Conservation lors d'un contact",
+              "md": "Deux sphères conductrices identiques portent initialement $Q_1=+6\\ \\mathrm{nC}$ et $Q_2=-2\\ \\mathrm{nC}$. Elles sont mises en contact puis séparées. Déterminer la charge finale de chaque sphère.",
+              "solution": [
+                {
+                  "md": "La charge totale vaut $$Q_{\\text{tot}}=6-2=4\\ \\mathrm{nC}.$$"
+                },
+                {
+                  "md": "Par symétrie, les deux sphères identiques se partagent cette charge : $$Q_1'=Q_2'=\\frac{4}{2}=2\\ \\mathrm{nC}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Même situation qu'à l'exercice 2.2 mais avec $Q_1=+10\\ \\mathrm{nC}$ et $Q_2=-4\\ \\mathrm{nC}$ : chaque sphère porte finalement ___ nC.",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "$Q_{\\text{tot}}=10-4=6\\ \\mathrm{nC}$, partagée entre deux sphères identiques : $3\\ \\mathrm{nC}$ chacune."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.3 – Loi de Coulomb",
+              "md": "Deux charges $q_1=+4\\ \\mathrm{nC}$ et $q_2=-5\\ \\mathrm{nC}$ sont séparées de $0{,}20\\ \\mathrm{m}$. Calculer la norme de la force et préciser la nature de l'interaction.",
+              "solution": [
+                {
+                  "md": "$$F=k\\,\\frac{|q_1q_2|}{r^2}=8{,}99\\times10^{9}\\,\\frac{(4\\times10^{-9})(5\\times10^{-9})}{0{,}20^2}\\simeq4{,}50\\times10^{-6}\\ \\mathrm{N}.$$"
+                },
+                {
+                  "md": "Les charges étant de signes opposés, l'interaction est attractive."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.4 – Superposition sur une droite",
+              "md": "Trois charges sont alignées sur l'axe $x$ : $q_1=+2\\ \\mathrm{nC}$ en $x=-0{,}30\\ \\mathrm{m}$, $q=+1\\ \\mathrm{nC}$ à l'origine et $q_2=-3\\ \\mathrm{nC}$ en $x=+0{,}40\\ \\mathrm{m}$. Déterminer la force totale exercée sur $q$.",
+              "solution": [
+                {
+                  "md": "$q_1$ repousse $q$ vers $+x$ : $$F_1=k\\,\\frac{2\\times10^{-18}}{0{,}30^2}\\simeq2{,}00\\times10^{-7}\\ \\mathrm{N}.$$",
+                  "why": "Même signe : répulsion, $q$ est poussée loin de $q_1$ (située à gauche)."
+                },
+                {
+                  "md": "$q_2$ attire $q$ également vers $+x$ : $$F_2=k\\,\\frac{3\\times10^{-18}}{0{,}40^2}\\simeq1{,}69\\times10^{-7}\\ \\mathrm{N}.$$",
+                  "why": "Signes opposés : attraction, $q$ est tirée vers $q_2$ (située à droite)."
+                },
+                {
+                  "md": "Les deux forces ont le même sens : $$\\vec F\\simeq3{,}69\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exercice 2.4, pourquoi peut-on additionner directement les normes $F_1$ et $F_2$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Parce que les charges sont toutes positives"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que les deux forces sont colinéaires et de même sens ($+\\vec e_x$)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce que $F_1>F_2$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "On ne peut jamais le faire"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$q_1$ repousse $q$ vers $+x$ et $q_2$ l'attire aussi vers $+x$ : forces colinéaires et de même sens, cas où la somme des normes donne la norme de la résultante."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Un corps porte $q=+3{,}2\\times10^{-18}\\ \\mathrm{C}$. Avec $e=1{,}6\\times10^{-19}\\ \\mathrm{C}$, il lui manque ___ électrons.",
+              "answerType": "number",
+              "accepted": [
+                "20"
+              ],
+              "explanation": "$N=q/e=3{,}2\\times10^{-18}/1{,}6\\times10^{-19}=20$ électrons manquants."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Deux sphères conductrices identiques portent $-6\\ \\mathrm{nC}$ et $+2\\ \\mathrm{nC}$. Après contact puis séparation, chacune porte :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-4\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-2\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$+2\\ \\mathrm{nC}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-3\\ \\mathrm{nC}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$Q_{\\text{tot}}=-6+2=-4\\ \\mathrm{nC}$, partagée entre deux sphères identiques : $-2\\ \\mathrm{nC}$ chacune."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'exercice 2.3, en doublant la distance (0,40 m), la force deviendrait environ $1{,}13\\times10^{-6}\\ \\mathrm{N}$.",
+              "answer": true,
+              "explanation": "Vrai : doubler la distance divise la force par 4 : $4{,}50\\times10^{-6}/4\\simeq1{,}13\\times10^{-6}\\ \\mathrm{N}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'exercice 2.4, on remplace $q_2=-3\\ \\mathrm{nC}$ par $q_2=+3\\ \\mathrm{nC}$ (même position). La force totale sur $q$ vaut alors environ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$3{,}69\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$0{,}31\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-0{,}31\\times10^{-7}\\ \\mathrm{N}\\,\\vec e_x$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\vec 0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$q_2$ repousse maintenant $q$ vers $-x$ : $F_x\\simeq(2{,}00-1{,}69)\\times10^{-7}=0{,}31\\times10^{-7}\\ \\mathrm{N}$, dirigée selon $+\\vec e_x$ car $F_1>F_2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'exercice 2.3, l'interaction est répulsive.",
+              "answer": false,
+              "explanation": "Faux : $q_1=+4\\ \\mathrm{nC}$ et $q_2=-5\\ \\mathrm{nC}$ sont de signes opposés, l'interaction est attractive."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-corriges-2",
+          "title": "Exercices corrigés : symétrie et résultantes",
+          "number": "2.9.6 (Ex. 2.5–2.9)",
+          "estimatedMinutes": 12,
+          "summary": "Résultante par symétrie, effet de la distance, résultante dans le plan, charges aux sommets d'un carré et d'un triangle équilatéral.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "title": "Exercice 2.5 – Symétrie et résultante",
+              "md": "Deux charges identiques $+Q$ sont placées en $(-a,0)$ et $(+a,0)$. Une charge $q>0$ est placée en $(0,h)$. Sans effectuer immédiatement les calculs, indiquer la direction de la force résultante sur $q$, puis retrouver son expression.",
+              "solution": [
+                {
+                  "md": "Par symétrie, les composantes horizontales des deux forces se compensent et les composantes verticales s'ajoutent. La résultante est donc portée par $+\\vec e_y$."
+                },
+                {
+                  "md": "Avec $r=\\sqrt{a^2+h^2}$ et $\\cos\\alpha=h/r$, $$F_y=2\\left(k\\,\\frac{Qq}{r^2}\\right)\\frac{h}{r}=\\boxed{2k\\,\\frac{Qqh}{(a^2+h^2)^{3/2}}}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.6 – Influence de la distance",
+              "md": "Deux charges ponctuelles exercent entre elles une force de norme $F_0$ à la distance $r_0$. Sans recalculer la constante de Coulomb, déterminer la nouvelle force si la distance devient $r_0/2$, puis $4r_0$.",
+              "solution": [
+                {
+                  "md": "Comme $F\\propto1/r^2$ : $$F(r_0/2)=F_0\\left(\\frac{r_0}{r_0/2}\\right)^2=4F_0,$$ et $$F(4r_0)=F_0\\left(\\frac{r_0}{4r_0}\\right)^2=\\frac{F_0}{16}.$$"
+                },
+                {
+                  "md": "La première modification augmente fortement l'interaction ; la seconde la réduit fortement."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.7 – Résultante dans le plan",
+              "md": "Une charge $q>0$ placée à l'origine subit deux forces électrostatiques\n$$\\vec F_1=3\\ \\mu\\mathrm{N}\\,\\vec e_x,\\qquad \\vec F_2=4\\ \\mu\\mathrm{N}\\,\\vec e_y.$$\nDéterminer le vecteur force total, sa norme et l'angle qu'il forme avec l'axe $Ox$.",
+              "solution": [
+                {
+                  "md": "$$\\vec F=\\vec F_1+\\vec F_2=(3\\,\\vec e_x+4\\,\\vec e_y)\\ \\mu\\mathrm{N}.$$"
+                },
+                {
+                  "md": "Sa norme vaut $$F=\\sqrt{3^2+4^2}=5\\ \\mu\\mathrm{N}.$$"
+                },
+                {
+                  "md": "L'angle par rapport à $Ox$ vérifie $$\\tan\\alpha=\\frac{F_y}{F_x}=\\frac43,\\qquad\\alpha\\simeq53{,}1^\\circ.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une charge subit $\\vec F_1=5\\ \\mu\\mathrm{N}\\,\\vec e_x$ et $\\vec F_2=12\\ \\mu\\mathrm{N}\\,\\vec e_y$. La norme de la résultante vaut ___ $\\mu$N.",
+                "answerType": "number",
+                "accepted": [
+                  "13"
+                ],
+                "explanation": "$F=\\sqrt{5^2+12^2}=\\sqrt{169}=13\\ \\mu\\mathrm{N}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.8 – Charges aux sommets d'un carré",
+              "md": "Quatre charges ponctuelles identiques $+Q$ sont placées aux sommets d'un carré de côté $a$. Une charge test $q>0$ est placée exactement au centre du carré. Sans développer un long calcul, déterminer la force électrostatique résultante exercée sur $q$ et justifier la réponse.",
+              "solution": [
+                {
+                  "md": "Le centre du carré est un point de symétrie. À chaque charge située à un sommet correspond une charge diamétralement opposée produisant sur $q$ une force de même norme et de sens opposé."
+                },
+                {
+                  "md": "Les forces se compensent donc deux à deux : $$\\boxed{\\vec F_{\\text{tot}}=\\vec 0}.$$"
+                },
+                {
+                  "md": "Cet exercice illustre l'intérêt de rechercher la symétrie avant tout calcul détaillé."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 2.9 – Problème de synthèse : triangle équilatéral",
+              "md": "Trois charges ponctuelles occupent les sommets $A$, $B$ et $C$ d'un triangle équilatéral de côté $a$. On a $q_A=q_B=+Q$ et $q_C=-q$ avec $Q>0$ et $q>0$.\n1. Représenter qualitativement les deux forces exercées sur la charge située en $C$.\n2. Montrer, par symétrie, que la résultante est portée par la médiane issue de $C$ et dirigée vers le milieu de $AB$.\n3. Déterminer la norme de cette résultante.",
+              "solution": [
+                {
+                  "md": "Chaque charge $+Q$ attire la charge $-q$ avec la même norme $F_0=kQq/a^2$."
+                },
+                {
+                  "md": "Par symétrie, les composantes perpendiculaires à la médiane issue de $C$ se compensent et les composantes suivant cette médiane s'ajoutent."
+                },
+                {
+                  "md": "Comme chaque côté fait un angle de $30^\\circ$ avec la médiane, $$\\boxed{F=2F_0\\cos30^\\circ=\\sqrt3\\,k\\,\\frac{Qq}{a^2}},$$ dirigée de $C$ vers le milieu du segment $AB$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Exercice 2.9 : si l'on remplaçait $q_C=-q$ par $q_C=+q$, la résultante sur $C$ serait :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "nulle"
+                  },
+                  {
+                    "id": "b",
+                    "md": "de même norme, dirigée de $C$ vers le milieu de $AB$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "de même norme, dirigée vers l'extérieur du triangle (en s'éloignant du milieu de $AB$)"
+                  },
+                  {
+                    "id": "d",
+                    "md": "deux fois plus grande"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Les forces deviennent répulsives : mêmes normes $F_0$, mêmes angles de $30^\\circ$, mais sens inversés. La résultante garde la norme $\\sqrt3\\,kQq/a^2$ et pointe à l'opposé du milieu de $AB$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quatre charges identiques $+Q$ aux sommets d'un carré, charge test $q$ au centre. La force résultante sur $q$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "dirigée vers un sommet"
+                },
+                {
+                  "id": "b",
+                  "md": "nulle"
+                },
+                {
+                  "id": "c",
+                  "md": "égale à $4kQq/a^2$"
+                },
+                {
+                  "id": "d",
+                  "md": "dirigée perpendiculairement au plan"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les charges diamétralement opposées produisent des forces de même norme et de sens opposés : elles se compensent deux à deux."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Deux charges exercent une force $F_0$ à la distance $r_0$. À la distance $4r_0$, la force vaut $F_0/$___.",
+              "answerType": "number",
+              "accepted": [
+                "16"
+              ],
+              "explanation": "$F=F_0\\,(r_0/4r_0)^2=F_0/16$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 2.7 : l'angle $\\alpha$ entre $\\vec F=(3\\,\\vec e_x+4\\,\\vec e_y)\\ \\mu\\mathrm{N}$ et l'axe $Ox$ vérifie :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\tan\\alpha=3/4$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\tan\\alpha=4/3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\cos\\alpha=4/5$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\sin\\alpha=3/5$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\tan\\alpha=F_y/F_x=4/3$, d'où $\\alpha\\simeq53{,}1^\\circ$ (et $\\cos\\alpha=3/5$, $\\sin\\alpha=4/5$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans l'exercice 2.9, la norme de la résultante sur $C$ vaut $2F_0\\cos30^\\circ=\\sqrt3\\,F_0$ avec $F_0=kQq/a^2$.",
+              "answer": true,
+              "explanation": "Vrai : $2\\cos30^\\circ=2\\times\\frac{\\sqrt3}{2}=\\sqrt3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 2.5 : la force résultante sur $q>0$ placée en $(0,h)$, $h>0$, avec deux charges $+Q$ en $(\\pm a,0)$, est dirigée selon :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$+\\vec e_x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$-\\vec e_x$"
+                },
+                {
+                  "id": "c",
+                  "md": "$+\\vec e_y$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-\\vec e_y$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Répulsion par deux charges symétriques : les composantes horizontales se compensent, les composantes verticales (vers le haut, en s'éloignant de l'axe des charges) s'ajoutent."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le raisonnement de l'exercice 2.9.",
+              "items": [
+                "Calculer la norme commune $F_0=kQq/a^2$ des deux forces",
+                "Utiliser la symétrie : composantes perpendiculaires à la médiane compensées",
+                "Projeter sur la médiane avec l'angle de $30^\\circ$",
+                "Conclure $F=\\sqrt3\\,kQq/a^2$, dirigée vers le milieu de $AB$"
+              ],
+              "explanation": "On calcule chaque force (même norme), on exploite la symétrie, on projette sur l'axe de symétrie, puis on conclut sur la norme et le sens."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : COURS-2 (F259, Pr. M. EL AZZAOUI, ENSA Agadir), 18 pages, lu intégralement sur rendus PNG. F264 n'a pas été nécessaire : aucune partie du cours ne manquait.",
+    "Aucune erreur de fond relevée dans la source ; tous les calculs numériques ont été revérifiés (exemples des §2.2.2, 2.5.5, 2.7.2 et exercices 2.1–2.9). Harmonisation typographique uniquement : séparateur décimal en virgule partout (la source mélange « 3.2 × 10⁻⁹ » et « 3,2 × 10⁻⁹ », « 0.40 » et « 0,40 ») ; « M2(0.40, 0) » écrit M₂(0,40 ; 0).",
+    "Figures 2.1 à 2.13 redessinées en TikZ d'après le cours (public/figures/electrostatique/ch02-*.svg, sources dans output/figures/electrostatique/src/) et insérées comme blocs figure ; la carte mentale 2.14 reste rendue en liste. Le tableau « À retenir » (signe de q₁q₂) et le lexique (tableau 2.1) sont rendus en tableaux Markdown.",
+    "Encadrés de la source « Attention », « À retenir », « Méthode », « Point clé », « Erreurs fréquentes », « Synthèse » rendus en blocs remark (origin: source) ; « Intuition » en blocs intuition (origin: source) ; « Objectifs » et « Prérequis » en texte.",
+    "Les sections 2.8 (Conclusion) et 2.9 (Révision et auto-évaluation) sont regroupées dans une section finale de trois leçons ; l'auto-test express (§2.9.5) est rendu en bloc exercice avec les « réponses rapides » de la source comme solution. Les exercices corrigés 2.1–2.9 sont conservés intégralement, répartis sur deux leçons.",
+    "Ajouts pédagogiques (origin: added) : intuition sur le plan du chapitre (§2.1), intuition sur l'écriture équivalente F = k q₁q₂ r⃗₁₂ / r₁₂³ (§2.5.2), intuition sur l'origine de la puissance 3/2 et le contrôle h = 0 (§2.7.1), étapes détaillées de l'exemple du §2.5.5 ; tous les checkpoints et quiz.",
+    "La source qualifie de « Théorème » la conservation de la charge, la loi de Coulomb et le principe de superposition ; ce libellé est conservé (kind: theoreme), bien qu'il s'agisse de lois/principes physiques.",
+    "Simulation ajoutée (origin: added) : scène point-charges après la superposition (§2.6)."
+  ]
+}

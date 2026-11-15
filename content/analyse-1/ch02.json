@@ -1,0 +1,3337 @@
+{
+  "slug": "suites-reelles",
+  "number": 2,
+  "title": "Les suites réelles",
+  "description": "Suites bornées et monotones, définition de la limite, opérations et inégalités, encadrement, suites géométriques, suites extraites, convergence monotone et suites adjacentes, Bolzano-Weierstrass, suites de Cauchy, comparaison (o, O, équivalents) et suites récurrentes d'ordre 1 et 2.",
+  "sourcePdf": "Bibliotheque_sources/Analyse/Cours/Suites numeriques/F224 - Chapitre 02 - Suites réelles et convergence.pdf",
+  "sections": [
+    {
+      "slug": "generalites-sur-les-suites",
+      "title": "Généralités sur les suites",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "notion-de-suite",
+          "title": "Notion de suite réelle",
+          "number": "L01",
+          "estimatedMinutes": 7,
+          "summary": "Une suite réelle est une application de (une partie de) $\\mathbb{N}$ dans $\\mathbb{R}$ ; terme général, notation $(u_n)$ vs $u_n$, opérations sur les suites et premiers exemples (dont Fibonacci).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Une **suite numérique**, dite aussi **suite réelle**, est une application $u$ d'une partie $I$ de $\\mathbb{N}$ dans $\\mathbb{R}$.\nAinsi, une suite réelle, notée $u=(u_n)_{n\\in I}$, est une application\n$$\\begin{array}{rcl}u : I\\subset{\\mathbb{N}} & \\longrightarrow & \\mathbb{R}\\\\ n & \\longmapsto & u_n.\\end{array}$$\nOn pose $u(n)=u_n$ et on appelle $u_n$ le **terme général** (ou le **terme de rang $n$**) de la suite $(u_n)_n$.",
+              "origin": "source",
+              "title": "Suite réelle"
+            },
+            {
+              "type": "remark",
+              "md": "1. On dira qu'une application définie à partir d'un certain rang $n_0$ est aussi une suite.\n2. Attention, la notation $(u_n)$ désigne une suite, c'est-à-dire un élément de l'ensemble $\\mathcal S(\\mathbb{R})$ des suites réelles, alors que $u_n$ désigne un terme de la suite, c'est-à-dire $u_n\\in{\\mathbb{R}}$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Que désigne $u_5$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Un nombre réel : le terme de rang $5$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La suite tout entière"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Les $5$ premiers termes"
+                  },
+                  {
+                    "id": "d",
+                    "md": "L'ensemble $\\mathcal S(\\mathbb{R})$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$u_5=u(5)$ est l'image de l'entier $5$ : c'est un réel. La suite elle-même se note $(u_n)$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "On définit les lois suivantes sur l'ensemble des suites :\n- Addition : $(u_n)+(v_n)=(u_n+v_n)$.\n- Multiplication par un réel : $\\lambda\\,(u_n)=(\\lambda u_n)$.\n- Multiplication de deux suites : $(u_n)\\cdot(v_n)=(u_nv_n)$.",
+              "origin": "source",
+              "title": "Opérations sur les suites"
+            },
+            {
+              "type": "example",
+              "md": "1. $(\\sqrt n)_{n\\ge0}$ est la suite de termes $0,1,\\sqrt2,\\sqrt3,\\dots$ ; $\\bigl((-1)^n\\bigr)_{n\\ge0}$ est la suite qui alterne $+1,-1,+1,-1,\\dots$\n2. $(F_n)_{n\\ge0}$ définie par $F_0=1$, $F_1=1$ et la relation $F_{n+2}=F_{n+1}+F_n$ pour $n\\in{\\mathbb{N}}$ (**suite de Fibonacci**). Les premiers termes sont $1,1,2,3,5,8,13,\\dots$ Chaque terme est la somme des deux précédents.\n3. $\\left(\\dfrac1{n^2}\\right)_{n\\ge1}$. Les premiers termes sont $1,\\dfrac14,\\dfrac19,\\dfrac1{16},\\dots$",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "intuition",
+              "md": "Une suite peut être donnée **explicitement** (on calcule $u_n$ directement en fonction de $n$, comme $\\frac1{n^2}$) ou **par récurrence** (on calcule un terme à partir des précédents, comme Fibonacci).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour la suite de Fibonacci ($F_0=F_1=1$), $F_7=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "21"
+                ],
+                "explanation": "$1,1,2,3,5,8,13,21$ : $F_7=F_6+F_5=13+8=21$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $u_n=\\dfrac1{n^2}$ ($n\\ge1$), $u_5=\\dfrac1N$ avec $N=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "25"
+              ],
+              "explanation": "$u_5=\\dfrac1{5^2}=\\dfrac1{25}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une application définie seulement pour $n\\ge3$ peut être considérée comme une suite.",
+              "answer": true,
+              "explanation": "Vrai (remarque 1) : une suite peut être définie à partir d'un certain rang $n_0$, par exemple $\\left(\\frac1{n-2}\\right)_{n\\ge3}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $u_n=n$ et $v_n=(-1)^n$, quel est le terme de rang $3$ de la suite produit $(u_n)\\cdot(v_n)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$-3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$2$"
+                },
+                {
+                  "id": "d",
+                  "md": "$-1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le produit se calcule terme à terme : $u_3v_3=3\\times(-1)^3=-3$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque suite à ses premiers termes.",
+              "pairs": [
+                {
+                  "left": "$\\bigl((-1)^n\\bigr)_{n\\ge0}$",
+                  "right": "$1,-1,1,-1,\\dots$"
+                },
+                {
+                  "left": "$(\\sqrt n)_{n\\ge0}$",
+                  "right": "$0,1,\\sqrt2,\\sqrt3,\\dots$"
+                },
+                {
+                  "left": "$\\left(\\frac1{n^2}\\right)_{n\\ge1}$",
+                  "right": "$1,\\frac14,\\frac19,\\frac1{16},\\dots$"
+                },
+                {
+                  "left": "Fibonacci",
+                  "right": "$1,1,2,3,5,8,\\dots$"
+                }
+              ],
+              "explanation": "Voir les exemples de la leçon."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$(u_n)$ et $u_n$ désignent le même objet.",
+              "answer": false,
+              "explanation": "Faux : $(u_n)$ est la suite (une application), $u_n$ est un réel (un terme)."
+            }
+          ]
+        },
+        {
+          "slug": "suites-bornees",
+          "title": "Suites stationnaires, périodiques et bornées",
+          "number": "L02",
+          "estimatedMinutes": 7,
+          "summary": "Suites stationnaires, constantes et périodiques ; suites majorées, minorées, bornées et la caractérisation $|u_n|\\le M$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit $(u_n)_{n\\in{\\mathbb{N}}}$ une suite réelle.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "1. $(u_n)_{n\\in{\\mathbb{N}}}$ est **stationnaire** s'il existe $n_0\\in{\\mathbb{N}}$ tel que $u_n=u_{n_0}$ pour tout $n\\ge n_0$. En particulier, une suite constante ($u_n=u_0$ pour tout $n\\in{\\mathbb{N}}$) est une suite stationnaire.\n2. $(u_n)_{n\\in{\\mathbb{N}}}$ est **périodique** de période $p$ ($p\\in{\\mathbb{N}}^*$) si\n$$\\forall n\\in{\\mathbb{N}},\\quad u_{n+p}=u_n$$\net $p$ est le plus petit entier strictement positif vérifiant cette propriété. L'entier $p$ est alors appelé **période** de la suite $(u_n)$, qui est dite suite **$p$-périodique**.",
+              "origin": "source",
+              "title": "Suite stationnaire, périodique"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la période de la suite $u_n=(-1)^n$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$2$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$4$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Elle n'est pas périodique"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$u_{n+2}=u_n$ pour tout $n$, et $p=1$ ne convient pas ($u_1=-1\\ne1=u_0$). $4$ vérifie aussi $u_{n+4}=u_n$, mais la période est le **plus petit** tel entier."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "1. $(u_n)_{n\\in{\\mathbb{N}}}$ est **majorée** si $\\exists M\\in{\\mathbb{R}},\\ \\forall n\\in{\\mathbb{N}},\\ u_n\\le M$.\n2. $(u_n)_{n\\in{\\mathbb{N}}}$ est **minorée** si $\\exists m\\in{\\mathbb{R}},\\ \\forall n\\in{\\mathbb{N}},\\ u_n\\ge m$.\n3. $(u_n)_{n\\in{\\mathbb{N}}}$ est **bornée** si elle est majorée et minorée, ce qui revient à dire :\n$$\\exists M\\in{\\mathbb{R}},\\quad \\forall n\\in{\\mathbb{N}},\\quad |u_n|\\le M.$$",
+              "origin": "source",
+              "title": "Suite majorée, minorée, bornée"
+            },
+            {
+              "type": "remark",
+              "md": "Une suite $(u_n)$ est bornée si et seulement s'il existe $M\\in{\\mathbb{R}}$ tel que\n$$|u_n|\\le M\\qquad\\text{pour tout } n\\in{\\mathbb{N}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Pourquoi l'équivalence ? Si $m\\le u_n\\le M$, alors $|u_n|\\le\\max(|m|,|M|)$. Réciproquement, $|u_n|\\le M$ signifie $-M\\le u_n\\le M$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "La suite $\\left(\\dfrac{n-1}{n}\\right)_{n\\in{\\mathbb{N}}^*}$ est bornée. La suite $(n^2)_{n\\in{\\mathbb{N}}}$ est minorée.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La suite $(n^2)_{n\\in{\\mathbb{N}}}$ est bornée.",
+                "answer": false,
+                "explanation": "Faux : elle est minorée par $0$ mais pas majorée ($n^2$ dépasse tout réel $M$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute suite constante est stationnaire.",
+              "answer": true,
+              "explanation": "Vrai : on prend $n_0=0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces suites est stationnaire mais **non** constante ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$u_n=E\\left(\\frac{5}{n+1}\\right)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$u_n=(-1)^n$"
+                },
+                {
+                  "id": "c",
+                  "md": "$u_n=3$"
+                },
+                {
+                  "id": "d",
+                  "md": "$u_n=\\frac1n$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$E\\left(\\frac5{n+1}\\right)$ vaut $5,2,1,1,1,0,0,0,\\dots$ : elle est nulle à partir du rang $5$ (car $\\frac5{n+1}<1$ pour $n\\ge5$). $(-1)^n$ est périodique, $3$ est constante, $\\frac1n$ n'est jamais stationnaire."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La suite $u_n=\\cos\\left(\\dfrac{n\\pi}{2}\\right)$ est périodique de période ___",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "Termes : $1,0,-1,0,1,0,-1,0,\\dots$ : on retrouve le motif tous les $4$ rangs, et aucun $p<4$ ne convient."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $u_n=\\dfrac{n-1}{n}$ ($n\\ge1$), quel réel $M$ convient pour avoir $|u_n|\\le M$ pour tout $n$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$M=1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$M=0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$M=\\frac12$"
+                },
+                {
+                  "id": "d",
+                  "md": "Aucun"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$0\\le u_n=1-\\frac1n<1$, donc $|u_n|\\le1$. $M=\\frac12$ ne convient pas : $u_3=\\frac23$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite est bornée si et seulement si elle est à la fois majorée et minorée.",
+              "answer": true,
+              "explanation": "C'est la définition, équivalente à $\\exists M,\\ \\forall n,\\ |u_n|\\le M$."
+            }
+          ]
+        },
+        {
+          "slug": "suites-monotones",
+          "title": "Suites monotones",
+          "number": "L03",
+          "estimatedMinutes": 7,
+          "summary": "Suites croissantes, décroissantes, monotones (strictement ou non), propriétés vraies à partir d'un certain rang, exemples.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit $(u_n)_{n\\in{\\mathbb{N}}}$ une suite réelle.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "1. $(u_n)_{n\\in{\\mathbb{N}}}$ est **croissante** si $\\forall n\\in{\\mathbb{N}},\\ u_{n+1}\\ge u_n$.\n2. $(u_n)_{n\\in{\\mathbb{N}}}$ est **strictement croissante** si $\\forall n\\in{\\mathbb{N}},\\ u_{n+1}>u_n$.\n3. $(u_n)_{n\\in{\\mathbb{N}}}$ est **décroissante** si $\\forall n\\in{\\mathbb{N}},\\ u_{n+1}\\le u_n$.\n4. $(u_n)_{n\\in{\\mathbb{N}}}$ est **strictement décroissante** si $\\forall n\\in{\\mathbb{N}},\\ u_{n+1}<u_n$.\n5. $(u_n)_{n\\in{\\mathbb{N}}}$ est **monotone** si elle est croissante ou décroissante.\n6. $(u_n)_{n\\in{\\mathbb{N}}}$ est **strictement monotone** si elle est strictement croissante ou strictement décroissante.",
+              "origin": "source",
+              "title": "Sens de variation"
+            },
+            {
+              "type": "intuition",
+              "md": "En pratique, on étudie le signe de $u_{n+1}-u_n$, ou, pour une suite à termes strictement positifs, on compare $\\dfrac{u_{n+1}}{u_n}$ à $1$.",
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Il arrive qu'une propriété ne soit pas vraie pour tous les premiers termes d'une suite, mais seulement à partir d'un certain rang. Par exemple, $(u_n)$ est **croissante à partir d'un certain rang** s'il existe un entier $n_0$ tel que, pour tout $n\\ge n_0$, on ait $u_{n+1}\\ge u_n$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour $u_n=n^2-4n$, la suite est croissante à partir du rang $n_0=$ ___ (le plus petit possible)",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$u_{n+1}-u_n=2n+1-4=2n-3\\ge0\\iff n\\ge\\frac32$, soit $n\\ge2$. (Termes : $0,-3,-4,-3,0,\\dots$)"
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "1. La suite $\\left(\\dfrac1{n^2}\\right)_{n\\ge1}$ est strictement décroissante.\n2. La suite $(u_n)_{n\\ge1}$ définie par $u_n=\\dfrac{(-1)^n}{n}$ pour $n\\ge1$ n'est ni croissante ni décroissante. Elle est majorée par $\\dfrac12$ (borne atteinte en $n=2$), minorée par $-1$ (borne atteinte en $n=1$).\n3. La suite $\\left(\\dfrac1n\\right)_{n\\ge1}$ est une suite strictement décroissante. Elle est majorée par $1$ (borne atteinte pour $n=1$) ; elle est minorée par $0$, mais cette valeur n'est jamais atteinte.",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une suite constante est à la fois croissante et décroissante.",
+                "answer": true,
+                "explanation": "Vrai : $u_{n+1}=u_n$ vérifie $u_{n+1}\\ge u_n$ et $u_{n+1}\\le u_n$. Elle est monotone, mais pas strictement."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "La suite $u_n=\\dfrac{(-1)^n}{n}$ ($n\\ge1$) est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "ni croissante ni décroissante"
+                },
+                {
+                  "id": "b",
+                  "md": "croissante"
+                },
+                {
+                  "id": "c",
+                  "md": "décroissante"
+                },
+                {
+                  "id": "d",
+                  "md": "strictement monotone"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$u_1=-1$, $u_2=\\frac12$, $u_3=-\\frac13$ : elle monte puis descend."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La suite $\\left(\\dfrac1n\\right)_{n\\ge1}$ atteint son minorant $0$.",
+              "answer": false,
+              "explanation": "Faux : $\\frac1n>0$ pour tout $n$ ; $0$ minore la suite sans être atteint."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque suite à son sens de variation.",
+              "pairs": [
+                {
+                  "left": "$u_n=2n+1$",
+                  "right": "strictement croissante"
+                },
+                {
+                  "left": "$u_n=\\frac1{n^2}$ ($n\\ge1$)",
+                  "right": "strictement décroissante"
+                },
+                {
+                  "left": "$u_n=5$",
+                  "right": "constante (monotone, non strictement)"
+                },
+                {
+                  "left": "$u_n=(-1)^n$",
+                  "right": "non monotone"
+                }
+              ],
+              "explanation": "$u_{n+1}-u_n$ vaut respectivement $2>0$, $\\frac1{(n+1)^2}-\\frac1{n^2}<0$, $0$, et alterne de signe pour $(-1)^n$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $u_n=\\dfrac{2^n}{n!}$, on a $\\dfrac{u_{n+1}}{u_n}=\\dfrac{2}{n+1}$. La suite est strictement décroissante à partir du rang ___ (le plus petit possible)",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\frac{2}{n+1}<1\\iff n>1$, donc à partir de $n=2$ (pour $n=1$ le rapport vaut $1$ : $u_2=u_1=2$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite strictement croissante est croissante.",
+              "answer": true,
+              "explanation": "Vrai : $u_{n+1}>u_n$ entraîne $u_{n+1}\\ge u_n$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "limite-d-une-suite",
+      "title": "Limite d'une suite",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "limite-d-une-suite",
+          "title": "Limite d'une suite",
+          "number": "L04",
+          "estimatedMinutes": 11,
+          "summary": "Définition $\\varepsilon$–$N$ de la convergence, limites infinies, suites divergentes et unicité de la limite.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "On dit que la suite $(u_n)$ **converge vers un réel $l\\in{\\mathbb{R}}$** (ou bien que $(u_n)$ tend vers $l$ lorsque $n$ tend vers $+\\infty$) lorsque :\n$$\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n\\ge N,\\quad |u_n-l|\\le\\varepsilon.$$\nOn note alors $\\displaystyle\\lim_{n\\to+\\infty}u_n=l$ ou encore $u_n\\xrightarrow[n\\to+\\infty]{}l$.\n\nS'il existe un réel $l$ tel que la suite converge vers $l$, on dit que la suite est **convergente**. Dans le cas contraire, on dit que la suite **diverge**.",
+              "origin": "source",
+              "title": "Suite convergente"
+            },
+            {
+              "type": "intuition",
+              "md": "Image : on trace autour de $l$ une bande horizontale $[l-\\varepsilon,l+\\varepsilon]$, aussi fine qu'on veut. Converger vers $l$, c'est : quelle que soit la largeur de la bande, **à partir d'un certain rang $N$**, tous les termes $u_n$ sont dans la bande. Plus $\\varepsilon$ est petit, plus $N$ doit en général être grand.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch02-bande-epsilon.svg",
+              "alt": "Termes u_n d'une suite qui oscillent autour de l ; à partir du rang N, tous les termes restent dans la bande horizontale [l−ε, l+ε].",
+              "caption": "Figure — à partir du rang N, tous les termes restent dans la bande [l − ε, l + ε].",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "sequence-limit",
+              "caption": "Réduis ε : la bande se resserre autour de ℓ et le rang N à partir duquel la suite y reste recule.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour $u_n=\\dfrac1n$ et $\\varepsilon=0{,}01$, le plus petit $N$ tel que $|u_n-0|\\le\\varepsilon$ pour tout $n\\ge N$ est ___",
+                "answerType": "number",
+                "accepted": [
+                  "100"
+                ],
+                "explanation": "$\\frac1n\\le0{,}01\\iff n\\ge100$. Donc $N=100$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "1. On peut étendre la notion de limite d'une suite à $\\overline{\\mathbb{R}}$ (on dit que $(u_n)$ diverge vers $+\\infty$ ou vers $-\\infty$) :\n$$\\lim_{n\\to+\\infty}u_n=+\\infty\\iff\\forall A\\in{\\mathbb{R}},\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n\\ge N,\\ u_n\\ge A,$$\n$$\\lim_{n\\to+\\infty}u_n=-\\infty\\iff\\forall A\\in{\\mathbb{R}},\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n\\ge N,\\ u_n\\le A.$$\n2. Divergente ne signifie pas tend vers $+\\infty$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une suite $(u_n)_n$ est **convergente** si elle admet une limite finie. Elle est **divergente** sinon (c'est-à-dire : soit la suite tend vers $+\\infty$ ou $-\\infty$, soit elle n'admet pas de limite).",
+              "origin": "source",
+              "title": "Suite divergente"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "La suite $u_n=(-1)^n$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "divergente, sans limite"
+                  },
+                  {
+                    "id": "b",
+                    "md": "divergente vers $+\\infty$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "convergente vers $0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "convergente vers $1$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Elle oscille entre $1$ et $-1$ : avec $\\varepsilon=\\frac12$, aucune bande $[l-\\frac12,l+\\frac12]$ ne contient à la fois $1$ et $-1$. Elle diverge sans tendre vers $\\pm\\infty$ : « divergente » ne veut pas dire « tend vers $+\\infty$ »."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Si la limite d'une suite existe, alors elle est unique.",
+              "origin": "source",
+              "title": "Théorème (unicité de la limite)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Supposons que $(u_n)$ admette deux limites différentes $l$ et $l'$. On pose $\\varepsilon=\\dfrac{|l-l'|}{4}>0$.",
+                  "why": "Bandes de demi-largeur $\\varepsilon$ autour de $l$ et $l'$ : elles sont disjointes."
+                },
+                {
+                  "md": "Alors $\\exists N\\in{\\mathbb{N}}$ tel que $\\forall n\\ge N,\\ |u_n-l|\\le\\varepsilon$ et $\\exists N'\\in{\\mathbb{N}}$ tel que $\\forall n\\ge N',\\ |u_n-l'|\\le\\varepsilon$."
+                },
+                {
+                  "md": "Donc, pour tout $n\\ge\\max(N,N')$, $$|l-l'|=|l-u_n+u_n-l'|\\le|l-u_n|+|u_n-l'|\\le2\\varepsilon=\\frac{|l-l'|}{2}.$$",
+                  "why": "Inégalité triangulaire."
+                },
+                {
+                  "md": "Ainsi $|l-l'|\\le\\dfrac{|l-l'|}{2}$, ce qui est une contradiction puisque $|l-l'|>0$. Donc $l=l'$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la définition de « $(u_n)$ converge vers $l$ » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}},\\ \\forall n\\ge N,\\ |u_n-l|\\le\\varepsilon$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists\\varepsilon>0,\\ \\forall N\\in{\\mathbb{N}},\\ \\forall n\\ge N,\\ |u_n-l|\\le\\varepsilon$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\exists N\\in{\\mathbb{N}},\\ \\forall\\varepsilon>0,\\ \\forall n\\ge N,\\ |u_n-l|\\le\\varepsilon$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall\\varepsilon>0,\\ \\forall n\\in{\\mathbb{N}},\\ |u_n-l|\\le\\varepsilon$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "L'ordre des quantificateurs compte : $N$ dépend de $\\varepsilon$. La réponse c imposerait $u_n=l$ à partir d'un rang ; la d imposerait $u_n=l$ pour tout $n$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite divergente tend vers $+\\infty$ ou vers $-\\infty$.",
+              "answer": false,
+              "explanation": "Faux : $(-1)^n$ diverge sans tendre vers $\\pm\\infty$ (elle n'a pas de limite)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque suite à son comportement.",
+              "pairs": [
+                {
+                  "left": "$u_n=\\frac1n$",
+                  "right": "converge vers $0$"
+                },
+                {
+                  "left": "$u_n=n^2$",
+                  "right": "diverge vers $+\\infty$"
+                },
+                {
+                  "left": "$u_n=-n$",
+                  "right": "diverge vers $-\\infty$"
+                },
+                {
+                  "left": "$u_n=(-1)^n$",
+                  "right": "diverge, sans limite"
+                }
+              ],
+              "explanation": "Les trois derniers cas sont divergents ; seule $\\frac1n$ converge."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve de l'unicité de la limite.",
+              "items": [
+                "Supposer deux limites $l\\ne l'$.",
+                "Poser $\\varepsilon=\\frac{|l-l'|}4>0$.",
+                "Trouver un rang à partir duquel $|u_n-l|\\le\\varepsilon$ et $|u_n-l'|\\le\\varepsilon$.",
+                "En déduire $|l-l'|\\le2\\varepsilon=\\frac{|l-l'|}2$ par l'inégalité triangulaire.",
+                "Conclure à une contradiction, donc $l=l'$."
+              ],
+              "explanation": "Raisonnement par l'absurde : deux bandes disjointes ne peuvent contenir les mêmes termes."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour montrer $\\lim\\, n^2=+\\infty$ avec $A=100$, le plus petit $N$ tel que $n^2\\ge100$ pour tout $n\\ge N$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "10"
+              ],
+              "explanation": "$n^2\\ge100\\iff n\\ge10$ (pour $n\\ge0$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite convergente a exactement une limite.",
+              "answer": true,
+              "explanation": "Vrai : c'est le théorème d'unicité de la limite."
+            }
+          ]
+        },
+        {
+          "slug": "convergente-bornee",
+          "title": "Suites convergentes et suites bornées",
+          "number": "L05",
+          "estimatedMinutes": 7,
+          "summary": "Toute suite convergente est bornée : énoncé, preuve avec $\\varepsilon=1$, et question de la réciproque.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Toute suite convergente est bornée. Autrement dit : soit $(u_n)$ une suite réelle ; si $\\exists l\\in{\\mathbb{R}}$ tel que $\\displaystyle\\lim_{n\\to+\\infty}u_n=l$, alors\n$$\\exists M>0\\ \\text{tel que}\\ \\forall n\\in{\\mathbb{N}},\\quad |u_n|\\le M.$$",
+              "origin": "source",
+              "title": "Théorème (toute suite convergente est bornée)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soit $(u_n)$ une suite convergeant vers un réel $l$ de $\\mathbb{R}$. Pour $\\varepsilon=1$, il existe un rang $N\\in{\\mathbb{N}}$ tel que, pour tout $n\\ge N$, $|u_n-l|\\le1$."
+                },
+                {
+                  "md": "On a alors, pour tout $n\\ge N$, $|u_n|=|u_n-l+l|\\le|u_n-l|+|l|\\le1+|l|.$",
+                  "why": "Inégalité triangulaire."
+                },
+                {
+                  "md": "Posons alors $M=\\max\\bigl(|u_0|,|u_1|,\\dots,|u_N|,\\,1+|l|\\bigr)$.",
+                  "why": "Les premiers termes, en nombre fini, sont traités à part."
+                },
+                {
+                  "md": "$M$ existe puisque c'est le maximum d'une partie finie de $\\mathbb{R}$, et $|u_n|\\le M$ pour tout $n\\in{\\mathbb{N}}$. On en déduit que la suite $(u_n)$ est bornée."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Pour $u_n=\\dfrac{n+3}{n+1}$ (limite $l=1$), la majoration « à partir du rang $N$ » fournie par la preuve est $|u_n|\\le1+|l|=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$1+|l|=1+1=2$. Ici d'ailleurs $|u_n-1|=\\frac2{n+1}\\le1$ dès $n\\ge1$ ; avec $u_0=3$, on obtient $M=\\max(3,2)=3$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Question.** La réciproque est-elle vraie ?",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Réponse : non. La suite $u_n=(-1)^n$ est bornée ($|u_n|\\le1$) mais n'est pas convergente. Une suite bornée **et monotone**, en revanche, converge (voir la leçon sur les suites monotones).",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute suite bornée est convergente.",
+              "answer": false,
+              "explanation": "Faux : $(-1)^n$ est bornée et divergente."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite non bornée est divergente.",
+              "answer": true,
+              "explanation": "Vrai : c'est la contraposée du théorème (convergente $\\Rightarrow$ bornée)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve, pourquoi prend-on le maximum avec $|u_0|,\\dots,|u_N|$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que la majoration $|u_n|\\le1+|l|$ n'est garantie qu'à partir du rang $N$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que $u_0$ est toujours le plus grand terme"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour que $M$ soit un entier"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que la suite est croissante"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La convergence ne contrôle que la « queue » de la suite ; les termes d'avant (en nombre fini) sont pris en compte par le maximum."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle valeur de $\\varepsilon$ utilise la preuve ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\varepsilon=1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\varepsilon=\\frac{|l|}{2}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\varepsilon=0$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\varepsilon=|l|$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "N'importe quelle valeur $>0$ fixée conviendrait ; $\\varepsilon=1$ est la plus simple. $\\varepsilon=0$ est interdit, et $\\frac{|l|}2$ pourrait être nul."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La suite $u_n=n$ est divergente car elle n'est pas bornée.",
+              "answer": true,
+              "explanation": "Vrai : si elle convergeait, elle serait bornée."
+            }
+          ]
+        },
+        {
+          "slug": "limites-et-inegalites",
+          "title": "Limites et inégalités",
+          "number": "L06",
+          "estimatedMinutes": 10,
+          "summary": "Position des termes par rapport à la limite (signe à partir d'un certain rang) et passage à la limite dans une inégalité (les inégalités strictes deviennent larges).",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit une suite $(u_n)$ qui converge vers une limite $l\\in{\\mathbb{R}}$, et $(k,k')\\in{\\mathbb{R}}^2$.\n1. Si $l>0$, alors cette suite est à termes strictement positifs à partir d'un certain rang.\n2. Si $k<l$, alors il existe un rang $N_1\\in{\\mathbb{N}}$ tel que : $\\forall n\\in{\\mathbb{N}},\\ n\\ge N_1\\Longrightarrow k<u_n$.\n3. Si $l<k'$, alors il existe un rang $N_2\\in{\\mathbb{N}}$ tel que : $\\forall n\\in{\\mathbb{N}},\\ n\\ge N_2\\Longrightarrow u_n<k'$.\n4. Si $k<l<k'$, alors il existe un rang $N\\in{\\mathbb{N}}$ tel que : $\\forall n\\in{\\mathbb{N}},\\ n\\ge N\\Longrightarrow k<u_n<k'$.",
+              "origin": "source",
+              "title": "Théorème (position des termes par rapport à la limite)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Prouvons le point 2. En appliquant la définition de la convergence de $(u_n)$, on a : $\\forall\\varepsilon>0,\\ \\exists N_1\\in{\\mathbb{N}},\\ \\forall n\\ge N_1,\\ |u_n-l|\\le\\varepsilon.$"
+                },
+                {
+                  "md": "Pour $\\varepsilon=\\dfrac{l-k}{2}>0$ : $\\exists N_1\\in{\\mathbb{N}},\\ \\forall n\\ge N_1,\\ |u_n-l|\\le\\dfrac{l-k}{2}<l-k$,"
+                },
+                {
+                  "md": "alors $k-l<u_n-l<l-k$, donc $u_n>k$."
+                },
+                {
+                  "md": "La démonstration est analogue en prenant $k=0$ dans le premier cas, en prenant $\\varepsilon=\\dfrac{k'-l}{2}$ dans le troisième cas et en prenant $N=\\max(N_1,N_2)$ dans le dernier cas."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $u_n\\to l>0$, alors $u_n>0$ pour **tout** $n\\in{\\mathbb{N}}$.",
+                "answer": false,
+                "explanation": "Faux : seulement **à partir d'un certain rang**. Exemple : $u_n=1-\\frac{5}{n+1}$ tend vers $1>0$ mais $u_0=-4<0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soient deux suites $(u_n)$ et $(v_n)$. On suppose que :\n- $(H_1)$ $u_n\\le v_n$ à partir d'un certain rang ;\n- $(H_2)$ $\\displaystyle\\lim_{n\\to+\\infty}u_n=l$ et $\\displaystyle\\lim_{n\\to+\\infty}v_n=l'$.\n\nAlors $l\\le l'$.",
+              "origin": "source",
+              "title": "Théorème (passage à la limite dans une inégalité)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soit $N_0$ un rang à partir duquel $u_n\\le v_n$. Supposons $l>l'$ et introduisons le milieu $a=\\dfrac{l+l'}{2}$."
+                },
+                {
+                  "md": "Puisque $\\displaystyle\\lim_{n\\to+\\infty}u_n=l>a$, il existe un rang $N_1$ à partir duquel $u_n>a$. Puisque $\\displaystyle\\lim_{n\\to+\\infty}v_n=l'<a$, il existe un rang $N_2$ à partir duquel $v_n<a$.",
+                  "why": "Points 2 et 3 du théorème précédent."
+                },
+                {
+                  "md": "Pour tout $n$ au-delà du rang $\\max(N_0,N_1,N_2)$, on a $v_n<a<u_n$. Ainsi, à partir d'un certain rang, $u_n>v_n$ : contradiction."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Même si l'on a des inégalités strictes dans $(H_1)$, on ne peut obtenir que des inégalités larges après passage à la limite.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On a $u_n=0$ et $v_n=\\dfrac1n$ : $u_n<v_n$ pour tout $n\\ge1$. Que donne le passage à la limite ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$0\\le0$ : l'inégalité stricte devient large"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$0<0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "On ne peut pas passer à la limite"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$0\\ge0$ seulement"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\lim u_n=0$ et $\\lim v_n=0$ : on obtient $0\\le0$. C'est l'exemple typique où l'inégalité stricte ne passe pas à la limite."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n<v_n$ pour tout $n$ et que les deux suites convergent, alors $\\lim u_n<\\lim v_n$.",
+              "answer": false,
+              "explanation": "Faux : $0<\\frac1n$ mais les deux limites valent $0$. On obtient seulement $\\lim u_n\\le\\lim v_n$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $u_n\\to3$, laquelle de ces affirmations est garantie ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$2<u_n<4$ à partir d'un certain rang"
+                },
+                {
+                  "id": "b",
+                  "md": "$u_n<3$ pour tout $n$"
+                },
+                {
+                  "id": "c",
+                  "md": "$u_n>3$ à partir d'un certain rang"
+                },
+                {
+                  "id": "d",
+                  "md": "$u_n=3$ à partir d'un certain rang"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Point 4 avec $k=2<3<4=k'$. Les autres sont fausses en général (ex. $3+\\frac{(-1)^n}{n}$)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans la preuve du point 2 avec $l=5$ et $k=1$, on choisit $\\varepsilon=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\varepsilon=\\frac{l-k}2=\\frac{5-1}2=2$ : alors $u_n\\ge5-2=3>1$ à partir d'un certain rang."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\le2$ à partir d'un certain rang et $u_n\\to l$, alors $l\\le2$.",
+              "answer": true,
+              "explanation": "Vrai : on applique le passage à la limite avec $v_n=2$ (suite constante de limite $2$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $u_n\\to l$ et $u_n>0$ pour tout $n$, que peut-on affirmer ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$l\\ge0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$l>0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$l=0$"
+                },
+                {
+                  "id": "d",
+                  "md": "Rien"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Passage à la limite dans $0<u_n$ : on obtient $0\\le l$ (large). Exemple : $\\frac1n>0$ et $l=0$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve du passage à la limite dans une inégalité.",
+              "items": [
+                "Supposer par l'absurde $l>l'$.",
+                "Introduire le milieu $a=\\frac{l+l'}{2}$.",
+                "Obtenir $u_n>a$ et $v_n<a$ à partir d'un certain rang.",
+                "En déduire $u_n>v_n$ à partir d'un certain rang, ce qui contredit $(H_1)$."
+              ],
+              "explanation": "Le milieu $a$ sépare les deux limites ; le théorème de position des termes place $u_n$ et $v_n$ de part et d'autre."
+            }
+          ]
+        },
+        {
+          "slug": "theoreme-encadrement",
+          "title": "Théorème d'encadrement",
+          "number": "L07",
+          "estimatedMinutes": 8,
+          "summary": "Le théorème des gendarmes (deux suites encadrantes de même limite) et ses versions de minoration vers $+\\infty$ et de majoration vers $-\\infty$.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "On considère trois suites $(u_n)$, $(v_n)$ et $(w_n)$ telles que :\n- $(H_1)$ $v_n\\le u_n\\le w_n$ à partir d'un certain rang ;\n- $(H_2)$ les suites encadrantes $(v_n)$ et $(w_n)$ convergent vers la même limite $l$.\n\nAlors la suite $(u_n)$ converge vers $l$.\n\nDe même, si : $(H_1)$ $v_n\\le u_n$ (à partir d'un certain rang) et $(H_2)$ $\\displaystyle\\lim_{n\\to+\\infty}v_n=+\\infty$, alors $\\displaystyle\\lim_{n\\to+\\infty}u_n=+\\infty$.\n\nDe même, si : $(H_1)$ $u_n\\le w_n$ (à partir d'un certain rang) et $(H_2)$ $\\displaystyle\\lim_{n\\to+\\infty}w_n=-\\infty$, alors $\\displaystyle\\lim_{n\\to+\\infty}u_n=-\\infty$.",
+              "origin": "source",
+              "title": "Théorème d'encadrement"
+            },
+            {
+              "type": "intuition",
+              "md": "On l'appelle aussi « théorème des gendarmes » : $(u_n)$ est coincée entre deux gendarmes $(v_n)$ et $(w_n)$ qui se dirigent vers le même point $l$ ; elle n'a pas d'autre choix que de les suivre. Contrairement au passage à la limite dans une inégalité, ce théorème **prouve l'existence** de la limite de $(u_n)$.",
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Par hypothèse, il existe un rang $N_1\\in{\\mathbb{N}}$ tel que $\\forall n\\ge N_1,\\ v_n\\le u_n\\le w_n.$ Supposons que $(v_n)$ et $(w_n)$ convergent vers $l\\in{\\mathbb{R}}$."
+                },
+                {
+                  "md": "Soit $\\varepsilon>0$ ; il existe $N_2$ et $N_3$ dans $\\mathbb{N}$ tels que $\\forall n\\ge N_2,\\ |v_n-l|\\le\\varepsilon$ et $\\forall n\\ge N_3,\\ |w_n-l|\\le\\varepsilon$,"
+                },
+                {
+                  "md": "donc $\\forall n\\ge N_2,\\ l-\\varepsilon\\le v_n\\le l+\\varepsilon$ et $\\forall n\\ge N_3,\\ l-\\varepsilon\\le w_n\\le l+\\varepsilon.$"
+                },
+                {
+                  "md": "On pose $N=\\max(N_1,N_2,N_3)$ ; alors, pour $n\\ge N$, on a $v_n\\le u_n\\le w_n$ avec $v_n\\ge l-\\varepsilon$ et $w_n\\le l+\\varepsilon$, donc $\\forall n\\ge N,\\ l-\\varepsilon\\le u_n\\le l+\\varepsilon.$",
+                  "why": "On n'utilise que la minoration de $v_n$ et la majoration de $w_n$."
+                },
+                {
+                  "md": "Ainsi $(u_n)$ converge vers $l$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Montrons que $u_n\\to0$.",
+              "origin": "added",
+              "title": "Exemple : $u_n=\\dfrac{\\sin n}{n}$",
+              "steps": [
+                {
+                  "md": "Pour tout $n\\ge1$, $-1\\le\\sin n\\le1$, donc $-\\dfrac1n\\le u_n\\le\\dfrac1n$."
+                },
+                {
+                  "md": "Les suites $\\left(-\\frac1n\\right)$ et $\\left(\\frac1n\\right)$ tendent vers $0$ : par encadrement, $u_n\\to0$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $n\\le u_n$ pour tout $n$. Que peut-on conclure ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$u_n\\to+\\infty$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$u_n$ converge"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Rien"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$u_n\\to-\\infty$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Deuxième version du théorème : $v_n=n\\to+\\infty$ et $v_n\\le u_n$, donc $u_n\\to+\\infty$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}\\frac{(-1)^n}{n^2}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$-\\frac1{n^2}\\le\\frac{(-1)^n}{n^2}\\le\\frac1{n^2}$ et les deux bornes tendent vers $0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $v_n\\le u_n\\le w_n$ avec $v_n\\to0$ et $w_n\\to1$, alors $(u_n)$ converge.",
+              "answer": false,
+              "explanation": "Faux : il faut la **même** limite. Exemple : $v_n=0$, $w_n=1$, $u_n=\\frac{1+(-1)^n}2$ alterne entre $1$ et $0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour montrer $u_n=n+\\cos n\\to+\\infty$, quelle minoration utiliser ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$u_n\\ge n-1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$u_n\\le n+1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$u_n\\ge-1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$u_n\\ge\\cos n$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\cos n\\ge-1$ donne $u_n\\ge n-1\\to+\\infty$. Une majoration ne permet pas de conclure vers $+\\infty$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans le théorème d'encadrement, il suffit que l'encadrement soit vrai à partir d'un certain rang.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'hypothèse $(H_1)$, et la preuve prend $N\\ge N_1$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve du théorème d'encadrement.",
+              "items": [
+                "Fixer $\\varepsilon>0$.",
+                "Trouver $N_2$ avec $v_n\\ge l-\\varepsilon$ et $N_3$ avec $w_n\\le l+\\varepsilon$.",
+                "Poser $N=\\max(N_1,N_2,N_3)$.",
+                "Pour $n\\ge N$ : $l-\\varepsilon\\le v_n\\le u_n\\le w_n\\le l+\\varepsilon$.",
+                "Conclure que $u_n\\to l$."
+              ],
+              "explanation": "On combine l'encadrement et les deux convergences au-delà d'un rang commun."
+            }
+          ]
+        },
+        {
+          "slug": "operations-sur-les-limites",
+          "title": "Opérations sur les suites convergentes",
+          "number": "L08",
+          "estimatedMinutes": 12,
+          "summary": "Limites de $|u_n|$, d'une somme, d'un multiple, d'un produit, d'un inverse et d'un quotient ; le produit d'une suite tendant vers $0$ par une suite bornée.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $(u_n)$ une suite convergeant vers $l\\in{\\mathbb{R}}$ et $(v_n)$ une suite convergeant vers $l'\\in{\\mathbb{R}}$. Alors :\n1. la suite $(|u_n|)$ converge vers $|l|$ ;\n2. la suite $(u_n+v_n)$ converge vers $l+l'$ ;\n3. pour $\\lambda\\in{\\mathbb{R}}$, la suite $(\\lambda u_n)$ converge vers $\\lambda l$ ;\n4. si la suite $(u_n)$ converge vers $0$ et la suite $(v_n)$ est bornée, alors la suite $(u_nv_n)$ converge vers $0$ ;\n5. la suite $(u_nv_n)$ converge vers $ll'$ ;\n6. si $l'\\ne0$, la suite $\\left(\\dfrac1{v_n}\\right)$ converge vers $\\dfrac1{l'}$ ;\n7. si $l'\\ne0$, la suite $\\left(\\dfrac{u_n}{v_n}\\right)$ converge vers $\\dfrac{l}{l'}$.",
+              "origin": "source",
+              "title": "Théorème (opérations sur les limites)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si $u_n\\to2$ et $v_n\\to-3$, alors $\\dfrac{u_n+v_n}{v_n}\\to$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1/3"
+                ],
+                "explanation": "$u_n+v_n\\to-1$ et $v_n\\to-3\\ne0$, donc le quotient tend vers $\\frac{-1}{-3}=\\frac13$.",
+                "placeholder": "fraction"
+              },
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "**1.** Pour $\\varepsilon>0$, il existe $N\\in{\\mathbb{N}}$ tel que, pour tout $n\\ge N$, $|u_n-l|\\le\\varepsilon$. Or $\\bigl||u_n|-|l|\\bigr|\\le|u_n-l|$, donc pour tout $n\\ge N$ : $\\bigl||u_n|-|l|\\bigr|\\le\\varepsilon$.",
+                  "why": "Seconde inégalité triangulaire."
+                },
+                {
+                  "md": "**2.** On remarque que $\\bigl|(u_n+v_n)-(l+l')\\bigr|\\le|u_n-l|+|v_n-l'|$. Il suffit de prendre $|u_n-l|$ et $|v_n-l'|$ inférieurs à $\\frac\\varepsilon2$. Soit $\\varepsilon>0$ : il existe $N_1,N_2$ tels que $\\forall n\\ge N_1,\\ |u_n-l|\\le\\frac\\varepsilon2$ et $\\forall n\\ge N_2,\\ |v_n-l'|\\le\\frac\\varepsilon2$. Pour $N=\\max(N_1,N_2)$ et $n\\ge N$ : $\\bigl|(u_n+v_n)-(l+l')\\bigr|\\le\\frac\\varepsilon2+\\frac\\varepsilon2=\\varepsilon.$"
+                },
+                {
+                  "md": "**3.** Si $\\lambda=0$ le résultat est immédiat ; sinon, soit $\\varepsilon>0$. Pour $\\frac{\\varepsilon}{|\\lambda|}>0$, il existe $N$ tel que $n\\ge N\\Rightarrow|u_n-l|\\le\\frac{\\varepsilon}{|\\lambda|}$, d'où $|\\lambda u_n-\\lambda l|=|\\lambda|\\,|u_n-l|\\le\\varepsilon$."
+                },
+                {
+                  "md": "**4.** Par hypothèse, il existe $M>0$ tel que $\\forall n,\\ |v_n|\\le M$ (quitte à augmenter $M$, on peut le prendre strictement positif). Soit $\\varepsilon>0$ : pour $\\frac{\\varepsilon}{M}$, il existe $N$ tel que $n\\ge N\\Rightarrow|u_n|\\le\\frac\\varepsilon M$, alors $|u_nv_n|\\le M\\frac\\varepsilon M=\\varepsilon$.",
+                  "why": "On divise par $M$, d'où $M>0$."
+                },
+                {
+                  "md": "**5.** On pose $w_n=u_n-l$ ; $(w_n)$ converge vers $0$, et $u_nv_n=(l+w_n)v_n=lv_n+w_nv_n$. Or $(lv_n)$ converge vers $ll'$ (point 3) et $(w_nv_n)$ converge vers $0$ (point 4, car $(v_n)$ est bornée puisque convergente). Donc $(u_nv_n)$ converge vers $ll'$ (point 2)."
+                },
+                {
+                  "md": "**6.** Puisque $(v_n)$ converge vers $l'\\ne0$, la suite $(|v_n|)$ converge vers $|l'|>0$ ; or $|l'|>\\frac{|l'|}{2}$, donc $\\exists N$ tel que $\\forall n\\ge N$, $|v_n|\\ge\\frac{|l'|}{2}$. Pour $n\\ge N$ : $$0\\le\\left|\\frac1{v_n}-\\frac1{l'}\\right|=\\frac{|v_n-l'|}{|v_n|\\,|l'|}\\le\\frac{2}{|l'|^2}\\,|v_n-l'|.$$ Comme $\\frac{2}{|l'|^2}|v_n-l'|\\to0$, on a $\\frac1{v_n}-\\frac1{l'}\\to0$ (encadrement).",
+                  "why": "Le point 2 du théorème de position des termes garantit aussi que $v_n\\ne0$ à partir du rang $N$."
+                },
+                {
+                  "md": "**7.** Le point 7 découle des points 5 et 6, en écrivant $\\dfrac{u_n}{v_n}=u_n\\times\\dfrac1{v_n}$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la limite de $u_n=\\dfrac{\\cos(n^2)}{n}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Elle n'existe pas"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$+\\infty$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Point 4 : $\\frac1n\\to0$ et $(\\cos(n^2))$ est bornée, donc le produit tend vers $0$, même si $\\cos(n^2)$ n'a pas de limite."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\to0$ et $(v_n)$ est bornée, alors $u_nv_n\\to0$.",
+              "answer": true,
+              "explanation": "Vrai : c'est le point 4 (même si $(v_n)$ n'a pas de limite)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $(u_nv_n)$ converge, alors $(u_n)$ et $(v_n)$ convergent.",
+              "answer": false,
+              "explanation": "Faux : $u_n=v_n=(-1)^n$ divergent, mais $u_nv_n=1$ converge. Le théorème ne donne que le sens direct."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $u_n\\to4$, alors $3u_n-\\dfrac{1}{u_n}\\to$ ___ (valeur exacte)",
+              "answerType": "number",
+              "accepted": [
+                "47/4"
+              ],
+              "explanation": "$3u_n\\to12$ et $\\frac1{u_n}\\to\\frac14$ (car $4\\ne0$), donc la limite vaut $12-\\frac14=\\frac{47}4$.",
+              "placeholder": "fraction"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque suite (avec $u_n\\to l$, $v_n\\to l'$) à sa limite.",
+              "pairs": [
+                {
+                  "left": "$(|u_n|)$",
+                  "right": "$|l|$"
+                },
+                {
+                  "left": "$(u_n+v_n)$",
+                  "right": "$l+l'$"
+                },
+                {
+                  "left": "$(u_nv_n)$",
+                  "right": "$ll'$"
+                },
+                {
+                  "left": "$\\left(\\frac{u_n}{v_n}\\right)$, $l'\\ne0$",
+                  "right": "$\\frac l{l'}$"
+                }
+              ],
+              "explanation": "Points 1, 2, 5 et 7 du théorème."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $(|u_n|)$ converge vers $|l|$, alors $(u_n)$ converge vers $l$.",
+              "answer": false,
+              "explanation": "Faux : $u_n=(-1)^n$ vérifie $|u_n|=1\\to1$, mais $(u_n)$ diverge. Seul le sens $u_n\\to l\\Rightarrow|u_n|\\to|l|$ est vrai."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve du point 6, pourquoi minore-t-on $|v_n|$ par $\\dfrac{|l'|}2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour majorer $\\frac1{|v_n|}$ par $\\frac2{|l'|}$ et contrôler l'erreur"
+                },
+                {
+                  "id": "b",
+                  "md": "Pour montrer que $(v_n)$ est croissante"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour montrer que $l'>0$"
+                },
+                {
+                  "id": "d",
+                  "md": "Pour appliquer l'inégalité triangulaire à $l'$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Sans minoration de $|v_n|$, le dénominateur $|v_n|\\,|l'|$ pourrait être arbitrairement petit."
+            }
+          ]
+        },
+        {
+          "slug": "suites-geometriques",
+          "title": "Suites géométriques",
+          "number": "L09",
+          "estimatedMinutes": 9,
+          "summary": "Suites géométriques : terme général $u_0q^n$, somme de termes consécutifs, convergence selon la raison, série géométrique et sa limite $\\frac1{1-r}$.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Une suite $(u_n)_{n\\in{\\mathbb{N}}}$ est **géométrique** s'il existe un réel $q$ non nul, appelé **raison** de la suite, tel que pour tout entier naturel $n$ :\n$$u_{n+1}=q\\times u_n.$$",
+              "origin": "source",
+              "title": "Suite géométrique"
+            },
+            {
+              "type": "remark",
+              "md": "1. On passe d'un terme de la suite au suivant en multipliant toujours par le même nombre $q$.\n2. Pour tout $n\\in{\\mathbb{N}}$, on a $u_n=u_0\\times q^n$.\n3. Somme de termes consécutifs d'une suite géométrique de raison $q\\ne1$ :\n$$S=\\text{premier terme}\\times\\frac{1-\\text{raison}^{\\,\\text{nombre de termes}}}{1-\\text{raison}}.$$\nAinsi, pour $(n+1)$ termes : $S=u_0+u_1+\\dots+u_n=u_0\\,\\dfrac{1-q^{n+1}}{1-q}$ ($q\\ne1$). Si $q=1$, on a $S=(n+1)u_0$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$1+2+4+\\dots+2^{9}=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1023"
+                ],
+                "explanation": "$10$ termes, raison $2$ : $S=1\\times\\frac{1-2^{10}}{1-2}=2^{10}-1=1023$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $(u_n)$ une suite géométrique de raison $r$ et de premier terme $u_0\\ne0$. Alors :\n1. si $|r|<1$, la suite $(u_n)$ converge vers $0$ ;\n2. si $|r|>1$, la suite $(u_n)$ diverge ;\n3. si $r=1$, la suite $(u_n)$ est constante et converge vers $u_0$ ;\n4. si $r=-1$, la suite $(u_n)$ diverge.",
+              "origin": "source",
+              "title": "Théorème (convergence d'une suite géométrique)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "La suite $u_n=5\\times\\left(-\\dfrac23\\right)^n$ :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "converge vers $0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "diverge"
+                  },
+                  {
+                    "id": "c",
+                    "md": "converge vers $5$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "converge vers $-\\frac23$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\left|-\\frac23\\right|<1$ : la suite converge vers $0$ (en alternant de signe)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Soit un réel $r\\in{\\mathbb{R}}$. On définit la **progression géométrique** (ou **série géométrique**) de raison $r$ comme la suite de terme général :\n$$S_n=1+r+\\dots+r^n=\\sum_{i=0}^{n}r^i.$$",
+              "origin": "source",
+              "title": "Série géométrique"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "On calcule explicitement le terme général $S_n$ :\n$$S_n=\\begin{cases}\\dfrac{1-r^{n+1}}{1-r} & \\text{si } r\\ne1,\\\\[2ex] n+1 & \\text{si } r=1.\\end{cases}$$\nOn obtient alors le résultat de convergence de la suite $(S_n)$ :\n- si $|r|<1$, alors la suite $(S_n)$ converge vers le réel $\\dfrac1{1-r}$ ;\n- si $|r|\\ge1$, alors la suite $(S_n)$ diverge.",
+              "origin": "source",
+              "title": "Proposition (convergence de la série géométrique)"
+            },
+            {
+              "type": "intuition",
+              "md": "Pour $|r|<1$, $r^{n+1}\\to0$ (théorème précédent), d'où $S_n\\to\\frac{1-0}{1-r}$. Par exemple $1+\\frac12+\\frac14+\\dots\\to\\frac1{1-1/2}=2$.",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $u_0=3$ et $q=2$, $u_4=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "48"
+              ],
+              "explanation": "$u_4=u_0q^4=3\\times16=48$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}\\sum_{i=0}^{n}\\left(\\frac13\\right)^i=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3/2",
+                "1.5"
+              ],
+              "explanation": "$|r|=\\frac13<1$ : la limite vaut $\\frac1{1-\\frac13}=\\frac32$.",
+              "placeholder": "fraction"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque raison $r$ (avec $u_0\\ne0$) au comportement de $u_n=u_0r^n$.",
+              "pairs": [
+                {
+                  "left": "$r=\\frac12$",
+                  "right": "converge vers $0$"
+                },
+                {
+                  "left": "$r=1$",
+                  "right": "constante, converge vers $u_0$"
+                },
+                {
+                  "left": "$r=-1$",
+                  "right": "diverge (alterne $u_0,-u_0$)"
+                },
+                {
+                  "left": "$r=3$",
+                  "right": "diverge ($|u_n|\\to+\\infty$)"
+                }
+              ],
+              "explanation": "Les quatre cas du théorème."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La suite $S_n=\\sum_{i=0}^n(-1)^i$ converge.",
+              "answer": false,
+              "explanation": "Faux : $|r|=1$, $S_n$ vaut alternativement $1$ et $0$ : elle diverge."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi le théorème suppose-t-il $u_0\\ne0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Si $u_0=0$, la suite est nulle et converge pour toute raison"
+                },
+                {
+                  "id": "b",
+                  "md": "Pour pouvoir diviser par $u_0$"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $u_0$ doit être la raison"
+                },
+                {
+                  "id": "d",
+                  "md": "Ce n'est pas nécessaire"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Avec $u_0=0$, $u_n=0$ pour tout $n$ : les cas « diverge » ($|r|>1$, $r=-1$) seraient faux."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La somme $1+3+9+27+81=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "121"
+              ],
+              "explanation": "$5$ termes, raison $3$ : $\\frac{1-3^5}{1-3}=\\frac{242}{2}=121$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "theoremes-de-convergence",
+      "title": "Suites extraites et théorèmes de convergence",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "suites-extraites",
+          "title": "Suites extraites",
+          "number": "L10",
+          "estimatedMinutes": 12,
+          "summary": "Sous-suites $(u_{\\phi(n)})$, le lemme $\\phi(n)\\ge n$, limite d'une suite extraite, critère de divergence par deux sous-suites, et les rangs pairs/impairs.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "On dit qu'une suite $(v_n)$ est une **suite extraite** (ou **sous-suite**) d'une suite $(u_n)$ s'il existe une application $\\phi$ de $\\mathbb{N}$ dans $\\mathbb{N}$ **strictement croissante** telle que\n$$\\forall n\\in{\\mathbb{N}},\\quad v_n=u_{\\phi(n)}.$$",
+              "origin": "source",
+              "title": "Suite extraite"
+            },
+            {
+              "type": "example",
+              "md": "Les suites $(u_{2n})$ et $(u_{2n+1})$ sont extraites de la suite $(u_n)$.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "example",
+              "md": "1. Prenons la suite définie par $u_n=(-1)^n$. L'application $\\phi(n)=2n$ donne la sous-suite $v_n=u_{2n}=(-1)^{2n}=1$ (suite constante).\n2. Si $u_n=\\sin\\left(\\dfrac{2\\pi n}{17}\\right)$, la suite est périodique de période $17$. L'application $\\phi:n\\mapsto17n$ donne la sous-suite $v_n=u_{17n}=\\sin(2\\pi n)=0$.",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$(u_{n^2})_{n\\in{\\mathbb{N}}}$ est une suite extraite de $(u_n)$.",
+                "answer": true,
+                "explanation": "Vrai : $\\phi(n)=n^2$ est strictement croissante de $\\mathbb{N}$ dans $\\mathbb{N}$. En revanche $(u_{n(n-1)})$ ne l'est pas ($\\phi(0)=\\phi(1)=0$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "lemme",
+              "md": "Si $\\phi:\\mathbb{N}\\to{\\mathbb{N}}$ est strictement croissante, alors\n$$\\forall n\\in{\\mathbb{N}},\\quad \\phi(n)\\ge n.$$",
+              "origin": "source",
+              "title": "Lemme"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Par récurrence : $\\phi(0)\\ge0$ car $\\phi(0)\\in{\\mathbb{N}}$."
+                },
+                {
+                  "md": "Si $\\phi(n)\\ge n$, alors $\\phi(n+1)>\\phi(n)\\ge n$, donc $\\phi(n+1)\\ge n+1$ (entiers)."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Toute suite extraite d'une suite convergeant vers une limite $l$ est une suite convergeant vers $l$.",
+              "origin": "source",
+              "title": "Théorème (limite d'une suite extraite)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soit $(u_n)$ une suite qui converge vers $l\\in{\\mathbb{R}}$ et $(u_{\\phi(n)})$ une suite extraite de $(u_n)$. Soit $\\varepsilon>0$ ; il existe $N\\in{\\mathbb{N}}$ tel que $\\forall p\\in{\\mathbb{N}},\\ p\\ge N\\Rightarrow|u_p-l|\\le\\varepsilon$."
+                },
+                {
+                  "md": "D'après le lemme, on a $\\forall n\\in{\\mathbb{N}},\\ n\\ge N\\Longrightarrow\\phi(n)\\ge\\phi(N)\\ge N\\Longrightarrow\\bigl|u_{\\phi(n)}-l\\bigr|\\le\\varepsilon$, d'où le résultat.",
+                  "why": "$\\phi$ croissante donne $\\phi(n)\\ge\\phi(N)$ ; le lemme donne $\\phi(N)\\ge N$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "lemme",
+              "md": "Soit une suite $(u_n)$. On suppose qu'il existe deux suites extraites $(v_n)$ et $(w_n)$ de $(u_n)$ telles que :\n- $(H_1)$ $(v_n)$ converge vers $a$ ;\n- $(H_2)$ $(w_n)$ converge vers $b$ ;\n- $(H_3)$ $a\\ne b$.\n\nAlors la suite $(u_n)$ est divergente.",
+              "origin": "source",
+              "title": "Lemme (critère de divergence)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Supposons que $(u_n)$ est convergente, de limite $L$. Puisque $(v_n)$ est une suite extraite de $(u_n)$, elle converge vers $L$ d'après le théorème précédent ; par unicité de la limite, $a=L$."
+                },
+                {
+                  "md": "De même, puisque $(w_n)$ est une suite extraite, $b=L$. Ainsi $a=b$, ce qui est impossible. Donc $(u_n)$ diverge."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Comment prouver que $u_n=(-1)^n$ diverge avec ce lemme ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$u_{2n}\\to1$ et $u_{2n+1}\\to-1$, avec $1\\ne-1$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$u_{2n}\\to1$ et $u_{4n}\\to1$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$(u_n)$ est bornée"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$|u_n|\\to1$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Deux sous-suites de limites différentes : $(u_n)$ diverge. Deux sous-suites de **même** limite ne prouvent rien."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "La suite $(u_n)$ converge vers $l$ si et seulement si les deux suites extraites $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite $l\\in{\\mathbb{R}}$.",
+              "origin": "source",
+              "title": "Théorème (suites des termes de rangs pairs et impairs)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Une première implication est évidente (théorème précédent). Supposons maintenant que $(u_{2n})$ et $(u_{2n+1})$ convergent vers $l\\in{\\mathbb{R}}$, et montrons que $(u_n)$ converge vers $l$."
+                },
+                {
+                  "md": "Soit $\\varepsilon>0$. Il existe $N_1$ tel que $\\forall p\\ge N_1,\\ |u_{2p}-l|\\le\\varepsilon$, et $N_2$ tel que $\\forall p\\ge N_2,\\ |u_{2p+1}-l|\\le\\varepsilon$."
+                },
+                {
+                  "md": "Notons $N=\\max(2N_1,2N_2+1)$, et soit $n\\ge N$. Si $n=2p\\ge2N_1$, alors $p\\ge N_1$, donc $|u_n-l|=|u_{2p}-l|\\le\\varepsilon$."
+                },
+                {
+                  "md": "Si $n=2p+1\\ge2N_2+1$, alors $p\\ge N_2$, donc $|u_n-l|=|u_{2p+1}-l|\\le\\varepsilon$. Ceci montre que $(u_n)$ converge également vers $l$.",
+                  "why": "Tout entier est pair ou impair : les deux cas couvrent tous les $n\\ge N$."
+                }
+              ],
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si une suite converge vers $l$, toutes ses suites extraites convergent vers $l$.",
+              "answer": true,
+              "explanation": "Vrai : c'est le théorème de la leçon."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si une suite extraite $(u_{2n})$ converge, alors $(u_n)$ converge.",
+              "answer": false,
+              "explanation": "Faux : pour $u_n=(-1)^n$, $(u_{2n})=1$ converge mais $(u_n)$ diverge."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces applications **ne** définit **pas** une suite extraite $(u_{\\phi(n)})$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\phi(n)=E\\left(\\frac n2\\right)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\phi(n)=2n+1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\phi(n)=3n$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\phi(n)=2^n$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$E\\left(\\frac n2\\right)$ vaut $0,0,1,1,2,\\dots$ : elle n'est pas strictement croissante."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $u_n=\\cos\\left(\\dfrac{n\\pi}{3}\\right)$, la suite extraite $(u_{6n})$ est constante égale à ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$u_{6n}=\\cos(2\\pi n)=1$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Montrons que $u_n=(-1)^n+\\dfrac1n$ ($n\\ge1$) diverge.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}u_{2n}=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "$u_{2n}=1+\\frac1{2n}\\to1$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}u_{2n+1}=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1"
+                  ],
+                  "explanation": "$u_{2n+1}=-1+\\frac1{2n+1}\\to-1$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Conclusion ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$(u_n)$ diverge, car les deux limites sont différentes"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$(u_n)$ converge vers $0$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "On ne peut rien conclure"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Critère de divergence avec $a=1\\ne b=-1$."
+                }
+              ],
+              "explanation": "Deux sous-suites de limites distinctes : la suite diverge."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve du théorème des rangs pairs et impairs, on pose $N=$ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\max(2N_1,2N_2+1)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$N_1+N_2$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\min(N_1,N_2)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2\\max(N_1,N_2)$ uniquement si $N_1=N_2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Un rang pair $2p\\ge2N_1$ donne $p\\ge N_1$, un rang impair $2p+1\\ge2N_2+1$ donne $p\\ge N_2$."
+            }
+          ]
+        },
+        {
+          "slug": "convergence-suites-monotones",
+          "title": "Convergence des suites monotones",
+          "number": "L11",
+          "estimatedMinutes": 9,
+          "summary": "Théorème de la limite monotone : une suite croissante majorée converge (vers sa borne supérieure), une suite croissante non majorée tend vers $+\\infty$ ; cas décroissant.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $(u_n)$ une suite croissante. On a les deux possibilités suivantes :\n1. si $(u_n)$ est majorée, alors $(u_n)$ converge vers une limite finie ;\n2. si $(u_n)$ n'est pas majorée, alors $(u_n)$ diverge vers $+\\infty$.",
+              "origin": "source",
+              "title": "Théorème (suite croissante)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Considérons une suite $(u_n)$ croissante et majorée. Posons $l=\\sup_n u_n\\in{\\mathbb{R}}$ et montrons que $(u_n)$ converge vers $l$.",
+                  "why": "La borne supérieure existe : ensemble non vide et majoré (axiome du chapitre 1)."
+                },
+                {
+                  "md": "On a déjà $\\forall n\\in{\\mathbb{N}},\\ u_n\\le l$ car $l=\\sup_n u_n$, donc $l$ majore la suite $(u_n)$."
+                },
+                {
+                  "md": "Soit $\\varepsilon>0$. Comme $l=\\sup_n u_n$, $l-\\varepsilon$ n'est pas un majorant de la suite $(u_n)$ et donc il existe $N\\in{\\mathbb{N}}$ vérifiant $u_N>l-\\varepsilon$.",
+                  "why": "Caractérisation de la borne supérieure."
+                },
+                {
+                  "md": "Par croissance de la suite $(u_n)$, on a alors $\\forall n\\ge N,\\ u_n\\ge u_N\\ge l-\\varepsilon$. Par suite, pour tout $n\\ge N$, $l-\\varepsilon\\le u_n\\le l\\le l+\\varepsilon$, donc $(u_n)$ converge vers $l$."
+                },
+                {
+                  "md": "Soit maintenant une suite $(u_n)$ croissante non majorée. Soit $A\\in{\\mathbb{R}}$. La suite $(u_n)$ n'est pas majorée par $A$, donc il existe $N\\in{\\mathbb{N}}$ vérifiant $u_N>A$. Par croissance, $\\forall n\\ge N$, $u_n\\ge u_N$ et donc $u_n>A$. Ainsi $(u_n)$ tend vers $+\\infty$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une suite croissante et majorée par $5$ converge vers $5$.",
+                "answer": false,
+                "explanation": "Faux : elle converge vers sa **borne supérieure**, qui est $\\le5$. Exemple : $u_n=1-\\frac1n$ est majorée par $5$ et tend vers $1$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $(u_n)$ une suite décroissante. On a les deux possibilités suivantes :\n1. si $(u_n)$ est minorée, alors $(u_n)$ converge vers une limite finie ;\n2. si $(u_n)$ n'est pas minorée, alors $(u_n)$ diverge vers $-\\infty$.",
+              "origin": "source",
+              "title": "Théorème (suite décroissante)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Même démonstration que dans le cas d'une suite croissante (avec la borne inférieure $\\inf_n u_n$)."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Soit $(u_n)$ la suite définie par\n$$u_n=1+\\frac1{2^2}+\\frac1{3^2}+\\dots+\\frac1{n^2}.$$\nLa suite $(u_n)$ est croissante et majorée par $2$, donc elle converge.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "remark",
+              "md": "Justification de la majoration : pour $k\\ge2$, $\\dfrac1{k^2}\\le\\dfrac1{k(k-1)}=\\dfrac1{k-1}-\\dfrac1k$. En sommant de $k=2$ à $n$ (somme télescopique), $u_n\\le1+1-\\dfrac1n<2$. La croissance vient de $u_{n+1}-u_n=\\dfrac1{(n+1)^2}>0$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une suite décroissante et minorée par $0$ :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "converge vers une limite $l\\ge0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "converge vers $0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "tend vers $-\\infty$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "peut diverger"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Elle converge (théorème), et le passage à la limite dans $u_n\\ge0$ donne $l\\ge0$. La limite n'est pas forcément $0$ : $u_n=1+\\frac1n$ tend vers $1$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute suite monotone converge ou tend vers $\\pm\\infty$.",
+              "answer": true,
+              "explanation": "Vrai : une suite croissante converge ou tend vers $+\\infty$ ; une suite décroissante converge ou tend vers $-\\infty$. Une suite monotone a donc toujours une limite (finie ou infinie)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une suite croissante non majorée tend vers $+\\infty$.",
+              "answer": true,
+              "explanation": "Vrai (point 2 du théorème)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Si $(u_n)$ est croissante et converge vers $l$, alors :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$u_n\\le l$ pour tout $n$"
+                },
+                {
+                  "id": "b",
+                  "md": "$u_n\\ge l$ pour tout $n$"
+                },
+                {
+                  "id": "c",
+                  "md": "$u_n=l$ à partir d'un certain rang"
+                },
+                {
+                  "id": "d",
+                  "md": "$l=u_0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La limite d'une suite croissante majorée est sa borne supérieure, qui majore tous les termes."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve « croissante + majorée ⇒ convergente ».",
+              "items": [
+                "Poser $l=\\sup_n u_n$ (qui existe car la suite est majorée).",
+                "Fixer $\\varepsilon>0$ : $l-\\varepsilon$ n'est pas un majorant.",
+                "Trouver $N$ tel que $u_N>l-\\varepsilon$.",
+                "Par croissance : $l-\\varepsilon\\le u_n\\le l$ pour tout $n\\ge N$.",
+                "Conclure : $u_n\\to l$."
+              ],
+              "explanation": "L'axiome de la borne supérieure fournit le candidat $l$, la croissance propage l'inégalité $u_N>l-\\varepsilon$ à toute la queue."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "La suite $u_n=\\displaystyle\\sum_{k=1}^n\\frac1k$ est croissante. Si l'on sait qu'elle n'est pas majorée, que conclure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Elle tend vers $+\\infty$"
+                },
+                {
+                  "id": "b",
+                  "md": "Elle converge"
+                },
+                {
+                  "id": "c",
+                  "md": "Elle n'a pas de limite"
+                },
+                {
+                  "id": "d",
+                  "md": "Elle tend vers $-\\infty$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Croissante non majorée : elle diverge vers $+\\infty$ (point 2)."
+            }
+          ]
+        },
+        {
+          "slug": "suites-adjacentes",
+          "title": "Suites adjacentes",
+          "number": "L12",
+          "estimatedMinutes": 9,
+          "summary": "Deux suites monotones de sens contraire dont la différence tend vers $0$ convergent vers la même limite, qui les sépare.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soient $(u_n)$ et $(v_n)$ deux suites réelles. On dit qu'elles sont **adjacentes** si et seulement si :\n1. les deux suites sont monotones de sens contraire ;\n2. la suite $(v_n-u_n)$ converge vers $0$.",
+              "origin": "source",
+              "title": "Suites adjacentes"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Deux suites adjacentes convergent et ont la même limite.",
+              "origin": "source",
+              "title": "Théorème (convergence des suites adjacentes)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soient $(u_n)$ et $(v_n)$ deux suites adjacentes ; quitte à les échanger, on suppose $(u_n)$ croissante et $(v_n)$ décroissante."
+                },
+                {
+                  "md": "Montrons que $\\forall n\\in{\\mathbb{N}},\\ u_n\\le v_n$. Soit $m\\ge n$. Par monotonie, on a $u_m\\ge u_n$ et $v_n\\ge v_m$, donc $v_n-u_n\\ge v_m-u_m$. À la limite quand $m\\to+\\infty$, on obtient $v_n-u_n\\ge0$.",
+                  "why": "Passage à la limite dans une inégalité, $n$ étant fixé."
+                },
+                {
+                  "md": "Puisque $(v_n)$ est décroissante, on en déduit que pour tout $n\\in{\\mathbb{N}}$, $u_n\\le v_n\\le v_0$. La suite $(u_n)$ est donc majorée et, puisqu'elle est aussi croissante, elle converge vers une limite $l\\in{\\mathbb{R}}$.",
+                  "why": "Théorème de la limite monotone."
+                },
+                {
+                  "md": "De plus $v_n=u_n+(v_n-u_n)$ converge vers $l+0=l$ ; ainsi $(u_n)$ et $(v_n)$ convergent vers une même limite $l$."
+                },
+                {
+                  "md": "Et puisque $(u_n)$ est croissante et converge vers $l$, on a $\\forall n\\in{\\mathbb{N}},\\ u_n\\le l$ ; de même, puisque $(v_n)$ est décroissante et converge vers $l$, on a $\\forall n\\in{\\mathbb{N}},\\ v_n\\ge l$. Donc $\\forall n\\in{\\mathbb{N}},\\quad u_n\\le l\\le v_n.$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Les deux suites se rapprochent l'une de l'autre en se « pinçant » : $(u_n)$ monte, $(v_n)$ descend, et l'écart se referme. La limite commune est piégée dans tous les intervalles $[u_n,v_n]$, ce qui donne des encadrements de plus en plus précis.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch02-suites-adjacentes.svg",
+              "alt": "Une suite croissante (u_n) en bleu sous une suite décroissante (v_n) en orange ; l'écart se referme sur la limite commune l.",
+              "caption": "Figure — deux suites adjacentes se « pincent » sur leur limite commune l.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si $(u_n)$ et $(v_n)$ sont adjacentes avec $u_3=1{,}41$ et $v_3=1{,}42$, la limite commune $l$ vérifie $1{,}41\\le l\\le$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1.42"
+                ],
+                "explanation": "$u_n\\le l\\le v_n$ pour tout $n$, en particulier pour $n=3$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Les suites $(u_n)$ et $(v_n)$ définies pour $n\\ge1$ par\n$$u_n=\\sum_{k=1}^{n}\\frac1{k^2}=1+\\frac1{2^2}+\\frac1{3^2}+\\dots+\\frac1{n^2}\\qquad\\text{et}\\qquad v_n=u_n+\\frac2{n+1}$$\nsont adjacentes.",
+              "origin": "source",
+              "title": "Exemple",
+              "steps": [
+                {
+                  "md": "$(u_n)$ est croissante : $u_{n+1}-u_n=\\dfrac1{(n+1)^2}>0$."
+                },
+                {
+                  "md": "$(v_n)$ est décroissante : $v_{n+1}-v_n=\\dfrac1{(n+1)^2}+\\dfrac2{n+2}-\\dfrac2{n+1}=\\dfrac1{(n+1)^2}-\\dfrac2{(n+1)(n+2)}=\\dfrac{-n}{(n+1)^2(n+2)}\\le0$."
+                },
+                {
+                  "md": "$v_n-u_n=\\dfrac2{n+1}\\to0$. Les deux suites sont adjacentes."
+                }
+              ]
+            },
+            {
+              "type": "remark",
+              "md": "Les calculs de l'exemple (monotonie et écart) ne figurent pas dans la source ; ils sont ajoutés en étapes.",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Deux suites adjacentes convergent vers la même limite.",
+              "answer": true,
+              "explanation": "C'est le théorème."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\le v_n$ et $v_n-u_n\\to0$, alors $(u_n)$ et $(v_n)$ sont adjacentes.",
+              "answer": false,
+              "explanation": "Faux : il faut aussi la monotonie de sens contraire. Exemple : $u_n=(-1)^n$ et $v_n=(-1)^n+\\frac1n$ : l'écart tend vers $0$ mais aucune ne converge."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Les suites $u_n=1-\\dfrac1n$ et $v_n=1+\\dfrac1n$ ($n\\ge1$) :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "sont adjacentes, de limite commune $1$"
+                },
+                {
+                  "id": "b",
+                  "md": "ne sont pas adjacentes car elles ont la même limite"
+                },
+                {
+                  "id": "c",
+                  "md": "sont adjacentes, de limite $0$"
+                },
+                {
+                  "id": "d",
+                  "md": "ne sont pas adjacentes car $v_n-u_n$ ne tend pas vers $0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$(u_n)$ croît, $(v_n)$ décroît, $v_n-u_n=\\frac2n\\to0$ : adjacentes, de limite $1$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve du théorème des suites adjacentes ($u$ croissante, $v$ décroissante).",
+              "items": [
+                "Montrer que $u_n\\le v_n$ pour tout $n$.",
+                "En déduire $u_n\\le v_0$ : $(u_n)$ est croissante majorée, donc converge vers $l$.",
+                "Écrire $v_n=u_n+(v_n-u_n)$ pour obtenir $v_n\\to l$.",
+                "Conclure $u_n\\le l\\le v_n$ pour tout $n$."
+              ],
+              "explanation": "L'étape clé est $u_n\\le v_n$, qui fournit la majoration de $(u_n)$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve, d'où vient l'inégalité $u_n\\le v_n$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "De $v_n-u_n\\ge v_m-u_m$ pour $m\\ge n$, puis passage à la limite en $m$"
+                },
+                {
+                  "id": "b",
+                  "md": "De l'hypothèse de l'énoncé"
+                },
+                {
+                  "id": "c",
+                  "md": "Du théorème d'encadrement"
+                },
+                {
+                  "id": "d",
+                  "md": "De l'unicité de la limite"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Ce n'est pas une hypothèse : on la démontre grâce à la monotonie et à $v_m-u_m\\to0$."
+            }
+          ]
+        },
+        {
+          "slug": "bolzano-weierstrass",
+          "title": "Théorème de Bolzano-Weierstrass",
+          "number": "L13",
+          "estimatedMinutes": 10,
+          "summary": "De toute suite bornée on peut extraire une sous-suite convergente : énoncé, exemples, preuve par dichotomie et corollaire sur un segment.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "De toute suite réelle bornée on peut extraire une suite convergente.",
+              "origin": "source",
+              "title": "Théorème de Bolzano-Weierstrass"
+            },
+            {
+              "type": "example",
+              "md": "Prenons l'exemple de la suite $u_n=(-1)^n$. C'est bien une suite bornée et nous avons bien des sous-suites convergentes, par exemple la suite des termes de rang pair, ou celle des termes de rang impair (qui sont même des suites constantes).\n\nUn autre exemple avec la suite définie par $v_n=\\cos n$. C'est encore une suite bornée, mais il n'est pas facile de montrer explicitement qu'il existe une sous-suite qui converge.",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "text",
+              "md": "Le théorème de Bolzano-Weierstrass affirme pourtant qu'une telle sous-suite existe ! C'est un résultat d'**existence**, qui n'indique pas comment expliciter une sous-suite convergente.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le théorème de Bolzano-Weierstrass affirme que toute suite bornée converge.",
+                "answer": false,
+                "explanation": "Faux : il affirme seulement l'existence d'une **sous-suite** convergente. $(-1)^n$ est bornée et diverge."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "La preuve repose sur un procédé de **dichotomie**. Comme la suite est bornée, l'ensemble des valeurs de la suite est contenu dans un intervalle $[a,b]$."
+                },
+                {
+                  "md": "On initialise en posant $a_0=a$, $b_0=b$, $\\phi(0)=0$. Si on coupe $[a,b]$ en deux sous-intervalles égaux, au moins un des deux intervalles obtenus contient $u_n$ pour une infinité d'indices $n$. On note $[a_1,b_1]$ un tel intervalle ; il existe un entier $\\phi(1)>\\phi(0)$ tel que $u_{\\phi(1)}\\in[a_1,b_1]$.",
+                  "why": "Si les deux moitiés ne contenaient chacune qu'un nombre fini de termes, la suite n'aurait qu'un nombre fini d'indices."
+                },
+                {
+                  "md": "Par récurrence, on construit pour tout entier naturel $n$ un intervalle $[a_n,b_n]$, de longueur $\\dfrac{b-a}{2^n}$, contenant $u_k$ pour une infinité d'indices $k$, et un entier $\\phi(n)>\\phi(n-1)$ tel que $u_{\\phi(n)}\\in[a_n,b_n]$. (Chaque intervalle est l'une des deux moitiés du précédent : $[a_0,b_0]\\supset[a_1,b_1]\\supset[a_2,b_2]\\supset\\cdots$)"
+                },
+                {
+                  "md": "Par construction, la suite $(a_n)$ est croissante et la suite $(b_n)$ est décroissante. De plus $\\displaystyle\\lim_{n\\to+\\infty}(b_n-a_n)=\\lim_{n\\to+\\infty}\\frac{b-a}{2^n}=0$, donc les suites $(a_n)$ et $(b_n)$ sont adjacentes et convergent vers une même limite $\\ell$."
+                },
+                {
+                  "md": "Comme $a_n\\le u_{\\phi(n)}\\le b_n$, on peut conclure, par encadrement, que $\\displaystyle\\lim_{n\\to+\\infty}u_{\\phi(n)}=\\ell$.",
+                  "why": "Théorème d'encadrement."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch02-dichotomie.svg",
+              "alt": "Intervalles emboîtés [a_n,b_n] obtenus par dichotomie : à chaque étape on garde une moitié qui contient une infinité de termes de la suite (points verts).",
+              "caption": "Figure — dichotomie : chaque [aₙ, bₙ] est une moitié du précédent et contient une infinité de termes.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Soit un segment $[a,b]$ et une suite $(x_n)$ de points de ce segment. Alors il existe une suite extraite de la suite $(x_n)$ qui converge vers un point $l\\in[a,b]$.",
+              "origin": "source",
+              "title": "Corollaire"
+            },
+            {
+              "type": "remark",
+              "md": "Le point important est $l\\in[a,b]$ : on a $a\\le x_{\\phi(n)}\\le b$ pour tout $n$, et le passage à la limite dans ces inégalités larges donne $a\\le l\\le b$. Sur un intervalle ouvert, la limite pourrait sortir : $x_n=\\frac1n\\in\\,]0,1]$ mais toute sous-suite tend vers $0\\notin\\,]0,1]$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Après $n$ étapes de dichotomie à partir de $[a,b]=[0,1]$, quelle est la longueur de $[a_n,b_n]$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\dfrac1{2^n}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\dfrac1n$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\dfrac12$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\dfrac1{n^2}$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "On divise la longueur par $2$ à chaque étape : $\\frac{b-a}{2^n}=\\frac1{2^n}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Le théorème de Bolzano-Weierstrass s'applique à :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "toute suite bornée"
+                },
+                {
+                  "id": "b",
+                  "md": "toute suite monotone"
+                },
+                {
+                  "id": "c",
+                  "md": "toute suite convergente uniquement"
+                },
+                {
+                  "id": "d",
+                  "md": "toute suite positive"
+                }
+              ],
+              "answer": "a",
+              "explanation": "L'hypothèse est « bornée ». Une suite positive non bornée (comme $n$) n'a aucune sous-suite convergente."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La suite $(n)_{n\\in{\\mathbb{N}}}$ admet une sous-suite convergente.",
+              "answer": false,
+              "explanation": "Faux : toute sous-suite $(\\phi(n))$ vérifie $\\phi(n)\\ge n$, donc tend vers $+\\infty$. Le théorème ne s'applique pas : la suite n'est pas bornée."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes de la preuve par dichotomie.",
+              "items": [
+                "Enfermer les valeurs de la suite dans un intervalle $[a,b]$.",
+                "Couper en deux et garder une moitié contenant une infinité de termes.",
+                "Répéter pour construire $[a_n,b_n]$ et $\\phi(n)$ strictement croissante.",
+                "Observer que $(a_n)$ et $(b_n)$ sont adjacentes, de limite $\\ell$.",
+                "Conclure par encadrement : $u_{\\phi(n)}\\to\\ell$."
+              ],
+              "explanation": "La dichotomie produit des intervalles emboîtés de longueur $\\frac{b-a}{2^n}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le théorème de Bolzano-Weierstrass donne une méthode explicite pour trouver la sous-suite convergente.",
+              "answer": false,
+              "explanation": "Faux : c'est un résultat d'existence. Pour $\\cos n$, on ne sait pas facilement expliciter une sous-suite convergente."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour une suite $(x_n)$ de points de $[2,5]$, une sous-suite convergente a sa limite :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "dans $[2,5]$"
+                },
+                {
+                  "id": "b",
+                  "md": "dans $]2,5[$"
+                },
+                {
+                  "id": "c",
+                  "md": "égale à $2$ ou $5$"
+                },
+                {
+                  "id": "d",
+                  "md": "quelconque dans $\\mathbb{R}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Corollaire : passage à la limite dans $2\\le x_{\\phi(n)}\\le5$."
+            }
+          ]
+        },
+        {
+          "slug": "suites-de-cauchy",
+          "title": "Suites de Cauchy",
+          "number": "L14",
+          "estimatedMinutes": 8,
+          "summary": "Définition d'une suite de Cauchy, forme équivalente avec $u_{n+p}-u_n$, et le critère de Cauchy : dans $\\mathbb{R}$, une suite converge si et seulement si elle est de Cauchy.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit $(u_n)_{n\\in{\\mathbb{N}}}$ une suite réelle.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "La suite $(u_n)_{n\\in{\\mathbb{N}}}$ est dite **suite de Cauchy** si elle vérifie :\n$$\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n>N,\\ \\forall m>N,\\quad |u_m-u_n|<\\varepsilon.$$",
+              "origin": "source",
+              "title": "Suite de Cauchy"
+            },
+            {
+              "type": "intuition",
+              "md": "Une suite de Cauchy est une suite dont les termes finissent par être **proches les uns des autres**, sans qu'on parle d'une limite. L'intérêt : on peut vérifier cette propriété sans connaître la limite à l'avance.",
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Il est facile de vérifier que $(u_n)_{n\\in{\\mathbb{N}}}$ est de Cauchy si et seulement si\n$$\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n>N,\\ \\forall p>0,\\quad |u_{n+p}-u_n|<\\varepsilon.$$",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Toute suite réelle convergente dans $\\mathbb{R}$ est une suite de Cauchy dans $\\mathbb{R}$.",
+              "origin": "source",
+              "title": "Théorème (suite convergente et suite de Cauchy)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Si $(u_n)$ est une suite réelle convergente vers $l$ dans $\\mathbb{R}$, alors, en appliquant la définition de la limite à $\\frac\\varepsilon2$ : $\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}},\\ \\forall n\\ge N,\\ |u_n-l|<\\frac\\varepsilon2.$"
+                },
+                {
+                  "md": "Donc $\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}},\\ \\forall n\\ge N,\\ \\forall m\\ge N :\\ |u_m-u_n|\\le|u_n-l|+|u_m-l|<\\frac\\varepsilon2+\\frac\\varepsilon2=\\varepsilon.$",
+                  "why": "Inégalité triangulaire en passant par $l$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une suite de Cauchy vérifie $|u_{n+1}-u_n|\\to0$.",
+                "answer": true,
+                "explanation": "Vrai : c'est le cas $p=1$ de la forme équivalente. Attention, la réciproque est fausse (voir le quiz)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "La réciproque du théorème précédent est vraie.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Toute suite de Cauchy dans $\\mathbb{R}$ est convergente dans $\\mathbb{R}$.",
+              "origin": "source",
+              "title": "Critère de Cauchy"
+            },
+            {
+              "type": "remark",
+              "md": "Ce critère est propre à $\\mathbb{R}$ (il est admis ici ; il repose sur l'axiome de la borne supérieure, par exemple via Bolzano-Weierstrass). Dans $\\mathbb{Q}$, il est faux : les approximations décimales de $\\sqrt2$ ($1$ ; $1{,}4$ ; $1{,}41$ ; …) forment une suite de Cauchy de rationnels sans limite dans $\\mathbb{Q}$.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "La suite $(u_n)$ définie par $u_n=\\displaystyle\\sum_{k=2}^{n}\\frac1{k^2}$ est de Cauchy et donc elle est convergente.",
+              "origin": "source",
+              "title": "Exemple"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Dans $\\mathbb{R}$, une suite converge si et seulement si elle est de Cauchy.",
+              "answer": true,
+              "explanation": "Vrai : convergente $\\Rightarrow$ Cauchy (théorème démontré) et Cauchy $\\Rightarrow$ convergente (critère de Cauchy)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $|u_{n+1}-u_n|\\to0$, alors $(u_n)$ est de Cauchy.",
+              "answer": false,
+              "explanation": "Faux : $u_n=\\sqrt n$ vérifie $u_{n+1}-u_n=\\frac1{\\sqrt{n+1}+\\sqrt n}\\to0$, mais $u_n\\to+\\infty$ : elle ne converge pas, donc n'est pas de Cauchy. La définition exige $|u_{n+p}-u_n|$ petit pour **tous** les $p$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la définition d'une suite de Cauchy ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists N,\\ \\forall n,m>N,\\ |u_m-u_n|<\\varepsilon$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists\\varepsilon>0,\\ \\forall N,\\ \\forall n,m>N,\\ |u_m-u_n|<\\varepsilon$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists N,\\ \\forall n>N,\\ |u_n-l|<\\varepsilon$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall n,m,\\ |u_m-u_n|<1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La réponse c est la définition de la convergence vers $l$ ; une suite de Cauchy ne fait intervenir aucune limite."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve « convergente $\\Rightarrow$ Cauchy », on applique la définition de la limite avec :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\frac\\varepsilon2$"
+                },
+                {
+                  "id": "b",
+                  "md": "$2\\varepsilon$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\varepsilon^2$"
+                },
+                {
+                  "id": "d",
+                  "md": "$1$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Les deux écarts $|u_n-l|$ et $|u_m-l|$ s'additionnent : chacun doit être $<\\frac\\varepsilon2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La suite $u_n=(-1)^n$ est de Cauchy.",
+              "answer": false,
+              "explanation": "Faux : $|u_{n+1}-u_n|=2$ pour tout $n$, ce qui n'est jamais $<\\varepsilon$ pour $\\varepsilon=1$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comparaison-de-suites",
+      "title": "Comparaison de suites",
+      "number": "4",
+      "lessons": [
+        {
+          "slug": "negligeabilite-equivalence",
+          "title": "Suites négligeables, dominées, équivalentes",
+          "number": "L15",
+          "estimatedMinutes": 10,
+          "summary": "Notations de Landau $o$ et $O$ pour les suites, suites équivalentes $u_n\\sim v_n$, opérations sur les équivalents et lien avec les limites.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soient deux suites $(u_n)$ et $(v_n)$.\n- La suite $(u_n)$ est **négligeable** devant la suite $(v_n)$, et l'on note $u_n=o(v_n)$, lorsque :\n$$\\forall\\varepsilon>0,\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n\\ge N,\\quad |u_n|\\le\\varepsilon|v_n|.$$\nSi la suite $(v_n)$ ne s'annule pas, c'est équivalent à dire que : $\\dfrac{u_n}{v_n}\\xrightarrow[n\\to+\\infty]{}0$.\n- La suite $(u_n)$ est **dominée** par la suite $(v_n)$, et l'on note $u_n=O(v_n)$, lorsque :\n$$\\exists M>0,\\ \\exists N\\in{\\mathbb{N}}\\ \\text{tel que}\\ \\forall n\\ge N,\\quad |u_n|\\le M|v_n|.$$\nSi la suite $(v_n)$ ne s'annule pas, c'est équivalent à dire que la suite $\\left(\\dfrac{u_n}{v_n}\\right)$ est bornée.",
+              "origin": "source",
+              "title": "Suite négligeable, suite dominée"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces relations est vraie ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$n=o(n^2)$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$n^2=o(n)$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$n=o(2n)$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$1=o(1)$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\frac{n}{n^2}=\\frac1n\\to0$. En revanche $\\frac{n}{2n}=\\frac12\\not\\to0$ : on a seulement $n=O(2n)$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "On dit que deux suites $(u_n)$ et $(v_n)$ sont **équivalentes**, et l'on note $u_n\\sim v_n$, lorsque\n$$u_n-v_n=o(v_n).$$\nLorsque la suite $(v_n)$ ne s'annule pas, cela revient à dire que : $\\dfrac{u_n}{v_n}\\xrightarrow[n\\to+\\infty]{}1$.",
+              "origin": "source",
+              "title": "Suites équivalentes"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$n^2+3n+1\\sim a\\,n^2$ avec $a=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$\\frac{n^2+3n+1}{n^2}=1+\\frac3n+\\frac1{n^2}\\to1$ : un polynôme est équivalent à son terme de plus haut degré."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soient quatre suites $(u_n)$, $(a_n)$, $(v_n)$ et $(b_n)$ vérifiant $u_n\\sim a_n$ et $v_n\\sim b_n$. Alors :\n1. $u_nv_n\\sim a_nb_n$ ;\n2. $\\dfrac{u_n}{v_n}\\sim\\dfrac{a_n}{b_n}$ (si $v_n$ et $b_n$ ne s'annulent pas) ;\n3. $\\forall\\alpha\\in{\\mathbb{R}},\\ u_n^\\alpha\\sim a_n^\\alpha$ (pour des suites à termes strictement positifs).",
+              "origin": "source",
+              "title": "Théorème (opérations sur les équivalents)"
+            },
+            {
+              "type": "remark",
+              "md": "On ne peut pas **additionner** des équivalents : $n+1\\sim n$ et $-n\\sim-n+\\frac1n$, mais $(n+1)+(-n)=1$ n'est pas équivalent à $n+(-n+\\frac1n)=\\frac1n$.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "1. Si $u_n\\sim v_n$ et $\\displaystyle\\lim_{n\\to+\\infty}v_n=l\\in\\overline{\\mathbb{R}}$, alors $\\displaystyle\\lim_{n\\to+\\infty}u_n=l$.\n2. Si $\\displaystyle\\lim_{n\\to+\\infty}u_n=l$ et $l\\ne0$ ($l\\in{\\mathbb{R}}$), alors $u_n\\sim l$.",
+              "origin": "source",
+              "title": "Théorème (équivalents et limites)"
+            },
+            {
+              "type": "intuition",
+              "md": "Pour calculer une limite, on remplace une expression compliquée par un équivalent simple, en particulier dans des produits et des quotients. Exemple : $\\dfrac{2n^2+1}{n^2-n}\\sim\\dfrac{2n^2}{n^2}=2$, donc la limite vaut $2$.",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\sim v_n$, alors $u_n$ et $v_n$ ont la même limite (si l'une en a une).",
+              "answer": true,
+              "explanation": "Vrai : point 1 du théorème « équivalents et limites » (limite finie ou infinie)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\to0$, alors $u_n\\sim0$.",
+              "answer": false,
+              "explanation": "Faux : le point 2 exige $l\\ne0$. Être équivalent à la suite nulle signifierait $u_n=0$ à partir d'un certain rang."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la limite de $\\dfrac{3n^2+n}{n^2+5}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$+\\infty$"
+                },
+                {
+                  "id": "d",
+                  "md": "$0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\frac{3n^2+n}{n^2+5}\\sim\\frac{3n^2}{n^2}=3$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque relation à sa traduction (pour $v_n\\ne0$).",
+              "pairs": [
+                {
+                  "left": "$u_n=o(v_n)$",
+                  "right": "$\\frac{u_n}{v_n}\\to0$"
+                },
+                {
+                  "left": "$u_n=O(v_n)$",
+                  "right": "$\\left(\\frac{u_n}{v_n}\\right)$ bornée"
+                },
+                {
+                  "left": "$u_n\\sim v_n$",
+                  "right": "$\\frac{u_n}{v_n}\\to1$"
+                }
+              ],
+              "explanation": "Ce sont les caractérisations par le quotient données dans la leçon."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $u_n\\sim a_n$ et $v_n\\sim b_n$, alors $u_n+v_n\\sim a_n+b_n$.",
+              "answer": false,
+              "explanation": "Faux en général : l'addition n'est pas dans la liste des opérations autorisées (voir le contre-exemple de la remarque)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\sqrt{n^2+1}\\sim n^{\\alpha}$ avec $\\alpha=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$n^2+1\\sim n^2$, et par le point 3 avec l'exposant $\\frac12$ : $\\sqrt{n^2+1}\\sim\\sqrt{n^2}=n$."
+            }
+          ]
+        },
+        {
+          "slug": "comparaisons-usuelles",
+          "title": "Comparaisons et équivalents usuels",
+          "number": "L16",
+          "estimatedMinutes": 10,
+          "summary": "Comparaison logarithmique par le rapport $\\frac{u_{n+1}}{u_n}$, hiérarchie $(\\ln n)^\\beta\\ll n^\\alpha\\ll a^n\\ll n!\\ll n^n$, et équivalents usuels quand $u_n\\to0$.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Si $(u_n)$ et $(v_n)$ sont deux suites à termes strictement positifs et si, à partir d'un certain rang,\n$$\\frac{u_{n+1}}{u_n}\\le\\frac{v_{n+1}}{v_n},$$\nalors $u_n=O(v_n)$.",
+              "origin": "source",
+              "title": "Théorème (comparaison logarithmique)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Soit un rang $n_0\\in{\\mathbb{N}}$ ; supposons que $\\forall n\\ge n_0$, $\\dfrac{u_{n+1}}{u_n}\\le\\dfrac{v_{n+1}}{v_n}$, c'est-à-dire $\\dfrac{u_{n+1}}{v_{n+1}}\\le\\dfrac{u_n}{v_n}$.",
+                  "why": "On multiplie par $\\frac{u_n}{v_{n+1}}>0$."
+                },
+                {
+                  "md": "Alors la suite $\\left(\\dfrac{u_n}{v_n}\\right)_{n\\ge n_0}$ est décroissante, donc majorée par $\\dfrac{u_{n_0}}{v_{n_0}}$, et minorée par $0$. Cette suite est alors bornée, d'où $u_n=O(v_n)$."
+                },
+                {
+                  "md": "En particulier, si $(u_n)$ est à termes strictement positifs et s'il existe $k\\in{\\mathbb{R}}_+^*$ tel qu'à partir d'un certain rang $\\dfrac{u_{n+1}}{u_n}\\le k$, alors $u_n=O(k^n)$. Si $0<k<1$, $\\displaystyle\\lim_{n\\to+\\infty}k^n=0$, donc $(u_n)$ converge vers $0$.",
+                  "why": "On prend $v_n=k^n$, dont le rapport $\\frac{v_{n+1}}{v_n}$ vaut $k$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour $u_n=\\dfrac{n}{3^n}$, on a $\\dfrac{u_{n+1}}{u_n}=\\dfrac{n+1}{3n}\\le\\dfrac23$ pour $n\\ge1$. Que conclure ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$u_n=O\\left((\\frac23)^n\\right)$, donc $u_n\\to0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$u_n\\to\\frac23$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$(u_n)$ diverge"
+                  },
+                  {
+                    "id": "d",
+                    "md": "On ne peut rien conclure"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Cas particulier avec $k=\\frac23<1$ : $u_n=O(k^n)$ et $k^n\\to0$, donc $u_n\\to0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Comparons les suites $(n^\\alpha)$, $\\bigl((\\ln n)^\\beta\\bigr)$, $(a^n)$, $(n!)$, $(n^n)$. On a le théorème suivant :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Si $\\alpha>0$, $\\beta>0$ et $a>1$, alors\n$$(\\ln n)^\\beta=o(n^\\alpha),\\qquad n^\\alpha=o(a^n),\\qquad a^n=o(n!),\\qquad n!=o(n^n),$$\net dans le sens inverse :\n$$n^{-n}=o\\left(\\frac1{n!}\\right),\\qquad \\frac1{n!}=o\\left(a^{-n}\\right),\\qquad a^{-n}=o\\left(n^{-\\alpha}\\right),\\qquad n^{-\\alpha}=o\\left((\\ln n)^{-\\beta}\\right).$$",
+              "origin": "source",
+              "title": "Théorème (comparaison des suites usuelles)"
+            },
+            {
+              "type": "intuition",
+              "md": "À retenir comme une échelle de croissance : $(\\ln n)^\\beta\\ \\ll\\ n^\\alpha\\ \\ll\\ a^n\\ \\ll\\ n!\\ \\ll\\ n^n$. Quelles que soient les constantes, une suite plus à droite finit par écraser toute suite plus à gauche (par exemple $n^{100}=o(1{,}01^n)$).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Rangez ces suites de la plus lente à la plus rapide (vers $+\\infty$).",
+                "items": [
+                  "$\\ln n$",
+                  "$\\sqrt n$",
+                  "$2^n$",
+                  "$n!$",
+                  "$n^n$"
+                ],
+                "explanation": "$(\\ln n)^1=o(n^{1/2})$, $n^{1/2}=o(2^n)$, $2^n=o(n!)$, $n!=o(n^n)$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $(u_n)$ une suite telle que $\\displaystyle\\lim_{n\\to+\\infty}u_n=0$. Alors :\n1. $\\sin u_n\\sim u_n$ ;\n2. $\\tan u_n\\sim u_n$ ;\n3. $\\ln(1+u_n)\\sim u_n$ ;\n4. $1-\\cos u_n\\sim\\dfrac{u_n^2}{2}$ ;\n5. $\\exp(u_n)-1\\sim u_n$ ;\n6. $(1+u_n)^\\alpha-1\\sim\\alpha u_n$ ($\\alpha\\in{\\mathbb{R}}^*$).",
+              "origin": "source",
+              "title": "Théorème (équivalents usuels)"
+            },
+            {
+              "type": "example",
+              "md": "Avec $u_n=\\frac1n\\to0$ : $\\sin\\frac1n\\sim\\frac1n$, donc $n\\sin\\frac1n\\sim n\\cdot\\frac1n=1$ et la limite vaut $1$.",
+              "origin": "added",
+              "title": "Exemple : $\\lim n\\sin\\frac1n$"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque expression (avec $u_n\\to0$) à un équivalent.",
+              "pairs": [
+                {
+                  "left": "$\\sin u_n$",
+                  "right": "$u_n$"
+                },
+                {
+                  "left": "$1-\\cos u_n$",
+                  "right": "$\\frac{u_n^2}2$"
+                },
+                {
+                  "left": "$(1+u_n)^\\alpha-1$",
+                  "right": "$\\alpha u_n$"
+                },
+                {
+                  "left": "$\\ln(1+u_n)$ divisé par $2$",
+                  "right": "$\\frac{u_n}2$"
+                }
+              ],
+              "explanation": "Équivalents usuels 1, 4, 6 et 3 (multiplier un équivalent par une constante est permis : c'est un produit)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$n^{10}=o(2^n)$.",
+              "answer": true,
+              "explanation": "Vrai : $n^\\alpha=o(a^n)$ pour tout $\\alpha>0$ et $a>1$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$n!=o(5^n)$.",
+              "answer": false,
+              "explanation": "Faux : c'est l'inverse, $5^n=o(n!)$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}n^2\\left(1-\\cos\\frac1n\\right)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1/2",
+                "0.5"
+              ],
+              "explanation": "$1-\\cos\\frac1n\\sim\\frac1{2n^2}$, donc $n^2\\left(1-\\cos\\frac1n\\right)\\sim\\frac12$.",
+              "placeholder": "fraction"
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\displaystyle\\lim_{n\\to+\\infty}n\\ln\\left(1+\\frac3n\\right)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$\\ln\\left(1+\\frac3n\\right)\\sim\\frac3n$, donc $n\\ln\\left(1+\\frac3n\\right)\\sim3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $u_n=\\dfrac{n!}{n^n}$, que peut-on dire ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$u_n\\to0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$u_n\\to1$"
+                },
+                {
+                  "id": "c",
+                  "md": "$u_n\\to+\\infty$"
+                },
+                {
+                  "id": "d",
+                  "md": "$u_n$ diverge sans limite"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$n!=o(n^n)$ signifie exactement $\\frac{n!}{n^n}\\to0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "suites-recurrentes",
+      "title": "Suites récurrentes",
+      "number": "5",
+      "lessons": [
+        {
+          "slug": "suites-recurrentes-ordre-1",
+          "title": "Suites récurrentes d'ordre 1",
+          "number": "L17",
+          "estimatedMinutes": 8,
+          "summary": "Suites définies par $u_{n+1}=f(u_n)$ : une limite éventuelle est un point fixe de $f$ ($f(l)=l$) ; intervalles stables par $f$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit une fonction continue $f:\\mathbb{R}\\to{\\mathbb{R}}$. On peut définir une suite $(u_n)$ par la donnée de son premier terme $u_0$ et d'une relation de récurrence de la forme\n$$\\forall n\\in{\\mathbb{N}},\\quad u_{n+1}=f(u_n).$$\nCette suite est appelée **suite récurrente d'ordre 1**.\n\nNotons qu'une suite récurrente donnée n'est pas forcément convergente. Lorsqu'elle admet une limite, l'ensemble des valeurs possibles est restreint par le résultat essentiel suivant.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $f$ est une fonction continue et si la suite récurrente $(u_n)$ converge vers $l$, alors $l$ est une solution de l'équation :\n$$f(l)=l.$$",
+              "origin": "source",
+              "title": "Proposition (limite d'une suite récurrente)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Si $u_n\\to l$, alors $u_{n+1}\\to l$ (c'est une suite extraite, $\\phi(n)=n+1$)."
+                },
+                {
+                  "md": "Par continuité de $f$ en $l$, $f(u_n)\\to f(l)$ (caractérisation séquentielle de la continuité, chapitre 3). Comme $u_{n+1}=f(u_n)$, l'unicité de la limite donne $l=f(l)$."
+                }
+              ],
+              "origin": "added",
+              "title": "Idée de la preuve"
+            },
+            {
+              "type": "text",
+              "md": "Si on arrive à montrer que la limite existe, cette proposition affirme qu'elle est à chercher parmi les solutions de l'équation $f(l)=l$.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "recurrent-sequence",
+              "caption": "Change u₀ et la fonction f : le diagramme en escalier montre la suite uₙ₊₁ = f(uₙ) et le point fixe f(ℓ) = ℓ.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Si $u_{n+1}=\\dfrac{u_n}{2}+3$ converge, sa limite vaut ___",
+                "answerType": "number",
+                "accepted": [
+                  "6"
+                ],
+                "explanation": "$l=\\frac l2+3\\iff\\frac l2=3\\iff l=6$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Soit $J\\subset{\\mathbb{R}}$ un intervalle de $\\mathbb{R}$. On dit que $J$ est **stable** par $f$ si et seulement si $f(J)\\subset J$.",
+              "origin": "source",
+              "title": "Intervalle stable"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Si $J$ est un intervalle stable et $u_0\\in J$, alors $\\forall n\\in{\\mathbb{N}}$, $u_n\\in J$.",
+              "origin": "source",
+              "title": "Théorème (intervalle stable)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Par récurrence : $u_0\\in J$, et si $u_n\\in J$ alors $u_{n+1}=f(u_n)\\in f(J)\\subset J$."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Nous avons deux cas particuliers, étudiés dans la leçon suivante :\n1. $f$ est croissante sur un intervalle stable $J$ et $u_0\\in J$ ;\n2. $f$ est décroissante sur un intervalle stable $J$ et $u_0\\in J$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "L'intervalle $[0,1]$ est stable par $f(x)=x^2$.",
+                "answer": true,
+                "explanation": "Vrai : si $0\\le x\\le1$, alors $0\\le x^2\\le1$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Toute suite récurrente $u_{n+1}=f(u_n)$ avec $f$ continue converge.",
+              "answer": false,
+              "explanation": "Faux : $u_{n+1}=2u_n$ avec $u_0=1$ donne $2^n\\to+\\infty$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Les limites possibles de $u_{n+1}=u_n^2$ sont :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$0$ ou $1$"
+                },
+                {
+                  "id": "b",
+                  "md": "$0$ uniquement"
+                },
+                {
+                  "id": "c",
+                  "md": "$1$ uniquement"
+                },
+                {
+                  "id": "d",
+                  "md": "n'importe quel réel"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$l^2=l\\iff l(l-1)=0\\iff l\\in\\{0,1\\}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f(l)=l$, alors la suite $u_{n+1}=f(u_n)$ converge vers $l$ quel que soit $u_0$.",
+              "answer": false,
+              "explanation": "Faux : la proposition dit seulement qu'une limite **éventuelle** est un point fixe. Avec $f(x)=x^2$ et $u_0=2$, $u_n=2^{2^n}\\to+\\infty$ alors que $1$ est un point fixe."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces intervalles est stable par $f(x)=\\sqrt{x}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$[0,1]$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[2,3]$"
+                },
+                {
+                  "id": "c",
+                  "md": "$[0,\\frac12]$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[4,9]$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$f([0,1])=[0,1]$. En revanche $f([2,3])=[\\sqrt2,\\sqrt3]\\not\\subset[2,3]$, $f([0,\\frac12])=[0,\\frac{\\sqrt2}2]\\not\\subset[0,\\frac12]$ et $f([4,9])=[2,3]\\not\\subset[4,9]$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si $u_{n+1}=\\sqrt{2+u_n}$ (avec $u_0\\ge-2$) converge, sa limite (positive) vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$l=\\sqrt{2+l}$ impose $l\\ge0$ et $l^2=2+l$, soit $l^2-l-2=(l-2)(l+1)=0$ : $l=2$."
+            }
+          ]
+        },
+        {
+          "slug": "recurrentes-et-monotonie",
+          "title": "Suites récurrentes et fonction monotone",
+          "number": "L18",
+          "estimatedMinutes": 12,
+          "summary": "Pour $u_{n+1}=f(u_n)$ sur un intervalle stable : si $f$ est croissante la suite est monotone et converge vers un point fixe ; si $f$ est décroissante on étudie $(u_{2n})$ et $(u_{2n+1})$ via $f\\circ f$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "On considère une suite récurrente $u_{n+1}=f(u_n)$, où $f$ est continue sur un intervalle stable $J$ et $u_0\\in J$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "La fonction f est croissante sur un intervalle stable",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Lorsque $f$ est croissante sur un intervalle stable $J$ et $u_0\\in J$, alors $(u_n)$ est monotone :\n1. si $u_0\\le f(u_0)$, alors $(u_n)$ est croissante ;\n2. si $f(u_0)\\le u_0$, alors $(u_n)$ est décroissante.",
+              "origin": "source",
+              "title": "Théorème (cas f croissante)"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "La preuve est facile par récurrence. En effet, si $u_1\\ge u_0$, alors comme $f$ est croissante on a $u_2=f(u_1)\\ge f(u_0)=u_1$. Partant de $u_2\\ge u_1$, on en déduit $u_3\\ge u_2$, …"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour la convergence, on a le résultat suivant :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $f:[a,b]\\to[a,b]$ est une fonction continue et croissante, alors quel que soit $u_0\\in[a,b]$, la suite récurrente $(u_n)$ est monotone et converge vers $l\\in[a,b]$ vérifiant $f(l)=l$.",
+              "origin": "source",
+              "title": "Proposition (convergence, cas croissant)"
+            },
+            {
+              "type": "text",
+              "md": "Notons que $f$ est définie de l'intervalle $[a,b]$ dans lui-même. Dans la pratique, pour appliquer cette proposition, il faut commencer par choisir $[a,b]$ et vérifier que $f([a,b])\\subset[a,b]$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "$f$ est croissante sur un intervalle stable, $u_0=1$ et $f(1)=0{,}5$. La suite $(u_n)$ est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "décroissante"
+                  },
+                  {
+                    "id": "b",
+                    "md": "croissante"
+                  },
+                  {
+                    "id": "c",
+                    "md": "ni l'un ni l'autre"
+                  },
+                  {
+                    "id": "d",
+                    "md": "constante"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f(u_0)=0{,}5\\le u_0=1$ : point 2 du théorème, la suite est décroissante."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Soit $(u_n)$ la suite définie par :\n$$u_0=1\\qquad\\text{et}\\qquad\\forall n\\in{\\mathbb{N}},\\ u_{n+1}=f(u_n),$$\navec $f(x)=\\sqrt{1+x}$ pour $x\\in[-1,3]$. Étudier la suite $(u_n)_{n\\in{\\mathbb{N}}}$.",
+              "origin": "source",
+              "title": "Exemple",
+              "solution": [
+                {
+                  "md": "$f$ est continue et croissante sur $[-1,3]$, et $f([-1,3])=[0,2]\\subset[-1,3]$ : l'intervalle $[-1,3]$ est stable, et $u_0=1$ y appartient."
+                },
+                {
+                  "md": "$f(u_0)=\\sqrt2\\ge1=u_0$ : la suite est croissante (théorème, point 1)."
+                },
+                {
+                  "md": "Par la proposition, $(u_n)$ converge vers $l\\in[-1,3]$ tel que $\\sqrt{1+l}=l$, donc $l\\ge0$ et $l^2-l-1=0$."
+                },
+                {
+                  "md": "La racine positive est $l=\\dfrac{1+\\sqrt5}2\\approx1{,}618$ (le nombre d'or). Donc $u_n\\to\\dfrac{1+\\sqrt5}2$."
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch02-toile-recurrence.svg",
+              "alt": "Diagramme en escalier de u_{n+1}=√(1+u_n) avec u_0=1 : la suite croît vers le point fixe l, intersection de la courbe et de la droite y=x.",
+              "caption": "Figure — uₙ₊₁ = √(1 + uₙ), u₀ = 1 : la suite monte vers le point fixe l = (1 + √5)/2.",
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "La source pose cet exemple sans corrigé ; la solution ci-dessus est ajoutée.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "La fonction f est décroissante sur un intervalle stable",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce cas est plus compliqué, mais si l'on remarque que les deux suites extraites\n$$(v_n)=(u_{2n}),\\qquad (w_n)=(u_{2n+1})$$\nvérifient les relations de récurrence\n$$\\begin{aligned}v_0&=u_0, &\\forall n\\in{\\mathbb{N}},\\quad v_{n+1}&=f\\circ f(v_n),\\\\ w_0&=u_1, &\\forall n\\in{\\mathbb{N}},\\quad w_{n+1}&=f\\circ f(w_n),\\end{aligned}$$\net que la fonction $g=f\\circ f$ est croissante, on se ramène alors au cas précédent. Les suites $(v_n)$ et $(w_n)$ sont monotones de sens contraire.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour la convergence, on a le résultat suivant :",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soit $f:[a,b]\\to[a,b]$ une fonction continue et décroissante. Soit $u_0\\in[a,b]$ et la suite récurrente $(u_n)$ définie par $u_{n+1}=f(u_n)$. Alors :\n1. la sous-suite $(u_{2n})$ converge vers une limite $l$ vérifiant $f\\circ f(l)=l$ ;\n2. la sous-suite $(u_{2n+1})$ converge vers une limite $l'$ vérifiant $f\\circ f(l')=l'$.",
+              "origin": "source",
+              "title": "Proposition (convergence, cas décroissant)"
+            },
+            {
+              "type": "text",
+              "md": "Il se peut (ou pas !) que $l=l'$.\n\nSi ces deux suites $(u_{2n})$ et $(u_{2n+1})$ convergent vers la même limite $l=l'$, alors la suite $(u_n)$ converge vers cette même limite $l$ ; sinon, la suite $(u_n)$ diverge.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $f$ est décroissante, la fonction $f\\circ f$ est croissante.",
+                "answer": true,
+                "explanation": "Vrai : si $x\\le y$, alors $f(x)\\ge f(y)$, puis $f(f(x))\\le f(f(y))$ (deux renversements d'ordre)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre l'étude de $u_{n+1}=f(u_n)$ quand $f$ est croissante.",
+              "items": [
+                "Choisir un intervalle $[a,b]$ et vérifier $f([a,b])\\subset[a,b]$.",
+                "Vérifier que $u_0\\in[a,b]$.",
+                "Comparer $u_0$ et $f(u_0)$ pour obtenir le sens de variation.",
+                "Conclure à la convergence vers un $l\\in[a,b]$.",
+                "Trouver $l$ en résolvant $f(l)=l$."
+              ],
+              "explanation": "C'est la démarche de l'exemple $f(x)=\\sqrt{1+x}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $u_{n+1}=\\sqrt{1+u_n}$, $u_0=1$, la limite est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\frac{1+\\sqrt5}2$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\frac{1-\\sqrt5}2$"
+                },
+                {
+                  "id": "c",
+                  "md": "$1$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\sqrt2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$l=\\sqrt{1+l}$ avec $l\\ge0$ donne $l^2=l+1$, dont la racine positive est $\\frac{1+\\sqrt5}2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est décroissante sur un intervalle stable, $(u_n)$ est monotone.",
+              "answer": false,
+              "explanation": "Faux : ce sont $(u_{2n})$ et $(u_{2n+1})$ qui sont monotones (de sens contraire). Exemple : $f(x)=1-x$ sur $[0,1]$, $u_0=0$ donne $0,1,0,1,\\dots$"
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Avec $f(x)=1-x$ sur $[0,1]$ et $u_0=0$, que vaut $f\\circ f(x)$ et que fait $(u_n)$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$f\\circ f(x)=x$ ; $(u_n)$ diverge ($u_{2n}\\to0$, $u_{2n+1}\\to1$)"
+                },
+                {
+                  "id": "b",
+                  "md": "$f\\circ f(x)=1-x$ ; $(u_n)$ converge vers $\\frac12$"
+                },
+                {
+                  "id": "c",
+                  "md": "$f\\circ f(x)=x$ ; $(u_n)$ converge vers $\\frac12$"
+                },
+                {
+                  "id": "d",
+                  "md": "$f\\circ f(x)=0$ ; $(u_n)$ converge vers $0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$f(f(x))=1-(1-x)=x$. Les sous-suites paire et impaire sont constantes égales à $0$ et $1$ : $l\\ne l'$, donc $(u_n)$ diverge."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans la proposition du cas croissant, la limite $l$ appartient à $[a,b]$.",
+              "answer": true,
+              "explanation": "Vrai : tous les termes sont dans $[a,b]$ (intervalle stable) et on passe à la limite dans $a\\le u_n\\le b$."
+            }
+          ]
+        },
+        {
+          "slug": "recurrentes-lineaires-ordre-2",
+          "title": "Suites récurrentes linéaires d'ordre 2",
+          "number": "L19",
+          "estimatedMinutes": 11,
+          "summary": "Suites vérifiant $u_{n+2}=\\alpha u_{n+1}+\\beta u_n$ : espace vectoriel de dimension 2, équation caractéristique $r^2=\\alpha r+\\beta$, base selon les racines, et formule de Fibonacci.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Une **suite récurrente d'ordre 2** est de la forme :\n$$(\\mathcal E)\\qquad \\forall n\\in{\\mathbb{N}},\\quad u_{n+2}=\\alpha u_{n+1}+\\beta u_n,$$\noù $\\alpha$ et $\\beta$ sont deux réels fixés. L'exemple le plus simple est la suite de Fibonacci : $u_{n+2}=u_{n+1}+u_n$.\n\nNous notons $E$ l'ensemble des suites de réels qui vérifient $(\\mathcal E)$. Dire que $(\\mathcal E)$ est linéaire revient à dire que $E$ est un espace vectoriel.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "L'ensemble $E$ des suites de réels vérifiant $(\\mathcal E)$ est un espace vectoriel de dimension $2$.",
+              "origin": "source",
+              "title": "Proposition (structure de E)"
+            },
+            {
+              "type": "intuition",
+              "md": "Pourquoi dimension $2$ ? Une suite de $E$ est entièrement déterminée par ses deux premiers termes $u_0$ et $u_1$ : il y a « deux degrés de liberté ».",
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Pour trouver une expression explicite des solutions de $(\\mathcal E)$, nous allons trouver une base de $E$. Nous commençons par écarter le cas $\\alpha=\\beta=0$ : dans ce cas, les suites solutions de $(\\mathcal E)$ sont nulles à partir du rang $2$. Nous supposons désormais que $\\alpha$ et $\\beta$ ne sont pas tous les deux nuls.\n\nCherchons quelles suites géométriques vérifient $(\\mathcal E)$. Supposons que $(r^n)$ vérifie $(\\mathcal E)$. Alors\n$$\\forall n\\in{\\mathbb{N}},\\quad r^{n+2}=\\alpha r^{n+1}+\\beta r^n.$$\nC'est vrai si $r$ est nul (lorsque $\\beta=0$, avec la convention $0^0=1$), ou bien si $r$ est solution de l'équation du second degré suivante, qu'on appelle l'**équation caractéristique** associée :\n$$\\boxed{\\,r^2=\\alpha r+\\beta.\\,}$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est l'équation caractéristique de $u_{n+2}=5u_{n+1}-6u_n$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$r^2=5r-6$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$r^2=-5r+6$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$r^2=6r-5$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$5r^2=r-6$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Avec $\\alpha=5$ et $\\beta=-6$ : $r^2=5r-6$, soit $r^2-5r+6=0$, de racines $2$ et $3$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Si l'équation caractéristique associée possède :\n1. deux racines réelles distinctes $r_1$ et $r_2$, alors $\\bigl((r_1^n),(r_2^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r_1^n+\\mu r_2^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n2. une racine double $r$, alors $\\bigl((r^n),(nr^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r^n+\\mu nr^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n3. deux racines complexes conjuguées $\\rho e^{i\\theta}$ et $\\rho e^{-i\\theta}$, alors $\\bigl((\\rho^n\\cos(n\\theta)),(\\rho^n\\sin(n\\theta))\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda\\rho^n\\cos(n\\theta)+\\mu\\rho^n\\sin(n\\theta)),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\}.",
+              "origin": "source",
+              "title": "Théorème (base de E)"
+            },
+            {
+              "type": "text",
+              "md": "Pour la démonstration : puisque l'espace vectoriel $E$ est de dimension $2$, il suffit dans chacun des trois cas de montrer que les deux suites proposées vérifient $(\\mathcal E)$ et forment une famille libre.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Considérons l'équation définissant les nombres de Fibonacci :\n$$(\\mathcal E)\\qquad\\forall n\\in{\\mathbb{N}},\\quad u_{n+2}=u_{n+1}+u_n.$$\nL'équation caractéristique associée est $r^2=r+1$. Elle a deux racines réelles distinctes, $\\phi$ et $-\\dfrac1\\phi$, où $\\phi$ est le **nombre d'or** :\n$$\\phi=\\frac{1+\\sqrt5}{2},\\qquad -\\frac1\\phi=\\frac{1-\\sqrt5}{2}.$$\nL'ensemble des suites réelles vérifiant $(\\mathcal E)$ est donc\n$$\\left\\{\\left(\\lambda\\left(\\frac{1+\\sqrt5}{2}\\right)^n+\\mu\\left(\\frac{1-\\sqrt5}{2}\\right)^n\\right),\\ \\lambda,\\mu\\in{\\mathbb{R}}\\right\\}.$$\nLes nombres de Fibonacci sont définis par $(\\mathcal E)$, avec $u_0=1$ et $u_1=1$. Pour calculer les coordonnées $\\lambda$ et $\\mu$ de cette suite, il faut résoudre le système\n$$\\begin{cases}\\lambda+\\mu=1,\\\\ \\lambda\\phi-\\mu/\\phi=1.\\end{cases}$$\nOn en déduit l'expression suivante du $n$-ième nombre de Fibonacci :\n$$u_n=\\frac{1}{2^{n+1}\\sqrt5}\\Bigl((1+\\sqrt5)^{n+1}-(1-\\sqrt5)^{n+1}\\Bigr).$$",
+              "origin": "source",
+              "title": "Exemple (nombres de Fibonacci)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Vérification de la formule pour $n=1$ : $\\dfrac{(1+\\sqrt5)^2-(1-\\sqrt5)^2}{4\\sqrt5}=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$(1+\\sqrt5)^2-(1-\\sqrt5)^2=4\\sqrt5$, donc le quotient vaut $1=u_1$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "steps",
+              "prompt": "Résolvons $u_{n+2}=5u_{n+1}-6u_n$ avec $u_0=2$ et $u_1=5$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Les racines de l'équation caractéristique $r^2-5r+6=0$ sont :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$2$ et $3$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$-2$ et $-3$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$1$ et $6$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$r^2-5r+6=(r-2)(r-3)$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On écrit $u_n=\\lambda2^n+\\mu3^n$. Avec $\\lambda+\\mu=2$ et $2\\lambda+3\\mu=5$, on trouve $\\mu=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "$2\\lambda+3\\mu=5$ et $2\\lambda+2\\mu=4$ donnent $\\mu=1$, puis $\\lambda=1$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Donc $u_3=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "35"
+                  ],
+                  "explanation": "$u_3=2^3+3^3=8+27=35$ (et la récurrence donne bien $u_2=13$, $u_3=5\\cdot13-6\\cdot5=35$)."
+                }
+              ],
+              "explanation": "$u_n=2^n+3^n$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez la nature des racines de l'équation caractéristique à la base de $E$.",
+              "pairs": [
+                {
+                  "left": "deux racines réelles distinctes $r_1,r_2$",
+                  "right": "$(r_1^n),(r_2^n)$"
+                },
+                {
+                  "left": "une racine double $r$",
+                  "right": "$(r^n),(nr^n)$"
+                },
+                {
+                  "left": "deux racines complexes $\\rho e^{\\pm i\\theta}$",
+                  "right": "$(\\rho^n\\cos n\\theta),(\\rho^n\\sin n\\theta)$"
+                }
+              ],
+              "explanation": "Ce sont les trois cas du théorème."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "L'équation $u_{n+2}=4u_{n+1}-4u_n$ a pour solutions :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$(\\lambda+\\mu n)2^n$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\lambda2^n+\\mu(-2)^n$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\lambda4^n+\\mu$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\lambda2^n$ seulement"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$r^2-4r+4=(r-2)^2$ : racine double $2$, base $\\bigl((2^n),(n2^n)\\bigr)$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'ensemble $E$ des solutions de $(\\mathcal E)$ est un espace vectoriel de dimension $2$.",
+              "answer": true,
+              "explanation": "Vrai : c'est la proposition de la leçon."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La racine positive de $r^2=r+1$ (nombre d'or) vaut $\\dfrac{1+\\sqrt5}{d}$ avec $d=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$r=\\frac{1\\pm\\sqrt{1+4}}2$, la racine positive est $\\phi=\\frac{1+\\sqrt5}2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : cours du Prof. Saïd TAARABTI (ENSA Agadir), F224 (identique octet par octet à Modules/Analyse/Cours/Chapitre 02), transcrit leçon par leçon en LaTeX (output/course_path/bodies/ch02/*.tex, PDF rendus dans Cours/Analyse/Ch02). Les numéros L01–L19 correspondent à ces PDF. La numérotation de la source (Définition 12…24, Théorème 6…28) est remplacée par des titres.",
+    "Corrections déjà faites par le transcripteur et conservées : suite constante « u_n = u_0 ∀n » (la source écrivait ∀n ≥ n_0) ; doublon « 3. 3. » supprimé (L03) ; « limite d'une suite R̄ » → « à R̄ » (L04) ; M = max(|u_0|,…,|u_N|, 1+|l|) avec valeurs absolues et n ≥ N (L05) ; (k,k') ∈ ℝ² et rang N_0 ajouté au max dans la preuve du passage à la limite (L06) ; point 7 du théorème des opérations (annotation source) et M > 0 au point 4 (L08) ; hypothèse u_0 ≠ 0 et q ≠ 1 (L09) ; preuves 10–11 réécrites proprement (L10) ; preuve des suites adjacentes « quitte à les échanger » (L12) ; énoncé du Théorème 19 « Toute suite réelle convergente… », « cauchy » → « Cauchy » (L14) ; « strictement positifs » et l ∈ ℝ (L15) ; parenthèse de o((ln n)^{−β}) rétablie (L16) ; « est chercher » → « est à chercher » (L17) ; « Si f : [a,b] → [a,b] une fonction » → « est une fonction » (L18) ; cas r = 0 (β = 0, convention 0^0 = 1) (L19).",
+    "L09 : la source mélange les lettres q (définition, remarque) et r (théorème) pour la raison ; conservé. La « Définition 18 » de la source (calcul de S_n et convergence de la série géométrique) est un résultat : présentée comme Proposition.",
+    "L04 : la figure (bande l ± ε) de la transcription, déjà ajoutée par le transcripteur, est remplacée par un bloc intuition (texte). L13 : le schéma TikZ de la dichotomie est décrit en une phrase dans la preuve.",
+    "L05 : la question de la source « La réciproque est-elle vraie ? » est conservée ; la réponse (contre-exemple (−1)^n) est ajoutée dans une remarque (origin: added).",
+    "Ajouts (origin: added) : preuve du lemme φ(n) ≥ n (L10) ; justification de la majoration par 2 de Σ 1/k² (L11) ; calculs de monotonie et d'écart dans l'exemple des suites adjacentes (L12) ; remarque sur l ∈ [a,b] dans le corollaire de Bolzano-Weierstrass (L13) ; remarque sur le critère de Cauchy (admis comme dans la source, faux dans ℚ) (L14) ; contre-exemple montrant qu'on n'additionne pas des équivalents (L15) ; exemple n·sin(1/n) (L16) ; idée de preuve de f(l) = l et preuve de l'intervalle stable (L17) ; corrigé de l'Exemple 19 f(x) = √(1+x), limite (1+√5)/2 (L18) ; exemple sin(n)/n (L07).",
+    "L08 : dans la preuve du point 6, une indication précise que v_n ≠ 0 à partir du rang N (implicite dans la source).",
+    "L14 : le critère de Cauchy (« toute suite de Cauchy converge ») et l'exemple Σ 1/k² sont énoncés sans preuve, comme dans la source.",
+    "L19 : la formule de Fibonacci u_n = ((1+√5)^{n+1} − (1−√5)^{n+1}) / (2^{n+1}√5) a été vérifiée (n = 0, 1, et cohérente avec φ^{n+1} − ψ^{n+1} sur √5). La démonstration du théorème de la base n'est qu'esquissée, comme dans la source.",
+    "Matériel lié dans d'autres sources : F107 (chapitre 3) p. 11, § 3.3.4 « Suites et continuité » (caractérisation séquentielle de la continuité, Rem. 18 sur u_{n+1} = f(u_n)) porte sur les fonctions et reste au chapitre 3 ; l'idée de preuve ajoutée en L17 y renvoie.",
+    "Tous les checkpoints et quiz sont des ajouts (aucune question dans la source)."
+  ]
+}

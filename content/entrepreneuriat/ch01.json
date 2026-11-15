@@ -1,0 +1,806 @@
+{
+  "slug": "leadership",
+  "number": 1,
+  "title": "Leadership dans un environnement en mutation",
+  "description": "Séance 1 du cahier « Orientez votre carrière » : ce que font les leaders, connaissance de soi (fenêtre de Johari), vision personnelle, intelligence émotionnelle, délégation, tactiques d'influence et orientations en leadership.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "roles-du-leader",
+      "title": "Le rôle du leader",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "ce-que-font-les-leaders",
+          "title": "Ce que font les leaders",
+          "number": "1.1",
+          "estimatedMinutes": 8,
+          "summary": "Objectifs de la séance, citations célèbres sur le leadership et les six choses que font les leaders.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance aborde l'art de **gérer les personnes** d'une manière transparente et authentique. Elle souligne l'importance d'**avoir une vision**, de **se connaître soi-même**, d'entretenir des **relations transparentes** et d'avoir la capacité de **comprendre son environnement**. Des aspects de la **motivation** et de l'**intelligence émotionnelle** du leader sont aussi traités.",
+              "origin": "source",
+              "title": "Être un leader dans un environnement en mutation"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de cette séance, vous serez en mesure de :\n1. comprendre certaines compétences de base que les leaders doivent maîtriser ;\n2. identifier les éléments de l'intelligence émotionnelle ;\n3. reconnaître les techniques d'influence utilisées par des leaders efficaces ;\n4. explorer vos orientations en matière de leadership dans le cadre de l'élargissement de votre propre conscience de soi.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Complétez les citations à l'aide des indices (Voulez voir fait ; Leader – vendeur d'espoir ; L'efficacité / L'efficience ; Affirme – Explique – Démontre – Inspire ; L'influence – L'autorité ; Obéir – commandeur ; La natation). Les trois dernières citations n'ont pas d'indice.\n1. « Le leadership, c'est l'art de faire faire à quelqu'un quelque chose que vous ____. » — Dwight D. Eisenhower\n2. « Un ____ est un ____. » — Napoléon Bonaparte\n3. « ____ c'est faire les choses bien, ____ c'est faire les bonnes choses. » — Peter F. Drucker\n4. « Le professeur médiocre ____. Le bon professeur ____. Le professeur supérieur ____. Le grand maître ____. » — William Arthur Ward\n5. « Aujourd'hui la clé du pouvoir des dirigeants réside dans ____ et non plus dans ____. » — Kenneth H. Blanchard\n6. « Celui qui n'a jamais appris à ____ ne peut pas être un bon ____. » — Aristote\n7. « Le leadership, comme ____, ne peut pas être appris dans un livre. » — Henry Mintzberg\n8. « Diriger, suivre ou ____ à l'écart ! » — Anonyme\n9. « Le seigneur d'un peuple (ou chef) est leur ____. » — Proverbe arabe\n10. « Faites du bien aux gens et vous ____ leurs cœurs. » — Proverbe arabe",
+              "origin": "source",
+              "title": "Exercice initial : citations sur le leadership",
+              "solution": [
+                {
+                  "md": "1. … que vous **voulez voir fait**. 2. Un **leader** est un **vendeur d'espoir**."
+                },
+                {
+                  "md": "3. **L'efficience**, c'est faire les choses bien ; **l'efficacité**, c'est faire les bonnes choses.",
+                  "why": "L'efficience concerne la manière (bien utiliser les ressources), l'efficacité concerne le but (atteindre le bon objectif)."
+                },
+                {
+                  "md": "4. Le professeur médiocre **affirme**, le bon professeur **explique**, le professeur supérieur **démontre**, le grand maître **inspire**."
+                },
+                {
+                  "md": "5. … réside dans **l'influence** et non plus dans **l'autorité**. 6. … appris à **obéir** ne peut pas être un bon **commandeur** (chef). 7. Le leadership, comme **la natation**, ne peut pas être appris dans un livre."
+                },
+                {
+                  "md": "8. Diriger, suivre ou **se tenir** à l'écart ! 9. Le seigneur d'un peuple est leur **serviteur**. 10. … et vous **gagnerez** leurs cœurs.",
+                  "why": "Ces trois réponses n'ont pas d'indice dans le cahier : ce sont les formes usuelles de ces citations."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "md": "1. Les leaders **connaissent leurs forces et leurs faiblesses**.\n2. Les leaders **ont une vision**.\n3. Les leaders sont **émotionnellement intelligents**.\n4. Les leaders **délèguent**.\n5. Les leaders **influent**.\n6. Les leaders sont **au service des autres**.",
+              "origin": "source",
+              "title": "Ce que les leaders font"
+            },
+            {
+              "type": "remark",
+              "md": "Avant de lire la liste, le cahier propose deux défis : définir le leadership en trente secondes, et identifier en trente secondes au moins trois caractéristiques d'un leader.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "D'après Kenneth H. Blanchard, la clé du pouvoir des dirigeants réside aujourd'hui dans :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "l'autorité"
+                  },
+                  {
+                    "id": "b",
+                    "md": "l'influence"
+                  },
+                  {
+                    "id": "c",
+                    "md": "la hiérarchie"
+                  },
+                  {
+                    "id": "d",
+                    "md": "le salaire"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "« … dans l'influence et non plus dans l'autorité. » Un leader entraîne les autres par l'influence plus que par le statut."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Selon la citation de Drucker, l'efficacité consiste à « faire les bonnes choses ».",
+              "answer": true,
+              "explanation": "L'efficience = faire les choses bien ; l'efficacité = faire les bonnes choses."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la gradation de William Arthur Ward, du professeur médiocre au grand maître.",
+              "items": [
+                "Affirme",
+                "Explique",
+                "Démontre",
+                "Inspire"
+              ],
+              "explanation": "Le médiocre affirme, le bon explique, le supérieur démontre, le grand maître inspire."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces propositions **ne fait pas partie** des six choses que font les leaders selon le cahier ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Ils délèguent"
+                },
+                {
+                  "id": "b",
+                  "md": "Ils ont une vision"
+                },
+                {
+                  "id": "c",
+                  "md": "Ils font tout par eux-mêmes"
+                },
+                {
+                  "id": "d",
+                  "md": "Ils sont au service des autres"
+                }
+              ],
+              "answer": "c",
+              "explanation": "C'est même l'inverse : les leaders délèguent. Les six points sont : forces et faiblesses, vision, intelligence émotionnelle, délégation, influence, service des autres."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Selon Henry Mintzberg, le leadership, comme ___, ne peut pas être appris dans un livre.",
+              "answerType": "text",
+              "accepted": [
+                "la natation",
+                "natation"
+              ],
+              "explanation": "On apprend à nager dans l'eau, pas dans un livre : le leadership s'apprend en pratiquant."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La séance présente le leadership comme l'art de gérer les personnes de manière transparente et authentique.",
+              "answer": true,
+              "explanation": "C'est la présentation de la séance 1."
+            }
+          ]
+        },
+        {
+          "slug": "se-connaitre-et-avoir-une-vision",
+          "title": "Se connaître et avoir une vision",
+          "number": "1.2",
+          "estimatedMinutes": 9,
+          "summary": "La fenêtre de Johari (zones publique, aveugle, cachée, inconnue) pour connaître ses forces et faiblesses, et la déclaration de vision personnelle.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Les leaders connaissent leurs forces et leurs faiblesses",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "La fenêtre de Johari classe ce que l'on sait de soi selon deux questions : est-ce **connu de moi** ? est-ce **connu des autres** ?\n\n| | Connu de moi | Inconnu de moi |\n|---|---|---|\n| **Connu des autres** | Zone publique | Zone aveugle |\n| **Inconnu des autres** | Zone cachée | Zone inconnue |",
+              "origin": "source",
+              "title": "La fenêtre de Johari"
+            },
+            {
+              "type": "exercise",
+              "md": "1. Quelles sont les choses (forces ou faiblesses) que je connais de moi-même et que les autres connaissent ?\n2. Quelles sont les choses que je connais de moi-même, mais que les autres ignorent ?\n3. Y a-t-il des choses que j'ignore sur moi-même mais que les autres semblent connaître ? Puis-je les deviner ? Comment puis-je les découvrir ?\n4. Quelles sont les forces ou faiblesses que ni moi ni les autres ne connaissons ? Est-il possible de les découvrir ? Comment ?\n\nEn vous basant sur les items 1 à 4, remplissez un tableau « Forces / Faiblesses / Actions (plan) proposées : comment puis-je tirer profit de mes forces et surmonter mes faiblesses ? ».",
+              "origin": "source",
+              "title": "Réflexion personnelle"
+            },
+            {
+              "type": "remark",
+              "md": "Les questions 1 à 4 correspondent, dans l'ordre, à la zone publique, à la zone cachée, à la zone aveugle et à la zone inconnue.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Un ami vous fait remarquer que vous coupez souvent la parole, ce que vous n'aviez jamais remarqué. Dans quelle zone se trouvait ce trait ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Zone publique"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Zone aveugle"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Zone cachée"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Zone inconnue"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Connu des autres mais inconnu de vous : c'est la zone aveugle. Le retour des autres permet de la réduire."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Les leaders ont une vision",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Pour être un leader, il faut avoir une vision. Un bon leader est une personne qui **a conscience de vers où elle se dirige**, des choses qui lui sont importantes dans la vie, de ce qui la passionne, des espoirs qu'elle a pour sa vie professionnelle.",
+              "origin": "source",
+              "title": "Vision"
+            },
+            {
+              "type": "example",
+              "md": "« Le genre de vie que je veux pour moi, c'est là où je sens que je peux apporter une contribution dans les domaines qui m'inspirent. Je suis une personne passionnée par la connaissance. J'aime chercher, analyser, développer et partager. Je me vois en mesure de développer mon domaine d'expertise et d'aider les gens à lancer une carrière enrichissante dans le journalisme. […] Je veux faire des rapports précis de ce qui se passe dans ma société, et surtout raconter les histoires qui restent généralement dans l'ombre. Je veux avoir un bon poste dans un groupe de médias prestigieux et utiliser ce poste pour diffuser les valeurs de la tolérance, de la paix et de la recherche du savoir. […] »\n\nCet énoncé décrit une personne qui dépeint une **image textuelle d'elle-même**.",
+              "origin": "source",
+              "title": "Un exemple de déclaration de vision personnelle"
+            },
+            {
+              "type": "exercise",
+              "md": "Rédigez une image textuelle similaire de vous-même en répondant à des questions telles que :\n- Quelle est la profession que je souhaite exercer ?\n- Comment voudrais-je me voir dans 5 ans ? Dans 10 ans ?\n- Qu'est-ce qui me procure de la joie ?\n- Quelles sont mes valeurs (l'honnêteté, l'altruisme, la joie de vivre, la vie de famille, la religion, etc.) ?\n- Quelles sont les questions sociales qui me tiennent à cœur (protéger l'environnement, la justice pour les moins privilégiés, la lutte contre la pauvreté ou l'analphabétisme, etc.) ?",
+              "origin": "source",
+              "title": "La déclaration de ma vision personnelle"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une déclaration de vision personnelle décrit où l'on veut aller, ce qui nous importe et ce qui nous passionne.",
+                "answer": true,
+                "explanation": "Oui : c'est une image textuelle de soi, aujourd'hui et dans le futur."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque zone de la fenêtre de Johari à sa définition.",
+              "pairs": [
+                {
+                  "left": "Zone publique",
+                  "right": "Connu de moi et connu des autres"
+                },
+                {
+                  "left": "Zone aveugle",
+                  "right": "Inconnu de moi mais connu des autres"
+                },
+                {
+                  "left": "Zone cachée",
+                  "right": "Connu de moi mais inconnu des autres"
+                },
+                {
+                  "left": "Zone inconnue",
+                  "right": "Inconnu de moi et des autres"
+                }
+              ],
+              "explanation": "Les deux critères sont : connu/inconnu de moi (colonnes) et connu/inconnu des autres (lignes)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Vous savez que vous avez peur de parler en public, mais vous ne l'avez jamais montré. Ce trait est dans la zone :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "publique"
+                },
+                {
+                  "id": "b",
+                  "md": "aveugle"
+                },
+                {
+                  "id": "c",
+                  "md": "cachée"
+                },
+                {
+                  "id": "d",
+                  "md": "inconnue"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Connu de vous, inconnu des autres : zone cachée."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Selon le cahier, un bon leader n'a pas besoin de savoir vers où il se dirige s'il est compétent.",
+              "answer": false,
+              "explanation": "Faux : « Pour être un leader, il faut avoir une vision », c'est-à-dire avoir conscience de vers où l'on se dirige."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces questions **ne fait pas partie** de celles proposées pour élaborer sa vision personnelle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Comment voudrais-je me voir dans 10 ans ?"
+                },
+                {
+                  "id": "b",
+                  "md": "Quelles sont mes valeurs ?"
+                },
+                {
+                  "id": "c",
+                  "md": "Combien gagne mon voisin ?"
+                },
+                {
+                  "id": "d",
+                  "md": "Qu'est-ce qui me procure de la joie ?"
+                }
+              ],
+              "answer": "c",
+              "explanation": "La vision porte sur soi : profession souhaitée, projection à 5 et 10 ans, joie, valeurs, causes sociales."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "competences-du-leader",
+      "title": "Les compétences du leader",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "intelligence-emotionnelle",
+          "title": "L'intelligence émotionnelle",
+          "number": "1.3",
+          "estimatedMinutes": 9,
+          "summary": "Les quatre domaines de l'intelligence émotionnelle (conscience de soi, gestion de soi, interaction sociale, gestion des relations) et l'auto-évaluation proposée.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Selon Boyatzis et Goleman (inventaire des compétences émotionnelles, 2001), l'intelligence émotionnelle (IE) regroupe quatre domaines :\n\n| Domaine | Compétences |\n|---|---|\n| **Conscience de soi** | Connaître ses émotions ; conscience de soi précise ; confiance en soi |\n| **Gestion de soi** | Contrôler ses émotions ; transparence ; adaptabilité ; orienté vers la réussite ; initiative ; optimisme |\n| **Interaction sociale** | Empathie ; interaction au sein d'un groupe ; orientation service |\n| **Gestion des relations** | Promotion des autres ; leadership source d'inspiration ; catalyseur de changement ; gestion du conflit ; travail en équipe et collaboration |",
+              "origin": "source",
+              "title": "Qu'est-ce que l'intelligence émotionnelle ?"
+            },
+            {
+              "type": "text",
+              "md": "Un leader émotionnellement intelligent est une personne qui peut être un **médiateur de conflits** habile et qui est en mesure de **ne pas se mettre sur la défensive** face aux autres. Un leader émotionnellement intelligent **ne se laisse pas dominer par ses émotions**, mais plutôt en fait bon usage.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans quel domaine de l'IE se trouve l'**empathie** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Conscience de soi"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Gestion de soi"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Interaction sociale"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Gestion des relations"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "L'empathie fait partie de l'interaction sociale, avec l'interaction au sein d'un groupe et l'orientation service."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Indiquez « plutôt vrai » ou « plutôt faux » pour chacune des 16 aptitudes suivantes :\n1. Vous savez quand vous vous mettez en colère.\n2. Vous savez quand vous communiquez d'une manière inappropriée / déplacée.\n3. Vous pouvez changer votre état émotionnel en raisonnant en silence ou en vous parlant à vous-même.\n4. Vous aidez les autres à gérer leurs émotions.\n5. Vous êtes médiateur dans les conflits des autres.\n6. Vous entretenez des conversations intimes avec les autres.\n7. Vous agissez de façon productive lorsque vous êtes en colère.\n8. Vous savez l'impact qu'a votre comportement sur les autres.\n9. Vous savez quand vous êtes sur la défensive.\n10. Vous parvenez à vous détendre lorsque vous êtes sous pression.\n11. Vous restez calme quand vous êtes la cible de la colère des autres.\n12. Vous montrez des compétences de communication interpersonnelle efficaces.\n13. Vous reflétez de manière précise aux autres leurs sentiments.\n14. Vous savez comment interpréter les événements que vous rencontrez.\n15. Vous aidez les autres à se sentir bien.\n16. Vous pouvez reconnaître quelqu'un qui a de la peine.",
+              "origin": "source",
+              "title": "Évaluation de l'intelligence émotionnelle"
+            },
+            {
+              "type": "definition",
+              "md": "Votre **score total IE** = nombre de réponses « plutôt vrai ».\n\n| Score | Interprétation |\n|---|---|\n| 14 – 16 | Haute IE |\n| 10 – 13 | Bonne IE |\n| 7 – 9 | IE modérée |\n| En dessous de 7 | IE en dessous de la moyenne |\n\nScores par sous-catégorie : conscience de soi (items 1, 2, 14, 9) ; gestion de soi (10, 7, 3, 11) ; interaction sociale (8, 4, 6, 16) ; gestion des relations (5, 12, 13, 15). Un score de **2 ou moins** dans l'une des quatre catégories indique qu'il y a des zones d'amélioration dans cette composante.",
+              "origin": "source",
+              "title": "Feuille de notation"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Un étudiant a répondu « plutôt vrai » à 11 items sur 16. D'après le barème, son IE est « ___ ».",
+                "answerType": "text",
+                "accepted": [
+                  "bonne",
+                  "bonne IE"
+                ],
+                "explanation": "11 est dans l'intervalle 10–13 : bonne IE."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque compétence à son domaine de l'intelligence émotionnelle.",
+              "pairs": [
+                {
+                  "left": "Confiance en soi",
+                  "right": "Conscience de soi"
+                },
+                {
+                  "left": "Adaptabilité",
+                  "right": "Gestion de soi"
+                },
+                {
+                  "left": "Orientation service",
+                  "right": "Interaction sociale"
+                },
+                {
+                  "left": "Gestion du conflit",
+                  "right": "Gestion des relations"
+                }
+              ],
+              "explanation": "C'est la grille de Boyatzis et Goleman reproduite dans le cahier."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un leader émotionnellement intelligent est quelqu'un qui ne ressent plus d'émotions.",
+              "answer": false,
+              "explanation": "Faux : il ne se laisse pas dominer par ses émotions mais en **fait bon usage**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Un score de 2 ou moins dans une sous-catégorie de l'IE indique :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "une haute IE"
+                },
+                {
+                  "id": "b",
+                  "md": "une zone d'amélioration dans cette composante"
+                },
+                {
+                  "id": "c",
+                  "md": "une erreur de calcul"
+                },
+                {
+                  "id": "d",
+                  "md": "une IE modérée globale"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la règle d'interprétation des sous-scores donnée dans la feuille de notation."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien de points au minimum faut-il pour une « haute IE » ? ___",
+              "answerType": "number",
+              "accepted": [
+                "14"
+              ],
+              "explanation": "Haute IE : score de 14 à 16."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces compétences appartient à la **gestion de soi** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Empathie"
+                },
+                {
+                  "id": "b",
+                  "md": "Optimisme"
+                },
+                {
+                  "id": "c",
+                  "md": "Travail en équipe"
+                },
+                {
+                  "id": "d",
+                  "md": "Promotion des autres"
+                }
+              ],
+              "answer": "b",
+              "explanation": "La gestion de soi comprend : contrôler ses émotions, transparence, adaptabilité, orientation vers la réussite, initiative, optimisme."
+            }
+          ]
+        },
+        {
+          "slug": "deleguer-et-influencer",
+          "title": "Déléguer et influencer",
+          "number": "1.4",
+          "estimatedMinutes": 9,
+          "summary": "À qui et quoi déléguer, l'auto-évaluation de la délégation, et les six tactiques d'influence des leaders.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "Les leaders délèguent",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les leaders ne font pas tout par eux-mêmes. Ils s'entourent généralement de collaborateurs qui sont capables et prêts à accomplir quelques-unes des tâches nécessaires. **Plus les leaders délèguent, plus ils accomplissent.**",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "**À qui devez-vous déléguer ?** À quelqu'un de : 1. **capable** ; 2. **prêt** ; 3. **digne de confiance**.\n\n**Que devez-vous déléguer ?** Vous pouvez déléguer des tâches qui **n'ont pas besoin de votre expertise personnelle**. Vérifiez les choses que vous déléguez et identifiez les choses qui nécessitent votre propre contribution et expertise : ce sont ces choses que vous ne devez pas déléguer.",
+              "origin": "source",
+              "title": "À qui et quoi déléguer ?"
+            },
+            {
+              "type": "exercise",
+              "md": "Pensez à votre environnement de travail ou, à défaut, à une équipe dans laquelle vous avez travaillé (groupe d'étude, équipe de projet de l'université). Répondez par **A** (la plupart du temps), **B** (parfois) ou **C** (rarement ou jamais) :\n1. Faites-vous souvent le travail des autres, parce que vous le faites mieux ?\n2. Pensez-vous que la plupart des gens dans votre équipe ne sont pas assez compétents pour traiter la plupart des tâches ?\n3. Avez-vous rencontré des problèmes dans le respect des délais ?\n4. Avez-vous du mal à fixer des priorités ?\n5. Faites-vous du travail à domicile ?\n6. Prenez-vous en considération les critiques sur votre manque de délégation ?\n7. Effectuez-vous des tâches de routine que d'autres pourraient facilement faire ?\n8. Travaillez-vous plus longtemps par rapport aux membres de votre équipe ?\n9. Sentez-vous le besoin de surveiller toutes les activités de votre unité ?\n\n**Interprétation :** si vous répondez « A » à la plupart des questions, vous avez besoin de travailler davantage votre compétence de délégation. Pour chaque « A », examinez ce qui doit être fait pour l'améliorer, puis discutez-en en groupe.",
+              "origin": "source",
+              "title": "Évaluez votre capacité à déléguer"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Selon le cahier, à qui faut-il déléguer ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "À la personne la moins occupée"
+                  },
+                  {
+                    "id": "b",
+                    "md": "À quelqu'un de capable, prêt et digne de confiance"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Toujours au plus ancien"
+                  },
+                  {
+                    "id": "d",
+                    "md": "À personne : un bon leader fait tout lui-même"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les trois critères sont : capable, prêt, digne de confiance."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "L'influence des leaders",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "| Tactique | Explication |\n|---|---|\n| 1. Utilisez la persuasion rationnelle. | Cette tactique utilise des faits, des données et des arguments logiques pour persuader les autres. |\n| 2. Considérez les autres comme vous-même. | Les gens disent oui à ceux qu'ils aiment. |\n| 3. Appuyez-vous sur la règle de la réciprocité. | Les dirigeants qui font des faveurs peuvent s'attendre à des faveurs en retour. |\n| 4. Développez des alliances. | La réciprocité joue un rôle important dans le développement d'alliances. |\n| 5. Demandez ce que vous voulez. | Soyez clair et direct quant à ce que vous voulez et demandez. |\n| 6. Complétez votre autorité formelle avec de l'expertise et de la crédibilité. | Le chef a un pouvoir légitime dans l'organisation. |",
+              "origin": "source",
+              "title": "Les six tactiques d'influence (Daft, 2011)"
+            },
+            {
+              "type": "exercise",
+              "md": "Souvenez-vous de vos récentes rencontres avec les autres (amis, parents, enseignants, collègues). Quelles sont les deux tactiques d'influence que vous utilisez le plus souvent ? Laquelle utilisez-vous le plus confortablement, et pourquoi ? Laquelle utilisez-vous le moins ? Quelle tactique n'utilisez-vous pas et vous semble avantageuse à essayer ? Comment pensez-vous l'utiliser davantage ?",
+              "origin": "source",
+              "title": "Vos tactiques d'influence"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque tactique d'influence à son explication.",
+              "pairs": [
+                {
+                  "left": "Persuasion rationnelle",
+                  "right": "Faits, données et arguments logiques"
+                },
+                {
+                  "left": "Considérer les autres comme soi-même",
+                  "right": "Les gens disent oui à ceux qu'ils aiment"
+                },
+                {
+                  "left": "Règle de la réciprocité",
+                  "right": "Une faveur appelle une faveur en retour"
+                },
+                {
+                  "left": "Demander ce que l'on veut",
+                  "right": "Être clair et direct"
+                }
+              ],
+              "explanation": "Ce sont quatre des six tactiques du tableau de Daft."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après le cahier, plus les leaders délèguent, plus ils accomplissent.",
+              "answer": true,
+              "explanation": "C'est la phrase du cahier sur la délégation."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelles tâches **ne faut-il pas** déléguer ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Les tâches de routine"
+                },
+                {
+                  "id": "b",
+                  "md": "Celles qui nécessitent votre propre contribution et expertise"
+                },
+                {
+                  "id": "c",
+                  "md": "Toutes les tâches urgentes"
+                },
+                {
+                  "id": "d",
+                  "md": "Celles que vous n'aimez pas"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On délègue ce qui n'a pas besoin de votre expertise personnelle ; on garde ce qui la nécessite."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'auto-évaluation de la délégation, beaucoup de réponses « A » signifient :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "que vous déléguez très bien"
+                },
+                {
+                  "id": "b",
+                  "md": "que vous devez travailler votre compétence de délégation"
+                },
+                {
+                  "id": "c",
+                  "md": "que vous êtes autoritaire"
+                },
+                {
+                  "id": "d",
+                  "md": "que vous travaillez trop peu"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« A » = la plupart du temps, pour des comportements comme faire le travail des autres ou tout surveiller : signe d'un manque de délégation."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien de tactiques d'influence le cahier présente-t-il ? ___",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "Six tactiques, d'après Daft (2011)."
+            }
+          ]
+        },
+        {
+          "slug": "orientation-en-leadership",
+          "title": "Au service des autres : mon orientation en leadership",
+          "number": "1.5",
+          "estimatedMinutes": 8,
+          "summary": "Le questionnaire « Quel type de leader suis-je ? » et les quatre orientations : autoritaire, participatif, intendant et serviteur.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "**Les leaders sont au service des autres.** Le questionnaire suivant (adapté de Daft, 2011) aide à identifier votre orientation en leadership.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Réfléchissez aux situations où vous meniez un groupe (travail, université, clubs de sport, etc.) et indiquez « plutôt vrai » ou « plutôt faux » :\n1. Mes actions répondent aux besoins des autres avant les miens.\n2. Je mets un point d'honneur à ce que les autres se sentent propriétaires de leur travail.\n3. Je tiens à consulter les gens pour prendre une décision.\n4. Je suis un perfectionniste.\n5. J'aime être au service des autres.\n6. J'essaie de connaître les besoins et les perspectives des autres.\n7. J'utilise sciemment les compétences et les talents des autres.\n8. Je suis affirmatif sur la bonne façon de faire les choses.\n9. Je fais confiance et montre de la reconnaissance aux autres.\n10. Je crois que les autres ont de bonnes intentions.\n11. J'informe rapidement les autres sur les développements qui touchent leur travail.\n12. J'ai tendance à prendre automatiquement les devants.\n13. J'encourage le progrès des autres, sans rien attendre en retour.\n14. J'apprécie la coopération dans la concurrence et la considère comme un moyen de dynamiser les gens.\n15. J'implique les autres dans la planification et l'établissement des objectifs.\n16. Je mets les gens sous pression en cas de besoin.",
+              "origin": "source",
+              "title": "Quel type de leader suis-je ?"
+            },
+            {
+              "type": "definition",
+              "md": "Donnez-vous un point pour chaque réponse « plutôt vrai » :\n\n| Type de leadership | Items |\n|---|---|\n| Autoritaire | 4, 8, 12 et 16 |\n| Participatif | 2, 6, 10 et 14 |\n| Intendant | 3, 7, 11 et 15 |\n| Serviteur | 1, 5, 9 et 13 |\n\nUn score de **3–4** sur l'une de ces dimensions est considéré comme au-dessus de la moyenne, un score de **0–1** comme inférieur à la moyenne.",
+              "origin": "source",
+              "title": "Notation et interprétation"
+            },
+            {
+              "type": "definition",
+              "md": "| Orientation | Objectif |\n|---|---|\n| Autoritaire | Produire des subordonnés obéissants. |\n| Participatif | Produire des membres d'une même équipe. |\n| Intendant | Donner aux subordonnés plus de contrôle sur leur travail. |\n| Serviteur | Les leaders inspirent la confiance et soutiennent les subordonnés dans leur développement personnel. |",
+              "origin": "source",
+              "title": "Les quatre orientations"
+            },
+            {
+              "type": "text",
+              "md": "Comparez vos quatre scores. Sur quelle dimension souhaitez-vous avoir le meilleur score ? le plus bas ? Étudiez les items où vous avez répondu « plutôt vrai » ou « plutôt faux » pour analyser vos forces et vos faiblesses.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel type de leadership vise à produire des subordonnés **obéissants** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Autoritaire"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Participatif"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Intendant"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Serviteur"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Autoritaire : l'objectif est l'obéissance. Le serviteur, à l'opposé, soutient le développement personnel des autres."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous voulez adopter dans votre vie pour améliorer vos compétences en leadership, puis signez et datez votre engagement.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque orientation à son objectif.",
+              "pairs": [
+                {
+                  "left": "Autoritaire",
+                  "right": "Des subordonnés obéissants"
+                },
+                {
+                  "left": "Participatif",
+                  "right": "Des membres d'une même équipe"
+                },
+                {
+                  "left": "Intendant",
+                  "right": "Plus de contrôle des subordonnés sur leur travail"
+                },
+                {
+                  "left": "Serviteur",
+                  "right": "Inspirer confiance et soutenir le développement personnel"
+                }
+              ],
+              "explanation": "C'est le tableau d'interprétation du questionnaire."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "L'item « J'ai tendance à prendre automatiquement les devants » compte pour quelle orientation ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Autoritaire"
+                },
+                {
+                  "id": "b",
+                  "md": "Participatif"
+                },
+                {
+                  "id": "c",
+                  "md": "Intendant"
+                },
+                {
+                  "id": "d",
+                  "md": "Serviteur"
+                }
+              ],
+              "answer": "a",
+              "explanation": "L'item 12 fait partie des items 4, 8, 12, 16 : orientation autoritaire."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un score de 3 ou 4 sur une dimension est considéré comme ___ de la moyenne (au-dessus / en dessous).",
+              "answerType": "text",
+              "accepted": [
+                "au-dessus",
+                "au dessus",
+                "au-dessus de la moyenne"
+              ],
+              "explanation": "3–4 : au-dessus de la moyenne ; 0–1 : en dessous."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'item « J'encourage le progrès des autres, sans rien attendre en retour » relève du leadership serviteur.",
+              "answer": true,
+              "explanation": "C'est l'item 13, compté avec 1, 5 et 9 pour l'orientation serviteur."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source unique du module : F140 « Orientez votre carrière – Cahier de l'étudiant » (INJAZ Al-Maghrib / JA Worldwide, 136 p.), séance 1 = p. 7–22 du PDF (pages 3–18 du cahier). NB : le guide 00_A_LIRE indique « Affectation à confirmer » : ce cahier est un programme de compétences professionnelles (leadership, temps, communication, résolution de problèmes, travail en équipe, recherche d'emploi) plutôt qu'un cours d'entrepreneuriat au sens strict. Les 7 séances du cahier sont utilisées comme les 7 chapitres du module ; à confirmer avec l'enseignant.",
+    "Le cahier est un support d'atelier : de nombreuses pages sont des questionnaires d'auto-évaluation ou des espaces à remplir. Les questionnaires et leurs barèmes sont conservés (blocs « exercise » / « definition ») ; les pages blanches de réponse et les tableaux vides ne sont pas reproduits. Les questions des quiz portent uniquement sur le contenu (définitions, listes, barèmes), jamais sur les réponses personnelles.",
+    "Exercice initial (p. 9) : le cahier ne donne pas les réponses, seulement des indices. La solution (origin: source pour la structure) complète les citations à partir des indices ; pour les trois citations sans indice (« Diriger, suivre ou … à l'écart », « Le seigneur d'un peuple est leur … », « … vous … leurs cœurs »), les formes usuelles (se tenir, serviteur, gagnerez) sont proposées et signalées. Drucker : l'ordre des indices du cahier (« L'efficacité / L'efficience ») est l'inverse de la citation ; la forme correcte « L'efficience, c'est faire les choses bien ; l'efficacité, c'est faire les bonnes choses » est retenue.",
+    "Remarque ajoutée (origin: added) : correspondance entre les questions 1–4 de la réflexion Johari et les quatre zones. Coquilles : « emotions », « precise », « equipe » → accents rétablis ; « Afﬁrme » etc. (ligatures) normalisées."
+  ]
+}

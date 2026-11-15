@@ -1,0 +1,890 @@
+{
+  "chapter": 6,
+  "title": "Conducteurs en équilibre électrostatique",
+  "sources": [
+    "TD/TD3.pdf p.1 (exercices 1-3, sans correction du professeur)",
+    "TD/TD_Application_Corrige_Couleur.pdf p.1-2 (exercices 1-2 avec corrigé détaillé)"
+  ],
+  "exercises": [
+    {
+      "number": "1",
+      "title": "Conducteur cylindrique en équilibre électrostatique",
+      "statement_md": "On considère un cylindre conducteur de rayon $R$ et de longueur $L$, avec $L\\gg R$. Ce conducteur, isolé et initialement neutre, reçoit une charge totale $Q$ sur sa surface extérieure (surface latérale et bases).\n\nPour les calculs, on néglige les effets d'extrémité : on assimile le cylindre à un conducteur infiniment long et, dans ce modèle, la charge $Q$ à une répartition uniforme sur la surface latérale. Le milieu extérieur est le vide, de permittivité $\\varepsilon_0$.\n\n![Figure — schéma de l'énoncé (Conducteur cylindrique en équilibre électrostatique)](/figures/electrostatique/td-ch06-enonce-1.svg)\n\n- **Q1.** Déterminer la densité surfacique de charge $\\sigma$, puis le champ électrique à l'extérieur du cylindre ($r>R$) en fonction de $r$.\n- **Q2.** Quel est le champ électrique à l'intérieur du conducteur ($r<R$) ? Justifier.\n- **Q3.** On retire du cylindre la charge $Q$ précédemment déposée. Que deviennent les champs intérieur et extérieur ?",
+      "solution_md": "> **« Correction proposée (IA) — à confirmer »**\n\n#### Q1. Densité surfacique et champ extérieur\nDans le modèle du cylindre infiniment long, la charge $Q$ est répartie uniformément sur la surface latérale, d'aire $2\\pi RL$ :\n\n$$\\sigma=\\frac{Q}{2\\pi RL}.$$\n\n**Symétries.** La distribution est invariante par rotation autour de $Oz$ et par translation le long de $Oz$ ; tout plan contenant $Oz$ et tout plan perpendiculaire à $Oz$ passant par $M$ sont des plans de symétrie. Donc $\\vec E(M)=E(r)\\vec e_r$.\n\n**Gauss.** On prend un cylindre fermé coaxial de rayon $r>R$ et de hauteur $h$. Le flux par les bases est nul ($\\vec E\\perp d\\vec S$) ; sur la surface latérale, $\\Phi=E(r)\\,2\\pi rh$. La charge intérieure est $\\sigma\\,2\\pi Rh$ :\n\n$$E(r)\\,2\\pi rh=\\frac{\\sigma\\,2\\pi Rh}{\\varepsilon_0}\\implies\\boxed{\\vec E(r)=\\frac{\\sigma R}{\\varepsilon_0r}\\vec e_r=\\frac{Q}{2\\pi\\varepsilon_0Lr}\\vec e_r\\qquad(r>R).}$$\n\nJuste à l'extérieur de la surface, $E(R^+)=\\sigma/\\varepsilon_0$ : on retrouve le théorème de Coulomb.\n\n#### Q2. Champ à l'intérieur du conducteur\n\n$$\\boxed{\\vec E=\\vec 0\\qquad(r<R).}$$\n\n**Justification.** À l'équilibre électrostatique, les charges libres du conducteur sont immobiles : la force $q\\vec E$ qui s'exerce sur elles est nulle, donc le champ est nul en tout point intérieur au métal. Par Gauss, toute surface fermée intérieure au conducteur n'enferme alors aucune charge : la charge $Q$ se trouve entièrement en surface.\n\n#### Q3. On retire la charge $Q$\nLe conducteur redevient neutre et isolé, sans champ extérieur imposé : il n'y a plus aucune charge source.\n\n$$\\boxed{\\vec E_{\\text{int}}=\\vec 0\\qquad\\text{et}\\qquad\\vec E_{\\text{ext}}=\\vec 0.}$$\n\nLe champ intérieur reste nul (équilibre électrostatique) ; le champ extérieur, qui était dû à la charge de surface $\\sigma$, disparaît avec elle.",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 1 – Q1 : densité surfacique sigma",
+          "answerType": "expression",
+          "accepted": [
+            "Q/(2*pi*R*L)"
+          ],
+          "variables": [
+            "Q",
+            "R",
+            "L"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q1 : E_r(r) à l'extérieur (r > R), epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "Q/(2*pi*epsilon0*L*r)"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "L",
+            "r"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q2 : champ dans le conducteur (r < R)",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 1 – Q3 : champ extérieur après retrait de la charge",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        }
+      ],
+      "source": "TD/TD3.pdf p.1, exercice 1",
+      "solution_from": "Correction proposée (IA) — à confirmer",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quel est le champ à l'extérieur du cylindre ($r>R$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\,\\vec e_r$, avec $\\sigma=\\dfrac{Q}{2\\pi RL}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{\\sigma}{\\varepsilon_0}\\,\\vec e_r$, avec $\\sigma=\\dfrac{Q}{2\\pi RL}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{Q}{4\\pi\\varepsilon_0r^2}\\,\\vec e_r$, avec $\\sigma=\\dfrac{Q}{4\\pi R^2}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\,\\vec e_r$, avec $\\sigma=\\dfrac{Q}{\\pi R^2L}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Surface latérale $2\\pi RL$ : $\\sigma=\\frac{Q}{2\\pi RL}$. Gauss sur un cylindre coaxial de rayon $r$, hauteur $h$ : $E\\,2\\pi rh=\\frac{\\sigma\\,2\\pi Rh}{\\varepsilon_0}$, d'où $E=\\frac{\\sigma R}{\\varepsilon_0r}=\\frac{Q}{2\\pi\\varepsilon_0Lr}$. ($\\frac{\\sigma}{\\varepsilon_0}$ n'est que la valeur juste au voisinage de la surface.)"
+        },
+        {
+          "prompt_md": "Q2 — Quel est le champ dans le conducteur ($r<R$) et pourquoi ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0LR}\\,\\vec e_r$, par continuité"
+            },
+            {
+              "id": "b",
+              "md": "$\\vec 0$, car à l'équilibre les charges libres sont immobiles, donc la force $q\\vec E$ qu'elles subissent est nulle"
+            },
+            {
+              "id": "c",
+              "md": "$\\vec 0$, car le cylindre est très long"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{Q\\,r}{2\\pi\\varepsilon_0LR^2}\\,\\vec e_r$, comme pour une distribution volumique"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Équilibre électrostatique : champ nul dans le métal. Par Gauss, aucune charge à l'intérieur : la charge $Q$ est en surface."
+        },
+        {
+          "prompt_md": "Q3 — On retire la charge $Q$. Que deviennent les champs ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Champ intérieur inchangé non nul, champ extérieur nul"
+            },
+            {
+              "id": "b",
+              "md": "Les deux champs conservent leur valeur"
+            },
+            {
+              "id": "c",
+              "md": "$\\vec E_{\\text{int}}=\\vec 0$ et $\\vec E_{\\text{ext}}=\\vec 0$"
+            },
+            {
+              "id": "d",
+              "md": "$\\vec E_{\\text{int}}=\\vec 0$ et $\\vec E_{\\text{ext}}$ inchangé"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Le conducteur redevient neutre, sans champ imposé : aucune source. Le champ intérieur reste nul (équilibre) et le champ extérieur, dû à $\\sigma$, disparaît avec elle."
+        }
+      ]
+    },
+    {
+      "number": "2",
+      "title": "Deux cylindres conducteurs coaxiaux infinis",
+      "statement_md": "Deux conducteurs cylindriques coaxiaux sont supposés infiniment longs suivant $(Oz)$. On étudie une portion de longueur $L$ :\n\n- $C_1$, de rayon $R_1$, porte la charge $+Q$, uniformément répartie sur sa *surface extérieure cylindrique* ;\n\n- $C_2$, de rayons $R_2$ (intérieur) et $R_3$ (extérieur), est relié à la terre : $V(C_2)=0$.\n\nAvec $R_1<R_2<R_3$, les milieux isolants sont vides ($\\varepsilon_0$). On néglige les effets de bord et tout champ extérieur imposé ; $Q$ est la charge portée par la portion de longueur $L$.\n\n![Figure — schéma de l'énoncé (Deux cylindres conducteurs coaxiaux infinis)](/figures/electrostatique/td-ch06-enonce-2.svg)\n\n- **Q1.** Déterminer $\\sigma_1$ sur $C_1$, puis les charges induites sur les deux faces de $C_2$.\n- **Q2.** Calculer le champ électrique dans les quatre régions : $r<R_1$, $R_1<r<R_2$, $R_2<r<R_3$ et $r>R_3$. Exprimer les champs en fonction de $Q$.\n- **Q3.** Calculer $V(C_1)-V(C_2)$ *avant la mise à la terre* de $C_2$, supposé alors initialement neutre.\n- **Q4.** En déduire la capacité par unité de longueur du condensateur coaxial.\n- **Q5.** Déterminer son expression approchée lorsque $R_1$ tend vers $R_2$ ; commenter.",
+      "solution_md": "> **« Correction proposée (IA) — à confirmer »**\n\n#### Q1. Densité $\\sigma_1$ et charges induites sur $C_2$\nLa charge $+Q$ de la portion de longueur $L$ est répartie sur la surface latérale de $C_1$, d'aire $2\\pi R_1L$ :\n\n$$\\boxed{\\sigma_1=\\frac{Q}{2\\pi R_1L}.}$$\n\n**Face intérieure de $C_2$ ($r=R_2$).** On choisit une surface de Gauss cylindrique de rayon $r$ compris entre $R_2$ et $R_3$, donc dans le métal de $C_2$, où $\\vec E=\\vec 0$. Le flux est nul, donc la charge intérieure est nulle :\n\n$$Q+Q_{2,\\text{int}}=0\\implies\\boxed{Q_{2,\\text{int}}=-Q,\\qquad \\sigma_2=-\\frac{Q}{2\\pi R_2L}.}$$\n\nC'est l'influence totale : toutes les lignes de champ issues de $C_1$ aboutissent sur la face intérieure de $C_2$.\n\n**Face extérieure de $C_2$ ($r=R_3$).** $C_2$ est relié à la terre ($V=0$) et aucun champ extérieur n'est imposé. Pour $r>R_3$, une surface de Gauss coaxiale enferme $Q-Q+Q_{2,\\text{ext}}=Q_{2,\\text{ext}}$ et donne $E=Q_{2,\\text{ext}}/(2\\pi\\varepsilon_0Lr)$. Un tel champ ferait varier le potentiel de façon logarithmique à l'extérieur, incompatible avec un conducteur au potentiel de la terre sans source extérieure ; la charge de la face extérieure s'écoule vers la terre :\n\n$$\\boxed{Q_{2,\\text{ext}}=0.}$$\n\n#### Q2. Champ dans les quatre régions\nPar symétrie (invariances par rotation autour de $Oz$ et par translation le long de $Oz$), $\\vec E=E(r)\\vec e_r$. Le théorème de Gauss sur un cylindre coaxial de rayon $r$ et de longueur $L$ donne $E(r)\\,2\\pi rL=Q_{\\text{int}}/\\varepsilon_0$ :\n\n- $r<R_1$ (dans le conducteur $C_1$) : $\\boxed{\\vec E=\\vec 0}$ ;\n\n- $R_1<r<R_2$ : $Q_{\\text{int}}=Q$, d'où $\\boxed{\\vec E=\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\vec e_r}$ ;\n\n- $R_2<r<R_3$ (dans le conducteur $C_2$) : $\\boxed{\\vec E=\\vec 0}$ ;\n\n- $r>R_3$ : $Q_{\\text{int}}=Q-Q+0=0$, d'où $\\boxed{\\vec E=\\vec 0}$.\n\n*Remarque.* Avant la mise à la terre (Q3), $C_2$ neutre porte $-Q$ sur sa face intérieure et $+Q$ sur sa face extérieure ; le champ pour $r>R_3$ vaut alors $\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\vec e_r$, les trois autres régions étant inchangées.\n\n#### Q3. Différence de potentiel $V(C_1)-V(C_2)$\nEntre les armatures, $\\vec E=E(r)\\vec e_r$ avec $E(r)=Q/(2\\pi\\varepsilon_0Lr)$. Le long d'un trajet radial de $C_1$ à $C_2$ :\n\n$$V(C_1)-V(C_2)=\\int_{R_1}^{R_2}E(r)\\,dr=\\frac{Q}{2\\pi\\varepsilon_0L}\\int_{R_1}^{R_2}\\frac{dr}{r}\\implies\\boxed{V(C_1)-V(C_2)=\\frac{Q}{2\\pi\\varepsilon_0L}\\ln\\frac{R_2}{R_1}.}$$\n\nCe résultat ne dépend que du champ entre $R_1$ et $R_2$, qui est le même avant et après la mise à la terre de $C_2$.\n\n#### Q4. Capacité par unité de longueur\nLe condensateur coaxial porte $+Q$ et $-Q$ (influence totale) sous la tension $U=V(C_1)-V(C_2)$ :\n\n$$C=\\frac QU=\\frac{2\\pi\\varepsilon_0L}{\\ln(R_2/R_1)}\\implies\\boxed{\\frac CL=\\frac{2\\pi\\varepsilon_0}{\\ln(R_2/R_1)}.}$$\n\n#### Q5. Cas $R_1\\to R_2$\nPosons $R_2=R_1+e$ avec $e\\ll R_1$. Alors $\\ln(R_2/R_1)=\\ln(1+e/R_1)\\simeq e/R_1$, d'où\n\n$$\\boxed{\\frac CL\\simeq\\frac{2\\pi\\varepsilon_0R_1}{e}=\\frac{\\varepsilon_0\\,(2\\pi R_1)}{e}.}$$\n\n**Commentaire.** On retrouve la capacité d'un condensateur plan $C=\\varepsilon_0S/e$, avec $S=2\\pi R_1L$ la surface des armatures en regard : lorsque l'écart $e$ est petit devant le rayon, la courbure des armatures devient négligeable. La capacité augmente quand $e$ diminue et diverge lorsque $e\\to0$.",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 2 – Q1 : densité sigma1 sur C1",
+          "answerType": "expression",
+          "accepted": [
+            "Q/(2*pi*R1*L)"
+          ],
+          "variables": [
+            "Q",
+            "R1",
+            "L"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q1 : charge de la face intérieure de C2",
+          "answerType": "expression",
+          "accepted": [
+            "-Q"
+          ],
+          "variables": [
+            "Q"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q1 : charge de la face extérieure de C2 (reliée à la terre)",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q2 : E_r(r) pour R1 < r < R2, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "Q/(2*pi*epsilon0*L*r)"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "L",
+            "r"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q2 : E_r(r) pour r > R3 (C2 à la terre)",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q3 : V(C1) - V(C2), epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "Q/(2*pi*epsilon0*L)*log(R2/R1)"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "L",
+            "R1",
+            "R2"
+          ]
+        },
+        {
+          "label": "Ex 2 – Q4 : capacité par unité de longueur C/L, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "2*pi*epsilon0/log(R2/R1)"
+          ],
+          "variables": [
+            "epsilon0",
+            "R1",
+            "R2"
+          ]
+        }
+      ],
+      "source": "TD/TD3.pdf p.1, exercice 2",
+      "solution_from": "Correction proposée (IA) — à confirmer",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelles sont les charges sur les faces intérieure ($R_2$) et extérieure ($R_3$) de $C_2$ relié à la terre ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$+Q$ et $-Q$"
+            },
+            {
+              "id": "b",
+              "md": "$-Q$ et $+Q$"
+            },
+            {
+              "id": "c",
+              "md": "$0$ et $0$"
+            },
+            {
+              "id": "d",
+              "md": "$-Q$ et $0$"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Gauss sur une surface dans le métal de $C_2$ (champ nul) : $Q+Q_{2,\\text{int}}=0$, donc $Q_{2,\\text{int}}=-Q$ (influence totale). $C_2$ à la terre et pas d'autre source : $Q_{2,\\text{ext}}=0$. ($-Q$ et $+Q$ correspond à $C_2$ isolé et neutre.)"
+        },
+        {
+          "prompt_md": "Q2 — Quel est le champ dans la région $r>R_3$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\vec 0$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\,\\vec e_r$"
+            },
+            {
+              "id": "c",
+              "md": "$-\\dfrac{Q}{2\\pi\\varepsilon_0Lr}\\,\\vec e_r$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{Q}{4\\pi\\varepsilon_0r^2}\\,\\vec e_r$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Charge intérieure $Q-Q+0=0$ : $\\vec E=\\vec 0$. Les champs non nuls ne sont qu'entre les armatures : $\\frac{Q}{2\\pi\\varepsilon_0Lr}\\vec e_r$ pour $R_1<r<R_2$ ; nul dans les deux conducteurs."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut $V(C_1)-V(C_2)$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0L}\\ln\\dfrac{R_1}{R_2}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0L}\\ln\\dfrac{R_2}{R_1}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0L}\\Big(\\dfrac1{R_1}-\\dfrac1{R_2}\\Big)$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{Q}{2\\pi\\varepsilon_0L}\\ln\\dfrac{R_3}{R_1}$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$V(C_1)-V(C_2)=\\int_{R_1}^{R_2}\\frac{Q}{2\\pi\\varepsilon_0Lr}dr=\\frac{Q}{2\\pi\\varepsilon_0L}\\ln\\frac{R_2}{R_1}>0$. Seul le champ entre $R_1$ et $R_2$ intervient (le même avant et après la mise à la terre)."
+        },
+        {
+          "prompt_md": "Q4 — Quelle est la capacité par unité de longueur ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{\\ln(R_2/R_1)}{2\\pi\\varepsilon_0}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{4\\pi\\varepsilon_0}{\\ln(R_2/R_1)}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{2\\pi\\varepsilon_0}{\\ln(R_2/R_1)}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{2\\pi\\varepsilon_0R_1R_2}{R_2-R_1}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "$C=\\frac QU=\\frac{2\\pi\\varepsilon_0L}{\\ln(R_2/R_1)}$, d'où $\\frac CL=\\frac{2\\pi\\varepsilon_0}{\\ln(R_2/R_1)}$. ($\\frac{4\\pi\\varepsilon_0R_1R_2}{R_2-R_1}$ serait le condensateur sphérique.)"
+        },
+        {
+          "prompt_md": "Q5 — Avec $R_2=R_1+e$, $e\\ll R_1$, quelle est l'expression approchée ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac CL\\simeq\\dfrac{2\\pi\\varepsilon_0R_1}{e}$ : condensateur plan $C=\\varepsilon_0S/e$ avec $S=2\\pi R_1L$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac CL\\simeq\\dfrac{2\\pi\\varepsilon_0e}{R_1}$ : la capacité tend vers $0$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac CL\\simeq2\\pi\\varepsilon_0$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac CL\\simeq\\dfrac{\\varepsilon_0}{e}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$\\ln(1+e/R_1)\\simeq e/R_1$, donc $\\frac CL\\simeq\\frac{2\\pi\\varepsilon_0R_1}{e}$ : on retrouve le condensateur plan d'aire $2\\pi R_1L$ ; la capacité diverge quand $e\\to0$."
+        }
+      ]
+    },
+    {
+      "number": "3",
+      "title": "Sphère conductrice creuse et charge centrale",
+      "statement_md": "Une sphère conductrice creuse, initialement neutre, présente un rayon intérieur $R_1$ et un rayon extérieur $R_2$ ($R_1<R_2$). Une charge ponctuelle $q$ est placée au centre $O$ de la cavité. Le milieu est le vide de permittivité $\\varepsilon_0$.\n\n- **Q1.** Déterminer les charges induites sur les surfaces intérieure et extérieure du conducteur.\n- **Q2.** Déterminer le champ électrique $\\vec E(M)$, où $r=OM$, dans les régions $0<r<R_1$, $R_1<r<R_2$ et $r>R_2$.\n- **Q3.** En déduire le potentiel à l'extérieur ($r>R_2$), en prenant $V(\\infty)=0$.\n\n![Figure — schéma de l'énoncé (Sphère conductrice creuse et charge centrale)](/figures/electrostatique/td-ch06-enonce-3.svg)",
+      "solution_md": "> **« Correction proposée (IA) — à confirmer »**\n\n#### Q1. Charges induites\nUne sphère de Gauss de rayon $r$ compris entre $R_1$ et $R_2$ est entièrement dans le métal, où $\\vec E=\\vec 0$ : le flux est nul, donc la charge intérieure est nulle.\n\n$$q+Q_{\\text{int}}=0\\implies\\boxed{Q_{\\text{int}}=-q\\ \\text{(surface intérieure }r=R_1).}$$\n\nLe conducteur étant initialement neutre et isolé, sa charge totale reste nulle :\n\n$$Q_{\\text{int}}+Q_{\\text{ext}}=0\\implies\\boxed{Q_{\\text{ext}}=+q\\ \\text{(surface extérieure }r=R_2).}$$\n\nPar symétrie sphérique (charge au centre), ces charges sont uniformément réparties : $\\sigma_1=-\\dfrac{q}{4\\pi R_1^2}$ et $\\sigma_2=\\dfrac{q}{4\\pi R_2^2}$.\n\n#### Q2. Champ dans les trois régions\nLa distribution est à symétrie sphérique : $\\vec E(M)=E(r)\\vec e_r$. Gauss sur une sphère de rayon $r$ : $E(r)\\,4\\pi r^2=Q_{\\text{int}}/\\varepsilon_0$.\n\n- $0<r<R_1$ : $Q_{\\text{int}}=q$,   $\\boxed{\\vec E=\\dfrac{q}{4\\pi\\varepsilon_0r^2}\\vec e_r}$ ;\n\n- $R_1<r<R_2$ (métal) : $\\boxed{\\vec E=\\vec 0}$   ($Q_{\\text{int}}=q-q=0$) ;\n\n- $r>R_2$ : $Q_{\\text{int}}=q-q+q=q$,   $\\boxed{\\vec E=\\dfrac{q}{4\\pi\\varepsilon_0r^2}\\vec e_r}$.\n\n#### Q3. Potentiel à l'extérieur\nPour $r>R_2$, avec $V(\\infty)=0$ :\n\n$$V(r)=\\int_r^\\infty E(r')\\,dr'=\\frac{q}{4\\pi\\varepsilon_0}\\int_r^\\infty\\frac{dr'}{r'^2}\\implies\\boxed{V(r)=\\frac{q}{4\\pi\\varepsilon_0r}\\qquad(r\\ge R_2).}$$\n\nLe potentiel du conducteur vaut donc $V(R_2)=\\dfrac{q}{4\\pi\\varepsilon_0R_2}$.",
+      "solution_source": "ia",
+      "answers": [
+        {
+          "label": "Ex 3 – Q1 : charge induite sur la surface intérieure",
+          "answerType": "expression",
+          "accepted": [
+            "-q"
+          ],
+          "variables": [
+            "q"
+          ]
+        },
+        {
+          "label": "Ex 3 – Q1 : charge induite sur la surface extérieure",
+          "answerType": "expression",
+          "accepted": [
+            "q"
+          ],
+          "variables": [
+            "q"
+          ]
+        },
+        {
+          "label": "Ex 3 – Q2 : E_r(r) pour 0 < r < R1, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "q/(4*pi*epsilon0*r^2)"
+          ],
+          "variables": [
+            "q",
+            "epsilon0",
+            "r"
+          ]
+        },
+        {
+          "label": "Ex 3 – Q2 : E_r(r) pour R1 < r < R2",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 3 – Q2 : E_r(r) pour r > R2, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "q/(4*pi*epsilon0*r^2)"
+          ],
+          "variables": [
+            "q",
+            "epsilon0",
+            "r"
+          ]
+        },
+        {
+          "label": "Ex 3 – Q3 : V(r) pour r > R2, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "q/(4*pi*epsilon0*r)"
+          ],
+          "variables": [
+            "q",
+            "epsilon0",
+            "r"
+          ]
+        }
+      ],
+      "source": "TD/TD3.pdf p.1, exercice 3",
+      "solution_from": "Correction proposée (IA) — à confirmer",
+      "simulations": [
+        {
+          "scene": "conductor",
+          "caption": "Conducteur en équilibre : champ nul dans le métal, charges en surface."
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelles sont les charges induites sur les surfaces intérieure ($R_1$) et extérieure ($R_2$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$+q$ et $-q$"
+            },
+            {
+              "id": "b",
+              "md": "$-q$ et $0$"
+            },
+            {
+              "id": "c",
+              "md": "$-q$ et $+q$"
+            },
+            {
+              "id": "d",
+              "md": "$0$ et $+q$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Gauss dans le métal (champ nul) : $q+Q_{\\text{int}}=0$, donc $Q_{\\text{int}}=-q$. Conducteur initialement neutre : $Q_{\\text{int}}+Q_{\\text{ext}}=0$, donc $Q_{\\text{ext}}=+q$."
+        },
+        {
+          "prompt_md": "Q2 — Quel est le champ pour $r>R_2$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\vec 0$, car la sphère conductrice fait écran"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{q}{4\\pi\\varepsilon_0r^2}\\,\\vec e_r$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{2q}{4\\pi\\varepsilon_0r^2}\\,\\vec e_r$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{q}{4\\pi\\varepsilon_0(r-R_2)^2}\\,\\vec e_r$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Charge enfermée $q-q+q=q$ : $\\vec E=\\frac{q}{4\\pi\\varepsilon_0r^2}\\vec e_r$, comme pour $0<r<R_1$ ; champ nul dans le métal ($R_1<r<R_2$). Une sphère isolée et neutre ne fait pas écran vers l'extérieur."
+        },
+        {
+          "prompt_md": "Q3 — Quel est le potentiel pour $r\\ge R_2$ ($V(\\infty)=0$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{q}{4\\pi\\varepsilon_0r}$"
+            },
+            {
+              "id": "b",
+              "md": "$0$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{q}{4\\pi\\varepsilon_0R_2}$ pour tout $r\\ge R_2$"
+            },
+            {
+              "id": "d",
+              "md": "$-\\dfrac{q}{4\\pi\\varepsilon_0r}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$V(r)=\\int_r^\\infty\\frac{q}{4\\pi\\varepsilon_0r'^2}dr'=\\frac{q}{4\\pi\\varepsilon_0r}$. Le conducteur est au potentiel $\\frac{q}{4\\pi\\varepsilon_0R_2}$, qui n'est que la valeur en $r=R_2$."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Lame conductrice neutre dans un champ imposé",
+      "statement_md": "Une lame métallique conductrice, initialement *neutre et isolée*, possède une épaisseur $e$ et des dimensions latérales très grandes devant $e$. Elle occupe la région $0<x<e$ et est placée dans le vide.\n\nOn applique un champ électrostatique uniforme $\\vec E_0=E_0\\vec e_x$, avec $E_0>0$, créé par des sources éloignées. On néglige les effets de bord et on assimile les deux faces de la lame à des plans infinis. Le champ imposé est maintenu après l'introduction du conducteur. On choisit $V(0)=0$.\n\n![Figure — schéma de l'énoncé (Lame conductrice neutre dans un champ imposé)](/figures/electrostatique/td-ch06-enonce-4.svg)\n\n- **Q1.** Expliquer le déplacement des électrons libres au moment où le champ est appliqué. Indiquer le signe des charges induites sur les faces $x=0$ et $x=e$. Que vaut le champ électrique *résultant* dans le métal à l'équilibre ?\n- **Q2.** En utilisant le théorème de Gauss avec un petit cylindre traversant chacune des faces, déterminer les densités surfaciques $\\sigma_0$ et $\\sigma_e$ en fonction de $E_0$ et $\\varepsilon_0$. Vérifier que la lame reste globalement neutre.\n- **Q3.** Déterminer le champ électrique résultant dans les trois régions $x<0$, $0<x<e$ et $x>e$. Expliquer pourquoi le champ extérieur conserve la valeur $\\vec E_0$ dans ce modèle idéal.\n- **Q4.** Déterminer le potentiel $V(x)$ dans les trois régions, avec $V(0)=0$. Expliquer pourquoi les deux faces de la lame sont au même potentiel.",
+      "solution_md": "**1. Déplacement des électrons et équilibre.** Le champ imposé $\\vec E_0$ est dirigé vers les $x$ croissants. Pour un électron de charge $-e_{\\text{el}}$, la force électrique $\\vec F=-e_{\\text{el}}\\vec E_0$ est dirigée vers les $x$ décroissants. Les électrons s'accumulent donc sur la face $x=0$ (chargée négativement) ; un déficit d'électrons apparaît sur la face $x=e$ (chargée positivement).\n\nLes charges induites créent un champ opposé au champ imposé dans le métal. À l'équilibre électrostatique, c'est le *champ résultant* qui s'annule :\n\n$$\\boxed{\\vec E_{\\text{métal}}=\\vec 0\\qquad(0<x<e).}$$\n\n**2. Densités surfaciques : théorème de Gauss.** Le champ reste $\\vec E_0$ dans les régions extérieures, car les deux faces infinies portent des charges opposées et égales : leurs champs induits s'annulent à l'extérieur (voir question 3).\n\nOn choisit, sur chaque face, un petit cylindre de Gauss de section $s$ traversant la surface conductrice. Dans le métal, le flux est nul ; sur la base extérieure, le champ vaut $\\vec E_0$. Le flux latéral est nul. La normale $\\vec n$ est orientée du métal vers le vide.\n\nSur la face $x=0$, $\\vec n=-\\vec e_x$. Le théorème de Gauss donne :\n\n$$\\oint_{S_G}\\vec E\\cdot d\\vec S=-E_0s=\\frac{\\sigma_0s}{\\varepsilon_0}\\implies\\boxed{\\sigma_0=-\\varepsilon_0E_0.}$$\n\nSur la face $x=e$, $\\vec n=+\\vec e_x$ :\n\n$$\\oint_{S_G}\\vec E\\cdot d\\vec S=+E_0s=\\frac{\\sigma_es}{\\varepsilon_0}\\implies\\boxed{\\sigma_e=+\\varepsilon_0E_0.}$$\n\nLes deux faces ayant la même aire $S$, la charge induite totale vaut $Q_{\\text{lame}}=\\sigma_0S+\\sigma_eS=0$. *La lame reste neutre.*\n\n**3. Champ électrique dans les trois régions.** Deux grandes faces parallèles portant des densités opposées $-\\sigma$ et $+\\sigma$ créent, par superposition, un champ induit nul à l'extérieur et opposé à $\\vec E_0$ entre les faces. Ainsi, à l'équilibre :\n\n$$\\boxed{\\vec E(x)=\\begin{cases}E_0\\vec e_x,& x<0,\\\\ \\vec 0,& 0<x<e,\\\\ E_0\\vec e_x,& x>e.\\end{cases}}$$\n\nLe champ est donc *annulé dans le métal*, mais non dans le vide extérieur.\n\n**4. Potentiel électrique.** On utilise $E_x=-dV/dx$ et $V(0)=0$. Le potentiel est continu aux faces. Dans la région $x<0$, $V(x)=-E_0x$ ; dans le métal, $V$ est constant et égal à zéro ; pour $x>e$, l'intégration à partir de $x=e$ donne $V(x)=-E_0(x-e)$ :\n\n$$\\boxed{V(x)=\\begin{cases}-E_0x,& x\\le0,\\\\ 0,& 0\\le x\\le e,\\\\ -E_0(x-e),& x\\ge e.\\end{cases}}$$\n\nLes faces sont *équipotentielles* : $V(0)=V(e)=0$, car $\\vec E=\\vec 0$ dans le métal.",
+      "solution_source": "prof",
+      "answers": [
+        {
+          "label": "Ex 4 – Q1 : champ résultant dans le métal",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q2 : sigma_0 (face x = 0), epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "-epsilon0*E0"
+          ],
+          "variables": [
+            "epsilon0",
+            "E0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q2 : sigma_e (face x = e), epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "epsilon0*E0"
+          ],
+          "variables": [
+            "epsilon0",
+            "E0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q3 : E_x pour x < 0",
+          "answerType": "expression",
+          "accepted": [
+            "E0"
+          ],
+          "variables": [
+            "E0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q3 : E_x pour x > e",
+          "answerType": "expression",
+          "accepted": [
+            "E0"
+          ],
+          "variables": [
+            "E0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q4 : V(x) pour x ≤ 0",
+          "answerType": "expression",
+          "accepted": [
+            "-E0*x"
+          ],
+          "variables": [
+            "E0",
+            "x"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q4 : V(x) dans le métal (0 ≤ x ≤ e)",
+          "answerType": "number",
+          "accepted": [
+            "0"
+          ]
+        },
+        {
+          "label": "Ex 4 – Q4 : V(x) pour x ≥ e (épaisseur notée ep au lieu de e)",
+          "answerType": "expression",
+          "accepted": [
+            "-E0*(x-ep)"
+          ],
+          "variables": [
+            "E0",
+            "x",
+            "ep"
+          ]
+        }
+      ],
+      "source": "TD/TD_Application_Corrige_Couleur.pdf p.1, exercice 1",
+      "solution_from": "TD/TD_Application_Corrige_Couleur.pdf p.1-2",
+      "simulations": [
+        {
+          "scene": "conductor",
+          "caption": "Observe la redistribution des charges d'un conducteur placé dans un champ extérieur."
+        }
+      ],
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quel est le signe des charges induites et le champ résultant dans le métal ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Face $x=0$ positive, face $x=e$ négative ; champ $E_0\\vec e_x$ dans le métal"
+            },
+            {
+              "id": "b",
+              "md": "Face $x=0$ négative, face $x=e$ positive ; champ $2E_0\\vec e_x$ dans le métal"
+            },
+            {
+              "id": "c",
+              "md": "Pas de charges induites car la lame est neutre"
+            },
+            {
+              "id": "d",
+              "md": "Face $x=0$ négative, face $x=e$ positive ; champ résultant nul dans le métal"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "Les électrons subissent $-e\\vec E_0$, dirigée vers $-\\vec e_x$ : ils s'accumulent en $x=0$ (négative) et laissent la face $x=e$ positive. Les charges induites créent un champ opposé à $\\vec E_0$ ; à l'équilibre le champ résultant est nul dans le métal."
+        },
+        {
+          "prompt_md": "Q2 — Que valent $\\sigma_0$ (face $x=0$) et $\\sigma_e$ (face $x=e$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\sigma_0=-\\varepsilon_0E_0$, $\\sigma_e=+\\varepsilon_0E_0$"
+            },
+            {
+              "id": "b",
+              "md": "$\\sigma_0=-\\dfrac{\\varepsilon_0E_0}{2}$, $\\sigma_e=+\\dfrac{\\varepsilon_0E_0}{2}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\sigma_0=+\\varepsilon_0E_0$, $\\sigma_e=-\\varepsilon_0E_0$"
+            },
+            {
+              "id": "d",
+              "md": "$\\sigma_0=-\\dfrac{E_0}{\\varepsilon_0}$, $\\sigma_e=+\\dfrac{E_0}{\\varepsilon_0}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "Petit cylindre traversant la face $x=0$ : seul le flux par la base extérieure compte, $-E_0s=\\frac{\\sigma_0s}{\\varepsilon_0}$, donc $\\sigma_0=-\\varepsilon_0E_0$ ; de même $\\sigma_e=+\\varepsilon_0E_0$. Somme nulle : la lame reste neutre."
+        },
+        {
+          "prompt_md": "Q3 — Quel est le champ résultant dans les régions $x<0$ et $x>e$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\vec 0$ des deux côtés"
+            },
+            {
+              "id": "b",
+              "md": "$E_0\\vec e_x$ des deux côtés"
+            },
+            {
+              "id": "c",
+              "md": "$2E_0\\vec e_x$ des deux côtés"
+            },
+            {
+              "id": "d",
+              "md": "$E_0\\vec e_x$ pour $x<0$ et $-E_0\\vec e_x$ pour $x>e$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "Les deux plans chargés $\\mp\\varepsilon_0E_0$ créent chacun $\\frac{\\sigma}{2\\varepsilon_0}$ : leurs champs se compensent à l'extérieur et s'ajoutent (pour donner $-E_0\\vec e_x$) dans le métal. Le champ extérieur reste donc $\\vec E_0$."
+        },
+        {
+          "prompt_md": "Q4 — Quel est le potentiel pour $x\\ge e$ (avec $V(0)=0$) ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$V(x)=-E_0x$"
+            },
+            {
+              "id": "b",
+              "md": "$V(x)=-E_0(x-e)$"
+            },
+            {
+              "id": "c",
+              "md": "$V(x)=E_0(x-e)$"
+            },
+            {
+              "id": "d",
+              "md": "$V(x)=-E_0e$"
+            }
+          ],
+          "answer": "b",
+          "explanation_md": "$E_x=-\\frac{dV}{dx}$ : $V=-E_0x$ pour $x\\le0$, $V=0$ dans le métal (champ nul, faces équipotentielles, $V(e)=V(0)=0$), puis $V=-E_0(x-e)$ pour $x\\ge e$ par continuité en $x=e$."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Deux sphères conductrices reliées : partage de charge",
+      "statement_md": "Deux sphères conductrices $A$ et $B$, de rayons $a<b$, sont séparées par une distance $d\\gg a,b$. Avant connexion, elles portent respectivement $Q_A^{(0)}=+4Q$ et $Q_B^{(0)}=-Q$, avec $Q>0$.\n\nOn les relie par un fil conducteur très fin, de charge négligeable, puis on attend l'équilibre. On néglige l'influence mutuelle des sphères sur leurs potentiels (approximation des sphères très éloignées). Le milieu est le vide ; $V(\\infty)=0$.\n\n![Figure — schéma de l'énoncé (Deux sphères conductrices reliées : partage de charge)](/figures/electrostatique/td-ch06-enonce-5.svg)\n\n- **Q1.** Écrire la conservation de la charge et la condition d'équipotentialité après connexion. En déduire les charges finales $Q_A$ et $Q_B$ en fonction de $Q$, $a$ et $b$.\n- **Q2.** Déterminer le potentiel commun $V_c$ en fonction de $Q$, $a$ et $b$.\n- **Q3.** Calculer les densités surfaciques $\\sigma_A$, $\\sigma_B$ et les champs électriques immédiatement à l'extérieur des surfaces. Comparer $E_A/E_B$ et interpréter le résultat en termes de courbure.\n- **Q4.** On retire le fil après avoir atteint l'équilibre. Que deviennent les charges sur les deux sphères, en l'absence de nouvelle perturbation ?",
+      "solution_md": "**Hypothèse de calcul.** Les sphères étant très éloignées, leur influence mutuelle est négligée. Une sphère isolée de rayon $s$, portant une charge $Q_s$ uniformément répartie sur sa surface, a un potentiel $V=Q_s/(4\\pi\\varepsilon_0s)$ (référence $V(\\infty)=0$). Le fil est supposé assez fin pour ne pas modifier cette approximation.\n\n**1. Conservation de la charge et équipotentialité.** Lorsque les sphères sont reliées, elles forment un seul conducteur à l'équilibre : leurs potentiels sont égaux, et la charge totale se conserve.\n\n$$Q_A+Q_B=Q_A^{(0)}+Q_B^{(0)}=4Q-Q=3Q,\\qquad \\frac{Q_A}{4\\pi\\varepsilon_0a}=\\frac{Q_B}{4\\pi\\varepsilon_0b}.$$\n\nLa deuxième égalité donne $Q_A/a=Q_B/b$, c'est-à-dire $Q_A=(a/b)Q_B$. Avec $Q_A+Q_B=3Q$ :\n\n$$\\boxed{Q_A=\\frac{3Qa}{a+b}},\\qquad\\boxed{Q_B=\\frac{3Qb}{a+b}}.$$\n\nLes deux sphères sont donc *positivement chargées* à la fin, même si $B$ était initialement négative. Comme $a<b$, la sphère $B$ porte la plus grande charge totale après connexion.\n\n**2. Potentiel commun.** En remplaçant $Q_A$ ou $Q_B$ dans le potentiel d'une sphère :\n\n$$V_c=\\frac{Q_A}{4\\pi\\varepsilon_0a}=\\frac{Q_B}{4\\pi\\varepsilon_0b}\\implies\\boxed{V_c=\\frac{3Q}{4\\pi\\varepsilon_0(a+b)}.}$$\n\n**3. Densités surfaciques et champs de surface.** La charge de chaque sphère se trouve sur sa surface ; dans l'approximation retenue, la répartition est uniforme. Ainsi,\n\n$$\\boxed{\\sigma_A=\\frac{Q_A}{4\\pi a^2}=\\frac{3Q}{4\\pi a(a+b)}},\\qquad\\boxed{\\sigma_B=\\frac{Q_B}{4\\pi b^2}=\\frac{3Q}{4\\pi b(a+b)}}.$$\n\nLa condition de passage à la surface d'un conducteur dans le vide donne $E=\\sigma/\\varepsilon_0$ juste à l'extérieur. On obtient, avec des champs dirigés vers l'extérieur puisque $Q_A,Q_B>0$ :\n\n$$\\boxed{E_A=\\frac{3Q}{4\\pi\\varepsilon_0a(a+b)}},\\qquad\\boxed{E_B=\\frac{3Q}{4\\pi\\varepsilon_0b(a+b)}}.$$\n\nPar conséquent,\n\n$$\\boxed{\\frac{E_A}{E_B}=\\frac{\\sigma_A}{\\sigma_B}=\\frac ba>1.}$$\n\n**Interprétation.** La sphère de plus petit rayon $a$ possède une *courbure plus forte* et un champ de surface plus intense. Ce modèle illustre qualitativement l'*effet de pointe* : le champ est renforcé au voisinage des régions de forte courbure.\n\n**4. Déconnexion après équilibre.** Si le fil est retiré et qu'aucune nouvelle perturbation n'intervient, chaque sphère redevient un conducteur isolé ; elle *conserve la charge qu'elle possédait à l'instant de la déconnexion* :\n\n$$\\boxed{Q_A=\\frac{3Qa}{a+b},\\qquad Q_B=\\frac{3Qb}{a+b}.}$$\n\nLes potentiels restent alors approximativement égaux dans les conditions du modèle considéré.",
+      "solution_source": "prof",
+      "answers": [
+        {
+          "label": "Ex 5 – Q1 : charge finale Q_A",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q*a/(a+b)"
+          ],
+          "variables": [
+            "Q",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q1 : charge finale Q_B",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q*b/(a+b)"
+          ],
+          "variables": [
+            "Q",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q2 : potentiel commun V_c, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q/(4*pi*epsilon0*(a+b))"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q3 : sigma_A",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q/(4*pi*a*(a+b))"
+          ],
+          "variables": [
+            "Q",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q3 : sigma_B",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q/(4*pi*b*(a+b))"
+          ],
+          "variables": [
+            "Q",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q3 : E_A, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q/(4*pi*epsilon0*a*(a+b))"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q3 : E_B, epsilon0 = ε₀",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q/(4*pi*epsilon0*b*(a+b))"
+          ],
+          "variables": [
+            "Q",
+            "epsilon0",
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q3 : rapport E_A/E_B",
+          "answerType": "expression",
+          "accepted": [
+            "b/a"
+          ],
+          "variables": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "label": "Ex 5 – Q4 : Q_A après retrait du fil",
+          "answerType": "expression",
+          "accepted": [
+            "3*Q*a/(a+b)"
+          ],
+          "variables": [
+            "Q",
+            "a",
+            "b"
+          ]
+        }
+      ],
+      "source": "TD/TD_Application_Corrige_Couleur.pdf p.2, exercice 2",
+      "solution_from": "TD/TD_Application_Corrige_Couleur.pdf p.2",
+      "qcm": [
+        {
+          "prompt_md": "Q1 — Quelles sont les charges finales $Q_A$ et $Q_B$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$Q_A=\\dfrac{3Qb}{a+b}$, $Q_B=\\dfrac{3Qa}{a+b}$"
+            },
+            {
+              "id": "b",
+              "md": "$Q_A=Q_B=\\dfrac{3Q}{2}$"
+            },
+            {
+              "id": "c",
+              "md": "$Q_A=\\dfrac{3Qa}{a+b}$, $Q_B=\\dfrac{3Qb}{a+b}$"
+            },
+            {
+              "id": "d",
+              "md": "$Q_A=\\dfrac{4Qa}{a+b}$, $Q_B=-\\dfrac{Qb}{a+b}$"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Conservation : $Q_A+Q_B=4Q-Q=3Q$. Équipotentialité : $\\frac{Q_A}{4\\pi\\varepsilon_0a}=\\frac{Q_B}{4\\pi\\varepsilon_0b}$, soit $\\frac{Q_A}{a}=\\frac{Q_B}{b}$. D'où $Q_A=\\frac{3Qa}{a+b}$, $Q_B=\\frac{3Qb}{a+b}$ (la grosse sphère prend plus de charge)."
+        },
+        {
+          "prompt_md": "Q2 — Quel est le potentiel commun $V_c$ ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac{3Q}{4\\pi\\varepsilon_0(a+b)}$"
+            },
+            {
+              "id": "b",
+              "md": "$\\dfrac{3Q}{4\\pi\\varepsilon_0ab}$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{Q}{4\\pi\\varepsilon_0(a+b)}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac{3Q}{4\\pi\\varepsilon_0\\sqrt{ab}}$"
+            }
+          ],
+          "answer": "a",
+          "explanation_md": "$V_c=\\frac{Q_A}{4\\pi\\varepsilon_0a}=\\frac{3Qa}{4\\pi\\varepsilon_0a(a+b)}=\\frac{3Q}{4\\pi\\varepsilon_0(a+b)}$."
+        },
+        {
+          "prompt_md": "Q3 — Que vaut le rapport $E_A/E_B$ des champs au voisinage des surfaces ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "$\\dfrac ab<1$"
+            },
+            {
+              "id": "b",
+              "md": "$1$"
+            },
+            {
+              "id": "c",
+              "md": "$\\dfrac{a^2}{b^2}$"
+            },
+            {
+              "id": "d",
+              "md": "$\\dfrac ba>1$ : champ plus intense sur la petite sphère (effet de pointe)"
+            }
+          ],
+          "answer": "d",
+          "explanation_md": "$\\sigma_A=\\frac{Q_A}{4\\pi a^2}=\\frac{3Q}{4\\pi a(a+b)}$, $\\sigma_B=\\frac{3Q}{4\\pi b(a+b)}$, et $E=\\frac{\\sigma}{\\varepsilon_0}$ : $\\frac{E_A}{E_B}=\\frac{\\sigma_A}{\\sigma_B}=\\frac ba>1$. La forte courbure renforce le champ."
+        },
+        {
+          "prompt_md": "Q4 — On retire le fil après l'équilibre. Que deviennent les charges ?",
+          "options": [
+            {
+              "id": "a",
+              "md": "Elles reviennent à $+4Q$ et $-Q$"
+            },
+            {
+              "id": "b",
+              "md": "Elles deviennent égales à $\\frac{3Q}{2}$ chacune"
+            },
+            {
+              "id": "c",
+              "md": "Elles restent $Q_A=\\frac{3Qa}{a+b}$ et $Q_B=\\frac{3Qb}{a+b}$"
+            },
+            {
+              "id": "d",
+              "md": "Elles s'annulent"
+            }
+          ],
+          "answer": "c",
+          "explanation_md": "Chaque sphère redevient un conducteur isolé et conserve la charge qu'elle avait à l'instant de la déconnexion (en l'absence de nouvelle perturbation)."
+        }
+      ]
+    }
+  ]
+}

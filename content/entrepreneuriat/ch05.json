@@ -1,0 +1,583 @@
+{
+  "slug": "resolution-de-problemes",
+  "number": 5,
+  "title": "Résolution de problèmes",
+  "description": "Séance 5 : processus de décision rationnelle et ses limites, biais de décision (ancrage), verrous mentaux, modèle de résolution créative (prise de conscience, éclairage, imagination) et brainstorming.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "decider",
+      "title": "Décider",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "decision-rationnelle",
+          "title": "La prise de décision rationnelle et ses limites",
+          "number": "5.1",
+          "estimatedMinutes": 9,
+          "summary": "Objectifs de la séance, les cinq étapes du processus de décision rationnelle (exemple de l'achat d'une veste) et pourquoi ses hypothèses sont rarement vérifiées.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance explore les différentes **techniques de prise de décision** et la manière de les appliquer : les principales contraintes qui entravent la capacité à prendre des décisions adéquates, les **biais** dans la prise de décision, les notions de décision appropriée et de résolution de problèmes, ainsi que la **créativité** et l'**innovation** (obtenir le meilleur de la créativité individuelle et collective).\n\n**Résultats d'apprentissage.** Vous serez en mesure de : 1. identifier les étapes clés d'une prise de décision rationnelle ; 2. comprendre les contraintes du processus rationnel ; 3. reconnaître certains biais dans la prise de décision ; 4. identifier quelques-uns des « verrous mentaux » qui inhibent la créativité ; 5. explorer vos facettes créatives ; 6. catégoriser les différents éléments de la résolution créative de problèmes ; 7. apprécier l'approche du « remue-méninges » dans le processus décisionnel.",
+              "origin": "source",
+              "title": "Résolution de problèmes"
+            },
+            {
+              "type": "definition",
+              "md": "1. **Identification du problème**\n2. **Identification des critères de décision**\n3. **Développement d'alternatives**\n4. **Comparaison des alternatives en fonction des critères de décision**\n5. **Sélection d'une alternative**",
+              "origin": "source",
+              "title": "Le processus de prise de décision rationnelle"
+            },
+            {
+              "type": "example",
+              "md": "Salim veut acheter une veste au grand centre commercial Al-Jawhara. Vous lui conseillez de suivre le processus rationnel :",
+              "origin": "source",
+              "title": "Salim achète une veste",
+              "steps": [
+                {
+                  "md": "Problème : acheter une veste."
+                },
+                {
+                  "md": "Critères : 1. nom de la marque ; 2. qualité ; 3. prix ; 4. design et couleur."
+                },
+                {
+                  "md": "Alternatives : Salim fait le tour des magasins et trouve 15 vestes qui répondent à ses critères."
+                },
+                {
+                  "md": "Comparaison : il compare les 15 vestes selon les quatre critères."
+                },
+                {
+                  "md": "Sélection : la veste 14 a la meilleure combinaison des critères déterminés."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "md": "**Ce qui s'est réellement passé.** Le lendemain, Salim vous dit qu'il a acheté une très belle veste **dans le premier magasin où il est entré**, aidé par une charmante vendeuse qui lui a fait faire « une très bonne affaire ». Qu'est-ce qui a pu l'empêcher de suivre le processus rationnel ?",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les étapes de la prise de décision rationnelle.",
+                "items": [
+                  "Identification du problème",
+                  "Identification des critères de décision",
+                  "Développement d'alternatives",
+                  "Comparaison des alternatives selon les critères",
+                  "Sélection d'une alternative"
+                ],
+                "explanation": "On ne peut comparer des alternatives qu'après avoir fixé les critères et trouvé les alternatives."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Le modèle est fondé sur la rationalité, mais :\n1. il semble très logique mais est **rarement pratiqué** en réalité ;\n2. presque toutes ses **hypothèses** ne sont pas applicables à 100 % :\n\n| Hypothèse | Réalité |\n|---|---|\n| Les gens sont parfaitement rationnels | Ils ne le sont pas |\n| Le problème est clair | Il l'est rarement |\n| Les alternatives sont connues | Elles le sont rarement |\n| Les préférences sont connues | Elles le sont rarement |\n| Pas de contraintes de temps et d'argent | Irréel |\n| Les décideurs choisissent l'alternative avec le meilleur gain | Rarement le cas |\n\n3. il y a d'**autres biais** en jeu.",
+              "origin": "source",
+              "title": "Problèmes associés au processus de décision rationnelle"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'exemple de Salim, « prix », « qualité », « marque » et « design » sont :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "des alternatives"
+                },
+                {
+                  "id": "b",
+                  "md": "des critères de décision"
+                },
+                {
+                  "id": "c",
+                  "md": "des biais"
+                },
+                {
+                  "id": "d",
+                  "md": "des problèmes"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Ce sont les critères qui serviront à comparer les 15 vestes (les alternatives)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après le cahier, le modèle rationnel est très logique et presque toujours pratiqué tel quel.",
+              "answer": false,
+              "explanation": "Faux : il semble logique mais est rarement pratiqué en réalité."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque hypothèse du modèle rationnel à la réalité décrite par le cahier.",
+              "pairs": [
+                {
+                  "left": "Les gens sont parfaitement rationnels",
+                  "right": "Ils ne le sont pas"
+                },
+                {
+                  "left": "Le problème est clair",
+                  "right": "Il l'est rarement"
+                },
+                {
+                  "left": "Pas de contraintes de temps et d'argent",
+                  "right": "Irréel"
+                }
+              ],
+              "explanation": "Ce sont trois lignes du tableau des hypothèses."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Salim achète la veste dans le premier magasin. Quelle hypothèse du modèle n'a pas tenu ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le problème est clair"
+                },
+                {
+                  "id": "b",
+                  "md": "Les décideurs comparent toutes les alternatives et choisissent la meilleure"
+                },
+                {
+                  "id": "c",
+                  "md": "Il existe un problème"
+                },
+                {
+                  "id": "d",
+                  "md": "Les vestes existent"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Il n'a pas développé ni comparé les alternatives : il a choisi rapidement, influencé par la vendeuse."
+            }
+          ]
+        },
+        {
+          "slug": "biais-et-verrous-mentaux",
+          "title": "Biais de décision et verrous mentaux",
+          "number": "5.2",
+          "estimatedMinutes": 9,
+          "summary": "Le biais d'ancrage et d'ajustement, le jugement du risque, les neuf verrous mentaux de Roger von Oech et l'échelle de personnalité créative.",
+          "blocks": [
+            {
+              "type": "example",
+              "md": "Deux groupes différents ont reçu ces calculs :\n- groupe 1 : $1\\times2\\times3\\times4\\times5\\times6\\times7\\times8 = ?$ — réponse la plus répandue : **512** ;\n- groupe 2 : $8\\times7\\times6\\times5\\times4\\times3\\times2\\times1 = ?$ — réponse la plus répandue : **2250**.\n\nLa bonne réponse est **40 320**. Pourquoi les gens ont-ils donné des réponses différentes à la même opération ?",
+              "origin": "source",
+              "title": "Les biais dans le processus décisionnel"
+            },
+            {
+              "type": "definition",
+              "md": "Quand on doit estimer vite, on part des **premières informations** reçues (l'« ancre ») et on ne s'en **ajuste** pas assez. Ceux qui lisent d'abord 1 × 2 × 3… partent de petits nombres et sous-estiment davantage que ceux qui lisent d'abord 8 × 7 × 6…",
+              "origin": "source",
+              "title": "Biais d'ancrage et d'ajustement"
+            },
+            {
+              "type": "remark",
+              "md": "L'explication du biais d'ancrage (définition ci-dessus) est ajoutée : le cahier donne l'expérience et le nom du biais, sans le définir.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi le groupe 2 donne-t-il une estimation plus élevée que le groupe 1 ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Il calcule mieux"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Il est ancré sur les premiers nombres lus, plus grands (8 × 7 × 6…)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "L'opération est différente"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Par hasard"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les deux produits sont identiques (40 320) ; seul l'ordre de lecture change l'ancre de départ."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "a. Conduire une voiture durant 400 kilomètres ? b. Prendre un vol commercial de 400 kilomètres ?\n\nLes gens choisissent (b), bien que statistiquement ce ne soit pas la bonne réponse, en raison de la présence de **biais**.",
+              "origin": "source",
+              "title": "Lequel est le plus risqué ?"
+            },
+            {
+              "type": "definition",
+              "md": "Nous mettons parfois des « verrous mentaux » en travers de notre créativité (« c'est irrationnel », « cela ne se fait pas », « les autres ne vont pas aimer cela »…). Les neuf verrous du cahier :\n1. La bonne **réponse**\n2. Ce n'est pas **logique**\n3. Suivre les **règles**\n4. Être ____ (voir remarque)\n5. Ce **n'est pas** mon domaine\n6. Ne pas être **déraisonnable**\n7. Éviter toute **ambiguïté**\n8. Je ne suis pas **créatif**\n9. Se tromper est **impardonnable**\n\n**Débloquez vos verrous :** les personnes créatives croient en leur créativité ; les personnes qui résolvent les problèmes savent qu'elles le peuvent ; ce sont des compétences que vous pouvez apprendre.",
+              "origin": "source",
+              "title": "Verrous mentaux (Roger von Oech)"
+            },
+            {
+              "type": "remark",
+              "md": "Pour le verrou 4, la liste de mots du cahier propose une seconde fois « créatif » ; dans la liste originale de von Oech, ce verrou est « Être **pratique** ».",
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Cochez les adjectifs qui vous décrivent le mieux : 1 émotif, 2 capable, 3 prudent, 4 malin, 5 banal, 6 confiant, 7 conservateur, 8 classique, 9 égoïste, 10 insatisfait, 11 honnête, 12 drôle, 13 individualiste, 14 simple, 15 perspicace, 16 intelligent, 17 curieux, 18 réservé, 19 inventif, 20 poli/courtois, 21 original, 22 réfléchi, 23 ingénieux, 24 sûr de soi, 25 ouvert, 26 snob, 27 sincère, 28 soumis, 29 suspicieux, 30 original.\n\n**Notation :** +1 pour chacun des mots 2, 4, 6, 9, 12, 13, 14, 15, 16, 18, 19, 21, 22, 23, 24, 25, 26 et 30 ; −1 pour chacun des mots 1, 3, 5, 7, 8, 10, 11, 17, 20, 27, 28 et 29. Score maximal 18, minimal −12. Au-dessus de 6 : supérieur à la moyenne en créativité. Il n'y a cependant pas de bon ou de mauvais score : chacun possède ses propres talents.",
+              "origin": "source",
+              "title": "Échelle de personnalité créative (Gough)"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien vaut $1\\times2\\times3\\times4\\times5\\times6\\times7\\times8$ ? ___",
+              "answerType": "number",
+              "accepted": [
+                "40320"
+              ],
+              "explanation": "C'est $8! = 40\\,320$. Les estimations rapides (512, 2250) sont très en dessous : effet d'ancrage."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les deux groupes de l'expérience devaient calculer deux produits de valeurs différentes.",
+              "answer": false,
+              "explanation": "Faux : c'est le même produit écrit dans deux ordres ; la différence des réponses vient du biais d'ancrage."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Complétez les verrous mentaux de von Oech.",
+              "pairs": [
+                {
+                  "left": "Suivre les…",
+                  "right": "règles"
+                },
+                {
+                  "left": "Éviter toute…",
+                  "right": "ambiguïté"
+                },
+                {
+                  "left": "Se tromper est…",
+                  "right": "impardonnable"
+                },
+                {
+                  "left": "Ce n'est pas…",
+                  "right": "logique"
+                }
+              ],
+              "explanation": "Ce sont quatre des neuf verrous du cahier."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Selon le cahier, les compétences créatives et de résolution de problèmes :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "sont innées et figées"
+                },
+                {
+                  "id": "b",
+                  "md": "peuvent s'apprendre"
+                },
+                {
+                  "id": "c",
+                  "md": "n'existent pas"
+                },
+                {
+                  "id": "d",
+                  "md": "sont réservées aux artistes"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« Ce sont des compétences que vous pouvez apprendre… »"
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans l'échelle de personnalité créative, au-dessus de quel score est-on considéré comme supérieur à la moyenne ? ___",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "Score supérieur à 6 (maximum 18, minimum −12)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "creativite",
+      "title": "Créativité et résolution de problèmes",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "resolution-creative",
+          "title": "La résolution créative de problèmes",
+          "number": "5.3",
+          "estimatedMinutes": 10,
+          "summary": "Le modèle en trois étapes : prise de conscience, éclairage (redéfinir le problème, distinguer symptôme et problème réel) et imagination (« Et si… », analogies).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "1. **Prise de conscience** : réaliser qu'il existe un problème qui doit être résolu.\n2. **Éclairage** : mettre en lumière, avec un œil neuf, le problème ; l'aborder d'un point de vue différent ; décider si et comment il peut être redéfini.\n3. **Imagination** : capacité nouvelle à dessiner une solution adéquate ; essayer de trouver de nouvelles façons de résoudre le problème.",
+              "origin": "source",
+              "title": "Modèle de résolution créative de problème"
+            },
+            {
+              "type": "definition",
+              "md": "Cette étape peut sembler évidente, mais parfois nous ne savons pas si le problème mérite notre attention :\n- Quelle est la place du problème sur ma liste de priorités ?\n- Combien de temps ai-je à allouer à ce problème ?\n- Quel genre de solutions ai-je essayé de trouver à ce problème ?\n\n*Exemples de problèmes à partager :* comment réussir un examen ? obtenir l'emploi de mes rêves ? gérer mes contraintes de temps ? garder en ordre mon bureau ou ma chambre ? résoudre les problèmes récurrents avec mon meilleur ami ? (personnels) ; faire face à l'augmentation des produits défectueux ? gérer les conflits fréquents avec mon fournisseur principal ? (travail).",
+              "origin": "source",
+              "title": "Prise de conscience : quel est le problème ?"
+            },
+            {
+              "type": "definition",
+              "md": "Cette étape oblige à réexaminer le problème : êtes-vous en train d'affronter **le problème lui-même**, ou seulement **un de ses symptômes** ?\n\n| Problème identifié (symptôme) | Problème réel |\n|---|---|\n| Incapacité d'obtenir un emploi désiré | Ai-je la bonne carrière ? |\n| J'ai un bureau / une chambre en désordre | Me manque-t-il les principales compétences organisationnelles ? |\n| Augmentation des taux de produits défectueux | (à compléter) |\n| Incapacité à réussir l'examen malgré beaucoup d'étude | (à compléter) |\n| L'insatisfaction des clients | (à compléter) |",
+              "origin": "source",
+              "title": "Éclairage : redéfinir le problème"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "« J'ai une chambre en désordre » est, selon le tableau du cahier :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "le problème réel"
+                  },
+                  {
+                    "id": "b",
+                    "md": "un symptôme d'un problème plus profond (compétences organisationnelles)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "un biais"
+                  },
+                  {
+                    "id": "d",
+                    "md": "une alternative"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le désordre est le symptôme ; le problème réel proposé est le manque de compétences organisationnelles."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "**Problème :** afin de réduire la densité du trafic routier, comment convaincre les gens d'utiliser moins souvent leur voiture, de marcher plus ou de prendre davantage les transports en commun ?\n\nPosez la question « Et si… » : 1. Et si personne n'était autorisé à conduire une voiture ? Et si seules les personnes âgées de 40 à 50 ans étaient autorisées à conduire ? 2. Et si la vitesse minimale autorisée en voiture était de 10 km/h ? 3. Et si cela coûtait 10 millions de dirhams de posséder une voiture ?\n\nAppliquez ceci à un autre problème (ou à votre propre problème).",
+              "origin": "source",
+              "title": "Activité « Et si… »"
+            },
+            {
+              "type": "exercise",
+              "md": "« Alors que plus de 800 millions de personnes souffrent de faim dans le monde, le tiers des aliments produits chaque année pour la consommation humaine, soit environ 1,3 milliard de tonnes, est perdu ou gaspillé » (rapport FAO, mai 2011). Individuellement, redéfinissez ce problème (pensez aux problèmes liés, ne paraphrasez pas) en utilisant les activités « redéfinition » et « Et si… », puis présentez-le sous un nouveau jour avec des solutions.",
+              "origin": "source",
+              "title": "Activité : redéfinir un problème"
+            },
+            {
+              "type": "definition",
+              "md": "Pour stimuler sa créativité, il est parfois intéressant de faire des **analogies**. Par exemple, si votre problème est une baisse des ventes : « Mon problème, c'est comme… prendre une piste de ski à contresens ».\n\nÀ essayer : « La plupart des auteurs arabes publient en langues étrangères (principalement en anglais et en français) : ce problème, c'est comme… » ; « Une communication orale confuse, c'est comme… » ; « Être en retard à un entretien d'embauche, c'est comme… ».",
+              "origin": "source",
+              "title": "Activité : faire des analogies"
+            },
+            {
+              "type": "remark",
+              "md": "Le cahier propose aussi un exercice de labyrinthe (trouver en 30 secondes le plus de chemins possibles d'un point A à un point B) pour l'étape « Imagination : réfléchir à de nouvelles solutions ».",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes du modèle de résolution créative.",
+              "items": [
+                "Prise de conscience",
+                "Éclairage",
+                "Imagination"
+              ],
+              "explanation": "On réalise d'abord qu'il y a un problème, on le redéfinit, puis on imagine des solutions."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque étape à son rôle.",
+              "pairs": [
+                {
+                  "left": "Prise de conscience",
+                  "right": "Réaliser qu'il existe un problème à résoudre"
+                },
+                {
+                  "left": "Éclairage",
+                  "right": "Regarder le problème avec un œil neuf et le redéfinir"
+                },
+                {
+                  "left": "Imagination",
+                  "right": "Trouver de nouvelles façons de le résoudre"
+                }
+              ],
+              "explanation": "C'est le modèle adapté de West (résolution créative des problèmes)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La question « Et si… » sert à explorer des hypothèses extrêmes pour sortir des solutions habituelles.",
+              "answer": true,
+              "explanation": "Par exemple « Et si posséder une voiture coûtait 10 millions de dirhams ? »."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Selon le tableau, à quel problème réel peut renvoyer « l'incapacité d'obtenir un emploi désiré » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Ai-je la bonne carrière ?"
+                },
+                {
+                  "id": "b",
+                  "md": "Mon bureau est-il rangé ?"
+                },
+                {
+                  "id": "c",
+                  "md": "Mon CV est-il en couleur ?"
+                },
+                {
+                  "id": "d",
+                  "md": "Le marché n'existe pas"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la première ligne du tableau symptôme / problème réel."
+            }
+          ]
+        },
+        {
+          "slug": "brainstorming",
+          "title": "La créativité du groupe : le brainstorming",
+          "number": "5.4",
+          "estimatedMinutes": 7,
+          "summary": "Les cinq règles clés du brainstorming et ses trois phases : production d'idées, choix des filtres, application des filtres et recommandation.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Mission : trouver une solution à un problème défini ensemble.\n1. Dans un premier temps, **le nombre d'idées est plus important que leur qualité** ;\n2. les idées étranges ou « bizarres » sont encouragées ;\n3. vous êtes encouragés à vous « voler » les idées les uns les autres (vous inspirer des idées entendues) ;\n4. **personne ne peut critiquer** l'idée d'une autre personne, aussi étrange qu'elle puisse être ;\n5. vous ne devez pas paraphraser ou modifier les idées des autres.\n\n*Exemples de problèmes :* résoudre le problème des déchets dans les rues ; récompenser les employés démotivés ; comment l'université peut jouer un rôle dans l'employabilité de ses diplômés ; que peut faire l'université pour améliorer sa position régionale…",
+              "origin": "source",
+              "title": "Règles clés du brainstorming"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pendant la première phase d'un brainstorming, on critique les idées faibles pour gagner du temps.",
+                "answer": false,
+                "explanation": "Faux : règle 4, personne ne peut critiquer l'idée d'une autre personne."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "**Première phase :** prévoir un délai pour la production d'idées (5 minutes) ; discuter brièvement des règles de base ; donner à chacun l'opportunité de présenter ses idées ; s'assurer que chaque personne donne au moins une idée (si possible) ; arrêter lorsqu'il n'y a plus d'idées.\n\n**Deuxième phase :** se mettre d'accord avec le groupe sur des **filtres** communs : le coût ; le temps ; la disponibilité ; l'adaptation ; la résistance à l'idée versus son acceptation ; la praticité ; autre.\n\n**Troisième phase :** appliquer les filtres (éliminer les idées qui ne passent pas) ; discuter des idées restantes ; parvenir à une **recommandation commune**.",
+              "origin": "source",
+              "title": "Les essentiels du brainstorming : trois phases"
+            },
+            {
+              "type": "exercise",
+              "md": "Sélectionnez un problème qui persiste dans votre quotidien. Notez toutes les idées qui vous viennent à l'esprit. Filtrez. Émettez une recommandation. Soyez prêt à présenter ce processus à la classe.",
+              "origin": "source",
+              "title": "Travail à faire chez soi"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous souhaitez adopter pour améliorer vos compétences en résolution de problèmes.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans un premier temps, qu'est-ce qui compte le plus dans un brainstorming ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La qualité des idées"
+                },
+                {
+                  "id": "b",
+                  "md": "Le nombre d'idées"
+                },
+                {
+                  "id": "c",
+                  "md": "La rapidité de la décision"
+                },
+                {
+                  "id": "d",
+                  "md": "L'avis du chef"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Règle 1 : le nombre d'idées est plus important que leur qualité."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les trois phases du brainstorming.",
+              "items": [
+                "Produire des idées sans les juger",
+                "Choisir des filtres communs",
+                "Appliquer les filtres et parvenir à une recommandation"
+              ],
+              "explanation": "On génère d'abord, on convient des critères ensuite, et on ne filtre qu'à la fin."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces éléments est un **filtre** de la deuxième phase ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le coût"
+                },
+                {
+                  "id": "b",
+                  "md": "L'idée la plus bizarre"
+                },
+                {
+                  "id": "c",
+                  "md": "Le nombre de participants"
+                },
+                {
+                  "id": "d",
+                  "md": "La couleur"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Filtres cités : coût, temps, disponibilité, adaptation, résistance/acceptation, praticité."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le brainstorming encourage à s'inspirer des idées des autres.",
+              "answer": true,
+              "explanation": "Règle 3 : vous êtes encouragés à vous « voler » les idées les uns les autres."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le cahier propose de prévoir ___ minutes pour la production d'idées.",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "Première phase : prévoir un délai de 5 minutes."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 5 = p. 75–92 du PDF (pages 71–88 du cahier).",
+    "ERREUR DE LA SOURCE corrigée (p. 80) : « La bonne réponse est 0320 » ; le produit 1 × 2 × … × 8 vaut 40 320 (chiffre « 4 » perdu à l'impression, visible sur le rendu de la page).",
+    "p. 80 : le cahier nomme le « biais d'ancrage et d'ajustement » sans le définir ; une définition est ajoutée (origin: added). L'exemple voiture/avion n'est pas nommé dans le cahier (il s'agit du biais de disponibilité) ; le site ne lui ajoute pas de nom.",
+    "Verrous mentaux (p. 81) : la liste de mots à associer contient deux fois « créatif » ; le verrou 4 de la liste originale de von Oech est « Être pratique » (remarque ajoutée). L'échelle de Gough (p. 82) contient deux fois « original » (items 21 et 30), conservé tel quel.",
+    "Le tableau symptôme / problème réel (p. 84) ne donne que deux problèmes réels ; les trois autres lignes restent « à compléter » comme dans le cahier. L'exercice du labyrinthe (p. 88, image) est mentionné dans une remarque. Les en-têtes « Les biais dans le processus décisionnel » (p. 82) et « La créativité du groupe – Brainstorming » (p. 95, séance 6) mal placés dans le cahier n'ont pas été repris."
+  ]
+}

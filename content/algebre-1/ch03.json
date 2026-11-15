@@ -1,0 +1,3523 @@
+{
+  "slug": "dimension-bases-rang",
+  "number": 3,
+  "title": "Dimension, bases et théorème du rang",
+  "description": "Familles génératrices, libres, bases et composantes ; dimension d'un espace vectoriel et de ses sous-espaces ; théorème des quatre dimensions ; rang d'une famille et d'une application linéaire ; théorème du rang, théorème d'isomorphisme et équations d'hyperplans.",
+  "sourcePdf": "Modules/Algebre/Cours/Chapitre 03 - Dimension, bases et théorème du rang.pdf",
+  "sections": [
+    {
+      "slug": "famille-de-vecteurs",
+      "title": "Famille de vecteurs",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "vect-et-familles-generatrices",
+          "title": "Sous-espace engendré par une famille et familles génératrices",
+          "number": "1.1–1.2",
+          "estimatedMinutes": 10,
+          "summary": "Combinaisons linéaires d'une famille finie, sous-espace $\\operatorname{Vect}$ engendré, familles génératrices et principe de réduction d'une famille génératrice.",
+          "blocks": [
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel et $n \\in \\mathbb{N}$. $\\mathcal{F} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n) = (\\vec{e}_i)_{1 \\le i \\le n}$ désigne une famille de vecteurs de $E$.\n\nDans le cas $n = 0$, on dit que c'est la **famille vide**."
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.1 Sous-espace vectoriel engendré par une famille finie de vecteurs"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Combinaison linéaire",
+              "md": "On appelle **combinaison linéaire** des vecteurs de $\\mathcal{F} = (\\vec{e}_i)_{1 \\le i \\le n}$ tout vecteur $\\vec{x}$ de $E$ pouvant s'écrire\n$$\\vec{x} = \\sum_{i=1}^{n} \\lambda_i \\vec{e}_i$$\navec $\\lambda_1, \\lambda_2, \\dots, \\lambda_n$ bien choisis."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Une combinaison linéaire, c'est une « recette » : on prend $\\lambda_1$ fois $\\vec{e}_1$, $\\lambda_2$ fois $\\vec{e}_2$, etc., puis on additionne. Toute la suite du chapitre consiste à se demander **quels vecteurs on peut fabriquer** avec une famille donnée, et **de combien de façons**."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Une combinaison linéaire dans $\\mathbb{R}^2$",
+              "md": "Avec $\\vec{u} = (1,1)$ et $\\vec{v} = (1,-1)$, le vecteur $(5,-1)$ est combinaison linéaire de $(\\vec{u}, \\vec{v})$.",
+              "steps": [
+                {
+                  "md": "On cherche $a, b$ tels que $a(1,1) + b(1,-1) = (5,-1)$, c'est-à-dire $a + b = 5$ et $a - b = -1$."
+                },
+                {
+                  "md": "En additionnant : $2a = 4$, donc $a = 2$ ; puis $b = 5 - a = 3$."
+                },
+                {
+                  "md": "Vérification : $2(1,1) + 3(1,-1) = (2+3,\\ 2-3) = (5,-1)$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans $\\mathbb{R}^2$, on écrit $(4,2) = a(1,1) + b(1,-1)$. Alors $a =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "On résout $a + b = 4$ et $a - b = 2$ : en additionnant, $2a = 6$ donc $a = 3$ (et $b = 1$). Vérification : $3(1,1) + 1(1,-1) = (4,2)$. Répondre $2$ ou $4$ revient à confondre une coordonnée de $(4,2)$ avec un coefficient de la combinaison."
+              }
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Sous-espace vectoriel engendré par une famille",
+              "md": "Soit $\\mathcal{F} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ une famille de vecteurs de $E$. On appelle **sous-espace vectoriel engendré par la famille** $\\mathcal{F}$ le sous-espace vectoriel engendré par $\\{\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n\\}$. On le note $\\operatorname{Vect}(\\mathcal{F})$, $\\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ ou $\\operatorname{Vect}(\\vec{e}_i)_{1 \\le i \\le n}$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Si $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est une famille de vecteurs de $E$ alors $\\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est l'ensemble des combinaisons linéaires des $\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n$, i.e. :\n$$\\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n) = \\left\\{ \\sum_{i=1}^{n} \\lambda_i \\vec{e}_i \\;/\\; \\lambda_1, \\dots, \\lambda_n \\in \\mathbb{K} \\right\\}.$$"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Notons $C$ l'ensemble des combinaisons linéaires $\\sum_{i=1}^{n} \\lambda_i \\vec{e}_i$. C'est un sous-espace vectoriel de $E$ : il contient $\\vec{0}$ (tous les $\\lambda_i$ nuls) et $\\alpha \\sum \\lambda_i \\vec{e}_i + \\beta \\sum \\mu_i \\vec{e}_i = \\sum (\\alpha\\lambda_i + \\beta\\mu_i) \\vec{e}_i \\in C$.",
+                  "why": "Caractérisation des sous-espaces vectoriels : non vide et stable par combinaison linéaire."
+                },
+                {
+                  "md": "$C$ contient chaque $\\vec{e}_j$ : prendre $\\lambda_j = 1$ et $\\lambda_i = 0$ pour $i \\neq j$."
+                },
+                {
+                  "md": "Tout sous-espace vectoriel $V$ contenant $\\vec{e}_1, \\dots, \\vec{e}_n$ contient toutes leurs combinaisons linéaires, donc $C \\subset V$.",
+                  "why": "Un sous-espace vectoriel est stable par addition et multiplication par un scalaire."
+                },
+                {
+                  "md": "Ainsi $C$ est le plus petit sous-espace vectoriel contenant $\\{\\vec{e}_1, \\dots, \\vec{e}_n\\}$ : c'est $\\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$.",
+                  "why": "Définition du sous-espace engendré par une partie (chapitre précédent)."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.2 Famille génératrice"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Famille génératrice",
+              "md": "On dit qu'une famille $\\mathcal{F} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n) = (\\vec{e}_i)_{1 \\le i \\le n}$ de vecteurs de $E$ est **génératrice** (de $E$) ssi $\\operatorname{Vect}(\\mathcal{F}) = E$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Une famille finie $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est génératrice de $E$ ssi tout vecteur de $E$ est combinaison linéaire des vecteurs $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$, i.e. :\n$$\\forall \\vec{x} \\in E,\\ \\exists (\\lambda_1, \\dots, \\lambda_n) \\in \\mathbb{K}^n \\text{ tel que } \\vec{x} = \\lambda_1 \\vec{e}_1 + \\dots + \\lambda_n \\vec{e}_n = \\sum_{i=1}^{n} \\lambda_i \\vec{e}_i.$$"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "On a toujours $\\operatorname{Vect}(\\mathcal{F}) \\subset E$. Donc $\\operatorname{Vect}(\\mathcal{F}) = E$ équivaut à $E \\subset \\operatorname{Vect}(\\mathcal{F})$."
+                },
+                {
+                  "md": "D'après le théorème précédent, $\\operatorname{Vect}(\\mathcal{F})$ est l'ensemble des combinaisons linéaires des $\\vec{e}_i$ : l'inclusion $E \\subset \\operatorname{Vect}(\\mathcal{F})$ signifie exactement que tout $\\vec{x} \\in E$ s'écrit $\\sum \\lambda_i \\vec{e}_i$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Laquelle de ces familles est génératrice de $\\mathbb{R}^2$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$((1,2), (2,4))$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$((1,0), (0,1), (1,1))$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$((1,0))$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$((0,0), (0,1))$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Pour (b), tout $(x,y)$ s'écrit $x(1,0) + y(0,1) + 0\\cdot(1,1)$ : la famille est génératrice (avoir un vecteur « en trop » n'empêche pas d'engendrer). En (a), $(2,4) = 2(1,2)$ : on n'obtient que les vecteurs de la droite $y = 2x$. En (c), on n'obtient que les $(a, 0)$. En (d), on n'obtient que les $(0, b)$ : le vecteur nul n'apporte rien."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "title": "Principe de réduction de famille génératrice",
+              "md": "Si $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n, \\vec{e}_{n+1})$ est une famille génératrice et $\\vec{e}_{n+1} \\in \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ alors la sous-famille $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est génératrice."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\vec{x} \\in E$. La famille étant génératrice, $\\vec{x} = \\sum_{i=1}^{n+1} \\lambda_i \\vec{e}_i$."
+                },
+                {
+                  "md": "Comme $\\vec{e}_{n+1} \\in \\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$, on écrit $\\vec{e}_{n+1} = \\sum_{i=1}^{n} \\mu_i \\vec{e}_i$."
+                },
+                {
+                  "md": "En substituant : $\\vec{x} = \\sum_{i=1}^{n} (\\lambda_i + \\lambda_{n+1}\\mu_i)\\, \\vec{e}_i$."
+                },
+                {
+                  "md": "Tout vecteur de $E$ est donc combinaison linéaire de $\\vec{e}_1, \\dots, \\vec{e}_n$ : la sous-famille est génératrice."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "La famille $((1,0), (0,1), (1,1))$ est génératrice de $\\mathbb{R}^2$ et $(1,1) = (1,0) + (0,1) \\in \\operatorname{Vect}((1,0),(0,1))$. Par le principe de réduction, $((1,0),(0,1))$ est encore génératrice de $\\mathbb{R}^2$."
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Pour toute famille $(\\vec{e}_1, \\dots, \\vec{e}_n)$ avec $n \\ge 1$, le vecteur nul $\\vec{0}$ est combinaison linéaire de $\\vec{e}_1, \\dots, \\vec{e}_n$.",
+              "answer": true,
+              "explanation": "Vrai : il suffit de prendre $\\lambda_1 = \\dots = \\lambda_n = 0$. C'est d'ailleurs pourquoi $\\operatorname{Vect}(\\mathcal{F})$ contient toujours $\\vec{0}$, comme tout sous-espace vectoriel."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans $\\mathbb{R}^3$, on écrit $(2,3,5) = a(1,0,0) + b(0,1,0) + c(1,1,1)$. Alors $a =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "-3"
+              ],
+              "explanation": "La combinaison vaut $(a + c,\\ b + c,\\ c)$. La troisième coordonnée donne $c = 5$, puis $a = 2 - 5 = -3$ et $b = 3 - 5 = -2$. Répondre $a = 2$ oublie la contribution $c(1,1,1)$ à la première coordonnée."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces vecteurs appartient à $\\operatorname{Vect}((1,1,0), (0,1,1))$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$(1,2,1)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$(1,0,0)$"
+                },
+                {
+                  "id": "c",
+                  "md": "$(0,0,1)$"
+                },
+                {
+                  "id": "d",
+                  "md": "$(1,1,1)$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Les combinaisons $a(1,1,0) + b(0,1,1) = (a,\\ a+b,\\ b)$ sont les vecteurs $(x,y,z)$ avec $y = x + z$. $(1,2,1)$ vérifie $2 = 1 + 1$ (c'est $(1,1,0) + (0,1,1)$). Pour $(1,0,0)$ et $(0,0,1)$ on aurait $y = 1 \\neq 0$ ; pour $(1,1,1)$ il faudrait $a = b = 1$, d'où $y = 2 \\neq 1$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque notion à sa description.",
+              "pairs": [
+                {
+                  "left": "Combinaison linéaire de $(\\vec{e}_i)_{1 \\le i \\le n}$",
+                  "right": "Un vecteur de la forme $\\sum_{i=1}^{n} \\lambda_i \\vec{e}_i$"
+                },
+                {
+                  "left": "$\\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$",
+                  "right": "L'ensemble de toutes les combinaisons linéaires des $\\vec{e}_i$"
+                },
+                {
+                  "left": "Famille génératrice de $E$",
+                  "right": "Une famille $\\mathcal{F}$ telle que $\\operatorname{Vect}(\\mathcal{F}) = E$"
+                },
+                {
+                  "left": "Famille vide",
+                  "right": "Le cas $n = 0$"
+                }
+              ],
+              "explanation": "Une combinaison linéaire est **un** vecteur ; $\\operatorname{Vect}$ est l'**ensemble** de toutes ces combinaisons (théorème 1.1) ; une famille est génératrice quand cet ensemble est $E$ tout entier ; la famille vide correspond à $n = 0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ est génératrice de $E$ et $\\vec{e}_3 = \\vec{e}_1 - \\vec{e}_2$, alors $(\\vec{e}_1, \\vec{e}_2)$ est génératrice de $E$.",
+              "answer": true,
+              "explanation": "Vrai : $\\vec{e}_3 \\in \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2)$, donc par le principe de réduction on peut retirer $\\vec{e}_3$ sans perdre le caractère générateur. Concrètement, dans toute écriture $\\vec{x} = \\lambda_1\\vec{e}_1 + \\lambda_2\\vec{e}_2 + \\lambda_3\\vec{e}_3$ on remplace $\\vec{e}_3$ par $\\vec{e}_1 - \\vec{e}_2$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la démonstration du principe de réduction de famille génératrice.",
+              "items": [
+                "Soit $\\vec{x} \\in E$ ; on écrit $\\vec{x} = \\sum_{i=1}^{n+1} \\lambda_i \\vec{e}_i$ (la famille est génératrice).",
+                "On écrit $\\vec{e}_{n+1} = \\sum_{i=1}^{n} \\mu_i \\vec{e}_i$ (car $\\vec{e}_{n+1} \\in \\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$).",
+                "On substitue : $\\vec{x} = \\sum_{i=1}^{n} (\\lambda_i + \\lambda_{n+1}\\mu_i) \\vec{e}_i$.",
+                "Tout vecteur de $E$ est combinaison linéaire de $\\vec{e}_1, \\dots, \\vec{e}_n$ : la sous-famille est génératrice."
+              ],
+              "explanation": "On part d'un vecteur quelconque, on utilise l'hypothèse « génératrice », puis l'hypothèse $\\vec{e}_{n+1} \\in \\operatorname{Vect}(\\dots)$ pour éliminer $\\vec{e}_{n+1}$, et on conclut. La substitution ne peut pas précéder l'écriture de $\\vec{e}_{n+1}$ en fonction des autres."
+            }
+          ]
+        },
+        {
+          "slug": "familles-libres-et-liees",
+          "title": "Famille libre, famille liée",
+          "number": "1.3",
+          "estimatedMinutes": 11,
+          "summary": "Vecteurs colinéaires, familles libres et liées, relation linéaire, caractérisation d'une famille liée et principe d'extension d'une famille libre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.3 Famille libre, famille liée"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Vecteurs colinéaires",
+              "md": "Un vecteur $\\vec{u}$ est dit **colinéaire** au vecteur $\\vec{v}$ ssi il existe $\\alpha \\in \\mathbb{K}$ tel que $\\vec{u} = \\alpha \\vec{v}$.\n\nDeux vecteurs $\\vec{u}$ et $\\vec{v}$ sont dits colinéaires ssi l'un des deux est colinéaire à l'autre."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Attention au vecteur nul : $\\vec{0} = 0 \\cdot \\vec{v}$, donc $\\vec{0}$ est colinéaire à **tout** vecteur. C'est pour cela que la définition de « deux vecteurs colinéaires » dit « l'un des deux est colinéaire à l'autre » : $\\vec{0}$ et $\\vec{v} \\neq \\vec{0}$ sont colinéaires même si $\\vec{v}$ n'est pas un multiple de $\\vec{0}$."
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Famille libre, famille liée",
+              "md": "On dit qu'une famille $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n) = (\\vec{e}_i)_{1 \\le i \\le n}$ de vecteurs de $E$ est **libre** ssi :\n$$\\forall \\lambda_1, \\lambda_2, \\dots, \\lambda_n \\in \\mathbb{K}, \\quad \\lambda_1 \\vec{e}_1 + \\dots + \\lambda_n \\vec{e}_n = \\vec{0} \\Rightarrow \\lambda_1 = \\lambda_2 = \\dots = \\lambda_n = 0.$$\nOn dit que les vecteurs $\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n$ sont **linéairement indépendants**.\n\nOn dit que la famille $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n) = (\\vec{e}_i)_{1 \\le i \\le n}$ est **liée** ssi elle n'est pas libre, i.e. :\n$$\\exists \\lambda_1, \\lambda_2, \\dots, \\lambda_n \\in \\mathbb{K}, \\quad \\lambda_1 \\vec{e}_1 + \\dots + \\lambda_n \\vec{e}_n = \\vec{0} \\ \\text{ et } \\ (\\lambda_1, \\lambda_2, \\dots, \\lambda_n) \\neq (0, 0, \\dots, 0).$$\nCette égalité vectorielle est alors appelée **relation linéaire** sur les vecteurs $\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n$."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Une famille libre n'a **aucune redondance** : la seule façon d'obtenir $\\vec{0}$ est la combinaison triviale (tous les coefficients nuls). Une famille liée contient au moins un vecteur « inutile », qu'on peut fabriquer avec les autres (c'est la proposition qui suit)."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Une famille libre et une famille liée de $\\mathbb{R}^2$",
+              "md": "Étudions $((1,2), (3,4))$ puis $((1,2), (-2,-4))$.",
+              "steps": [
+                {
+                  "md": "$a(1,2) + b(3,4) = (0,0)$ donne $a + 3b = 0$ et $2a + 4b = 0$."
+                },
+                {
+                  "md": "De la première, $a = -3b$ ; dans la seconde : $-6b + 4b = -2b = 0$, donc $b = 0$ puis $a = 0$. La famille $((1,2),(3,4))$ est **libre**."
+                },
+                {
+                  "md": "En revanche $2(1,2) + 1\\cdot(-2,-4) = (0,0)$ avec des coefficients non tous nuls : c'est une relation linéaire, la famille $((1,2),(-2,-4))$ est **liée**."
+                }
+              ]
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algebre-1/ch03-libre-liee.svg",
+              "alt": "À gauche les vecteurs (1,2) et (3,4), non colinéaires : famille libre ; à droite (1,2) et (−2,−4), sur une même droite : famille liée.",
+              "caption": "Figure — deux vecteurs non colinéaires (libre) et deux vecteurs colinéaires (liée).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une famille qui contient le vecteur nul est toujours liée.",
+                "answer": true,
+                "explanation": "Vrai : si $\\vec{e}_k = \\vec{0}$, on prend $\\lambda_k = 1$ et tous les autres coefficients nuls : $\\lambda_1 \\vec{e}_1 + \\dots + \\lambda_n \\vec{e}_n = 1 \\cdot \\vec{0} = \\vec{0}$ avec $(\\lambda_i) \\neq (0, \\dots, 0)$. C'est une relation linéaire."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $n \\ge 2$ et $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ une famille de vecteurs de $E$. On a équivalence entre :\n1. $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est liée,\n2. l'un des vecteurs $\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n$ est combinaison linéaire des autres."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "(1 ⇒ 2) Soit une relation linéaire $\\sum_{i=1}^{n} \\lambda_i \\vec{e}_i = \\vec{0}$ avec un coefficient $\\lambda_k \\neq 0$."
+                },
+                {
+                  "md": "On isole $\\vec{e}_k$ : $\\vec{e}_k = -\\sum_{i \\neq k} \\dfrac{\\lambda_i}{\\lambda_k} \\vec{e}_i$, combinaison linéaire des autres vecteurs.",
+                  "why": "On peut diviser par $\\lambda_k$ car $\\lambda_k \\neq 0$ et $\\mathbb{K}$ est un corps."
+                },
+                {
+                  "md": "(2 ⇒ 1) Si $\\vec{e}_k = \\sum_{i \\neq k} \\mu_i \\vec{e}_i$, alors $\\sum_{i \\neq k} \\mu_i \\vec{e}_i - 1 \\cdot \\vec{e}_k = \\vec{0}$."
+                },
+                {
+                  "md": "Le coefficient de $\\vec{e}_k$ vaut $-1 \\neq 0$ : c'est une relation linéaire, la famille est liée."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "title": "Principe d'extension d'une famille libre",
+              "md": "Si $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ est une famille libre et $\\vec{e}_{n+1} \\notin \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ alors $(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n, \\vec{e}_{n+1})$ est libre."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Supposons $\\sum_{i=1}^{n+1} \\lambda_i \\vec{e}_i = \\vec{0}$."
+                },
+                {
+                  "md": "Si $\\lambda_{n+1} \\neq 0$, alors $\\vec{e}_{n+1} = -\\sum_{i=1}^{n} \\dfrac{\\lambda_i}{\\lambda_{n+1}} \\vec{e}_i \\in \\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$ : contradiction. Donc $\\lambda_{n+1} = 0$."
+                },
+                {
+                  "md": "Il reste $\\sum_{i=1}^{n} \\lambda_i \\vec{e}_i = \\vec{0}$, et comme $(\\vec{e}_1, \\dots, \\vec{e}_n)$ est libre, $\\lambda_1 = \\dots = \\lambda_n = 0$."
+                },
+                {
+                  "md": "Tous les coefficients sont nuls : la famille $(\\vec{e}_1, \\dots, \\vec{e}_n, \\vec{e}_{n+1})$ est libre."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "La famille $((1,0,0), (0,1,0))$ est libre. Quel vecteur peut-on lui ajouter en gardant une famille libre ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$(1,1,0)$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$(0,0,1)$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$(2,0,0)$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$(0,0,0)$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$\\operatorname{Vect}((1,0,0),(0,1,0))$ est l'ensemble des $(x, y, 0)$. Le vecteur $(0,0,1)$ n'y est pas, donc par le principe d'extension la famille obtenue est libre. Les vecteurs $(1,1,0)$ et $(2,0,0)$ sont dans ce $\\operatorname{Vect}$ (troisième coordonnée nulle) : les ajouter crée une relation linéaire. Et ajouter $\\vec{0}$ rend toujours la famille liée."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces familles de $\\mathbb{R}^3$ est libre ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$((1,0,1), (2,0,2))$"
+                },
+                {
+                  "id": "b",
+                  "md": "$((1,1,0), (0,1,1), (1,2,1))$"
+                },
+                {
+                  "id": "c",
+                  "md": "$((1,0,0), (1,1,0), (1,1,1))$"
+                },
+                {
+                  "id": "d",
+                  "md": "$((1,2,3), (0,0,0))$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "Pour (c) : $a(1,0,0) + b(1,1,0) + c(1,1,1) = (a+b+c,\\ b+c,\\ c) = \\vec{0}$ donne $c = 0$, puis $b = 0$, puis $a = 0$ : libre. (a) est liée car $(2,0,2) = 2(1,0,1)$. (b) est liée car $(1,2,1) = (1,1,0) + (0,1,1)$ — piège classique : aucun vecteur n'est colinéaire à un autre, et pourtant la famille est liée. (d) contient $\\vec{0}$, donc est liée."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Les vecteurs $(1,2)$ et $(3,m)$ de $\\mathbb{R}^2$ sont colinéaires pour $m =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "6"
+              ],
+              "explanation": "Comme $(1,2) \\neq \\vec{0}$, il faut $(3,m) = \\alpha(1,2)$ : la première coordonnée impose $\\alpha = 3$, d'où $m = 3 \\times 2 = 6$. Répondre $m = 3/2$ vient d'une proportion inversée ($\\frac{m}{3} = \\frac{1}{2}$ au lieu de $\\frac{m}{3} = \\frac{2}{1}$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si la famille $(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ est liée, alors $\\vec{e}_3$ est forcément combinaison linéaire de $\\vec{e}_1$ et $\\vec{e}_2$.",
+              "answer": false,
+              "explanation": "Faux : la proposition dit que **l'un** des vecteurs est combinaison linéaire des autres, pas forcément le dernier. Contre-exemple dans $\\mathbb{R}^2$ : $\\vec{e}_1 = (0,0)$, $\\vec{e}_2 = (1,0)$, $\\vec{e}_3 = (0,1)$. La famille est liée (elle contient $\\vec{0}$), mais $(0,1)$ n'est pas combinaison linéaire de $(0,0)$ et $(1,0)$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "On étudie la famille $(\\vec{u}, \\vec{v}, \\vec{w})$ de $\\mathbb{R}^3$ avec $\\vec{u} = (1,1,0)$, $\\vec{v} = (1,0,1)$, $\\vec{w} = (0,1,-1)$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "L'égalité $a\\vec{u} + b\\vec{v} + c\\vec{w} = \\vec{0}$ équivaut au système :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$a + b = 0,\\ a + c = 0,\\ b - c = 0$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$a + b = 0,\\ a + c = 0,\\ b + c = 0$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$a + b + c = 0,\\ a + c = 0,\\ b - c = 0$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Coordonnée par coordonnée : $x$ : $a + b$ ; $y$ : $a + c$ ; $z$ : $b - c$ (le $-1$ vient de la troisième coordonnée de $\\vec{w}$). Le système (b) oublie ce signe, (c) ajoute un $c$ à tort dans la première équation."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "On trouve $b = -a$ et $c = -a$, et la troisième équation est alors toujours vérifiée. Pour $a = 1$, on obtient la solution non nulle $(1, b, c)$ avec $b =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "-1"
+                  ],
+                  "explanation": "$b = -a = -1$ et $c = -1$ ; on vérifie $b - c = -1 - (-1) = 0$. D'où la relation $\\vec{u} - \\vec{v} - \\vec{w} = \\vec{0}$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Que peut-on conclure ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "La famille est liée, et $\\vec{w} = \\vec{u} - \\vec{v}$."
+                    },
+                    {
+                      "id": "b",
+                      "md": "La famille est libre."
+                    },
+                    {
+                      "id": "c",
+                      "md": "On ne peut rien conclure sans calculer un déterminant."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "On a trouvé une relation linéaire à coefficients non tous nuls, donc la famille est liée ; elle s'écrit $\\vec{w} = \\vec{u} - \\vec{v}$ : en effet $(1,1,0) - (1,0,1) = (0,1,-1)$."
+                }
+              ],
+              "explanation": "Méthode générale : écrire $\\sum \\lambda_i \\vec{e}_i = \\vec{0}$, traduire en système, et regarder si la seule solution est la solution nulle (libre) ou s'il existe une solution non nulle (liée, et cette solution donne une relation linéaire)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque famille de $\\mathbb{R}^2$ à sa nature.",
+              "pairs": [
+                {
+                  "left": "$((1,0), (0,1))$",
+                  "right": "Libre et génératrice de $\\mathbb{R}^2$"
+                },
+                {
+                  "left": "$\\vec{u} = (1,2)$, $\\vec{v} = (2,4)$",
+                  "right": "Liée : $2\\vec{u} - \\vec{v} = \\vec{0}$"
+                },
+                {
+                  "left": "$\\vec{u} = (0,0)$, $\\vec{v} = (1,1)$",
+                  "right": "Liée : $1 \\cdot \\vec{u} + 0 \\cdot \\vec{v} = \\vec{0}$"
+                },
+                {
+                  "left": "$((1,1))$",
+                  "right": "Libre mais non génératrice de $\\mathbb{R}^2$"
+                }
+              ],
+              "explanation": "$((1,0),(0,1))$ : $(a,b) = \\vec{0}$ force $a = b = 0$, et tout $(x,y)$ s'écrit $x(1,0) + y(0,1)$. $(2,4) = 2(1,2)$ donne la relation $2\\vec{u} - \\vec{v} = \\vec{0}$. Une famille contenant $\\vec{0}$ est liée. Enfin $((1,1))$ est libre ($\\lambda(1,1) = \\vec{0} \\Rightarrow \\lambda = 0$) mais n'engendre que la droite $y = x$."
+            }
+          ]
+        },
+        {
+          "slug": "bases-et-composantes",
+          "title": "Base d'un espace vectoriel et composantes",
+          "number": "1.4–1.5",
+          "estimatedMinutes": 12,
+          "summary": "Définition d'une base, existence et unicité des composantes d'un vecteur dans une base, notations et calcul des composantes d'une somme.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.4 Base d'un espace vectoriel"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Base",
+              "md": "Soit $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ une famille de vecteurs de $E$.\n\nOn dit que $\\mathcal{B}$ est une **base** ssi $\\mathcal{B}$ est libre et génératrice."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "« Génératrice » garantit qu'on peut fabriquer **tous** les vecteurs ; « libre » garantit qu'il n'y a **rien de superflu**. Une base est donc un système de repérage parfait : chaque vecteur s'y écrit d'une et d'une seule façon (théorème du § 1.5)."
+            },
+            {
+              "type": "example",
+              "origin": "source",
+              "title": "Exemple",
+              "md": "On pose $\\vec{e}_1 = (1,1,1)$, $\\vec{e}_2 = (1,1,0)$, $\\vec{e}_3 = (0,1,1)$ ; alors $(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ est une base de $\\mathbb{R}^3$.",
+              "steps": [
+                {
+                  "md": "Soit $\\vec{x} = (x,y,z) \\in \\mathbb{R}^3$. On cherche $(a,b,c)$ tels que $a\\vec{e}_1 + b\\vec{e}_2 + c\\vec{e}_3 = \\vec{x}$, c'est-à-dire $(a+b,\\ a+b+c,\\ a+c) = (x,y,z)$."
+                },
+                {
+                  "md": "La différence des deux premières équations donne $c = y - x$ ; la troisième donne $a = z - c = x - y + z$ ; la première donne $b = x - a = y - z$."
+                },
+                {
+                  "md": "Réciproquement, ce triplet convient : $a + b = x$, $a + b + c = y$, $a + c = z$. Pour tout $\\vec{x}$ il existe donc un **unique** triplet $(a,b,c)$."
+                },
+                {
+                  "md": "Existence pour tout $\\vec{x}$ : la famille est génératrice. Unicité pour $\\vec{x} = \\vec{0}$ : la seule solution est $a = b = c = 0$, donc la famille est libre. C'est une base de $\\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La famille $((1,0), (0,1), (1,1))$ est une base de $\\mathbb{R}^2$.",
+                "answer": false,
+                "explanation": "Faux : elle est bien génératrice de $\\mathbb{R}^2$, mais elle est liée car $(1,1) = (1,0) + (0,1)$. Une base doit être **à la fois** libre et génératrice."
+              }
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.5 Composantes dans une base"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel possédant une base $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n}$. On a :\n$$\\forall \\vec{x} \\in E,\\ \\exists! (\\lambda_1, \\lambda_2, \\dots, \\lambda_n) \\in \\mathbb{K}^n \\ \\text{ tel que } \\ \\vec{x} = \\sum_{i=1}^{n} \\lambda_i \\vec{e}_i.$$"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Existence : $\\mathcal{B}$ est génératrice, donc tout $\\vec{x}$ est combinaison linéaire des $\\vec{e}_i$."
+                },
+                {
+                  "md": "Unicité : si $\\vec{x} = \\sum \\lambda_i \\vec{e}_i = \\sum \\mu_i \\vec{e}_i$, alors par différence $\\sum (\\lambda_i - \\mu_i) \\vec{e}_i = \\vec{0}$."
+                },
+                {
+                  "md": "$\\mathcal{B}$ étant libre, $\\lambda_i - \\mu_i = 0$ pour tout $i$, donc les deux écritures coïncident."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Composantes",
+              "md": "Avec les notations ci-dessus, les scalaires $\\lambda_1, \\lambda_2, \\dots, \\lambda_n$ sont appelés **composantes** de $\\vec{x}$ dans $\\mathcal{B}$."
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algebre-1/ch03-composantes-base.svg",
+              "alt": "Base (e₁, e₂) avec e₁=(1,0), e₂=(1,2) ; le vecteur x=(3,4) s'obtient par 1·e₁ + 2·e₂ : ses composantes dans cette base sont 1 et 2.",
+              "caption": "Figure — dans la base (e₁, e₂), x = (3, 4) a pour composantes (1, 2).",
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Espace muni d'une base",
+              "md": "Munir un $\\mathbb{K}$-espace vectoriel d'une base $\\mathcal{B}$, c'est signifier que les composantes des vecteurs sont désormais lues dans $\\mathcal{B}$."
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Notation",
+              "md": "Si $E$ est muni d'une base $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n}$, on note parfois $\\vec{x}(\\lambda_1, \\lambda_2, \\dots, \\lambda_n)$ ou $\\vec{x}\\begin{vmatrix} \\lambda_1 \\\\ \\vdots \\\\ \\lambda_n \\end{vmatrix}$ pour signifier que $\\vec{x}$ est le vecteur de composantes $\\lambda_1, \\lambda_2, \\dots, \\lambda_n$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "On suppose $E$ muni d'une base $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n}$.\n\nSi $\\vec{x}\\begin{vmatrix} x_1 \\\\ \\vdots \\\\ x_n \\end{vmatrix}$ et $\\vec{y}\\begin{vmatrix} y_1 \\\\ \\vdots \\\\ y_n \\end{vmatrix}$ alors $(\\vec{x} + \\vec{y})\\begin{vmatrix} x_1 + y_1 \\\\ \\vdots \\\\ x_n + y_n \\end{vmatrix}$ et $\\forall \\alpha \\in \\mathbb{K}$, $(\\alpha \\vec{x})\\begin{vmatrix} \\alpha x_1 \\\\ \\vdots \\\\ \\alpha x_n \\end{vmatrix}$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$\\vec{x} + \\vec{y} = \\sum x_i \\vec{e}_i + \\sum y_i \\vec{e}_i = \\sum (x_i + y_i) \\vec{e}_i$ et $\\alpha\\vec{x} = \\sum (\\alpha x_i) \\vec{e}_i$."
+                },
+                {
+                  "md": "Par unicité des composantes dans $\\mathcal{B}$, ce sont bien les composantes de $\\vec{x} + \\vec{y}$ et de $\\alpha\\vec{x}$.",
+                  "why": "Théorème d'existence et d'unicité des composantes."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Composantes dans la base de l'exemple 1.4",
+              "md": "Dans la base $(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ ci-dessus, les composantes de $(x,y,z)$ sont $a = x - y + z$, $b = y - z$, $c = y - x$. Pour $\\vec{x} = (2,3,4)$ : $a = 3$, $b = -1$, $c = 1$.",
+              "steps": [
+                {
+                  "md": "Vérification : $3(1,1,1) - (1,1,0) + (0,1,1) = (3 - 1 + 0,\\ 3 - 1 + 1,\\ 3 + 0 + 1) = (2,3,4)$."
+                },
+                {
+                  "md": "Les composantes de $(2,3,4)$ dans la base canonique sont $(2,3,4)$, mais dans $(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3)$ ce sont $(3,-1,1)$ : les composantes **dépendent de la base**."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans la base $((1,0), (1,1))$ de $\\mathbb{R}^2$, la première composante du vecteur $(5,2)$ est ___",
+                "answerType": "number",
+                "accepted": [
+                  "3"
+                ],
+                "explanation": "On cherche $a(1,0) + b(1,1) = (a + b, b) = (5,2)$ : $b = 2$ puis $a = 3$. Répondre $5$ revient à lire la composante dans la base canonique au lieu de la base proposée."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec $\\vec{e}_1 = (1,1,1)$, $\\vec{e}_2 = (1,1,0)$, $\\vec{e}_3 = (0,1,1)$, on écrit $(1,0,0) = a\\vec{e}_1 + b\\vec{e}_2 + c\\vec{e}_3$. Alors $c =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "-1"
+              ],
+              "explanation": "Avec les formules $a = x - y + z$, $b = y - z$, $c = y - x$ : $a = 1$, $b = 0$, $c = -1$. Vérification : $(1,1,1) - (0,1,1) = (1,0,0)$. Répondre $0$ revient à recopier la composante dans la base canonique."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces familles est une base de $\\mathbb{R}^2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$((1,2), (2,4))$"
+                },
+                {
+                  "id": "b",
+                  "md": "$((1,1), (1,-1))$"
+                },
+                {
+                  "id": "c",
+                  "md": "$((1,0))$"
+                },
+                {
+                  "id": "d",
+                  "md": "$((1,0), (0,1), (1,1))$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "(b) : $(x,y) = a(1,1) + b(1,-1)$ a l'unique solution $a = \\frac{x+y}{2}$, $b = \\frac{x-y}{2}$ : libre et génératrice. (a) est liée ($(2,4) = 2(1,2)$). (c) est libre mais n'engendre que les $(a,0)$. (d) est génératrice mais liée ($(1,1) = (1,0) + (0,1)$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans n'importe quelle base $\\mathcal{B}$ de $E$, le vecteur nul a toutes ses composantes nulles.",
+              "answer": true,
+              "explanation": "Vrai : $\\vec{0} = \\sum 0 \\cdot \\vec{e}_i$, et par unicité des composantes, c'est la seule écriture. C'est exactement la liberté de $\\mathcal{B}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans une base $\\mathcal{B}$ de $\\mathbb{R}^3$, $\\vec{x}$ a pour composantes $(1, 2, -1)$ et $\\vec{y}$ a pour composantes $(3, 0, 2)$. La deuxième composante de $2\\vec{x} - \\vec{y}$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "Les composantes se calculent coordonnée par coordonnée : $2\\vec{x} - \\vec{y}$ a pour composantes $(2 - 3,\\ 4 - 0,\\ -2 - 2) = (-1, 4, -4)$. La deuxième vaut $2 \\times 2 - 0 = 4$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Dans la base $\\mathcal{B} = ((1,0), (1,1))$ de $\\mathbb{R}^2$, associez chaque vecteur à ses composantes dans $\\mathcal{B}$.",
+              "pairs": [
+                {
+                  "left": "$(1,0)$",
+                  "right": "$(1, 0)$"
+                },
+                {
+                  "left": "$(1,1)$",
+                  "right": "$(0, 1)$"
+                },
+                {
+                  "left": "$(2,1)$",
+                  "right": "$(1, 1)$"
+                },
+                {
+                  "left": "$(0,1)$",
+                  "right": "$(-1, 1)$"
+                }
+              ],
+              "explanation": "On résout $a(1,0) + b(1,1) = (a + b, b)$ : $b$ est la deuxième coordonnée et $a$ = première coordonnée $- b$. Ainsi $(2,1) = (1,0) + (1,1)$ et $(0,1) = -(1,0) + (1,1)$."
+            }
+          ]
+        },
+        {
+          "slug": "theoreme-base-incomplete",
+          "title": "Théorème de la base incomplète",
+          "number": "1.6",
+          "estimatedMinutes": 8,
+          "summary": "Compléter une famille libre en une base à l'aide de vecteurs bien choisis dans une famille génératrice.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "1.6 Théorème de complétion de la base"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "title": "de la base incomplète",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie, $\\mathcal{L}$ une famille libre et $\\mathcal{G}$ une famille génératrice. On peut former une base de $E$ en complétant la famille libre $\\mathcal{L}$ par des vecteurs bien choisis dans la famille $\\mathcal{G}$."
+            },
+            {
+              "type": "remark",
+              "origin": "added",
+              "md": "« De dimension finie » sera défini au § 2.1 : cela signifie que $E$ possède une famille génératrice **finie**. Ici, on prend $\\mathcal{G}$ finie."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Algorithme : on parcourt les vecteurs de $\\mathcal{G}$ un par un ; on **ajoute** un vecteur s'il n'est pas dans le $\\operatorname{Vect}$ de la famille déjà construite (elle reste libre grâce au principe d'extension), on le **saute** sinon (l'ajouter la rendrait liée). À la fin, tout vecteur de $\\mathcal{G}$ est dans le $\\operatorname{Vect}$ obtenu : la famille est aussi génératrice."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Parmi les familles libres obtenues en ajoutant à $\\mathcal{L}$ des vecteurs de $\\mathcal{G}$ (il y en a : $\\mathcal{L}$ elle-même, et en nombre fini), on en choisit une, $\\mathcal{B}$, ayant le plus grand nombre de vecteurs."
+                },
+                {
+                  "md": "Soit $\\vec{g}$ un vecteur de $\\mathcal{G}$. Si $\\vec{g} \\notin \\operatorname{Vect}(\\mathcal{B})$, la famille $\\mathcal{B}$ complétée par $\\vec{g}$ serait libre et plus longue : contradiction avec le choix de $\\mathcal{B}$. Donc $\\vec{g} \\in \\operatorname{Vect}(\\mathcal{B})$.",
+                  "why": "Principe d'extension d'une famille libre (§ 1.3)."
+                },
+                {
+                  "md": "$\\operatorname{Vect}(\\mathcal{B})$ est un sous-espace vectoriel contenant tous les vecteurs de $\\mathcal{G}$, donc il contient $\\operatorname{Vect}(\\mathcal{G}) = E$ : $\\mathcal{B}$ est génératrice."
+                },
+                {
+                  "md": "$\\mathcal{B}$ est libre et génératrice : c'est une base de $E$ qui complète $\\mathcal{L}$ par des vecteurs de $\\mathcal{G}$."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Compléter $((1,1,0))$ en une base de $\\mathbb{R}^3$",
+              "md": "On prend $\\mathcal{L} = ((1,1,0))$ et pour $\\mathcal{G}$ la base canonique $(\\vec{\\varepsilon}_1, \\vec{\\varepsilon}_2, \\vec{\\varepsilon}_3)$ de $\\mathbb{R}^3$.",
+              "steps": [
+                {
+                  "md": "$\\vec{\\varepsilon}_1 = (1,0,0)$ n'est pas colinéaire à $(1,1,0)$ : on l'ajoute. La famille $((1,1,0), (1,0,0))$ est libre."
+                },
+                {
+                  "md": "$\\vec{\\varepsilon}_2 = (0,1,0) = (1,1,0) - (1,0,0)$ est dans le $\\operatorname{Vect}$ : on le saute."
+                },
+                {
+                  "md": "$\\vec{\\varepsilon}_3 = (0,0,1)$ n'est pas dans $\\operatorname{Vect}((1,1,0),(1,0,0))$ (dont tous les vecteurs ont une troisième coordonnée nulle) : on l'ajoute."
+                },
+                {
+                  "md": "On obtient $((1,1,0), (1,0,0), (0,0,1))$ : libre, et $\\vec{\\varepsilon}_1, \\vec{\\varepsilon}_2, \\vec{\\varepsilon}_3$ sont dans son $\\operatorname{Vect}$, donc génératrice. C'est une base de $\\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exemple, pourquoi n'a-t-on pas ajouté $\\vec{\\varepsilon}_2 = (0,1,0)$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Car $\\vec{\\varepsilon}_2 = (1,1,0) - (1,0,0)$ : l'ajouter rendrait la famille liée."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Car $\\vec{\\varepsilon}_2$ est le vecteur nul."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Car une base de $\\mathbb{R}^3$ ne peut pas contenir $\\vec{\\varepsilon}_2$."
+                  },
+                  {
+                    "id": "d",
+                    "md": "Car $\\vec{\\varepsilon}_2 \\notin \\operatorname{Vect}((1,1,0),(1,0,0))$."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\vec{\\varepsilon}_2$ est combinaison linéaire des vecteurs déjà choisis, donc l'ajouter créerait la relation $(1,1,0) - (1,0,0) - \\vec{\\varepsilon}_2 = \\vec{0}$. (c) est faux : la base canonique contient $\\vec{\\varepsilon}_2$. (d) dit l'inverse de la vérité : c'est justement parce que $\\vec{\\varepsilon}_2$ **est** dans le $\\operatorname{Vect}$ qu'on le saute."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la démonstration du théorème de la base incomplète.",
+              "items": [
+                "On choisit une famille libre $\\mathcal{B}$, obtenue en complétant $\\mathcal{L}$ par des vecteurs de $\\mathcal{G}$, ayant le plus grand nombre de vecteurs.",
+                "Si un vecteur $\\vec{g}$ de $\\mathcal{G}$ n'était pas dans $\\operatorname{Vect}(\\mathcal{B})$, la famille $\\mathcal{B}$ complétée par $\\vec{g}$ serait libre (principe d'extension).",
+                "Cela contredirait la maximalité de $\\mathcal{B}$ : tout vecteur de $\\mathcal{G}$ est donc dans $\\operatorname{Vect}(\\mathcal{B})$.",
+                "Ainsi $E = \\operatorname{Vect}(\\mathcal{G}) \\subset \\operatorname{Vect}(\\mathcal{B})$ : $\\mathcal{B}$ est libre et génératrice, c'est une base."
+              ],
+              "explanation": "On construit d'abord l'objet (famille libre maximale), puis on raisonne par l'absurde avec le principe d'extension, ce qui donne $\\mathcal{G} \\subset \\operatorname{Vect}(\\mathcal{B})$, et enfin on conclut au caractère générateur."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "On complète $\\mathcal{L} = ((1,2,0))$ avec des vecteurs de la base canonique de $\\mathbb{R}^3$. Laquelle de ces familles est une base de $\\mathbb{R}^3$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$((1,2,0), (1,0,0), (0,0,1))$"
+                },
+                {
+                  "id": "b",
+                  "md": "$((1,2,0), (1,0,0), (0,1,0))$"
+                },
+                {
+                  "id": "c",
+                  "md": "$((1,2,0), (0,0,1))$"
+                },
+                {
+                  "id": "d",
+                  "md": "$((1,2,0), (1,0,0), (0,1,0), (0,0,1))$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "(a) : $x(1,2,0) + y(1,0,0) + z(0,0,1) = (x + y,\\ 2x,\\ z) = \\vec{0}$ force $x = y = z = 0$ (libre), et $(0,1,0) = \\frac12\\big((1,2,0) - (1,0,0)\\big)$ (génératrice). (b) est liée pour cette même raison : $(0,1,0) \\in \\operatorname{Vect}((1,2,0),(1,0,0))$. (c) n'est pas génératrice : $(a, 2a, b) = (1,0,0)$ est impossible. (d) est génératrice mais liée."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le théorème de la base incomplète permet de compléter une famille libre $\\mathcal{L}$ en une base en lui ajoutant **n'importe quels** vecteurs de $\\mathcal{G}$.",
+              "answer": false,
+              "explanation": "Faux : il faut des vecteurs **bien choisis**. Ajouter un vecteur de $\\mathcal{G}$ qui est déjà dans $\\operatorname{Vect}(\\mathcal{L})$ rend la famille liée (par exemple ajouter $(0,1,0)$ à $((1,1,0),(1,0,0))$)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "On complète $\\mathcal{L} = ((1,1,0), (0,1,1))$ en une base de $\\mathbb{R}^3$ avec des vecteurs de la base canonique. Le nombre de vecteurs à ajouter est ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$\\operatorname{Vect}(\\mathcal{L}) = \\{(a, a+b, b)\\}$ = vecteurs vérifiant $y = x + z$. $(1,0,0)$ ne vérifie pas $0 = 1 + 0$ : on l'ajoute, la famille reste libre. Alors $(0,1,0) = (1,1,0) - (1,0,0)$ et $(0,0,1) = (0,1,1) - (0,1,0)$ sont dans le $\\operatorname{Vect}$ : on les saute. Un seul vecteur suffit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "dimension-d-un-espace-vectoriel",
+      "title": "Dimension d'un espace vectoriel",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "dimension-finie-et-dimension",
+          "title": "Espace de dimension finie et dimension",
+          "number": "2.1–2.2",
+          "estimatedMinutes": 12,
+          "summary": "Espaces de dimension finie, existence de bases, invariance du nombre de vecteurs d'une base, définition de la dimension et dimension d'un produit.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "2.1 Espace vectoriel de dimension finie"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Dimension finie",
+              "md": "Un $\\mathbb{K}$-espace vectoriel $E$ est dit **de dimension finie** ssi il possède une famille génératrice finie. Sinon, il est dit **de dimension infinie**."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "$\\mathbb{K}^n$ est de dimension finie : la famille canonique $(\\vec{\\varepsilon}_1, \\dots, \\vec{\\varepsilon}_n)$, où $\\vec{\\varepsilon}_i$ a un $1$ en position $i$ et des $0$ ailleurs, est génératrice car $(x_1, \\dots, x_n) = \\sum x_i \\vec{\\varepsilon}_i$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Tout $\\mathbb{K}$-espace vectoriel de dimension finie possède au moins une base."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\mathcal{G}$ une famille génératrice finie de $E$ et $\\mathcal{L}$ la famille vide, qui est libre (aucune relation linéaire possible)."
+                },
+                {
+                  "md": "Le théorème de la base incomplète fournit une base de $E$ formée de vecteurs de $\\mathcal{G}$.",
+                  "why": "Si $E = \\{\\vec{0}\\}$, cette base est la famille vide."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Dans un $\\mathbb{K}$-espace vectoriel de dimension finie :\n- toute famille libre peut être complétée en une base,\n- de toute famille génératrice on peut extraire une base."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\mathcal{L}$ libre. On choisit une famille génératrice finie $\\mathcal{G}$ (il en existe, $E$ étant de dimension finie) et on applique le théorème de la base incomplète."
+                },
+                {
+                  "md": "Soit $\\mathcal{G}$ génératrice (finie). On applique le théorème de la base incomplète avec $\\mathcal{L}$ vide : la base obtenue est formée de vecteurs de $\\mathcal{G}$, elle est donc extraite de $\\mathcal{G}$."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "2.2 Dimension"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie.\n\nUne famille libre de vecteurs de $E$ ne peut avoir plus (au sens strict) de vecteurs qu'une famille génératrice."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Autrement dit : si $\\mathcal{L}$ est libre et $\\mathcal{G}$ génératrice, alors $\\operatorname{card}(\\mathcal{L}) \\le \\operatorname{card}(\\mathcal{G})$. Les familles libres sont « petites », les génératrices sont « grandes » ; les bases, qui sont les deux à la fois, sont exactement à la frontière."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "corollaire",
+              "md": "Les bases d'un $\\mathbb{K}$-espace vectoriel $E$ de dimension finie sont toutes constituées du même nombre de vecteurs."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\mathcal{B}$ une base à $p$ vecteurs et $\\mathcal{B}'$ une base à $q$ vecteurs."
+                },
+                {
+                  "md": "$\\mathcal{B}$ est libre et $\\mathcal{B}'$ génératrice, donc $p \\le q$ ; de même $\\mathcal{B}'$ est libre et $\\mathcal{B}$ génératrice, donc $q \\le p$.",
+                  "why": "Théorème précédent."
+                },
+                {
+                  "md": "Donc $p = q$."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Dimension",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie.\n\nOn appelle **dimension** de $E$ le nombre de vecteurs constituant les bases de $E$. On le note $\\dim E$ ou $\\dim_{\\mathbb{K}} E$."
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Convention",
+              "md": "Si $E$ n'est pas de dimension finie, on pose $\\dim E = +\\infty$."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "- $\\dim \\mathbb{K}^n = n$ : la famille canonique $(\\vec{\\varepsilon}_1, \\dots, \\vec{\\varepsilon}_n)$ est une base (génératrice, et libre car $\\sum x_i \\vec{\\varepsilon}_i = (x_1, \\dots, x_n) = \\vec{0}$ force tous les $x_i$ nuls).\n- $\\dim \\{\\vec{0}\\} = 0$ : sa base est la famille vide."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans $\\mathbb{R}^3$, la famille $((1,0,0), (0,1,0), (0,0,1), (1,1,1))$ est libre.",
+                "answer": false,
+                "explanation": "Faux : la base canonique est une famille génératrice à 3 vecteurs, donc une famille libre de $\\mathbb{R}^3$ a au plus 3 vecteurs. Ici on a 4 vecteurs ; d'ailleurs $(1,1,1) = (1,0,0) + (0,1,0) + (0,0,1)$."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $E$ et $F$ deux $\\mathbb{K}$-espaces vectoriels de dimensions finies.\n\n$E \\times F$ est de dimension finie et $\\dim (E \\times F) = \\dim E + \\dim F$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $(\\vec{e}_1, \\dots, \\vec{e}_p)$ une base de $E$ et $(\\vec{f}_1, \\dots, \\vec{f}_q)$ une base de $F$. On considère la famille $\\big((\\vec{e}_1, \\vec{0}), \\dots, (\\vec{e}_p, \\vec{0}), (\\vec{0}, \\vec{f}_1), \\dots, (\\vec{0}, \\vec{f}_q)\\big)$ de $E \\times F$."
+                },
+                {
+                  "md": "Génératrice : $(\\vec{x}, \\vec{y}) = \\big(\\sum a_i \\vec{e}_i, \\sum b_j \\vec{f}_j\\big) = \\sum a_i (\\vec{e}_i, \\vec{0}) + \\sum b_j (\\vec{0}, \\vec{f}_j)$."
+                },
+                {
+                  "md": "Libre : $\\sum a_i (\\vec{e}_i, \\vec{0}) + \\sum b_j (\\vec{0}, \\vec{f}_j) = (\\vec{0}, \\vec{0})$ donne $\\sum a_i \\vec{e}_i = \\vec{0}$ et $\\sum b_j \\vec{f}_j = \\vec{0}$, donc tous les $a_i$ et $b_j$ sont nuls."
+                },
+                {
+                  "md": "C'est une base à $p + q$ vecteurs : $\\dim (E \\times F) = \\dim E + \\dim F$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie.\n\n$E^n$ est un $\\mathbb{K}$-espace vectoriel de dimension finie et $\\dim E^n = n \\times \\dim E$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Par récurrence sur $n \\ge 1$ : le cas $n = 1$ est clair, et $E^{n} = E^{n-1} \\times E$ (à l'identification près des $n$-uplets), donc par la proposition précédente $\\dim E^n = (n-1)\\dim E + \\dim E = n \\dim E$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\dim(\\mathbb{R}^2 \\times \\mathbb{R}^3) =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "$\\dim(E \\times F) = \\dim E + \\dim F = 2 + 3 = 5$. Répondre $6$ revient à multiplier les dimensions : c'est faux, elles s'**additionnent**."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la dimension de $(\\mathbb{R}^3)^2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$5$"
+                },
+                {
+                  "id": "b",
+                  "md": "$6$"
+                },
+                {
+                  "id": "c",
+                  "md": "$9$"
+                },
+                {
+                  "id": "d",
+                  "md": "$3$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\dim E^n = n \\times \\dim E = 2 \\times 3 = 6$ (c'est $\\mathbb{R}^3 \\times \\mathbb{R}^3$, de dimension $3 + 3$). La réponse $9 = 3^2$ confond l'exposant avec une puissance de la dimension ; $5$ ajoute $3 + 2$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque espace à sa dimension.",
+              "pairs": [
+                {
+                  "left": "$\\mathbb{R}$",
+                  "right": "$1$"
+                },
+                {
+                  "left": "$\\mathbb{R}^3$",
+                  "right": "$3$"
+                },
+                {
+                  "left": "$\\mathbb{R}^2 \\times \\mathbb{R}^2$",
+                  "right": "$4$"
+                },
+                {
+                  "left": "$\\{\\vec{0}\\}$",
+                  "right": "$0$"
+                },
+                {
+                  "left": "$(\\mathbb{R}^2)^3$",
+                  "right": "$6$"
+                }
+              ],
+              "explanation": "$\\dim \\mathbb{K}^n = n$ ; $\\dim(E \\times F) = \\dim E + \\dim F$ donne $2 + 2 = 4$ ; $\\dim E^n = n \\dim E$ donne $3 \\times 2 = 6$ ; l'espace nul a pour base la famille vide, donc dimension $0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Un $\\mathbb{K}$-espace vectoriel qui possède une famille génératrice finie est dit de dimension ___",
+              "answerType": "text",
+              "accepted": [
+                "finie",
+                "fini",
+                "finie.",
+                "dimension finie"
+              ],
+              "explanation": "C'est la définition 2.1 : $E$ est de dimension **finie** ssi il possède une famille génératrice finie ; sinon il est de dimension infinie et l'on pose $\\dim E = +\\infty$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un espace de dimension finie peut avoir deux bases de cardinaux différents.",
+              "answer": false,
+              "explanation": "Faux : c'est le corollaire du § 2.2. Une base à $p$ vecteurs est libre et une base à $q$ vecteurs est génératrice, donc $p \\le q$, et symétriquement $q \\le p$. C'est ce qui permet de définir $\\dim E$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un espace de dimension finie, de toute famille génératrice on peut extraire une base.",
+              "answer": true,
+              "explanation": "Vrai (proposition du § 2.1) : c'est le théorème de la base incomplète appliqué avec la famille libre vide."
+            }
+          ]
+        },
+        {
+          "slug": "bases-en-dimension-connue",
+          "title": "Construction de bases en dimension connue",
+          "number": "2.3",
+          "estimatedMinutes": 9,
+          "summary": "En dimension $n$ : nombre de vecteurs des familles libres, génératrices et des bases ; une famille de $n$ vecteurs est une base dès qu'elle est libre ou génératrice.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "2.3 Construction de bases en dimension connue"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension $n \\in \\mathbb{N}$.\n1. Toute famille libre a au plus $n$ éléments.\n2. Toute famille génératrice a au moins $n$ éléments.\n3. Toute base a exactement $n$ éléments."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\mathcal{B}$ une base de $E$ ; elle a $n$ vecteurs."
+                },
+                {
+                  "md": "1. $\\mathcal{B}$ est génératrice, donc une famille libre a au plus $n$ vecteurs.",
+                  "why": "Théorème du § 2.2 : libre ≤ génératrice."
+                },
+                {
+                  "md": "2. $\\mathcal{B}$ est libre, donc une famille génératrice a au moins $n$ vecteurs."
+                },
+                {
+                  "md": "3. C'est la définition de $\\dim E$ (toutes les bases ont le même nombre de vecteurs)."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans $\\mathbb{R}^3$, une famille de 2 vecteurs peut être génératrice.",
+                "answer": false,
+                "explanation": "Faux : $\\dim \\mathbb{R}^3 = 3$, donc toute famille génératrice a au moins 3 vecteurs. Deux vecteurs engendrent au mieux un plan."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension $n \\in \\mathbb{N}$ et $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$ une famille formée de $n = \\dim E$ vecteurs de $E$.\n\nOn a l'équivalence entre :\n1. $\\mathcal{B}$ est une base,\n2. $\\mathcal{B}$ est une famille libre,\n3. $\\mathcal{B}$ est une famille génératrice."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "(1 ⇒ 2) et (1 ⇒ 3) : par définition d'une base."
+                },
+                {
+                  "md": "(2 ⇒ 1) : $\\mathcal{B}$ libre se complète en une base $\\mathcal{B}'$ (§ 2.1). $\\mathcal{B}'$ a $n$ vecteurs, comme $\\mathcal{B}$ : on n'a rien ajouté, donc $\\mathcal{B} = \\mathcal{B}'$ est une base."
+                },
+                {
+                  "md": "(3 ⇒ 1) : de $\\mathcal{B}$ génératrice on extrait une base, qui a $n$ vecteurs : c'est $\\mathcal{B}$ tout entière."
+                }
+              ]
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Quand on connaît la dimension et qu'on a **le bon nombre** de vecteurs, il suffit de vérifier **une seule** des deux propriétés (en général la liberté, plus facile à tester). C'est un gain de travail considérable."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Retour sur l'exemple 1.4",
+              "md": "$(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3) = ((1,1,1), (1,1,0), (0,1,1))$ : 3 vecteurs dans $\\mathbb{R}^3$ de dimension 3. Il suffit de montrer qu'elle est libre.",
+              "steps": [
+                {
+                  "md": "$a\\vec{e}_1 + b\\vec{e}_2 + c\\vec{e}_3 = (a+b,\\ a+b+c,\\ a+c) = \\vec{0}$."
+                },
+                {
+                  "md": "Les deux premières équations donnent $c = 0$, la troisième $a = 0$, la première $b = 0$ : la famille est libre, donc c'est une base de $\\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour montrer que $((1,2), (3,4))$ est une base de $\\mathbb{R}^2$, quelle vérification suffit ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Montrer qu'elle est libre."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Montrer qu'aucun des deux vecteurs n'est nul."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Montrer qu'elle contient la base canonique."
+                  },
+                  {
+                    "id": "d",
+                    "md": "Aucune : toute famille de 2 vecteurs de $\\mathbb{R}^2$ est une base."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "La famille a $2 = \\dim \\mathbb{R}^2$ vecteurs, donc libre ⇔ base. (b) ne suffit pas : $((1,2),(2,4))$ a deux vecteurs non nuls mais est liée. (c) est absurde (elle ne contient pas $(1,0)$). (d) est faux pour la même raison que (b)."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans un espace $E$ de dimension 4, une famille de 5 vecteurs est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "nécessairement liée"
+                },
+                {
+                  "id": "b",
+                  "md": "nécessairement génératrice"
+                },
+                {
+                  "id": "c",
+                  "md": "éventuellement une base"
+                },
+                {
+                  "id": "d",
+                  "md": "nécessairement libre"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Une famille libre a au plus $\\dim E = 4$ vecteurs, donc 5 vecteurs forment une famille liée. Elle n'est pas forcément génératrice (5 fois le même vecteur, par exemple), et ce n'est jamais une base (une base a exactement 4 vecteurs)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un espace de dimension 3, toute famille génératrice de 3 vecteurs est une base.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'implication (3 ⇒ 1) du théorème du § 2.3, car la famille a exactement $\\dim E = 3$ vecteurs."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans un espace vectoriel de dimension 5, une famille libre a au plus ___ vecteurs.",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "Toute famille libre a au plus $n = \\dim E = 5$ éléments (une base est génératrice à 5 vecteurs, et libre ≤ génératrice)."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Montrons que $((1,2,0), (0,1,1), (1,0,1))$ est une base de $\\mathbb{R}^3$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "L'égalité $a(1,2,0) + b(0,1,1) + c(1,0,1) = \\vec{0}$ donne $a + c = 0$, $2a + b = 0$, $b + c = 0$. Avec $c = -a$ et $b = -2a$, la troisième équation devient $k \\cdot a = 0$ avec $k =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "-3"
+                  ],
+                  "explanation": "$b + c = -2a + (-a) = -3a$. Donc $-3a = 0$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "On en déduit que :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$a = b = c = 0$ : la famille est libre."
+                    },
+                    {
+                      "id": "b",
+                      "md": "$a$ est quelconque : la famille est liée."
+                    },
+                    {
+                      "id": "c",
+                      "md": "On ne peut pas conclure."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$-3a = 0$ donne $a = 0$, puis $b = -2a = 0$ et $c = -a = 0$ : seule la solution nulle, la famille est libre. (b) serait correct seulement si le coefficient $k$ était nul."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Pourquoi est-ce une base de $\\mathbb{R}^3$ ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "C'est une famille libre de $3 = \\dim \\mathbb{R}^3$ vecteurs."
+                    },
+                    {
+                      "id": "b",
+                      "md": "Il faut encore vérifier qu'elle est génératrice."
+                    },
+                    {
+                      "id": "c",
+                      "md": "Toute famille libre est une base."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Avec exactement $\\dim E$ vecteurs, libre ⇔ base : inutile de vérifier qu'elle est génératrice. (c) est faux en général : $((1,0,0))$ est libre sans être une base de $\\mathbb{R}^3$."
+                }
+              ],
+              "explanation": "Méthode : compter les vecteurs ; s'il y en a $\\dim E$, montrer seulement la liberté."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Dans un espace $E$ de dimension 3, associez le nombre de vecteurs d'une famille à ce qu'on peut en dire.",
+              "pairs": [
+                {
+                  "left": "2 vecteurs",
+                  "right": "Peut être libre, jamais génératrice"
+                },
+                {
+                  "left": "3 vecteurs",
+                  "right": "C'est une base dès qu'elle est libre"
+                },
+                {
+                  "left": "4 vecteurs",
+                  "right": "Toujours liée, peut être génératrice"
+                }
+              ],
+              "explanation": "Libre ⇒ au plus 3 vecteurs ; génératrice ⇒ au moins 3 vecteurs ; avec exactement 3 vecteurs, libre ⇔ génératrice ⇔ base."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sous-espaces-de-dimension-finie",
+      "title": "Sous-espace vectoriel de dimension finie",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "dimension-des-sous-espaces",
+          "title": "Dimension d'un sous-espace et supplémentaires",
+          "number": "3.1–3.2",
+          "estimatedMinutes": 12,
+          "summary": "Un sous-espace d'un espace de dimension finie est de dimension finie et inférieure ; droites, plans, hyperplans ; dimension et existence des supplémentaires.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.1 Dimension d'un sous-espace vectoriel d'un espace de dimension finie"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie.\n\nTout sous-espace vectoriel $F$ de $E$ est de dimension finie et $\\dim F \\le \\dim E$.\n\nDe plus, si $\\dim F = \\dim E$ alors $F = E$.\n\nEn particulier :\n- Si $\\dim F = 0$ alors $F = \\{\\vec{0}\\}$.\n- Si $\\dim F = 1$ alors on dit que $F$ est une **droite vectorielle**.\n  - Pour tout $\\vec{u} \\in F$ tel que $\\vec{u} \\neq \\vec{0}$, on a $F = \\operatorname{Vect}(\\vec{u})$.\n  - On dit que $\\vec{u}$ est un **vecteur directeur** de $F$.\n- Si $\\dim F = 2$ alors on dit que $F$ est un **plan vectoriel**.\n  - Pour tous $\\vec{u}, \\vec{v} \\in F$ non colinéaires, on a $F = \\operatorname{Vect}(\\vec{u}, \\vec{v})$.\n  - On dit que $\\vec{u}, \\vec{v}$ sont des **vecteurs directeurs** de $F$.\n- Si $\\dim F = \\dim E - 1$ alors on dit que $F$ est un **hyperplan vectoriel** de $E$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $n = \\dim E$. Toute famille libre de $F$ est une famille libre de $E$, donc a au plus $n$ vecteurs."
+                },
+                {
+                  "md": "On choisit une famille libre $\\mathcal{B}$ de $F$ ayant le plus grand nombre $p$ de vecteurs (il en existe : la famille vide est libre, et $p \\le n$)."
+                },
+                {
+                  "md": "Pour $\\vec{x} \\in F$, la famille $\\mathcal{B}$ complétée par $\\vec{x}$ a $p + 1$ vecteurs, donc est liée ; par le principe d'extension, $\\vec{x} \\in \\operatorname{Vect}(\\mathcal{B})$. Ainsi $\\mathcal{B}$ engendre $F$ : c'est une base de $F$, et $\\dim F = p \\le n$."
+                },
+                {
+                  "md": "Si $\\dim F = n$, $\\mathcal{B}$ est une famille libre de $E$ à $n = \\dim E$ vecteurs, donc une base de $E$ ; d'où $E = \\operatorname{Vect}(\\mathcal{B}) = F$.",
+                  "why": "Théorème du § 2.3."
+                },
+                {
+                  "md": "Cas particuliers : si $\\dim F = 1$ et $\\vec{u} \\in F$ non nul, $(\\vec{u})$ est libre à $1 = \\dim F$ vecteur, donc base de $F$ ; si $\\dim F = 2$ et $\\vec{u}, \\vec{v} \\in F$ non colinéaires, $(\\vec{u}, \\vec{v})$ est libre à 2 vecteurs, donc base de $F$."
+                }
+              ]
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Dans $\\mathbb{R}^3$, les sous-espaces vectoriels sont donc : $\\{\\vec{0}\\}$, les droites passant par l'origine, les plans passant par l'origine (qui sont les hyperplans de $\\mathbb{R}^3$) et $\\mathbb{R}^3$ lui-même. Il n'y a rien d'autre !"
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Un plan de $\\mathbb{R}^3$",
+              "md": "$F = \\{(x,y,z) \\in \\mathbb{R}^3 \\;/\\; x + y + z = 0\\}$.",
+              "steps": [
+                {
+                  "md": "$(x,y,z) \\in F \\iff x = -y - z \\iff (x,y,z) = y(-1,1,0) + z(-1,0,1)$. Donc $F = \\operatorname{Vect}((-1,1,0), (-1,0,1))$."
+                },
+                {
+                  "md": "Ces deux vecteurs ne sont pas colinéaires (regarder les 2ᵉ et 3ᵉ coordonnées), donc ils forment une base de $F$ : $\\dim F = 2$."
+                },
+                {
+                  "md": "$F$ est un plan vectoriel, et comme $2 = \\dim \\mathbb{R}^3 - 1$, c'est un hyperplan de $\\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans $\\mathbb{R}^5$, un hyperplan vectoriel est de dimension ___",
+                "answerType": "number",
+                "accepted": [
+                  "4"
+                ],
+                "explanation": "Un hyperplan de $E$ est un sous-espace de dimension $\\dim E - 1 = 5 - 1 = 4$. Dans $\\mathbb{R}^5$, un hyperplan n'est donc pas un « plan » (dimension 2)."
+              }
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.2 Sous-espaces vectoriels supplémentaires en dimension finie"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $F$ et $G$ deux sous-espaces vectoriels supplémentaires d'un $\\mathbb{K}$-espace vectoriel de dimension finie $E$.\n\nOn a $\\dim E = \\dim F + \\dim G$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$F$ et $G$ sont de dimension finie (§ 3.1). Soit $(\\vec{f}_1, \\dots, \\vec{f}_p)$ une base de $F$ et $(\\vec{g}_1, \\dots, \\vec{g}_q)$ une base de $G$. On considère la famille concaténée $(\\vec{f}_1, \\dots, \\vec{f}_p, \\vec{g}_1, \\dots, \\vec{g}_q)$."
+                },
+                {
+                  "md": "Génératrice : tout $\\vec{x} \\in E$ s'écrit $\\vec{x} = \\vec{y} + \\vec{z}$ avec $\\vec{y} \\in F$, $\\vec{z} \\in G$, et on décompose $\\vec{y}$, $\\vec{z}$ dans leurs bases.",
+                  "why": "$E = F + G$."
+                },
+                {
+                  "md": "Libre : si $\\sum a_i \\vec{f}_i + \\sum b_j \\vec{g}_j = \\vec{0}$, alors $\\sum a_i \\vec{f}_i = -\\sum b_j \\vec{g}_j \\in F \\cap G = \\{\\vec{0}\\}$ ; les deux sommes sont nulles et, chaque base étant libre, tous les coefficients sont nuls."
+                },
+                {
+                  "md": "C'est donc une base de $E$ à $p + q$ vecteurs : $\\dim E = \\dim F + \\dim G$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel de dimension finie.\n\nTout sous-espace vectoriel $F$ de $E$ possède au moins un supplémentaire."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $(\\vec{f}_1, \\dots, \\vec{f}_p)$ une base de $F$ ; on la complète en une base $(\\vec{f}_1, \\dots, \\vec{f}_p, \\vec{g}_1, \\dots, \\vec{g}_q)$ de $E$, et on pose $G = \\operatorname{Vect}(\\vec{g}_1, \\dots, \\vec{g}_q)$.",
+                  "why": "Proposition du § 2.1 (toute famille libre se complète en une base)."
+                },
+                {
+                  "md": "$E = F + G$ : on décompose $\\vec{x}$ dans la base de $E$ et on regroupe les termes en $\\vec{f}_i$ (dans $F$) et en $\\vec{g}_j$ (dans $G$)."
+                },
+                {
+                  "md": "$F \\cap G = \\{\\vec{0}\\}$ : si $\\vec{x} = \\sum a_i \\vec{f}_i = \\sum b_j \\vec{g}_j$, alors $\\sum a_i \\vec{f}_i - \\sum b_j \\vec{g}_j = \\vec{0}$, et la liberté de la base de $E$ donne tous les coefficients nuls, donc $\\vec{x} = \\vec{0}$."
+                },
+                {
+                  "md": "Donc $F \\oplus G = E$ : $G$ est un supplémentaire de $F$."
+                }
+              ]
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Un supplémentaire n'est **pas unique** : dans $\\mathbb{R}^2$, la droite $F = \\operatorname{Vect}((1,0))$ a pour supplémentaire n'importe quelle autre droite vectorielle, par exemple $\\operatorname{Vect}((0,1))$ ou $\\operatorname{Vect}((1,1))$. En revanche, la **dimension** d'un supplémentaire est imposée : $\\dim E - \\dim F$."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $F$ et $G$ sont supplémentaires dans $\\mathbb{R}^5$ et $\\dim F = 2$, alors $\\dim G = 3$.",
+                "answer": true,
+                "explanation": "Vrai : $\\dim E = \\dim F + \\dim G$, donc $\\dim G = 5 - 2 = 3$."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Soit $F$ un sous-espace vectoriel de $\\mathbb{R}^4$ avec $\\dim F = 4$. Alors :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$F = \\mathbb{R}^4$"
+                },
+                {
+                  "id": "b",
+                  "md": "$F$ est un hyperplan de $\\mathbb{R}^4$"
+                },
+                {
+                  "id": "c",
+                  "md": "$F$ peut être différent de $\\mathbb{R}^4$"
+                },
+                {
+                  "id": "d",
+                  "md": "C'est impossible, car $\\dim F < \\dim E$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le théorème du § 3.1 donne $\\dim F \\le \\dim E$ (inégalité large, donc (d) est faux) et, en cas d'égalité, $F = E$. Un hyperplan serait de dimension $3$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour un sous-espace vectoriel $F$ de $\\mathbb{R}^3$, associez sa dimension à sa nature.",
+              "pairs": [
+                {
+                  "left": "$\\dim F = 0$",
+                  "right": "$F = \\{\\vec{0}\\}$"
+                },
+                {
+                  "left": "$\\dim F = 1$",
+                  "right": "Droite vectorielle"
+                },
+                {
+                  "left": "$\\dim F = 2$",
+                  "right": "Plan vectoriel (hyperplan de $\\mathbb{R}^3$)"
+                },
+                {
+                  "left": "$\\dim F = 3$",
+                  "right": "$F = \\mathbb{R}^3$"
+                }
+              ],
+              "explanation": "Ce sont les cas particuliers du théorème 3.1 ; dans $\\mathbb{R}^3$, les hyperplans ($\\dim = 3 - 1 = 2$) sont exactement les plans vectoriels."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $F = \\{(x,y,z) \\in \\mathbb{R}^3 \\;/\\; x = y = z\\}$. Alors $\\dim F =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$(x,y,z) \\in F \\iff (x,y,z) = x(1,1,1)$, donc $F = \\operatorname{Vect}((1,1,1))$ avec $(1,1,1) \\neq \\vec{0}$ : c'est une droite vectorielle. Répondre $2$ revient à compter deux équations comme deux dimensions, alors que deux équations indépendantes font **baisser** la dimension de 3 à 1."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un sous-espace vectoriel $F$ d'un espace de dimension finie admet un unique supplémentaire.",
+              "answer": false,
+              "explanation": "Faux : il en existe au moins un, mais en général plusieurs. Dans $\\mathbb{R}^2$, $\\operatorname{Vect}((0,1))$ et $\\operatorname{Vect}((1,1))$ sont deux supplémentaires différents de $\\operatorname{Vect}((1,0))$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans $\\mathbb{R}^2$, soit $F = \\operatorname{Vect}((1,0))$. Lequel de ces sous-espaces **n'est pas** un supplémentaire de $F$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\operatorname{Vect}((0,1))$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\operatorname{Vect}((1,1))$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\operatorname{Vect}((2,0))$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\operatorname{Vect}((-1,3))$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$\\operatorname{Vect}((2,0)) = F$ lui-même : $F \\cap F = F \\neq \\{\\vec{0}\\}$. Pour les autres, le vecteur directeur $\\vec{g}$ n'est pas colinéaire à $(1,0)$, donc $((1,0), \\vec{g})$ est libre à 2 vecteurs, c'est une base de $\\mathbb{R}^2$, et (comme dans la preuve du § 3.2) $F \\oplus \\operatorname{Vect}(\\vec{g}) = \\mathbb{R}^2$."
+            }
+          ]
+        },
+        {
+          "slug": "quatre-dimensions-et-exploitation",
+          "title": "Théorème des quatre dimensions et exploitation de la dimension",
+          "number": "3.3–3.4",
+          "estimatedMinutes": 11,
+          "summary": "Formule $\\dim(F+G) = \\dim F + \\dim G - \\dim(F \\cap G)$ ; inclusion et égalité des dimensions ; caractérisation des supplémentaires quand $\\dim F + \\dim G = \\dim E$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.3 Théorème des quatre dimensions"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "title": "des quatre dimensions (formule de Grassmann)",
+              "md": "Si $F$ et $G$ sont deux sous-espaces vectoriels de dimension finie d'un $\\mathbb{K}$-espace vectoriel $E$ alors $F + G$ et $F \\cap G$ sont de dimensions finies et\n$$\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G).$$"
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "C'est l'analogue de $\\operatorname{card}(A \\cup B) = \\operatorname{card} A + \\operatorname{card} B - \\operatorname{card}(A \\cap B)$ : en additionnant $\\dim F$ et $\\dim G$, on compte deux fois les « directions communes », celles de $F \\cap G$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$F + G$ est engendré par la réunion d'une base de $F$ et d'une base de $G$ : il est de dimension finie. $F \\cap G$ est un sous-espace de $F$, de dimension finie (§ 3.1)."
+                },
+                {
+                  "md": "$F \\cap G$ est un sous-espace de $G$ ; soit $H$ un supplémentaire de $F \\cap G$ dans $G$ : $G = (F \\cap G) \\oplus H$, donc $\\dim H = \\dim G - \\dim(F \\cap G)$.",
+                  "why": "Théorèmes du § 3.2 appliqués dans $G$."
+                },
+                {
+                  "md": "$F + H = F + G$ : l'inclusion $\\subset$ vient de $H \\subset G$ ; réciproquement, si $\\vec{g} \\in G$, $\\vec{g} = \\vec{a} + \\vec{h}$ avec $\\vec{a} \\in F \\cap G$, $\\vec{h} \\in H$, donc $\\vec{f} + \\vec{g} = (\\vec{f} + \\vec{a}) + \\vec{h} \\in F + H$."
+                },
+                {
+                  "md": "$F \\cap H = \\{\\vec{0}\\}$ : si $\\vec{x} \\in F \\cap H$, alors $\\vec{x} \\in G$ (car $H \\subset G$), donc $\\vec{x} \\in (F \\cap G) \\cap H = \\{\\vec{0}\\}$."
+                },
+                {
+                  "md": "Ainsi $F + G = F \\oplus H$ et $\\dim(F + G) = \\dim F + \\dim H = \\dim F + \\dim G - \\dim(F \\cap G)$."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Dans $\\mathbb{R}^3$ muni de la base canonique $(\\vec{\\varepsilon}_1, \\vec{\\varepsilon}_2, \\vec{\\varepsilon}_3)$, soit $F = \\operatorname{Vect}(\\vec{\\varepsilon}_1, \\vec{\\varepsilon}_2)$ et $G = \\operatorname{Vect}(\\vec{\\varepsilon}_2, \\vec{\\varepsilon}_3)$. Alors $F \\cap G = \\operatorname{Vect}(\\vec{\\varepsilon}_2)$ et $F + G = \\mathbb{R}^3$ : on vérifie $3 = 2 + 2 - 1$."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Deux plans vectoriels $F$ et $G$ de $\\mathbb{R}^3$ vérifient $F + G = \\mathbb{R}^3$. Alors $\\dim(F \\cap G) =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$\\dim(F \\cap G) = \\dim F + \\dim G - \\dim(F + G) = 2 + 2 - 3 = 1$ : deux plans distincts de l'espace se coupent selon une droite. Répondre $0$ revient à croire $F \\cap G = \\{\\vec{0}\\}$, ce qui imposerait $\\dim(F + G) = 4 > 3$."
+              }
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.4 Exploitation de la dimension"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $F$ et $G$ deux sous-espaces vectoriels de dimensions finies d'un $\\mathbb{K}$-espace vectoriel $E$.\n\nSi $F \\subset G$ et $\\dim F = \\dim G$ alors $F = G$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Une base de $F$ est une famille libre de $G$ ayant $\\dim F = \\dim G$ vecteurs : c'est donc une base de $G$.",
+                  "why": "Théorème du § 2.3 appliqué dans $G$."
+                },
+                {
+                  "md": "D'où $G = \\operatorname{Vect}(\\text{base de } F) = F$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $F$ et $G$ deux sous-espaces vectoriels d'un $\\mathbb{K}$-espace vectoriel $E$ de dimension finie. On suppose que $\\dim F + \\dim G = \\dim E$.\n\nOn a équivalence entre :\n- $F$ et $G$ sont supplémentaires dans $E$,\n- $F + G = E$,\n- $F \\cap G = \\{\\vec{0}\\}$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Par le théorème des quatre dimensions et l'hypothèse : $\\dim(F + G) = \\dim E - \\dim(F \\cap G)$."
+                },
+                {
+                  "md": "Donc $F \\cap G = \\{\\vec{0}\\} \\iff \\dim(F \\cap G) = 0 \\iff \\dim(F + G) = \\dim E \\iff F + G = E$.",
+                  "why": "$F + G \\subset E$ et théorème précédent (ou § 3.1)."
+                },
+                {
+                  "md": "Enfin « supplémentaires » signifie $F + G = E$ **et** $F \\cap G = \\{\\vec{0}\\}$ ; comme ces deux conditions sont équivalentes, chacune suffit."
+                }
+              ]
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "En pratique : pour montrer $F \\oplus G = E$, on vérifie que les dimensions s'additionnent bien, puis **une seule** condition, souvent $F \\cap G = \\{\\vec{0}\\}$ (plus facile à tester)."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Dans $\\mathbb{R}^2$, $F = \\operatorname{Vect}((1,1))$ et $G = \\operatorname{Vect}((1,-1))$ : $\\dim F + \\dim G = 2 = \\dim \\mathbb{R}^2$, et $F \\cap G = \\{\\vec{0}\\}$ car $(1,1)$ et $(1,-1)$ ne sont pas colinéaires. Donc $F \\oplus G = \\mathbb{R}^2$."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans $\\mathbb{R}^4$, si $\\dim F = \\dim G = 2$ et $F \\cap G = \\{\\vec{0}\\}$, alors $F \\oplus G = \\mathbb{R}^4$.",
+                "answer": true,
+                "explanation": "Vrai : $\\dim F + \\dim G = 4 = \\dim \\mathbb{R}^4$, donc d'après le théorème du § 3.4, $F \\cap G = \\{\\vec{0}\\}$ suffit pour que $F$ et $G$ soient supplémentaires."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans $\\mathbb{R}^5$, $F$ et $G$ sont des sous-espaces avec $\\dim F = 3$, $\\dim G = 4$ et $F + G = \\mathbb{R}^5$. Alors $\\dim(F \\cap G) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\dim(F \\cap G) = 3 + 4 - 5 = 2$. Une erreur fréquente est d'oublier que $\\dim(F + G)$ vaut ici $5$ et non $3 + 4 = 7$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans $\\mathbb{R}^3$, l'intersection de deux plans vectoriels **distincts** $F$ et $G$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "une droite vectorielle"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\{\\vec{0}\\}$"
+                },
+                {
+                  "id": "c",
+                  "md": "un plan vectoriel"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\mathbb{R}^3$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Si l'on avait $G \\subset F$, l'égalité des dimensions donnerait $G = F$ ; donc $G \\not\\subset F$ et $F \\subsetneq F + G$, d'où $\\dim(F + G) = 3$. Alors $\\dim(F \\cap G) = 2 + 2 - 3 = 1$. La réponse $\\{\\vec{0}\\}$ donnerait $\\dim(F + G) = 4$, impossible dans $\\mathbb{R}^3$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $F$ et $G$ sont deux sous-espaces de même dimension finie, alors $F = G$.",
+              "answer": false,
+              "explanation": "Faux : il faut aussi l'**inclusion** $F \\subset G$. Contre-exemple : $\\operatorname{Vect}((1,0))$ et $\\operatorname{Vect}((0,1))$ dans $\\mathbb{R}^2$ sont deux droites (même dimension 1) différentes."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Dans $\\mathbb{R}^3$, soit $F = \\{(x,y,z) \\;/\\; z = 0\\}$ et $G = \\operatorname{Vect}((1,1,1), (1,0,0))$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\dim F =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$F = \\{(x,y,0)\\} = \\operatorname{Vect}((1,0,0), (0,1,0))$, famille libre : $\\dim F = 2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Un vecteur $a(1,1,1) + b(1,0,0) = (a + b, a, a)$ de $G$ est dans $F$ ssi $a = 0$. Donc $\\dim(F \\cap G) =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "$F \\cap G = \\{b(1,0,0)\\} = \\operatorname{Vect}((1,0,0))$, droite vectorielle : dimension 1."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Sachant que $\\dim G = 2$, on obtient $\\dim(F + G) =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "3"
+                  ],
+                  "explanation": "$\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G) = 2 + 2 - 1 = 3$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "On en conclut que :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$F + G = \\mathbb{R}^3$, mais la somme n'est pas directe."
+                    },
+                    {
+                      "id": "b",
+                      "md": "$F \\oplus G = \\mathbb{R}^3$."
+                    },
+                    {
+                      "id": "c",
+                      "md": "$F + G$ est un plan."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$F + G$ est un sous-espace de $\\mathbb{R}^3$ de dimension 3, donc égal à $\\mathbb{R}^3$. Mais $F \\cap G \\neq \\{\\vec{0}\\}$ : la somme n'est pas directe, d'où (b) faux."
+                }
+              ],
+              "explanation": "Le théorème des quatre dimensions permet d'obtenir $\\dim(F+G)$ à partir de $\\dim(F \\cap G)$, souvent plus simple à calculer."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque hypothèse à la conclusion qu'elle permet (avec $F$, $G$ sous-espaces de dimension finie).",
+              "pairs": [
+                {
+                  "left": "$\\dim F + \\dim G = \\dim E$ et $F \\cap G = \\{\\vec{0}\\}$",
+                  "right": "$F \\oplus G = E$"
+                },
+                {
+                  "left": "$F \\subset G$ et $\\dim F = \\dim G$",
+                  "right": "$F = G$"
+                },
+                {
+                  "left": "Aucune hypothèse supplémentaire",
+                  "right": "$\\dim(F + G) = \\dim F + \\dim G - \\dim(F \\cap G)$"
+                }
+              ],
+              "explanation": "La formule de Grassmann est toujours vraie ; l'égalité $F = G$ demande inclusion **et** égalité des dimensions ; la supplémentarité se teste par une seule condition lorsque les dimensions s'additionnent à $\\dim E$."
+            }
+          ]
+        },
+        {
+          "slug": "obtention-d-une-base",
+          "title": "Obtention d'une base d'un sous-espace vectoriel",
+          "number": "3.5",
+          "estimatedMinutes": 12,
+          "summary": "Méthodes pratiques : extraire une base d'une famille génératrice, trouver une base d'un sous-espace défini par équations, construire un supplémentaire.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.5 Obtention d'une base d'un sous-espace vectoriel"
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "a) Sous-espace vectoriel engendré par une famille de vecteurs"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Soit $\\mathcal{F} = (\\vec{e}_i)_{1 \\le i \\le n}$ une famille de vecteurs d'un $\\mathbb{K}$-espace vectoriel $E$. On désire déterminer une base de $F = \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$.\n\n$\\mathcal{F}$ est une famille génératrice de $F$, on peut donc en extraire une base de la manière suivante :\n- Si $\\mathcal{F}$ est libre alors $\\mathcal{F}$ est une base.\n- Sinon, l'un des vecteurs de $\\mathcal{F}$ est combinaison linéaire des autres, on peut alors retirer celui-ci de la famille sans perdre le caractère générateur.\n- Si besoin, on reprend ce processus jusqu'à obtention d'une famille libre, donc d'une base de $F$."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Base de $F = \\operatorname{Vect}(\\vec{u}_1, \\vec{u}_2, \\vec{u}_3)$ avec $\\vec{u}_1 = (1,0,1)$, $\\vec{u}_2 = (0,1,1)$, $\\vec{u}_3 = (1,1,2)$.",
+              "steps": [
+                {
+                  "md": "On remarque $\\vec{u}_3 = \\vec{u}_1 + \\vec{u}_2$ : la famille est liée, et on retire $\\vec{u}_3$ (principe de réduction)."
+                },
+                {
+                  "md": "$(\\vec{u}_1, \\vec{u}_2)$ est libre (vecteurs non colinéaires) : c'est une base de $F$, et $\\dim F = 2$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exemple, aurait-on pu retirer $\\vec{u}_1$ au lieu de $\\vec{u}_3$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Oui, car $\\vec{u}_1 = \\vec{u}_3 - \\vec{u}_2$ : on obtient la base $(\\vec{u}_2, \\vec{u}_3)$ de $F$."
+                  },
+                  {
+                    "id": "b",
+                    "md": "Non, on retire toujours le dernier vecteur."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Non, car $\\vec{u}_1$ fait partie de la base canonique."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Le procédé retire **un** vecteur combinaison linéaire des autres ; ici chacun des trois l'est. On obtient alors une autre base de $F$ : une base n'est pas unique. (b) est une fausse règle, (c) est faux : $(1,0,1)$ n'est pas un vecteur de la base canonique."
+              }
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "b) Sous-espace vectoriel défini par équations"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "On détermine une base d'un tel sous-espace vectoriel en résolvant les équations de sorte d'exprimer une famille génératrice."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Base de $F = \\{(x,y,z) \\in \\mathbb{R}^3 \\;/\\; x - 2y + z = 0\\}$.",
+              "steps": [
+                {
+                  "md": "On résout : $x = 2y - z$, donc $(x,y,z) = (2y - z, y, z) = y(2,1,0) + z(-1,0,1)$, avec $y, z$ quelconques."
+                },
+                {
+                  "md": "Ainsi $F = \\operatorname{Vect}((2,1,0), (-1,0,1))$ : on a une famille génératrice."
+                },
+                {
+                  "md": "Elle est libre (les 2ᵉ et 3ᵉ coordonnées de $y(2,1,0) + z(-1,0,1)$ sont $y$ et $z$). Base de $F$ : $((2,1,0), (-1,0,1))$, et $\\dim F = 2$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Soit $F = \\{(x,y,z,t) \\in \\mathbb{R}^4 \\;/\\; x = y \\text{ et } z = t\\}$. Alors $\\dim F =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$(x,y,z,t) \\in F \\iff (x,y,z,t) = (x,x,z,z) = x(1,1,0,0) + z(0,0,1,1)$. Ces deux vecteurs forment une famille libre et génératrice de $F$ : $\\dim F = 2$ ($= 4$ inconnues $- 2$ équations indépendantes)."
+              }
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "c) Détermination d'un supplémentaire d'un sous-espace vectoriel"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Si $F$ est un sous-espace vectoriel non trivial d'un $\\mathbb{K}$-espace vectoriel $E$ de dimension finie, on peut déterminer un supplémentaire de $F$ en complétant une base de $F$ en une base de $E$, car on sait que les vecteurs complétant engendrent un supplémentaire de $F$ dans $E$."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Supplémentaire de $F = \\{x - 2y + z = 0\\}$ dans $\\mathbb{R}^3$, avec la base $((2,1,0), (-1,0,1))$ trouvée ci-dessus.",
+              "steps": [
+                {
+                  "md": "$(1,0,0) \\notin F$ car $1 - 0 + 0 = 1 \\neq 0$. Par le principe d'extension, $((2,1,0), (-1,0,1), (1,0,0))$ est libre."
+                },
+                {
+                  "md": "C'est une famille libre de $3 = \\dim \\mathbb{R}^3$ vecteurs : une base de $\\mathbb{R}^3$."
+                },
+                {
+                  "md": "Donc $G = \\operatorname{Vect}((1,0,0))$ est un supplémentaire de $F$ : $F \\oplus G = \\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour $F = \\{(x,y,z) \\;/\\; x - 2y + z = 0\\}$, la droite $\\operatorname{Vect}((1,2,3))$ est un supplémentaire de $F$ dans $\\mathbb{R}^3$.",
+                "answer": false,
+                "explanation": "Faux : $1 - 2 \\times 2 + 3 = 0$, donc $(1,2,3) \\in F$ et la droite est **contenue** dans $F$ : $F \\cap \\operatorname{Vect}((1,2,3)) \\neq \\{\\vec{0}\\}$. Il faut un vecteur hors de $F$, comme $(1,0,0)$."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\dim \\operatorname{Vect}((1,2), (2,4), (3,6)) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$(2,4) = 2(1,2)$ et $(3,6) = 3(1,2)$ : on les retire successivement, il reste $((1,2))$, libre car non nul. Le $\\operatorname{Vect}$ est une droite, de dimension 1 (et non 3, le nombre de vecteurs)."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soit $F = \\{(x,y,z,t) \\in \\mathbb{R}^4 \\;/\\; x + y - z = 0 \\text{ et } t = 0\\}$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "En résolvant ($x = z - y$, $t = 0$), on obtient : tout vecteur de $F$ s'écrit",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$y(-1,1,0,0) + z(1,0,1,0)$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$y(1,1,0,0) + z(1,0,1,0)$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$y(-1,1,0,0) + z(1,0,1,1)$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$(z - y, y, z, 0) = y(-1,1,0,0) + z(1,0,1,0)$. (b) oublie le signe de $-y$ ; (c) met à tort $t = z$ au lieu de $t = 0$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "La famille $((-1,1,0,0), (1,0,1,0))$ est libre. Donc $\\dim F =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "Une famille libre et génératrice de $F$ à 2 vecteurs : $\\dim F = 2$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Quel sous-espace est un supplémentaire de $F$ dans $\\mathbb{R}^4$ ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$\\operatorname{Vect}((0,0,1,0), (0,0,0,1))$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$\\operatorname{Vect}((1,0,1,0), (0,0,0,1))$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$\\operatorname{Vect}((0,0,0,1))$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$a(-1,1,0,0) + b(1,0,1,0) + c(0,0,1,0) + d(0,0,0,1) = (-a + b,\\ a,\\ b + c,\\ d) = \\vec{0}$ force $a = b = c = d = 0$ : on a complété la base de $F$ en une base de $\\mathbb{R}^4$. (b) contient $(1,0,1,0) \\in F$ ; (c) est de dimension 1 alors qu'il faut $4 - 2 = 2$."
+                }
+              ],
+              "explanation": "Méthode b) pour la base de $F$, puis méthode c) : compléter cette base en une base de $E$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si une famille génératrice de $F$ est liée, on peut en retirer **n'importe quel** vecteur sans perdre le caractère générateur.",
+              "answer": false,
+              "explanation": "Faux : on ne peut retirer qu'un vecteur qui est combinaison linéaire des autres. Dans $((1,0), (2,0), (0,1))$, génératrice et liée dans $\\mathbb{R}^2$, retirer $(0,1)$ donne une famille qui n'engendre plus que l'axe des abscisses."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la méthode a) pour extraire une base de $F = \\operatorname{Vect}(\\mathcal{F})$.",
+              "items": [
+                "Tester si la famille génératrice $\\mathcal{F}$ est libre.",
+                "Si elle est liée, repérer un vecteur combinaison linéaire des autres.",
+                "Retirer ce vecteur : la famille reste génératrice de $F$.",
+                "Recommencer jusqu'à obtenir une famille libre : c'est une base de $F$."
+              ],
+              "explanation": "On ne retire un vecteur qu'après avoir constaté que la famille est liée et identifié un vecteur redondant ; on itère jusqu'à la liberté."
+            }
+          ]
+        },
+        {
+          "slug": "rang-d-une-famille",
+          "title": "Rang d'une famille de vecteurs",
+          "number": "3.6",
+          "estimatedMinutes": 10,
+          "summary": "Rang d'une famille = dimension du sous-espace engendré ; majoration du rang et caractérisation des familles libres, génératrices et des bases par le rang.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "3.6 Rang d'une famille de vecteurs"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Soit $\\mathcal{F} = (\\vec{e}_i)_{1 \\le i \\le p}$ une famille de vecteurs d'un $\\mathbb{K}$-espace vectoriel $E$ (de dimension finie)."
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Rang d'une famille",
+              "md": "On appelle **rang** de la famille $\\mathcal{F}$ la dimension du sous-espace vectoriel engendré par $\\mathcal{F}$. On le note $\\operatorname{rg}(\\mathcal{F})$ ou $\\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p)$.\n\nAinsi $\\operatorname{rg}(\\mathcal{F}) = \\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p) = \\dim \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p)$."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Le rang compte le nombre de vecteurs **vraiment utiles** de la famille : on enlève les redondances (méthode 3.5 a)) et on compte ce qui reste."
+            },
+            {
+              "type": "example",
+              "origin": "source",
+              "title": "Exemple",
+              "md": "On pose $\\vec{e}_1 = (1,1,0,1)$, $\\vec{e}_2 = (1,-1,1,0)$, $\\vec{e}_3 = (2,0,1,1)$, $\\vec{e}_4 = (0,2,-1,1)$. On a $\\vec{e}_3 = \\vec{e}_1 + \\vec{e}_2$ et $\\vec{e}_4 = \\vec{e}_1 - \\vec{e}_2$, donc $\\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3, \\vec{e}_4) = \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2)$, alors $\\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3, \\vec{e}_4) = 2$.",
+              "steps": [
+                {
+                  "md": "Vérification : $\\vec{e}_1 + \\vec{e}_2 = (1+1,\\ 1-1,\\ 0+1,\\ 1+0) = (2,0,1,1) = \\vec{e}_3$ et $\\vec{e}_1 - \\vec{e}_2 = (0,2,-1,1) = \\vec{e}_4$."
+                },
+                {
+                  "md": "Par le principe de réduction, on retire $\\vec{e}_3$ puis $\\vec{e}_4$ : $\\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_4) = \\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2)$."
+                },
+                {
+                  "md": "$\\vec{e}_1$ et $\\vec{e}_2$ ne sont pas colinéaires (2ᵉ coordonnées $1$ et $-1$, 3ᵉ coordonnées $0$ et $1$), donc $(\\vec{e}_1, \\vec{e}_2)$ est libre : c'est une base du $\\operatorname{Vect}$, et le rang vaut $2$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$\\operatorname{rg}((1,2,3), (2,4,6)) =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$(2,4,6) = 2(1,2,3)$ : le $\\operatorname{Vect}$ est la droite dirigée par $(1,2,3) \\neq \\vec{0}$, de dimension 1. Le rang n'est pas le nombre de vecteurs (2) mais la dimension de ce qu'ils engendrent."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "On a $\\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p) \\le p$ et $\\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p) \\le \\dim E$, i.e. $\\operatorname{rg}(\\mathcal{F}) \\le \\min(p, \\dim E)$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$\\operatorname{Vect}(\\mathcal{F})$ admet $\\mathcal{F}$ comme famille génératrice à $p$ vecteurs, donc sa dimension est au plus $p$.",
+                  "why": "Une famille génératrice a au moins $\\dim$ éléments (§ 2.3)."
+                },
+                {
+                  "md": "$\\operatorname{Vect}(\\mathcal{F})$ est un sous-espace de $E$, donc sa dimension est au plus $\\dim E$ (§ 3.1)."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "- $\\mathcal{F}$ est libre $\\iff \\operatorname{rg}(\\mathcal{F}) = p$,\n- $\\mathcal{F}$ est génératrice $\\iff \\operatorname{rg}(\\mathcal{F}) = \\dim E$,\n- $\\mathcal{F}$ est une base $\\iff \\operatorname{rg}(\\mathcal{F}) = \\dim E = p$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Si $\\mathcal{F}$ est libre, c'est une base de $\\operatorname{Vect}(\\mathcal{F})$, donc $\\operatorname{rg}(\\mathcal{F}) = p$. Réciproquement, si $\\operatorname{rg}(\\mathcal{F}) = p$, $\\mathcal{F}$ est une famille génératrice de $\\operatorname{Vect}(\\mathcal{F})$ à $p = \\dim \\operatorname{Vect}(\\mathcal{F})$ vecteurs, donc une base, donc libre.",
+                  "why": "Théorème du § 2.3."
+                },
+                {
+                  "md": "$\\mathcal{F}$ génératrice $\\iff \\operatorname{Vect}(\\mathcal{F}) = E \\iff \\dim \\operatorname{Vect}(\\mathcal{F}) = \\dim E$.",
+                  "why": "$\\operatorname{Vect}(\\mathcal{F}) \\subset E$ et théorème du § 3.1 (égalité des dimensions)."
+                },
+                {
+                  "md": "Base $\\iff$ libre et génératrice $\\iff \\operatorname{rg}(\\mathcal{F}) = p$ et $\\operatorname{rg}(\\mathcal{F}) = \\dim E$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Une famille de 3 vecteurs de $\\mathbb{R}^4$ est de rang 3. Elle est :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "libre, mais non génératrice de $\\mathbb{R}^4$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "une base de $\\mathbb{R}^4$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "génératrice de $\\mathbb{R}^4$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "liée"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\operatorname{rg} = 3 = p$ : la famille est libre. Mais $\\operatorname{rg} = 3 \\neq 4 = \\dim \\mathbb{R}^4$ : elle n'est pas génératrice, donc pas une base."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\operatorname{rg}((1,0,1), (0,1,1), (1,1,2)) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$(1,1,2) = (1,0,1) + (0,1,1)$ : on le retire. $(1,0,1)$ et $(0,1,1)$ ne sont pas colinéaires : il reste une famille libre de 2 vecteurs, le rang vaut 2."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le rang maximal possible d'une famille de 5 vecteurs de $\\mathbb{R}^3$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$5$"
+                },
+                {
+                  "id": "b",
+                  "md": "$3$"
+                },
+                {
+                  "id": "c",
+                  "md": "$8$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\operatorname{rg}(\\mathcal{F}) \\le \\min(p, \\dim E) = \\min(5, 3) = 3$, et $3$ est atteint si la famille contient une base de $\\mathbb{R}^3$. $5$ oublie la majoration par $\\dim E$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une famille de 4 vecteurs de $\\mathbb{R}^4$ de rang 4 est une base de $\\mathbb{R}^4$.",
+              "answer": true,
+              "explanation": "Vrai : $\\operatorname{rg}(\\mathcal{F}) = 4 = \\dim \\mathbb{R}^4 = p$, c'est la troisième équivalence du théorème."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour une famille $\\mathcal{F}$ de $p$ vecteurs d'un espace $E$ de dimension finie, associez chaque condition sur le rang à la propriété correspondante.",
+              "pairs": [
+                {
+                  "left": "$\\operatorname{rg}(\\mathcal{F}) = p$",
+                  "right": "$\\mathcal{F}$ est libre"
+                },
+                {
+                  "left": "$\\operatorname{rg}(\\mathcal{F}) = \\dim E$",
+                  "right": "$\\mathcal{F}$ est génératrice de $E$"
+                },
+                {
+                  "left": "$\\operatorname{rg}(\\mathcal{F}) = p = \\dim E$",
+                  "right": "$\\mathcal{F}$ est une base de $E$"
+                },
+                {
+                  "left": "$\\operatorname{rg}(\\mathcal{F}) < p$",
+                  "right": "$\\mathcal{F}$ est liée"
+                }
+              ],
+              "explanation": "Ce sont les équivalences du théorème du § 3.6 ; la dernière est la négation de la première (on a toujours $\\operatorname{rg} \\le p$)."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soit $\\vec{u} = (1,1,0)$, $\\vec{v} = (0,1,1)$, $\\vec{w} = (1,0,-1)$ dans $\\mathbb{R}^3$.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Quelle relation lie ces vecteurs ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$\\vec{w} = \\vec{u} - \\vec{v}$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$\\vec{w} = \\vec{u} + \\vec{v}$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$\\vec{w} = \\vec{v} - \\vec{u}$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$(1,1,0) - (0,1,1) = (1,0,-1) = \\vec{w}$. La réponse (c) donne $(-1,0,1) = -\\vec{w}$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\operatorname{rg}(\\vec{u}, \\vec{v}, \\vec{w}) =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "On retire $\\vec{w}$ ; $\\vec{u}$ et $\\vec{v}$ ne sont pas colinéaires, donc le rang vaut 2."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "La famille $(\\vec{u}, \\vec{v}, \\vec{w})$ est donc :",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "liée et non génératrice de $\\mathbb{R}^3$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "libre"
+                    },
+                    {
+                      "id": "c",
+                      "md": "une base de $\\mathbb{R}^3$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$\\operatorname{rg} = 2 < 3 = p$ : liée ; $\\operatorname{rg} = 2 \\neq 3 = \\dim \\mathbb{R}^3$ : non génératrice."
+                }
+              ],
+              "explanation": "Le rang se calcule en éliminant les vecteurs redondants, puis il se compare à $p$ et à $\\dim E$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "applications-lineaires-en-dimension-finie",
+      "title": "Applications linéaires en dimension finie",
+      "number": "4",
+      "lessons": [
+        {
+          "slug": "image-d-une-famille",
+          "title": "Image d'une famille de vecteurs",
+          "number": "4.1",
+          "estimatedMinutes": 11,
+          "summary": "Image d'une famille par une application linéaire, $f(\\operatorname{Vect}\\mathcal{B}) = \\operatorname{Vect} f(\\mathcal{B})$, transport des familles libres, génératrices, des bases et conséquences sur les dimensions.",
+          "blocks": [
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Dans toute cette partie, $E$, $F$ et $G$ désignent des $\\mathbb{K}$-espaces vectoriels de dimensions finies."
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.1 Image d'une famille de vecteurs"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Soit $f \\in \\mathcal{L}(E, F)$ et $\\mathcal{B} = (\\vec{e}_i)_{1 \\le i \\le n}$ une famille de vecteurs de $E$."
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Image d'une famille",
+              "md": "On appelle **image de la famille** $\\mathcal{B}$ par $f$ la famille $f(\\mathcal{B}) = (f(\\vec{e}_i))_{1 \\le i \\le n}$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "$f(\\operatorname{Vect}(\\mathcal{B})) = \\operatorname{Vect}(f(\\mathcal{B}))$, i.e. :\n$$f(\\operatorname{Vect}(\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)) = \\operatorname{Vect}(f(\\vec{e}_1), f(\\vec{e}_2), \\dots, f(\\vec{e}_n)).$$"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Par linéarité, $f\\left(\\sum \\lambda_i \\vec{e}_i\\right) = \\sum \\lambda_i f(\\vec{e}_i)$."
+                },
+                {
+                  "md": "Quand $(\\lambda_1, \\dots, \\lambda_n)$ décrit $\\mathbb{K}^n$, le membre de gauche décrit $f(\\operatorname{Vect}(\\mathcal{B}))$ et celui de droite décrit $\\operatorname{Vect}(f(\\mathcal{B}))$ : les deux ensembles sont égaux."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "- Si $\\mathcal{B}$ est libre et $f$ injective alors $f(\\mathcal{B})$ est libre.\n- Si $\\mathcal{B}$ est génératrice et $f$ est surjective alors $f(\\mathcal{B})$ est génératrice.\n- Si $\\mathcal{B}$ est une base et $f$ est un isomorphisme alors $f(\\mathcal{B})$ est une base."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Libre : si $\\sum \\lambda_i f(\\vec{e}_i) = \\vec{0}$, alors $f\\left(\\sum \\lambda_i \\vec{e}_i\\right) = \\vec{0}$, donc $\\sum \\lambda_i \\vec{e}_i \\in \\operatorname{Ker} f = \\{\\vec{0}\\}$, et la liberté de $\\mathcal{B}$ donne $\\lambda_i = 0$.",
+                  "why": "$f$ injective $\\iff \\operatorname{Ker} f = \\{\\vec{0}\\}$."
+                },
+                {
+                  "md": "Génératrice : $\\operatorname{Vect}(f(\\mathcal{B})) = f(\\operatorname{Vect}(\\mathcal{B})) = f(E) = F$.",
+                  "why": "Proposition précédente, puis $f$ surjective."
+                },
+                {
+                  "md": "Base : un isomorphisme est injectif et surjectif, on combine les deux points."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "$f : \\mathbb{R}^2 \\to \\mathbb{R}^3$, $f(x,y) = (x, y, x + y)$ est linéaire et injective ($f(x,y) = \\vec{0} \\Rightarrow x = y = 0$). L'image de la base canonique, $((1,0,1), (0,1,1))$, est donc libre."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Soit $f(x,y) = (x + y, 2x + 2y)$ sur $\\mathbb{R}^2$ et $\\mathcal{B}$ la base canonique. Alors $f(\\mathcal{B}) = ((1,2), (1,2))$ est liée. Que peut-on en conclure ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$f$ n'est pas injective."
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\mathcal{B}$ n'est pas libre."
+                  },
+                  {
+                    "id": "c",
+                    "md": "Rien du tout."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Par contraposée : si $f$ était injective, l'image de la famille libre $\\mathcal{B}$ serait libre. D'ailleurs $f(1,-1) = (0,0)$. (b) est faux : la base canonique est libre ; c'est $f$ qui « écrase » les directions."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "corollaire",
+              "md": "Si $V$ est un sous-espace vectoriel de $E$ alors $\\dim f(V) \\le \\dim V$, avec égalité lorsque $f$ est injective."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $(\\vec{v}_1, \\dots, \\vec{v}_k)$ une base de $V$. Alors $f(V) = \\operatorname{Vect}(f(\\vec{v}_1), \\dots, f(\\vec{v}_k))$ est engendré par $k$ vecteurs, donc $\\dim f(V) \\le k = \\dim V$."
+                },
+                {
+                  "md": "Si $f$ est injective, $(f(\\vec{v}_1), \\dots, f(\\vec{v}_k))$ est libre : c'est une base de $f(V)$, donc $\\dim f(V) = \\dim V$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "corollaire",
+              "md": "Si $E$ et $F$ sont deux $\\mathbb{K}$-espaces vectoriels de dimension finie ou non, et $f \\in \\mathcal{L}(E,F)$, alors :\n- Si $f$ est injective alors $\\dim E \\le \\dim F$.\n- Si $f$ est surjective alors $\\dim F \\le \\dim E$.\n- Si $f$ est un isomorphisme alors $\\dim E = \\dim F$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "En dimension finie, on applique le corollaire précédent avec $V = E$ : $\\dim f(E) \\le \\dim E$, avec égalité si $f$ est injective."
+                },
+                {
+                  "md": "Si $f$ est injective : $\\dim E = \\dim f(E) \\le \\dim F$ car $f(E)$ est un sous-espace de $F$."
+                },
+                {
+                  "md": "Si $f$ est surjective : $f(E) = F$, donc $\\dim F = \\dim f(E) \\le \\dim E$."
+                },
+                {
+                  "md": "Un isomorphisme étant injectif et surjectif, on obtient les deux inégalités, d'où l'égalité."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Il existe une application linéaire injective de $\\mathbb{R}^3$ dans $\\mathbb{R}^2$.",
+                "answer": false,
+                "explanation": "Faux : si $f$ était injective, on aurait $\\dim \\mathbb{R}^3 \\le \\dim \\mathbb{R}^2$, soit $3 \\le 2$. Une application linéaire ne peut pas « faire tenir » trois directions indépendantes dans un plan."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Pour toute application linéaire $f$, si $\\mathcal{B}$ est liée alors $f(\\mathcal{B})$ est liée.",
+              "answer": true,
+              "explanation": "Vrai, sans aucune hypothèse sur $f$ : si $\\sum \\lambda_i \\vec{e}_i = \\vec{0}$ avec des $\\lambda_i$ non tous nuls, alors $\\sum \\lambda_i f(\\vec{e}_i) = f(\\vec{0}) = \\vec{0}$ avec les mêmes coefficients. C'est le sens « libre » qui demande l'injectivité."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Existe-t-il une application linéaire surjective de $\\mathbb{R}^2$ sur $\\mathbb{R}^3$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Non, car il faudrait $\\dim \\mathbb{R}^3 \\le \\dim \\mathbb{R}^2$."
+                },
+                {
+                  "id": "b",
+                  "md": "Oui, par exemple $f(x,y) = (x, y, x + y)$."
+                },
+                {
+                  "id": "c",
+                  "md": "Oui, toute application linéaire injective convient."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Si $f$ est surjective, $\\dim F \\le \\dim E$ ; ici $3 \\le 2$ est faux. L'exemple (b) est injectif mais pas surjectif : son image est le plan $z = x + y$. (c) confond injectivité et surjectivité."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f : \\mathbb{R}^3 \\to \\mathbb{R}^2$, $f(x,y,z) = (x + y, y + z)$. Alors $\\dim f(\\mathbb{R}^3) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$f(\\mathbb{R}^3) = \\operatorname{Vect}(f(\\vec{\\varepsilon}_1), f(\\vec{\\varepsilon}_2), f(\\vec{\\varepsilon}_3)) = \\operatorname{Vect}((1,0), (1,1), (0,1)) = \\mathbb{R}^2$, de dimension 2. Répondre $3$ oublie que $f(\\mathbb{R}^3) \\subset \\mathbb{R}^2$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque hypothèse à la conclusion correspondante ($f \\in \\mathcal{L}(E,F)$).",
+              "pairs": [
+                {
+                  "left": "$\\mathcal{B}$ libre et $f$ injective",
+                  "right": "$f(\\mathcal{B})$ libre"
+                },
+                {
+                  "left": "$\\mathcal{B}$ génératrice de $E$ et $f$ surjective",
+                  "right": "$f(\\mathcal{B})$ génératrice de $F$"
+                },
+                {
+                  "left": "$\\mathcal{B}$ base de $E$ et $f$ isomorphisme",
+                  "right": "$f(\\mathcal{B})$ base de $F$"
+                },
+                {
+                  "left": "$f$ injective",
+                  "right": "$\\dim E \\le \\dim F$"
+                },
+                {
+                  "left": "$f$ surjective",
+                  "right": "$\\dim F \\le \\dim E$"
+                }
+              ],
+              "explanation": "L'injectivité préserve la liberté, la surjectivité préserve le caractère générateur ; en dimension, une injection ne peut que « monter » ($\\dim E \\le \\dim F$) et une surjection que « descendre » ($\\dim F \\le \\dim E$)."
+            }
+          ]
+        },
+        {
+          "slug": "rang-d-une-application-lineaire",
+          "title": "Rang d'une application linéaire",
+          "number": "4.2",
+          "estimatedMinutes": 10,
+          "summary": "Définition $\\operatorname{rg}(f) = \\dim \\operatorname{Im} f$, calcul sur un exemple, majoration et rang d'une composée.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.2 Rang d'une application linéaire"
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Rang d'une application linéaire",
+              "md": "On appelle **rang** de $f \\in \\mathcal{L}(E, F)$ la dimension de l'image de $f$. On note\n$$\\operatorname{rg}(f) = \\dim \\operatorname{Im} f.$$"
+            },
+            {
+              "type": "example",
+              "origin": "source",
+              "title": "Exemple",
+              "md": "Soit $f : \\mathbb{R}^3 \\to \\mathbb{R}^3$ définie par $f(x,y,z) = (y - z,\\ z - x,\\ x - y)$. Soit $(y_1, y_2, y_3) \\in \\operatorname{Im} f$ ; alors $\\exists (x,y,z) \\in \\mathbb{R}^3$ tel que $f(x,y,z) = (y_1, y_2, y_3)$, donc\n$$\\begin{cases} y_1 = y - z \\\\ y_2 = z - x \\\\ y_3 = x - y \\end{cases} \\Longrightarrow y_2 = -y_1 - y_3$$\n$$\\Longrightarrow \\operatorname{Im} f = \\{(y_1, -y_1 - y_3, y_3) \\;/\\; y_1, y_3 \\in \\mathbb{R}\\} \\Longrightarrow \\operatorname{rg}(f) = \\dim \\operatorname{Im} f = 2.$$",
+              "steps": [
+                {
+                  "md": "En additionnant les trois équations : $y_1 + y_2 + y_3 = 0$, d'où $y_2 = -y_1 - y_3$. Cela prouve $\\operatorname{Im} f \\subset \\{(y_1, -y_1 - y_3, y_3)\\}$."
+                },
+                {
+                  "md": "Inclusion réciproque (à ne pas oublier) : pour $(y_1, -y_1 - y_3, y_3)$, le choix $z = 0$, $y = y_1$, $x = y_1 + y_3$ donne $f(x,y,z) = (y_1,\\ -y_1 - y_3,\\ y_3)$."
+                },
+                {
+                  "md": "Donc $\\operatorname{Im} f = \\{y_1(1,-1,0) + y_3(0,-1,1)\\} = \\operatorname{Vect}((1,-1,0), (0,-1,1))$, famille libre (1ʳᵉ et 3ᵉ coordonnées) : $\\operatorname{rg}(f) = 2$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Soit $f : \\mathbb{R}^3 \\to \\mathbb{R}^2$, $f(x,y,z) = (x + y + z,\\ 2x + 2y + 2z)$. Alors $\\operatorname{rg}(f) =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$f(x,y,z) = (x + y + z)(1,2)$, donc $\\operatorname{Im} f = \\operatorname{Vect}((1,2))$, de dimension 1. Répondre $2$ (la dimension de l'espace d'arrivée) ou $3$ (celle de l'espace de départ) confond le rang avec ces dimensions, qui n'en sont que des majorants."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $f \\in \\mathcal{L}(E, F)$ avec $n = \\dim E$ et $p = \\dim F$. On a $\\operatorname{rg}(f) \\le \\min(n, p)$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$\\operatorname{Im} f$ est un sous-espace de $F$, donc $\\operatorname{rg}(f) \\le p$."
+                },
+                {
+                  "md": "$\\operatorname{Im} f = f(E)$ et $\\dim f(E) \\le \\dim E = n$.",
+                  "why": "Corollaire du § 4.1 avec $V = E$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $f \\in \\mathcal{L}(E, F)$ et $g \\in \\mathcal{L}(F, G)$. On a $\\operatorname{rg}(g \\circ f) \\le \\min(\\operatorname{rg}(f), \\operatorname{rg}(g))$.\n\nDe plus :\n- Si $g$ est injective alors $\\operatorname{rg}(g \\circ f) = \\operatorname{rg}(f)$.\n- Si $f$ est surjective alors $\\operatorname{rg}(g \\circ f) = \\operatorname{rg}(g)$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$\\operatorname{Im}(g \\circ f) = g(f(E)) = g(\\operatorname{Im} f)$."
+                },
+                {
+                  "md": "$g(\\operatorname{Im} f) \\subset g(F) = \\operatorname{Im} g$, donc $\\operatorname{rg}(g \\circ f) \\le \\operatorname{rg}(g)$."
+                },
+                {
+                  "md": "$\\dim g(\\operatorname{Im} f) \\le \\dim \\operatorname{Im} f$, avec égalité si $g$ est injective : d'où $\\operatorname{rg}(g \\circ f) \\le \\operatorname{rg}(f)$, et l'égalité si $g$ est injective.",
+                  "why": "Corollaire du § 4.1 avec $V = \\operatorname{Im} f$."
+                },
+                {
+                  "md": "Si $f$ est surjective, $\\operatorname{Im} f = F$, donc $\\operatorname{Im}(g \\circ f) = g(F) = \\operatorname{Im} g$ et $\\operatorname{rg}(g \\circ f) = \\operatorname{rg}(g)$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^2, \\mathbb{R}^3)$ et $g \\in \\mathcal{L}(\\mathbb{R}^3, \\mathbb{R}^2)$. Le rang de $g \\circ f$ est au plus :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$2$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$3$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$5$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$6$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$\\operatorname{rg}(g \\circ f) \\le \\operatorname{rg}(f) \\le \\min(2, 3) = 2$. La réponse $3$ oublie que $f$ part d'un espace de dimension 2 ; $5$ et $6$ additionnent ou multiplient des dimensions sans raison."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f : \\mathbb{R}^2 \\to \\mathbb{R}^3$, $f(x,y) = (x + y,\\ x - y,\\ 2x)$. Alors $\\operatorname{rg}(f) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\operatorname{Im} f = \\operatorname{Vect}(f(1,0), f(0,1)) = \\operatorname{Vect}((1,1,2), (1,-1,0))$ ; ces vecteurs ne sont pas colinéaires, donc $\\operatorname{rg}(f) = 2$. On ne peut pas trouver 3 : $\\operatorname{rg}(f) \\le \\dim \\mathbb{R}^2 = 2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $f \\in \\mathcal{L}(\\mathbb{R}^5, \\mathbb{R}^3)$, le rang maximal possible est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$3$"
+                },
+                {
+                  "id": "b",
+                  "md": "$5$"
+                },
+                {
+                  "id": "c",
+                  "md": "$8$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\operatorname{rg}(f) \\le \\min(5, 3) = 3$, atteint par exemple par $f(x_1, \\dots, x_5) = (x_1, x_2, x_3)$. $5$ oublie que l'image est contenue dans $\\mathbb{R}^3$ ; $2 = 5 - 3$ confond avec une dimension de noyau minimale."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $f$ est injective, alors $\\operatorname{rg}(g \\circ f) = \\operatorname{rg}(g)$.",
+              "answer": false,
+              "explanation": "Faux : le résultat du cours est « $f$ **surjective** $\\Rightarrow \\operatorname{rg}(g \\circ f) = \\operatorname{rg}(g)$ » (et « $g$ injective $\\Rightarrow \\operatorname{rg}(g \\circ f) = \\operatorname{rg}(f)$ »). Contre-exemple : $f : \\mathbb{R} \\to \\mathbb{R}^2$, $f(x) = (x, 0)$ injective, et $g = \\mathrm{Id}_{\\mathbb{R}^2}$ : $\\operatorname{rg}(g \\circ f) = 1 \\neq 2 = \\operatorname{rg}(g)$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soit $f : \\mathbb{R}^3 \\to \\mathbb{R}^3$, $f(x,y,z) = (x + y,\\ x + y,\\ z)$, et $(\\vec{\\varepsilon}_1, \\vec{\\varepsilon}_2, \\vec{\\varepsilon}_3)$ la base canonique.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Que vaut $(f(\\vec{\\varepsilon}_1), f(\\vec{\\varepsilon}_2), f(\\vec{\\varepsilon}_3))$ ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$((1,1,0), (1,1,0), (0,0,1))$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$((1,0,0), (0,1,0), (0,0,1))$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$((1,1,0), (0,0,0), (0,0,1))$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$f(1,0,0) = (1,1,0)$, $f(0,1,0) = (1,1,0)$, $f(0,0,1) = (0,0,1)$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\operatorname{rg}(f) =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$\\operatorname{Im} f = \\operatorname{Vect}((1,1,0), (1,1,0), (0,0,1)) = \\operatorname{Vect}((1,1,0), (0,0,1))$, famille libre : rang 2."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "$f$ est-elle surjective ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "Non, car $\\operatorname{Im} f$ est de dimension $2 < 3$, donc $\\operatorname{Im} f \\neq \\mathbb{R}^3$."
+                    },
+                    {
+                      "id": "b",
+                      "md": "Oui, car $f$ va de $\\mathbb{R}^3$ dans $\\mathbb{R}^3$."
+                    },
+                    {
+                      "id": "c",
+                      "md": "Oui, car $f(\\vec{\\varepsilon}_3) = \\vec{\\varepsilon}_3$."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Un sous-espace de $\\mathbb{R}^3$ de dimension 2 n'est pas $\\mathbb{R}^3$ : par exemple $(1,0,0) \\notin \\operatorname{Im} f$. Avoir le même espace de départ et d'arrivée ne garantit rien."
+                }
+              ],
+              "explanation": "Pour calculer un rang : $\\operatorname{Im} f = \\operatorname{Vect}(f(\\text{base}))$, puis on extrait une base de ce $\\operatorname{Vect}$."
+            }
+          ]
+        },
+        {
+          "slug": "theoreme-du-rang",
+          "title": "Théorème du rang",
+          "number": "4.3",
+          "estimatedMinutes": 10,
+          "summary": "Tout supplémentaire du noyau est isomorphe à l'image ; $\\operatorname{rg}(f) + \\dim \\operatorname{Ker} f = \\dim E$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.3 Théorème du rang"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "title": "du rang",
+              "md": "Soit $f \\in \\mathcal{L}(E, F)$.\n1. $f$ réalise un isomorphisme de tout supplémentaire de $\\operatorname{Ker} f$ dans $E$ vers $\\operatorname{Im} f$.\n2. $\\operatorname{rg}(f) + \\dim \\operatorname{Ker}(f) = \\dim E$."
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "Les $\\dim E$ « directions » de l'espace de départ se répartissent en deux : celles que $f$ **écrase** sur $\\vec{0}$ (le noyau) et celles qu'elle **conserve** (qui donnent l'image). Plus le noyau est gros, plus l'image est petite."
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algebre-1/ch03-theoreme-rang.svg",
+              "alt": "E est la somme directe de Ker f (envoyé sur 0) et d'un supplémentaire S, que f envoie de façon bijective sur Im f.",
+              "caption": "Figure — théorème du rang : dim E = dim Ker f + rg f.",
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $S$ un supplémentaire de $\\operatorname{Ker} f$ dans $E$ (il en existe, § 3.2) et $g : S \\to \\operatorname{Im} f$, $g(\\vec{s}) = f(\\vec{s})$, qui est linéaire."
+                },
+                {
+                  "md": "$g$ injective : si $\\vec{s} \\in S$ et $f(\\vec{s}) = \\vec{0}$, alors $\\vec{s} \\in S \\cap \\operatorname{Ker} f = \\{\\vec{0}\\}$."
+                },
+                {
+                  "md": "$g$ surjective : si $\\vec{y} = f(\\vec{x}) \\in \\operatorname{Im} f$, on écrit $\\vec{x} = \\vec{k} + \\vec{s}$ avec $\\vec{k} \\in \\operatorname{Ker} f$, $\\vec{s} \\in S$ ; alors $\\vec{y} = f(\\vec{k}) + f(\\vec{s}) = g(\\vec{s})$."
+                },
+                {
+                  "md": "Donc $g$ est un isomorphisme de $S$ sur $\\operatorname{Im} f$ : c'est le point 1."
+                },
+                {
+                  "md": "Par conséquent $\\operatorname{rg}(f) = \\dim \\operatorname{Im} f = \\dim S = \\dim E - \\dim \\operatorname{Ker} f$ : c'est le point 2.",
+                  "why": "Un isomorphisme conserve la dimension (§ 4.1) et $\\dim E = \\dim \\operatorname{Ker} f + \\dim S$ (§ 3.2)."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "title": "Retour sur l'exemple du § 4.2",
+              "md": "$f(x,y,z) = (y - z,\\ z - x,\\ x - y)$ sur $\\mathbb{R}^3$, de rang 2.",
+              "steps": [
+                {
+                  "md": "$f(x,y,z) = \\vec{0} \\iff y = z$ et $z = x \\iff x = y = z$ : $\\operatorname{Ker} f = \\operatorname{Vect}((1,1,1))$, de dimension 1."
+                },
+                {
+                  "md": "On vérifie le théorème du rang : $\\operatorname{rg}(f) + \\dim \\operatorname{Ker} f = 2 + 1 = 3 = \\dim \\mathbb{R}^3$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^5, \\mathbb{R}^3)$ surjective. Alors $\\dim \\operatorname{Ker} f =$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$f$ surjective donne $\\operatorname{Im} f = \\mathbb{R}^3$, donc $\\operatorname{rg}(f) = 3$, et $\\dim \\operatorname{Ker} f = \\dim E - \\operatorname{rg}(f) = 5 - 3 = 2$. Attention : on retranche de $\\dim E$ (départ), pas de $\\dim F$."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^4, \\mathbb{R}^3)$ avec $\\operatorname{Ker} f = \\operatorname{Vect}((1,0,0,0))$. Alors $\\operatorname{rg}(f) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$\\operatorname{rg}(f) = \\dim \\mathbb{R}^4 - \\dim \\operatorname{Ker} f = 4 - 1 = 3$ (donc $f$ est surjective). Répondre $2 = 3 - 1$ revient à soustraire la dimension du noyau à celle de l'espace d'**arrivée**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $f \\in \\mathcal{L}(\\mathbb{R}^4, \\mathbb{R}^2)$, la dimension de $\\operatorname{Ker} f$ est au moins :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$2$"
+                },
+                {
+                  "id": "b",
+                  "md": "$0$"
+                },
+                {
+                  "id": "c",
+                  "md": "$4$"
+                },
+                {
+                  "id": "d",
+                  "md": "$6$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\operatorname{rg}(f) \\le 2$, donc $\\dim \\operatorname{Ker} f = 4 - \\operatorname{rg}(f) \\ge 2$. En particulier $f$ ne peut pas être injective : (b) est impossible. $4$ n'est atteint que pour $f = 0$ : c'est un maximum, pas un minimum."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour un endomorphisme $f$ de $E$, le théorème du rang implique que $\\operatorname{Ker} f$ et $\\operatorname{Im} f$ sont supplémentaires dans $E$.",
+              "answer": false,
+              "explanation": "Faux : le théorème donne seulement $\\dim \\operatorname{Ker} f + \\dim \\operatorname{Im} f = \\dim E$, pas $\\operatorname{Ker} f \\cap \\operatorname{Im} f = \\{\\vec{0}\\}$. Contre-exemple : $f(x,y) = (y, 0)$ sur $\\mathbb{R}^2$ : $\\operatorname{Ker} f = \\operatorname{Im} f = \\operatorname{Vect}((1,0))$. Le théorème parle d'un supplémentaire **du noyau** isomorphe à l'image."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la démonstration du théorème du rang.",
+              "items": [
+                "Choisir un supplémentaire $S$ de $\\operatorname{Ker} f$ dans $E$.",
+                "Montrer que la restriction de $f$ à $S$ est un isomorphisme de $S$ sur $\\operatorname{Im} f$.",
+                "En déduire $\\operatorname{rg}(f) = \\dim S$.",
+                "Conclure avec $\\dim S = \\dim E - \\dim \\operatorname{Ker} f$."
+              ],
+              "explanation": "On a besoin de $S$ pour définir la restriction ; l'isomorphisme donne l'égalité des dimensions $\\dim \\operatorname{Im} f = \\dim S$ ; enfin $E = \\operatorname{Ker} f \\oplus S$ fournit $\\dim S$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Soit $f : \\mathbb{R}^3 \\to \\mathbb{R}^2$, $f(x,y,z) = (x - y,\\ y - z)$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$f(x,y,z) = \\vec{0} \\iff x = y = z$. Donc $\\dim \\operatorname{Ker} f =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "1"
+                  ],
+                  "explanation": "$\\operatorname{Ker} f = \\operatorname{Vect}((1,1,1))$, droite vectorielle."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Par le théorème du rang, $\\operatorname{rg}(f) =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$\\operatorname{rg}(f) = 3 - 1 = 2$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "$f$ est-elle surjective ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "Oui : $\\operatorname{Im} f$ est un sous-espace de $\\mathbb{R}^2$ de dimension 2, donc $\\operatorname{Im} f = \\mathbb{R}^2$."
+                    },
+                    {
+                      "id": "b",
+                      "md": "Non, car son noyau n'est pas réduit à $\\{\\vec{0}\\}$."
+                    },
+                    {
+                      "id": "c",
+                      "md": "On ne peut pas savoir sans résoudre $f(x,y,z) = (a,b)$."
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "Égalité des dimensions + inclusion donne l'égalité (§ 3.1). (b) confond surjectivité et injectivité : un noyau non nul empêche l'injectivité, pas la surjectivité."
+                }
+              ],
+              "explanation": "Le théorème du rang transforme un calcul de noyau (souvent facile) en information sur l'image."
+            }
+          ]
+        },
+        {
+          "slug": "theoreme-d-isomorphisme",
+          "title": "Théorème d'isomorphisme",
+          "number": "4.4",
+          "estimatedMinutes": 10,
+          "summary": "Injectivité, surjectivité et bijectivité via le rang ; en dimensions égales, injective ⇔ surjective ⇔ bijective, et inverse à gauche ou à droite.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.4 Théorème d'isomorphisme"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Soit $f \\in \\mathcal{L}(E, F)$.\n- $f$ est injective $\\iff \\operatorname{rg}(f) = \\dim E$,\n- $f$ est surjective $\\iff \\operatorname{rg}(f) = \\dim F$,\n- $f$ est un isomorphisme $\\iff \\operatorname{rg}(f) = \\dim E = \\dim F$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$f$ injective $\\iff \\operatorname{Ker} f = \\{\\vec{0}\\} \\iff \\dim \\operatorname{Ker} f = 0 \\iff \\operatorname{rg}(f) = \\dim E$.",
+                  "why": "Théorème du rang."
+                },
+                {
+                  "md": "$f$ surjective $\\iff \\operatorname{Im} f = F \\iff \\dim \\operatorname{Im} f = \\dim F$.",
+                  "why": "$\\operatorname{Im} f \\subset F$ et § 3.1 / 3.4."
+                },
+                {
+                  "md": "Isomorphisme = injective et surjective : on combine les deux équivalences."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "title": "d'isomorphisme",
+              "md": "Soient $E$ et $F$ deux $\\mathbb{K}$-espaces vectoriels de dimensions finies tels que $\\dim E = \\dim F = n$. Soit $f \\in \\mathcal{L}(E, F)$. On a équivalence entre :\n1. $f$ est un isomorphisme,\n2. $f$ est injective,\n3. $f$ est surjective,\n4. $\\operatorname{rg}(f) = n$,\n5. $\\exists g \\in \\mathcal{L}(F, E)$, $g \\circ f = \\mathrm{Id}_E$,\n6. $\\exists h \\in \\mathcal{L}(F, E)$, $f \\circ h = \\mathrm{Id}_F$.\n\nDe plus, si tel est le cas : $g = h = f^{-1}$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "(2) $\\iff$ (4) $\\iff$ (3) : par la proposition précédente, car $\\dim E = \\dim F = n$. Et (2) et (3) ensemble donnent (1) ; (1) entraîne évidemment (2)."
+                },
+                {
+                  "md": "(1) $\\Rightarrow$ (5) et (6) : prendre $g = h = f^{-1}$, linéaire (chapitre précédent)."
+                },
+                {
+                  "md": "(5) $\\Rightarrow$ (2) : si $f(\\vec{x}) = \\vec{0}$, alors $\\vec{x} = g(f(\\vec{x})) = g(\\vec{0}) = \\vec{0}$."
+                },
+                {
+                  "md": "(6) $\\Rightarrow$ (3) : tout $\\vec{y} \\in F$ s'écrit $\\vec{y} = f(h(\\vec{y}))$."
+                },
+                {
+                  "md": "Enfin $g = g \\circ \\mathrm{Id}_F = g \\circ (f \\circ h) = (g \\circ f) \\circ h = \\mathrm{Id}_E \\circ h = h$, et en composant $g \\circ f = \\mathrm{Id}_E$ à droite par $f^{-1}$ : $g = f^{-1}$."
+                }
+              ]
+            },
+            {
+              "type": "intuition",
+              "origin": "added",
+              "md": "En dimensions égales, il suffit de vérifier **une seule** condition : par exemple montrer que $\\operatorname{Ker} f = \\{\\vec{0}\\}$ (souvent le plus facile) prouve que $f$ est bijective. Attention : si $\\dim E \\neq \\dim F$, ce raccourci est faux."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "$f(x,y) = (x + y,\\ x - y)$ sur $\\mathbb{R}^2$ : $f(x,y) = \\vec{0} \\iff x + y = 0$ et $x - y = 0 \\iff x = y = 0$. Donc $f$ est injective, et comme c'est un endomorphisme de $\\mathbb{R}^2$, c'est un isomorphisme."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Soit $f$ un endomorphisme de $\\mathbb{R}^3$ tel que $\\operatorname{Im} f = \\mathbb{R}^3$. Alors :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$f$ est un isomorphisme."
+                  },
+                  {
+                    "id": "b",
+                    "md": "$f$ est surjective mais pas forcément injective."
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\operatorname{Ker} f$ est une droite."
+                  },
+                  {
+                    "id": "d",
+                    "md": "On ne peut rien dire."
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$f$ est surjective et $\\dim E = \\dim F = 3$ : par le théorème d'isomorphisme, elle est bijective ($\\dim \\operatorname{Ker} f = 3 - 3 = 0$). (b) serait possible seulement si les dimensions différaient ; (c) contredit le théorème du rang."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Un endomorphisme $f$ de $\\mathbb{R}^3$ tel que $\\operatorname{Ker} f = \\{\\vec{0}\\}$ est un isomorphisme.",
+              "answer": true,
+              "explanation": "Vrai : $f$ est injective et va de $\\mathbb{R}^3$ dans $\\mathbb{R}^3$ (même dimension), donc (2) ⇒ (1) dans le théorème d'isomorphisme."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^3, \\mathbb{R}^2)$ surjective. Est-ce un isomorphisme ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Non : $\\dim \\operatorname{Ker} f = 1$, donc $f$ n'est pas injective."
+                },
+                {
+                  "id": "b",
+                  "md": "Oui, d'après le théorème d'isomorphisme."
+                },
+                {
+                  "id": "c",
+                  "md": "Oui, car une application surjective est bijective."
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le théorème d'isomorphisme exige $\\dim E = \\dim F$, ce qui n'est pas le cas ($3 \\neq 2$). Par le théorème du rang, $\\dim \\operatorname{Ker} f = 3 - 2 = 1$ : $f$ n'est pas injective. (c) est faux en général."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f_a(x,y) = (x + ay,\\ 2x + 4y)$ sur $\\mathbb{R}^2$. $f_a$ n'est pas un isomorphisme pour $a =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$f_a(x,y) = \\vec{0}$ donne $x = -2y$ (2ᵉ équation) puis $(a - 2)y = 0$. Si $a \\neq 2$, $y = 0 = x$ : $f_a$ injective donc isomorphisme. Si $a = 2$, $(-2, 1) \\in \\operatorname{Ker} f_2$ : pas injective, donc pas un isomorphisme."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Pour $f \\in \\mathcal{L}(E, F)$, associez chaque condition sur le rang à sa signification.",
+              "pairs": [
+                {
+                  "left": "$\\operatorname{rg}(f) = \\dim E$",
+                  "right": "$f$ injective"
+                },
+                {
+                  "left": "$\\operatorname{rg}(f) = \\dim F$",
+                  "right": "$f$ surjective"
+                },
+                {
+                  "left": "$\\operatorname{rg}(f) = \\dim E = \\dim F$",
+                  "right": "$f$ isomorphisme"
+                }
+              ],
+              "explanation": "$\\operatorname{rg}(f) = \\dim E \\iff \\dim \\operatorname{Ker} f = 0$ (théorème du rang) ; $\\operatorname{rg}(f) = \\dim F \\iff \\operatorname{Im} f = F$ ; les deux ensemble caractérisent les isomorphismes."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les égalités prouvant que $g = h$ lorsque $g \\circ f = \\mathrm{Id}_E$ et $f \\circ h = \\mathrm{Id}_F$.",
+              "items": [
+                "$g = g \\circ \\mathrm{Id}_F$",
+                "$g \\circ \\mathrm{Id}_F = g \\circ (f \\circ h)$",
+                "$g \\circ (f \\circ h) = (g \\circ f) \\circ h$",
+                "$(g \\circ f) \\circ h = \\mathrm{Id}_E \\circ h = h$"
+              ],
+              "explanation": "On insère $\\mathrm{Id}_F = f \\circ h$, on utilise l'associativité de la composition, puis $g \\circ f = \\mathrm{Id}_E$."
+            }
+          ]
+        },
+        {
+          "slug": "bases-applications-lineaires-hyperplans",
+          "title": "Bases et applications linéaires, équation d'un hyperplan",
+          "number": "4.5–4.6",
+          "estimatedMinutes": 14,
+          "summary": "Une application linéaire est déterminée par l'image d'une base ; rang et image d'une base ; espaces isomorphes ; hyperplans comme noyaux de formes linéaires et leurs équations.",
+          "blocks": [
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.5 Bases et applications linéaires"
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel muni d'une base $\\mathcal{B} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p)$.\n\nSoit $F$ un $\\mathbb{K}$-espace vectoriel et $\\mathcal{F} = (\\vec{y}_1, \\vec{y}_2, \\dots, \\vec{y}_p)$ une famille de vecteurs de $F$.\n\nIl existe une unique application linéaire $f \\in \\mathcal{L}(E, F)$ telle que $f(\\mathcal{B}) = \\mathcal{F}$, i.e. $\\forall\\, 1 \\le i \\le p$, $f(\\vec{e}_i) = \\vec{y}_i$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Unicité : si $f$ convient, pour $\\vec{x} = \\sum \\lambda_i \\vec{e}_i$ on a forcément $f(\\vec{x}) = \\sum \\lambda_i f(\\vec{e}_i) = \\sum \\lambda_i \\vec{y}_i$."
+                },
+                {
+                  "md": "Existence : on **définit** $f(\\vec{x}) = \\sum \\lambda_i \\vec{y}_i$, où $(\\lambda_i)$ sont les composantes de $\\vec{x}$ dans $\\mathcal{B}$ (bien définies par unicité des composantes)."
+                },
+                {
+                  "md": "$f$ est linéaire : les composantes de $\\alpha\\vec{x} + \\beta\\vec{x}'$ sont $\\alpha\\lambda_i + \\beta\\lambda'_i$, donc $f(\\alpha\\vec{x} + \\beta\\vec{x}') = \\alpha f(\\vec{x}) + \\beta f(\\vec{x}')$ ; et $f(\\vec{e}_i) = \\vec{y}_i$.",
+                  "why": "Proposition du § 1.5 sur les composantes d'une somme."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "L'unique $f \\in \\mathcal{L}(\\mathbb{R}^2, \\mathbb{R}^3)$ telle que $f(1,0) = (1,0,1)$ et $f(0,1) = (2,1,0)$ est $f(x,y) = x(1,0,1) + y(2,1,0) = (x + 2y,\\ y,\\ x)$."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^2)$ l'unique application linéaire telle que $f(1,0) = (1,2)$ et $f(0,1) = (3,-1)$. La première coordonnée de $f(x,y)$ est ___",
+                "answerType": "expression",
+                "accepted": [
+                  "x + 3*y"
+                ],
+                "variables": [
+                  "x",
+                  "y"
+                ],
+                "explanation": "$f(x,y) = x f(1,0) + y f(0,1) = x(1,2) + y(3,-1) = (x + 3y,\\ 2x - y)$. Une erreur fréquente est de lire les images « en ligne » et d'écrire $x + 2y$."
+              }
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Soit $E$ un $\\mathbb{K}$-espace vectoriel muni d'une base $\\mathcal{B} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_p)$. Soit $F$ un $\\mathbb{K}$-espace vectoriel de dimension finie et $f \\in \\mathcal{L}(E, F)$.\n\nOn a $\\operatorname{rg}(f) = \\operatorname{rg}(f(\\mathcal{B})) = \\operatorname{rg}(f(\\vec{e}_1), f(\\vec{e}_2), \\dots, f(\\vec{e}_p))$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$\\operatorname{Im} f = f(E) = f(\\operatorname{Vect}(\\mathcal{B})) = \\operatorname{Vect}(f(\\mathcal{B}))$, d'où $\\dim \\operatorname{Im} f = \\operatorname{rg}(f(\\mathcal{B}))$.",
+                  "why": "Proposition du § 4.1."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "corollaire",
+              "md": "- $f$ est injective $\\iff \\operatorname{rg}(f) = \\dim E \\iff f(\\mathcal{B})$ est libre.\n- $f$ est surjective $\\iff \\operatorname{rg}(f) = \\dim F \\iff f(\\mathcal{B})$ est génératrice (de $F$).\n- $f$ est bijective $\\iff f(\\mathcal{B})$ est une base de $F$."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "$f(\\mathcal{B})$ a $p = \\dim E$ vecteurs et $\\operatorname{rg}(f(\\mathcal{B})) = \\operatorname{rg}(f)$."
+                },
+                {
+                  "md": "$f$ injective $\\iff \\operatorname{rg}(f) = \\dim E = p \\iff f(\\mathcal{B})$ libre.",
+                  "why": "Proposition du § 4.4 et théorème du § 3.6."
+                },
+                {
+                  "md": "$f$ surjective $\\iff \\operatorname{rg}(f) = \\dim F \\iff f(\\mathcal{B})$ génératrice de $F$."
+                },
+                {
+                  "md": "Bijective $\\iff$ injective et surjective $\\iff f(\\mathcal{B})$ libre et génératrice de $F$, i.e. base de $F$."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "corollaire",
+              "md": "Deux $\\mathbb{K}$-espaces vectoriels $E$ et $F$ de dimensions finies sont isomorphes ssi ils ont même dimension."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Si $f : E \\to F$ est un isomorphisme, $\\dim E = \\dim F$ (corollaire du § 4.1)."
+                },
+                {
+                  "md": "Réciproquement, si $\\dim E = \\dim F = n$, on choisit des bases $(\\vec{e}_1, \\dots, \\vec{e}_n)$ de $E$ et $(\\vec{y}_1, \\dots, \\vec{y}_n)$ de $F$, et $f \\in \\mathcal{L}(E,F)$ telle que $f(\\vec{e}_i) = \\vec{y}_i$ : elle envoie une base sur une base, donc est bijective."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "origin": "source",
+              "text": "4.6 Équation d'un hyperplan"
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "Supposons que $n = \\dim E \\in \\mathbb{N}^*$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Le noyau d'une forme linéaire non nulle est un hyperplan."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $\\varphi \\in \\mathcal{L}(E, \\mathbb{K})$ non nulle. $\\operatorname{Im} \\varphi$ est un sous-espace de $\\mathbb{K}$ (de dimension 1) non réduit à $\\{0\\}$, donc $\\operatorname{Im} \\varphi = \\mathbb{K}$ et $\\operatorname{rg}(\\varphi) = 1$."
+                },
+                {
+                  "md": "Par le théorème du rang, $\\dim \\operatorname{Ker} \\varphi = n - 1$ : c'est un hyperplan."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "proposition",
+              "md": "Tout hyperplan peut se voir comme noyau d'une forme linéaire non nulle."
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Soit $H$ un hyperplan et $(\\vec{h}_1, \\dots, \\vec{h}_{n-1})$ une base de $H$, complétée en une base $(\\vec{h}_1, \\dots, \\vec{h}_{n-1}, \\vec{a})$ de $E$."
+                },
+                {
+                  "md": "Soit $\\varphi$ l'unique forme linéaire telle que $\\varphi(\\vec{h}_i) = 0$ pour tout $i$ et $\\varphi(\\vec{a}) = 1$ ; elle est non nulle.",
+                  "why": "Théorème du § 4.5."
+                },
+                {
+                  "md": "$H \\subset \\operatorname{Ker} \\varphi$ (car $\\varphi$ s'annule sur une base de $H$) et $\\dim \\operatorname{Ker} \\varphi = n - 1 = \\dim H$ : donc $H = \\operatorname{Ker} \\varphi$.",
+                  "why": "Proposition précédente et § 3.4."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "origin": "source",
+              "md": "On suppose que $E$ est muni d'une base $\\mathcal{B} = (\\vec{e}_1, \\vec{e}_2, \\dots, \\vec{e}_n)$. Pour tout $\\vec{x} \\in E$, notons $x_1, \\dots, x_n$ ses composantes dans $\\mathcal{B}$."
+            },
+            {
+              "type": "theorem",
+              "origin": "source",
+              "kind": "theoreme",
+              "md": "Les hyperplans de $E$ sont les ensembles $H$ constitués des $\\vec{x} \\in E$ vérifiant une relation du type\n$$a_1 x_1 + \\dots + a_n x_n = 0 \\quad \\text{avec } (a_1, \\dots, a_n) \\in \\mathbb{K}^n \\setminus \\{(0, \\dots, 0)\\}.$$"
+            },
+            {
+              "type": "proof",
+              "origin": "added",
+              "steps": [
+                {
+                  "md": "Si $H = \\operatorname{Ker} \\varphi$ avec $\\varphi$ forme linéaire non nulle : $\\varphi(\\vec{x}) = \\sum x_i \\varphi(\\vec{e}_i) = a_1 x_1 + \\dots + a_n x_n$ en posant $a_i = \\varphi(\\vec{e}_i)$. Les $a_i$ ne sont pas tous nuls, sinon $\\varphi$ serait nulle sur une base, donc nulle."
+                },
+                {
+                  "md": "Réciproquement, si $(a_1, \\dots, a_n) \\neq (0, \\dots, 0)$, l'application $\\varphi : \\vec{x} \\mapsto a_1 x_1 + \\dots + a_n x_n$ est une forme linéaire (les composantes dépendent linéairement de $\\vec{x}$), non nulle car $\\varphi(\\vec{e}_k) = a_k \\neq 0$ pour un $k$. Son noyau est un hyperplan."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "origin": "source",
+              "title": "Équation d'un hyperplan",
+              "md": "L'équation $a_1 x_1 + \\dots + a_n x_n = 0$ est alors appelée **équation de l'hyperplan** $H$ relative à la base $\\mathcal{B}$."
+            },
+            {
+              "type": "example",
+              "origin": "added",
+              "md": "Dans $\\mathbb{R}^3$ muni de la base canonique, $H = \\{(x,y,z) \\;/\\; x + y + z = 0\\}$ est un hyperplan (un plan vectoriel) : c'est le noyau de la forme linéaire non nulle $\\varphi(x,y,z) = x + y + z$, avec $(a_1, a_2, a_3) = (1,1,1)$."
+            },
+            {
+              "type": "checkpoint",
+              "origin": "added",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Lequel de ces ensembles est un hyperplan de $\\mathbb{R}^3$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\{(x,y,z) \\;/\\; x - y = 0\\}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\{(x,y,z) \\;/\\; x = y = z\\}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\{(x,y,z) \\;/\\; 0x + 0y + 0z = 0\\}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\{(x,y,z) \\;/\\; x + y + z = 1\\}$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "(a) est de la forme $a_1 x + a_2 y + a_3 z = 0$ avec $(1,-1,0) \\neq (0,0,0)$ : hyperplan. (b) est défini par deux équations indépendantes : c'est une droite. (c) a tous ses coefficients nuls : c'est $\\mathbb{R}^3$ entier. (d) ne contient pas $\\vec{0}$ : ce n'est même pas un sous-espace vectoriel."
+              }
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^2)$ telle que $f(1,0) = (2,1)$ et $f(0,1) = (-1,3)$. La première coordonnée de $f(x,y)$ est ___",
+              "answerType": "expression",
+              "accepted": [
+                "2*x - y"
+              ],
+              "variables": [
+                "x",
+                "y"
+              ],
+              "explanation": "$f(x,y) = x(2,1) + y(-1,3) = (2x - y,\\ x + 3y)$. L'erreur classique $2x + y$ consiste à lire la première **image** $(2,1)$ comme une ligne de coefficients."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\mathbb{R}^2 \\times \\mathbb{R}^2$ et $\\mathbb{R}^4$ sont isomorphes.",
+              "answer": true,
+              "explanation": "Vrai : $\\dim(\\mathbb{R}^2 \\times \\mathbb{R}^2) = 2 + 2 = 4 = \\dim \\mathbb{R}^4$, et deux espaces de dimension finie sont isomorphes ssi ils ont même dimension."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Soit $f \\in \\mathcal{L}(\\mathbb{R}^3)$ avec $f(\\vec{\\varepsilon}_1) = (1,0,0)$, $f(\\vec{\\varepsilon}_2) = (1,1,0)$, $f(\\vec{\\varepsilon}_3) = (2,1,0)$ (base canonique). Alors $\\operatorname{rg}(f) =$ ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$\\operatorname{rg}(f) = \\operatorname{rg}(f(\\mathcal{B}))$ ; or $(2,1,0) = (1,0,0) + (1,1,0)$ et $(1,0,0)$, $(1,1,0)$ ne sont pas colinéaires : rang 2. Donc $f(\\mathcal{B})$ n'est pas une base et $f$ n'est pas bijective."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Soit $\\mathcal{B}$ une base de $E$ et $f \\in \\mathcal{L}(E, F)$. Associez chaque propriété de $f(\\mathcal{B})$ à la propriété de $f$.",
+              "pairs": [
+                {
+                  "left": "$f(\\mathcal{B})$ est libre",
+                  "right": "$f$ est injective"
+                },
+                {
+                  "left": "$f(\\mathcal{B})$ est génératrice de $F$",
+                  "right": "$f$ est surjective"
+                },
+                {
+                  "left": "$f(\\mathcal{B})$ est une base de $F$",
+                  "right": "$f$ est bijective"
+                }
+              ],
+              "explanation": "C'est le corollaire du § 4.5 : tout se lit sur l'image d'**une** base, car $\\operatorname{rg}(f) = \\operatorname{rg}(f(\\mathcal{B}))$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "Dans $\\mathbb{R}^4$ muni de la base canonique, soit $H = \\{(x,y,z,t) \\;/\\; x - y + 2t = 0\\}$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\dim H =$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "3"
+                  ],
+                  "explanation": "$H$ est défini par une équation à coefficients $(1,-1,0,2) \\neq \\vec{0}$ : c'est un hyperplan de $\\mathbb{R}^4$, de dimension $4 - 1 = 3$."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "Quel vecteur appartient à $H$ ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$(1,1,5,0)$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$(1,0,0,1)$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$(2,0,0,1)$"
+                    },
+                    {
+                      "id": "d",
+                      "md": "$(0,1,0,1)$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$1 - 1 + 2 \\times 0 = 0$ : oui. Pour les autres : $1 - 0 + 2 = 3$, $2 - 0 + 2 = 4$, $0 - 1 + 2 = 1$, tous non nuls. La coordonnée $z$ n'intervient pas dans l'équation, d'où $z = 5$ quelconque."
+                },
+                {
+                  "kind": "mcq",
+                  "prompt": "$H$ est le noyau de quelle forme linéaire ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$\\varphi(x,y,z,t) = x - y + 2t$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$\\varphi(x,y,z,t) = x - y + 2z$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$\\varphi(x,y,z,t) = x + y + 2t$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$H = \\operatorname{Ker} \\varphi$ avec $\\varphi(\\vec{x}) = a_1 x_1 + \\dots + a_4 x_4$ et $(a_1, a_2, a_3, a_4) = (1,-1,0,2)$. (b) place le coefficient 2 sur la mauvaise variable, (c) oublie le signe."
+                }
+              ],
+              "explanation": "Une équation linéaire non triviale définit un hyperplan : c'est le noyau de la forme linéaire donnée par ses coefficients."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Titre : le PDF est intitulé « Dimension d'un espace vectoriel » ; le titre du fichier (« Dimension, bases et théorème du rang ») a été retenu pour le chapitre.",
+    "Le PDF ne contient aucune démonstration : toutes les preuves (blocs proof) sont des ajouts (origin: added). Seul le théorème « une famille libre ne peut avoir plus de vecteurs qu'une famille génératrice » (§ 2.2) est laissé sans preuve (preuve trop longue pour un ajout).",
+    "Correction mathématique § 1.3 (Principe d'extension d'une famille libre) : le PDF écrit $\\vec{e}_{n+1} \\in \\operatorname{Vect}(\\vec{e}_1, \\dots, \\vec{e}_n)$ ; c'est $\\notin$ (sinon la famille obtenue est liée). Corrigé.",
+    "Correction mathématique § 3.3 (théorème des quatre dimensions) : le PDF écrit $\\dim(E + G)$ ; corrigé en $\\dim(F + G)$.",
+    "Correction mathématique § 3.6 (exemple) : le PDF conclut $\\operatorname{rg}(\\vec{e}_1, \\vec{e}_2, \\vec{e}_3, \\vec{e}_4) = 4$ alors que son propre raisonnement ($\\operatorname{Vect}$ engendré par $\\vec{e}_1, \\vec{e}_2$ non colinéaires) donne 2. Corrigé en 2 (vérifié par échelonnement).",
+    "§ 3.6 : la famille est introduite comme $(\\vec{e}_i)_{1 \\le i \\le n}$ mais toute la suite utilise $\\vec{e}_p$ et $p$ ; unifié en $(\\vec{e}_i)_{1 \\le i \\le p}$. La proposition « $\\operatorname{rg}(\\vec{e}_1, \\dots, \\vec{e}_p) \\le p, \\dim E$ » a été rendue par « $\\le p$ et $\\le \\dim E$, i.e. $\\le \\min(p, \\dim E)$ ».",
+    "§ 4.2 Proposition « $\\operatorname{rg}(f) \\le \\min(n,p)$ » : $n$ et $p$ ne sont pas définis dans le PDF ; interprétés comme $n = \\dim E$ et $p = \\dim F$ (précisé dans l'énoncé). « On note » remplacé par « On a » (ici et dans le théorème sur $\\operatorname{rg}(g \\circ f)$).",
+    "§ 4.2 Exemple : « $\\exists (x,y,z)\\mathbb{R}^3$ » corrigé en « $\\exists (x,y,z) \\in \\mathbb{R}^3$ ». Le raisonnement du PDF ne prouve que l'inclusion $\\operatorname{Im} f \\subset \\{(y_1, -y_1 - y_3, y_3)\\}$ ; l'inclusion réciproque et l'extraction d'une base ont été ajoutées dans les étapes de l'exemple.",
+    "§ 4.6 : la base est écrite $(\\vec{e}_1, \\dots, \\vec{e}_p)$ alors que les composantes sont $x_1, \\dots, x_n$ avec $n = \\dim E$ ; unifié en $(\\vec{e}_1, \\dots, \\vec{e}_n)$.",
+    "§ 4.1 second corollaire : énoncé « de dimension finie ou non » conservé tel quel (vrai avec la convention $\\dim = +\\infty$), mais la preuve ajoutée ne traite que la dimension finie, cadre annoncé au début de la partie 4.",
+    "§ 1.6 : le théorème de la base incomplète utilise « dimension finie », notion définie seulement au § 2.1 ; une remarque (ajoutée) le signale. La preuve ajoutée suppose $\\mathcal{G}$ finie.",
+    "§ 1.4 Exemple : « est une base » complété en « est une base de $\\mathbb{R}^3$ » ; les étapes de vérification sont ajoutées.",
+    "Typos corrigées : « engendrée » → « engendré » (titre 1.1 et définition) ; § 1.2 parenthèse ouvrante manquante dans $\\mathcal{F} = (\\vec{e}_1, \\dots)$, « vect » → « Vect », « de vecteur de $E$ est dit génératrice » → « de vecteurs de $E$ est génératrice » ; § 1.3 « colinéaire à vecteur » → « au vecteur », « linéairements » → « linéairement », « Cettte égalité vectorielles » → « Cette égalité vectorielle » ; § 1.5 « on dit que les scalaires … sont appelés » → « les scalaires … sont appelés » ; § 1.6 « $\\mathcal{L}$ une famille libre $\\mathcal{G}$ une famille génératrice » → ajout de « et » ; titre partie 2 « esace » → « espace » ; § 2.2 « SoitE », « costituant », « sont toute constituées de même nombre » → « sont toutes constituées du même nombre » ; § 3.1 « dimension fine » → « finie », « sous espace » → « sous-espace » ; titre § 3.2 « Sous-espace vectoriel supplémentaires » → « Sous-espaces vectoriels supplémentaires » ; titre § 3.3 « quatres » → « quatre » ; § 3.5 a) « $\\mathcal{F}$ une famille génératrice de $F$ » → « $\\mathcal{F}$ est une famille génératrice » ; § 4.1 définition : parenthèse manquante dans $f(\\mathcal{B}) = (f(\\vec{e}_i))_{1 \\le i \\le n}$ ; § 4.3 « kerf » → « $\\operatorname{Ker} f$ » ; § 4.5 dernier corollaire « Soient E et F deux … sont isomorphes » reformulé en « Deux … espaces $E$ et $F$ … sont isomorphes » ; § 4.6 « Equation » → « Équation ».",
+    "Numérotation : le PDF étiquette plusieurs définitions « Définition1 » sans numérotation réelle ; seuls les numéros de sections/sous-sections (1.1, …, 4.6) ont été utilisés (champ number des leçons). Les sous-sections 1.1–1.2, 1.4–1.5, 2.1–2.2, 3.1–3.2, 3.3–3.4 et 4.5–4.6 ont été regroupées deux à deux en une leçon.",
+    "Notations : flèches de vecteurs rendues par \\vec{…} ; la base canonique (non nommée dans le PDF) est notée $(\\vec{\\varepsilon}_1, \\dots, \\vec{\\varepsilon}_n)$ dans les ajouts pour éviter la confusion avec les $\\vec{e}_i$ du cours.",
+    "Widgets : dans gauss-rank, les vecteurs sont placés en lignes de la matrice (le rang des lignes = rang de la famille). Pour linear-map-2d, les matrices choisies sont symétriques pour éviter toute ambiguïté de convention ligne/colonne.",
+    "Widget wish : un widget « hyperplan / plan dans R³ » (visualiser un sous-espace défini par une équation et ses vecteurs directeurs) serait utile aux § 3.1, 3.5 b) et 4.6 ; remplacé par des exemples statiques."
+  ]
+}

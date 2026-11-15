@@ -1,0 +1,2913 @@
+{
+  "slug": "nombres-reels-topologie",
+  "number": 1,
+  "title": "Les nombres réels, topologie de ℝ",
+  "description": "Des rationnels aux réels : écriture décimale, irrationalité de √2, axiomes de corps ordonné, ordre et valeur absolue, inégalités triangulaires, propriété d'Archimède, partie entière, densité de ℚ, bornes supérieure et inférieure, puis la topologie de la droite réelle : intervalles, voisinages, ouverts et fermés, intérieur, adhérence et frontière.",
+  "sourcePdf": "Bibliotheque_sources/Analyse/Cours/Nombres reels et topologie/F130 - Chapitre 01 - Nombres réels et topologie.pdf",
+  "sections": [
+    {
+      "slug": "des-rationnels-aux-reels",
+      "title": "Des rationnels aux réels",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "nombres-rationnels",
+          "title": "Nombres rationnels",
+          "number": "L01",
+          "estimatedMinutes": 8,
+          "summary": "Définition de $\\mathbb{Q}$, nombres décimaux, caractérisation des rationnels par une écriture décimale finie ou périodique, et méthode pour écrire un décimal périodique comme une fraction.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "On suppose connues les propriétés de l'ensemble $\\mathbb{N}$ des entiers naturels ainsi que celles de l'ensemble $\\mathbb{Z}$ des entiers relatifs. Ce chapitre, bien qu'élémentaire, est indispensable à la bonne compréhension du cours : $\\mathbb{R}$ est d'une part l'espace fondamental de l'analyse, et d'autre part le modèle sur lequel les différentes notions du cours seront testées.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Un nombre $r$ est dit **rationnel** s'il existe $p\\in{\\mathbb{Z}}$ et $q\\in{\\mathbb{N}}^*$ tels que $r=\\dfrac pq$. L'ensemble des nombres rationnels est\n$$\\mathbb{Q}=\\left\\{\\frac pq\\ \\middle|\\ p\\in{\\mathbb{Z}},\\ q\\in{\\mathbb{N}}^*\\right\\}.$$",
+              "origin": "source",
+              "title": "Nombre rationnel"
+            },
+            {
+              "type": "text",
+              "md": "Parmi les nombres rationnels, on trouve les **nombres décimaux**, de la forme $\\dfrac a{10^n}$ avec $a\\in{\\mathbb{Z}}$ et $n\\in{\\mathbb{N}}$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Un nombre est rationnel si et seulement s'il admet une écriture décimale **périodique** ou **finie**.",
+              "origin": "source",
+              "title": "Proposition (écriture décimale)"
+            },
+            {
+              "type": "intuition",
+              "md": "Une écriture finie, comme $0{,}25$, est une écriture périodique de période $0$ (elle se termine par des $0$ répétés). Ce qui caractérise un rationnel, c'est donc que ses chiffres finissent toujours par se répéter selon un même motif.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Les nombres\n$$x=0{,}25,\\qquad y=0{,}333333\\ldots,\\qquad z=15{,}068\\,214321432143\\ldots$$\nsont des nombres rationnels. Pour $x$ et $y$ c'est immédiat : $x=\\dfrac14$ et $y=\\dfrac13$. Pour $z$, la démonstration repose sur la périodicité de l'écriture, comme ci-dessous.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le nombre $\\dfrac13$ est un nombre décimal.",
+                "answer": false,
+                "explanation": "Faux. $\\dfrac13=0{,}333\\ldots$ a une écriture décimale infinie (périodique) : il est rationnel mais pas décimal. Il ne s'écrit pas $\\dfrac a{10^n}$, car $3$ ne divise aucune puissance de $10$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Un exemple complet : écrire z comme une fraction",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "La période « $2143$ » a $4$ chiffres et commence $3$ chiffres après la virgule.",
+              "origin": "source",
+              "title": "Écrire $z=15{,}068\\,214321432143\\ldots$ sous forme de fraction",
+              "steps": [
+                {
+                  "md": "On multiplie $z$ par $10^3$ (la période commence $3$ chiffres après la virgule) : $(1)\\quad 10^3z=15068{,}214321432143\\ldots$",
+                  "why": "On place le début de la période juste après la virgule."
+                },
+                {
+                  "md": "Puis on décale vers la gauche de la longueur d'une période, c'est-à-dire de $4$ chiffres, en multipliant par $10^4$ : $(2)\\quad 10^4\\,10^3z=150682143{,}21432143\\ldots$",
+                  "why": "Après la virgule, on retrouve exactement la même suite de chiffres qu'en (1)."
+                },
+                {
+                  "md": "Les parties après la virgule de (1) et (2) sont les mêmes ; en soustrayant (2) $-$ (1), elles s'annulent et il reste $$10^7z-10^3z=9999000\\,z=150682143-15068=150667075.$$"
+                },
+                {
+                  "md": "Donc $$z=\\frac{150667075}{9999000}\\in{\\mathbb{Q}}.$$"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "En utilisant la même méthode, écrire $0{,}121212\\ldots$ sous forme de fraction : $0{,}121212\\ldots=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "12/99",
+                  "4/33"
+                ],
+                "explanation": "Avec $u=0{,}1212\\ldots$ : $100u=12{,}1212\\ldots$, donc $100u-u=99u=12$ et $u=\\dfrac{12}{99}=\\dfrac4{33}$.",
+                "placeholder": "fraction p/q"
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces rationnels est un nombre **décimal** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac13$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac7{20}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac23$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\dfrac17$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\dfrac7{20}=\\dfrac{35}{100}=0{,}35$ est de la forme $\\dfrac a{10^n}$. Les trois autres ont une écriture décimale infinie périodique."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Tout nombre décimal est rationnel.",
+              "answer": true,
+              "explanation": "Vrai : $\\dfrac a{10^n}$ est de la forme $\\dfrac pq$ avec $p=a\\in{\\mathbb{Z}}$ et $q=10^n\\in{\\mathbb{N}}^*$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$0{,}777\\ldots=$ ___ (fraction)",
+              "answerType": "number",
+              "accepted": [
+                "7/9"
+              ],
+              "explanation": "Avec $u=0{,}777\\ldots$ : $10u-u=7$, donc $9u=7$ et $u=\\dfrac79$.",
+              "placeholder": "p/q"
+            },
+            {
+              "kind": "steps",
+              "prompt": "On veut écrire $x=1{,}2333\\ldots$ (le chiffre $3$ se répète) sous forme de fraction.",
+              "steps": [
+                {
+                  "kind": "mcq",
+                  "prompt": "Par quelle puissance de $10$ faut-il d'abord multiplier $x$ pour que la période commence juste après la virgule ?",
+                  "options": [
+                    {
+                      "id": "a",
+                      "md": "$10$"
+                    },
+                    {
+                      "id": "b",
+                      "md": "$100$"
+                    },
+                    {
+                      "id": "c",
+                      "md": "$1000$"
+                    }
+                  ],
+                  "answer": "a",
+                  "explanation": "$10x=12{,}333\\ldots$ : la période « $3$ » commence juste après la virgule."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "La période a un chiffre. On a $100x=123{,}333\\ldots$, donc $100x-10x=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "111"
+                  ],
+                  "explanation": "$123{,}333\\ldots-12{,}333\\ldots=111$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "Donc $x=$ ___ (fraction irréductible)",
+                  "answerType": "number",
+                  "accepted": [
+                    "37/30",
+                    "111/90"
+                  ],
+                  "explanation": "$90x=111$, donc $x=\\dfrac{111}{90}=\\dfrac{37}{30}$."
+                }
+              ],
+              "explanation": "$x=\\dfrac{37}{30}$ : on vérifie que $37\\div30=1{,}2333\\ldots$"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'écriture décimale de $\\dfrac17=0{,}142857\\,142857\\ldots$ est périodique.",
+              "answer": true,
+              "explanation": "Vrai : la période est $142857$ (6 chiffres), comme l'annonce la proposition puisque $\\dfrac17\\in{\\mathbb{Q}}$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque écriture décimale à la fraction égale.",
+              "pairs": [
+                {
+                  "left": "$0{,}25$",
+                  "right": "$\\dfrac14$"
+                },
+                {
+                  "left": "$0{,}333\\ldots$",
+                  "right": "$\\dfrac13$"
+                },
+                {
+                  "left": "$0{,}5$",
+                  "right": "$\\dfrac12$"
+                },
+                {
+                  "left": "$0{,}1666\\ldots$",
+                  "right": "$\\dfrac16$"
+                }
+              ],
+              "explanation": "$\\dfrac14=0{,}25$, $\\dfrac13=0{,}333\\ldots$, $\\dfrac12=0{,}5$ et $\\dfrac16=0{,}1666\\ldots$ (période $6$ qui commence au 2e chiffre)."
+            }
+          ]
+        },
+        {
+          "slug": "nombres-irrationnels",
+          "title": "Nombres irrationnels",
+          "number": "L02",
+          "estimatedMinutes": 7,
+          "summary": "Les nombres sans écriture décimale périodique : définition d'un irrationnel et preuve classique de l'irrationalité de $\\sqrt2$.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Nous avons vu que les nombres ayant une écriture décimale périodique, ou un nombre fini de chiffres après la virgule (écriture périodique de période $0$), sont des rationnels. Qu'en est-il des nombres tels que\n$$\\sqrt2=1{,}41421356237\\ldots,\\qquad \\pi=3{,}141592653589\\ldots,\\qquad e=2{,}718281828459\\ldots,$$\nqui n'ont pas d'écriture décimale périodique ?",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Un nombre réel qui n'est pas rationnel est dit **irrationnel**.",
+              "origin": "source",
+              "title": "Nombre irrationnel"
+            },
+            {
+              "type": "text",
+              "md": "Les nombres $\\sqrt2$, $\\pi$ et $e$ ci-dessus sont irrationnels, comme on peut le vérifier pour $\\sqrt2$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "D'après la proposition de la leçon précédente, un réel est irrationnel exactement lorsque son écriture décimale est **infinie et non périodique** : aucun motif de chiffres ne finit par se répéter indéfiniment.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un nombre dont l'écriture décimale a une infinité de chiffres après la virgule est irrationnel.",
+                "answer": false,
+                "explanation": "Faux : $\\dfrac13=0{,}333\\ldots$ a une infinité de chiffres mais est rationnel. Ce qui compte est la **périodicité**, pas le nombre de chiffres."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Montrer que le nombre réel $\\sqrt2$ n'est pas un rationnel.",
+              "origin": "added",
+              "title": "Irrationalité de $\\sqrt 2$",
+              "solution": [
+                {
+                  "md": "Raisonnons par l'absurde : supposons $\\sqrt2=\\dfrac pq$ avec $p\\in{\\mathbb{Z}}$, $q\\in{\\mathbb{N}}^*$ et la fraction **irréductible** ($p$ et $q$ sans diviseur commun autre que $\\pm1$).",
+                  "why": "Toute fraction peut être simplifiée jusqu'à être irréductible."
+                },
+                {
+                  "md": "En élevant au carré : $2=\\dfrac{p^2}{q^2}$, donc $p^2=2q^2$ : $p^2$ est pair."
+                },
+                {
+                  "md": "Alors $p$ est pair : sinon $p=2k+1$ et $p^2=4k^2+4k+1$ serait impair. Écrivons $p=2k$."
+                },
+                {
+                  "md": "Alors $4k^2=2q^2$, soit $q^2=2k^2$ : $q^2$ est pair, donc $q$ est pair (même argument)."
+                },
+                {
+                  "md": "$p$ et $q$ sont tous deux pairs : $2$ divise $p$ et $q$, ce qui contredit l'irréductibilité. Donc $\\sqrt2\\notin{\\mathbb{Q}}$."
+                }
+              ]
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve de l'irrationalité de $\\sqrt2$.",
+              "items": [
+                "Supposer $\\sqrt2=\\dfrac pq$ avec $\\dfrac pq$ irréductible.",
+                "En déduire $p^2=2q^2$, donc $p$ est pair : $p=2k$.",
+                "En déduire $q^2=2k^2$, donc $q$ est pair.",
+                "Conclure : $p$ et $q$ pairs contredit l'irréductibilité, donc $\\sqrt2\\notin{\\mathbb{Q}}$."
+              ],
+              "explanation": "C'est un raisonnement par l'absurde : on part de l'hypothèse « $\\sqrt2$ rationnel » et on aboutit à une contradiction."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces nombres est irrationnel ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$0{,}121212\\ldots$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\sqrt4$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\sqrt2$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\dfrac{22}7$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$0{,}1212\\ldots=\\dfrac4{33}$, $\\sqrt4=2$ et $\\dfrac{22}7$ sont rationnels ; $\\sqrt2$ est irrationnel (exercice de la leçon)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $p^2$ est pair (avec $p\\in{\\mathbb{Z}}$), alors $p$ est pair.",
+              "answer": true,
+              "explanation": "Vrai : si $p$ était impair, $p=2k+1$, on aurait $p^2=2(2k^2+2k)+1$ impair. C'est l'argument clé de la preuve."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\pi=\\dfrac{22}7$.",
+              "answer": false,
+              "explanation": "Faux : $\\dfrac{22}7=3{,}142857\\ldots$ est rationnel (écriture périodique), alors que $\\pi=3{,}14159\\ldots$ est irrationnel. $\\dfrac{22}7$ n'est qu'une valeur approchée de $\\pi$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans la preuve, si $p=2k$ et $p^2=2q^2$, alors $q^2=$ ___ $k^2$.",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "$4k^2=2q^2$, donc $q^2=2k^2$."
+            }
+          ]
+        },
+        {
+          "slug": "corps-des-reels",
+          "title": "Le corps des nombres réels",
+          "number": "L03",
+          "estimatedMinutes": 9,
+          "summary": "Définition axiomatique de $\\mathbb{R}$ : un corps commutatif muni d'une relation d'ordre total ; détail des axiomes de corps et des propriétés d'une relation d'ordre.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "On admet l'existence de l'ensemble $\\mathbb{R}$, dit **ensemble des nombres réels**, muni de deux lois internes $+$ et $\\cdot$ et d'une relation $\\le$, tels que :\n1. $(\\mathbb{R},+,\\cdot)$ est un corps commutatif ;\n2. $\\le$ est une relation d'ordre total dans $\\mathbb{R}$.",
+              "origin": "source",
+              "title": "Les nombres réels"
+            },
+            {
+              "type": "heading",
+              "text": "Premier point : (ℝ, +, ·) est un corps commutatif",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce point résume les règles usuelles de calcul dans $\\mathbb{R}$. Il signifie :\n- (a) $+$ est associative : $\\forall(x,y,z)\\in{\\mathbb{R}}^3,\\ (x+y)+z=x+(y+z)$ ;\n- (b) $+$ est commutative : $\\forall(x,y)\\in{\\mathbb{R}}^2,\\ x+y=y+x$ ;\n- (c) $\\mathbb{R}$ admet un élément neutre pour $+$, noté $0$ : $\\forall x\\in{\\mathbb{R}},\\ x+0=0+x=x$ ;\n- (d) tout élément $x$ de $\\mathbb{R}$ admet un symétrique, noté $-x$ : $x+(-x)=(-x)+x=0$ ;\n- (e) $\\cdot$ est associative : $\\forall(x,y,z)\\in{\\mathbb{R}}^3,\\ (xy)z=x(yz)$ ;\n- (f) $\\cdot$ est commutative : $\\forall(x,y)\\in{\\mathbb{R}}^2,\\ xy=yx$ ;\n- (g) $\\mathbb{R}$ admet un élément neutre pour $\\cdot$, noté $1$ : $\\forall x\\in{\\mathbb{R}},\\ x\\cdot1=1\\cdot x=x$ ;\n- (h) tout élément $x$ de $\\mathbb{R}^*$ admet un inverse, noté $x^{-1}$ : $x\\cdot x^{-1}=x^{-1}\\cdot x=1$ ;\n- (i) $\\cdot$ est distributive par rapport à l'addition : $\\forall(x,y,z)\\in{\\mathbb{R}}^3$, $x(y+z)=xy+xz$ et $(y+z)x=yx+zx$.\n\nOn reviendra sur la notion de corps en Algèbre.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel axiome garantit que l'équation $3x=1$ a une solution dans $\\mathbb{R}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "(h) : tout élément de $\\mathbb{R}^*$ admet un inverse"
+                  },
+                  {
+                    "id": "b",
+                    "md": "(d) : tout élément admet un symétrique pour $+$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "(f) : la multiplication est commutative"
+                  },
+                  {
+                    "id": "d",
+                    "md": "(c) : $0$ est neutre pour $+$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$3\\ne0$ admet un inverse $3^{-1}$, et $x=3^{-1}\\cdot1=\\dfrac13$ convient. L'axiome (d) sert pour les équations du type $3+x=1$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Second point : ≤ est une relation d'ordre total",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une relation $\\mathcal R$ sur un ensemble $E$ est une **relation d'ordre** si elle vérifie les trois points suivants :\n- (a) elle est *réflexive* : tout élément est en relation avec lui-même ($x\\mathcal Rx$ pour tout $x$) ;\n- (b) elle est *antisymétrique* : si $x\\mathcal Ry$ et $y\\mathcal Rx$, alors $x=y$ ;\n- (c) elle est *transitive* : si $x\\mathcal Ry$ et $y\\mathcal Rz$, alors $x\\mathcal Rz$.\n\nElle est **totale** si, pour tous $x,y\\in E$, on a $x\\mathcal Ry$ ou $y\\mathcal Rx$ : on peut toujours comparer deux éléments.",
+              "origin": "source",
+              "title": "Relation d'ordre"
+            },
+            {
+              "type": "text",
+              "md": "L'ensemble $\\mathbb{R}$ est muni de la relation d'ordre « inférieur ou égal », qui est totale. En particulier :\n1. elle est réflexive : pour tout $x$, $x\\le x$ ;\n2. elle est antisymétrique : si $x\\le y$ et $y\\le x$, alors $x=y$ ;\n3. elle est transitive : si $x\\le y$ et $y\\le z$, alors $x\\le z$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Toutes les relations d'ordre ne sont pas totales. Par exemple, l'inclusion $\\subset$ entre parties de $\\{1,2\\}$ est une relation d'ordre, mais $\\{1\\}$ et $\\{2\\}$ ne sont pas comparables : ni $\\{1\\}\\subset\\{2\\}$, ni $\\{2\\}\\subset\\{1\\}$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "La relation $<$ (strictement inférieur) est une relation d'ordre sur $\\mathbb{R}$.",
+                "answer": false,
+                "explanation": "Faux : elle n'est pas réflexive, puisque $x<x$ est faux pour tout $x$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque propriété à sa formule.",
+              "pairs": [
+                {
+                  "left": "Associativité de $+$",
+                  "right": "$(x+y)+z=x+(y+z)$"
+                },
+                {
+                  "left": "Commutativité de $\\cdot$",
+                  "right": "$xy=yx$"
+                },
+                {
+                  "left": "Distributivité",
+                  "right": "$x(y+z)=xy+xz$"
+                },
+                {
+                  "left": "Neutre pour $\\cdot$",
+                  "right": "$x\\cdot1=1\\cdot x=x$"
+                }
+              ],
+              "explanation": "Ce sont les axiomes (a), (f), (i) et (g) de la structure de corps commutatif."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi l'axiome (h) ne concerne-t-il que les éléments de $\\mathbb{R}^*$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que $0$ n'a pas d'inverse : $0\\cdot y=0\\ne1$ pour tout $y$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que les négatifs n'ont pas d'inverse"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $1$ est son propre inverse"
+                },
+                {
+                  "id": "d",
+                  "md": "Par simple convention, $0$ pourrait avoir un inverse"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Pour tout réel $y$, $0\\cdot y=0$, qui n'est jamais égal à $1$ : $0$ ne peut pas avoir d'inverse. Les négatifs en ont un : $(-2)^{-1}=-\\dfrac12$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le neutre de la multiplication dans $\\mathbb{R}$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "Axiome (g) : $x\\cdot1=1\\cdot x=x$ pour tout $x$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La relation $\\mathcal R$ définie sur $\\mathbb{R}$ par $x\\mathcal Ry\\iff|x|\\le|y|$ est antisymétrique.",
+              "answer": false,
+              "explanation": "Faux : $1\\mathcal R(-1)$ et $(-1)\\mathcal R1$ (car $|1|=|-1|$), mais $1\\ne-1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que signifie « la relation $\\le$ est totale sur $\\mathbb{R}$ » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Pour tous réels $x,y$ : $x\\le y$ ou $y\\le x$"
+                },
+                {
+                  "id": "b",
+                  "md": "Pour tout réel $x$ : $x\\le x$"
+                },
+                {
+                  "id": "c",
+                  "md": "Si $x\\le y$ et $y\\le x$ alors $x=y$"
+                },
+                {
+                  "id": "d",
+                  "md": "Si $x\\le y$ et $y\\le z$ alors $x\\le z$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Totale = deux éléments sont toujours comparables. Les trois autres énoncés sont la réflexivité, l'antisymétrie et la transitivité."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dans un corps commutatif, tout élément (y compris $0$) admet un symétrique pour l'addition.",
+              "answer": true,
+              "explanation": "Vrai : c'est l'axiome (d), sans exception ; le symétrique de $0$ est $0$ lui-même."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ordre-et-valeur-absolue",
+      "title": "Ordre et valeur absolue",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "ordre-usuel",
+          "title": "Relation d'ordre usuelle dans ℝ",
+          "number": "L04",
+          "estimatedMinutes": 9,
+          "summary": "Compatibilité de $\\le$ avec l'addition et la multiplication : additionner, multiplier, passer à l'inverse dans des inégalités, et les précautions de signe.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Pour tous réels $x,y,z,u,v$ :\n1. $x\\le y\\iff x+z\\le y+z$.\n2. $\\begin{cases}x\\le y\\\\u\\le v\\end{cases}\\Longrightarrow x+u\\le y+v.$ Par récurrence immédiate, pour tout $n\\in{\\mathbb{N}}^*$ et $x_1,\\dots,x_n,y_1,\\dots,y_n\\in{\\mathbb{R}}$ :\n$$(\\forall i\\in\\{1,\\dots,n\\},\\ x_i\\le y_i)\\ \\Longrightarrow\\ \\sum_{i=1}^nx_i\\le\\sum_{i=1}^ny_i.$$\n3. $\\forall x\\in{\\mathbb{R}}^*,\\quad\\left(0<x\\iff0<\\dfrac1x\\right).$\n4. $\\forall z\\in{\\mathbb{R}}_+^*,\\quad(x\\le y\\iff xz\\le yz).$",
+              "origin": "source",
+              "title": "Proposition (compatibilité de ≤ avec les opérations)"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "On sait que $x\\le y$. Que peut-on dire de $-2x$ et $-2y$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$-2x\\ge-2y$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$-2x\\le-2y$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "On ne peut rien dire"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$-2x=-2y$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Le point 4 exige $z>0$. Avec $z=-2<0$, l'inégalité change de sens : $x\\le y\\Rightarrow -2x\\ge-2y$ (par exemple $1\\le3$ donne $-2\\ge-6$)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "5. $\\begin{cases}0\\le x\\le y\\\\0\\le u\\le v\\end{cases}\\Longrightarrow xu\\le yv.$ En effet, $x\\le y$ et $0\\le u$ donnent $xu\\le yu$, et $u\\le v$ et $0\\le y$ donnent $yu\\le yv$. Par récurrence immédiate, pour tout $n\\in{\\mathbb{N}}^*$ :\n$$(\\forall i\\in\\{1,\\dots,n\\},\\ 0\\le x_i\\le y_i)\\ \\Longrightarrow\\ \\prod_{i=1}^nx_i\\le\\prod_{i=1}^ny_i.$$\nEn particulier : $\\forall n\\in{\\mathbb{N}}^*,\\ \\forall(x,y)\\in{\\mathbb{R}}^2,\\ \\ (0\\le x\\le y\\Longrightarrow x^n\\le y^n).$\n6. Pour $x,y>0$ : $x<y\\iff\\dfrac1y<\\dfrac1x.$\n7. $\\begin{cases}x\\le y\\\\u<v\\end{cases}\\Longrightarrow x+u<y+v.$ En effet : $(y+v)-(x+u)=(y-x)+(v-u)>(y-x)+\\dfrac{v-u}2\\ge0.$ On en déduit, pour tout $n\\in{\\mathbb{N}}^*$ :\n$$\\left.\\begin{array}{l}\\forall i\\in\\{1,\\dots,n\\},\\ x_i\\le y_i\\\\ \\exists i_0\\in\\{1,\\dots,n\\},\\ x_{i_0}<y_{i_0}\\end{array}\\right\\}\\Longrightarrow\\ \\sum_{i=1}^nx_i<\\sum_{i=1}^ny_i.$$",
+              "origin": "source",
+              "title": "Proposition (suite)"
+            },
+            {
+              "type": "remark",
+              "md": "Les hypothèses de signe sont indispensables :\n- au point 5 : $-3\\le-2$ et $-3\\le-2$, mais $(-3)(-3)=9>4=(-2)(-2)$ ;\n- au point 6 : $-1<2$, mais $\\dfrac12<\\dfrac1{-1}=-1$ est faux ;\n- on ne peut pas **soustraire** des inégalités : $0\\le1$ et $0\\le5$, mais $0-0\\le1-5$ est faux.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si $0<x<y$, alors $\\dfrac1x>\\dfrac1y$.",
+                "answer": true,
+                "explanation": "Vrai, c'est le point 6 : sur les réels strictement positifs, le passage à l'inverse renverse l'ordre (ex. $2<4$ et $\\dfrac12>\\dfrac14$)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $x\\le y$ et $u\\le v$, alors $x-u\\le y-v$.",
+              "answer": false,
+              "explanation": "Faux : $0\\le1$ et $0\\le5$, mais $0-0=0\\le1-5=-4$ est faux. On peut additionner des inégalités de même sens, pas les soustraire."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $0\\le x\\le y$, alors $x^3\\le y^3$.",
+              "answer": true,
+              "explanation": "Vrai, cas particulier du point 5 avec $n=3$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous réels, si $x\\le y$ et $u\\le v$, alors $xu\\le yv$.",
+              "answer": false,
+              "explanation": "Faux sans hypothèse de signe : $-3\\le-2$ et $-3\\le-2$, mais $9\\le4$ est faux. Le point 5 exige $0\\le x$ et $0\\le u$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Sachant que $2\\le x\\le5$, quel encadrement de $\\dfrac1x$ est correct ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac15\\le\\dfrac1x\\le\\dfrac12$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac12\\le\\dfrac1x\\le\\dfrac15$"
+                },
+                {
+                  "id": "c",
+                  "md": "$-\\dfrac15\\le\\dfrac1x\\le-\\dfrac12$"
+                },
+                {
+                  "id": "d",
+                  "md": "$2\\le\\dfrac1x\\le5$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$x>0$ : le passage à l'inverse (point 6) renverse les inégalités, donc $\\dfrac15\\le\\dfrac1x\\le\\dfrac12$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque hypothèse à la conclusion qu'on peut en tirer.",
+              "pairs": [
+                {
+                  "left": "$x\\le y$ et $u<v$",
+                  "right": "$x+u<y+v$"
+                },
+                {
+                  "left": "$0\\le x\\le y$ et $0\\le u\\le v$",
+                  "right": "$xu\\le yv$"
+                },
+                {
+                  "left": "$x\\le y$ et $z>0$",
+                  "right": "$xz\\le yz$"
+                },
+                {
+                  "left": "$0<x<y$",
+                  "right": "$\\dfrac1y<\\dfrac1x$"
+                }
+              ],
+              "explanation": "Ce sont respectivement les points 7, 5, 4 et 6 de la proposition."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Sachant que $1\\le x\\le3$ et $2\\le y\\le4$, la plus grande valeur possible de $x+y$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "7"
+              ],
+              "explanation": "Par le point 2, $x+y\\le3+4=7$, valeur atteinte pour $x=3$, $y=4$."
+            }
+          ]
+        },
+        {
+          "slug": "valeur-absolue",
+          "title": "Valeur absolue d'un réel",
+          "number": "L05",
+          "estimatedMinutes": 7,
+          "summary": "Définition de $|x|$, ses propriétés de calcul, et son interprétation comme distance sur la droite réelle.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "On appelle **valeur absolue** de $x\\in{\\mathbb{R}}$ le réel, noté $|x|$, défini par\n$$|x|=\\begin{cases}x&\\text{si }x\\ge0,\\\\-x&\\text{si }x\\le0.\\end{cases}$$",
+              "origin": "source",
+              "title": "Valeur absolue"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Pour tout $(x,y)\\in{\\mathbb{R}}^2$ :\n1. $|x|=\\max(x,-x)$ ;\n2. $|x|=|-x|$ ;\n3. $|x|\\ge0$ ;\n4. $\\sqrt{x^2}=|x|$ ;\n5. $|x|=0\\iff x=0$ ;\n6. $|xy|=|x|\\,|y|$ et, si $y\\ne0$, $\\left|\\dfrac xy\\right|=\\dfrac{|x|}{|y|}$.",
+              "origin": "source",
+              "title": "Propriétés de la valeur absolue"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour tout réel $x$, $\\sqrt{x^2}=x$.",
+                "answer": false,
+                "explanation": "Faux : $\\sqrt{(-3)^2}=\\sqrt9=3\\ne-3$. La bonne formule est $\\sqrt{x^2}=|x|$ (propriété 4)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Les deux inégalités triangulaires font l'objet de la leçon suivante.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Interprétation géométrique.** Sur la droite numérique, $|x-y|$ représente la **distance** entre les réels $x$ et $y$ ; en particulier $|x|$ est la distance entre $x$ et $0$. De plus, pour $a\\in{\\mathbb{R}}$ et $r>0$ :\n1. $|x-a|<r\\iff a-r<x<a+r$ ;\n2. $|x-a|<r\\iff x\\in\\,]a-r,a+r[$.\n\nSur la droite, les points $x$ vérifiant $|x-a|<r$ forment l'intervalle ouvert de centre $a$ et de rayon $r$, compris entre $a-r$ et $a+r$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch01-intervalle-centre.svg",
+              "alt": "Droite réelle : l'intervalle ouvert ]a−r, a+r[ centré en a, de demi-largeur r ; un point x de cet intervalle vérifie |x−a|<r.",
+              "caption": "Figure — l'intervalle ]a−r, a+r[ : les réels à distance < r de a.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$|x-2|<3\\iff -1<x<$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "5"
+                ],
+                "explanation": "$|x-2|<3\\iff 2-3<x<2+3$, c'est-à-dire $-1<x<5$ : les réels à distance $<3$ de $2$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "$|x+1|<2\\iff -3<x<$ ___",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$|x+1|=|x-(-1)|<2\\iff -1-2<x<-1+2$, soit $x\\in\\,]-3,1[$ (centre $-1$, rayon $2$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Que représente $|x-y|$ sur la droite numérique ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La distance entre $x$ et $y$"
+                },
+                {
+                  "id": "b",
+                  "md": "Le milieu de $x$ et $y$"
+                },
+                {
+                  "id": "c",
+                  "md": "La somme des distances de $x$ et $y$ à $0$"
+                },
+                {
+                  "id": "d",
+                  "md": "Le plus grand des deux réels"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$|x-y|$ est la distance entre $x$ et $y$ ; $|x|=|x-0|$ est la distance de $x$ à $0$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$|x|=0\\iff x=0$.",
+              "answer": true,
+              "explanation": "Vrai (propriété 5) : si $x\\ne0$, alors $|x|=x>0$ ou $|x|=-x>0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\sqrt{(-3)^2}=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$\\sqrt{(-3)^2}=|-3|=3$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "L'ensemble des réels $x$ tels que $|x-1|<\\dfrac12$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\left]\\dfrac12,\\dfrac32\\right[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\left]-\\dfrac12,\\dfrac12\\right[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\left[\\dfrac12,\\dfrac32\\right]$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\left]0,1\\right[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Intervalle ouvert de centre $a=1$ et de rayon $r=\\dfrac12$ : $\\left]1-\\dfrac12,1+\\dfrac12\\right[$. Ouvert car l'inégalité est stricte."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous réels $x$ et $y$, $\\left|\\dfrac xy\\right|=\\dfrac{|x|}{|y|}$.",
+              "answer": false,
+              "explanation": "Faux tel quel : la formule n'a de sens que si $y\\ne0$ (propriété 6)."
+            }
+          ]
+        },
+        {
+          "slug": "inegalites-triangulaires",
+          "title": "Inégalités triangulaires",
+          "number": "L06",
+          "estimatedMinutes": 9,
+          "summary": "Les deux inégalités triangulaires $|x+y|\\le|x|+|y|$ et $\\big||x|-|y|\\big|\\le|x-y|$, avec deux preuves de la première et le cas d'égalité.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Pour tout $(x,y)\\in{\\mathbb{R}}^2$ :\n1. $|x+y|\\le|x|+|y|$ (inégalité triangulaire) ;\n2. $\\big||x|-|y|\\big|\\le|x-y|$ (seconde inégalité triangulaire).",
+              "origin": "source",
+              "title": "Théorème (inégalités triangulaires)"
+            },
+            {
+              "type": "intuition",
+              "md": "Le nom vient de la géométrie : dans un triangle, la longueur d'un côté est au plus la somme des longueurs des deux autres. Sur la droite, aller de $0$ à $x+y$ « en passant par $x$ » ne peut pas être plus court que d'y aller directement.",
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "**1.** On a $|x+y|^2=(x+y)^2=x^2+y^2+2xy=|x|^2+|y|^2+2xy.$",
+                  "why": "$|a|^2=a^2$ pour tout réel $a$."
+                },
+                {
+                  "md": "Or $2xy\\le2|xy|=2|x|\\,|y|$, donc $|x+y|^2\\le|x|^2+|y|^2+2|x|\\,|y|=(|x|+|y|)^2.$"
+                },
+                {
+                  "md": "Comme $|x+y|\\ge0$ et $|x|+|y|\\ge0$, on conclut $|x+y|\\le|x|+|y|$. On a égalité si et seulement si $x$ et $y$ sont de même signe.",
+                  "why": "Pour des réels positifs, $a^2\\le b^2\\iff a\\le b$."
+                },
+                {
+                  "md": "*Deuxième méthode.* On a $-|x|\\le x\\le|x|$ et $-|y|\\le y\\le|y|$, donc en additionnant $-(|x|+|y|)\\le x+y\\le|x|+|y|$, c'est-à-dire $|x+y|\\le|x|+|y|$.",
+                  "why": "$|a|\\le r\\iff -r\\le a\\le r$."
+                },
+                {
+                  "md": "**2.** Puisque $x=(x-y)+y$, la première inégalité donne $|x|=|(x-y)+y|\\le|x-y|+|y|$, donc $|x|-|y|\\le|x-y|$."
+                },
+                {
+                  "md": "En intervertissant les rôles de $x$ et $y$, on obtient aussi $|y|-|x|\\le|y-x|$. Comme $|y-x|=|x-y|$, on a $\\big||x|-|y|\\big|\\le|x-y|.$",
+                  "why": "$|a|=\\max(a,-a)$ : il suffit de majorer $a$ et $-a$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour quels réels a-t-on $|x+y|=|x|+|y|$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Lorsque $x$ et $y$ sont de même signe"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Pour tous réels $x,y$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Seulement si $x=y$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Seulement si $x=0$ et $y=0$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Le cas d'égalité est $2xy=2|xy|$, c'est-à-dire $xy\\ge0$ : $x$ et $y$ de même signe (l'un des deux pouvant être nul). Par exemple $|2+3|=5=|2|+|3|$ mais $|2+(-3)|=1<5$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous réels $x,y$ : $|x-y|\\le|x|+|y|$.",
+              "answer": true,
+              "explanation": "Vrai : on applique l'inégalité triangulaire à $x$ et $-y$ : $|x+(-y)|\\le|x|+|-y|=|x|+|y|$."
+            },
+            {
+              "kind": "steps",
+              "prompt": "On prend $x=3$ et $y=-5$.",
+              "steps": [
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$|x+y|=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$|3-5|=|-2|=2$."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$|x|+|y|=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "8"
+                  ],
+                  "explanation": "$3+5=8$ : l'inégalité est stricte car $x$ et $y$ sont de signes contraires."
+                },
+                {
+                  "kind": "fill_blank",
+                  "prompt": "$\\big||x|-|y|\\big|=$ ___",
+                  "answerType": "number",
+                  "accepted": [
+                    "2"
+                  ],
+                  "explanation": "$|3-5|=2\\le|x-y|=8$."
+                }
+              ],
+              "explanation": "On a bien $|x+y|=2\\le8=|x|+|y|$ et $\\big||x|-|y|\\big|=2\\le|x-y|=8$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces énoncés est **faux** pour certains réels $x,y$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$|x+y|\\ge|x|+|y|$"
+                },
+                {
+                  "id": "b",
+                  "md": "$|x+y|\\le|x|+|y|$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\big||x|-|y|\\big|\\le|x-y|$"
+                },
+                {
+                  "id": "d",
+                  "md": "$|x|-|y|\\le|x-y|$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$|2+(-3)|=1<5=|2|+|-3|$ : l'inégalité « $\\ge$ » est fausse en général. Les trois autres sont les inégalités triangulaires (et une conséquence)."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la preuve de la seconde inégalité triangulaire.",
+              "items": [
+                "Écrire $x=(x-y)+y$.",
+                "Appliquer l'inégalité triangulaire : $|x|\\le|x-y|+|y|$.",
+                "En déduire $|x|-|y|\\le|x-y|$.",
+                "Échanger $x$ et $y$ : $|y|-|x|\\le|x-y|$.",
+                "Conclure : $\\big||x|-|y|\\big|\\le|x-y|$."
+              ],
+              "explanation": "On majore à la fois $|x|-|y|$ et son opposé par $|x-y|$, ce qui majore leur maximum $\\big||x|-|y|\\big|$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$|x+y|=|x|+|y|\\iff xy\\ge0$.",
+              "answer": true,
+              "explanation": "Vrai : en élevant au carré, l'égalité équivaut à $2xy=2|x|\\,|y|$, c'est-à-dire $xy=|xy|$, soit $xy\\ge0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "archimede-partie-entiere-densite",
+      "title": "Archimède, partie entière et densité",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "propriete-archimede",
+          "title": "Propriété d'Archimède",
+          "number": "L07",
+          "estimatedMinutes": 6,
+          "summary": "$\\mathbb{R}$ est archimédien : tout réel est dépassé par un entier ; conséquence : pour $a>0$, les multiples $na$ dépassent tout réel $b$.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "$\\mathbb{R}$ est un corps **archimédien**, c'est-à-dire\n$$\\forall a\\in{\\mathbb{R}},\\ \\exists n\\in{\\mathbb{N}}^*\\quad\\text{tel que}\\quad n>a.$$",
+              "origin": "source",
+              "title": "Axiome d'Archimède"
+            },
+            {
+              "type": "intuition",
+              "md": "Autrement dit, $\\mathbb{N}$ n'est pas majoré dans $\\mathbb{R}$ : aussi grand que soit le réel $a$, on trouve un entier plus grand. Il n'existe pas de réel « infiniment grand ».",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Le plus petit entier $n\\in{\\mathbb{N}}^*$ tel que $n>7{,}3$ est ___",
+                "answerType": "number",
+                "accepted": [
+                  "8"
+                ],
+                "explanation": "$7<7{,}3<8$ : l'entier $8$ convient et $7$ ne convient pas."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "corollaire",
+              "md": "Pour tous $a,b\\in{\\mathbb{R}}$ tels que $a>0$, il existe un entier $n$ tel que $na>b$.",
+              "origin": "source",
+              "title": "Corollaire"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Comme $a>0$, on peut considérer le réel $\\dfrac ba$. Par l'axiome d'Archimède, il existe $n\\in{\\mathbb{N}}^*$ tel que $n>\\dfrac ba$."
+                },
+                {
+                  "md": "En multipliant par $a>0$ (ce qui conserve le sens de l'inégalité), on obtient $na>b$.",
+                  "why": "Point 4 de la compatibilité de $\\le$ avec les opérations."
+                }
+              ],
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "Cette propriété peut sembler évidente ; elle est pourtant essentielle, puisqu'elle permet de définir la partie entière d'un nombre réel (leçon suivante) et de démontrer la densité de $\\mathbb{Q}$ dans $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Image concrète : avec une règle de longueur $a>0$, aussi petite soit-elle, en la reportant suffisamment de fois ($n$ fois) on finit par dépasser n'importe quelle distance $b$.",
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec $a=0{,}3$ et $b=2$, le plus petit entier $n$ tel que $na>b$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "7"
+              ],
+              "explanation": "$6\\times0{,}3=1{,}8\\le2$ et $7\\times0{,}3=2{,}1>2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Dire que $\\mathbb{R}$ est archimédien revient à dire que $\\mathbb{N}$ n'est pas majoré dans $\\mathbb{R}$.",
+              "answer": true,
+              "explanation": "Vrai : « pour tout $a$, il existe $n>a$ » signifie exactement qu'aucun réel $a$ ne majore $\\mathbb{N}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tout $\\varepsilon>0$, il existe $n\\in{\\mathbb{N}}^*$ tel que $\\dfrac1n<\\varepsilon$.",
+              "answer": true,
+              "explanation": "Vrai : par le corollaire avec $a=\\varepsilon$ et $b=1$, il existe $n$ tel que $n\\varepsilon>1$, c'est-à-dire $\\dfrac1n<\\varepsilon$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi le corollaire suppose-t-il $a>0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Si $a\\le0$, $na\\le0$ pour tout $n\\in{\\mathbb{N}}$, donc on ne peut pas dépasser $b=1$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que l'axiome d'Archimède ne vaut que pour les réels positifs"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour que $na$ soit un entier"
+                },
+                {
+                  "id": "d",
+                  "md": "Ce n'est pas nécessaire"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Avec $a=0$, $na=0$ ne dépasse jamais $b=1$ ; avec $a<0$, $na\\le0$ non plus. La preuve divise par $a$, ce qui exige $a\\ne0$, et multiplie par $a$ en conservant le sens, ce qui exige $a>0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le plus petit entier $n\\in{\\mathbb{N}}^*$ tel que $\\dfrac1n<0{,}01$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "101"
+              ],
+              "explanation": "$\\dfrac1n<\\dfrac1{100}\\iff n>100$, donc $n=101$ ($n=100$ donne l'égalité)."
+            }
+          ]
+        },
+        {
+          "slug": "partie-entiere",
+          "title": "Partie entière",
+          "number": "L08",
+          "estimatedMinutes": 10,
+          "summary": "Existence et unicité de l'entier $E(x)$ tel que $E(x)\\le x<E(x)+1$, exemples (attention aux négatifs) et propriétés de la partie entière.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Pour tout $x\\in{\\mathbb{R}}$, il existe un unique $n\\in{\\mathbb{Z}}$ tel que\n$$n\\le x<n+1.$$\nCet entier $n$ est appelé la **partie entière** de $x$ et noté $E(x)$.",
+              "origin": "source",
+              "title": "Proposition (partie entière)"
+            },
+            {
+              "type": "example",
+              "md": "$E(3{,}6)=3$, $\\quad E(\\pi)=3$, $\\quad E(-5{,}5)=-6$.\n\n$E(x)=7\\iff7\\le x<8$.",
+              "origin": "source",
+              "title": "Exemple"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "$E(-2{,}3)=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "-3"
+                ],
+                "explanation": "$-3\\le-2{,}3<-2$, donc $E(-2{,}3)=-3$ (et non $-2$ : pour un négatif non entier, on ne se contente pas d'« effacer » les décimales)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "**Existence** (pour $x\\ge0$). Par la propriété d'Archimède, il existe $n\\in{\\mathbb{N}}$ tel que $n>x$, donc l'ensemble $K=\\{k\\in{\\mathbb{N}}\\mid k\\le x\\}$ est fini.",
+                  "why": "Tout élément de $K$ est $<n$ ; de plus $K$ est non vide car $0\\in K$."
+                },
+                {
+                  "md": "Notons $k_{\\max}=\\max K$. On a $k_{\\max}\\le x$ car $k_{\\max}\\in K$, et $k_{\\max}+1>x$ car $k_{\\max}+1\\notin K$."
+                },
+                {
+                  "md": "Ainsi $k_{\\max}\\le x<k_{\\max}+1$, et l'on prend $E(x)=k_{\\max}$."
+                },
+                {
+                  "md": "**Unicité.** Si $k$ et $\\ell$ sont deux entiers tels que $k\\le x<k+1$ et $\\ell\\le x<\\ell+1$, alors $k\\le x<\\ell+1$, donc $k<\\ell+1$ ; de même $\\ell<k+1$."
+                },
+                {
+                  "md": "Ainsi $\\ell-1<k<\\ell+1$, et comme $k$ et $\\ell$ sont entiers, $k=\\ell$.",
+                  "why": "Le seul entier strictement compris entre $\\ell-1$ et $\\ell+1$ est $\\ell$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Le cas $x<0$ n'est pas développé dans le cours. Si $x<0$, alors $-x>0$ ; par Archimède il existe $m\\in{\\mathbb{N}}$ tel que $m>-x$, c'est-à-dire $x+m>0$."
+                },
+                {
+                  "md": "Par le cas positif, il existe un entier $k$ tel que $k\\le x+m<k+1$. Alors $k-m\\le x<(k-m)+1$, et $n=k-m\\in{\\mathbb{Z}}$ convient."
+                }
+              ],
+              "origin": "added",
+              "title": "Complément : existence pour x < 0"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Ces propriétés s'établissent sans grand effort ; elles sont données sans démonstration.\n1. $E(x)$ est le plus grand entier inférieur ou égal à $x$.\n2. $\\forall x\\in{\\mathbb{R}},\\quad E(x)\\le x<E(x)+1$ et $x-1<E(x)\\le x$.\n3. $E(x+m)=E(x)+m$ pour tous $x\\in{\\mathbb{R}}$ et $m\\in{\\mathbb{Z}}$.\n4. $E(-x)=-E(x)-1$ pour tout $x\\in{\\mathbb{R}}\\setminus{\\mathbb{Z}}$.",
+              "origin": "source",
+              "title": "Propriétés de la partie entière"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour tout réel $x$, $E(-x)=-E(x)$.",
+                "answer": false,
+                "explanation": "Faux : $E(-5{,}5)=-6$ alors que $-E(5{,}5)=-5$. Pour $x\\notin{\\mathbb{Z}}$, on a $E(-x)=-E(x)-1$ (propriété 4) ; l'égalité $E(-x)=-E(x)$ n'est vraie que pour $x\\in{\\mathbb{Z}}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque réel à sa partie entière.",
+              "pairs": [
+                {
+                  "left": "$3{,}6$",
+                  "right": "$3$"
+                },
+                {
+                  "left": "$-5{,}5$",
+                  "right": "$-6$"
+                },
+                {
+                  "left": "$7$",
+                  "right": "$7$"
+                },
+                {
+                  "left": "$-0{,}2$",
+                  "right": "$-1$"
+                }
+              ],
+              "explanation": "$E(x)$ est le plus grand entier $\\le x$ : $3\\le3{,}6$, $-6\\le-5{,}5$, $7\\le7$, $-1\\le-0{,}2$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$E(x)=7$ équivaut à :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$7\\le x<8$"
+                },
+                {
+                  "id": "b",
+                  "md": "$6<x\\le7$"
+                },
+                {
+                  "id": "c",
+                  "md": "$7<x\\le8$"
+                },
+                {
+                  "id": "d",
+                  "md": "$x=7$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Par définition, $E(x)=n\\iff n\\le x<n+1$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$E(\\pi+10)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "13"
+              ],
+              "explanation": "Propriété 3 avec $m=10$ : $E(\\pi+10)=E(\\pi)+10=3+10=13$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour tous réels $x,y$ : $E(x+y)=E(x)+E(y)$.",
+              "answer": false,
+              "explanation": "Faux : $E(0{,}5+0{,}5)=E(1)=1$ mais $E(0{,}5)+E(0{,}5)=0$. La propriété 3 ne vaut que si l'on ajoute un **entier**."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$E(-\\sqrt2)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "-2"
+              ],
+              "explanation": "$\\sqrt2\\notin{\\mathbb{Z}}$ et $E(\\sqrt2)=1$, donc $E(-\\sqrt2)=-1-1=-2$ (en effet $-2\\le-1{,}414\\ldots<-1$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle propriété de $\\mathbb{R}$ garantit, dans la preuve, que l'ensemble $K=\\{k\\in{\\mathbb{N}}\\mid k\\le x\\}$ est fini ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La propriété d'Archimède"
+                },
+                {
+                  "id": "b",
+                  "md": "La densité de $\\mathbb{Q}$ dans $\\mathbb{R}$"
+                },
+                {
+                  "id": "c",
+                  "md": "L'inégalité triangulaire"
+                },
+                {
+                  "id": "d",
+                  "md": "La commutativité de l'addition"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Archimède fournit un entier $n>x$ ; tous les éléments de $K$ sont alors dans $\\{0,\\dots,n-1\\}$."
+            }
+          ]
+        },
+        {
+          "slug": "densite-de-q",
+          "title": "Densité des rationnels dans les réels",
+          "number": "L09",
+          "estimatedMinutes": 8,
+          "summary": "Entre deux réels distincts il existe toujours un rationnel : énoncé et preuve constructive à l'aide d'Archimède et de la partie entière.",
+          "blocks": [
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Entre deux réels distincts, il existe un nombre rationnel. Autrement dit,\n$$\\forall(x,y)\\in{\\mathbb{R}}^2,\\qquad x<y\\ \\Longrightarrow\\ \\exists z\\in{\\mathbb{Q}},\\quad x<z<y.$$",
+              "origin": "source",
+              "title": "Théorème (densité de ℚ dans ℝ)"
+            },
+            {
+              "type": "intuition",
+              "md": "Aussi proches que soient $x$ et $y$, on trouve une fraction entre les deux. Idée de la preuve : on choisit un dénominateur $q$ assez grand pour que la « grille » des fractions $\\dfrac pq$ soit plus fine que l'écart $y-x$ ; une des fractions de la grille tombe alors forcément entre $x$ et $y$.",
+              "origin": "added"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Trouver un tel rationnel $z=\\dfrac pq$, avec $p\\in{\\mathbb{Z}}$ et $q\\in{\\mathbb{N}}^*$, revient à trouver deux entiers vérifiant $qx<p<qy$.",
+                  "why": "On multiplie $x<\\frac pq<y$ par $q>0$."
+                },
+                {
+                  "md": "Il suffit de choisir $q$ pour que l'intervalle ouvert $]qx,qy[$ ait une longueur strictement supérieure à $1$, c'est-à-dire $q(y-x)>1\\iff q>\\dfrac1{y-x}.$",
+                  "why": "Un intervalle ouvert de longueur $>1$ contient au moins un entier."
+                },
+                {
+                  "md": "D'après la propriété d'Archimède, il existe un entier $q$ satisfaisant cette inégalité. Comme $y-x>0$, on a $q\\in{\\mathbb{N}}^*$."
+                },
+                {
+                  "md": "Posons $p=E(qx)+1$, où $E$ désigne la partie entière. Alors $p-1\\le qx<p$."
+                },
+                {
+                  "md": "D'une part, $x<\\dfrac pq$. D'autre part, $\\dfrac{p-1}{q}\\le x\\Longrightarrow\\dfrac pq\\le x+\\dfrac1q<x+(y-x)=y.$",
+                  "why": "$\\frac1q<y-x$ par le choix de $q$."
+                },
+                {
+                  "md": "Ainsi $x<\\dfrac pq<y$ : le nombre $z=\\dfrac pq\\in{\\mathbb{Q}}$ convient."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "steps",
+                "prompt": "Appliquons la preuve à $x=0{,}31$ et $y=0{,}35$.",
+                "steps": [
+                  {
+                    "kind": "mcq",
+                    "prompt": "On cherche $q>\\dfrac1{y-x}=25$. Quel est le plus petit $q$ possible ?",
+                    "options": [
+                      {
+                        "id": "a",
+                        "md": "$26$"
+                      },
+                      {
+                        "id": "b",
+                        "md": "$25$"
+                      },
+                      {
+                        "id": "c",
+                        "md": "$24$"
+                      }
+                    ],
+                    "answer": "a",
+                    "explanation": "Il faut $q>25$ strictement : $q=26$."
+                  },
+                  {
+                    "kind": "fill_blank",
+                    "prompt": "Avec $q=26$ : $qx=8{,}06$, donc $p=E(qx)+1=$ ___",
+                    "answerType": "number",
+                    "accepted": [
+                      "9"
+                    ],
+                    "explanation": "$E(8{,}06)=8$, donc $p=9$."
+                  }
+                ],
+                "explanation": "$z=\\dfrac9{26}\\approx0{,}3462$ vérifie bien $0{,}31<z<0{,}35$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Entre deux réels distincts, il existe un nombre rationnel.",
+              "answer": true,
+              "explanation": "C'est l'énoncé du théorème de densité de $\\mathbb{Q}$ dans $\\mathbb{R}$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes de la preuve de la densité.",
+              "items": [
+                "Choisir $q\\in{\\mathbb{N}}^*$ tel que $q>\\dfrac1{y-x}$ (Archimède).",
+                "Poser $p=E(qx)+1$, de sorte que $p-1\\le qx<p$.",
+                "En déduire $x<\\dfrac pq$.",
+                "En déduire $\\dfrac pq\\le x+\\dfrac1q<y$.",
+                "Conclure : $z=\\dfrac pq\\in{\\mathbb{Q}}$ et $x<z<y$."
+              ],
+              "explanation": "Le choix de $q$ (Archimède) rend la grille assez fine, puis la partie entière choisit le bon numérateur."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans la preuve, à quoi sert la condition $q(y-x)>1$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "À garantir que l'intervalle $]qx,qy[$ contient un entier"
+                },
+                {
+                  "id": "b",
+                  "md": "À garantir que $q$ est pair"
+                },
+                {
+                  "id": "c",
+                  "md": "À garantir que $x$ est rationnel"
+                },
+                {
+                  "id": "d",
+                  "md": "À garantir que $p>0$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Un intervalle ouvert de longueur strictement supérieure à $1$ contient au moins un entier $p$, ce qui donne $qx<p<qy$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quels deux outils des leçons précédentes la preuve utilise-t-elle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "La propriété d'Archimède et la partie entière"
+                },
+                {
+                  "id": "b",
+                  "md": "L'inégalité triangulaire et la valeur absolue"
+                },
+                {
+                  "id": "c",
+                  "md": "L'irrationalité de $\\sqrt2$ et l'écriture décimale"
+                },
+                {
+                  "id": "d",
+                  "md": "La borne supérieure et les intervalles"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Archimède fournit $q$, et $p=E(qx)+1$ utilise la partie entière."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour $x=1$ et $y=1{,}2$, on doit prendre $q>$ ___ (valeur de $\\dfrac1{y-x}$)",
+              "answerType": "number",
+              "accepted": [
+                "5"
+              ],
+              "explanation": "$\\dfrac1{y-x}=\\dfrac1{0{,}2}=5$ ; par exemple $q=6$, puis $p=E(6)+1=7$ et $z=\\dfrac76\\approx1{,}167$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bornes-d-une-partie",
+      "title": "Bornes d'une partie de ℝ",
+      "number": "4",
+      "lessons": [
+        {
+          "slug": "majorants-minorants",
+          "title": "Majorants, minorants, maximum et minimum",
+          "number": "L10",
+          "estimatedMinutes": 10,
+          "summary": "Parties majorées, minorées, bornées ; maximum et minimum ; exemples, ensembles de majorants, et une partie bornée sans maximum.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Dans cette leçon, $A$ désigne une partie non vide de $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Soient $M,m\\in{\\mathbb{R}}$.\n1. $M$ est un **majorant** de $A$ si $\\forall x\\in A$, $x\\le M$. On dit alors que $A$ est **majorée**.\n2. $m$ est un **minorant** de $A$ si $\\forall x\\in A$, $m\\le x$. On dit alors que $A$ est **minorée**.\n3. $A$ est **bornée** si elle est à la fois minorée et majorée.",
+              "origin": "source",
+              "title": "Majorant, minorant et partie bornée"
+            },
+            {
+              "type": "text",
+              "md": "Un majorant ou un minorant de $A$ n'est pas nécessairement un élément de $A$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Si un majorant $M$ de $A$ appartient à $A$, il est unique. On l'appelle le **plus grand élément**, ou **maximum**, de $A$ :\n$$M=\\max(A)\\iff M\\in A\\ \\text{et}\\ M\\text{ est un majorant de }A.$$\nSi un minorant $m$ de $A$ appartient à $A$, il est unique. On l'appelle le **plus petit élément**, ou **minimum**, de $A$ :\n$$m=\\min(A)\\iff m\\in A\\ \\text{et}\\ m\\text{ est un minorant de }A.$$",
+              "origin": "source",
+              "title": "Maximum et minimum"
+            },
+            {
+              "type": "example",
+              "md": "1. Les intervalles $I=]-1,2[$ et $J=[-1,2]$ sont bornés : $-1$ est un minorant et $2$ un majorant de chacun. De plus, $\\min(J)=-1$ et $\\max(J)=2$, tandis que $I$ n'a ni minimum ni maximum.\n2. $\\mathbb{N}$ est minoré par $0$, mais n'est pas majoré.\n3. $\\mathbb{Z}$, $\\mathbb{Q}$ et $\\mathbb{R}$ ne sont ni minorés ni majorés.",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour $A=]-1,2]$, laquelle de ces affirmations est vraie ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\max(A)=2$ et $A$ n'a pas de minimum"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\min(A)=-1$ et $\\max(A)=2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$A$ n'a ni maximum ni minimum"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\min(A)=-1$ et $A$ n'a pas de maximum"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$2\\in A$ et majore $A$ : $\\max(A)=2$. Le minorant $-1$ n'appartient pas à $A$, et aucun élément de $A$ n'est un minorant (pour $x\\in A$, $\\frac{x-1}{2}$ est dans $A$ et plus petit)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "1. Pour $A=[1,2[$, $2$ est un majorant de $A$. L'ensemble des majorants est $[2,+\\infty[$ et celui des minorants est $]-\\infty,1]$. Le minimum de $A$ est $1$ ; $A$ n'a pas de maximum.\n2. $]0,+\\infty[$ n'admet aucun majorant.\n3. L'ensemble des majorants de $]0,1[$ est $[1,+\\infty[$.\n4. L'ensemble des minorants de $]0,1[$ est $]-\\infty,0]$.",
+              "origin": "source",
+              "title": "Ensembles de majorants et de minorants"
+            },
+            {
+              "type": "heading",
+              "text": "Une partie bornée sans maximum",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Reprenons l'ensemble\n$$A=\\left\\{1-\\frac1n\\;\\middle|\\;n\\in{\\mathbb{N}}^*\\right\\},\\qquad u_n=1-\\frac1n.$$\nSur la droite, les points $u_1=0$, $u_2=\\frac12$, $u_3=\\frac23$, $u_4=\\frac34$, $u_5=\\frac45,\\ldots$ s'accumulent de plus en plus près de $1$ sans jamais l'atteindre.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch01-suite-1-moins-1-sur-n.svg",
+              "alt": "Droite réelle : les points u_n = 1 − 1/n s'accumulent à gauche de 1 sans jamais l'atteindre.",
+              "caption": "Figure — les points uₙ = 1 − 1/n s'accumulent contre 1, qui n'appartient pas à A.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Étude des extremums de $A=\\left\\{1-\\frac1n\\mid n\\in{\\mathbb{N}}^*\\right\\}$.",
+              "origin": "source",
+              "steps": [
+                {
+                  "md": "$0$ est le plus petit élément de $A$. En effet, $u_1=0$, donc $0\\in A$, et, pour tout $n\\ge1$, $u_n=1-\\dfrac1n\\ge0=u_1.$"
+                },
+                {
+                  "md": "$A$ n'a pas de plus grand élément. Supposons qu'il existe $\\alpha=\\max(A)$. Alors $u_n\\le\\alpha$ pour tout $n\\ge1$. En faisant tendre $n$ vers $+\\infty$, on obtient $1\\le\\alpha$."
+                },
+                {
+                  "md": "Mais $\\alpha\\in A$, donc il existe $n_0\\in{\\mathbb{N}}^*$ tel que $\\alpha=u_{n_0}=1-\\dfrac1{n_0}<1$, ce qui contredit $\\alpha\\ge1$."
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "md": "Ainsi, une partie majorée de $\\mathbb{R}$ n'a pas nécessairement de maximum. De même, une partie minorée n'a pas nécessairement de minimum. Cela conduit aux notions de borne supérieure et de borne inférieure.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Toute partie de $\\mathbb{R}$ non vide et majorée admet un maximum.",
+                "answer": false,
+                "explanation": "Faux : $A=\\left\\{1-\\frac1n\\mid n\\in{\\mathbb{N}}^*\\right\\}$ est majorée par $1$ mais n'a pas de maximum ; de même $]0,1[$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "L'ensemble des majorants de $A=[1,2[$ est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$[2,+\\infty[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$]2,+\\infty[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$[1,2[$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\{2\\}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Un réel $M$ majore $[1,2[$ si et seulement si $M\\ge2$ ; $2$ lui-même est un majorant (même s'il n'est pas dans $A$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un majorant de $A$ est nécessairement un élément de $A$.",
+              "answer": false,
+              "explanation": "Faux : $2$ majore $]0,1[$ sans lui appartenir."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque ensemble à sa description.",
+              "pairs": [
+                {
+                  "left": "$\\mathbb{N}$",
+                  "right": "minoré, non majoré"
+                },
+                {
+                  "left": "$\\mathbb{Z}$",
+                  "right": "ni minoré ni majoré"
+                },
+                {
+                  "left": "$[-1,2]$",
+                  "right": "admet un minimum et un maximum"
+                },
+                {
+                  "left": "$]-1,2[$",
+                  "right": "borné, sans minimum ni maximum"
+                }
+              ],
+              "explanation": "Voir les exemples de la leçon : $\\mathbb{N}$ est minoré par $0$ ; $\\mathbb{Z}$ n'est ni minoré ni majoré ; $[-1,2]$ contient ses bornes, $]-1,2[$ non."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le minimum de $A=\\left\\{1-\\frac1n\\mid n\\in{\\mathbb{N}}^*\\right\\}$ est ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$u_1=0\\in A$ et $u_n\\ge0$ pour tout $n\\ge1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi $A=\\left\\{1-\\frac1n\\mid n\\in{\\mathbb{N}}^*\\right\\}$ n'a-t-il pas de maximum ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Tout majorant est $\\ge1$, alors que tout élément de $A$ est $<1$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que $A$ n'est pas majoré"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $A$ est infini"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que $0$ est le minimum"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Un maximum $\\alpha$ serait un majorant, donc $\\alpha\\ge1$, et un élément de $A$, donc $\\alpha<1$ : contradiction. Être infini n'empêche pas d'avoir un maximum ($\\{-n\\mid n\\in{\\mathbb{N}}\\}$ a pour maximum $0$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une partie $A$ de $\\mathbb{R}$ est bornée si et seulement si elle est à la fois majorée et minorée.",
+              "answer": true,
+              "explanation": "C'est la définition."
+            }
+          ]
+        },
+        {
+          "slug": "borne-sup-inf",
+          "title": "Borne supérieure et borne inférieure",
+          "number": "L11",
+          "estimatedMinutes": 12,
+          "summary": "Le plus petit des majorants et le plus grand des minorants : définition, axiome de la borne supérieure, caractérisations par $\\varepsilon$ et par les suites, exemple complet.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Soit $A$ une partie non vide de $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Notons $S$ l'ensemble des majorants de $A$ et $I$ l'ensemble de ses minorants.\n- Le plus petit élément de $S$, s'il existe, est la **borne supérieure** de $A$, notée $\\sup(A)$.\n- Le plus grand élément de $I$, s'il existe, est la **borne inférieure** de $A$, notée $\\inf(A)$.",
+              "origin": "source",
+              "title": "Borne supérieure et borne inférieure"
+            },
+            {
+              "type": "remark",
+              "md": "- La borne supérieure, lorsqu'elle existe, est unique : c'est le plus petit des majorants de $A$.\n- Si $A$ admet un maximum, alors $\\sup(A)=\\max(A)$.\n- La borne inférieure, lorsqu'elle existe, est unique : c'est le plus grand des minorants de $A$.\n- Si $A$ admet un minimum, alors $\\inf(A)=\\min(A)$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est la borne supérieure de $A=]0,1[$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$1$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Elle n'existe pas, car $A$ n'a pas de maximum"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$+\\infty$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "L'ensemble des majorants de $]0,1[$ est $[1,+\\infty[$, dont le plus petit élément est $1$. Donc $\\sup(A)=1$, bien que $1\\notin A$ : la borne supérieure existe même sans maximum."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "1. Toute partie non vide et majorée de $\\mathbb{R}$ admet une borne supérieure dans $\\mathbb{R}$.\n2. Toute partie non vide et minorée de $\\mathbb{R}$ admet une borne inférieure dans $\\mathbb{R}$.",
+              "origin": "source",
+              "title": "Axiome de la borne supérieure et de la borne inférieure"
+            },
+            {
+              "type": "remark",
+              "md": "Ce théorème n'est pas vrai dans $\\mathbb{Q}$. Par exemple,\n$$A=\\{x\\in{\\mathbb{Q}}\\mid x^2<2\\}$$\nest une partie non vide et majorée de $\\mathbb{R}$, mais n'a pas de borne supérieure *dans $\\mathbb{Q}$*.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Dans $\\mathbb{R}$, la borne supérieure de cet ensemble est $\\sqrt2$, qui n'est pas rationnel : $\\mathbb{Q}$ a des « trous », $\\mathbb{R}$ n'en a pas. C'est précisément ce que garantit l'axiome de la borne supérieure.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $\\alpha\\in{\\mathbb{R}}$. On a $\\alpha=\\sup(A)$ si et seulement si\n$$\\begin{cases}\\forall x\\in A, & x\\le\\alpha,\\\\\\forall\\varepsilon>0,\\ \\exists x\\in A, & \\alpha-\\varepsilon<x.\\end{cases}$$",
+              "origin": "source",
+              "title": "Caractérisation de la borne supérieure"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "md": "Soit $\\beta\\in{\\mathbb{R}}$. On a $\\beta=\\inf(A)$ si et seulement si\n$$\\begin{cases}\\forall x\\in A, & \\beta\\le x,\\\\\\forall\\varepsilon>0,\\ \\exists x\\in A, & x<\\beta+\\varepsilon.\\end{cases}$$",
+              "origin": "source",
+              "title": "Caractérisation de la borne inférieure"
+            },
+            {
+              "type": "intuition",
+              "md": "La première ligne dit que $\\alpha$ est un majorant ; la seconde que, dès qu'on descend un peu sous $\\alpha$ (à $\\alpha-\\varepsilon$), ce n'est plus un majorant : il y a un élément de $A$ au-dessus. Donc $\\alpha$ est bien le **plus petit** majorant.",
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch01-borne-sup.svg",
+              "alt": "Droite réelle : la partie A, l'ensemble de ses majorants [sup A, +∞[ et, pour ε>0, un élément x de A entre α−ε et α=sup A.",
+              "caption": "Figure — α = sup A est le plus petit majorant : au-dessus de α − ε on trouve toujours un élément de A.",
+              "origin": "added"
+            },
+            {
+              "type": "simulation",
+              "scene": "sup-inf",
+              "caption": "Déplace les points de la partie A et observe sa borne supérieure et sa borne inférieure sur la droite réelle.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $A$ est non vide et majorée, $\\sup(A)$ est l'unique réel $\\alpha$ tel que :\n- (i) $\\alpha$ est un majorant de $A$ ;\n- (ii) il existe une suite $(x_n)_{n\\in{\\mathbb{N}}}$ d'éléments de $A$ qui converge vers $\\alpha$.",
+              "origin": "source",
+              "title": "Caractérisation séquentielle"
+            },
+            {
+              "type": "remark",
+              "md": "De même, si $A$ est non vide et minorée, $\\inf(A)$ est l'unique réel $\\beta$ tel que :\n- (i) $\\beta$ est un minorant de $A$ ;\n- (ii) il existe une suite $(x_n)_{n\\in{\\mathbb{N}}}$ d'éléments de $A$ qui converge vers $\\beta$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "Exemple : A = {1 − 1/n | n ∈ ℕ*}",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On a $\\inf(A)=\\min(A)=0$, où $\\min(A)$ désigne le plus petit élément de $A$. Montrons de deux façons que $\\sup(A)=1$.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "On détermine l'ensemble des majorants.",
+              "origin": "source",
+              "title": "Première méthode",
+              "steps": [
+                {
+                  "md": "Si $M$ est un majorant de $A$, alors $M\\ge1-\\dfrac1n$ pour tout $n\\ge1$. En passant à la limite, $M\\ge1$."
+                },
+                {
+                  "md": "Réciproquement, tout réel $M\\ge1$ majore $A$. L'ensemble des majorants est donc $[1,+\\infty[$, dont le plus petit élément est $1$."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "md": "On utilise la caractérisation de la borne supérieure.",
+              "origin": "source",
+              "title": "Deuxième méthode",
+              "steps": [
+                {
+                  "md": "(i) Pour tout $x\\in A$, $x<1$ : $1$ est un majorant."
+                },
+                {
+                  "md": "(ii) Pour tout $y<1$, choisissons $n\\in{\\mathbb{N}}^*$ tel que $0<\\dfrac1n<1-y$. Alors $y<1-\\dfrac1n<1$. Le nombre $x=1-\\dfrac1n\\in A$ satisfait donc $y<x$."
+                },
+                {
+                  "md": "Ainsi aucun réel strictement inférieur à $1$ n'est un majorant de $A$, et $\\sup(A)=1$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Dans la deuxième méthode avec $y=0{,}9$, le plus petit $n\\in{\\mathbb{N}}^*$ tel que $\\dfrac1n<1-y$ est ___",
+                "answerType": "number",
+                "accepted": [
+                  "11"
+                ],
+                "explanation": "$1-y=0{,}1$ : il faut $\\dfrac1n<0{,}1$, soit $n>10$, donc $n=11$ ; alors $x=1-\\dfrac1{11}\\approx0{,}909>0{,}9$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Si $A$ admet un maximum, alors $\\sup(A)=\\max(A)$.",
+              "answer": true,
+              "explanation": "Vrai : le maximum est un majorant qui appartient à $A$, donc tout autre majorant lui est supérieur ; c'est le plus petit majorant."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute partie non vide et majorée de $\\mathbb{Q}$ admet une borne supérieure dans $\\mathbb{Q}$.",
+              "answer": false,
+              "explanation": "Faux : $\\{x\\in{\\mathbb{Q}}\\mid x^2<2\\}$ n'a pas de borne supérieure dans $\\mathbb{Q}$ (dans $\\mathbb{R}$, c'est $\\sqrt2\\notin{\\mathbb{Q}}$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$\\alpha=\\sup(A)$ si et seulement si $\\alpha$ majore $A$ et :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\forall\\varepsilon>0,\\ \\exists x\\in A,\\ \\alpha-\\varepsilon<x$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\exists\\varepsilon>0,\\ \\forall x\\in A,\\ \\alpha-\\varepsilon<x$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\alpha\\in A$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\forall x\\in A,\\ x<\\alpha$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la caractérisation de la borne supérieure. « $\\alpha\\in A$ » caractériserait le maximum, qui n'existe pas toujours."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque ensemble à sa borne supérieure.",
+              "pairs": [
+                {
+                  "left": "$]0,4[$",
+                  "right": "$4$"
+                },
+                {
+                  "left": "$[-3,2]$",
+                  "right": "$2$"
+                },
+                {
+                  "left": "$\\left\\{1-\\frac1n\\mid n\\in{\\mathbb{N}}^*\\right\\}$",
+                  "right": "$1$ (non atteinte)"
+                },
+                {
+                  "left": "$\\{-n\\mid n\\in{\\mathbb{N}}\\}$",
+                  "right": "$0$"
+                }
+              ],
+              "explanation": "$\\sup\\,]0,4[\\,=4$ (non atteint) ; $\\sup[-3,2]=\\max=2$ ; $\\sup\\{1-\\frac1n\\}=1$ (voir l'exemple) ; $\\sup\\{-n\\}=\\max=0$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "$\\inf\\left(\\left\\{\\dfrac1n\\ \\middle|\\ n\\in{\\mathbb{N}}^*\\right\\}\\right)=$ ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$0$ minore l'ensemble, et pour tout $\\varepsilon>0$ il existe $n$ tel que $\\dfrac1n<0+\\varepsilon$ (Archimède). La borne inférieure $0$ n'est pas atteinte."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre la deuxième méthode prouvant $\\sup\\left\\{1-\\frac1n\\right\\}=1$.",
+              "items": [
+                "Remarquer que $1-\\frac1n<1$ pour tout $n$ : $1$ est un majorant.",
+                "Prendre un réel $y<1$ quelconque.",
+                "Choisir $n\\in{\\mathbb{N}}^*$ tel que $\\frac1n<1-y$.",
+                "Constater que $x=1-\\frac1n\\in A$ vérifie $y<x$.",
+                "Conclure qu'aucun $y<1$ ne majore $A$, donc $\\sup(A)=1$."
+              ],
+              "explanation": "On vérifie les deux conditions de la caractérisation : $1$ majore $A$, et tout réel plus petit n'est plus un majorant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "topologie-de-r",
+      "title": "Topologie de ℝ",
+      "number": "5",
+      "lessons": [
+        {
+          "slug": "intervalles",
+          "title": "Intervalles de la droite réelle",
+          "number": "L12",
+          "estimatedMinutes": 7,
+          "summary": "Définition d'un intervalle par la propriété « sans trou », les neuf formes d'intervalles et leur vocabulaire (segments, semi-ouverts, ouverts, fermés).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Une partie $A$ de $\\mathbb{R}$ est un **intervalle** si, pour tous $x,y\\in A$, tout réel $z$ vérifiant $x\\le z\\le y$ appartient aussi à $A$.",
+              "origin": "source",
+              "title": "Intervalle de ℝ"
+            },
+            {
+              "type": "intuition",
+              "md": "Un intervalle est une partie « sans trou » : dès qu'elle contient deux points, elle contient tout ce qui est entre eux. Par exemple $[0,1]\\cup[2,3]$ n'est pas un intervalle : il contient $1$ et $2$ mais pas $1{,}5$.",
+              "origin": "added"
+            },
+            {
+              "type": "text",
+              "md": "Pour $a,b\\in{\\mathbb{R}}$ tels que $a\\le b$, on distingue neuf formes d'intervalles :\n1. $[a,b]=\\{x\\in{\\mathbb{R}}\\mid a\\le x\\le b\\}$ : intervalle fermé borné, ou **segment**.\n2. $[a,b[\\,=\\{x\\in{\\mathbb{R}}\\mid a\\le x<b\\}$.\n3. $]a,b]=\\{x\\in{\\mathbb{R}}\\mid a<x\\le b\\}$.\n4. $]a,b[\\,=\\{x\\in{\\mathbb{R}}\\mid a<x<b\\}$.\n5. $]-\\infty,a]=\\{x\\in{\\mathbb{R}}\\mid x\\le a\\}$.\n6. $]-\\infty,a[\\,=\\{x\\in{\\mathbb{R}}\\mid x<a\\}$.\n7. $[a,+\\infty[\\,=\\{x\\in{\\mathbb{R}}\\mid a\\le x\\}$.\n8. $]a,+\\infty[\\,=\\{x\\in{\\mathbb{R}}\\mid a<x\\}$.\n9. $]-\\infty,+\\infty[\\,=\\mathbb{R}$.\n\nLes réels $a$ et $b$ sont les **extrémités** des intervalles bornés ci-dessus.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Lequel de ces ensembles **n'est pas** un intervalle ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$[0,1]\\cup[2,3]$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$[0,1]\\cap[\\frac12,3]$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\{x\\in{\\mathbb{R}}\\mid x\\ge5\\}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\{x\\in{\\mathbb{R}}\\mid |x|<1\\}$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$1$ et $2$ sont dans $[0,1]\\cup[2,3]$, mais $1{,}5$, compris entre eux, n'y est pas. Les autres sont $[\\frac12,1]$, $[5,+\\infty[$ et $]-1,1[$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Vocabulaire et topologie.**\n- Les intervalles $[a,b[$ et $]a,b]$ sont dits **semi-ouverts** ou **semi-fermés**.\n- Les intervalles $]a,b[$, $]a,+\\infty[$, $]-\\infty,a[$ et $\\mathbb{R}$ sont des **ouverts** de $\\mathbb{R}$.\n- Les intervalles $[a,b]$, $]-\\infty,a]$ et $[a,+\\infty[$ sont des **fermés** de $\\mathbb{R}$. L'ensemble $\\mathbb{R}$ est lui aussi fermé.\n\nLes demi-droites $]-\\infty,a]$ et $[a,+\\infty[$ ont une écriture avec un crochet ouvert du côté de l'infini ; elles sont pourtant fermées dans $\\mathbb{R}$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$[2,+\\infty[$ est un fermé de $\\mathbb{R}$, bien que son crochet soit ouvert du côté de $+\\infty$.",
+                "answer": true,
+                "explanation": "Vrai : le crochet du côté de l'infini est toujours ouvert car $+\\infty$ n'est pas un réel ; cela ne dit rien du caractère fermé. $[2,+\\infty[$ est fermé dans $\\mathbb{R}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque intervalle à sa description.",
+              "pairs": [
+                {
+                  "left": "$[a,b]$",
+                  "right": "segment (fermé borné)"
+                },
+                {
+                  "left": "$]a,b[$",
+                  "right": "intervalle ouvert borné"
+                },
+                {
+                  "left": "$[a,b[$",
+                  "right": "semi-ouvert (ou semi-fermé)"
+                },
+                {
+                  "left": "$]-\\infty,a]$",
+                  "right": "demi-droite fermée"
+                }
+              ],
+              "explanation": "Voir la liste des neuf formes et la remarque de vocabulaire."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\mathbb{R}$ est à la fois un ouvert et un fermé de $\\mathbb{R}$.",
+              "answer": true,
+              "explanation": "Vrai : la remarque range $\\mathbb{R}$ parmi les ouverts et précise qu'il est aussi fermé."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "L'ensemble $\\{x\\in{\\mathbb{R}}\\mid -2<x\\le3\\}$ s'écrit :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$]-2,3]$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[-2,3[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$]-2,3[$"
+                },
+                {
+                  "id": "d",
+                  "md": "$[-2,3]$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Inégalité stricte à gauche (crochet ouvert en $-2$), large à droite (crochet fermé en $3$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\mathbb{Q}$ est un intervalle de $\\mathbb{R}$.",
+              "answer": false,
+              "explanation": "Faux : $0$ et $2$ sont dans $\\mathbb{Q}$, mais $\\sqrt2$, compris entre eux, n'est pas rationnel."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Combien de formes d'intervalles distingue-t-on (pour $a\\le b$ réels) ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$9$"
+                },
+                {
+                  "id": "b",
+                  "md": "$4$"
+                },
+                {
+                  "id": "c",
+                  "md": "$6$"
+                },
+                {
+                  "id": "d",
+                  "md": "$8$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Quatre intervalles bornés ($[a,b]$, $[a,b[$, $]a,b]$, $]a,b[$), quatre demi-droites et $\\mathbb{R}$ lui-même : $9$ formes."
+            }
+          ]
+        },
+        {
+          "slug": "voisinages",
+          "title": "Voisinages et séparation de deux points",
+          "number": "L13",
+          "estimatedMinutes": 10,
+          "summary": "Voisinage d'un réel, voisinages de $+\\infty$ et $-\\infty$, propriétés des voisinages et séparation de deux points distincts.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $a\\in{\\mathbb{R}}$. Une partie $V$ de $\\mathbb{R}$ est un **voisinage de $a$** si elle contient un intervalle ouvert contenant $a$.\nOn note $\\mathcal V(a)$ l'ensemble de tous les voisinages de $a$.",
+              "origin": "source",
+              "title": "Voisinage"
+            },
+            {
+              "type": "remark",
+              "md": "Un voisinage de $a$ contient tous les points suffisamment proches de $a$, mais peut aussi contenir des points éloignés de $a$.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "Formulation équivalente (chapitre 3 du cours) : $V$ est un voisinage de $a$ si et seulement s'il existe $\\alpha>0$ tel que\n$$]a-\\alpha,a+\\alpha[\\,\\subset V,$$\nc'est-à-dire si $V$ contient un intervalle ouvert **centré** en $a$. En effet, si $a\\in\\,]c,d[\\,\\subset V$, on peut prendre $\\alpha=\\min(a-c,d-a)>0$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/analyse-1/ch01-voisinage.svg",
+              "alt": "Droite réelle : une partie V (en vert) qui contient un intervalle ouvert ]a−α, a+α[ autour de a.",
+              "caption": "Figure — V est un voisinage de a : il contient un intervalle ]a − α, a + α[.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Lequel de ces ensembles est un voisinage de $0$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$[-1,1]$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$[0,1]$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$\\{0\\}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$]0,1[$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$[-1,1]$ contient l'intervalle ouvert $]-1,1[$ qui contient $0$. $[0,1]$ et $\\{0\\}$ ne contiennent aucun intervalle ouvert autour de $0$ (il manque les points négatifs proches de $0$), et $]0,1[$ ne contient même pas $0$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "1. Une partie $V\\subset{\\mathbb{R}}$ est un **voisinage de $+\\infty$** si et seulement s'il existe $A>0$ tel que $]A,+\\infty[\\,\\subset V$.\n2. Une partie $V\\subset{\\mathbb{R}}$ est un **voisinage de $-\\infty$** si et seulement s'il existe $B<0$ tel que $]-\\infty,B[\\,\\subset V$.",
+              "origin": "source",
+              "title": "Voisinages de +∞ et de −∞"
+            },
+            {
+              "type": "intuition",
+              "md": "Être « proche de $+\\infty$ », c'est être très grand : un voisinage de $+\\infty$ contient tous les réels assez grands. Ces voisinages serviront à définir les limites en $\\pm\\infty$ (chapitres 2 et 3).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$\\mathbb{N}$ est un voisinage de $+\\infty$.",
+                "answer": false,
+                "explanation": "Faux : $\\mathbb{N}$ ne contient aucune demi-droite $]A,+\\infty[$ (il manque par exemple $E(A)+\\frac32$). En revanche $[10,+\\infty[$ et $\\mathbb{R}^*$ sont des voisinages de $+\\infty$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Soit $a\\in{\\mathbb{R}}$.\n1. $\\mathbb{R}$ est un voisinage de $a$.\n2. Tout voisinage de $a$ contient $a$ : pour tout $V\\in\\mathcal V(a)$, $a\\in V$.\n3. Toute partie $W$ de $\\mathbb{R}$ qui contient un voisinage de $a$ est encore un voisinage de $a$.\n4. Toute intersection finie de voisinages de $a$ est un voisinage de $a$.",
+              "origin": "source",
+              "title": "Propriétés des voisinages"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Pour le point 4, prenons deux voisinages $V_1\\supset\\,]a-\\alpha_1,a+\\alpha_1[$ et $V_2\\supset\\,]a-\\alpha_2,a+\\alpha_2[$."
+                },
+                {
+                  "md": "Avec $\\alpha=\\min(\\alpha_1,\\alpha_2)>0$, on a $]a-\\alpha,a+\\alpha[\\,\\subset V_1\\cap V_2$. Pour une intersection finie quelconque, on prend le minimum des $\\alpha_i$ (un minimum d'un nombre fini de réels $>0$ est $>0$)."
+                },
+                {
+                  "md": "L'hypothèse « finie » est nécessaire : $\\bigcap_{n\\ge1}\\left]-\\frac1n,\\frac1n\\right[=\\{0\\}$ n'est pas un voisinage de $0$."
+                }
+              ],
+              "origin": "added",
+              "title": "Preuve du point 4"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "Si $a$ et $b$ sont deux points distincts de $\\mathbb{R}$, il existe $V\\in\\mathcal V(a)$ et $W\\in\\mathcal V(b)$ tels que\n$$V\\cap W=\\varnothing.$$",
+              "origin": "source",
+              "title": "Séparation de deux points de ℝ"
+            },
+            {
+              "type": "proof",
+              "steps": [
+                {
+                  "md": "Supposons $a<b$ et posons $r=\\dfrac{b-a}2>0$ (la moitié de la distance)."
+                },
+                {
+                  "md": "$V=\\,]a-r,a+r[$ et $W=\\,]b-r,b+r[$ sont des voisinages de $a$ et de $b$, et $a+r=b-r=\\dfrac{a+b}2$ : ils sont disjoints."
+                }
+              ],
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Tout voisinage de $a$ contient $a$.",
+              "answer": true,
+              "explanation": "Vrai (point 2) : il contient un intervalle ouvert contenant $a$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces ensembles est un voisinage de $2$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$]1,5]\\cup\\{7\\}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[2,3]$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathbb{Q}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$]0,2[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$]1,5]\\cup\\{7\\}$ contient $]1,3[$, qui est un intervalle ouvert contenant $2$ (peu importe le point éloigné $7$). $[2,3]$ et $]0,2[$ n'ont pas de « marge » des deux côtés de $2$ ; $\\mathbb{Q}$ ne contient aucun intervalle ouvert."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute intersection (même infinie) de voisinages de $a$ est un voisinage de $a$.",
+              "answer": false,
+              "explanation": "Faux : $\\bigcap_{n\\ge1}\\left]-\\frac1n,\\frac1n\\right[=\\{0\\}$ n'est pas un voisinage de $0$. La propriété ne vaut que pour une intersection **finie**."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces ensembles est un voisinage de $-\\infty$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$]-\\infty,-100[\\,\\cup\\,[0,1]$"
+                },
+                {
+                  "id": "b",
+                  "md": "$[-100,+\\infty[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathbb{Z}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$]-1,0[$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Il contient $]-\\infty,B[$ avec $B=-100<0$. Les autres ne contiennent aucune demi-droite $]-\\infty,B[$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour séparer $a=1$ et $b=4$ par $]a-r,a+r[$ et $]b-r,b+r[$, la plus grande valeur de $r$ qui convient est ___",
+              "answerType": "number",
+              "accepted": [
+                "1.5",
+                "3/2"
+              ],
+              "explanation": "Il faut $a+r\\le b-r$, soit $r\\le\\dfrac{b-a}2=1{,}5$. Avec $r=1{,}5$ : $]-0{,}5;2{,}5[$ et $]2{,}5;5{,}5[$ sont disjoints."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $V$ est un voisinage de $a$ et $V\\subset W$, alors $W$ est un voisinage de $a$.",
+              "answer": true,
+              "explanation": "Vrai (point 3) : l'intervalle ouvert contenu dans $V$ est aussi contenu dans $W$."
+            }
+          ]
+        },
+        {
+          "slug": "ouverts-et-fermes",
+          "title": "Parties ouvertes et parties fermées",
+          "number": "L14",
+          "estimatedMinutes": 10,
+          "summary": "Ouverts (voisinages de chacun de leurs points), fermés (complémentaires d'ouverts) et leur stabilité par réunion et intersection.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Une partie $A$ de $\\mathbb{R}$ est un **ouvert de $\\mathbb{R}$** si, pour tout $a\\in A$, l'ensemble $A$ est un voisinage de $a$.",
+              "origin": "source",
+              "title": "Ouvert"
+            },
+            {
+              "type": "intuition",
+              "md": "Un ouvert est une partie dont chaque point a de la « marge » : autour de chaque point de $A$, on peut bouger un peu dans les deux sens sans sortir de $A$.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "1. $\\varnothing$ et $\\mathbb{R}$ sont des ouverts de $\\mathbb{R}$.\n2. Toute réunion d'ouverts est un ouvert.\n3. Toute intersection **finie** d'ouverts est un ouvert.",
+              "origin": "source",
+              "title": "Propriétés des ouverts"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "$[0,1[$ est un ouvert de $\\mathbb{R}$.",
+                "answer": false,
+                "explanation": "Faux : $[0,1[$ n'est pas un voisinage de $0$, car tout intervalle ouvert contenant $0$ contient des réels négatifs, qui ne sont pas dans $[0,1[$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "1. Un intervalle ouvert $]a,b[$ est un ouvert de $\\mathbb{R}$.\n2. Montrer que $A$ est un ouvert de $\\mathbb{R}$ si et seulement si $A$ est une réunion d'intervalles ouverts.",
+              "origin": "source",
+              "title": "Exemples",
+              "solution": [
+                {
+                  "md": "**1.** Si $x\\in\\,]a,b[$, alors $]a,b[$ est lui-même un intervalle ouvert contenant $x$ : c'est un voisinage de $x$."
+                },
+                {
+                  "md": "**2. (⇐)** Chaque intervalle ouvert est un ouvert (point 1), et une réunion d'ouverts est un ouvert (propriété 2)."
+                },
+                {
+                  "md": "**2. (⇒)** Si $A$ est ouvert, pour chaque $a\\in A$ on choisit un intervalle ouvert $I_a$ avec $a\\in I_a\\subset A$. Alors $A=\\bigcup_{a\\in A}I_a$ : chaque $a$ est dans $I_a$, et chaque $I_a$ est inclus dans $A$."
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "md": "Une partie $B$ de $\\mathbb{R}$ est un **fermé de $\\mathbb{R}$** si son complémentaire $\\mathbb{R}\\setminus B$ est un ouvert de $\\mathbb{R}$.",
+              "origin": "source",
+              "title": "Fermé"
+            },
+            {
+              "type": "exercise",
+              "md": "Vérifier que tout intervalle fermé de $\\mathbb{R}$ est un fermé.",
+              "origin": "source",
+              "title": "Exemple",
+              "solution": [
+                {
+                  "md": "$\\mathbb{R}\\setminus[a,b]=\\,]-\\infty,a[\\,\\cup\\,]b,+\\infty[$ est une réunion de deux ouverts, donc un ouvert : $[a,b]$ est fermé."
+                },
+                {
+                  "md": "$\\mathbb{R}\\setminus\\,]-\\infty,a]=\\,]a,+\\infty[$ et $\\mathbb{R}\\setminus[a,+\\infty[\\,=\\,]-\\infty,a[$ sont ouverts, et $\\mathbb{R}\\setminus{\\mathbb{R}}=\\varnothing$ est ouvert."
+                }
+              ]
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "1. $\\varnothing$ et $\\mathbb{R}$ sont des fermés de $\\mathbb{R}$.\n2. Toute réunion **finie** de fermés est un fermé.\n3. Toute intersection de fermés est un fermé.",
+              "origin": "source",
+              "title": "Propriétés des fermés"
+            },
+            {
+              "type": "remark",
+              "md": "- Les propriétés des fermés se déduisent de celles des ouverts par passage au complémentaire : le complémentaire d'une réunion est l'intersection des complémentaires, et inversement.\n- « Non ouvert » ne veut pas dire « fermé » : $[0,1[$ n'est ni ouvert ni fermé, tandis que $\\varnothing$ et $\\mathbb{R}$ sont à la fois ouverts et fermés.\n- Le mot « finie » est indispensable : $\\bigcap_{n\\ge1}\\left]-\\frac1n,\\frac1n\\right[=\\{0\\}$ n'est pas ouvert, et $\\bigcup_{n\\ge1}\\left[\\frac1n,1\\right]=\\,]0,1]$ n'est pas fermé.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pourquoi $[0,1[$ n'est-il pas fermé ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Son complémentaire $]-\\infty,0[\\,\\cup\\,[1,+\\infty[$ n'est pas ouvert"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce qu'il n'est pas ouvert"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce qu'il est borné"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Parce qu'il contient $0$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Le complémentaire contient $1$ mais n'est pas un voisinage de $1$ (les réels juste à gauche de $1$ sont dans $[0,1[$). Ne pas être ouvert ne suffit pas à justifier qu'un ensemble n'est pas fermé."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque partie de $\\mathbb{R}$ à sa nature.",
+              "pairs": [
+                {
+                  "left": "$]0,1[$",
+                  "right": "ouvert, non fermé"
+                },
+                {
+                  "left": "$[0,1]$",
+                  "right": "fermé, non ouvert"
+                },
+                {
+                  "left": "$[0,1[$",
+                  "right": "ni ouvert ni fermé"
+                },
+                {
+                  "left": "$\\mathbb{R}$",
+                  "right": "ouvert et fermé"
+                }
+              ],
+              "explanation": "$]0,1[$ est un intervalle ouvert ; le complémentaire de $[0,1]$ est ouvert ; $[0,1[$ n'est voisinage ni de $0$, et son complémentaire n'est pas voisinage de $1$ ; $\\mathbb{R}$ et $\\varnothing$ sont les deux à la fois."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute intersection d'ouverts est un ouvert.",
+              "answer": false,
+              "explanation": "Faux : seulement les intersections **finies**. Contre-exemple : $\\bigcap_{n\\ge1}\\left]-\\frac1n,\\frac1n\\right[=\\{0\\}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Toute intersection de fermés est un fermé.",
+              "answer": true,
+              "explanation": "Vrai (propriété 3 des fermés), sans restriction sur le nombre de fermés."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une partie $B$ de $\\mathbb{R}$ est fermée si et seulement si :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathbb{R}\\setminus B$ est ouvert"
+                },
+                {
+                  "id": "b",
+                  "md": "$B$ n'est pas ouvert"
+                },
+                {
+                  "id": "c",
+                  "md": "$B$ est un intervalle fermé"
+                },
+                {
+                  "id": "d",
+                  "md": "$B$ est borné"
+                }
+              ],
+              "answer": "a",
+              "explanation": "C'est la définition. Une partie peut être ni ouverte ni fermée, et un fermé n'est pas forcément un intervalle (ex. $\\{0\\}\\cup[1,2]$) ni borné (ex. $[0,+\\infty[$)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$]0,1[\\,\\cup\\,]2,3[$ est un ouvert de $\\mathbb{R}$.",
+              "answer": true,
+              "explanation": "Vrai : c'est une réunion d'intervalles ouverts, donc une réunion d'ouverts."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$\\{0\\}$ est un fermé de $\\mathbb{R}$.",
+              "answer": true,
+              "explanation": "Vrai : $\\mathbb{R}\\setminus\\{0\\}=\\,]-\\infty,0[\\,\\cup\\,]0,+\\infty[$ est une réunion d'ouverts, donc ouvert. (C'est aussi l'intervalle fermé $[0,0]$.)"
+            }
+          ]
+        },
+        {
+          "slug": "interieur-exterieur",
+          "title": "Intérieur et extérieur d'une partie",
+          "number": "L15",
+          "estimatedMinutes": 9,
+          "summary": "Points intérieurs et intérieur $\\mathring A$ (plus grand ouvert contenu dans $A$), propriétés élémentaires, points extérieurs et extérieur de $A$.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $A\\subseteq{\\mathbb{R}}$. Un point $x\\in A$ est **intérieur à $A$** si $A$ contient un intervalle ouvert centré en $x$.\nL'ensemble des points intérieurs à $A$ est l'**intérieur de $A$**, noté $\\mathring A$.",
+              "origin": "source",
+              "title": "Intérieur"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "L'intérieur $\\mathring A$ est un ouvert de $\\mathbb{R}$. C'est le plus grand ouvert de $\\mathbb{R}$ contenu dans $A$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel est l'intérieur de $A=[0,1]\\cup\\{3\\}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$]0,1[$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$[0,1]$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$]0,1[\\,\\cup\\{3\\}$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\varnothing$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "Les points de $]0,1[$ ont de la marge dans $A$. Ni $0$, ni $1$, ni le point isolé $3$ ne sont centres d'un intervalle ouvert inclus dans $A$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "1. L'intérieur de chacun des intervalles $[a,b]$, $[a,b[$, $]a,b]$ et $]a,b[$ est $]a,b[$.\n2. L'intérieur de $\\mathbb{Q}$ est vide, ainsi que celui de son complémentaire $\\mathbb{R}\\setminus{\\mathbb{Q}}$.",
+              "origin": "source",
+              "title": "Exemples (à montrer)",
+              "solution": [
+                {
+                  "md": "**1.** Tout $x\\in\\,]a,b[$ est intérieur, avec $r=\\min(x-a,b-x)>0$ : $]x-r,x+r[\\,\\subset\\,]a,b[$. En revanche $a$ (s'il appartient à l'intervalle) n'est pas intérieur : tout $]a-r,a+r[$ contient des points $<a$. De même pour $b$."
+                },
+                {
+                  "md": "**2.** Soit $x\\in{\\mathbb{R}}$ et $r>0$. Par densité, $]x-r,x+r[$ contient un rationnel ; il contient aussi un irrationnel : par densité il existe $q\\in{\\mathbb{Q}}$ dans $]x-r-\\sqrt2,\\,x+r-\\sqrt2[$, et $q+\\sqrt2\\in\\,]x-r,x+r[$ est irrationnel (sinon $\\sqrt2=(q+\\sqrt2)-q$ serait rationnel). Aucun intervalle ouvert n'est donc inclus dans $\\mathbb{Q}$ ni dans $\\mathbb{R}\\setminus{\\mathbb{Q}}$."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "text": "Propriétés élémentaires à vérifier",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Pour toutes parties $A$ et $B$ de $\\mathbb{R}$ :\n1. Si $A\\subseteq B$, alors $\\mathring A\\subseteq\\mathring B$.\n2. $\\operatorname{int}(A\\cap B)=\\mathring A\\cap\\mathring B$.\n3. $\\operatorname{int}(A\\cup B)\\supseteq\\mathring A\\cup\\mathring B$.\n4. Donner un exemple dans lequel l'inclusion précédente est stricte.\n\nIci $\\operatorname{int}(A)$ et $\\mathring A$ désignent le même ensemble.",
+              "origin": "source",
+              "solution": [
+                {
+                  "md": "**1.** Si $x\\in\\mathring A$, un intervalle ouvert centré en $x$ est inclus dans $A$, donc dans $B$ : $x\\in\\mathring B$."
+                },
+                {
+                  "md": "**2.** Par 1, $\\operatorname{int}(A\\cap B)\\subseteq\\mathring A$ et $\\subseteq\\mathring B$. Réciproquement, si $]x-r_1,x+r_1[\\,\\subset A$ et $]x-r_2,x+r_2[\\,\\subset B$, alors avec $r=\\min(r_1,r_2)$, $]x-r,x+r[\\,\\subset A\\cap B$."
+                },
+                {
+                  "md": "**3.** $A\\subseteq A\\cup B$ et $B\\subseteq A\\cup B$, donc par 1 : $\\mathring A\\subseteq\\operatorname{int}(A\\cup B)$ et $\\mathring B\\subseteq\\operatorname{int}(A\\cup B)$."
+                },
+                {
+                  "md": "**4.** $A=[0,1]$ et $B=[1,2]$ : $\\operatorname{int}(A\\cup B)=\\,]0,2[$, alors que $\\mathring A\\cup\\mathring B=\\,]0,1[\\,\\cup\\,]1,2[$ ne contient pas $1$. (Autre exemple : $A=\\mathbb{Q}$, $B=\\mathbb{R}\\setminus{\\mathbb{Q}}$.)"
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "md": "Soit $A\\subseteq{\\mathbb{R}}$. Un point $x\\in{\\mathbb{R}}$ est **extérieur à $A$** s'il existe un voisinage de $x$ dans $\\mathbb{R}$ ne rencontrant pas $A$.\nL'ensemble de ces points est l'**extérieur de $A$**, noté $\\operatorname{Ext}(A)$.",
+              "origin": "source",
+              "title": "Extérieur"
+            },
+            {
+              "type": "remark",
+              "md": "L'extérieur de $A$ est l'intérieur de son complémentaire :\n$$\\operatorname{Ext}(A)=\\operatorname{int}(\\mathbb{R}\\setminus A).$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "L'extérieur de $[0,1]$ est $]-\\infty,0[\\,\\cup\\,]a,+\\infty[$ avec $a=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$\\operatorname{Ext}([0,1])=\\operatorname{int}(]-\\infty,0[\\,\\cup\\,]1,+\\infty[)=\\,]-\\infty,0[\\,\\cup\\,]1,+\\infty[$ (ce complémentaire est déjà ouvert)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque partie à son intérieur.",
+              "pairs": [
+                {
+                  "left": "$[2,5]$",
+                  "right": "$]2,5[$"
+                },
+                {
+                  "left": "$]-1,3]$",
+                  "right": "$]-1,3[$"
+                },
+                {
+                  "left": "$\\mathbb{Q}$",
+                  "right": "$\\varnothing$"
+                },
+                {
+                  "left": "$[0,+\\infty[$",
+                  "right": "$]0,+\\infty[$"
+                }
+              ],
+              "explanation": "L'intérieur d'un intervalle d'extrémités $a<b$ est toujours $]a,b[$ ; celui de $\\mathbb{Q}$ est vide ; celui de $[0,+\\infty[$ est $]0,+\\infty[$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour toute partie $A$ de $\\mathbb{R}$, $\\mathring A\\subseteq A$.",
+              "answer": true,
+              "explanation": "Vrai : par définition, un point intérieur à $A$ est un point de $A$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour toutes parties $A,B$ : $\\operatorname{int}(A\\cup B)=\\mathring A\\cup\\mathring B$.",
+              "answer": false,
+              "explanation": "Faux en général : avec $A=[0,1]$ et $B=[1,2]$, le point $1$ est intérieur à $A\\cup B=[0,2]$ mais ni à $A$ ni à $B$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$A$ est ouvert si et seulement si :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathring A=A$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathring A=\\varnothing$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\operatorname{Ext}(A)=\\varnothing$"
+                },
+                {
+                  "id": "d",
+                  "md": "$A$ est un intervalle"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\mathring A$ est le plus grand ouvert contenu dans $A$ : il vaut $A$ exactement quand $A$ est lui-même ouvert."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Combien de points de $\\mathbb{R}$ sont intérieurs à $\\mathbb{Q}$ ? ___",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "Aucun : tout intervalle ouvert contient des irrationnels, donc n'est pas inclus dans $\\mathbb{Q}$. $\\mathring{\\mathbb{Q}}=\\varnothing$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel est l'extérieur de $A=]0,1[$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$]-\\infty,0[\\,\\cup\\,]1,+\\infty[$"
+                },
+                {
+                  "id": "b",
+                  "md": "$]-\\infty,0]\\cup[1,+\\infty[$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\{0,1\\}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\varnothing$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\operatorname{Ext}(A)=\\operatorname{int}(\\mathbb{R}\\setminus A)=\\operatorname{int}(]-\\infty,0]\\cup[1,+\\infty[)$ : on retire $0$ et $1$, dont tout voisinage rencontre $]0,1[$."
+            }
+          ]
+        },
+        {
+          "slug": "adherence-frontiere",
+          "title": "Adhérence et frontière",
+          "number": "L16",
+          "estimatedMinutes": 10,
+          "summary": "Points adhérents et adhérence $\\overline A$ (plus petit fermé contenant $A$), frontière $\\partial A$, et la partition $\\mathbb{R}=\\operatorname{Ext}(A)\\cup\\partial A\\cup\\mathring A$.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Soit $A\\subseteq{\\mathbb{R}}$. Un point $x\\in{\\mathbb{R}}$ est **adhérent à $A$** si tout intervalle ouvert centré en $x$ rencontre $A$.\nL'ensemble des points adhérents à $A$ est l'**adhérence de $A$**, notée $\\overline A$.",
+              "origin": "source",
+              "title": "Adhérence"
+            },
+            {
+              "type": "intuition",
+              "md": "Un point adhérent est un point qu'on peut approcher d'aussi près qu'on veut par des points de $A$ ; il n'est pas forcément dans $A$. Par exemple $1$ est adhérent à $]0,1[$.",
+              "origin": "added"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "L'adhérence $\\overline A$ est fermée et constitue le plus petit fermé de $\\mathbb{R}$ contenant $A$. En particulier,\n$$A\\text{ est fermé}\\iff A=\\overline A.$$",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "md": "Pour $a<b$, l'adhérence de chacun des intervalles $[a,b]$, $[a,b[$, $]a,b]$ et $]a,b[$ est $[a,b]$.",
+              "origin": "source",
+              "title": "Exemple (à montrer)",
+              "solution": [
+                {
+                  "md": "Tout $x\\in\\,]a,b[$ est dans l'intervalle, donc adhérent. Le point $a$ est adhérent : pour $r>0$, $]a-r,a+r[$ contient $a+\\min(\\frac r2,\\frac{b-a}2)\\in\\,]a,b[$. De même pour $b$.",
+                  "why": "C'est ici que sert l'hypothèse $a<b$ : si $a=b$, $]a,a[$ est vide et son adhérence aussi."
+                },
+                {
+                  "md": "Un point $x>b$ n'est pas adhérent : $]x-r,x+r[$ avec $r=x-b$ ne rencontre pas $[a,b]$. De même pour $x<a$. Donc l'adhérence est exactement $[a,b]$."
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle est l'adhérence de $A=]0,1]\\cup\\{3\\}$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$[0,1]\\cup\\{3\\}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$[0,1]$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$[0,3]$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$]0,1]\\cup\\{3\\}$"
+                  }
+                ],
+                "answer": "a",
+                "explanation": "$0$ s'ajoute (il est approché par des points de $]0,1]$). Le point $3$ est dans $A$, donc adhérent. Les points de $]1,3[$ ne sont pas adhérents."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Soit $A\\subseteq{\\mathbb{R}}$. Un point $x\\in{\\mathbb{R}}$ est un **point frontière de $A$** si tout voisinage de $x$ rencontre à la fois $A$ et son complémentaire $\\mathbb{R}\\setminus A$.\nL'ensemble des points frontières de $A$ est la **frontière de $A$**, notée $\\operatorname{Fr}(A)$ ou $\\partial A$.",
+              "origin": "source",
+              "title": "Frontière"
+            },
+            {
+              "type": "theorem",
+              "kind": "proposition",
+              "md": "1. La frontière vérifie\n$$\\partial A=\\overline A\\cap(\\mathbb{R}\\setminus\\mathring A)=\\overline A\\cap\\overline{\\mathbb{R}\\setminus A}.$$\n2. On a les inclusions $\\mathring A\\subseteq A\\subseteq\\overline A$.\n3. Les trois ensembles $\\operatorname{Ext}(A)$, $\\partial A$ et $\\mathring A$ sont deux à deux disjoints, et\n$$\\mathbb{R}=\\operatorname{Ext}(A)\\cup\\partial A\\cup\\mathring A.$$",
+              "origin": "source",
+              "title": "Relations entre intérieur, adhérence et frontière"
+            },
+            {
+              "type": "remark",
+              "md": "La frontière de $A$ est une partie fermée de $\\mathbb{R}$. Les notations $\\operatorname{int}(A)$ et $\\operatorname{adh}(A)$ désignent respectivement $\\mathring A$ et $\\overline A$.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Pour un point $x$ et une partie $A$, il y a exactement trois cas : $x$ a un voisinage inclus dans $A$ (intérieur), un voisinage inclus dans le complémentaire (extérieur), ou aucun des deux, c'est-à-dire que tout voisinage rencontre les deux côtés (frontière).",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "La frontière de $[0,1[$ est $\\{0,\\,a\\}$ avec $a=$ ___",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "$\\partial[0,1[\\,=\\overline{[0,1[}\\setminus\\operatorname{int}([0,1[)=[0,1]\\setminus\\,]0,1[\\,=\\{0,1\\}$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Pour $A=[0,1[$, associez chaque ensemble à sa valeur.",
+              "pairs": [
+                {
+                  "left": "$\\mathring A$",
+                  "right": "$]0,1[$"
+                },
+                {
+                  "left": "$\\overline A$",
+                  "right": "$[0,1]$"
+                },
+                {
+                  "left": "$\\partial A$",
+                  "right": "$\\{0,1\\}$"
+                },
+                {
+                  "left": "$\\operatorname{Ext}(A)$",
+                  "right": "$]-\\infty,0[\\,\\cup\\,]1,+\\infty[$"
+                }
+              ],
+              "explanation": "On vérifie la partition : $\\mathbb{R}=\\operatorname{Ext}(A)\\cup\\partial A\\cup\\mathring A$, ensembles deux à deux disjoints."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour toute partie $A$ de $\\mathbb{R}$, $A\\subseteq\\overline A$.",
+              "answer": true,
+              "explanation": "Vrai : tout point de $A$ est adhérent à $A$ (tout intervalle centré en $x\\in A$ contient $x$, donc rencontre $A$)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "$A$ est fermé si et seulement si :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$A=\\overline A$"
+                },
+                {
+                  "id": "b",
+                  "md": "$A=\\mathring A$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\partial A=\\varnothing$"
+                },
+                {
+                  "id": "d",
+                  "md": "$A$ est borné"
+                }
+              ],
+              "answer": "a",
+              "explanation": "L'adhérence est le plus petit fermé contenant $A$ : elle vaut $A$ exactement quand $A$ est fermé. ($A=\\mathring A$ caractérise les ouverts.)"
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'adhérence de $\\mathbb{Q}$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathbb{R}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathbb{Q}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\varnothing$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\mathbb{R}\\setminus{\\mathbb{Q}}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Par densité, tout intervalle ouvert rencontre $\\mathbb{Q}$ : tout réel est adhérent à $\\mathbb{Q}$, donc $\\overline{\\mathbb{Q}}=\\mathbb{R}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Un point de la frontière de $A$ appartient toujours à $A$.",
+              "answer": false,
+              "explanation": "Faux : $1\\in\\partial\\,]0,1[$ mais $1\\notin\\,]0,1[$. Un point frontière peut appartenir à $A$ ou non."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle égalité est correcte ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\partial A=\\overline A\\cap(\\mathbb{R}\\setminus\\mathring A)$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\partial A=\\mathring A\\cap\\overline{\\mathbb{R}\\setminus A}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\partial A=A\\setminus\\mathring A$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\partial A=\\overline A\\cup\\mathring A$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "La frontière est formée des points adhérents qui ne sont pas intérieurs. $A\\setminus\\mathring A$ est faux en général : pour $A=]0,1[$, il est vide alors que $\\partial A=\\{0,1\\}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : cours du Prof. Saïd TAARABTI (ENSA Agadir), F130, transcrit leçon par leçon en LaTeX (output/course_path/bodies/01-…16-*.tex, PDF rendus dans Cours/Analyse/Ch01). Les numéros de leçon L01–L16 correspondent à ces PDF. Le contenu, l'ordre et les énoncés de la transcription sont conservés ; seuls la mise en forme (blocs du site) et les ajouts signalés « added » diffèrent.",
+    "Matériel déplacé : les définitions de voisinage de +∞ et de −∞ (F107, chapitre 3, p. 2, Déf. 29.2–29.3) relèvent de la topologie de ℝ et sont absentes de F130 : elles sont ajoutées à la leçon L13 « Voisinages et séparation de deux points » (bloc définition, origine source). La Déf. 29.1 de F107 (voisinage via ]a−α, a+α[) y figure comme remarque « formulation équivalente », avec la justification de l'équivalence.",
+    "L01 : dans le polycopié, le numérateur de z = 15,068 2143 2143… était écrit 150667066 ; corrigé en 150667075 (150682143 − 15068 = 150667075). La remarque du transcripteur signalant l'erreur n'est pas reprise dans la leçon.",
+    "L02 : l'exercice « Montrer que √2 n'est pas rationnel » n'a pas de corrigé dans la source ; la preuve classique (par l'absurde, parité) est ajoutée comme solution (origin: added).",
+    "L04 : la proposition à 7 points est découpée en deux blocs (points 1–4, puis 5–7) pour placer un checkpoint ; une remarque ajoutée montre par contre-exemples la nécessité des hypothèses de signe et l'interdiction de soustraire des inégalités. La justification du point 7, « (y+v)−(x+u) > (y−x)+(v−u)/2 ≥ 0 », est conservée telle quelle (correcte mais détournée).",
+    "L05 : la figure TikZ (intervalle ]a−r, a+r[ sur la droite) est remplacée par une phrase descriptive.",
+    "L07 : la source énonce le corollaire (na > b) sans preuve ; preuve de deux lignes ajoutée. La remarque de la source (F130 p. 10) ne cite que la partie entière ; la transcription ajoutait « et la densité de ℚ », conservé car exact (la preuve de densité utilise Archimède).",
+    "L08 : la source ne traite pas le cas x < 0 de l'existence de la partie entière ; un complément de preuve (par translation entière) est ajouté (origin: added). Une justification est ajoutée au fait que K est fini et non vide.",
+    "L09 : les blocs de preuve sont ceux de la source ; un exemple numérique (x = 0,31, y = 0,35) est posé en checkpoint.",
+    "L10 : coquille corrigée par le transcripteur : « M = min(A) » → « m = min(A) ». Le diagramme TikZ des u_n = 1 − 1/n est décrit en texte.",
+    "L11 : la condition « non vide et minorée » est explicitée dans la caractérisation séquentielle de la borne inférieure (implicite dans la source).",
+    "L12 : la source qualifiait de « semi-ouvertes » les demi-droites fermées ; la remarque distingue le crochet du côté de l'infini et le caractère fermé dans ℝ (correction du transcripteur, conservée).",
+    "L13 : la source ne démontre pas les propriétés des voisinages ni la séparation ; preuves courtes ajoutées (point 4 et séparation), avec le contre-exemple de l'intersection infinie.",
+    "L14–L16 : les « Montrer que… / Vérifier que… / À montrer » de la source sont présentés en blocs exercice ; les solutions sont des ajouts (courtes et standard). L15 : l'exemple 9 répétait un intervalle ; les quatre formes [a,b], [a,b[, ]a,b], ]a,b[ sont rétablies (correction du transcripteur). L16 : « intervalle ouvert centré » dans la définition d'adhérence et hypothèse a < b dans l'exemple 10 (corrections du transcripteur, conservées).",
+    "L14 : remarque ajoutée (passage au complémentaire, « non ouvert » ≠ « fermé », nécessité de « finie »). Le complémentaire est noté ℝ∖B (au lieu de C_ℝ^B dans la source).",
+    "Les propositions « l'intérieur est le plus grand ouvert contenu dans A » et « l'adhérence est le plus petit fermé contenant A » sont admises comme dans la source (pas de preuve ajoutée).",
+    "Tous les checkpoints et quiz sont des ajouts (aucune question dans la source)."
+  ]
+}

@@ -1,0 +1,1100 @@
+{
+ "slug": "dynamique-referentiel-non-galileen",
+ "number": 4,
+ "title": "Dynamique dans un référentiel non galiléen",
+ "description": "PFD dans un référentiel non galiléen (forces d'inertie d'entraînement, centrifuge et de Coriolis), équilibre absolu et relatif, TMC dans un référentiel non galiléen, applications : ressort en rotation et point sur un cercle tournant.",
+ "sourcePdf": "Modules/Mecanique du point/Cours/Chapitre 04 - Dynamique dans un référentiel non galiléen.pdf",
+ "sections": [
+  {
+   "slug": "pfd-non-galileen",
+   "title": "PFD dans un référentiel non galiléen",
+   "number": "I",
+   "lessons": [
+    {
+     "slug": "forces-d-inertie-pfd-non-galileen",
+     "title": "Forces d'inertie et PFD en référentiel non galiléen",
+     "number": "I",
+     "estimatedMinutes": 10,
+     "summary": "Le PFD dans un référentiel non galiléen : forces d'inertie d'entraînement et de Coriolis ; force centrifuge pour une rotation uniforme.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "I – PFD dans un référentiel non galiléen",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Soient $R$ un référentiel **galiléen** (absolu) et $R'$ un référentiel **non galiléen** (relatif) en mouvement par rapport à $R$. Le PFD appliqué au point $M(m)$ dans $R$ galiléen s'écrit\n$$m\\,\\vec a_{M/R}=\\sum\\vec F_i,$$ avec $\\sum\\vec F_i$ : bilan des forces « réelles » ou « classiques ».",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "Loi de composition des accélérations : $\\vec a_{M/R}=\\vec a_{M/R'}+\\vec a_e+\\vec a_c$."
+        },
+        {
+         "md": "$\\Rightarrow m(\\vec a_{M/R'}+\\vec a_e+\\vec a_c)=\\sum\\vec F_i$."
+        },
+        {
+         "md": "$\\Rightarrow m\\,\\vec a_{M/R'}=\\sum\\vec F_i+(-m\\vec a_e)+(-m\\vec a_c)$."
+        }
+       ],
+       "origin": "source",
+       "title": "Passage à $R'$"
+      },
+      {
+       "type": "definition",
+       "md": "On pose :\n$$\\vec F_{ie}=-m\\vec a_e=-m\\left[\\vec a_{O'/R}+\\frac{d\\vec\\Omega}{dt}\\wedge\\overrightarrow{O'M}+\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})\\right]\\quad:\\ \\text{force d'inertie d'entraînement},$$\n$$\\vec F_{ic}=-m\\vec a_c=-2m\\,\\vec\\Omega\\wedge\\vec V_r\\quad:\\ \\text{force d'inertie de Coriolis}.$$",
+       "origin": "source",
+       "title": "Forces d'inertie"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "$$m\\,\\vec a_{M/R'}=\\sum\\vec F_i+\\vec F_{ie}+\\vec F_{ic}.$$",
+       "origin": "source",
+       "title": "PFD dans un référentiel non galiléen"
+      },
+      {
+       "type": "remark",
+       "md": "L'origine des forces d'inertie est le caractère **non galiléen** du référentiel d'étude.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Dans un référentiel $R'$ en **translation** rectiligne accélérée ($\\vec a_{O'/R}\\neq\\vec 0$, $\\vec\\Omega=\\vec 0$), les forces d'inertie se réduisent à :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec F_{ie}=-m\\vec a_{O'/R}$ et $\\vec F_{ic}=\\vec 0$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec F_{ie}=\\vec 0$ et $\\vec F_{ic}\\neq\\vec 0$"
+         },
+         {
+          "id": "c",
+          "md": "aucune force d'inertie"
+         },
+         {
+          "id": "d",
+          "md": "$\\vec F_{ie}=m\\vec a_{O'/R}$"
+         }
+        ],
+        "answer": "a",
+        "explanation": "$\\vec\\Omega=\\vec 0$ annule Coriolis et les deux derniers termes de $\\vec a_e$ : il reste $-m\\vec a_{O'/R}$ (c'est la force qui « plaque » au siège dans une voiture qui accélère)."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "Si $R'$ est en mouvement de **rotation uniforme** autour de $(Oz)$ ($O$ fixe, $O'$ pas forcément confondu avec $O$ mais sur l'axe), et $H$ est la projection de $M$ sur l'axe :\n$$\\vec F_{ie}=m\\Omega^2\\,\\overrightarrow{HM},$$\n**force centrifuge**, dirigée de l'axe ($H$) vers $M$.",
+       "origin": "source",
+       "title": "Rq : rotation uniforme autour d'un axe fixe — force centrifuge"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch04-force-centrifuge.svg",
+       "alt": "Axe de rotation Oz avec le vecteur Ω ; le point M, sa projection H sur l'axe, et la force d'inertie d'entraînement F_ie dirigée de H vers M, vers l'extérieur.",
+       "caption": "Figure — rotation uniforme autour de $(Oz)$ : $\\vec F_{ie}=m\\Omega^2\\,\\overrightarrow{HM}$, force centrifuge.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "$\\vec a_{O'/R}=\\vec 0$ (point de l'axe fixe) et $\\dfrac{d\\vec\\Omega}{dt}=\\vec 0$ (rotation uniforme), donc $\\vec a_e=\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{O'M})$."
+        },
+        {
+         "md": "En écrivant $\\overrightarrow{O'M}=\\overrightarrow{O'H}+\\overrightarrow{HM}$ avec $\\overrightarrow{O'H}$ parallèle à $\\vec\\Omega$ : $\\vec\\Omega\\wedge(\\vec\\Omega\\wedge\\overrightarrow{HM})=-\\Omega^2\\,\\overrightarrow{HM}$ (car $\\overrightarrow{HM}\\perp\\vec\\Omega$)."
+        },
+        {
+         "md": "D'où $\\vec F_{ie}=-m\\vec a_e=m\\Omega^2\\,\\overrightarrow{HM}$."
+        }
+       ],
+       "origin": "added",
+       "title": "Justification (ajoutée)"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Un objet de $1$ kg posé à $2$ m de l'axe d'un plateau tournant à $\\Omega=3$ rad/s subit une force centrifuge de ___ N.",
+        "answerType": "number",
+        "accepted": [
+         "18"
+        ],
+        "explanation": "$m\\Omega^2HM=1\\times9\\times2=18$ N."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Les forces d'inertie sont des forces d'interaction entre $M$ et un autre corps.",
+       "answer": false,
+       "explanation": "Faux : elles n'ont pas de « source » matérielle ; leur origine est le caractère non galiléen du référentiel."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La force d'inertie de Coriolis vaut :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$-2m\\vec\\Omega\\wedge\\vec V_r$"
+        },
+        {
+         "id": "b",
+         "md": "$2m\\vec\\Omega\\wedge\\vec V_r$"
+        },
+        {
+         "id": "c",
+         "md": "$-m\\vec\\Omega\\wedge\\vec V_r$"
+        },
+        {
+         "id": "d",
+         "md": "$-m\\vec a_e$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\vec F_{ic}=-m\\vec a_c=-2m\\vec\\Omega\\wedge\\vec V_r$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La force centrifuge est dirigée de $M$ vers l'axe de rotation.",
+       "answer": false,
+       "explanation": "Faux : $\\vec F_{ie}=m\\Omega^2\\overrightarrow{HM}$ est dirigée de l'axe ($H$) vers $M$, elle « éloigne » de l'axe."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Si la vitesse de rotation $\\Omega$ double, la force centrifuge est multipliée par ___",
+       "answerType": "number",
+       "accepted": [
+        "4"
+       ],
+       "explanation": "$F_{ie}\\propto\\Omega^2$."
+      },
+      {
+       "kind": "ordering",
+       "prompt": "Remettez dans l'ordre l'obtention du PFD dans $R'$.",
+       "items": [
+        "PFD dans $R$ galiléen : $m\\vec a_{M/R}=\\sum\\vec F_i$",
+        "Composition : $\\vec a_{M/R}=\\vec a_{M/R'}+\\vec a_e+\\vec a_c$",
+        "$m\\vec a_{M/R'}=\\sum\\vec F_i-m\\vec a_e-m\\vec a_c$",
+        "On pose $\\vec F_{ie}=-m\\vec a_e$, $\\vec F_{ic}=-m\\vec a_c$"
+       ],
+       "explanation": "Démarche du cours."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque force d'inertie à son expression.",
+       "pairs": [
+        {
+         "left": "entraînement",
+         "right": "$-m\\vec a_e$"
+        },
+        {
+         "left": "Coriolis",
+         "right": "$-2m\\vec\\Omega\\wedge\\vec V_r$"
+        },
+        {
+         "left": "centrifuge (rotation uniforme)",
+         "right": "$m\\Omega^2\\overrightarrow{HM}$"
+        }
+       ],
+       "explanation": "Définitions du cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "equilibre-absolu-relatif",
+   "title": "Équilibre absolu et relatif",
+   "number": "II",
+   "lessons": [
+    {
+     "slug": "equilibre-absolu-et-relatif",
+     "title": "Équilibre absolu et équilibre relatif",
+     "number": "II",
+     "estimatedMinutes": 6,
+     "summary": "Conditions d'équilibre dans $R$ (absolu) et dans $R'$ (relatif) ; pourquoi la force de Coriolis n'intervient pas à l'équilibre relatif.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "II – Équilibre absolu et relatif",
+       "origin": "source"
+      },
+      {
+       "type": "definition",
+       "md": "$M$ est en équilibre **absolu** en $M_e$ si $\\vec V_{M/R}=\\vec 0$ et $\\vec a_{M/R}=\\vec 0$ :\n$$\\sum\\vec F_i=\\vec 0.$$",
+       "origin": "source",
+       "title": "Équilibre absolu"
+      },
+      {
+       "type": "definition",
+       "md": "$M$ est en équilibre **relatif** en $M_e$ si $\\vec V_{M/R'}=\\vec 0$ et $\\vec a_{M/R'}=\\vec 0$ :\n$$\\sum\\vec F_i+\\vec F_{ie}=\\vec 0,$$\ncar $\\vec F_{ic}=-2m\\vec\\Omega\\wedge\\vec V_r=\\vec 0$ puisque $\\vec V_{M/R'}=\\vec 0$.",
+       "origin": "source",
+       "title": "Équilibre relatif"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "À l'équilibre relatif, il faut tenir compte de la force de Coriolis.",
+        "answer": false,
+        "explanation": "Faux : $\\vec V_r=\\vec 0$ donc $\\vec F_{ic}=\\vec 0$. Seule la force d'inertie d'entraînement s'ajoute aux forces réelles."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "intuition",
+       "md": "Un passager immobile dans un manège est en équilibre **relatif** (immobile dans $R'$) mais pas absolu : dans $R$ il tourne. Dans $R'$, la réaction du siège équilibre son poids **et** la force centrifuge.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Un objet immobile sur un plateau tournant est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "en équilibre absolu"
+         },
+         {
+          "id": "b",
+          "md": "en équilibre relatif"
+         },
+         {
+          "id": "c",
+          "md": "en équilibre absolu et relatif"
+         },
+         {
+          "id": "d",
+          "md": "ni l'un ni l'autre"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Il est immobile dans $R'$ (plateau) mais décrit un cercle dans $R$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "mcq",
+       "prompt": "La condition d'équilibre relatif s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\sum\\vec F_i=\\vec 0$"
+        },
+        {
+         "id": "b",
+         "md": "$\\sum\\vec F_i+\\vec F_{ie}=\\vec 0$"
+        },
+        {
+         "id": "c",
+         "md": "$\\sum\\vec F_i+\\vec F_{ie}+\\vec F_{ic}=\\vec 0$ avec $\\vec F_{ic}\\neq\\vec 0$"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec F_{ie}=\\vec 0$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec F_{ic}$ est nulle à l'équilibre relatif."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "L'équilibre absolu correspond à $\\vec V_{M/R}=\\vec 0$ et $\\vec a_{M/R}=\\vec 0$.",
+       "answer": true,
+       "explanation": "Vrai : équilibre dans le référentiel galiléen $R$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Un point en équilibre relatif est forcément en équilibre absolu.",
+       "answer": false,
+       "explanation": "Faux : exemple du passager immobile dans un manège."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "À l'équilibre relatif, $\\vec V_r=\\vec 0$, donc $\\|\\vec F_{ic}\\|=$ ___",
+       "answerType": "number",
+       "accepted": [
+        "0"
+       ],
+       "explanation": "$\\vec F_{ic}=-2m\\vec\\Omega\\wedge\\vec 0=\\vec 0$."
+      },
+      {
+       "kind": "matching",
+       "prompt": "Associez chaque équilibre à sa condition sur les forces.",
+       "pairs": [
+        {
+         "left": "absolu",
+         "right": "$\\sum\\vec F_i=\\vec 0$"
+        },
+        {
+         "left": "relatif",
+         "right": "$\\sum\\vec F_i+\\vec F_{ie}=\\vec 0$"
+        }
+       ],
+       "explanation": "Cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "tmc-referentiel-non-galileen",
+   "title": "TMC dans un référentiel non galiléen",
+   "number": "III",
+   "lessons": [
+    {
+     "slug": "tmc-non-galileen",
+     "title": "TMC dans un référentiel non galiléen",
+     "number": "III",
+     "estimatedMinutes": 7,
+     "summary": "Le théorème du moment cinétique en $O'$ dans $R'$ non galiléen, avec les moments des forces d'inertie.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "III – TMC dans un référentiel non galiléen",
+       "origin": "source"
+      },
+      {
+       "type": "text",
+       "md": "Soit le TMC dans $R$ galiléen en $O$ : $\\;\\left.\\dfrac{d\\vec L_O}{dt}\\right|_R=\\sum\\vec{\\mathcal M}_O(\\vec F_i)$.\n\n⚠ Cherchons l'expression du TMC dans $R'$ non galiléen.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "On a $\\vec L_{O'}=\\overrightarrow{O'M}\\wedge m\\vec V_{M/R'}$."
+        },
+        {
+         "md": "$\\Rightarrow \\left.\\dfrac{d\\vec L_{O'}}{dt}\\right|_{R'}=\\underbrace{\\vec V_{M/R'}\\wedge m\\vec V_{M/R'}}_{=\\vec 0}+\\overrightarrow{O'M}\\wedge m\\vec a_{M/R'}$",
+         "why": "$O'$ est fixe dans $R'$, donc $\\left.\\frac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}=\\vec V_{M/R'}$."
+        },
+        {
+         "md": "$\\Rightarrow \\left.\\dfrac{d\\vec L_{O'}}{dt}\\right|_{R'}=\\overrightarrow{O'M}\\wedge\\left(\\sum\\vec F_i+\\vec F_{ie}+\\vec F_{ic}\\right)$",
+         "why": "PFD dans $R'$ non galiléen."
+        },
+        {
+         "md": "$=\\sum(\\overrightarrow{O'M}\\wedge\\vec F_i)+\\overrightarrow{O'M}\\wedge\\vec F_{ie}+\\overrightarrow{O'M}\\wedge\\vec F_{ic}=\\sum\\vec{\\mathcal M}_{O'}(\\vec F_i)+\\vec{\\mathcal M}_{O'}(\\vec F_{ie})+\\vec{\\mathcal M}_{O'}(\\vec F_{ic})$."
+        }
+       ],
+       "origin": "source",
+       "title": "Démonstration"
+      },
+      {
+       "type": "theorem",
+       "kind": "theoreme",
+       "md": "$$\\left.\\dfrac{d\\vec L_{O'}}{dt}\\right|_{R'}=\\sum_i\\vec{\\mathcal M}_{O'}(\\vec F_i)+\\vec{\\mathcal M}_{O'}(\\vec F_{ie})+\\vec{\\mathcal M}_{O'}(\\vec F_{ic}).$$",
+       "origin": "source",
+       "title": "TMC en $O'$ dans $R'$ non galiléen"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Par rapport au TMC galiléen, le TMC dans $R'$ non galiléen contient en plus :",
+        "options": [
+         {
+          "id": "a",
+          "md": "le moment du poids"
+         },
+         {
+          "id": "b",
+          "md": "les moments des forces d'inertie d'entraînement et de Coriolis"
+         },
+         {
+          "id": "c",
+          "md": "le terme $\\vec V_A\\wedge m\\vec V$"
+         },
+         {
+          "id": "d",
+          "md": "rien de plus"
+         }
+        ],
+        "answer": "b",
+        "explanation": "On ajoute les moments de $\\vec F_{ie}$ et de $\\vec F_{ic}$, exactement comme on ajoute ces forces au PFD."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$M$ est en équilibre en $M_e$ dans $R'$ $\\Rightarrow$ $\\sum\\vec{\\mathcal M}_{O'}(\\vec F_i)+\\vec{\\mathcal M}_{O'}(\\vec F_{ie})=\\vec 0$.",
+       "origin": "source",
+       "title": "Équilibre dans $R'$"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "À l'équilibre dans $R'$, le moment de la force de Coriolis n'intervient pas.",
+        "answer": true,
+        "explanation": "Vrai : $\\vec V_r=\\vec 0$ donc $\\vec F_{ic}=\\vec 0$ et son moment aussi."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans la démonstration, $\\vec V_{M/R'}\\wedge m\\vec V_{M/R'}=\\vec 0$.",
+       "answer": true,
+       "explanation": "Vrai : produit vectoriel de deux vecteurs colinéaires."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le moment cinétique en $O'$ dans $R'$ est :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\overrightarrow{O'M}\\wedge m\\vec V_{M/R}$"
+        },
+        {
+         "id": "b",
+         "md": "$\\overrightarrow{O'M}\\wedge m\\vec V_{M/R'}$"
+        },
+        {
+         "id": "c",
+         "md": "$\\overrightarrow{OM}\\wedge m\\vec V_{M/R'}$"
+        },
+        {
+         "id": "d",
+         "md": "$m\\vec V_{M/R'}\\wedge\\overrightarrow{O'M}$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Tout est calculé dans $R'$ : position par rapport à $O'$ et vitesse relative."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Combien de types de moments apparaissent au second membre du TMC dans $R'$ (forces réelles, entraînement, Coriolis) ? ___",
+       "answerType": "number",
+       "accepted": [
+        "3"
+       ],
+       "explanation": "$\\sum\\vec{\\mathcal M}_{O'}(\\vec F_i)$, $\\vec{\\mathcal M}_{O'}(\\vec F_{ie})$ et $\\vec{\\mathcal M}_{O'}(\\vec F_{ic})$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Le TMC dans $R'$ s'obtient en appliquant le PFD dans $R'$ (avec les forces d'inertie).",
+       "answer": true,
+       "explanation": "Vrai : c'est l'étape clé de la démonstration."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Condition d'équilibre (en moments) dans $R'$ :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$\\sum\\vec{\\mathcal M}_{O'}(\\vec F_i)=\\vec 0$"
+        },
+        {
+         "id": "b",
+         "md": "$\\sum\\vec{\\mathcal M}_{O'}(\\vec F_i)+\\vec{\\mathcal M}_{O'}(\\vec F_{ie})=\\vec 0$"
+        },
+        {
+         "id": "c",
+         "md": "$\\vec{\\mathcal M}_{O'}(\\vec F_{ic})=\\vec 0$ seulement"
+        },
+        {
+         "id": "d",
+         "md": "$\\vec L_{O'}=\\vec 0$ seulement"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Cours."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "applications-non-galileen",
+   "title": "Applications",
+   "number": "IV",
+   "lessons": [
+    {
+     "slug": "ressort-en-rotation-equation",
+     "title": "Application : ressort en rotation (mise en équation)",
+     "number": "IV.1",
+     "estimatedMinutes": 11,
+     "summary": "Un point lié à un ressort sur un axe horizontal en rotation uniforme : bilan des forces dans $R'$ et équation $\\ddot x'+(\\omega_0^2-\\omega^2)x'=\\omega_0^2l_0$.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "IV – Applications",
+       "origin": "source"
+      },
+      {
+       "type": "heading",
+       "text": "1) Ressort en rotation",
+       "origin": "source"
+      },
+      {
+       "type": "exercise",
+       "md": "Soit un point $M(m)$ lié élastiquement (ressort de raideur $K$, longueur à vide $l_0$) au point $O$, sur l'axe $(Ox')$, en **rotation uniforme** autour de $(Oz)$ : $\\theta=\\omega t$. ⚠ Le plan $(xOy)$ est horizontal, $z$ orienté vers le haut ; $l_f=OM=x'$.\n1) Exprimer $\\vec\\Omega_{R'/R}$.\n2) En l'absence de frottement, exprimer $x'(t)$ sachant que $x'(0)=l_0$ et $\\dot x'(0)=0$.\n3) Déterminer les composantes de $\\vec R$ : $(R_{y'},R_{z'})$.",
+       "origin": "source",
+       "title": "Énoncé"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch04-ressort-rotation.svg",
+       "alt": "Vue de dessus du plan horizontal : axes fixes x, y, axes x', y' tournés de θ = ωt ; un ressort le long de Ox' relie O au point M, avec OM = x'.",
+       "caption": "Figure — ressort horizontal lié à $(Ox')$, en rotation uniforme autour de $(Oz)$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "1) $\\vec\\Omega_{R'/R}=\\dot\\theta\\,\\vec e_z=\\omega\\,\\vec e_z$."
+        },
+        {
+         "md": "2) PFD dans $R'$ non galiléen appliqué à $M$ : $m\\vec a_{M/R'}=\\vec P+\\vec F_r+\\vec R+\\vec F_{ie}+\\vec F_{ic}$."
+        },
+        {
+         "md": "Poids : $\\vec P=-mg\\,\\vec e_z$."
+        },
+        {
+         "md": "Force de rappel : $\\vec F_r=-K(l_f-l_0)\\,\\vec e_{x'}=-K(x'-l_0)\\,\\vec e_{x'}$."
+        },
+        {
+         "md": "Réaction de $(Ox')$ : $\\vec R\\perp\\vec V_r=\\dot x'\\,\\vec e_{x'}$ (absence de frottement), donc $\\vec R=R_{y'}\\vec e_{y'}+R_{z'}\\vec e_{z'}$."
+        },
+        {
+         "md": "Force d'inertie d'entraînement : $\\vec F_{ie}=-m\\vec a_e=m\\Omega^2\\overrightarrow{HM}$ (Rq), soit $\\vec F_{ie}=m\\omega^2x'\\,\\vec e_{x'}$.",
+         "why": "Ici $H=O$ et $\\overrightarrow{HM}=x'\\vec e_{x'}$."
+        },
+        {
+         "md": "Force d'inertie de Coriolis : $\\vec F_{ic}=-m\\vec a_c=-2m\\vec\\Omega_{R'/R}\\wedge\\vec V_{M/R'}=-2m\\omega\\,\\vec e_z\\wedge\\dot x'\\,\\vec e_{x'}=-2m\\omega\\dot x'\\,\\vec e_{y'}$.",
+         "why": "La source écrit ω² ici ; c'est bien ω (vérifié à la question 3)."
+        }
+       ],
+       "origin": "source",
+       "title": "Réponses 1 et 2 (début)"
+      },
+      {
+       "type": "simulation",
+       "scene": "rotating-rod",
+       "caption": "Même situation sans ressort : fais tourner la tige et observe l'entraînement (vers l'extérieur) et la force de Coriolis, perpendiculaire à la tige.",
+       "origin": "added"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Dans quelle direction agit la force de Coriolis sur $M$ ?",
+        "options": [
+         {
+          "id": "a",
+          "md": "$\\vec e_{x'}$"
+         },
+         {
+          "id": "b",
+          "md": "$\\vec e_{y'}$"
+         },
+         {
+          "id": "c",
+          "md": "$\\vec e_z$"
+         },
+         {
+          "id": "d",
+          "md": "elle est nulle"
+         }
+        ],
+        "answer": "b",
+        "explanation": "$\\vec e_z\\wedge\\vec e_{x'}=\\vec e_{y'}$ : elle est perpendiculaire à la tige, dans le plan horizontal ; c'est la réaction $R_{y'}$ qui la compense."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "⚠ Projection du PFD sur $\\vec e_{x'}$ : $m\\ddot x'=0-K(x'-l_0)+0+m\\omega^2x'+0$."
+        },
+        {
+         "md": "$m\\ddot x'=-(K-m\\omega^2)\\,x'+Kl_0$.",
+         "why": "La source écrit « −K(x' − mω²) + Kl₀ » ; la forme correcte est −(K − mω²)x' + Kl₀, confirmée par la forme canonique."
+        },
+        {
+         "md": "Forme canonique : $\\ddot x'+\\left(\\dfrac Km-\\omega^2\\right)x'=\\dfrac Km\\,l_0$. On pose $\\omega_0^2=\\dfrac Km$."
+        },
+        {
+         "md": "Alors $\\ddot x'+(\\omega_0^2-\\omega^2)\\,x'=\\omega_0^2\\,l_0$."
+        }
+       ],
+       "origin": "source",
+       "title": "Équation du mouvement"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Avec $K=50$ N/m et $m=0{,}5$ kg, $\\omega_0^2=$ ___ rad²/s².",
+        "answerType": "number",
+        "accepted": [
+         "100"
+        ],
+        "explanation": "$\\omega_0^2=K/m=100$."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "Dans $R'$, la force centrifuge sur $M$ vaut $m\\omega^2x'\\,\\vec e_{x'}$.",
+       "answer": true,
+       "explanation": "Vrai : $H=O$ et $\\overrightarrow{HM}=x'\\vec e_{x'}$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La force de rappel du ressort s'écrit :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$-K(x'-l_0)\\vec e_{x'}$"
+        },
+        {
+         "id": "b",
+         "md": "$-Kx'\\vec e_{x'}$"
+        },
+        {
+         "id": "c",
+         "md": "$K(x'-l_0)\\vec e_{x'}$"
+        },
+        {
+         "id": "d",
+         "md": "$-K l_0\\vec e_{x'}$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "Elle est proportionnelle à l'allongement $x'-l_0$ et s'y oppose."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "La réaction de la tige a une composante selon $\\vec e_{x'}$.",
+       "answer": false,
+       "explanation": "Faux : sans frottement, $\\vec R\\perp\\vec V_r=\\dot x'\\vec e_{x'}$, donc $R_{x'}=0$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Dans l'équation $\\ddot x'+(\\omega_0^2-\\omega^2)x'=\\omega_0^2l_0$, si $\\omega_0=10$ rad/s et $\\omega=6$ rad/s, le coefficient de $x'$ vaut ___",
+       "answerType": "number",
+       "accepted": [
+        "64"
+       ],
+       "explanation": "$100-36=64$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Quelles forces ont une composante non nulle selon $\\vec e_{x'}$ ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "poids et réaction"
+        },
+        {
+         "id": "b",
+         "md": "force de rappel et force centrifuge"
+        },
+        {
+         "id": "c",
+         "md": "Coriolis et poids"
+        },
+        {
+         "id": "d",
+         "md": "toutes"
+        }
+       ],
+       "answer": "b",
+       "explanation": "Le poids est selon $\\vec e_z$, la réaction et Coriolis sont perpendiculaires à $\\vec e_{x'}$."
+      }
+     ]
+    },
+    {
+     "slug": "ressort-en-rotation-solution",
+     "title": "Application : ressort en rotation (solution et réaction)",
+     "number": "IV.1",
+     "estimatedMinutes": 11,
+     "summary": "Rappel sur les équations différentielles avec second membre, solution $x'(t)$ avec les conditions initiales et composantes de la réaction.",
+     "blocks": [
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$a\\ddot x+b\\dot x+cx=f(t)\\qquad(\\ast)$$\nest une équation différentielle avec second membre (S.M.) $f(t)$. Sa solution est $x(t)=x_h+x_p$ :\n- $x_h$ : solution homogène de $a\\ddot x+b\\dot x+cx=0$ (E.S.S.M. ou équation homogène) ;\n- $x_p$ : solution particulière de l'équation complète $(\\ast)$.\n⚠ $x_p$ est toujours **du même type que le S.M.** $f(t)$ : si $f(t)=C^{te}=a$, alors $x_p=C^{te}=b$ ; si $f(t)=A\\sin(\\omega t+\\alpha)$, alors $x_p=B\\sin(\\omega t+\\beta)$.",
+       "origin": "source",
+       "title": "Rappel : équation différentielle avec second membre"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "mcq",
+        "prompt": "Pour $\\ddot x+4x=8$, la solution particulière est :",
+        "options": [
+         {
+          "id": "a",
+          "md": "$x_p=8$"
+         },
+         {
+          "id": "b",
+          "md": "$x_p=2$"
+         },
+         {
+          "id": "c",
+          "md": "$x_p=2\\cos 2t$"
+         },
+         {
+          "id": "d",
+          "md": "$x_p=0$"
+         }
+        ],
+        "answer": "b",
+        "explanation": "Le S.M. est constant, donc $x_p=C^{te}$ : $4x_p=8\\Rightarrow x_p=2$."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "text",
+       "md": "On pose $\\eta^2=\\omega_0^2-\\omega^2>0$ $\\Rightarrow$ $\\ddot x'+\\eta^2x'=\\omega_0^2l_0\\quad(\\ast)$.\n\n- $x'_h$ : solution de l'équation sans second membre $\\ddot x'+\\eta^2x'=0$, soit $x'_h=X'_m\\cos(\\eta t+\\varphi)$.\n- ⚠ Ici le S.M. est une constante $\\Rightarrow$ $x'_p=C^{te}$, qu'on remplace dans l'équation : $\\ddot x'_p+\\eta^2x'_p=\\omega_0^2l_0\\Rightarrow x'_p=\\dfrac{\\omega_0^2}{\\eta^2}l_0$.\n\n$$\\Rightarrow\\; x'(t)=X'_m\\cos(\\eta t+\\varphi)+\\frac{\\omega_0^2}{\\eta^2}\\,l_0.$$ On détermine $X'_m$ et $\\varphi$ par les C.I. pour $x'$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "À $t=0$ : $x'(0)=l_0=X'_m\\cos\\varphi+\\dfrac{\\omega_0^2}{\\eta^2}l_0\\quad(1)$ et $\\dot x'(0)=0=-\\eta X'_m\\sin\\varphi\\quad(2)$."
+        },
+        {
+         "md": "$(2)\\Rightarrow\\sin\\varphi=0$, $\\varphi=k\\pi$. $(1)\\Rightarrow l_0\\left(1-\\dfrac{\\omega_0^2}{\\eta^2}\\right)=X'_m\\cos\\varphi$, avec $X'_m>0$."
+        },
+        {
+         "md": "Signe : $1-\\dfrac{\\omega_0^2}{\\eta^2}=\\dfrac{\\eta^2-\\omega_0^2}{\\eta^2}=-\\dfrac{\\omega^2}{\\eta^2}<0$."
+        },
+        {
+         "md": "Alors $\\cos\\varphi=-1$, $\\varphi=\\pi$, et $X'_m=\\left(\\dfrac{\\omega_0^2}{\\eta^2}-1\\right)l_0$.",
+         "why": "La source écrit « cos φ = 1 » ; avec φ = π et un terme négatif, c'est cos φ = −1."
+        },
+        {
+         "md": "Finalement $x'(t)=\\left(\\dfrac{\\omega_0^2}{\\eta^2}-1\\right)l_0\\cos(\\eta t+\\pi)+\\dfrac{\\omega_0^2}{\\eta^2}l_0$."
+        }
+       ],
+       "origin": "source",
+       "title": "Conditions initiales"
+      },
+      {
+       "type": "theorem",
+       "kind": "propriete",
+       "md": "$$x'(t)=\\left(1-\\frac{\\omega_0^2}{\\eta^2}\\right)l_0\\cos(\\eta t)+\\frac{\\omega_0^2}{\\eta^2}\\,l_0.$$",
+       "origin": "source",
+       "title": "Solution"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Avec $\\omega_0^2=100$ et $\\omega^2=36$ (S.I.), $\\eta=$ ___ rad/s.",
+        "answerType": "number",
+        "accepted": [
+         "8"
+        ],
+        "explanation": "$\\eta^2=100-36=64\\Rightarrow\\eta=8$ rad/s."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "3) On a $\\vec R=R_{y'}\\vec e_{y'}+R_{z'}\\vec e_{z'}$, sachant que $R_{x'}=0$ (absence de frottement sur $Ox'$). Pour déterminer $R_{y'}$ et $R_{z'}$, il suffit de projeter le PFD sur $\\vec e_{y'}$ et $\\vec e_{z'}$ :"
+        },
+        {
+         "md": "$\\vec e_{y'}$ : $0=0+0+R_{y'}+0-2m\\omega\\dot x'\\Rightarrow R_{y'}=2m\\omega\\dot x'$, soit $R_{y'}=-2m\\omega\\left(1-\\dfrac{\\omega_0^2}{\\eta^2}\\right)\\eta\\,l_0\\sin(\\eta t)$."
+        },
+        {
+         "md": "$\\vec e_{z'}$ : $0=-mg+0+R_{z'}+0+0\\Rightarrow R_{z'}=mg$."
+        }
+       ],
+       "origin": "source",
+       "title": "Réponse 3"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "La composante verticale de la réaction compense exactement le poids.",
+        "answer": true,
+        "explanation": "Vrai : $R_{z'}=mg$, car le mouvement relatif est horizontal (selon $\\vec e_{x'}$)."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "La solution particulière d'une équation à second membre constant est une constante.",
+       "answer": true,
+       "explanation": "Vrai : $x_p$ est du même type que le second membre."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Avec $\\omega_0^2=100$, $\\eta^2=64$ et $l_0=0{,}2$ m, la position moyenne $x'_p=\\dfrac{\\omega_0^2}{\\eta^2}l_0=$ ___ m.",
+       "answerType": "number",
+       "accepted": [
+        "0.3125"
+       ],
+       "explanation": "$\\frac{100}{64}\\times0{,}2=0{,}3125$ m : le ressort est allongé en moyenne par la rotation."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Pourquoi $\\varphi=\\pi$ et non $0$ ?",
+       "options": [
+        {
+         "id": "a",
+         "md": "parce que $1-\\omega_0^2/\\eta^2<0$ et $X'_m>0$"
+        },
+        {
+         "id": "b",
+         "md": "parce que $\\dot x'(0)=0$"
+        },
+        {
+         "id": "c",
+         "md": "parce que $\\eta>0$"
+        },
+        {
+         "id": "d",
+         "md": "par convention"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\sin\\varphi=0$ laisse $\\varphi\\in\\{0,\\pi\\}$ ; le signe négatif impose $\\cos\\varphi=-1$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "L'hypothèse $\\eta^2=\\omega_0^2-\\omega^2>0$ correspond à une rotation lente devant la pulsation propre du ressort.",
+       "answer": true,
+       "explanation": "Vrai : $\\omega<\\omega_0$. Sinon la solution n'est plus sinusoïdale (le point s'éloigne)."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La composante $R_{y'}$ de la réaction équilibre :",
+       "options": [
+        {
+         "id": "a",
+         "md": "le poids"
+        },
+        {
+         "id": "b",
+         "md": "la force centrifuge"
+        },
+        {
+         "id": "c",
+         "md": "la force de Coriolis"
+        },
+        {
+         "id": "d",
+         "md": "la force de rappel"
+        }
+       ],
+       "answer": "c",
+       "explanation": "Projection sur $\\vec e_{y'}$ : $R_{y'}-2m\\omega\\dot x'=0$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "$R_{z'}$ pour $m=0{,}5$ kg et $g=10$ m/s² vaut ___ N.",
+       "answerType": "number",
+       "accepted": [
+        "5"
+       ],
+       "explanation": "$R_{z'}=mg=5$ N."
+      }
+     ]
+    },
+    {
+     "slug": "anneau-sur-cercle-en-rotation",
+     "title": "Application : point sur un cercle en rotation",
+     "number": "IV.2",
+     "estimatedMinutes": 8,
+     "summary": "Bilan des forces sur un point mobile sans frottement sur un cercle tournant autour d'un diamètre vertical : poids, réaction, force centrifuge et force de Coriolis.",
+     "blocks": [
+      {
+       "type": "heading",
+       "text": "2) Point sur un cercle en rotation",
+       "origin": "source"
+      },
+      {
+       "type": "remark",
+       "md": "La source renvoie aussi à « EX 6 : D.M » et « EX 2 : Série 5 » (exercices de TD/devoir, non traités ici).",
+       "origin": "source"
+      },
+      {
+       "type": "exercise",
+       "md": "Un cercle $(C)$ de centre $O$ et de rayon $r$ (lié à $R'$, $C\\equiv R'$) tourne autour de son diamètre vertical $(Ox)$ ($Ox$ vers le bas, $\\vec g$ selon $\\vec e_x$) avec $\\vec\\Omega_{R'/R}=\\omega\\,\\vec e_x$. Un point $M(m)$ glisse sans frottement sur $(C)$ ; il est repéré par l'angle $\\theta=(\\vec e_x,\\overrightarrow{OM})$, $H$ est sa projection sur l'axe, et on utilise la base polaire $(\\vec e_r,\\vec e_\\theta)$ du plan du cercle, $\\vec e_z$ étant perpendiculaire à ce plan.\n1) Faire le bilan des forces dans $R'$.",
+       "origin": "source",
+       "title": "Énoncé"
+      },
+      {
+       "type": "figure",
+       "src": "/figures/mecanique-du-point/ch04-cercle-rotation.svg",
+       "alt": "Cercle vertical de centre O et de rayon r tournant autour de son diamètre vertical Ox (vers le bas) ; M repéré par θ depuis Ox, H sa projection sur l'axe, base (e_r, e_θ), poids P et force d'inertie d'entraînement F_ie horizontale vers l'extérieur.",
+       "caption": "Figure — cercle tournant autour de son diamètre vertical : $\\vec F_{ie}=m\\omega^2\\,\\overrightarrow{HM}$.",
+       "origin": "source"
+      },
+      {
+       "type": "proof",
+       "steps": [
+        {
+         "md": "Poids : $\\vec P=mg\\,\\vec e_x=mg(\\cos\\theta\\,\\vec e_r-\\sin\\theta\\,\\vec e_\\theta)$."
+        },
+        {
+         "md": "Réaction de $(C)$ : $\\vec R\\perp\\vec V$ (pas de frottements)."
+        },
+        {
+         "md": "$R'$ étant non galiléen : $\\vec F_{ie}=-m\\vec a_e$ (déf) $=+m\\Omega^2\\,\\overrightarrow{HM}$ (Remarque) $=m\\omega^2r\\sin\\theta\\,\\vec e_y$.",
+         "why": "La source écrit « mω² sin θ e_y » ; avec HM = r sin θ, le facteur r manque."
+        },
+        {
+         "md": "$\\vec F_{ic}=-m\\vec a_c=-2m\\vec\\Omega\\wedge\\vec V_r=-2m\\omega\\,\\vec e_x\\wedge(r\\dot\\theta\\,\\vec e_\\theta)$."
+        },
+        {
+         "md": "$=-2m\\omega r\\dot\\theta\\sin\\!\\left(\\dfrac\\pi2+\\theta\\right)\\vec e_z=-2m\\omega r\\dot\\theta\\cos\\theta\\,\\vec e_z$.",
+         "why": "L'angle entre $\\vec e_x$ et $\\vec e_\\theta$ vaut $\\frac\\pi2+\\theta$."
+        }
+       ],
+       "origin": "source",
+       "title": "Réponse 1"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "fill_blank",
+        "prompt": "Pour $m=0{,}1$ kg, $\\omega=10$ rad/s, $r=0{,}2$ m et $\\theta=\\pi/2$, la force centrifuge vaut ___ N.",
+        "answerType": "number",
+        "accepted": [
+         "2"
+        ],
+        "explanation": "$m\\omega^2r\\sin\\theta=0{,}1\\times100\\times0{,}2\\times1=2$ N."
+       },
+       "origin": "added"
+      },
+      {
+       "type": "remark",
+       "md": "La source s'arrête ici (fin du cours, p. 39) : l'exercice n'est pas poursuivi au-delà du calcul de $\\vec F_{ic}$.",
+       "origin": "source"
+      },
+      {
+       "type": "checkpoint",
+       "question": {
+        "kind": "true_false",
+        "prompt": "La force de Coriolis sur $M$ est perpendiculaire au plan du cercle.",
+        "answer": true,
+        "explanation": "Vrai : elle est selon $\\vec e_z$ ; c'est la réaction (composante hors du plan) qui la compense."
+       },
+       "origin": "added"
+      }
+     ],
+     "quiz": [
+      {
+       "kind": "true_false",
+       "prompt": "En $\\theta=0$ (point en bas, sur l'axe), la force centrifuge est nulle.",
+       "answer": true,
+       "explanation": "Vrai : $HM=r\\sin0=0$, le point est sur l'axe de rotation."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "La force centrifuge sur $M$ est dirigée :",
+       "options": [
+        {
+         "id": "a",
+         "md": "selon $\\vec e_x$"
+        },
+        {
+         "id": "b",
+         "md": "selon $\\vec e_y$, en s'éloignant de l'axe"
+        },
+        {
+         "id": "c",
+         "md": "selon $\\vec e_z$"
+        },
+        {
+         "id": "d",
+         "md": "vers le centre $O$"
+        }
+       ],
+       "answer": "b",
+       "explanation": "$\\vec F_{ie}=m\\omega^2\\overrightarrow{HM}$, avec $\\overrightarrow{HM}=r\\sin\\theta\\,\\vec e_y$."
+      },
+      {
+       "kind": "fill_blank",
+       "prompt": "Pour $\\theta=\\pi/3$, $\\cos\\theta=$ ___ (valeur décimale) apparaît dans $\\vec F_{ic}=-2m\\omega r\\dot\\theta\\cos\\theta\\,\\vec e_z$.",
+       "answerType": "number",
+       "accepted": [
+        "0.5",
+        "1/2"
+       ],
+       "explanation": "$\\cos\\frac\\pi3=0{,}5$."
+      },
+      {
+       "kind": "true_false",
+       "prompt": "Si le point est immobile sur le cercle ($\\dot\\theta=0$), la force de Coriolis est nulle.",
+       "answer": true,
+       "explanation": "Vrai : $\\vec V_r=r\\dot\\theta\\vec e_\\theta=\\vec 0$."
+      },
+      {
+       "kind": "mcq",
+       "prompt": "Le poids dans la base polaire s'écrit ($Ox$ vertical descendant) :",
+       "options": [
+        {
+         "id": "a",
+         "md": "$mg(\\cos\\theta\\vec e_r-\\sin\\theta\\vec e_\\theta)$"
+        },
+        {
+         "id": "b",
+         "md": "$-mg\\,\\vec e_r$"
+        },
+        {
+         "id": "c",
+         "md": "$mg(\\sin\\theta\\vec e_r+\\cos\\theta\\vec e_\\theta)$"
+        },
+        {
+         "id": "d",
+         "md": "$mg\\,\\vec e_y$"
+        }
+       ],
+       "answer": "a",
+       "explanation": "$\\vec e_x=\\cos\\theta\\vec e_r-\\sin\\theta\\vec e_\\theta$."
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "reviewNotes": [
+  "Source de référence : notes de cours ENSA Agadir (« Méca Cours », mp/cours/Méca Cours (1).pdf, p. 34–39), via la copie nettoyée Modules/Mecanique du point/Cours/Chapitre 04 (pages 1–5). Le cours manuscrit s'arrête là.",
+  "Numérotation : la source numérote deux parties « II » (équilibre, puis TMC) ; la partie TMC est renumérotée III (la partie IV Applications garde son numéro).",
+  "Déplacement : la remarque « si R' est en rotation uniforme autour de (Oz), F_ie = mΩ² HM (force centrifuge) » est écrite dans la source en haut de la p. 35, juste avant le TMC ; elle est placée dans la leçon I (forces d'inertie), où elle est utilisée. Sa justification (a_e = Ω∧(Ω∧HM) = −Ω² HM) est ajoutée.",
+  "Note en marge de la source p. 37 « V_O'/R = d OO'/dt |_R » : simple rappel de définition, non repris.",
+  "§IV.1 : « F_ie = −mΩ² … » de signe peu lisible : la Remarque donne +mΩ² HM, cohérent avec le résultat mω² x' e_x'. Retenu : F_ie = mω² x' e_x'.",
+  "§IV.1 : « F_ic = −2mω² ẋ' e_y' » corrigé en −2mω ẋ' e_y' (la ligne précédente et la question 3 utilisent ω).",
+  "§IV.1 : « m ẍ' = −K(x' − mω²) + Kl₀ » corrigé en −(K − mω²)x' + Kl₀, comme le confirme la forme canonique.",
+  "§IV.1 rappel : la source écrit le second membre « f(x) » ; corrigé en f(t).",
+  "§IV.1 conditions initiales : « cos φ = 1 » corrigé en cos φ = −1 (φ = π).",
+  "§IV.2 : « F_ie = mω² sin θ e_y » corrigé en mω² r sin θ e_y (HM = r sin θ). La fin de la p. 39 est un scan très pâle mais lisible. L'exercice s'arrête dans la source après le calcul de F_ic (pas de suite inventée).",
+  "§IV.2 : le titre « Point sur un cercle en rotation » et la description de l'énoncé sont reconstitués à partir de la figure (cercle C ≡ R', axe Ox vertical descendant, Ω = ω e_x) ; la source renvoie à « EX 6 : D.M » et « EX 2 : Série 5 ».",
+  "Les chapitres « Énergie mécanique et oscillateurs » et « Forces centrales et lois de Kepler » présents dans Modules/ (Chapitres 05–06) ne font pas partie des notes ENSA Agadir (ce sont des fiches illustrées d'une autre source, numérotées 8.x et 12.x) : non intégrés."
+ ]
+}

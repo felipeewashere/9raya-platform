@@ -1,0 +1,3002 @@
+{
+  "slug": "theoreme-de-gauss",
+  "number": 5,
+  "title": "Flux électrique et théorème de Gauss",
+  "description": "Surface orientée et vecteur surface élémentaire, flux d'un champ vectoriel et du champ électrique, théorème de Gauss (forme intégrale), exploitation par symétrie (sphérique, cylindrique, plane), condition de passage à travers une surface chargée, forme locale div E = ρ/ε₀ et méthode de résolution.",
+  "sourcePdf": "Bibliotheque_sources/Electrostatique/Cours/Documents generaux/F337 - COURS-5 ELECTROSTATIQUE.pdf",
+  "sections": [
+    {
+      "slug": "flux-electrique",
+      "title": "Flux électrique",
+      "number": "5.1–5.4",
+      "lessons": [
+        {
+          "slug": "introduction-surface-orientee",
+          "title": "Introduction et surface orientée",
+          "number": "5.1–5.2",
+          "estimatedMinutes": 8,
+          "summary": "Pourquoi introduire le flux électrique, puis comment orienter une surface : vecteur surface élémentaire $d\\vec S=\\vec n\\,dS$ et convention pour une surface fermée.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.1 Introduction",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Au chapitre 3, le champ électrostatique $\\vec E$ a été déterminé directement à partir de la loi de Coulomb et du principe de superposition. Cette démarche est générale, mais elle peut devenir lourde lorsqu'une distribution comporte un très grand nombre de charges ou une distribution continue.\n\nLe chapitre 4 a ensuite montré qu'il est parfois avantageux de remplacer une description vectorielle directe par une grandeur scalaire, le potentiel $V$. Une autre simplification fondamentale apparaît lorsqu'une distribution de charges possède une forte symétrie : le **théorème de Gauss** permet alors de déterminer le champ électrique sans sommer explicitement toutes les contributions élémentaires.\n\nL'idée centrale est de mesurer la manière dont le champ électrique *traverse une surface*. Cette mesure conduit à la notion de **flux électrique**. Pour une surface fermée, le flux total est directement relié à la charge enfermée.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de ce chapitre, l'étudiant devra être capable de :\n- définir une surface orientée et le vecteur surface élémentaire $d\\vec S$ ;\n- calculer le flux d'un champ vectoriel à travers une surface ;\n- distinguer le flux à travers une surface ouverte du flux à travers une surface fermée ;\n- énoncer et interpréter le théorème de Gauss ;\n- identifier les symétries permettant d'exploiter efficacement ce théorème ;\n- choisir une surface de Gauss adaptée à une distribution donnée ;\n- déterminer le champ créé par une distribution à symétrie sphérique, cylindrique ou plane ;\n- relier la forme intégrale du théorème de Gauss à sa forme locale ;\n- contrôler les unités, les signes, les limites et la continuité d'un résultat.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Prérequis.** Ce chapitre utilise la notion de champ électrostatique, la loi de Coulomb, le principe de superposition et les distributions continues de charges étudiés au chapitre 3. Il mobilise également le produit scalaire, les intégrales et la divergence introduits dans le chapitre de calcul vectoriel.",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "Les lignes de champ constituent une représentation graphique du champ électrique ; leur nombre dépend du dessin choisi et ne possède pas, à lui seul, de signification physique. Le flux électrique donne une définition quantitative : il additionne, sur toute la surface, la **composante normale** du champ. Un champ tangent à la surface ne contribue donc pas au flux, tandis qu'un champ normal y contribue au maximum.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Un champ électrique **tangent** à une surface en chaque point donne un flux nul à travers cette surface.",
+                "answer": true,
+                "explanation": "Vrai : le flux additionne la **composante normale** du champ. Un champ tangent n'a pas de composante normale, il ne « traverse » pas la surface."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.2 Surface orientée et élément de surface",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Avant de définir un flux, il faut associer à chaque élément de surface une orientation.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.2.1 Élément de surface",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons une petite portion de surface d'aire $dS$. On lui associe un vecteur normal unitaire $\\vec n$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Vecteur surface élémentaire",
+              "md": "Le **vecteur surface élémentaire** est défini par\n$$d\\vec S=\\vec n\\,dS.$$\nSa norme vaut $dS$ et sa direction est normale à la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-element-surface.svg",
+              "alt": "Élément de surface dS d'une surface S et son vecteur normal dS = n dS",
+              "caption": "Figure 5.1 — Un élément de surface $dS$ d'une surface $\\mathcal S$ est associé à un vecteur normal $d\\vec S=\\vec n\\,dS$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure montre que $dS$ est une grandeur scalaire positive, tandis que $d\\vec S$ contient en plus l'information d'orientation.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.2.2 Convention d'orientation des surfaces",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une surface ouverte, deux orientations sont possibles. Le choix doit être annoncé et conservé dans tout le calcul.\n\nPour une surface fermée, la convention est unique.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Propriété (orientation d'une surface fermée)",
+              "md": "Pour une surface fermée $\\Sigma$, le vecteur $d\\vec S$ est, par convention, orienté vers l'**extérieur** du volume délimité par la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-surface-fermee.svg",
+              "alt": "Surface fermée Σ avec des vecteurs dS orientés vers l'extérieur en plusieurs points",
+              "caption": "Figure 5.2 — Pour une surface fermée $\\Sigma$, l'orientation positive est dirigée vers l'extérieur ($d\\vec S$ sortant en tout point).",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le vecteur $d\\vec S$ n'est pas un vecteur tangent à la surface. Il est toujours **normal** à celle-ci. Cette distinction est essentielle dans tous les calculs de flux.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour une surface **fermée** $\\Sigma$, le vecteur $d\\vec S$ est par convention :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "tangent à la surface"
+                  },
+                  {
+                    "id": "b",
+                    "md": "normal à la surface, dirigé vers l'intérieur"
+                  },
+                  {
+                    "id": "c",
+                    "md": "normal à la surface, dirigé vers l'extérieur"
+                  },
+                  {
+                    "id": "d",
+                    "md": "orienté au choix, pourvu que le choix soit annoncé"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "Pour une surface fermée, la convention est unique : $d\\vec S$ est normal et **sortant**. Le libre choix d'orientation (à annoncer) ne concerne que les surfaces **ouvertes**."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la différence entre $dS$ et $d\\vec S$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Aucune, ce sont deux notations de la même grandeur"
+                },
+                {
+                  "id": "b",
+                  "md": "$dS$ est une aire (scalaire positif) ; $d\\vec S=\\vec n\\,dS$ contient en plus l'orientation"
+                },
+                {
+                  "id": "c",
+                  "md": "$dS$ est un vecteur tangent, $d\\vec S$ un vecteur normal"
+                },
+                {
+                  "id": "d",
+                  "md": "$d\\vec S$ est toujours de norme 1"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$dS$ est l'aire (scalaire positif) de l'élément ; $d\\vec S=\\vec n\\,dS$ a pour norme $dS$ et porte la direction normale orientée. Confondre les deux est une erreur fréquente citée par le cours."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour une surface ouverte, une seule orientation est possible.",
+              "answer": false,
+              "explanation": "Faux : pour une surface ouverte, **deux** orientations sont possibles ; il faut annoncer son choix et le conserver dans tout le calcul. C'est pour une surface fermée que la convention est unique (vers l'extérieur)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La norme du vecteur unitaire $\\vec n$ vaut ___.",
+              "answerType": "number",
+              "accepted": [
+                "1"
+              ],
+              "explanation": "$\\vec n$ est un vecteur normal **unitaire**, donc $\\|\\vec n\\|=1$ et $\\|d\\vec S\\|=dS$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque objet à sa nature.",
+              "pairs": [
+                {
+                  "left": "$dS$",
+                  "right": "scalaire positif (aire)"
+                },
+                {
+                  "left": "$\\vec n$",
+                  "right": "vecteur unitaire normal"
+                },
+                {
+                  "left": "$d\\vec S$",
+                  "right": "vecteur normal de norme $dS$"
+                },
+                {
+                  "left": "Flux électrique",
+                  "right": "mesure quantitative de la traversée d'une surface par le champ"
+                }
+              ],
+              "explanation": "$dS$ est une aire, $\\vec n$ fixe la direction normale, $d\\vec S=\\vec n\\,dS$ combine les deux ; le flux, lui, quantifie la façon dont le champ traverse la surface."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le nombre de lignes de champ dessinées a, à lui seul, une signification physique précise.",
+              "answer": false,
+              "explanation": "Faux : le nombre de lignes dépend du dessin choisi. C'est le flux qui fournit une définition **quantitative** de la traversée du champ."
+            }
+          ]
+        },
+        {
+          "slug": "flux-champ-vectoriel",
+          "title": "Flux d'un champ vectoriel",
+          "number": "5.3",
+          "estimatedMinutes": 7,
+          "summary": "Flux élémentaire $d\\Phi=\\vec A\\cdot d\\vec S$, rôle de l'angle avec la normale, flux à travers une surface finie ouverte ou fermée.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.3 Flux d'un champ vectoriel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le flux d'un champ vectoriel permet de quantifier la part du champ qui traverse une surface orientée. Cette notion générale constitue l'étape mathématique préalable à la définition du flux électrique.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.3.1 Flux élémentaire",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons un champ vectoriel $\\vec A$ traversant un élément de surface $d\\vec S$.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Flux élémentaire",
+              "md": "Le flux élémentaire de $\\vec A$ à travers $d\\vec S$ est\n$$d\\Phi=\\vec A\\cdot d\\vec S.$$\nSi $\\alpha$ est l'angle entre $\\vec A$ et la normale $\\vec n$,\n$$d\\Phi=A\\,dS\\cos\\alpha.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-flux-elementaire.svg",
+              "alt": "Champ A et vecteur dS sur un élément plan : cas général d'angle α, puis α = 0, α = π/2 et α = π",
+              "caption": "Figure 5.3 — Le flux dépend de la composante du champ normale à la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On distingue trois situations :\n- $\\alpha=0$ : le champ traverse normalement la surface et le flux est maximal positif ;\n- $\\alpha=\\pi/2$ : le champ est tangent à la surface et le flux est nul ;\n- $\\alpha=\\pi$ : le champ traverse la surface dans le sens opposé à $d\\vec S$ et le flux est négatif.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez l'angle $\\alpha$ entre $\\vec A$ et $\\vec n$ au signe du flux élémentaire.",
+                "pairs": [
+                  {
+                    "left": "$\\alpha=0$",
+                    "right": "maximal positif"
+                  },
+                  {
+                    "left": "$\\alpha=\\pi/2$",
+                    "right": "nul"
+                  },
+                  {
+                    "left": "$\\alpha=\\pi$",
+                    "right": "négatif"
+                  }
+                ],
+                "explanation": "$d\\Phi=A\\,dS\\cos\\alpha$ : $\\cos 0=1$, $\\cos(\\pi/2)=0$, $\\cos\\pi=-1$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.3.2 Flux à travers une surface finie",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une surface étendue, le champ et l'orientation peuvent varier d'un point à l'autre. Il faut sommer les contributions élémentaires.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Flux à travers une surface",
+              "md": "Le flux de $\\vec A$ à travers une surface orientée $\\mathcal S$ est\n$$\\Phi=\\iint_{\\mathcal S}\\vec A\\cdot d\\vec S.$$\nLorsque la surface est fermée, on utilise le symbole $\\oiint$ :\n$$\\Phi=\\oiint_{\\Sigma}\\vec A\\cdot d\\vec S.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Un flux n'est pas simplement « champ $\\times$ surface ». Cette simplification n'est valable que si la norme du champ est constante sur la surface et si l'angle entre le champ et la normale est constant.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "On peut toujours écrire $\\Phi=A\\,S$ pour le flux d'un champ $\\vec A$ à travers une surface d'aire $S$.",
+                "answer": false,
+                "explanation": "Faux : il faut que la norme de $\\vec A$ **et** l'angle avec la normale soient constants sur la surface ; et même alors $\\Phi=AS\\cos\\alpha$, qui ne vaut $AS$ que si $\\alpha=0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Un champ de norme $A$ traverse un élément $dS$ avec un angle $\\alpha=\\pi/3$ par rapport à la normale. Alors $d\\Phi=k\\,A\\,dS$ avec $k=$ ___.",
+              "answerType": "number",
+              "accepted": [
+                "0.5",
+                "1/2"
+              ],
+              "explanation": "$d\\Phi=A\\,dS\\cos(\\pi/3)=\\tfrac12 A\\,dS$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle notation désigne le flux à travers une surface **fermée** $\\Sigma$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\displaystyle\\int_\\Sigma \\vec A\\cdot d\\vec\\ell$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\displaystyle\\oiint_\\Sigma\\vec A\\cdot d\\vec S$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\displaystyle\\iiint_\\Sigma A\\,d\\tau$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\vec A\\times d\\vec S$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le flux est l'intégrale double du produit **scalaire** $\\vec A\\cdot d\\vec S$ ; le rond sur l'intégrale double indique une surface fermée. $\\int\\vec A\\cdot d\\vec\\ell$ est une circulation."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $\\alpha=\\pi$, le flux élémentaire $d\\Phi$ est négatif.",
+              "answer": true,
+              "explanation": "Vrai : le champ traverse alors la surface dans le sens opposé à $d\\vec S$, et $\\cos\\pi=-1$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans quel cas le flux élémentaire est-il nul alors que $\\vec A\\neq\\vec 0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Quand $\\vec A$ est normal à la surface"
+                },
+                {
+                  "id": "b",
+                  "md": "Quand $\\vec A$ est tangent à la surface"
+                },
+                {
+                  "id": "c",
+                  "md": "Quand $\\vec A$ est opposé à $\\vec n$"
+                },
+                {
+                  "id": "d",
+                  "md": "Jamais"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec A$ tangent à la surface $\\Rightarrow\\alpha=\\pi/2\\Rightarrow d\\Phi=0$. C'est la question 2 de l'auto-test du cours."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La formule $\\Phi=AS\\cos\\alpha$ suppose la norme du champ et l'angle $\\alpha$ constants sur toute la surface.",
+              "answer": true,
+              "explanation": "Vrai : c'est exactement la condition du « point clé » ; sinon il faut sommer les contributions élémentaires par une intégrale."
+            }
+          ]
+        },
+        {
+          "slug": "flux-champ-electrique",
+          "title": "Flux du champ électrique",
+          "number": "5.4",
+          "estimatedMinutes": 7,
+          "summary": "Définition du flux de $\\vec E$, son unité, le cas d'un champ uniforme à travers une surface plane et le signe des contributions à travers une surface fermée.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.4 Flux du champ électrique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On applique maintenant la notion précédente au champ électrostatique.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "title": "Flux du champ électrique",
+              "md": "Le flux du champ électrique $\\vec E$ à travers une surface $\\mathcal S$ est\n$$\\Phi_E=\\iint_{\\mathcal S}\\vec E\\cdot d\\vec S.$$\nPour une surface fermée $\\Sigma$,\n$$\\Phi_E=\\oiint_{\\Sigma}\\vec E\\cdot d\\vec S.$$",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le flux est une grandeur **scalaire algébrique**. Il caractérise le passage du champ à travers une surface ; il ne représente ni une force ni une quantité de charge traversant réellement cette surface.\n\nL'unité SI du flux électrique est\n$$[\\Phi_E]=\\mathrm{V\\,m}=\\mathrm{N\\,m^2\\,C^{-1}}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "intuition",
+              "md": "L'unité se retrouve directement : $E$ s'exprime en $\\mathrm{V\\,m^{-1}}$ (ou $\\mathrm{N\\,C^{-1}}$) et $dS$ en $\\mathrm{m^2}$, d'où $\\mathrm{V\\,m^{-1}}\\times\\mathrm{m^2}=\\mathrm{V\\,m}$.",
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.4.1 Champ uniforme à travers une surface plane",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Supposons que $\\vec E$ soit uniforme sur une surface plane d'aire $S$. La normale $\\vec n$ est alors constante.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Propriété",
+              "md": "Dans ce cas,\n$$\\Phi_E=ES\\cos\\alpha,$$\noù $\\alpha$ est l'angle entre $\\vec E$ et la normale à la surface.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Exemple – Surface plane dans un champ uniforme",
+              "md": "Une surface plane d'aire $S=0{,}20\\ \\mathrm{m^2}$ est placée dans un champ uniforme $E=500\\ \\mathrm{V\\,m^{-1}}$. La normale à la surface fait un angle de $60^\\circ$ avec le champ. Alors\n$$\\Phi_E=ES\\cos 60^\\circ=500\\times0{,}20\\times0{,}5=50\\ \\mathrm{V\\,m}.$$",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Même surface ($S=0{,}20\\ \\mathrm{m^2}$, $E=500\\ \\mathrm{V\\,m^{-1}}$), mais la normale est cette fois **parallèle** au champ et de même sens. $\\Phi_E=$ ___ $\\mathrm{V\\,m}$.",
+                "answerType": "number",
+                "accepted": [
+                  "100"
+                ],
+                "explanation": "$\\alpha=0$, donc $\\Phi_E=ES=500\\times0{,}20=100\\ \\mathrm{V\\,m}$ : c'est le flux maximal."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.4.2 Signe du flux à travers une surface fermée",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une surface fermée, $d\\vec S$ est dirigé vers l'extérieur. Une ligne de champ qui sort du volume apporte donc une contribution positive, tandis qu'une ligne qui entre apporte une contribution négative.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-signe-flux.svg",
+              "alt": "Ligne de champ entrant puis sortant d'une surface fermée : contribution négative à l'entrée, positive à la sortie",
+              "caption": "Figure 5.4 — Le signe d'une contribution au flux dépend du sens de traversée de la surface fermée (entrant : négatif ; sortant : positif).",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le flux électrique est une grandeur **algébrique**. Un flux nul ne signifie pas nécessairement que le champ est nul : des contributions positives et négatives peuvent se compenser.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Si le flux de $\\vec E$ à travers une surface fermée est nul, alors $\\vec E=\\vec 0$ en tout point de la surface.",
+                "answer": false,
+                "explanation": "Faux : les contributions entrantes (négatives) et sortantes (positives) peuvent se compenser. Exemple : un champ uniforme à travers une sphère donne un flux total nul, alors que $\\vec E\\neq\\vec0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est l'unité SI du flux électrique ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\mathrm{C}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\mathrm{V\\,m}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\mathrm{N\\,C^{-1}}$"
+                }
+              ],
+              "answer": "c",
+              "explanation": "$[\\Phi_E]=\\mathrm{V\\,m}=\\mathrm{N\\,m^2\\,C^{-1}}$. Le $\\mathrm{V\\,m^{-1}}$ (ou $\\mathrm{N\\,C^{-1}}$) est l'unité du **champ**, et le flux n'est pas une charge."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le flux électrique représente la quantité de charge qui traverse réellement la surface.",
+              "answer": false,
+              "explanation": "Faux : le flux caractérise le passage du **champ** à travers la surface ; il ne représente ni une force ni une charge qui traverse la surface."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une surface plane d'aire $0{,}5\\ \\mathrm{m^2}$ est placée dans un champ uniforme $E=200\\ \\mathrm{V\\,m^{-1}}$ ; la normale fait un angle de $60^\\circ$ avec le champ. $\\Phi_E=$ ___ $\\mathrm{V\\,m}$.",
+              "answerType": "number",
+              "accepted": [
+                "50"
+              ],
+              "explanation": "$\\Phi_E=ES\\cos60^\\circ=200\\times0{,}5\\times0{,}5=50\\ \\mathrm{V\\,m}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour une surface fermée, une ligne de champ qui **entre** dans le volume apporte au flux une contribution :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "positive"
+                },
+                {
+                  "id": "b",
+                  "md": "négative"
+                },
+                {
+                  "id": "c",
+                  "md": "nulle"
+                },
+                {
+                  "id": "d",
+                  "md": "dont le signe dépend de l'orientation choisie librement"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$d\\vec S$ est sortant ; un champ entrant fait avec lui un angle supérieur à $\\pi/2$, donc $\\vec E\\cdot d\\vec S<0$. Il n'y a pas de libre choix pour une surface fermée."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une surface plane d'aire $S$ est placée dans un champ uniforme $\\vec E$ **tangent** à la surface. $\\Phi_E=$ ___.",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$\\alpha=\\pi/2$, donc $\\Phi_E=ES\\cos(\\pi/2)=0$."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "theoreme-de-gauss",
+      "title": "Théorème de Gauss",
+      "number": "5.5",
+      "lessons": [
+        {
+          "slug": "flux-charge-ponctuelle",
+          "title": "Flux d'une charge ponctuelle",
+          "number": "5.5.1–5.5.2",
+          "estimatedMinutes": 8,
+          "summary": "Calcul du flux d'une charge ponctuelle à travers une sphère centrée ($\\Phi_E=Q/\\varepsilon_0$) et argument géométrique montrant qu'il ne dépend ni du rayon ni de la forme de la surface.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.5 Théorème de Gauss",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le théorème de Gauss établit une relation directe entre le flux total à travers une surface fermée et la charge totale contenue à l'intérieur.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.5.1 Flux d'une charge ponctuelle à travers une sphère centrée",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Calcul du flux",
+              "md": "Considérons une charge ponctuelle $Q$ placée au centre d'une sphère de rayon $R$. Sur cette sphère, le champ s'écrit\n$$\\vec E(R)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\,\\vec e_r,$$\noù $\\vec e_r$ est la direction radiale orientée vers l'extérieur.",
+              "steps": [
+                {
+                  "md": "Le vecteur surface possède la même direction géométrique : $d\\vec S=\\vec e_r\\,dS$.",
+                  "why": "Sur une sphère, la normale sortante est radiale."
+                },
+                {
+                  "md": "Le signe de $Q$ est ainsi conservé automatiquement dans le produit scalaire :\n$$\\vec E\\cdot d\\vec S=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\,dS.$$"
+                },
+                {
+                  "md": "Le flux total vaut alors\n$$\\Phi_E=\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\oiint_\\Sigma dS=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\,4\\pi R^2,$$",
+                  "why": "Sur la sphère, $\\frac{Q}{R^2}$ est constant : on le sort de l'intégrale ; $\\oiint dS$ est l'aire $4\\pi R^2$."
+                },
+                {
+                  "md": "d'où\n$$\\Phi_E=\\frac{Q}{\\varepsilon_0}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Un $Q>0$ produit donc un flux net sortant positif, tandis qu'un $Q<0$ produit un flux net entrant négatif.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le rayon $R$ disparaît. Le flux total créé par la charge ponctuelle à travers une sphère centrée sur elle ne dépend donc pas de la taille de la sphère.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une charge ponctuelle $Q$ est au centre d'une sphère de rayon $R$. Si l'on double le rayon de la sphère, le flux est multiplié par ___.",
+                "answerType": "number",
+                "accepted": [
+                  "1"
+                ],
+                "explanation": "Le flux vaut $Q/\\varepsilon_0$ quel que soit $R$ : il est multiplié par $1$ (inchangé). L'aire croît comme $R^2$ et le champ décroît comme $1/R^2$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.5.2 Indépendance du flux vis-à-vis de la forme de la surface",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La propriété précédente ne dépend pas du caractère sphérique de la surface. Pour le comprendre, considérons un petit faisceau de directions partant de la charge $Q$. Ce même faisceau traverse deux petites surfaces situées à des distances différentes.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-faisceau.svg",
+              "alt": "Faisceau étroit issu de la charge Q traversant deux éléments dS1 et dS2 aux distances r1 et r2",
+              "caption": "Figure 5.5 — Un même faisceau issu de la charge traverse des surfaces $d\\vec S_1$ (à la distance $r_1$) et $d\\vec S_2$ (à la distance $r_2$) dont les aires apparentes croissent comme le carré de la distance.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour un même faisceau étroit de directions issu de la charge, la composante efficace de l'aire interceptée augmente comme $r^2$, tandis que la norme du champ décroît comme $1/r^2$. Ces deux variations se compensent. Le flux associé à ce faisceau reste donc inchangé lorsqu'on déforme la surface sans faire franchir la charge à travers celle-ci.\n\nCet argument géométrique fournit l'intuition essentielle : le flux total dépend de la charge enfermée et non de la forme particulière de la surface fermée. Le théorème de Gauss généralise précisément cette propriété.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'argument du faisceau, pourquoi le flux à travers $dS_2$ (plus loin) est-il égal au flux à travers $dS_1$ ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Parce que le champ est uniforme"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Parce que l'aire interceptée croît comme $r^2$ et le champ décroît comme $1/r^2$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Parce que $dS_2=dS_1$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Parce que le champ est tangent aux deux surfaces"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Les deux variations se compensent exactement : $E\\,dS\\propto\\frac{1}{r^2}\\times r^2$ ne dépend pas de $r$. C'est la loi en $1/r^2$ de Coulomb qui rend cela possible."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quel est le flux du champ d'une charge ponctuelle $Q$ à travers une sphère de rayon $R$ centrée sur elle ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{Q}{4\\pi\\varepsilon_0R^2}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{Q}{\\varepsilon_0}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{Q\\,4\\pi R^2}{\\varepsilon_0}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\dfrac{Q}{4\\pi\\varepsilon_0 R}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\Phi_E=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\times4\\pi R^2=\\frac{Q}{\\varepsilon_0}$. Le premier choix est la norme du champ, le dernier le potentiel."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $Q<0$, le flux à travers la sphère centrée est négatif (flux net entrant).",
+              "answer": true,
+              "explanation": "Vrai : $\\Phi_E=Q/\\varepsilon_0<0$. Le signe de $Q$ est conservé automatiquement dans $\\vec E\\cdot d\\vec S$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le calcul du flux d'une charge ponctuelle à travers une sphère centrée.",
+              "items": [
+                "Écrire $\\vec E=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}\\vec e_r$ sur la sphère",
+                "Écrire $d\\vec S=\\vec e_r\\,dS$",
+                "Calculer $\\vec E\\cdot d\\vec S=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}dS$",
+                "Sortir la constante et utiliser $\\oiint dS=4\\pi R^2$",
+                "Conclure $\\Phi_E=Q/\\varepsilon_0$"
+              ],
+              "explanation": "On exprime le champ, puis le vecteur surface, on fait le produit scalaire, on intègre (le facteur est constant sur la sphère) et on simplifie."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le flux d'une charge ponctuelle à travers une surface fermée l'entourant change si l'on déforme la surface, même sans faire franchir la charge.",
+              "answer": false,
+              "explanation": "Faux : l'argument du faisceau montre que le flux reste inchangé tant que la charge ne franchit pas la surface. Il dépend de la charge enfermée, pas de la forme."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Une charge ponctuelle crée un flux de $100\\ \\mathrm{V\\,m}$ à travers une sphère de rayon $R$ centrée sur elle. Le flux à travers une sphère centrée de rayon $3R$ vaut ___ $\\mathrm{V\\,m}$.",
+              "answerType": "number",
+              "accepted": [
+                "100"
+              ],
+              "explanation": "Le flux vaut $Q/\\varepsilon_0$ indépendamment du rayon : il reste $100\\ \\mathrm{V\\,m}$."
+            }
+          ]
+        },
+        {
+          "slug": "enonce-theoreme-gauss",
+          "title": "Énoncé du théorème de Gauss",
+          "number": "5.5.3–5.5.4",
+          "estimatedMinutes": 8,
+          "summary": "Énoncé général $\\oiint_\\Sigma\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$, charge intérieure d'une distribution volumique, et rôle des charges extérieures.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.5.3 Énoncé du théorème",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Après avoir établi le résultat pour une charge ponctuelle et montré son indépendance vis-à-vis de la forme de la surface fermée, on peut formuler le théorème de Gauss dans sa forme générale.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème de Gauss",
+              "md": "Pour toute surface fermée $\\Sigma$, le flux du champ électrique à travers cette surface est égal à la charge totale enfermée divisée par $\\varepsilon_0$ :\n$$\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\frac{Q_{\\text{int}}}{\\varepsilon_0}.$$\nLa charge $Q_{\\text{int}}$ est la somme algébrique de toutes les charges situées à l'intérieur de $\\Sigma$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour une distribution continue de densité volumique $\\rho$,\n$$Q_{\\text{int}}=\\iiint_{\\mathcal V}\\rho\\,d\\tau,$$\noù $\\mathcal V$ est le volume délimité par $\\Sigma$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Une surface fermée contient les charges $+5\\ \\mathrm{nC}$, $-2\\ \\mathrm{nC}$ et $-1\\ \\mathrm{nC}$. $Q_{\\text{int}}=$ ___ $\\mathrm{nC}$.",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "$Q_{\\text{int}}$ est la somme **algébrique** : $5-2-1=2\\ \\mathrm{nC}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.5.4 Contribution des charges extérieures au flux total",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une charge située à l'extérieur d'une surface fermée crée bien un champ sur cette surface. Cependant, les lignes associées qui pénètrent dans le volume doivent en ressortir. Les contributions entrantes et sortantes se compensent dans le flux total.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Propriété",
+              "md": "Les charges extérieures peuvent modifier la valeur locale de $\\vec E$ sur une surface fermée, mais leur contribution au **flux total** à travers cette surface est nulle.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le théorème de Gauss ne dit pas que le champ sur une surface dépend seulement des charges intérieures. Il affirme uniquement que le **flux total** dépend de la charge intérieure nette.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Une charge située à l'extérieur d'une surface fermée ne crée aucun champ sur cette surface.",
+                "answer": false,
+                "explanation": "Faux : elle crée bien un champ sur la surface (elle modifie $\\vec E$ localement) ; seule sa contribution au **flux total** est nulle, car ses lignes entrent puis ressortent."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Dans le théorème de Gauss, $\\vec E$ désigne :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "le champ créé par les seules charges intérieures"
+                },
+                {
+                  "id": "b",
+                  "md": "le champ total créé par toutes les charges, intérieures et extérieures"
+                },
+                {
+                  "id": "c",
+                  "md": "le champ créé par les seules charges extérieures"
+                },
+                {
+                  "id": "d",
+                  "md": "un champ moyen sur la surface"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec E$ est le champ total ; ce sont les charges extérieures dont la contribution au **flux total** s'annule, pas au champ."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le théorème de Gauss n'est valable que pour les distributions symétriques.",
+              "answer": false,
+              "explanation": "Faux : il est toujours valable en électrostatique (auto-test, question 4). La symétrie n'est nécessaire que pour s'en servir facilement pour **calculer** $E$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour une distribution de densité volumique $\\rho$ uniforme dans un volume $\\mathcal V$, $Q_{\\text{int}}=\\rho\\times$ ___.",
+              "answerType": "text",
+              "accepted": [
+                "V",
+                "\\mathcal V",
+                "volume",
+                "le volume"
+              ],
+              "explanation": "$Q_{\\text{int}}=\\iiint_{\\mathcal V}\\rho\\,d\\tau=\\rho\\,\\mathcal V$ si $\\rho$ est uniforme."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Une surface fermée $\\Sigma$ entoure $q_1=+3\\ \\mathrm{nC}$ ; $q_2=+7\\ \\mathrm{nC}$ est à l'extérieur. Associez.",
+              "pairs": [
+                {
+                  "left": "Contribution de $q_1$ au flux total",
+                  "right": "$q_1/\\varepsilon_0$"
+                },
+                {
+                  "left": "Contribution de $q_2$ au flux total",
+                  "right": "$0$"
+                },
+                {
+                  "left": "Contribution de $q_2$ au champ sur $\\Sigma$",
+                  "right": "non nulle"
+                }
+              ],
+              "explanation": "Seule la charge intérieure compte dans le flux total ; la charge extérieure modifie néanmoins le champ local sur $\\Sigma$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "$Q_{\\text{int}}$ est la somme des valeurs absolues des charges intérieures.",
+              "answer": false,
+              "explanation": "Faux : c'est la somme **algébrique** ; des charges de signes opposés se compensent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "exploitation-par-symetrie",
+      "title": "Exploitation du théorème de Gauss par symétrie",
+      "number": "5.6–5.9",
+      "lessons": [
+        {
+          "slug": "exploitation-par-symetrie",
+          "title": "Exploitation du théorème par symétrie",
+          "number": "5.6",
+          "estimatedMinutes": 7,
+          "summary": "Quand le théorème de Gauss devient une méthode de calcul de $\\vec E$ : les trois questions préalables (direction, dépendance, surface) et les trois symétries usuelles.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.6 Exploitation du théorème de Gauss par symétrie",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le théorème de Gauss est toujours valable. En revanche, il ne constitue une méthode directe de calcul de $\\vec E$ que si les symétries permettent de connaître, avant l'intégration, la direction du champ et la manière dont sa norme varie sur la surface choisie.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.6.1 Conditions d'exploitation pour le calcul du champ",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Avant de choisir une surface de Gauss, il faut déterminer ce que les invariances de la distribution imposent au champ.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Méthode.** L'exploitation efficace du théorème de Gauss repose sur trois questions préalables :\n1. **Direction :** quelle direction la symétrie impose-t-elle à $\\vec E$ ?\n2. **Dépendance :** de quelle distance géométrique la norme du champ peut-elle dépendre ?\n3. **Surface :** peut-on choisir une surface fermée dont certaines parties ont un champ normal de norme constante, et les autres un champ tangent ?\n\nCe n'est qu'après cette analyse que l'on calcule le flux et la charge enfermée.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Une **surface de Gauss est une surface mathématique fictive**. Elle n'a pas besoin de coïncider avec une surface matérielle. Son choix est dicté par les symétries du champ, et non par une simple ressemblance visuelle avec la distribution de charges.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre les trois questions préalables à l'utilisation du théorème de Gauss.",
+                "items": [
+                  "Direction de $\\vec E$ imposée par la symétrie",
+                  "Variable(s) dont dépend la norme de $\\vec E$",
+                  "Choix d'une surface fermée adaptée"
+                ],
+                "explanation": "On analyse d'abord la direction, puis la dépendance de la norme, et seulement ensuite on choisit la surface ; le calcul du flux et de $Q_{\\text{int}}$ vient après."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.6.2 Trois symétries fondamentales",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "En électrostatique, trois familles de symétries conduisent particulièrement bien à l'utilisation du théorème de Gauss. Le tableau suivant résume, pour chacune d'elles, la direction attendue du champ et la surface de Gauss naturelle. Aucun système de coordonnées particulier n'est nécessaire : l'analyse repose uniquement sur les invariances géométriques de la distribution.\n\n**Tableau 5.1 – Symétries usuelles et surfaces de Gauss adaptées**\n\n| Symétrie | Structure du champ | Surface de Gauss adaptée |\n|---|---|---|\n| Sphérique | radial, norme dépendant seulement de la distance au centre | sphère centrée sur la distribution |\n| Cylindrique | perpendiculaire à l'axe, norme dépendant seulement de la distance à l'axe | cylindre coaxial |\n| Plane | perpendiculaire au plan, norme dépendant seulement de la distance au plan | cylindre court traversant le plan |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque symétrie à sa surface de Gauss adaptée.",
+                "pairs": [
+                  {
+                    "left": "Sphérique",
+                    "right": "sphère centrée sur la distribution"
+                  },
+                  {
+                    "left": "Cylindrique",
+                    "right": "cylindre coaxial"
+                  },
+                  {
+                    "left": "Plane",
+                    "right": "cylindre court traversant le plan"
+                  }
+                ],
+                "explanation": "C'est le tableau 5.1 : la surface est choisie pour que $\\vec E$ y soit normal et de norme constante sur certaines parties, tangent sur les autres."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Une surface de Gauss doit coïncider avec une surface matérielle de la distribution.",
+              "answer": false,
+              "explanation": "Faux : c'est une surface mathématique **fictive**, choisie selon les symétries du champ."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi une forte symétrie est-elle nécessaire pour calculer facilement $E$ avec Gauss ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que le théorème est faux sans symétrie"
+                },
+                {
+                  "id": "b",
+                  "md": "Pour rendre $\\vec E\\cdot d\\vec S$ simple et pouvoir sortir $E$ de l'intégrale"
+                },
+                {
+                  "id": "c",
+                  "md": "Pour que la charge intérieure soit nulle"
+                },
+                {
+                  "id": "d",
+                  "md": "Pour que le flux soit toujours positif"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le théorème est toujours vrai ; la symétrie sert à connaître la direction et la constance de $E$ sur la surface, ce qui permet de l'extraire de l'intégrale (auto-test, question 5)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque symétrie à la structure du champ.",
+              "pairs": [
+                {
+                  "left": "Sphérique",
+                  "right": "radial, norme fonction de la distance au centre"
+                },
+                {
+                  "left": "Cylindrique",
+                  "right": "perpendiculaire à l'axe, norme fonction de la distance à l'axe"
+                },
+                {
+                  "left": "Plane",
+                  "right": "perpendiculaire au plan, norme fonction de la distance au plan"
+                }
+              ],
+              "explanation": "Voir le tableau 5.1."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'analyse des symétries nécessite de choisir d'abord un système de coordonnées particulier.",
+              "answer": false,
+              "explanation": "Faux : le cours précise qu'aucun système de coordonnées particulier n'est nécessaire ; l'analyse repose uniquement sur les invariances géométriques."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Sur une partie de la surface de Gauss où $\\vec E$ est **tangent**, la contribution au flux est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "maximale"
+                },
+                {
+                  "id": "b",
+                  "md": "nulle"
+                },
+                {
+                  "id": "c",
+                  "md": "égale à $ES$"
+                },
+                {
+                  "id": "d",
+                  "md": "négative"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\vec E\\perp d\\vec S$ donc $\\vec E\\cdot d\\vec S=0$. C'est pourquoi on cherche des surfaces dont certaines parties ont un champ tangent."
+            }
+          ]
+        },
+        {
+          "slug": "coquille-spherique",
+          "title": "Coquille sphérique uniformément chargée",
+          "number": "5.7.1",
+          "estimatedMinutes": 7,
+          "summary": "Symétrie sphérique : champ radial $E(r)\\vec e_r$ ; champ d'une coquille sphérique chargée à l'extérieur ($r>R$) et à l'intérieur ($r<R$).",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.7 Distributions à symétrie sphérique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une distribution possède une symétrie sphérique si elle est inchangée par toute rotation autour de son centre $O$. Dans ce cas, le champ est nécessairement radial et sa norme ne peut dépendre que de la distance $r=OM$ :\n$$\\vec E(M)=E(r)\\,\\vec e_r.$$\nLa charge ponctuelle, déjà utilisée pour établir le théorème de Gauss, constitue le cas élémentaire de cette symétrie. On s'intéresse maintenant à des distributions étendues.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.7.1 Coquille sphérique uniformément chargée",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons une couche sphérique mince de rayon $R$ portant une charge totale $Q$ uniformément répartie.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-coquille-gauss.svg",
+              "alt": "Coquille sphérique chargée de rayon R et deux sphères de Gauss, de rayon r < R et r > R",
+              "caption": "Figure 5.6 — Deux surfaces de Gauss sphériques (rayon $r<R$ et rayon $r>R$) permettent de distinguer l'intérieur et l'extérieur de la coquille.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "5.7.1.1 Champ à l'extérieur : $r>R$",
+              "md": "Une sphère de Gauss de rayon $r>R$ enferme toute la charge $Q$.",
+              "steps": [
+                {
+                  "md": "On obtient $E(r)\\,4\\pi r^2=\\dfrac{Q}{\\varepsilon_0}$,",
+                  "why": "Flux à travers la sphère de Gauss : $E(r)$ constant sur la sphère, aire $4\\pi r^2$."
+                },
+                {
+                  "md": "donc\n$$\\vec E(r)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{r^2}\\vec e_r,\\qquad r>R.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La coquille crée à l'extérieur le même champ qu'une charge ponctuelle $Q$ placée en son centre.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "À l'extérieur d'une coquille de charge $Q$, si la distance au centre double, la norme du champ est multipliée par ___.",
+                "answerType": "number",
+                "accepted": [
+                  "0.25",
+                  "1/4"
+                ],
+                "explanation": "$E\\propto 1/r^2$ : doubler $r$ divise $E$ par $4$, soit un facteur $1/4$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "5.7.1.2 Champ à l'intérieur : $r<R$",
+              "md": "Une sphère de Gauss de rayon $r<R$ n'enferme aucune charge : $Q_{\\text{int}}=0$.",
+              "steps": [
+                {
+                  "md": "Ainsi $E(r)\\,4\\pi r^2=0$,"
+                },
+                {
+                  "md": "et donc\n$$\\vec E=\\vec 0,\\qquad r<R.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat",
+              "md": "Pour une coquille sphérique uniformément chargée, le champ est nul en tout point intérieur. À l'extérieur, il est identique à celui d'une charge ponctuelle égale à la charge totale de la coquille.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "gauss-surface",
+              "params": {
+                "shape": "sphere"
+              },
+              "caption": "Fais varier le rayon de la sphère de Gauss : à l'intérieur de la coquille la charge enfermée est nulle, à l'extérieur elle vaut Q.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "À l'intérieur d'une coquille sphérique uniformément chargée, le champ électrostatique est nul.",
+                "answer": true,
+                "explanation": "Vrai : la sphère de Gauss de rayon $r<R$ n'enferme aucune charge, et par symétrie $E(r)$ est constant sur elle, d'où $E(r)\\,4\\pi r^2=0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Pour une distribution à symétrie sphérique de centre $O$, le champ en $M$ s'écrit :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$E(r)\\,\\vec e_r$"
+                },
+                {
+                  "id": "b",
+                  "md": "$E(\\theta)\\,\\vec e_\\theta$"
+                },
+                {
+                  "id": "c",
+                  "md": "$E(r)\\,\\vec e_\\theta$"
+                },
+                {
+                  "id": "d",
+                  "md": "un vecteur constant"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Invariance par toute rotation autour de $O$ : le champ est radial et sa norme ne dépend que de $r=OM$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour la coquille ($r>R$), le théorème de Gauss s'écrit $E(r)\\times$ ___ $=Q/\\varepsilon_0$.",
+              "answerType": "expression",
+              "accepted": [
+                "4*pi*r^2"
+              ],
+              "variables": [
+                "r"
+              ],
+              "explanation": "Le flux à travers la sphère de Gauss de rayon $r$ vaut $E(r)\\times4\\pi r^2$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "À l'extérieur, une coquille sphérique de charge $Q$ crée le même champ qu'une charge ponctuelle $Q$ placée en son centre.",
+              "answer": true,
+              "explanation": "Vrai : $\\vec E=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{r^2}\\vec e_r$ pour $r>R$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Une coquille de rayon $R=0{,}2\\ \\mathrm{m}$ porte $Q=12\\ \\mathrm{nC}$. Le champ à $r=0{,}1\\ \\mathrm{m}$ du centre vaut :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$2{,}7\\times10^{3}\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$10{,}8\\times10^{3}\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$674\\ \\mathrm{V\\,m^{-1}}$"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$r<R$ : la sphère de Gauss n'enferme aucune charge, donc $E=0$. Le piège est d'appliquer la formule extérieure."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour une coquille sphérique, le champ est continu à la traversée de la surface $r=R$.",
+              "answer": false,
+              "explanation": "Faux : il passe de $0$ (intérieur) à $\\frac{Q}{4\\pi\\varepsilon_0R^2}$ (extérieur). Cette discontinuité est due à la charge surfacique (voir la condition de passage, §5.9.1)."
+            }
+          ]
+        },
+        {
+          "slug": "sphere-pleine",
+          "title": "Sphère pleine uniformément chargée",
+          "number": "5.7.2",
+          "estimatedMinutes": 8,
+          "summary": "Champ d'une sphère pleine de densité volumique uniforme $\\rho$ : $E\\propto 1/r^2$ à l'extérieur, $E=\\rho r/(3\\varepsilon_0)$ à l'intérieur, et continuité en $r=R$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.7.2 Sphère pleine uniformément chargée",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons maintenant une sphère pleine de rayon $R$ portant une densité volumique uniforme $\\rho$. Pour établir les expressions de norme, on suppose d'abord $\\rho>0$ ; si $\\rho<0$, la direction du champ est inversée.\n\nLa charge totale est\n$$Q=\\rho\\,\\frac43\\pi R^3.$$",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "5.7.2.1 Champ à l'extérieur : $rgeq R$",
+              "md": "Toute la charge est enfermée :\n$$E(r)\\,4\\pi r^2=\\frac{Q}{\\varepsilon_0}.$$\nDonc\n$$E(r)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{r^2},\\qquad r\\geq R.$$",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "5.7.2.2 Champ à l'intérieur : $r<R$",
+              "md": "La sphère de Gauss de rayon $r$ n'enferme qu'une partie de la charge.",
+              "steps": [
+                {
+                  "md": "$Q_{\\text{int}}=\\rho\\,\\dfrac43\\pi r^3.$",
+                  "why": "Seul le volume de la boule de rayon $r$ est enfermé."
+                },
+                {
+                  "md": "Le théorème de Gauss donne\n$$E(r)\\,4\\pi r^2=\\frac{1}{\\varepsilon_0}\\,\\rho\\,\\frac43\\pi r^3.$$"
+                },
+                {
+                  "md": "Après simplification,\n$$E(r)=\\frac{\\rho}{3\\varepsilon_0}\\,r,\\qquad r<R.$$"
+                },
+                {
+                  "md": "En utilisant $\\rho=3Q/(4\\pi R^3)$,\n$$E(r)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Qr}{R^3},\\qquad r<R.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "À l'intérieur d'une sphère pleine uniformément chargée, $E(r)=$ ___ (en fonction de $\\rho$, $r$ et $\\varepsilon_0$ ; écrire « eps0 » pour $\\varepsilon_0$).",
+                "answerType": "expression",
+                "accepted": [
+                  "rho*r/(3*eps0)"
+                ],
+                "variables": [
+                  "rho",
+                  "r",
+                  "eps0"
+                ],
+                "explanation": "$E(r)\\,4\\pi r^2=\\rho\\frac43\\pi r^3/\\varepsilon_0$, d'où $E=\\frac{\\rho r}{3\\varepsilon_0}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-sphere-pleine-champ.svg",
+              "alt": "Graphe de E(r) pour une sphère pleine : droite croissante jusqu'à r = R puis décroissance en 1/r²",
+              "caption": "Figure 5.7 — Variation qualitative de la norme du champ d'une sphère pleine uniformément chargée pour $\\rho>0$ — droite $E\\propto r$ pour $r<R$, puis décroissance $E\\propto1/r^2$ pour $r>R$, avec un maximum en $r=R$.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La figure montre que le champ croît linéairement à l'intérieur, atteint sa valeur maximale à la surface, puis décroît en $1/r^2$ à l'extérieur.",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Pour $r=R$, les expressions intérieure et extérieure donnent la même valeur : le champ est continu à la surface d'une distribution volumique uniforme ne présentant pas de charge surfacique singulière.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Pour une sphère pleine uniformément chargée, le champ est maximal au centre.",
+                "answer": false,
+                "explanation": "Faux : au centre $E=0$ ($E\\propto r$). Le champ est maximal à la surface $r=R$, puis décroît en $1/r^2$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Comment varie la norme du champ à l'intérieur d'une sphère pleine uniformément chargée ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$E\\propto 1/r^2$"
+                },
+                {
+                  "id": "b",
+                  "md": "$E\\propto r$"
+                },
+                {
+                  "id": "c",
+                  "md": "$E=0$"
+                },
+                {
+                  "id": "d",
+                  "md": "$E$ constant"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E(r)=\\frac{\\rho r}{3\\varepsilon_0}$ : linéaire en $r$ (auto-test, question 9). $E=0$ correspond à la coquille."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "La charge totale d'une sphère pleine de rayon $R$ et de densité $\\rho$ uniforme vaut $Q=$ ___ (écrire en fonction de « rho » et « R »).",
+              "answerType": "expression",
+              "accepted": [
+                "rho*4/3*pi*R^3"
+              ],
+              "variables": [
+                "rho",
+                "R"
+              ],
+              "explanation": "$Q=\\rho\\times\\frac43\\pi R^3$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Si $\\rho<0$, le champ d'une sphère pleine uniformément chargée est dirigé vers le centre.",
+              "answer": true,
+              "explanation": "Vrai : le cours établit les normes pour $\\rho>0$ et précise que la direction est inversée si $\\rho<0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $r<R$, pourquoi $Q_{\\text{int}}=\\rho\\frac43\\pi r^3$ et non $Q$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que la sphère de Gauss de rayon $r$ n'enferme que la boule de rayon $r$"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que la charge est uniquement en surface"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $\\rho$ varie avec $r$"
+                },
+                {
+                  "id": "d",
+                  "md": "Par une erreur de convention"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Seule la charge contenue dans le volume délimité par la surface de Gauss compte. Oublier de recalculer $Q_{\\text{int}}$ à l'intérieur est une erreur fréquente."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Rangez les points suivants par norme du champ **croissante** pour une sphère pleine ($\\rho>0$, rayon $R$).",
+              "items": [
+                "le centre $r=0$",
+                "$r=R/2$",
+                "$r=R$"
+              ],
+              "explanation": "$E=0$ au centre, $E=\\frac{\\rho R}{6\\varepsilon_0}$ en $R/2$, $E=\\frac{\\rho R}{3\\varepsilon_0}$ (maximum) en $R$."
+            }
+          ]
+        },
+        {
+          "slug": "symetrie-cylindrique-fil",
+          "title": "Symétrie cylindrique : le fil infini",
+          "number": "5.8",
+          "estimatedMinutes": 7,
+          "summary": "Champ d'un fil rectiligne infini uniformément chargé par le théorème de Gauss avec un cylindre coaxial : $\\vec E=\\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\vec e_\\rho$.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.8 Distribution à symétrie cylindrique",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons un fil rectiligne infiniment long portant une densité linéique uniforme $\\lambda$.\n\nPar symétrie :\n- le champ est perpendiculaire au fil ;\n- sa norme est la même pour tous les points situés à une même distance $r$ du fil ;\n- le champ ne possède pas de composante parallèle au fil.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "On choisit comme surface de Gauss un cylindre de rayon $r$ et de longueur $L$, coaxial avec le fil.\n\nSur la surface latérale, $\\vec E$ est parallèle à $d\\vec S$ et $E$ est constant. Sur les deux bases, le champ est tangent, donc $\\vec E\\cdot d\\vec S=0$.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-cylindre-fil.svg",
+              "alt": "Cylindre de Gauss de rayon r et longueur L coaxial à un fil chargé, champ radial sortant par la surface latérale",
+              "caption": "Figure 5.8 — Surface de Gauss cylindrique (rayon $r$, longueur $L$) autour d'un fil rectiligne infini ; le champ, radial, traverse uniquement la surface latérale.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour le fil infini et le cylindre coaxial, quelles parties de la surface de Gauss contribuent au flux ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Les deux bases seulement"
+                  },
+                  {
+                    "id": "b",
+                    "md": "La surface latérale seulement"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Toute la surface"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Aucune"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Sur les bases le champ est tangent ($\\vec E\\cdot d\\vec S=0$) ; sur la surface latérale il est normal et de norme constante."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "title": "Calcul du champ",
+              "md": "En notant $\\vec e_\\rho$ la direction perpendiculaire au fil orientée vers l'extérieur, on écrit $\\vec E=E_r(r)\\,\\vec e_\\rho$.",
+              "steps": [
+                {
+                  "md": "Le flux total est $\\Phi_E=E_r(r)\\,(2\\pi rL)$.",
+                  "why": "Aire latérale du cylindre : $2\\pi rL$."
+                },
+                {
+                  "md": "La charge enfermée vaut $Q_{\\text{int}}=\\lambda L$."
+                },
+                {
+                  "md": "Le théorème de Gauss donne $E_r(r)\\,2\\pi rL=\\dfrac{\\lambda L}{\\varepsilon_0}$."
+                },
+                {
+                  "md": "La longueur $L$ se simplifie :\n$$\\vec E(r)=\\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\,\\vec e_\\rho.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ainsi, $\\lambda>0$ donne un champ dirigé vers l'extérieur et $\\lambda<0$ un champ dirigé vers le fil. Sa norme vaut $|\\lambda|/(2\\pi\\varepsilon_0 r)$.",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat",
+              "md": "Le champ d'une distribution linéique infinie décroît comme $1/r$, et non comme $1/r^2$. La géométrie de la distribution modifie donc la loi de décroissance du champ.",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "gauss-surface",
+              "params": {
+                "shape": "cylinder"
+              },
+              "caption": "Fais tourner le cylindre de Gauss autour du fil : le flux ne traverse que la surface latérale, les bases ne comptent pas.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "À une distance $r$ d'un fil infini, le champ vaut $E_0$. À la distance $2r$, il vaut $k\\,E_0$ avec $k=$ ___.",
+                "answerType": "number",
+                "accepted": [
+                  "0.5",
+                  "1/2"
+                ],
+                "explanation": "$E\\propto1/r$ : doubler la distance divise le champ par $2$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour le fil infini, la charge enfermée dans le cylindre de Gauss de longueur $L$ vaut $Q_{\\text{int}}=$ ___ (en fonction de « lambda » et « L »).",
+              "answerType": "expression",
+              "accepted": [
+                "lambda*L"
+              ],
+              "variables": [
+                "lambda",
+                "L"
+              ],
+              "explanation": "La densité linéique est uniforme : $Q_{\\text{int}}=\\lambda L$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la loi de décroissance du champ d'un fil infini uniformément chargé ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$E\\propto 1/r^2$"
+                },
+                {
+                  "id": "b",
+                  "md": "$E\\propto 1/r$"
+                },
+                {
+                  "id": "c",
+                  "md": "$E$ indépendant de $r$"
+                },
+                {
+                  "id": "d",
+                  "md": "$E\\propto r$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E=\\frac{|\\lambda|}{2\\pi\\varepsilon_0 r}$ (auto-test, question 7). Le $1/r^2$ est celui d'une charge ponctuelle, l'indépendance celle du plan infini."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le champ d'un fil infini uniformément chargé possède une composante parallèle au fil.",
+              "answer": false,
+              "explanation": "Faux : par symétrie le champ est perpendiculaire au fil, sans composante parallèle."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour $\\lambda<0$, le champ d'un fil infini est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "dirigé vers le fil"
+                },
+                {
+                  "id": "b",
+                  "md": "dirigé vers l'extérieur"
+                },
+                {
+                  "id": "c",
+                  "md": "parallèle au fil"
+                },
+                {
+                  "id": "d",
+                  "md": "nul"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\vec E=\\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\vec e_\\rho$ avec $\\lambda<0$ : sens opposé à $\\vec e_\\rho$, donc vers le fil."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le calcul du champ du fil infini.",
+              "items": [
+                "Symétrie : $\\vec E=E_r(r)\\vec e_\\rho$",
+                "Surface de Gauss : cylindre coaxial de rayon $r$ et longueur $L$",
+                "Flux : $E_r(r)\\,2\\pi rL$ (bases : flux nul)",
+                "Charge intérieure : $\\lambda L$",
+                "Conclusion : $E_r=\\frac{\\lambda}{2\\pi\\varepsilon_0 r}$"
+              ],
+              "explanation": "Symétrie, surface, flux, charge enfermée, puis application du théorème."
+            }
+          ]
+        },
+        {
+          "slug": "symetrie-plane-plan-infini",
+          "title": "Symétrie plane : le plan infini",
+          "number": "5.9",
+          "estimatedMinutes": 6,
+          "summary": "Champ d'un plan infini uniformément chargé avec une « boîte de Gauss » : $|\\vec E|=|\\sigma|/(2\\varepsilon_0)$, indépendant de la distance au plan.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.9 Distribution à symétrie plane",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons un plan infini portant une densité surfacique uniforme $\\sigma$.\n\nPar symétrie, le champ est perpendiculaire au plan. Deux points situés à la même distance de part et d'autre du plan jouent des rôles équivalents : la norme du champ est donc la même des deux côtés.\n\nOn choisit une petite surface cylindrique fermée traversant le plan, souvent appelée « boîte de Gauss ».",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-boite-plan.svg",
+              "alt": "Boîte de Gauss cylindrique traversant un plan chargé σ, le champ sortant par les deux bases",
+              "caption": "Figure 5.9 — Surface de Gauss (cylindre court) traversant un plan infini uniformément chargé ; le champ sort par les deux bases.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Calcul du champ",
+              "md": "Sur la surface latérale de la boîte, le champ est tangent : le flux y est nul.",
+              "steps": [
+                {
+                  "md": "Si chaque base possède une aire $S$, le flux à travers les deux bases vaut $\\Phi_E=ES+ES=2ES$."
+                },
+                {
+                  "md": "La charge enfermée est $Q_{\\text{int}}=\\sigma S$."
+                },
+                {
+                  "md": "Le théorème de Gauss donne $2ES=\\dfrac{\\sigma S}{\\varepsilon_0}$."
+                },
+                {
+                  "md": "On obtient pour la norme\n$$|\\vec E|=\\frac{|\\sigma|}{2\\varepsilon_0}.$$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour $\\sigma>0$, le champ est dirigé vers l'extérieur du plan de chaque côté ; pour $\\sigma<0$, il est dirigé vers le plan.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour la boîte de Gauss traversant le plan, d'où provient le flux ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "De la surface latérale uniquement"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Des deux bases uniquement"
+                  },
+                  {
+                    "id": "c",
+                    "md": "D'une seule base"
+                  },
+                  {
+                    "id": "d",
+                    "md": "De toute la surface"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le champ est perpendiculaire au plan, donc tangent à la surface latérale (flux nul) et normal aux deux bases : $\\Phi_E=2ES$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Point clé.** Le champ créé par un plan infini uniformément chargé ne dépend pas de la distance au plan. Ce résultat est une conséquence directe de l'idéalisation « plan infini ».",
+              "origin": "source"
+            },
+            {
+              "type": "simulation",
+              "scene": "gauss-surface",
+              "params": {
+                "shape": "plane"
+              },
+              "caption": "Observe la boîte de Gauss à cheval sur le plan : le champ sort par les deux bases, la surface latérale ne contribue pas.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Le champ d'un plan infini uniformément chargé diminue lorsqu'on s'éloigne du plan.",
+                "answer": false,
+                "explanation": "Faux : $|\\vec E|=\\frac{|\\sigma|}{2\\varepsilon_0}$ ne dépend pas de la distance. C'est une conséquence de l'idéalisation « plan infini »."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour le plan infini, la charge enfermée dans la boîte de Gauss de bases d'aire $S$ vaut $Q_{\\text{int}}=$ ___ (en fonction de « sigma » et « S »).",
+              "answerType": "expression",
+              "accepted": [
+                "sigma*S"
+              ],
+              "variables": [
+                "sigma",
+                "S"
+              ],
+              "explanation": "La boîte découpe sur le plan un disque d'aire $S$ portant la charge $\\sigma S$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la norme du champ créé par un plan infini de densité $\\sigma$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\dfrac{|\\sigma|}{\\varepsilon_0}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\dfrac{|\\sigma|}{2\\varepsilon_0}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\dfrac{|\\sigma|}{2\\pi\\varepsilon_0 r}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\dfrac{|\\sigma|}{4\\pi\\varepsilon_0 r^2}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$2ES=\\sigma S/\\varepsilon_0$ donne $|\\vec E|=|\\sigma|/(2\\varepsilon_0)$. Le piège $|\\sigma|/\\varepsilon_0$ oublie que le flux sort par **deux** bases."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Pour $\\sigma>0$, le champ d'un plan infini est dirigé vers l'extérieur du plan, de chaque côté.",
+              "answer": true,
+              "explanation": "Vrai ; pour $\\sigma<0$ il est dirigé vers le plan."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour le plan infini, le flux total à travers la boîte de Gauss vaut $\\Phi_E=k\\,ES$ avec $k=$ ___.",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "Le flux sort par les deux bases ($ES$ chacune) ; il est nul sur la surface latérale."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque distribution à la variation de son champ avec la distance.",
+              "pairs": [
+                {
+                  "left": "Charge ponctuelle",
+                  "right": "$E\\propto 1/r^2$"
+                },
+                {
+                  "left": "Fil infini",
+                  "right": "$E\\propto 1/r$"
+                },
+                {
+                  "left": "Plan infini",
+                  "right": "$E$ indépendant de la distance"
+                }
+              ],
+              "explanation": "La géométrie de la distribution modifie la loi de décroissance du champ."
+            }
+          ]
+        },
+        {
+          "slug": "condition-passage-deux-plans",
+          "title": "Condition de passage et plans parallèles",
+          "number": "5.9.1–5.9.2",
+          "estimatedMinutes": 8,
+          "summary": "Saut de la composante normale du champ à la traversée d'une surface chargée, $E_{2n}-E_{1n}=\\sigma/\\varepsilon_0$, et champ de deux plans parallèles de charges opposées.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.9.1 Condition de passage à travers une surface chargée",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le théorème de Gauss permet d'obtenir une conséquence générale importante. Considérons une surface portant localement une densité surfacique $\\sigma$ et une très petite boîte de Gauss qui la traverse. Lorsque l'épaisseur de la boîte tend vers zéro, le flux par la surface latérale devient négligeable.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Établissement de la relation",
+              "md": "Notons $\\vec n$ la normale orientée de la face 1 vers la face 2.",
+              "steps": [
+                {
+                  "md": "Le flux par les deux bases conduit à\n$$(\\vec E_2\\cdot\\vec n)S-(\\vec E_1\\cdot\\vec n)S=\\frac{\\sigma S}{\\varepsilon_0}.$$",
+                  "why": "Sur la base côté 1, la normale sortante est $-\\vec n$, d'où le signe moins."
+                },
+                {
+                  "md": "Après simplification par $S$ :\n$$E_{2n}-E_{1n}=\\frac{\\sigma}{\\varepsilon_0},$$\noù $E_{1n}=\\vec E_1\\cdot\\vec n$ et $E_{2n}=\\vec E_2\\cdot\\vec n$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "title": "Résultat",
+              "md": "Une densité surfacique de charge produit un **saut de la composante normale** du champ électrique égal à $\\sigma/\\varepsilon_0$. Cette propriété explique notamment la discontinuité du champ à la surface d'une coquille sphérique chargée.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-condition-passage.svg",
+              "alt": "Petite boîte de Gauss à cheval sur une surface chargée σ, normale n de la face 1 vers la face 2, champs E1 et E2",
+              "caption": "Figure — Boîte de Gauss très plate traversant une surface chargée : seule la composante normale du champ saute, de σ/ε₀.",
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Vérification sur la coquille sphérique : juste à l'intérieur $E_{1n}=0$, juste à l'extérieur $E_{2n}=\\frac{Q}{4\\pi\\varepsilon_0R^2}$. Avec $\\sigma=\\frac{Q}{4\\pi R^2}$, on trouve bien $E_{2n}-E_{1n}=\\frac{\\sigma}{\\varepsilon_0}$.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "À la traversée d'une surface portant la densité $\\sigma$, la composante normale du champ subit un saut égal à :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$\\sigma/(2\\varepsilon_0)$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$\\sigma/\\varepsilon_0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$\\sigma\\varepsilon_0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$E_{2n}-E_{1n}=\\sigma/\\varepsilon_0$, avec $\\vec n$ orienté de la face 1 vers la face 2. Exemple : pour le plan infini, le champ passe de $-\\frac{\\sigma}{2\\varepsilon_0}$ à $+\\frac{\\sigma}{2\\varepsilon_0}$, soit un saut de $\\frac{\\sigma}{\\varepsilon_0}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.9.2 Deux plans parallèles de charges opposées",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Considérons deux plans infinis parallèles portant respectivement $+\\sigma$ et $-\\sigma$. Le principe de superposition permet d'additionner les champs produits par chaque plan.\n\nEntre les deux plans, les champs ont le même sens et s'ajoutent :\n$$E_{\\text{int}}=\\frac{\\sigma}{2\\varepsilon_0}+\\frac{\\sigma}{2\\varepsilon_0}=\\frac{\\sigma}{\\varepsilon_0}.$$\nÀ l'extérieur, les deux champs sont opposés et se compensent :\n$$E_{\\text{ext}}=0.$$",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/electrostatique/ch05-deux-plans.svg",
+              "alt": "Deux plans parallèles +σ et −σ : champ uniforme σ/ε0 entre les plans, nul à l'extérieur",
+              "caption": "Figure 5.10 — Champ résultant de deux plans infinis portant des densités opposées : $\\vec E=\\frac{\\sigma}{\\varepsilon_0}\\vec n$ entre les plans (du plan $+\\sigma$ vers le plan $-\\sigma$), $\\vec E=\\vec 0$ de part et d'autre.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce modèle constitue l'idéalisation du champ entre les armatures d'un condensateur plan loin des effets de bord.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "À l'extérieur de deux plans infinis parallèles portant $+\\sigma$ et $-\\sigma$, le champ vaut $\\sigma/\\varepsilon_0$.",
+                "answer": false,
+                "explanation": "Faux : à l'extérieur, les champs des deux plans sont opposés et se compensent, $E_{\\text{ext}}=0$. C'est **entre** les plans que $E=\\sigma/\\varepsilon_0$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Entre deux plans parallèles portant $\\pm\\sigma$, $E_{\\text{int}}=k\\,\\dfrac{\\sigma}{2\\varepsilon_0}$ avec $k=$ ___.",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "Les deux contributions $\\frac{\\sigma}{2\\varepsilon_0}$ ont le même sens entre les plans et s'ajoutent : $E=\\frac{\\sigma}{\\varepsilon_0}$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Entre deux plans portant $+\\sigma$ et $-\\sigma$, le champ est dirigé :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "du plan $+\\sigma$ vers le plan $-\\sigma$"
+                },
+                {
+                  "id": "b",
+                  "md": "du plan $-\\sigma$ vers le plan $+\\sigma$"
+                },
+                {
+                  "id": "c",
+                  "md": "parallèlement aux plans"
+                },
+                {
+                  "id": "d",
+                  "md": "il est nul"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Le champ « part » des charges positives et « va » vers les charges négatives."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La condition de passage $E_{2n}-E_{1n}=\\sigma/\\varepsilon_0$ concerne la composante normale du champ.",
+              "answer": true,
+              "explanation": "Vrai : c'est la composante normale qui subit un saut ; la relation s'obtient avec une boîte de Gauss d'épaisseur tendant vers zéro."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans l'établissement de la condition de passage, pourquoi néglige-t-on le flux par la surface latérale de la boîte ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que le champ y est toujours nul"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que l'épaisseur de la boîte tend vers zéro"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que $\\sigma=0$ sur la surface latérale"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que la boîte est sphérique"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'aire latérale tend vers zéro avec l'épaisseur : son flux devient négligeable."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le modèle des deux plans de charges opposées idéalise le champ entre les armatures d'un condensateur plan, loin des effets de bord.",
+              "answer": true,
+              "explanation": "Vrai : c'est la remarque finale du §5.9.2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "forme-locale-et-methode",
+      "title": "Forme locale et démarche de résolution",
+      "number": "5.10–5.12",
+      "lessons": [
+        {
+          "slug": "forme-locale-gauss",
+          "title": "Écriture locale du théorème de Gauss",
+          "number": "5.10",
+          "estimatedMinutes": 6,
+          "summary": "Passage de la forme intégrale à la forme locale $\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$ grâce au théorème de la divergence, et interprétation du signe de la divergence.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.10 Écriture locale du théorème de Gauss",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La forme intégrale du théorème de Gauss relie une propriété globale de la surface fermée à la charge contenue dans son volume.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "title": "Passage à la forme locale",
+              "md": "On part de $\\oiint_\\Sigma\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$.",
+              "steps": [
+                {
+                  "md": "Le théorème de la divergence permet de transformer l'intégrale de surface en une intégrale volumique :\n$$\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\iiint_{\\mathcal V}(\\operatorname{div}\\vec E)\\,d\\tau.$$",
+                  "why": "Théorème de Gauss–Ostrogradski, vu au chapitre 1."
+                },
+                {
+                  "md": "D'autre part, $Q_{\\text{int}}=\\displaystyle\\iiint_{\\mathcal V}\\rho\\,d\\tau.$"
+                },
+                {
+                  "md": "Le théorème de Gauss devient donc\n$$\\iiint_{\\mathcal V}(\\operatorname{div}\\vec E)\\,d\\tau=\\iiint_{\\mathcal V}\\frac{\\rho}{\\varepsilon_0}\\,d\\tau.$$"
+                },
+                {
+                  "md": "Cette égalité étant vraie pour tout volume, on obtient la relation locale.",
+                  "why": "Si deux fonctions continues ont la même intégrale sur tout volume, elles sont égales en tout point."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "theoreme",
+              "title": "Théorème (forme locale du théorème de Gauss)",
+              "md": "La forme locale du théorème de Gauss est\n$$\\operatorname{div}\\vec E=\\frac{\\rho}{\\varepsilon_0}.$$\nElle exprime que la densité volumique de charge constitue la source locale du champ électrique.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel outil mathématique permet de passer de la forme intégrale à la forme locale du théorème de Gauss ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le théorème de Stokes"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Le théorème de la divergence (Gauss–Ostrogradski)"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Le principe de superposition"
+                  },
+                  {
+                    "id": "d",
+                    "md": "La loi de Coulomb"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le théorème de la divergence transforme $\\oiint\\vec E\\cdot d\\vec S$ en $\\iiint\\operatorname{div}\\vec E\\,d\\tau$. Stokes relie une circulation à un flux de rotationnel."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "intuition",
+              "md": "Une divergence positive signifie qu'au voisinage du point considéré, le champ présente un comportement globalement sortant : le point appartient à une région contenant une densité de charge positive. Une divergence négative correspond à une densité de charge négative.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans une région vide de charge, on a $\\operatorname{div}\\vec E=0$, donc $\\vec E=\\vec 0$.",
+                "answer": false,
+                "explanation": "Faux : $\\rho=0$ donne bien $\\operatorname{div}\\vec E=0$, mais cela n'implique pas que $\\vec E$ soit nul (exemple : à l'extérieur d'une charge ponctuelle, le champ est non nul et de divergence nulle)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la forme locale du théorème de Gauss ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\operatorname{div}\\vec E=\\rho\\,\\varepsilon_0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\operatorname{div}\\vec E=\\dfrac{\\rho}{\\varepsilon_0}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\overrightarrow{\\operatorname{rot}}\\,\\vec E=\\dfrac{\\rho}{\\varepsilon_0}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$\\operatorname{div}\\vec E=\\dfrac{Q}{\\varepsilon_0}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$ (auto-test, question 10) : c'est une relation entre grandeurs **locales**, d'où la densité $\\rho$ et non la charge $Q$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "En un point où $\\operatorname{div}\\vec E<0$, la densité volumique de charge est négative.",
+              "answer": true,
+              "explanation": "Vrai : $\\rho=\\varepsilon_0\\operatorname{div}\\vec E$, et $\\varepsilon_0>0$."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les étapes menant à la forme locale.",
+              "items": [
+                "Forme intégrale : $\\oiint_\\Sigma\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$",
+                "Théorème de la divergence : $\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\iiint_{\\mathcal V}\\operatorname{div}\\vec E\\,d\\tau$",
+                "Écrire $Q_{\\text{int}}=\\iiint_{\\mathcal V}\\rho\\,d\\tau$",
+                "Égalité des intégrales pour tout volume",
+                "Conclusion : $\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$"
+              ],
+              "explanation": "C'est l'enchaînement du §5.10."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque forme du théorème à sa nature.",
+              "pairs": [
+                {
+                  "left": "$\\oiint_\\Sigma\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$",
+                  "right": "forme intégrale (globale)"
+                },
+                {
+                  "left": "$\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$",
+                  "right": "forme locale"
+                },
+                {
+                  "left": "$\\iiint_{\\mathcal V}\\rho\\,d\\tau$",
+                  "right": "charge intérieure"
+                }
+              ],
+              "explanation": "La forme intégrale porte sur une surface fermée et sa charge ; la forme locale relie le champ en un point à la densité en ce point."
+            }
+          ]
+        },
+        {
+          "slug": "demarche-resolution-gauss",
+          "title": "Démarche de résolution et conclusion",
+          "number": "5.11–5.12",
+          "estimatedMinutes": 6,
+          "summary": "La méthode en huit étapes pour résoudre un problème par le théorème de Gauss, les précautions à prendre, et la conclusion du chapitre.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.11 Démarche de résolution par le théorème de Gauss",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Une résolution efficace par le théorème de Gauss repose sur un enchaînement logique précis. La méthode suivante met volontairement l'analyse des symétries avant le choix de la surface de Gauss, afin d'éviter une utilisation purement mécanique du théorème.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Méthode.** Pour résoudre un problème par le théorème de Gauss, la démarche recommandée est la suivante :\n1. **Identifier la distribution de charges** et ses paramètres : $Q$, $\\lambda$, $\\sigma$ ou $\\rho$.\n2. **Analyser les symétries** avant toute intégration.\n3. **Déterminer la direction de $\\vec E$** et les variables dont dépend sa norme.\n4. **Choisir une surface de Gauss fermée** adaptée à ces symétries.\n5. **Décomposer le flux** surface par surface lorsque cela est nécessaire.\n6. **Calculer $Q_{\\text{int}}$** pour la surface considérée ; cette étape change souvent selon que le point étudié est intérieur ou extérieur à la distribution.\n7. **Appliquer** $\\oiint\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$.\n8. **Contrôler le résultat** : direction, unité, comportement limite et continuité éventuelle.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre ces étapes de la méthode.",
+                "items": [
+                  "Analyser les symétries",
+                  "Déterminer la direction de $\\vec E$ et ses variables",
+                  "Choisir une surface de Gauss fermée",
+                  "Calculer $Q_{\\text{int}}$",
+                  "Contrôler le résultat"
+                ],
+                "explanation": "L'analyse des symétries vient **avant** le choix de la surface ; le contrôle (direction, unité, limites, continuité) vient en dernier."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "remark",
+              "md": "**Attention.** Le théorème de Gauss ne permet pas de sortir $E$ de l'intégrale simplement parce qu'une surface fermée a été choisie. Il faut justifier, par symétrie, soit que $E$ est constant sur la partie de surface concernée, soit que le produit $\\vec E\\cdot d\\vec S$ y est nul. Une surface de Gauss bien choisie simplifie l'intégrale ; elle ne crée pas la symétrie du champ.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Choisir une surface de Gauss sphérique suffit à garantir que $E$ est constant sur cette surface.",
+                "answer": false,
+                "explanation": "Faux : c'est la **symétrie de la distribution** qui justifie la constance de $E$ ; la surface ne crée pas la symétrie du champ."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.12 Conclusion",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Le flux électrique introduit une manière globale de caractériser un champ à travers une surface. Le théorème de Gauss établit alors une relation remarquable entre cette grandeur globale et la charge enfermée :\n$$\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\frac{Q_{\\text{int}}}{\\varepsilon_0}.$$\nCe théorème ne remplace pas la loi de Coulomb : il en constitue une formulation particulièrement puissante lorsque la géométrie de la distribution présente une symétrie sphérique, cylindrique ou plane. Son efficacité repose donc moins sur l'intégration elle-même que sur l'analyse préalable des symétries.\n\nSous sa forme locale,\n$$\\operatorname{div}\\vec E=\\frac{\\rho}{\\varepsilon_0},$$\nil exprime directement que les charges électriques sont les sources du champ électrostatique. Le même théorème fournit aussi une condition de passage essentielle à travers une surface chargée :\n$$E_{2n}-E_{1n}=\\frac{\\sigma}{\\varepsilon_0}.$$",
+              "origin": "source"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle est la **première** étape de la démarche de résolution par le théorème de Gauss ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Choisir une surface de Gauss"
+                },
+                {
+                  "id": "b",
+                  "md": "Identifier la distribution de charges et ses paramètres"
+                },
+                {
+                  "id": "c",
+                  "md": "Calculer le flux"
+                },
+                {
+                  "id": "d",
+                  "md": "Appliquer $\\oiint\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "On identifie d'abord la distribution ($Q$, $\\lambda$, $\\sigma$ ou $\\rho$), puis on analyse les symétries."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le théorème de Gauss remplace la loi de Coulomb.",
+              "answer": false,
+              "explanation": "Faux : il ne la remplace pas, il en constitue une formulation particulièrement puissante en présence de symétrie."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel contrôle **ne** fait **pas** partie de l'étape 8 de la méthode ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "la direction"
+                },
+                {
+                  "id": "b",
+                  "md": "l'unité"
+                },
+                {
+                  "id": "c",
+                  "md": "le comportement limite"
+                },
+                {
+                  "id": "d",
+                  "md": "la couleur des lignes de champ"
+                }
+              ],
+              "answer": "d",
+              "explanation": "L'étape 8 contrôle direction, unité, comportement limite et continuité éventuelle."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'étape « calculer $Q_{\\text{int}}$ » peut donner des résultats différents selon que le point étudié est intérieur ou extérieur à la distribution.",
+              "answer": true,
+              "explanation": "Vrai : par exemple pour la sphère pleine, $Q_{\\text{int}}=\\rho\\frac43\\pi r^3$ à l'intérieur et $Q$ à l'extérieur."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque résultat de la conclusion à son rôle.",
+              "pairs": [
+                {
+                  "left": "$\\oiint_\\Sigma\\vec E\\cdot d\\vec S=Q_{\\text{int}}/\\varepsilon_0$",
+                  "right": "relation flux – charge enfermée"
+                },
+                {
+                  "left": "$\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$",
+                  "right": "les charges sont les sources du champ"
+                },
+                {
+                  "left": "$E_{2n}-E_{1n}=\\sigma/\\varepsilon_0$",
+                  "right": "condition de passage à travers une surface chargée"
+                }
+              ],
+              "explanation": "Ce sont les trois formes du théorème rappelées en conclusion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "revision-auto-evaluation",
+      "title": "Révision et auto-évaluation",
+      "number": "5.13",
+      "lessons": [
+        {
+          "slug": "synthese-auto-test",
+          "title": "Synthèse, erreurs fréquentes et auto-test",
+          "number": "5.13.1–5.13.5",
+          "estimatedMinutes": 10,
+          "summary": "Les formules à retenir, la carte conceptuelle du chapitre, les erreurs fréquentes, le lexique essentiel et l'auto-test du cours avec ses réponses.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.13 Révision et auto-évaluation",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Cette section rassemble les outils nécessaires pour consolider les acquis du chapitre, vérifier la compréhension des notions essentielles et s'entraîner à appliquer le théorème de Gauss dans des situations représentatives.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.13.1 Synthèse",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La synthèse ci-dessous regroupe les relations et les résultats fondamentaux à maîtriser avant d'aborder les exercices et l'auto-évaluation.\n\n- Surface élémentaire orientée : $d\\vec S=\\vec n\\,dS$.\n- Flux élémentaire : $d\\Phi_E=\\vec E\\cdot d\\vec S$.\n- Flux à travers une surface fermée : $\\Phi_E=\\oiint_\\Sigma\\vec E\\cdot d\\vec S$.\n- Théorème de Gauss : $\\oiint_\\Sigma\\vec E\\cdot d\\vec S=\\dfrac{Q_{\\text{int}}}{\\varepsilon_0}$.\n- Fil infini : $|\\vec E(r)|=\\dfrac{|\\lambda|}{2\\pi\\varepsilon_0 r}$.\n- Plan infini : $|\\vec E|=\\dfrac{|\\sigma|}{2\\varepsilon_0}$.\n- Saut de la composante normale à travers une surface chargée : $E_{2n}-E_{1n}=\\dfrac{\\sigma}{\\varepsilon_0}$.\n- Sphère pleine uniforme, à l'intérieur : $|\\vec E(r)|=\\dfrac{|\\rho|r}{3\\varepsilon_0}$.\n- Forme locale : $\\operatorname{div}\\vec E=\\dfrac{\\rho}{\\varepsilon_0}$.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.13.2 Carte conceptuelle",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "La carte conceptuelle met en évidence l'enchaînement des idées du chapitre, depuis l'orientation d'une surface jusqu'aux différentes formes du théorème de Gauss et à son exploitation par symétrie :\n\n**Surface orientée** $d\\vec S$ → **Flux électrique** $\\vec E\\cdot d\\vec S$ → **Théorème de Gauss** $\\Phi_E=Q_{\\text{int}}/\\varepsilon_0$ → **Analyse des symétries** → symétrie sphérique / symétrie cylindrique / symétrie plane ; et **forme locale** $\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque distribution à la norme de son champ (synthèse).",
+                "pairs": [
+                  {
+                    "left": "Fil infini",
+                    "right": "$\\dfrac{|\\lambda|}{2\\pi\\varepsilon_0 r}$"
+                  },
+                  {
+                    "left": "Plan infini",
+                    "right": "$\\dfrac{|\\sigma|}{2\\varepsilon_0}$"
+                  },
+                  {
+                    "left": "Sphère pleine, intérieur",
+                    "right": "$\\dfrac{|\\rho|r}{3\\varepsilon_0}$"
+                  },
+                  {
+                    "left": "Coquille sphérique, intérieur",
+                    "right": "$0$"
+                  }
+                ],
+                "explanation": "Ce sont les résultats établis aux §5.7 à 5.9."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "5.13.3 Erreurs fréquentes",
+              "origin": "source"
+            },
+            {
+              "type": "remark",
+              "md": "**Erreurs fréquentes.** Les erreurs suivantes apparaissent régulièrement lors de l'application du théorème de Gauss. Les identifier permet de distinguer clairement les propriétés générales du théorème des simplifications qui ne sont justifiées que par la symétrie.\n- Confondre $dS$ et $d\\vec S$.\n- Utiliser une normale dirigée vers l'intérieur pour une surface fermée.\n- Écrire systématiquement $\\Phi_E=ES$ sans vérifier l'angle et la constance de $E$.\n- Croire qu'un flux nul implique $\\vec E=\\vec 0$.\n- Inclure des charges extérieures dans $Q_{\\text{int}}$.\n- Conclure que les charges extérieures ne créent aucun champ sur la surface de Gauss.\n- Choisir une surface de Gauss avant d'analyser les symétries.\n- Confondre la surface de Gauss, qui est fictive, avec une surface matérielle de la distribution.\n- Oublier que le signe de la charge enfermée fixe le signe du flux total.\n- Utiliser Gauss pour une distribution sans symétrie suffisante puis sortir abusivement $E$ de l'intégrale.\n- Oublier de recalculer $Q_{\\text{int}}$ lorsqu'on passe de l'intérieur à l'extérieur d'une distribution volumique.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.13.4 Lexique essentiel",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Ce lexique rappelle le sens précis des termes utilisés dans le chapitre. Il constitue un repère rapide pour vérifier les définitions avant une résolution ou une révision.\n\n**Tableau 5.2 – Lexique essentiel du chapitre 5**\n\n| Terme | Idée essentielle |\n|---|---|\n| Surface orientée | Surface à laquelle une direction normale a été associée. |\n| Vecteur surface | $d\\vec S=\\vec n\\,dS$ ; il est normal à la surface et orienté vers l'extérieur pour une surface fermée. |\n| Flux électrique | Intégrale de $\\vec E\\cdot d\\vec S$ sur une surface ; il mesure la traversée orientée du champ à travers cette surface. |\n| Surface de Gauss | Surface fermée fictive choisie pour exploiter les symétries du champ avec le théorème de Gauss. |\n| Charge intérieure | Somme algébrique des charges situées à l'intérieur de la surface fermée. |\n| Symétrie sphérique | Invariance par toute rotation autour d'un centre ; le champ est radial et sa norme dépend seulement de la distance au centre. |\n| Symétrie cylindrique | Invariance par translation le long d'un axe et rotation autour de cet axe, dans le modèle idéal infini. |\n| Symétrie plane | Invariance par translation dans un plan, dans le modèle idéal infini. |\n| Divergence | Grandeur locale mesurant le caractère source ou puits d'un champ vectoriel. |\n| Condition de passage | Relation décrivant le saut de la composante normale du champ à travers une surface portant une densité surfacique de charge. |\n\nLe tableau 5.2 rassemble les termes indispensables du chapitre et permet de retrouver rapidement leur signification physique avant une résolution ou une révision.",
+              "origin": "source"
+            },
+            {
+              "type": "heading",
+              "text": "5.13.5 Auto-test",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Auto-test",
+              "md": "Cet auto-test permet de vérifier rapidement la compréhension des concepts, des propriétés du flux et des conditions d'utilisation du théorème de Gauss. Il est conseillé de répondre d'abord sans consulter le cours.\n1. Quelle est la direction de $d\\vec S$ pour une surface fermée ?\n2. Dans quelle situation le flux élémentaire est-il nul alors que le champ ne l'est pas ?\n3. Une charge extérieure à une surface fermée contribue-t-elle au champ sur la surface ? au flux total ?\n4. Le théorème de Gauss est-il valable uniquement pour les distributions symétriques ?\n5. Pourquoi une forte symétrie est-elle néanmoins nécessaire pour calculer facilement $E$ avec Gauss ?\n6. Quelle surface de Gauss choisit-on pour un fil rectiligne infini ?\n7. Quelle est la loi de décroissance du champ d'un fil infini ?\n8. Quel est le champ créé par un plan infini uniformément chargé ?\n9. Comment varie le champ à l'intérieur d'une sphère pleine uniformément chargée ?\n10. Quelle est la forme locale du théorème de Gauss ?\n11. Quel est le saut de la composante normale du champ à travers une surface portant une densité $\\sigma$ ?",
+              "solution": [
+                {
+                  "md": "**À retenir – réponses rapides :**\n1. vers l'extérieur ;\n2. lorsque le champ est tangent à la surface ;\n3. oui au champ local, non au flux total net ;\n4. non, il est toujours valable en électrostatique ;\n5. pour rendre $\\vec E\\cdot d\\vec S$ simple et extraire $E$ de l'intégrale ;\n6. un cylindre coaxial ;\n7. $E\\propto1/r$ ;\n8. $|\\vec E|=|\\sigma|/(2\\varepsilon_0)$ ;\n9. $E\\propto r$ ;\n10. $\\operatorname{div}\\vec E=\\rho/\\varepsilon_0$ ;\n11. $E_{2n}-E_{1n}=\\sigma/\\varepsilon_0$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Utiliser une normale dirigée vers l'intérieur pour une surface fermée fait partie des erreurs fréquentes.",
+                "answer": true,
+                "explanation": "Vrai : pour une surface fermée, $d\\vec S$ est orienté vers l'extérieur par convention."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Lequel de ces énoncés est une **erreur fréquente** selon le cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Le flux est une grandeur algébrique"
+                },
+                {
+                  "id": "b",
+                  "md": "Inclure des charges extérieures dans $Q_{\\text{int}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "La surface de Gauss est fictive"
+                },
+                {
+                  "id": "d",
+                  "md": "$d\\vec S$ est normal à la surface"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Seules les charges **intérieures** entrent dans $Q_{\\text{int}}$. Les trois autres énoncés sont corrects."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque terme du lexique à son idée essentielle.",
+              "pairs": [
+                {
+                  "left": "Surface de Gauss",
+                  "right": "surface fermée fictive choisie selon les symétries"
+                },
+                {
+                  "left": "Charge intérieure",
+                  "right": "somme algébrique des charges dans la surface fermée"
+                },
+                {
+                  "left": "Divergence",
+                  "right": "caractère source ou puits local d'un champ"
+                },
+                {
+                  "left": "Condition de passage",
+                  "right": "saut de la composante normale à travers une surface chargée"
+                }
+              ],
+              "explanation": "Voir le tableau 5.2."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une charge extérieure à une surface fermée contribue au champ sur la surface mais pas au flux total net.",
+              "answer": true,
+              "explanation": "Vrai : réponse 3 de l'auto-test."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle symétrie correspond à une invariance par translation le long d'un axe et par rotation autour de cet axe ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "sphérique"
+                },
+                {
+                  "id": "b",
+                  "md": "cylindrique"
+                },
+                {
+                  "id": "c",
+                  "md": "plane"
+                },
+                {
+                  "id": "d",
+                  "md": "aucune"
+                }
+              ],
+              "answer": "b",
+              "explanation": "C'est la définition de la symétrie cylindrique du lexique (modèle idéal infini)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Choisir une surface de Gauss avant d'analyser les symétries est la démarche recommandée.",
+              "answer": false,
+              "explanation": "Faux : c'est une erreur fréquente ; l'analyse des symétries vient d'abord."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour un fil rectiligne infini, la surface de Gauss adaptée est un cylindre ___.",
+              "answerType": "text",
+              "accepted": [
+                "coaxial",
+                "coaxial au fil"
+              ],
+              "explanation": "Un cylindre **coaxial** (réponse 6 de l'auto-test)."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-corriges-flux",
+          "title": "Exercices corrigés : flux et charges",
+          "number": "5.13.6 (1–6)",
+          "estimatedMinutes": 10,
+          "summary": "Exercices 5.1 à 5.6 du cours : flux à travers une surface plane, flux d'une charge enfermée, charges intérieures et extérieures, fil infini, plan infini et deux plans opposés.",
+          "blocks": [
+            {
+              "type": "heading",
+              "text": "5.13.6 Exercices corrigés",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Les exercices suivants proposent une progression allant du calcul direct d'un flux à l'exploitation complète des symétries. Les corrigés détaillent la démarche attendue et permettent de contrôler à la fois le raisonnement physique et le calcul.",
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.1 – Flux à travers une surface plane",
+              "md": "Un champ uniforme $\\vec E$ de norme $800\\ \\mathrm{V\\,m^{-1}}$ traverse une surface plane d'aire $0{,}15\\ \\mathrm{m^2}$. La normale à la surface fait un angle de $30^\\circ$ avec le champ. Calculer le flux électrique.",
+              "solution": [
+                {
+                  "md": "$\\Phi_E=ES\\cos\\alpha=800\\times0{,}15\\times\\cos30^\\circ.$"
+                },
+                {
+                  "md": "Donc $\\Phi_E\\simeq104\\ \\mathrm{V\\,m}.$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.2 – Flux total d'une charge enfermée",
+              "md": "Une charge ponctuelle $Q=6\\ \\mathrm{nC}$ est enfermée dans une surface fermée de forme quelconque. Déterminer le flux total du champ électrique à travers cette surface.",
+              "solution": [
+                {
+                  "md": "Le théorème de Gauss donne directement $\\Phi_E=\\dfrac{Q}{\\varepsilon_0}.$"
+                },
+                {
+                  "md": "Ainsi, $\\Phi_E=\\dfrac{6\\times10^{-9}}{8{,}854\\times10^{-12}}\\simeq678\\ \\mathrm{V\\,m}.$"
+                },
+                {
+                  "md": "La forme de la surface n'intervient pas."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Exercice 5.2 bis : avec $Q=-6\\ \\mathrm{nC}$ à la place de $+6\\ \\mathrm{nC}$, le flux vaudrait environ ___ $\\mathrm{V\\,m}$ (arrondi à l'unité).",
+                "answerType": "number",
+                "accepted": [
+                  "-678"
+                ],
+                "explanation": "Le signe de la charge enfermée fixe le signe du flux : $\\Phi_E\\simeq-678\\ \\mathrm{V\\,m}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.3 – Charges intérieures et extérieures",
+              "md": "Une surface fermée contient deux charges $Q_1=4\\ \\mathrm{nC}$ et $Q_2=-1\\ \\mathrm{nC}$. Une troisième charge $Q_3=10\\ \\mathrm{nC}$ est située à l'extérieur. Calculer le flux total à travers la surface.",
+              "solution": [
+                {
+                  "md": "Seules les charges intérieures interviennent dans le flux total : $Q_{\\text{int}}=Q_1+Q_2=3\\ \\mathrm{nC}.$"
+                },
+                {
+                  "md": "Donc $\\Phi_E=\\dfrac{3\\times10^{-9}}{\\varepsilon_0}\\simeq339\\ \\mathrm{V\\,m}.$"
+                },
+                {
+                  "md": "La charge extérieure $Q_3$ modifie le champ local mais pas le flux total net."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.4 – Champ d'un fil infini",
+              "md": "Un fil rectiligne très long porte une densité linéique $\\lambda=4\\ \\mathrm{nC\\,m^{-1}}$. Déterminer la norme du champ à une distance $r=8\\ \\mathrm{cm}$ du fil.",
+              "solution": [
+                {
+                  "md": "$E(r)=\\dfrac{\\lambda}{2\\pi\\varepsilon_0 r}.$"
+                },
+                {
+                  "md": "Avec $r=0{,}08\\ \\mathrm{m}$, $E\\simeq\\dfrac{4\\times10^{-9}}{2\\pi(8{,}854\\times10^{-12})(0{,}08)}\\simeq899\\ \\mathrm{V\\,m^{-1}}.$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.5 – Champ d'un plan infini",
+              "md": "Un plan infini porte une densité surfacique uniforme $\\sigma=5\\ \\mathrm{nC\\,m^{-2}}$. Calculer le champ de chaque côté du plan.",
+              "solution": [
+                {
+                  "md": "$E=\\dfrac{\\sigma}{2\\varepsilon_0}=\\dfrac{5\\times10^{-9}}{2(8{,}854\\times10^{-12})}.$"
+                },
+                {
+                  "md": "Donc $E\\simeq282\\ \\mathrm{V\\,m^{-1}}.$"
+                },
+                {
+                  "md": "Pour $\\sigma>0$, le champ est dirigé perpendiculairement au plan vers l'extérieur de chaque côté."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.6 – Champ entre deux plans parallèles opposément chargés",
+              "md": "Deux plans infinis parallèles portent les densités $+\\sigma$ et $-\\sigma$ avec $\\sigma=8\\ \\mathrm{nC\\,m^{-2}}$. Déterminer le champ entre les plans et à l'extérieur.",
+              "solution": [
+                {
+                  "md": "Entre les plans, $E=\\dfrac{\\sigma}{\\varepsilon_0}=\\dfrac{8\\times10^{-9}}{8{,}854\\times10^{-12}}\\simeq904\\ \\mathrm{V\\,m^{-1}}.$"
+                },
+                {
+                  "md": "Le champ est dirigé du plan positif vers le plan négatif."
+                },
+                {
+                  "md": "À l'extérieur, les contributions se compensent : $E=0.$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans l'exercice 5.3, si l'on déplace $Q_3$ à l'**intérieur** de la surface, le flux total devient :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$3\\ \\mathrm{nC}/\\varepsilon_0$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$13\\ \\mathrm{nC}/\\varepsilon_0$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$15\\ \\mathrm{nC}/\\varepsilon_0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$10\\ \\mathrm{nC}/\\varepsilon_0$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$Q_{\\text{int}}=4-1+10=13\\ \\mathrm{nC}$ (somme algébrique)."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 5.1 : pourquoi utilise-t-on $\\cos30^\\circ$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que $30^\\circ$ est l'angle entre le champ et la **normale** à la surface"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que $30^\\circ$ est l'angle entre le champ et la surface elle-même"
+                },
+                {
+                  "id": "c",
+                  "md": "Par convention, on utilise toujours le cosinus"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que la surface est fermée"
+                }
+              ],
+              "answer": "a",
+              "explanation": "$\\Phi_E=ES\\cos\\alpha$ avec $\\alpha$ l'angle entre $\\vec E$ et la normale $\\vec n$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Exercice 5.2 : le résultat $\\Phi_E\\simeq678\\ \\mathrm{V\\,m}$ dépend de la forme de la surface fermée.",
+              "answer": false,
+              "explanation": "Faux : d'après le théorème de Gauss, seul $Q_{\\text{int}}$ compte ; la forme n'intervient pas."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Exercice 5.3 : $Q_{\\text{int}}=$ ___ $\\mathrm{nC}$.",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "$Q_1+Q_2=4-1=3\\ \\mathrm{nC}$ ; $Q_3$ est extérieure."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 5.4 : si l'on se place à $r=16\\ \\mathrm{cm}$ au lieu de $8\\ \\mathrm{cm}$, le champ devient environ :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$899\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "b",
+                  "md": "$450\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "c",
+                  "md": "$225\\ \\mathrm{V\\,m^{-1}}$"
+                },
+                {
+                  "id": "d",
+                  "md": "$1798\\ \\mathrm{V\\,m^{-1}}$"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$E\\propto1/r$ pour un fil infini : doubler $r$ divise $E$ par $2$, soit environ $450\\ \\mathrm{V\\,m^{-1}}$."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Exercices 5.5 et 5.6 : à densité $\\sigma$ égale, le champ entre deux plans $\\pm\\sigma$ est ___ fois plus grand que celui d'un seul plan.",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "Un plan : $\\frac{\\sigma}{2\\varepsilon_0}$ ; entre deux plans opposés : $\\frac{\\sigma}{\\varepsilon_0}$."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Exercice 5.6 : à l'extérieur des deux plans, le champ est nul.",
+              "answer": true,
+              "explanation": "Vrai : les contributions des deux plans y sont opposées et se compensent."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-corriges-symetries",
+          "title": "Exercices corrigés : symétries et forme locale",
+          "number": "5.13.6 (7–12)",
+          "estimatedMinutes": 10,
+          "summary": "Exercices 5.7 à 5.12 du cours : coquille et sphère pleine, continuité du champ, choix d'une surface de Gauss, discontinuité à une surface chargée et forme locale.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "title": "Exercice 5.7 – Champ d'une coquille sphérique uniformément chargée",
+              "md": "Une coquille sphérique de rayon $R=0{,}20\\ \\mathrm{m}$ porte une charge totale uniforme $Q=12\\ \\mathrm{nC}$. Déterminer le champ à $r_1=0{,}10\\ \\mathrm{m}$ puis à $r_2=0{,}40\\ \\mathrm{m}$ du centre.",
+              "solution": [
+                {
+                  "md": "Pour $r_1<R$, la surface de Gauss n'enferme aucune charge : $E(r_1)=0.$"
+                },
+                {
+                  "md": "Pour $r_2>R$, $E(r_2)=\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Q}{r_2^2}.$"
+                },
+                {
+                  "md": "Numériquement, $E(r_2)=8{,}99\\times10^{9}\\,\\dfrac{12\\times10^{-9}}{(0{,}40)^2}\\simeq674\\ \\mathrm{V\\,m^{-1}}.$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.8 – Sphère pleine uniformément chargée",
+              "md": "Une sphère pleine de rayon $R=0{,}12\\ \\mathrm{m}$ porte une densité volumique uniforme $\\rho=2{,}0\\times10^{-6}\\ \\mathrm{C\\,m^{-3}}$. Calculer le champ à $r=4\\ \\mathrm{cm}$ du centre.",
+              "solution": [
+                {
+                  "md": "Comme $r<R$, on utilise $E(r)=\\dfrac{\\rho r}{3\\varepsilon_0}.$"
+                },
+                {
+                  "md": "Donc $E=\\dfrac{(2{,}0\\times10^{-6})(0{,}04)}{3(8{,}854\\times10^{-12})}\\simeq3{,}01\\times10^{3}\\ \\mathrm{V\\,m^{-1}}.$"
+                },
+                {
+                  "md": "Le champ est radial et dirigé vers l'extérieur puisque $\\rho>0$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Exercice 5.7 : le champ à $r=0{,}20\\ \\mathrm{m}$ juste à l'extérieur de la coquille vaut environ :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "$674\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "b",
+                    "md": "$2{,}7\\times10^{3}\\ \\mathrm{V\\,m^{-1}}$"
+                  },
+                  {
+                    "id": "c",
+                    "md": "$0$"
+                  },
+                  {
+                    "id": "d",
+                    "md": "$1{,}35\\times10^{3}\\ \\mathrm{V\\,m^{-1}}$"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "$E\\propto1/r^2$ : en passant de $0{,}40$ à $0{,}20\\ \\mathrm{m}$, le champ est multiplié par $4$ : $4\\times674\\simeq2{,}7\\times10^3\\ \\mathrm{V\\,m^{-1}}$."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.9 – Continuité du champ d'une sphère pleine",
+              "md": "Pour une sphère pleine de rayon $R$ et de densité uniforme $\\rho$, vérifier que les expressions intérieure et extérieure du champ donnent la même valeur en $r=R$.",
+              "solution": [
+                {
+                  "md": "À l'intérieur, $E_{\\text{int}}(R)=\\dfrac{\\rho R}{3\\varepsilon_0}.$"
+                },
+                {
+                  "md": "La charge totale vaut $Q=\\rho\\dfrac43\\pi R^3.$"
+                },
+                {
+                  "md": "À l'extérieur,\n$$E_{\\text{ext}}(R)=\\frac{1}{4\\pi\\varepsilon_0}\\frac{Q}{R^2}=\\frac{1}{4\\pi\\varepsilon_0}\\frac{\\rho(4\\pi R^3/3)}{R^2}=\\frac{\\rho R}{3\\varepsilon_0}.$$"
+                },
+                {
+                  "md": "Ainsi, $E_{\\text{int}}(R)=E_{\\text{ext}}(R).$"
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.10 – Choix raisonné d'une surface de Gauss",
+              "md": "Pour chacune des distributions suivantes, proposer une surface de Gauss adaptée et préciser les parties de la surface qui contribuent au flux :\na) une charge ponctuelle ;\nb) un fil rectiligne infini uniformément chargé ;\nc) un plan infini uniformément chargé.",
+              "solution": [
+                {
+                  "md": "a) Une sphère centrée sur la charge ; toute la surface contribue et $E$ y est constant."
+                },
+                {
+                  "md": "b) Un cylindre coaxial ; seule la surface latérale contribue, les bases ont un flux nul."
+                },
+                {
+                  "md": "c) Une boîte cylindrique traversant le plan ; seules les deux bases contribuent, la surface latérale a un flux nul."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.11 – Discontinuité du champ à une surface chargée",
+              "md": "Une surface porte une densité surfacique uniforme $\\sigma=3\\ \\mathrm{nC\\,m^{-2}}$. Déterminer la différence $E_{2n}-E_{1n}$ entre les composantes normales du champ de part et d'autre de la surface.",
+              "solution": [
+                {
+                  "md": "La condition de passage issue du théorème de Gauss donne $E_{2n}-E_{1n}=\\dfrac{\\sigma}{\\varepsilon_0}.$"
+                },
+                {
+                  "md": "Numériquement, $E_{2n}-E_{1n}=\\dfrac{3\\times10^{-9}}{8{,}854\\times10^{-12}}\\simeq339\\ \\mathrm{V\\,m^{-1}}.$"
+                },
+                {
+                  "md": "Le signe est positif pour la normale orientée de la face 1 vers la face 2 lorsque $\\sigma>0$."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "exercise",
+              "title": "Exercice 5.12 – Forme locale",
+              "md": "Dans une région de l'espace, la densité volumique de charge est uniforme et vaut $\\rho_0$. Que peut-on affirmer sur $\\operatorname{div}\\vec E$ dans cette région ? Que devient cette divergence dans une région vide de charge ?",
+              "solution": [
+                {
+                  "md": "La forme locale du théorème de Gauss donne $\\operatorname{div}\\vec E=\\dfrac{\\rho_0}{\\varepsilon_0}.$"
+                },
+                {
+                  "md": "Dans une région vide de charge, $\\rho=0$, donc $\\operatorname{div}\\vec E=0.$"
+                },
+                {
+                  "md": "Cela n'implique pas nécessairement que $\\vec E$ soit nul."
+                }
+              ],
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Exercice 5.10 : pour un plan infini, la surface latérale de la boîte de Gauss contribue au flux.",
+                "answer": false,
+                "explanation": "Faux : le champ, perpendiculaire au plan, est tangent à la surface latérale ; seules les deux bases contribuent."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 5.7 : pourquoi $E(r_1)=0$ ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Parce que $r_1$ est trop petit"
+                },
+                {
+                  "id": "b",
+                  "md": "Parce que la sphère de Gauss de rayon $r_1<R$ n'enferme aucune charge"
+                },
+                {
+                  "id": "c",
+                  "md": "Parce que la coquille est conductrice"
+                },
+                {
+                  "id": "d",
+                  "md": "Parce que $Q$ est positive"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$Q_{\\text{int}}=0$ et, par symétrie, $E(r_1)$ est constant sur la sphère : $E(r_1)\\,4\\pi r_1^2=0$."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Exercice 5.10 : associez la distribution aux parties de la surface de Gauss qui contribuent au flux.",
+              "pairs": [
+                {
+                  "left": "Charge ponctuelle (sphère centrée)",
+                  "right": "toute la surface"
+                },
+                {
+                  "left": "Fil infini (cylindre coaxial)",
+                  "right": "la surface latérale seulement"
+                },
+                {
+                  "left": "Plan infini (boîte cylindrique)",
+                  "right": "les deux bases seulement"
+                }
+              ],
+              "explanation": "On choisit la surface pour que le champ y soit soit normal et de norme constante, soit tangent."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Exercice 5.9 : le champ d'une sphère pleine uniformément chargée est continu en $r=R$.",
+              "answer": true,
+              "explanation": "Vrai : $E_{\\text{int}}(R)=E_{\\text{ext}}(R)=\\frac{\\rho R}{3\\varepsilon_0}$ ; il n'y a pas de charge surfacique singulière."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Exercice 5.8 : au centre de la sphère pleine ($r=0$), le champ vaut ___ $\\mathrm{V\\,m^{-1}}$.",
+              "answerType": "number",
+              "accepted": [
+                "0"
+              ],
+              "explanation": "$E(r)=\\frac{\\rho r}{3\\varepsilon_0}$ s'annule en $r=0$."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Exercice 5.12 : dans une région vide de charge, que peut-on conclure ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "$\\vec E=\\vec 0$"
+                },
+                {
+                  "id": "b",
+                  "md": "$\\operatorname{div}\\vec E=0$, sans que $\\vec E$ soit forcément nul"
+                },
+                {
+                  "id": "c",
+                  "md": "$\\operatorname{div}\\vec E=\\rho_0/\\varepsilon_0$"
+                },
+                {
+                  "id": "d",
+                  "md": "Le potentiel est nul"
+                }
+              ],
+              "answer": "b",
+              "explanation": "$\\rho=0\\Rightarrow\\operatorname{div}\\vec E=0$ ; le champ peut être non nul (créé par des charges situées ailleurs)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Exercice 5.11 : si $\\sigma$ est triplée, $E_{2n}-E_{1n}$ est multiplié par ___.",
+              "answerType": "number",
+              "accepted": [
+                "3"
+              ],
+              "explanation": "Le saut $\\sigma/\\varepsilon_0$ est proportionnel à $\\sigma$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : COURS-5 (F337, Pr. Marouane EL AZZAOUI, ENSA Agadir), 23 pages, suivi intégralement dans l'ordre (§5.1 à §5.13). Le cours est complet : F069 et F120 n'ont pas été nécessaires.",
+    "Les encadrés « Objectifs », « Prérequis », « Méthode » sont rendus en blocs texte ; « Point clé », « Attention » et « Erreurs fréquentes » en remarques ; « Propriété » et « Résultat » en blocs propriété ; les encadrés « Intuition » de la source gardent origin: source.",
+    "Figures 5.1 à 5.10 redessinées en TikZ d'après le cours du professeur (blocs figure, SVG dans public/figures/electrostatique/ch05-*.svg, sources output/figures/electrostatique/src/ch05-*.tex) ; figure ajoutée pour la condition de passage (boîte de Gauss). La carte conceptuelle (§5.13.2) reste rendue sous forme d'enchaînement textuel ; les tableaux 5.1 et 5.2 sont rendus en tableaux Markdown.",
+    "Aucune coquille de fond relevée. Harmonisations mineures : écriture décimale à virgule (0,20 ; 8,854) dans les exercices et exemples ; « div » écrit operatorname{div}.",
+    "§5.9 (plan infini) : la source écrit « le flux à travers les deux bases vaut ES + ES = 2ES » en notant E la composante normale sortante (positive pour σ > 0) ; conservé tel quel puis conclu par |E| = |σ|/(2ε₀) comme dans la source.",
+    "§5.8 : la source note la composante radiale E_r(r) et le vecteur unitaire e_ρ (direction perpendiculaire au fil) ; notation conservée.",
+    "Ajouts pédagogiques (origin: added) : décomposition en étapes des calculs du §5.5.1, §5.7, §5.8, §5.9, §5.9.1 et §5.10 (les étapes reprennent les lignes de calcul de la source ; seuls les « why » sont ajoutés) ; une intuition sur l'unité du flux (§5.4) ; une intuition vérifiant la condition de passage sur la coquille sphérique (§5.9.1). Tous les checkpoints et quiz sont ajoutés.",
+    "Les 12 exercices corrigés du §5.13.6 sont repris intégralement (deux leçons) ; l'auto-test du §5.13.5 est repris comme exercice avec les « réponses rapides » de la source en solution. Valeurs numériques des corrigés vérifiées (104 V m, 678 V m, 339 V m, 899 V/m, 282 V/m, 904 V/m, 674 V/m, 3,01×10³ V/m, 339 V/m) : toutes exactes.",
+    "Les fill_blank de type expression demandent d'écrire ε₀ sous la forme « eps0 », λ « lambda », σ « sigma », ρ « rho ». La correction automatique confond majuscules et minuscules (r et R), ce qui est sans effet ici."
+  ]
+}

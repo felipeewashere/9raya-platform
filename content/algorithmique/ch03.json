@@ -1,0 +1,1342 @@
+{
+  "slug": "variables-types-operateurs",
+  "number": 3,
+  "title": "Variables, types et opérateurs",
+  "description": "Notions fondamentales et instructions de base : données, constantes et variables, règles de nommage, types (entier, réel, chaîne, caractère, booléen), lecture et affectation, opérateurs arithmétiques (dont DIV et MOD) et priorités, opérateurs de comparaison et logiques avec leurs tables de vérité, et exercices d'application.",
+  "sourcePdf": "Modules/Algorithme/Cours/Chapitre 03 - Variables, types et opérateurs.pdf",
+  "sections": [
+    {
+      "slug": "donnees-constantes-variables",
+      "title": "Données, constantes et variables",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "donnees-et-constantes",
+          "title": "Données et constantes",
+          "number": "3.1",
+          "estimatedMinutes": 8,
+          "summary": "Du rôle de la partie déclarative à la notion de donnée (entrée, intermédiaire, sortie), le cycle de vie d'une donnée, et les constantes.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "**Rappel : comment un ordinateur résout-il un problème ?**\n\nProblème → Réflexion → Solution (**algorithme**) → **Programme** → Exécution → Résultat.\n\nD'un algorithme vers un programme : l'algorithme (`Algorithme Nom`, partie déclarative avec constantes et variables, puis `Début … instructions … Fin`) est **traduit** dans un langage de programmation (Java, Python, C++), qui a la même organisation : déclaration des variables, puis instructions.",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Pour commencer à établir un algorithme, quel est le premier élément que nous avons besoin de définir ? **La donnée (l'objet)**, déclarée dans la **partie déclarative**.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une **donnée** est une information manipulée par un programme. Exemples : `25`, `3.14`, `\"Bonjour\"`, `'A'`, `Vrai`.\n\nPlus précisément, une donnée désigne une information élémentaire ou complexe manipulée par un programme, comprenant les **constantes**, les **variables** et les **types de données**.",
+              "origin": "source",
+              "title": "Donnée"
+            },
+            {
+              "type": "text",
+              "md": "Une donnée sert comme :\n- **donnée d'entrée** : information fournie à l'algorithme ;\n- **donnée intermédiaire** : information calculée pendant l'exécution ;\n- **donnée de sortie** : résultat produit par l'algorithme.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Dans l'algorithme qui lit trois notes, calcule leur somme S puis la moyenne M et affiche M, associez chaque donnée à son rôle.",
+                "pairs": [
+                  {
+                    "left": "N1, N2, N3",
+                    "right": "Données d'entrée"
+                  },
+                  {
+                    "left": "S (somme)",
+                    "right": "Donnée intermédiaire"
+                  },
+                  {
+                    "left": "M (affichée)",
+                    "right": "Donnée de sortie"
+                  }
+                ],
+                "explanation": "Les notes sont fournies à l'algorithme (entrée), la somme est calculée en cours de route (intermédiaire), la moyenne est le résultat produit (sortie)."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "La **partie déclarative** sert à annoncer les données que l'algorithme va manipuler (déclaration).\n\nLa **partie d'instructions** utilise les données déclarées dans 3 opérations majeures :\n- **Entrée** : recevoir une information par affectation ou bien par une lecture (`Lire`).\n- **Traitement** : effectuer des calculs, des contrôles ou des comparaisons.\n- **Sortie** : afficher le résultat (`Afficher`).",
+              "origin": "source",
+              "title": "Cycle de vie d'une donnée dans un algorithme"
+            },
+            {
+              "type": "heading",
+              "text": "Les constantes",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "Une **constante** est une donnée dont la valeur est **fixe** et ne change pas pendant toute l'exécution d'un algorithme ou d'un programme.",
+              "origin": "source",
+              "title": "Constante"
+            },
+            {
+              "type": "text",
+              "md": "**Caractéristiques d'une constante :**\n- **Immuable** : sa valeur est définie une seule fois avant l'exécution de l'algorithme et ne peut plus être modifiée par la suite.\n- **Nommée** : elle est identifiée par un nom (ou identifiant) afin de faciliter sa manipulation et d'améliorer la lisibilité de l'algorithme.\n- **Typée** : comme toute donnée, une constante possède un type (entier, réel, caractère, chaîne de caractères, booléen, etc.).\n\n**Syntaxe de la déclaration :** `Constante Nom_Constante : type = Valeur`\n\n**Exemple :** `Constante Pi : réel = 3,14`",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Dans le corps de l'algorithme, on peut écrire `Pi ← 3.1416` pour modifier la constante Pi.",
+                "answer": false,
+                "explanation": "Faux : une constante est **immuable**, sa valeur est fixée une fois pour toutes dans la déclaration."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces caractéristiques **n'est pas** une caractéristique d'une constante ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Immuable"
+                },
+                {
+                  "id": "b",
+                  "md": "Nommée"
+                },
+                {
+                  "id": "c",
+                  "md": "Typée"
+                },
+                {
+                  "id": "d",
+                  "md": "Modifiable pendant l'exécution"
+                }
+              ],
+              "answer": "d",
+              "explanation": "Une constante est immuable, nommée et typée. Être modifiable pendant l'exécution, c'est le propre d'une variable."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre le cycle de vie d'une donnée.",
+              "items": [
+                "Déclaration",
+                "Entrée (lecture ou affectation)",
+                "Traitement",
+                "Sortie (affichage)"
+              ],
+              "explanation": "On déclare d'abord la donnée, on lui donne une valeur, on la traite, puis on affiche le résultat."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Une donnée calculée pendant l'exécution et qui n'est pas affichée est une donnée intermédiaire.",
+              "answer": true,
+              "explanation": "Oui : les données intermédiaires sont les informations calculées pendant l'exécution."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle déclaration de constante respecte la syntaxe du cours ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`Constante TVA : réel = 0,2`"
+                },
+                {
+                  "id": "b",
+                  "md": "`TVA ← 0,2`"
+                },
+                {
+                  "id": "c",
+                  "md": "`Variable TVA : réel`"
+                },
+                {
+                  "id": "d",
+                  "md": "`Lire TVA`"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Syntaxe : `Constante Nom_Constante : type = Valeur`. Les autres propositions sont une affectation, une déclaration de variable et une lecture."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Les données d'un algorithme sont annoncées dans la partie déclarative.",
+              "answer": true,
+              "explanation": "Oui : la partie déclarative sert à annoncer (déclarer) les données que l'algorithme va manipuler."
+            }
+          ]
+        },
+        {
+          "slug": "variables-et-nommage",
+          "title": "Variables et règles de nommage",
+          "number": "3.2",
+          "estimatedMinutes": 9,
+          "summary": "Une variable est un espace mémoire nommé dont la valeur peut changer ; nom, type et valeur ; différence avec une constante ; règles pour nommer variables et constantes.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Une **variable** est un **espace mémoire nommé** permettant de stocker une donnée dont la valeur **peut changer** au cours de l'exécution d'un algorithme.",
+              "origin": "source",
+              "title": "Variable"
+            },
+            {
+              "type": "text",
+              "md": "**Caractéristiques d'une variable :**\n- **Nom** : permet d'identifier la variable.\n- **Type** : indique la nature des données qu'elle peut contenir.\n- **Valeur** : information actuellement stockée dans la variable.\n\n*Exemple :* on veut saisir votre âge. L'ordinateur réserve une case de la **mémoire**, lui donne un **nom** (le nom de la variable) et y range la **valeur** saisie.",
+              "origin": "source"
+            },
+            {
+              "type": "figure",
+              "src": "/figures/algorithmique/ch03-variable-memoire.svg",
+              "alt": "Quatre variables vues comme des cases mémoire : chacune a un nom (Age, Moyenne, Nom, Admis), une valeur (20, 12.5, \"Sara\", VRAI) et un type (Entier, Réel, Chaîne, Booléen).",
+              "caption": "Figure — une variable = un nom, une case mémoire qui contient la valeur, un type.",
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "Une variable est comme une bouteille étiquetée « Bouteille 1 » (le **nom**), prévue pour un liquide (le **type**). Elle peut contenir de l'eau, puis du jus, puis de la limonade : le **contenu (la valeur) change**, la bouteille reste la même.\n\nSyntaxe de la déclaration :\n```\nVariable\n    NomVariable : type\n```",
+              "origin": "source",
+              "title": "Exemple : la bouteille"
+            },
+            {
+              "type": "heading",
+              "text": "Variables vs constante",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Dans l'exemple du cours, Bouteille1 est une **variable** de type chaîne de caractères qui contient « Eau » puis « Jus », tandis que Bouteille2 est une **constante** qui contient toujours « Limonade ».\n\n| Variable | Constante |\n|---|---|\n| Accès en lecture (utiliser sa valeur). | Accès uniquement en lecture après la création. |\n| Accès en écriture (changer ou stocker une valeur). | L'écriture est interdite (bloquée par le programme). |\n| Sa valeur change pendant le programme. | Sa valeur reste toujours la même. |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle opération est autorisée sur une variable mais **interdite** sur une constante ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "La lecture de sa valeur"
+                  },
+                  {
+                    "id": "b",
+                    "md": "L'écriture d'une nouvelle valeur"
+                  },
+                  {
+                    "id": "c",
+                    "md": "L'utilisation dans un calcul"
+                  },
+                  {
+                    "id": "d",
+                    "md": "L'affichage"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Une constante est accessible uniquement en lecture ; l'écriture est bloquée. Une variable est accessible en lecture **et** en écriture."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Règles de nommage",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Si vous créez une variable pour stocker votre âge, quel nom allez-vous lui donner ? `x : entier` ne dit rien. **Le nom d'une variable doit permettre de comprendre immédiatement ce qu'elle contient.**\n\nAvec `A, B, C : Réel`, savez-vous ce que représente A ? Avec `Longueur, Largeur, Surface : Réel`, sans lire l'algorithme, on comprend déjà ce que représentent les variables.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "- Le nom doit **commencer par une lettre**.\n- Il peut contenir des lettres, des chiffres et le caractère `_` (underscore).\n- Il ne doit pas contenir d'**espaces**.\n- Il ne doit pas contenir de **caractères spéciaux** (+, -, *, @, #, etc.).\n- Il ne doit pas être un **mot réservé** du langage de programmation.",
+              "origin": "source",
+              "title": "Règles pour nommer une variable ou une constante"
+            },
+            {
+              "type": "text",
+              "md": "| Correct | Incorrect | Pourquoi ? |\n|---|---|---|\n| `Age` | `1Age` | Commence par un chiffre |\n| `Moyenne` | `Ma Moyenne` | Contient un espace |\n| `Note1` | `Note-1` | Contient un caractère spécial |\n| `Nom_Etudiant` | `@Nom` | Commence par un caractère spécial |\n| `PI` | `int` | Mot réservé (selon le langage) |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Lequel de ces noms de variable est **correct** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "`2emeNote`"
+                  },
+                  {
+                    "id": "b",
+                    "md": "`note finale`"
+                  },
+                  {
+                    "id": "c",
+                    "md": "`note_finale2`"
+                  },
+                  {
+                    "id": "d",
+                    "md": "`note#2`"
+                  }
+                ],
+                "answer": "c",
+                "explanation": "`note_finale2` commence par une lettre et ne contient que lettres, chiffres et underscore. Les autres commencent par un chiffre, contiennent un espace ou un caractère spécial."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "La valeur d'une variable peut changer au cours de l'exécution de l'algorithme.",
+              "answer": true,
+              "explanation": "C'est la définition même d'une variable (par opposition à une constante)."
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque nom incorrect à la règle qu'il viole.",
+              "pairs": [
+                {
+                  "left": "`1Age`",
+                  "right": "Commence par un chiffre"
+                },
+                {
+                  "left": "`Ma Moyenne`",
+                  "right": "Contient un espace"
+                },
+                {
+                  "left": "`Note-1`",
+                  "right": "Contient un caractère spécial"
+                },
+                {
+                  "left": "`int`",
+                  "right": "Mot réservé"
+                }
+              ],
+              "explanation": "Ce sont les exemples du tableau du cours."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelles sont les trois caractéristiques d'une variable ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Nom, type, valeur"
+                },
+                {
+                  "id": "b",
+                  "md": "Nom, adresse, couleur"
+                },
+                {
+                  "id": "c",
+                  "md": "Type, taille, priorité"
+                },
+                {
+                  "id": "d",
+                  "md": "Entrée, traitement, sortie"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Une variable a un **nom** (pour l'identifier), un **type** (nature des données) et une **valeur** (contenu actuel)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "`Surface_Rectangle` est un nom de variable valide.",
+              "answer": true,
+              "explanation": "Il commence par une lettre et ne contient que des lettres et un underscore."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pourquoi préférer `Longueur` à `A` comme nom de variable ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`A` est un mot réservé"
+                },
+                {
+                  "id": "b",
+                  "md": "Le nom doit permettre de comprendre immédiatement ce que contient la variable"
+                },
+                {
+                  "id": "c",
+                  "md": "Les noms d'une lettre sont interdits"
+                },
+                {
+                  "id": "d",
+                  "md": "`Longueur` prend moins de mémoire"
+                }
+              ],
+              "answer": "b",
+              "explanation": "`A` est un nom valide mais peu lisible ; un nom significatif rend l'algorithme compréhensible sans le lire en entier."
+            }
+          ]
+        },
+        {
+          "slug": "types-de-variables",
+          "title": "Types de variables",
+          "number": "3.3",
+          "estimatedMinutes": 8,
+          "summary": "Les cinq types du cours : entier, réel, chaîne, caractère et booléen, avec leur syntaxe de déclaration.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "Pour déclarer une variable, nous avons besoin de déterminer son **type**.\n\n| Type | Exemple |\n|---|---|\n| Entier | 15 |\n| Réel | 12.75 |\n| Caractère | 'A' |\n| Chaîne | \"Bonjour\" |\n| Booléen | Vrai / Faux |",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "C'est l'ensemble des nombres entiers positifs ou négatifs.\n\nSyntaxe : `Variable variable1, variable2, … : Entier`\n\nExemple : `Variable a, b : Entier` avec a = 35, b = 12.",
+              "origin": "source",
+              "title": "Type Entier"
+            },
+            {
+              "type": "definition",
+              "md": "C'est l'ensemble des nombres réels, c'est-à-dire les nombres décimaux sans limitation.\n\nSyntaxe : `Variable variable1, variable2, … : Réel`\n\nExemple : `Variable x, y : Réel` avec x = 1,33, y = 2,25.",
+              "origin": "source",
+              "title": "Type Réel"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quel type choisir pour une variable qui contient le prix d'un article (par exemple 12,75 DH) ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Entier"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Réel"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Caractère"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Booléen"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "12,75 n'est pas entier : il faut le type Réel."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "C'est une suite de caractères, c'est-à-dire des combinaisons de caractères (lettres, chiffres, symboles…).\n\nSyntaxe : `Variable variable1, variable2, … : Chaîne`\n\nExemple : `Variable Nom, Catégorie : Chaîne` avec Nom = \"Alaoui_1\", Catégorie = \"15\".",
+              "origin": "source",
+              "title": "Type Chaîne"
+            },
+            {
+              "type": "definition",
+              "md": "Le type Caractère permet de représenter **un seul caractère** : une lettre, un chiffre ou un symbole.\n\nSyntaxe : `Variable variable1, variable2, … : Caractère`\n\nExemple : `Variable mention : Caractère` avec mention = 'B'.",
+              "origin": "source",
+              "title": "Type Caractère"
+            },
+            {
+              "type": "definition",
+              "md": "Il s'agit des objets qui ne peuvent prendre que **deux valeurs : vrai ou faux**.\n\nSyntaxe : `Variable variable1, variable2, … : Booléen`\n\nExemple : `Variable Admis : Booléen` avec Admis = vrai.",
+              "origin": "source",
+              "title": "Type Booléen"
+            },
+            {
+              "type": "remark",
+              "md": "Dans l'exemple Catégorie = \"15\", la valeur est entre guillemets : c'est une **chaîne** de deux caractères, pas le nombre 15. On ne peut pas faire de calcul arithmétique avec elle.",
+              "origin": "added"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "matching",
+                "prompt": "Associez chaque valeur au type qui lui convient.",
+                "pairs": [
+                  {
+                    "left": "-7",
+                    "right": "Entier"
+                  },
+                  {
+                    "left": "3.5",
+                    "right": "Réel"
+                  },
+                  {
+                    "left": "'Z'",
+                    "right": "Caractère"
+                  },
+                  {
+                    "left": "\"Agadir\"",
+                    "right": "Chaîne"
+                  },
+                  {
+                    "left": "Faux",
+                    "right": "Booléen"
+                  }
+                ],
+                "explanation": "Les guillemets simples entourent un seul caractère, les guillemets doubles une chaîne ; Vrai/Faux sont les deux valeurs booléennes."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "true_false",
+              "prompt": "Le type Caractère peut contenir le mot \"Bonjour\".",
+              "answer": false,
+              "explanation": "Faux : un caractère est **un seul** caractère. \"Bonjour\" est une chaîne."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Combien de valeurs différentes une variable booléenne peut-elle prendre ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "1"
+                },
+                {
+                  "id": "b",
+                  "md": "2"
+                },
+                {
+                  "id": "c",
+                  "md": "10"
+                },
+                {
+                  "id": "d",
+                  "md": "Une infinité"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Deux : vrai ou faux."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel type pour une variable qui indique si un étudiant est inscrit ou non ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Entier"
+                },
+                {
+                  "id": "b",
+                  "md": "Chaîne"
+                },
+                {
+                  "id": "c",
+                  "md": "Booléen"
+                },
+                {
+                  "id": "d",
+                  "md": "Réel"
+                }
+              ],
+              "answer": "c",
+              "explanation": "La réponse est oui/non : vrai ou faux, donc Booléen (comme `Admis` dans le cours)."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "La valeur \"15\" (entre guillemets) est de type Entier.",
+              "answer": false,
+              "explanation": "Faux : entre guillemets, c'est une chaîne de caractères (exemple Catégorie = \"15\" du cours)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans la déclaration `Variable a, b : Entier`, combien de variables sont déclarées ? ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "Deux variables, a et b, toutes deux de type Entier : on peut déclarer plusieurs variables du même type sur une ligne en les séparant par des virgules."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "instructions-de-base",
+      "title": "Instructions de base",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "lecture-et-affectation",
+          "title": "Entrée des données : lecture et affectation",
+          "number": "3.4",
+          "estimatedMinutes": 11,
+          "summary": "Les trois étapes entrée–traitement–sortie, la lecture (Lire) et l'affectation (←), ce qui se passe en mémoire, et deux exemples complets.",
+          "blocks": [
+            {
+              "type": "text",
+              "md": "**Les trois étapes de traitement des données :** Entrée → Traitement → Affichage.\n\n| Étape | Rôle |\n|---|---|\n| Entrée | Attribuer ou recevoir les valeurs des variables (Lire, affectation). |\n| Traitement | Manipuler les données (calculs, comparaisons, décisions, etc.). |\n| Sortie | Afficher ou enregistrer les résultats obtenus. |",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "L'**entrée** est l'étape qui consiste à attribuer une valeur aux variables avant leur utilisation dans l'algorithme. Elle vient comme **2ᵉ étape, après la déclaration**.\n\nUne variable peut recevoir une valeur de deux façons :\n1. **par saisie de l'utilisateur**, à l'aide de l'instruction `Lire NomVariable` ;\n2. **par affectation**, à l'aide de l'opérateur `NomVariable ← valeur`.",
+              "origin": "source",
+              "title": "L'entrée des données"
+            },
+            {
+              "type": "example",
+              "md": "Par lecture :\n\n```\nVariable\n    Age : Entier\nDébut\n    Lire Age\nFin\n```\n\nPar affectation :\n\n```\nVariable\n    Age : Entier\nDébut\n    Age ← 20\nFin\n```",
+              "origin": "source",
+              "title": "Les deux façons de donner une valeur à Age"
+            },
+            {
+              "type": "text",
+              "md": "- Les variables sont des **références (adresses mémoire)** où vont être stockées des valeurs qui peuvent changer au cours de l'exécution du programme. Les mémoires sont repérées par des numéros (pour l'ordinateur) ou des noms (pour le programmeur, qui a intérêt à choisir des noms significatifs).\n- **Chaque fois qu'on procède à une nouvelle affectation, l'ancien contenu de la mémoire est perdu** et un nouveau contenu est placé dans la mémoire.\n- Les constantes correspondent à des zones mémoire dont le contenu ne peut pas varier.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Avec `Lire Age`, c'est l'utilisateur qui fournit la valeur de Age au moment de l'exécution.",
+                "answer": true,
+                "explanation": "Oui : Lire = saisie par l'utilisateur. Avec `Age ← 20`, c'est l'algorithme lui-même qui fixe la valeur."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "```\nAlgorithme Calcul\nVariable\n    A : Entier\n    C, B : Réel\n    D : caractère\n    E : Booléen\nDébut\n    A ← 30\n    B ← A * 2\n    Afficher B\n    C ← (B + A) / 4\n    B ← C / 5\n    D ← 'Amine'\n    E ← (A > 40)\n    Afficher A, B, C, D, E\nFin\n```",
+              "origin": "source",
+              "title": "Exemple : quels résultats produit l'algorithme suivant ? Les types de variables sont-ils corrects ?",
+              "steps": [
+                {
+                  "md": "A ← 30 ; B ← 30 × 2 = 60 ; le premier `Afficher B` affiche **60**.",
+                  "why": "On affiche la valeur de B à ce moment-là."
+                },
+                {
+                  "md": "C ← (60 + 30) / 4 = 90 / 4 = **22,5**."
+                },
+                {
+                  "md": "B ← C / 5 = 22,5 / 5 = **4,5**.",
+                  "why": "L'ancienne valeur 60 de B est perdue."
+                },
+                {
+                  "md": "D ← 'Amine' ; E ← (30 > 40) = **Faux**."
+                },
+                {
+                  "md": "Le second affichage donne : **A = 30, B = 4,5, C = 22,5, D = Amine, E = Faux**."
+                },
+                {
+                  "md": "Types : D est déclaré **caractère** mais reçoit 'Amine' (5 caractères) : il faudrait le déclarer de type **Chaîne** (et écrire \"Amine\"). Les autres types sont corrects (B et C réels car ils reçoivent 4,5 et 22,5).",
+                  "why": "Un caractère ne contient qu'un seul caractère."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire l'algorithme permettant le calcul de la surface d'un cercle connaissant son rayon : $\\text{Surface} = \\pi \\times \\text{Rayon}^2$.\n\nEntrée : la valeur du rayon. Sortie : la surface calculée.",
+              "origin": "source",
+              "title": "Exercice d'application : surface d'un cercle",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme Surface_Cercle\nConstante Pi = 3.14\nVariable\n    Rayon : Entier      // donnée d'entrée\n    Surface : Réel      // donnée de sortie\nDébut\n    Écrire(\"Saisir la valeur du rayon\")\n    Lire(Rayon)\n    Surface ← Rayon * Rayon * Pi\n    Écrire(\"La Surface du cercle est : \", Surface)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec ce programme, si l'utilisateur saisit Rayon = 2, la surface affichée est ___",
+                "answerType": "number",
+                "accepted": [
+                  "12.56"
+                ],
+                "explanation": "$2\\times2\\times3.14 = 12.56$."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quelle instruction donne à X la valeur 7 **par affectation** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`Lire X`"
+                },
+                {
+                  "id": "b",
+                  "md": "`X ← 7`"
+                },
+                {
+                  "id": "c",
+                  "md": "`Afficher X`"
+                },
+                {
+                  "id": "d",
+                  "md": "`X : Entier`"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'affectation utilise la flèche ←. `Lire X` est une saisie, `Afficher X` une sortie, `X : Entier` une déclaration."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Après `B ← 60` puis `B ← 4,5`, la mémoire de B contient encore 60 quelque part.",
+              "answer": false,
+              "explanation": "Faux : à chaque nouvelle affectation, l'ancien contenu de la mémoire est perdu."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Dans l'exemple du cours (A ← 30, B ← A * 2, C ← (B + A) / 4), la valeur de C est ___",
+              "answerType": "number",
+              "accepted": [
+                "22.5"
+              ],
+              "explanation": "B = 60, donc C = (60 + 30)/4 = 90/4 = 22,5."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le même exemple, pourquoi `D ← 'Amine'` pose-t-il un problème de type ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "D est un booléen"
+                },
+                {
+                  "id": "b",
+                  "md": "Un caractère ne contient qu'un seul caractère, il faut une chaîne"
+                },
+                {
+                  "id": "c",
+                  "md": "On ne peut pas affecter de texte"
+                },
+                {
+                  "id": "d",
+                  "md": "D n'est pas déclaré"
+                }
+              ],
+              "answer": "b",
+              "explanation": "'Amine' a 5 caractères : D doit être de type Chaîne."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec A ← 30 et E ← (A > 40), la valeur de E est ___ (Vrai ou Faux)",
+              "answerType": "text",
+              "accepted": [
+                "Faux"
+              ],
+              "explanation": "30 > 40 est faux, donc E reçoit Faux : une comparaison produit une valeur booléenne."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les instructions du calcul de la surface d'un cercle.",
+              "items": [
+                "Écrire(\"Saisir la valeur du rayon\")",
+                "Lire(Rayon)",
+                "Surface ← Rayon * Rayon * Pi",
+                "Écrire(\"La Surface du cercle est : \", Surface)"
+              ],
+              "explanation": "Entrée (message puis lecture), traitement (calcul), sortie (affichage)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "operateurs",
+      "title": "Les opérateurs",
+      "number": "3",
+      "lessons": [
+        {
+          "slug": "operateurs-arithmetiques",
+          "title": "Opérateurs arithmétiques et priorités",
+          "number": "3.5",
+          "estimatedMinutes": 10,
+          "summary": "Les opérateurs +, -, *, /, DIV et MOD, la différence entre division réelle et division entière, et l'ordre de priorité des opérateurs.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Les **opérateurs** sont des symboles ou des mots qui permettent d'effectuer des opérations sur des données (variables, constantes ou valeurs). On distingue les opérateurs **arithmétiques**, **de comparaison** et **logiques**.",
+              "origin": "source",
+              "title": "Les opérateurs"
+            },
+            {
+              "type": "definition",
+              "md": "Ils permettent d'effectuer des calculs sur des données numériques.\n\n| Opérateur | Signification |\n|---|---|\n| + | Addition |\n| - | Soustraction |\n| * | Multiplication |\n| / | Division réelle |\n| DIV | Division entière |\n| MOD | Reste de la division |",
+              "origin": "source",
+              "title": "Les opérateurs arithmétiques"
+            },
+            {
+              "type": "example",
+              "md": "Vous avez 7 bonbons à partager équitablement entre 2 enfants.\n- Chaque enfant reçoit 3 bonbons entiers : c'est le **DIV** → `7 DIV 2 = 3` (le quotient).\n- Il reste 1 bonbon sur la table qu'on ne peut pas couper : c'est le **MOD** → `7 MOD 2 = 1` (le reste).\n\n```\n 7 │ 2\n-6 │───\n───│ 3    <─ résultat de DIV (le quotient)\n 1          <─ résultat de MOD (le reste)\n```",
+              "origin": "source",
+              "title": "DIV et MOD avec des bonbons"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "17 MOD 5 = ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "17 = 3 × 5 + 2 : le quotient (17 DIV 5) vaut 3 et le reste (17 MOD 5) vaut 2."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "heading",
+              "text": "Priorité des opérateurs",
+              "origin": "source"
+            },
+            {
+              "type": "theorem",
+              "kind": "propriete",
+              "md": "Comme en mathématiques, les opérateurs ne sont pas exécutés dans n'importe quel ordre :\n1. Parenthèses `( )`\n2. Multiplication `*`, division `/`, `DIV`, `MOD`\n3. Addition `+` et soustraction `-`\n\nPour les opérateurs de **même priorité**, on évalue **à partir de la gauche**.",
+              "origin": "source",
+              "title": "Ordre de priorité"
+            },
+            {
+              "type": "example",
+              "md": "- Priorité de `*`, `/`, `DIV` et `MOD` par rapport à `+` et `-` : `5 + 9 * 3 = 32` et non 42 ; `5 * 9 + 3 = 48` et non 60.\n- Même priorité, associativité à partir de la gauche : `15 / 5 * 3 = 9` et non 1 ; `5 – 2 + 4 = 7` et non –1.\n- On peut utiliser des parenthèses pour changer l'ordre des opérations : `15 / (5 * 3) = 1` ; `(5 + 9) * 3 = 42`.",
+              "origin": "source",
+              "title": "Exemples"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Valeur de `20 - 4 * 2 + 6 / 3` : ___",
+                "answerType": "number",
+                "accepted": [
+                  "14"
+                ],
+                "explanation": "D'abord `*` et `/` : 4 × 2 = 8 et 6 / 3 = 2. Puis de gauche à droite : 20 − 8 + 2 = 14."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrivez un algorithme complet permettant d'effectuer les opérations arithmétiques de base sur deux nombres entiers. L'algorithme doit :\n- déclarer trois variables entières : A, B et R ;\n- affecter les valeurs 8 à A et 3 à B ;\n- calculer et afficher la somme, la différence et le produit de A et B ;\n- calculer et afficher le quotient entier de la division de A par B (DIV) ;\n- calculer et afficher le reste de la division de A par B (MOD).",
+              "origin": "source",
+              "title": "Exemple d'application",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme Operations_Arithmetiques\nVariables\n    A, B, R : Entier\nDébut\n    A ← 8\n    B ← 3\n    R ← A + B\n    Afficher(\"Addition = \", R)\n    R ← A - B\n    Afficher(\"Soustraction = \", R)\n    R ← A * B\n    Afficher(\"Multiplication = \", R)\n    R ← A DIV B\n    Afficher(\"Quotient entier = \", R)\n    R ← A MOD B\n    Afficher(\"Reste = \", R)\nFin\n```"
+                },
+                {
+                  "md": "Affichages : Addition = 11, Soustraction = 5, Multiplication = 24, Quotient entier = 2, Reste = 2.",
+                  "why": "8 = 2 × 3 + 2."
+                }
+              ]
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque expression à sa valeur.",
+              "pairs": [
+                {
+                  "left": "`7 DIV 2`",
+                  "right": "3"
+                },
+                {
+                  "left": "`7 MOD 2`",
+                  "right": "1"
+                },
+                {
+                  "left": "`7 / 2`",
+                  "right": "3,5"
+                },
+                {
+                  "left": "`7 * 2`",
+                  "right": "14"
+                }
+              ],
+              "explanation": "DIV donne le quotient entier, MOD le reste, / la division réelle."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "`5 + 9 * 3` = ___",
+              "answerType": "number",
+              "accepted": [
+                "32"
+              ],
+              "explanation": "La multiplication est prioritaire : 9 × 3 = 27, puis 5 + 27 = 32 (et non 42)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "`15 / 5 * 3` = ___",
+              "answerType": "number",
+              "accepted": [
+                "9"
+              ],
+              "explanation": "Même priorité, on part de la gauche : 15 / 5 = 3, puis 3 × 3 = 9 (et non 1)."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "`(5 + 9) * 3` = ___",
+              "answerType": "number",
+              "accepted": [
+                "42"
+              ],
+              "explanation": "Les parenthèses passent en premier : 14 × 3 = 42."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "`N MOD 2 = 0` signifie que N est pair.",
+              "answer": true,
+              "explanation": "Le reste de la division par 2 est nul exactement quand N est pair. Cette astuce resservira dans les exercices."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec A = 8 et B = 3, `A MOD B` = ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "8 = 2 × 3 + 2 : le reste vaut 2."
+            }
+          ]
+        },
+        {
+          "slug": "operateurs-comparaison-logiques",
+          "title": "Opérateurs de comparaison et opérateurs logiques",
+          "number": "3.6",
+          "estimatedMinutes": 11,
+          "summary": "Les six opérateurs de comparaison, les opérateurs logiques ET, OU, NON, leurs tables de vérité et des exemples concrets.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Les opérateurs de comparaison permettent de **comparer deux valeurs**. Le résultat d'une comparaison est **toujours une valeur booléenne** : Vrai ou Faux.\n\n| Opérateur | Signification | Exemple | Résultat |\n|---|---|---|---|\n| = | Égal à | 5 = 5 | Vrai |\n| ≠ | Différent de | 5 ≠ 3 | Vrai |\n| > | Strictement supérieur à | 8 > 5 | Vrai |\n| < | Strictement inférieur à | 4 < 2 | Faux |\n| ≥ | Supérieur ou égal à | 7 ≥ 7 | Vrai |\n| ≤ | Inférieur ou égal à | 6 ≤ 8 | Vrai |",
+              "origin": "source",
+              "title": "Les opérateurs de comparaison"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "L'expression `7 > 7` vaut Vrai.",
+                "answer": false,
+                "explanation": "Faux : `>` est **strictement** supérieur. En revanche `7 ≥ 7` vaut Vrai."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Les opérateurs logiques permettent de **combiner une ou plusieurs comparaisons** afin d'obtenir une seule réponse logique. Le résultat est toujours une valeur booléenne : Vrai ou Faux.\n\n| Opérateur | Description |\n|---|---|\n| ET (AND) | Toutes les conditions doivent être vraies. |\n| OU (OR) | Au moins une condition doit être vraie. |\n| NON (NOT) | Inverse le résultat d'une condition. |\n\nLorsque plusieurs conditions doivent être vérifiées simultanément, on utilise les opérateurs logiques : `(Comparaison 1) ET/OU (Comparaison 2) …`.",
+              "origin": "source",
+              "title": "Les opérateurs logiques"
+            },
+            {
+              "type": "example",
+              "md": "| N° | Expression logique | Évaluation | Résultat |\n|---|---|---|---|\n| 1 | (A > B) ET (A > 0) | (8 > 5) ET (8 > 0) → Vrai ET Vrai | Vrai |\n| 2 | (A < B) OU (B > 0) | (8 < 5) OU (5 > 0) → Faux OU Vrai | Vrai |\n| 3 | NON(A = B) | NON(8 = 5) → NON(Faux) | Vrai |",
+              "origin": "source",
+              "title": "Évaluation avec A = 8 et B = 5"
+            },
+            {
+              "type": "example",
+              "md": "Un magasin offre une réduction si le client possède une carte de fidélité **OU** achète pour plus de 500 DH. Un client sans carte de fidélité qui achète pour 700 DH bénéficie-t-il de la réduction ?",
+              "origin": "source",
+              "title": "Exemple 1 : achat avec réduction",
+              "steps": [
+                {
+                  "md": "Carte de fidélité : Faux. Achat > 500 DH : 700 > 500 → Vrai."
+                },
+                {
+                  "md": "Faux OU Vrai = **Vrai** : le client bénéficie de la réduction.",
+                  "why": "Avec OU, une seule condition vraie suffit."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "md": "Pour qu'un étudiant valide son année, il doit satisfaire **simultanément** : avoir validé les 10 modules ; avoir une moyenne générale ≥ 10/20 ; ne pas avoir de note éliminatoire inférieure à 5/20 dans aucun module. Un étudiant a validé les 10 modules et obtenu 12/20 de moyenne, mais il a une note de 4/20 dans un module. Valide-t-il son année ?",
+              "origin": "source",
+              "title": "Exemple 2 : validation d'une année universitaire",
+              "steps": [
+                {
+                  "md": "Modules validés : Vrai. Moyenne ≥ 10 : 12 ≥ 10 → Vrai. Pas de note < 5 : Faux (il a 4/20)."
+                },
+                {
+                  "md": "Vrai ET Vrai ET Faux = **Faux** : l'étudiant ne valide pas son année.",
+                  "why": "Avec ET, une seule condition fausse suffit à rendre le tout faux."
+                }
+              ]
+            },
+            {
+              "type": "example",
+              "md": "« La bibliothèque est ouverte. » Que signifie NON(Bibliothèque ouverte) ? Réponse : **la bibliothèque est fermée.**",
+              "origin": "source",
+              "title": "Exemple 3 : NON"
+            },
+            {
+              "type": "heading",
+              "text": "Les tables de vérité",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "**Opérateur ET**\n\n| Condition 1 | Condition 2 | Résultat |\n|---|---|---|\n| Vrai | Vrai | Vrai |\n| Vrai | Faux | Faux |\n| Faux | Vrai | Faux |\n| Faux | Faux | Faux |\n\n**Opérateur OU**\n\n| Condition 1 | Condition 2 | Résultat |\n|---|---|---|\n| Vrai | Vrai | Vrai |\n| Vrai | Faux | Vrai |\n| Faux | Vrai | Vrai |\n| Faux | Faux | Faux |\n\n**Opérateur NON**\n\n| Condition | Résultat |\n|---|---|\n| Vrai | Faux |\n| Faux | Vrai |",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Avec A = 8 et B = 5, que vaut `(A < B) ET (B > 0)` ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Vrai"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Faux"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "(8 < 5) est Faux ; Faux ET n'importe quoi donne Faux."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Quand l'expression `C1 OU C2` est-elle fausse ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Quand C1 est fausse"
+                },
+                {
+                  "id": "b",
+                  "md": "Quand C2 est fausse"
+                },
+                {
+                  "id": "c",
+                  "md": "Quand C1 et C2 sont toutes deux fausses"
+                },
+                {
+                  "id": "d",
+                  "md": "Jamais"
+                }
+              ],
+              "answer": "c",
+              "explanation": "D'après la table du OU, le résultat n'est Faux que dans la dernière ligne : Faux OU Faux."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Le résultat d'une comparaison est toujours une valeur booléenne.",
+              "answer": true,
+              "explanation": "Oui : une comparaison vaut Vrai ou Faux."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec A = 8 et B = 5, `NON(A = B)` vaut ___ (Vrai ou Faux)",
+              "answerType": "text",
+              "accepted": [
+                "Vrai"
+              ],
+              "explanation": "A = B est faux (8 ≠ 5), et NON(Faux) = Vrai."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "`Faux OU (NON Faux)` vaut ___ (Vrai ou Faux)",
+              "answerType": "text",
+              "accepted": [
+                "Vrai"
+              ],
+              "explanation": "NON Faux = Vrai, puis Faux OU Vrai = Vrai : il suffit qu'une des deux conditions soit vraie."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Un étudiant a validé les 10 modules, a 12/20 de moyenne et une note de 4/20. Valide-t-il son année ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Oui, car la moyenne est ≥ 10"
+                },
+                {
+                  "id": "b",
+                  "md": "Non, car les trois conditions sont liées par ET et l'une est fausse"
+                },
+                {
+                  "id": "c",
+                  "md": "Oui, car deux conditions sur trois sont vraies"
+                },
+                {
+                  "id": "d",
+                  "md": "On ne peut pas savoir"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Les conditions doivent être satisfaites **simultanément** (ET) ; la note éliminatoire rend l'ensemble Faux."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Avec x = 3, laquelle de ces expressions vaut Vrai ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "`(x > 5) ET (x > 0)`"
+                },
+                {
+                  "id": "b",
+                  "md": "`(x > 5) OU (x < 0)`"
+                },
+                {
+                  "id": "c",
+                  "md": "`(x ≥ 3) ET (x ≠ 4)`"
+                },
+                {
+                  "id": "d",
+                  "md": "`NON(x = 3)`"
+                }
+              ],
+              "answer": "c",
+              "explanation": "x ≥ 3 est Vrai et x ≠ 4 est Vrai, donc Vrai ET Vrai = Vrai. Les autres donnent Faux."
+            }
+          ]
+        },
+        {
+          "slug": "exercices-div-mod-booleens",
+          "title": "Exercices : DIV, MOD, booléens et chaînes",
+          "number": "3.7",
+          "estimatedMinutes": 12,
+          "summary": "Exercices d'application du chapitre : rendu de monnaie, accès à une activité, multiples, parité, dernier chiffre, concaténation de chaînes, contrôle de température.",
+          "blocks": [
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un montant M (en dirhams), puis calcule et affiche le nombre de pièces de 10 DH (NbDix), de 5 DH (NbCinq) et de 1 DH (NbUn) nécessaires pour le rendre.\n\nExemple : 28 = 2 × 10 + 1 × 5 + 3 × 1 (2 pièces de 10 DH → 20 DH, 1 pièce de 5 DH → 5 DH, 3 pièces de 1 DH → 3 DH).\n\nIndication : NbDix = M div 10 ; R1 = M mod 10 ; NbCinq = R1 div 5 ; NbUn = R1 mod 5.",
+              "origin": "source",
+              "title": "Exercice 1 : rendu de monnaie",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme RenduMonnaie\nVariables\n    M, NbDix, R1, NbCinq, NbUn : entier\nDébut\n    Lire(M)\n    NbDix ← M div 10\n    R1 ← M mod 10\n    NbCinq ← R1 div 5\n    NbUn ← R1 mod 5\n    Afficher(NbDix, NbCinq, NbUn)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "fill_blank",
+                "prompt": "Avec M = 47, l'algorithme RenduMonnaie affiche NbDix = 4, NbCinq = 1 et NbUn = ___",
+                "answerType": "number",
+                "accepted": [
+                  "2"
+                ],
+                "explanation": "47 div 10 = 4, R1 = 47 mod 10 = 7, 7 div 5 = 1, 7 mod 5 = 2. Vérification : 40 + 5 + 2 = 47."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit l'âge d'une personne et indique, à l'aide d'une variable booléenne Autorise, si elle est autorisée à participer à une activité. Une personne est autorisée si son âge est compris entre 18 et 60 ans inclus.",
+              "origin": "source",
+              "title": "Exercice 2 : accès à une activité",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme Acces_Activite\nVariables\n    Age : Entier\n    Autorise : Booléen\nDébut\n    Ecrire(\"Saisir l'âge : \")\n    Lire(Age)\n    Autorise ← (Age >= 18) ET (Age <= 60)\n    Ecrire(\"Autorisation : \", Autorise)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un entier N, calcule son carré Carre, puis calcule et affiche un résultat booléen EstMultipleDe3Ou5 indiquant si Carre est multiple de 3 ou de 5 : 1. calculer le carré ; 2. vérifier si ce carré est divisible par 3 ou par 5.",
+              "origin": "source",
+              "title": "Exercice 3 : carré multiple de 3 ou de 5",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme CarreMultipleDe3Ou5\nVariables\n    N, Carre : entier\n    EstMultipleDe3Ou5 : booléen\nDébut\n    Lire(N)\n    Carre ← N × N\n    EstMultipleDe3Ou5 ← (Carre mod 3 = 0) OU (Carre mod 5 = 0)\n    Afficher(Carre, EstMultipleDe3Ou5)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un entier N, puis calcule et affiche un résultat booléen EstPairEtMultiple3 indiquant si N est à la fois pair et multiple de 3.",
+              "origin": "source",
+              "title": "Exercice 4 : pair et multiple de 3",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme PairEtMultiple3\nVariables\n    N : entier\n    EstPair, EstMultiple3, EstPairEtMultiple3 : booléen\nDébut\n    Lire(N)\n    EstPair ← (N mod 2 = 0)\n    EstMultiple3 ← (N mod 3 = 0)\n    EstPairEtMultiple3 ← EstPair ET EstMultiple3\n    Afficher(EstPairEtMultiple3)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pour N = 9, que vaut EstPairEtMultiple3 ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Vrai"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Faux"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "9 est multiple de 3 mais pas pair (9 mod 2 = 1) : Faux ET Vrai = Faux."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit un entier N, extrait son dernier chiffre U, puis calcule et affiche un résultat booléen EstPair indiquant si ce chiffre est pair : U = N mod 10.",
+              "origin": "source",
+              "title": "Exercice 5 : dernier chiffre pair",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme DernierChiffrePair\nVariables\n    N, U : entier\n    EstPair : booléen\nDébut\n    Lire(N)\n    U ← N mod 10\n    EstPair ← (U mod 2 = 0)\n    Afficher(U, EstPair)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le prénom (Prenom) et le nom (Nom) d'une personne, puis calcule et affiche son nom complet NomComplet en les **concaténant** avec un espace entre les deux : NomComplet = Prenom + \" \" + Nom.",
+              "origin": "source",
+              "title": "Exercice 6 : nom complet",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme NomComplet\nVariables\n    Prenom, Nom, NomComplet : chaîne\nDébut\n    Lire(Prenom)\n    Lire(Nom)\n    NomComplet ← Prenom + \" \" + Nom\n    Afficher(NomComplet)\nFin\n```"
+                },
+                {
+                  "md": "Avec des chaînes, l'opérateur + **concatène** (met bout à bout) au lieu d'additionner.",
+                  "why": "\"Sara\" + \" \" + \"Idrissi\" donne \"Sara Idrissi\"."
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit la température T d'une machine, puis calcule et affiche deux résultats booléens TemperatureCritique et TemperatureNormale. La température est critique si elle est inférieure à 10 °C OU supérieure à 80 °C. Une température est normale si elle n'est pas critique.",
+              "origin": "source",
+              "title": "Exercice 7 : contrôle de température",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme Controle_Temperature\nVariables\n    T : Réel\n    TemperatureCritique, TemperatureNormale : Booléen\nDébut\n    Ecrire(\"Saisir la température : \")\n    Lire(T)\n    TemperatureCritique ← (T < 10) OU (T > 80)\n    TemperatureNormale ← NON TemperatureCritique\n    Ecrire(\"Température critique : \", TemperatureCritique)\n    Ecrire(\"Température normale : \", TemperatureNormale)\nFin\n```"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "md": "Écrire un algorithme qui lit le nom d'un utilisateur NomUtilisateur, puis construit et affiche un message de bienvenue personnalisé Message en concaténant plusieurs morceaux de texte avec la variable : Message = \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\".",
+              "origin": "source",
+              "title": "Exercice 8 : message de bienvenue",
+              "solution": [
+                {
+                  "md": "```\nAlgorithme MessageBienvenue\nVariables\n    NomUtilisateur, Message : chaîne\nDébut\n    Lire(NomUtilisateur)\n    Message ← \"Bonjour \" + NomUtilisateur + \", bienvenue sur la plateforme !\"\n    Afficher(Message)\nFin\n```"
+                }
+              ]
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "fill_blank",
+              "prompt": "Avec M = 28, l'algorithme RenduMonnaie donne NbDix = ___",
+              "answerType": "number",
+              "accepted": [
+                "2"
+              ],
+              "explanation": "28 div 10 = 2 (puis R1 = 8, NbCinq = 1, NbUn = 3)."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour Age = 60, que vaut `Autorise ← (Age >= 18) ET (Age <= 60)` ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Vrai"
+                },
+                {
+                  "id": "b",
+                  "md": "Faux"
+                }
+              ],
+              "answer": "a",
+              "explanation": "60 ≥ 18 et 60 ≤ 60 sont tous deux vrais (60 inclus) : Vrai ET Vrai = Vrai."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Pour N = 1234, U = N mod 10 vaut ___",
+              "answerType": "number",
+              "accepted": [
+                "4"
+              ],
+              "explanation": "Le reste de la division par 10 est le dernier chiffre : 1234 = 123 × 10 + 4."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour T = 85, que valent TemperatureCritique et TemperatureNormale ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Vrai et Vrai"
+                },
+                {
+                  "id": "b",
+                  "md": "Vrai et Faux"
+                },
+                {
+                  "id": "c",
+                  "md": "Faux et Vrai"
+                },
+                {
+                  "id": "d",
+                  "md": "Faux et Faux"
+                }
+              ],
+              "answer": "b",
+              "explanation": "85 > 80 donc critique = Vrai, et normale = NON Vrai = Faux."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Pour N = 4, l'algorithme CarreMultipleDe3Ou5 affiche :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "16 et Vrai"
+                },
+                {
+                  "id": "b",
+                  "md": "16 et Faux"
+                },
+                {
+                  "id": "c",
+                  "md": "8 et Faux"
+                },
+                {
+                  "id": "d",
+                  "md": "4 et Vrai"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Carre = 16 ; 16 mod 3 = 1 et 16 mod 5 = 1 : aucun des deux n'est nul, donc Faux."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Si Prenom = \"Sara\" et Nom = \"Idrissi\", NomComplet = ___",
+              "answerType": "text",
+              "accepted": [
+                "Sara Idrissi"
+              ],
+              "explanation": "Prenom + \" \" + Nom met les deux chaînes bout à bout avec un espace."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : diapositives de Pr L. OUKHOUYA, « Chapitre 3 : Notions fondamentales et instructions de base » (62 p.), identiques à Bibliotheque_sources/…/Documents generaux/F091.",
+    "INCOHÉRENCE DE LA SOURCE corrigée (p. 35–36, exemple d'application des opérateurs arithmétiques) : l'énoncé demande d'affecter 8 à A et 3 à B, mais la solution écrit « A ← 4 ; B ← 5 ». Le site utilise 8 et 3 (conformes à l'énoncé) et donne les affichages attendus (11, 5, 24, 2, 2).",
+    "p. 25–26 (exemple « Quels résultats… les types sont-ils corrects ? ») : la source donne A = 30, B = 4,5, C = 22,5, D = Amine, E = Faux sans répondre à la question sur les types. Réponse ajoutée : D est déclaré caractère mais reçoit 'Amine' (5 caractères) → il faudrait une Chaîne. On précise aussi que le premier « Afficher B » affiche 60. Le titre « Titre : Calcul » est rendu par « Algorithme Calcul ».",
+    "p. 11–12 (exemple de la bouteille) : la source écrit la déclaration « Bouteille1 : caractère / Bouteille1 : Eau », mélangeant type et valeur, et déclare un type « caractère » pour des mots (« Eau », « Limonade ») alors que la diapositive suivante dit « Type : Chaîne de caractère ». La leçon garde l'analogie (nom = étiquette, type = liquide, valeur = contenu) et la syntaxe correcte « NomVariable : type » sans recopier la déclaration fautive.",
+    "p. 51–54 : l'exercice 4 (pair et multiple de 3) est affiché deux fois, la première solution étant étiquetée par erreur « Solution : exercice d'application 3 » ; il n'apparaît qu'une fois sur le site. Les exercices sont numérotés 1 à 8 dans la leçon 3.7 (la source réutilise « Exercice d'application 2 » pour la surface du cercle, p. 27, placé dans la leçon 3.4).",
+    "Coquilles : « opérations majeurs » → « opérations majeures » ; « On appliquant » → « En appliquant » ; « Opérateurdecomparasion » → « opérateur de comparaison » ; « Surface ⎯ Rayon * Rayon * Pi » (flèche mal rendue) → « Surface ← Rayon * Rayon * Pi » ; « Constante Pi=3.14 » placé en en-tête d'un algorithme nommé Surface_Cercle (la source écrit « Titre : Surface d'un cercle / Déclaration / Manipulation ») ; les mentions « aration / nipulation » (fragments de « Déclaration / Manipulation » sur la p. 25) ont été omises.",
+    "La source mélange « Afficher » et « Écrire » pour la sortie ; les deux sont conservés tels quels dans les solutions (synonymes, comme le dit le chapitre 5). Les exemples « a=35 », « x=1,33 »… des diapositives sur les types sont des valeurs illustratives (rendues par « avec a = 35 ») et non des instructions.",
+    "Ajouts (origin: added) : réponses détaillées des exemples 1 et 2 sur les opérateurs logiques (la source posait la question sans écrire la réponse), remarque sur la chaîne \"15\", remarque sur la concaténation avec +."
+  ]
+}

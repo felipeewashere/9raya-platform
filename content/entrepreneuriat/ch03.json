@@ -1,0 +1,647 @@
+{
+  "slug": "communication-orale",
+  "number": 3,
+  "title": "Communication orale",
+  "description": "Séance 3 : types de communication orale, bruit dans le processus de communication, analyse du public, écoute active, déclarations « Je », prise de parole en public, conseils PowerPoint et langage corporel.",
+  "sourcePdf": "Bibliotheque_sources/Entrepreneuriat/Cours/Documents generaux/F140 - Orientez votre carriere - Cahier INJAZ - Affectation a confirmer.pdf",
+  "sections": [
+    {
+      "slug": "bases-communication-orale",
+      "title": "Les bases de la communication orale",
+      "number": "1",
+      "lessons": [
+        {
+          "slug": "types-communication-orale",
+          "title": "Les types de communication orale",
+          "number": "3.1",
+          "estimatedMinutes": 7,
+          "summary": "Objectifs de la séance, les six formes de communication orale et les compétences qu'elles demandent, et les six prérequis à la maîtrise de la communication orale.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Cette séance aborde des conseils pratiques pour **communiquer efficacement** avec les autres afin d'exposer son point de vue de manière efficace, assurée mais aussi cordiale. Elle comprend l'art de la **prise de parole en public**, la **communication professionnelle** (y compris lors d'un entretien d'embauche) et la **communication au sein d'un groupe**.",
+              "origin": "source",
+              "title": "Communication orale"
+            },
+            {
+              "type": "text",
+              "md": "**Objectifs.** À la fin de cette séance, vous serez en mesure de : 1. identifier les six techniques d'amélioration de la communication orale ; 2. comprendre comment interpréter le bruit dans le processus de communication ; 3. apprécier l'importance de l'écoute et appliquer les bonnes techniques d'écoute ; 4. connaître les questions à poser pour analyser une situation dans un groupe ; 5. améliorer votre prise de parole en public ; 6. comprendre l'importance de la technologie dans la communication professionnelle ; 7. appliquer quelques conseils lors de l'utilisation de PowerPoint ; 8. reconnaître l'importance du langage corporel dans le processus de communication.",
+              "origin": "source"
+            },
+            {
+              "type": "definition",
+              "md": "| Type | Explication | Certaines compétences requises |\n|---|---|---|\n| Communication en face-à-face (dyadique) | Conversation entre deux personnes qui peuvent se voir mutuellement. | Utilisation appropriée du langage corporel et du contact visuel ; utilisation de la voix. |\n| Communication téléphonique | Conversation entre deux personnes qui ne peuvent pas se voir. | Capacité à comprendre la personne au bout du fil sans la voir. |\n| Communication de groupe | Conversation entre plusieurs personnes. | Capacité à gérer plusieurs signes provenant de diverses sources ; capacité à adapter son style de communication à tous les membres du groupe. |\n| Présentation | Une personne expose une idée ou présente un sujet ; le public peut toujours répondre et poser des questions, durant ou après la présentation. | Utilisation appropriée de la voix ; langage corporel et contact visuel ; utilisation du matériel de présentation (PowerPoint, tableaux). |\n| Discours | Une personne expose une idée ou présente un sujet ; parfois, le public a l'occasion de réagir un peu ou de poser des questions à la fin. | Utilisation appropriée de la voix ; langage corporel et contact visuel ; capacité à ajuster le ton et le volume de la voix pour éviter l'ennui de l'auditoire. |\n| Conférence | Une personne explique un certain sujet ; le public a une chance limitée de réagir, de poser des questions et de commenter à la fin. | Utilisation appropriée de la voix ; langage corporel et contact visuel ; utilisation du matériel de présentation. |",
+              "origin": "source",
+              "title": "Les types de communication orale"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans quel type de communication les deux interlocuteurs **ne peuvent pas se voir** ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Face-à-face"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Téléphonique"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Présentation"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Communication de groupe"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "La communication téléphonique exige de comprendre l'autre sans le voir."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "1. « Lisez » le bruit !\n2. Comprenez votre public.\n3. Avant de parler… écoutez.\n4. Surmontez vos peurs.\n5. Soyez à l'aise avec la technologie.\n6. Faites du langage corporel un avantage.",
+              "origin": "source",
+              "title": "Prérequis à la maîtrise de la communication orale"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque type de communication à sa description.",
+              "pairs": [
+                {
+                  "left": "Dyadique",
+                  "right": "Deux personnes qui peuvent se voir"
+                },
+                {
+                  "left": "Téléphonique",
+                  "right": "Deux personnes qui ne peuvent pas se voir"
+                },
+                {
+                  "left": "De groupe",
+                  "right": "Conversation entre plusieurs personnes"
+                },
+                {
+                  "left": "Présentation",
+                  "right": "Le public peut répondre durant ou après l'exposé"
+                }
+              ],
+              "explanation": "C'est la colonne « Explication » du tableau des types de communication orale."
+            },
+            {
+              "kind": "ordering",
+              "prompt": "Remettez dans l'ordre les six prérequis tels que le cahier les présente.",
+              "items": [
+                "« Lisez » le bruit",
+                "Comprenez votre public",
+                "Avant de parler… écoutez",
+                "Surmontez vos peurs",
+                "Soyez à l'aise avec la technologie",
+                "Faites du langage corporel un avantage"
+              ],
+              "explanation": "Ce sont les six techniques d'amélioration de la communication orale, détaillées dans la suite de la séance."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle compétence est propre à la **communication de groupe** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Comprendre l'autre sans le voir"
+                },
+                {
+                  "id": "b",
+                  "md": "Gérer plusieurs signes provenant de diverses sources"
+                },
+                {
+                  "id": "c",
+                  "md": "Utiliser PowerPoint"
+                },
+                {
+                  "id": "d",
+                  "md": "Parler sans public"
+                }
+              ],
+              "answer": "b",
+              "explanation": "En groupe, il faut gérer plusieurs sources de signaux et adapter son style à chaque membre."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Lors d'une conférence, le public a en général une chance limitée de réagir.",
+              "answer": true,
+              "explanation": "C'est la description de la conférence dans le tableau."
+            }
+          ]
+        },
+        {
+          "slug": "le-bruit",
+          "title": "Le bruit dans la communication",
+          "number": "3.2",
+          "estimatedMinutes": 9,
+          "summary": "Le modèle expéditeur–encodage–moyen–décodage–récepteur, la notion de bruit, et six exemples de bruit (émotions, filtrage, genre, culture, hiérarchie).",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "La communication est basée sur le fait qu'une personne envoie une information au moyen d'un processus de **codage** que les autres doivent **décoder** pour comprendre. Il arrive souvent que le **bruit** interfère, entravant le processus d'envoi et de réception de l'information.\n\n**Le bruit** signifie « les choses qui interfèrent entre le transmetteur et le récepteur du message et gênent la compréhension » : tout ce qui altère ou perturbe la transmission d'un message (le ton de la voix, le langage du corps, le lieu où la conversation se déroule, le contexte, etc.).\n\nL'entrave est parfois liée à l'**expéditeur**, parfois au **récepteur**, et d'autres fois à la **situation**. Parfois aussi, nous « camouflons » le message que nous voulons envoyer pour diverses raisons.",
+              "origin": "source",
+              "title": "« Lisez » le bruit !"
+            },
+            {
+              "type": "text",
+              "md": "**Schéma :** Expéditeur → (message, encodage) → Moyen → (décodage, message) → Récepteur, avec le **bruit** qui intervient au milieu du canal.",
+              "origin": "source"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "ordering",
+                "prompt": "Remettez dans l'ordre le trajet d'un message.",
+                "items": [
+                  "Expéditeur",
+                  "Encodage",
+                  "Moyen (canal)",
+                  "Décodage",
+                  "Récepteur"
+                ],
+                "explanation": "L'expéditeur encode son message, il passe par un moyen, le récepteur le décode. Le bruit peut perturber n'importe quelle étape."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "example",
+              "md": "**Layla** (très fatiguée) : « Ça a été une très longue journée et je suis épuisée. Regarde maman, j'ai eu 16/20 à l'examen de maths. »\n**Mère** (regardant la feuille) : « C'est bien ! Mais je crois que tu dois travailler plus dur la prochaine fois. »\n**Layla** (en colère) : « Je le savais. Pour toi, je ne suis jamais bonne à quoi que ce soit ! »\n**Mère** (surprise) : « Ce n'est pas ce que j'ai voulu dire. »\n**Layla** : « Que veux-tu donc dire ? Je crois que tu voulais dire que je suis paresseuse et que je ne suis bonne à rien. »\n**Mère** : « Je voulais dire que tu es capable d'avoir une meilleure note. N'ai-je pas dit \"c'est bien !\" ? » …",
+              "origin": "source",
+              "title": "Exemple de bruit : Layla et sa mère"
+            },
+            {
+              "type": "definition",
+              "md": "| Ce que le locuteur dit | Le bruit | Ce que l'interlocuteur entend | Ce que le locuteur veut réellement dire |\n|---|---|---|---|\n| Un parent à son enfant : « Tu dois étudier plus la prochaine fois. » | **Émotions** (l'interlocuteur est tellement immergé dans ses émotions qu'il ne comprend pas bien) | « Tu es stupide et paresseux… » | « Si tu n'avais pas perdu ton temps lundi dernier devant la télévision, tu aurais eu une meilleure note. » |\n| Un mari à sa femme : « La robe noire te va mieux que la rouge. » | **Filtrage** (l'expéditeur censure une partie de ce qu'il veut dire) | « Je pense que tu es grosse. » | « La robe rouge est vraiment laide. » |\n| Un ami à un autre : « J'ai un problème très complexe avec mes parents. J'espère que tu pourras m'aider. » | **Peu ou pas de bruit** (la véritable amitié exige la transparence) | « Je sais que tu ne peux pas le résoudre, mais je voudrais juste que tu m'écoutes. » | « Je veux juste que tu m'écoutes ; je me sens mieux quand je partage mes problèmes avec toi. » |\n| Une employée à son collègue : « Ce que tu as présenté à la réunion était très intéressant. » | **Différences entre les genres** (l'homme a mal compris ce que sa collègue dit) | « Tu me plais et j'aime être en ta compagnie. » | Exactement ce qu'elle a dit. |\n| Un patron occidental à son employé asiatique : « C'est votre problème. Si vous ne le résolvez pas, votre travail sera en péril. » | **Différences culturelles** (on peut mal interpréter ce qu'on entend sans comprendre la culture de l'autre) | « Je vous déteste à cause de votre nationalité… » | « C'est votre problème. Si vous ne le résolvez pas, vous serez viré. » |\n| Un employé à son supérieur : « Notre département a fait un travail fabuleux cette année. » | **Pouvoir de la hiérarchie** (les différences de niveaux peuvent créer des blocages ou des mauvaises interprétations) | « Je mérite une augmentation et je ne trouve pas normal que vous ne me l'ayez pas proposée. » | « …et je crois que l'échelle salariale devrait être revue pour tout le monde. » |",
+              "origin": "source",
+              "title": "Exemples de bruits"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Dans le dialogue entre Layla et sa mère, quel type de bruit domine ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Le filtrage"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Les émotions"
+                  },
+                  {
+                    "id": "c",
+                    "md": "La hiérarchie"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Les différences culturelles"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Layla est épuisée et entend une critique là où sa mère voulait l'encourager : ce sont ses émotions qui déforment le message."
+              },
+              "origin": "added"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Selon le cahier, le bruit est :",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "uniquement le son ambiant"
+                },
+                {
+                  "id": "b",
+                  "md": "tout ce qui interfère entre le transmetteur et le récepteur et gêne la compréhension"
+                },
+                {
+                  "id": "c",
+                  "md": "le message lui-même"
+                },
+                {
+                  "id": "d",
+                  "md": "le moyen utilisé"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Le bruit inclut le ton de la voix, le langage du corps, le lieu, le contexte…"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque situation au type de bruit.",
+              "pairs": [
+                {
+                  "left": "« La robe noire te va mieux que la rouge »",
+                  "right": "Filtrage"
+                },
+                {
+                  "left": "Un employé qui parle du travail de son département à son supérieur",
+                  "right": "Pouvoir de la hiérarchie"
+                },
+                {
+                  "left": "Un patron occidental et un employé asiatique",
+                  "right": "Différences culturelles"
+                },
+                {
+                  "left": "Un ami qui veut seulement être écouté",
+                  "right": "Peu ou pas de bruit"
+                }
+              ],
+              "explanation": "Ce sont les exemples du tableau « Exemples de bruits »."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "L'entrave dans la communication est toujours due à l'expéditeur.",
+              "answer": false,
+              "explanation": "Faux : elle peut être liée à l'expéditeur, au récepteur ou à la situation."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Dans le modèle de communication, qui **décode** le message ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "L'expéditeur"
+                },
+                {
+                  "id": "b",
+                  "md": "Le récepteur"
+                },
+                {
+                  "id": "c",
+                  "md": "Le moyen"
+                },
+                {
+                  "id": "d",
+                  "md": "Le bruit"
+                }
+              ],
+              "answer": "b",
+              "explanation": "L'expéditeur encode, le récepteur décode."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ecouter-et-parler",
+      "title": "Écouter et parler en public",
+      "number": "2",
+      "lessons": [
+        {
+          "slug": "public-et-ecoute",
+          "title": "Comprendre son public et écouter",
+          "number": "3.3",
+          "estimatedMinutes": 10,
+          "summary": "Les questions pour analyser son auditoire, l'écoute active (jeu de rôle Tarek et Salim), les huit conseils pour mieux écouter et les déclarations « Je » plutôt que « Tu ».",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "Comme la communication écrite, la communication orale nécessite une certaine préparation. L'**analyse du public** est un aspect commun à tous les types de communication. Questions à se poser au préalable :\n1. Quel est le *background* de l'audience ? Est-elle sensibilisée au sujet ? Est-elle formée majoritairement d'experts ou d'inexpérimentés ?\n2. Quelle est la structure de mon public ? Âge ? Composition de genre ? Contexte culturel ?\n3. Est-ce la première fois que je m'adresse à cette audience, ou la connais-je à travers une expérience précédente ?\n4. Quelle est la taille prévue de l'audience ?\n5. Quelle est la raison de leur présence ? Sont-ils ici par obligation ou volontairement ?\n6. Quel ton devrais-je prendre ? Formel ou informel ?",
+              "origin": "source",
+              "title": "Comprendre votre public"
+            },
+            {
+              "type": "exercise",
+              "md": "Pour chaque situation, exprimez les façons (verbales et non verbales) de communiquer avec vos amis / votre famille, puis avec votre patron : 1. dire bonjour ou au revoir ; 2. demander de l'aide ou des instructions ; 3. exprimer un point de vue différent ; 4. montrer votre bonheur et votre enthousiasme ; 5. montrer de la tristesse.",
+              "origin": "source",
+              "title": "Des discours différents pour des gens différents"
+            },
+            {
+              "type": "heading",
+              "text": "Avant de parler… écoutez",
+              "origin": "source"
+            },
+            {
+              "type": "text",
+              "md": "Nous oublions souvent que la meilleure façon d'améliorer la communication orale est de réellement **arrêter de parler** pendant un certain temps et d'écouter ce que les autres essaient de nous dire. La meilleure compétence que vous pouvez maîtriser dans une conversation directe est celle de l'**écoute active**.",
+              "origin": "source"
+            },
+            {
+              "type": "example",
+              "md": "Tarek, DRH d'une entreprise de construction, vient d'être promu vice-président administratif ; il faut choisir un nouveau DRH, et Salim espère être nommé (deux autres candidats aussi qualifiés convoitent le poste). Tout au long de la conversation, Salim interrompt Tarek, anticipe un refus et se justifie de ses « erreurs mineures »… jusqu'à ce que Tarek finisse par dire : « Non Salim. **Vous avez été nommé comme nouveau DRH.** Vous allez sûrement avoir besoin de travailler sur votre capacité d'écoute pour ce nouveau poste. »",
+              "origin": "source",
+              "title": "Jeu de rôle : Tarek et Salim"
+            },
+            {
+              "type": "definition",
+              "md": "1. Paraphrasez ce que dit l'orateur ;\n2. établissez un contact visuel ;\n3. évitez de penser à votre prochaine réponse ;\n4. n'interrompez pas votre interlocuteur ;\n5. utilisez un langage corporel adéquat ;\n6. rappelez-vous du dicton « nous avons deux oreilles et une langue » ;\n7. comprenez la différence entre entendre et écouter ;\n8. empathie : mettez-vous à la place de votre interlocuteur.",
+              "origin": "source",
+              "title": "Comment améliorer vos compétences d'écoute"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Quelle erreur d'écoute Salim commet-il surtout ?",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "Il paraphrase trop"
+                  },
+                  {
+                    "id": "b",
+                    "md": "Il interrompt et pense à sa réponse au lieu d'écouter"
+                  },
+                  {
+                    "id": "c",
+                    "md": "Il établit trop de contact visuel"
+                  },
+                  {
+                    "id": "d",
+                    "md": "Il fait preuve d'empathie"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Salim coupe la parole et suppose ce que Tarek va dire ; il n'entend pas qu'il a été nommé."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Énumérez les caractéristiques (comportement, posture, expressions) d'une personne ayant un bon sens de l'écoute et d'une autre ayant un mauvais sens de l'écoute. En binôme, l'un parle une minute d'un sujet (passe-temps, équipe sportive, vacances, film) pendant que l'autre joue le « mauvais auditeur », puis le « bon auditeur ». Comment vous êtes-vous senti dans chaque cas ?",
+              "origin": "source",
+              "title": "Bon auditeur, mauvais auditeur"
+            },
+            {
+              "type": "definition",
+              "md": "Remplacer les phrases négatives en « Tu / Vous » par des phrases en « Je » ou « Nous », compléter avec une formule « Tu sembles » qui clarifie les sentiments de l'autre, et une **question ouverte** qui aide à résoudre le problème.\n\n*Exemple :* un employé est distrait, ce qui le conduit à des résultats non satisfaisants.\n- Déclaration « Tu » négative : « Tu es tout le temps distrait et tu es la cause de nombreuses défaillances dans le processus de production. »\n- Déclaration « Je / Nous » : « Nous devons comprendre les causes de cette distraction et baisse de performance. »\n- Déclaration « Tu sembles » de clarification : « Dernièrement, tu sembles être surmené, la qualité de ton travail en pâtit. »\n- Question ouverte : « Peux-tu proposer une solution au problème ? »\n\nAutres situations à traiter : un collègue ne semble pas comprendre ce que vous dites et semble énervé (« Tu ne comprends pas du tout ce que je dis ») ; à cause d'un ami en binôme, vous n'avez pas pu rendre votre travail à temps (« Tu es vraiment un fainéant ») ; une discussion avec un collègue vous énerve (« Tu me rends furieux ! »).",
+              "origin": "source",
+              "title": "Exercice « Vous » et « Je »"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces propositions est une **question ouverte** ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Tu as compris ?"
+                },
+                {
+                  "id": "b",
+                  "md": "Peux-tu proposer une solution au problème ?"
+                },
+                {
+                  "id": "c",
+                  "md": "Tu es encore en retard ?"
+                },
+                {
+                  "id": "d",
+                  "md": "C'est fini ?"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Une question ouverte invite à développer une réponse (ici, une solution) au lieu d'un simple oui/non."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après le cahier, il faut réfléchir à sa prochaine réponse pendant que l'autre parle, pour gagner du temps.",
+              "answer": false,
+              "explanation": "Faux : un des conseils est justement « évitez de penser à votre prochaine réponse »."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quelle reformulation correspond à une déclaration « Je / Nous » pour « Tu es tout le temps distrait » ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "« Tu es nul »"
+                },
+                {
+                  "id": "b",
+                  "md": "« Nous devons comprendre les causes de cette distraction »"
+                },
+                {
+                  "id": "c",
+                  "md": "« Tu sembles surmené »"
+                },
+                {
+                  "id": "d",
+                  "md": "« Peux-tu proposer une solution ? »"
+                }
+              ],
+              "answer": "b",
+              "explanation": "« Tu sembles surmené » est la déclaration de clarification, et la dernière est la question ouverte."
+            },
+            {
+              "kind": "fill_blank",
+              "prompt": "Le dicton cité rappelle que « nous avons deux oreilles et ___ langue ».",
+              "answerType": "text",
+              "accepted": [
+                "une",
+                "1"
+              ],
+              "explanation": "Deux oreilles et une langue : écouter deux fois plus que l'on parle."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Laquelle de ces questions sert à analyser son public ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Quelle est la taille prévue de l'audience ?"
+                },
+                {
+                  "id": "b",
+                  "md": "Quelle police utiliser ?"
+                },
+                {
+                  "id": "c",
+                  "md": "Combien de diapositives ?"
+                },
+                {
+                  "id": "d",
+                  "md": "Quelle est ma note ?"
+                }
+              ],
+              "answer": "a",
+              "explanation": "Les six questions portent sur le background, la structure, la connaissance préalable, la taille, la raison de la présence et le ton."
+            }
+          ]
+        },
+        {
+          "slug": "prise-de-parole-et-langage-corporel",
+          "title": "Prise de parole en public, technologie et langage corporel",
+          "number": "3.4",
+          "estimatedMinutes": 9,
+          "summary": "Les principes pour surmonter la peur de parler en public, les conseils pour PowerPoint et les cinq éléments du langage corporel.",
+          "blocks": [
+            {
+              "type": "definition",
+              "md": "1. Vos interlocuteurs ne peuvent pas voir votre nervosité. Elle est interne.\n2. Vous n'avez pas besoin d'être brillant ou parfait pour réussir.\n3. Vous n'avez besoin de développer que deux ou trois points principaux.\n4. Lorsque vous parlez en public, rien de « mal » ne peut arriver !\n5. Vous n'avez pas à contrôler le comportement de vos interlocuteurs.\n6. Vos interlocuteurs souhaitent réellement que vous réussissiez.\n7. De l'entraînement, toujours de l'entraînement !\n8. Certains exercices vous aideront : respirez profondément ; dormez bien la nuit d'avant.\n9. Pensez positivement. La prise de parole en public, C'EST POSSIBLE.",
+              "origin": "source",
+              "title": "Surmontez vos peurs : principes clés"
+            },
+            {
+              "type": "exercise",
+              "md": "Avec votre équipe, trouvez une pensée ou un comportement positif pour chacune de ces pensées négatives : « Je vais tout rater. » ; « Je vais oublier ce que je dois dire. » ; « Je souhaiterais que quelqu'un d'autre fasse ce discours à ma place. » ; « Je ne suis pas un bon orateur. » ; « J'ai peur de m'évanouir. » ; « Je n'ai rien d'intéressant à partager. » ; « Je ne sais pas comment attirer l'attention du public. »",
+              "origin": "source",
+              "title": "Parler en public : canaliser les pensées négatives"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "true_false",
+                "prompt": "Selon les principes clés, vos interlocuteurs souhaitent réellement que vous réussissiez.",
+                "answer": true,
+                "explanation": "C'est le principe 6."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "definition",
+              "md": "Les présentations et discours publics imposent souvent d'être à l'aise avec la technologie, par exemple **PowerPoint**. Conseils :\n1. Commencez par présenter les grandes lignes de votre présentation ;\n2. utilisez des schémas et tableaux pour gagner du temps et être plus clair ;\n3. utilisez des animations et transitions à bon escient ;\n4. soyez cohérent dans l'utilisation de vos polices et couleurs ;\n5. restez simple et concis : ne surchargez pas les diapositives (mots clés et/ou images) ;\n6. pour rendre votre présentation plus attractive, alternez phrases déclaratives et questions ;\n7. entraînez-vous à présenter votre exposé ;\n8. n'oubliez pas que vous êtes le présentateur : PowerPoint est un outil pour vous aider, ne le laissez pas vous voler la vedette !",
+              "origin": "source",
+              "title": "Soyez à l'aise avec la technologie"
+            },
+            {
+              "type": "definition",
+              "md": "Cinq éléments fondamentaux :\n1. **La posture** : les bons orateurs démontrent de la confiance en soi par la façon dont ils se tiennent. Évitez de vous balancer, de vous incliner ou de vous tenir raide ; restez détendu.\n2. **Le mouvement corporel** : avoir l'air naturel et détendu. Ne restez pas statique et occupez l'espace, mais ne gigotez pas et ne vous déplacez pas sans but.\n3. **Les gestes des mains et des bras** : utilisez vos mains dans un but (les gestes pertinents aident à comprendre) ; soyez naturel, n'exagérez pas.\n4. **Les expressions du visage** : elles doivent correspondre à ce que vous dites ; le sourire est souvent bon, sauf s'il est exagéré ou inapproprié.\n5. **Le contact visuel** : regardez les gens dans les yeux, mais évitez de fixer une personne en particulier ; si vous utilisez un écran, vous parlez à l'auditoire, pas à l'écran.",
+              "origin": "source",
+              "title": "Utilisez le langage corporel à votre avantage"
+            },
+            {
+              "type": "checkpoint",
+              "question": {
+                "kind": "mcq",
+                "prompt": "Pendant une présentation avec écran, le cahier conseille :",
+                "options": [
+                  {
+                    "id": "a",
+                    "md": "de garder le regard sur l'écran"
+                  },
+                  {
+                    "id": "b",
+                    "md": "de parler à l'auditoire, pas à l'écran"
+                  },
+                  {
+                    "id": "c",
+                    "md": "de fixer une seule personne"
+                  },
+                  {
+                    "id": "d",
+                    "md": "d'éviter tout contact visuel"
+                  }
+                ],
+                "answer": "b",
+                "explanation": "Le contact visuel crée la connexion avec le public ; ne gardez pas le regard figé sur l'écran."
+              },
+              "origin": "added"
+            },
+            {
+              "type": "exercise",
+              "md": "Notez cinq choses (ou plus) que vous voulez faire au quotidien pour améliorer vos compétences en communication orale.",
+              "origin": "source",
+              "title": "Mon engagement envers moi-même"
+            }
+          ],
+          "quiz": [
+            {
+              "kind": "mcq",
+              "prompt": "Combien de points principaux le cahier dit-il suffisants pour une prise de parole ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Un seul"
+                },
+                {
+                  "id": "b",
+                  "md": "Deux ou trois"
+                },
+                {
+                  "id": "c",
+                  "md": "Au moins dix"
+                },
+                {
+                  "id": "d",
+                  "md": "Autant que possible"
+                }
+              ],
+              "answer": "b",
+              "explanation": "Principe 3 : « Vous n'avez besoin de développer que deux ou trois points principaux. »"
+            },
+            {
+              "kind": "true_false",
+              "prompt": "D'après les conseils PowerPoint, il faut remplir chaque diapositive au maximum pour être complet.",
+              "answer": false,
+              "explanation": "Faux : « Restez simple et concis. Ne surchargez pas les slides. »"
+            },
+            {
+              "kind": "matching",
+              "prompt": "Associez chaque élément du langage corporel à un conseil.",
+              "pairs": [
+                {
+                  "left": "Posture",
+                  "right": "Éviter de se balancer ou de se tenir raide"
+                },
+                {
+                  "left": "Mouvement corporel",
+                  "right": "Occuper l'espace sans se déplacer sans but"
+                },
+                {
+                  "left": "Expressions du visage",
+                  "right": "Correspondre à ce que l'on dit"
+                },
+                {
+                  "left": "Contact visuel",
+                  "right": "Regarder les gens sans fixer une seule personne"
+                }
+              ],
+              "explanation": "Ce sont quatre des cinq éléments fondamentaux ; le cinquième concerne les gestes des mains et des bras."
+            },
+            {
+              "kind": "true_false",
+              "prompt": "Selon le cahier, la nervosité est interne : le public ne peut pas la voir.",
+              "answer": true,
+              "explanation": "C'est le premier principe clé."
+            },
+            {
+              "kind": "mcq",
+              "prompt": "Quel conseil PowerPoint rappelle que l'orateur reste au centre ?",
+              "options": [
+                {
+                  "id": "a",
+                  "md": "Utilisez des schémas"
+                },
+                {
+                  "id": "b",
+                  "md": "Ne laissez pas PowerPoint vous voler la vedette"
+                },
+                {
+                  "id": "c",
+                  "md": "Soyez cohérent dans les couleurs"
+                },
+                {
+                  "id": "d",
+                  "md": "Alternez phrases et questions"
+                }
+              ],
+              "answer": "b",
+              "explanation": "PowerPoint est un outil : c'est vous le présentateur."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "reviewNotes": [
+    "Source : F140, séance 3 = p. 39–52 du PDF (pages 35–48 du cahier).",
+    "Le schéma du processus de communication (p. 42) est décrit en texte. Le dialogue Layla / mère (p. 43) est reproduit en partie ; le jeu de rôle Tarek / Salim (p. 46–47) est résumé (dialogue d'environ une page) en gardant sa chute.",
+    "Tableau « Exemples de bruits » (p. 44) : pour l'exemple « différences entre les genres », la colonne « ce que le locuteur veut réellement dire » répète mot pour mot la phrase prononcée ; rendu par « Exactement ce qu'elle a dit ». Coquilles : « dansle » → « dans le », « lescauses » → « les causes », « N'ai-je pas dis » → « dit », « se sont elles » → « ce sont elles » (dialogue résumé).",
+    "Les huit objectifs de la séance mentionnent « six techniques d'amélioration » : ce sont les six prérequis de la p. 42."
+  ]
+}
