@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, ChevronDown, CircleDot, Lock } from "lucide-react";
 import { NoteLabel, NumberSquare } from "@/components/notes";
 import { cn } from "@/lib/utils";
+import { Tx } from "@/components/math/tx";
+import { SkipChapter } from "./skip-chapter";
 import type { OutlineChapter } from "@/lib/data/courses";
 
 const STATE = {
@@ -61,7 +63,7 @@ export function ChapterList({ courseSlug, chapters }: { courseSlug: string; chap
                 {c.state === "completed" ? <Check className="size-3.5" strokeWidth={3} /> : locked ? <Lock className="size-3" /> : c.number}
               </NumberSquare>
               <span className="min-w-0 flex-1">
-                <span className={cn("block font-bold uppercase leading-snug tracking-[0.02em]", locked ? "text-muted-foreground" : "text-primary group-hover:underline group-hover:underline-offset-4")}>{c.title}</span>
+                <span className={cn("block font-bold uppercase leading-snug tracking-[0.02em]", locked ? "text-muted-foreground" : "text-primary group-hover:underline group-hover:underline-offset-4")}><Tx>{c.title}</Tx></span>
                 <span className="block text-[0.88rem] font-normal text-muted-foreground">
                   <span className={cn("smallcaps", STATE[c.state].cls)}>{STATE[c.state].label}</span> · {c.completed} / {c.total} leçons
                 </span>
@@ -83,11 +85,9 @@ export function ChapterList({ courseSlug, chapters }: { courseSlug: string; chap
                   className="overflow-hidden"
                 >
                   <div className="space-y-4 pb-5 pl-1 sm:pl-10">
-                    {c.description && <p className="text-[0.95rem] italic text-muted-foreground">{c.description}</p>}
-                    {locked && (
-                      <p className="text-[0.95rem]">
-                        <NoteLabel tone="red">Remarque :</NoteLabel> termine au moins la moitié du chapitre précédent pour débloquer celui-ci.
-                      </p>
+                    {c.description && <p className="text-[0.95rem] italic text-muted-foreground"><Tx>{c.description}</Tx></p>}
+                    {c.state !== "completed" && (
+                      <SkipChapter lessonIds={c.sections.flatMap((s) => s.lessons).filter((l) => l.status !== "completed").map((l) => l.id)} />
                     )}
                     {c.sections.map((s) => (
                       <div key={s.id}>
@@ -110,7 +110,7 @@ export function ChapterList({ courseSlug, chapters }: { courseSlug: string; chap
                               <span className="flex items-baseline gap-2 py-1">
                                 <span className={cn("min-w-0", !locked && "group-hover/row:text-primary group-hover/row:underline group-hover/row:underline-offset-2")}>
                                   {l.number && <span className="mr-1.5 tabular-nums text-muted-foreground">{l.number}</span>}
-                                  {l.title}
+                                  <Tx>{l.title}</Tx>
                                 </span>
                                 <span className="leader" aria-hidden />
                                 {l.bestScore !== null && (

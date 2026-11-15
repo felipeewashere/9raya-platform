@@ -3183,7 +3183,7 @@
             {
               "type": "theorem",
               "kind": "theoreme",
-              "md": "Si l'équation caractéristique associée possède :\n1. deux racines réelles distinctes $r_1$ et $r_2$, alors $\\bigl((r_1^n),(r_2^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r_1^n+\\mu r_2^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n2. une racine double $r$, alors $\\bigl((r^n),(nr^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r^n+\\mu nr^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n3. deux racines complexes conjuguées $\\rho e^{i\\theta}$ et $\\rho e^{-i\\theta}$, alors $\\bigl((\\rho^n\\cos(n\\theta)),(\\rho^n\\sin(n\\theta))\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda\\rho^n\\cos(n\\theta)+\\mu\\rho^n\\sin(n\\theta)),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\}.",
+              "md": "Si l'équation caractéristique associée possède :\n1. deux racines réelles distinctes $r_1$ et $r_2$, alors $\\bigl((r_1^n),(r_2^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r_1^n+\\mu r_2^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n2. une racine double $r$, alors $\\bigl((r^n),(nr^n)\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda r^n+\\mu nr^n),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\} ;$$\n3. deux racines complexes conjuguées $\\rho e^{i\\theta}$ et $\\rho e^{-i\\theta}$, alors $\\bigl((\\rho^n\\cos(n\\theta)),(\\rho^n\\sin(n\\theta))\\bigr)$ est une base de $E$ :\n$$E=\\bigl\\{(\\lambda\\rho^n\\cos(n\\theta)+\\mu\\rho^n\\sin(n\\theta)),\\ (\\lambda,\\mu)\\in{\\mathbb{R}}^2\\bigr\\}.$$",
               "origin": "source",
               "title": "Théorème (base de E)"
             },

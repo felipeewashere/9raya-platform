@@ -90,20 +90,20 @@
        "prompt": "Associez chaque grandeur à sa définition.",
        "pairs": [
         {
-         "left": "\\vec V_a",
-         "right": "\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R"
+         "left": "$\\vec V_a$",
+         "right": "$\\left.\\dfrac{d\\overrightarrow{OM}}{dt}\\right|_R$"
         },
         {
-         "left": "\\vec V_r",
-         "right": "\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}"
+         "left": "$\\vec V_r$",
+         "right": "$\\left.\\dfrac{d\\overrightarrow{O'M}}{dt}\\right|_{R'}$"
         },
         {
-         "left": "\\vec a_a",
-         "right": "\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R"
+         "left": "$\\vec a_a$",
+         "right": "$\\left.\\dfrac{d\\vec V_a}{dt}\\right|_R$"
         },
         {
-         "left": "\\vec a_r",
-         "right": "\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}"
+         "left": "$\\vec a_r$",
+         "right": "$\\left.\\dfrac{d\\vec V_r}{dt}\\right|_{R'}$"
         }
        ],
        "explanation": "Indice $a$ : dérivée dans $R$ ; indice $r$ : dérivée dans $R'$."
@@ -1314,15 +1314,15 @@
        "prompt": "Associez chaque accélération à son expression (tube parabolique).",
        "pairs": [
         {
-         "left": "\\vec a_c",
+         "left": "$\\vec a_c$",
          "right": "$2\\dot\\rho\\dot\\varphi\\,\\vec e_\\varphi$"
         },
         {
-         "left": "\\vec a_e",
+         "left": "$\\vec a_e$",
          "right": "$-\\rho\\dot\\varphi^2\\vec e_\\rho+\\rho\\ddot\\varphi\\vec e_\\varphi$"
         },
         {
-         "left": "\\vec a_r",
+         "left": "$\\vec a_r$",
          "right": "$\\ddot\\rho\\,\\vec e_\\rho+2a(\\dot\\rho^2+\\rho\\ddot\\rho)\\vec e_z$"
         }
        ],

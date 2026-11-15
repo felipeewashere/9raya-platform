@@ -1,5 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Tx } from "@/components/math/tx";
 
 /*
  * Shared page pieces, "paper" theme (same look as the gestion du temps prototype):
@@ -188,7 +189,7 @@ export function DocTitle({
       {subtitle && (
         <p className={cn("text-[1.02rem] text-muted-foreground", align === "center" && "mx-auto max-w-2xl")}>
           {subtitleLabel && <span className="font-medium text-foreground">{subtitleLabel} </span>}
-          {subtitle}
+          {typeof subtitle === "string" ? <Tx>{subtitle}</Tx> : subtitle}
         </p>
       )}
       {children}

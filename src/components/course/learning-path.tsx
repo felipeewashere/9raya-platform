@@ -69,7 +69,7 @@ export function LearningPath({ nodes }: { nodes: Node[] }) {
                     <p className="font-bold">{c.title}</p>
                     <p className="text-xs opacity-80">
                       {STATE_LABEL[c.state]} · {c.completed}/{c.total} leçons
-                      {locked && " — termine la moitié du chapitre précédent pour le débloquer"}
+                      
                     </p>
                   </TooltipContent>
                 </Tooltip>

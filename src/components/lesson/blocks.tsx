@@ -13,6 +13,7 @@ import { answerCheckpoint } from "@/lib/actions/learning";
 import { withBase } from "@/lib/base-path";
 import { cn } from "@/lib/utils";
 import { stripNumber } from "./strip-number";
+import { Tx } from "@/components/math/tx";
 import { Simulation } from "@/components/sim/simulation";
 import type { LessonBlock } from "@/lib/data/lesson";
 import type { PublicQuestion } from "@/lib/quiz/types";
@@ -75,14 +76,14 @@ function Box({ tone, label, title, children, added }: { tone: Tone; label: strin
     <section className={cn("relative", frame[tone])}>
       <header className="mb-2 flex flex-wrap items-baseline gap-x-1.5 gap-y-1 text-[1.05rem]">
         {titled ? (
-          <span className={cn("font-bold", labelTone[tone])}>{title}</span>
+          <span className={cn("font-bold", labelTone[tone])}><Tx>{title}</Tx></span>
         ) : (
           <>
             <span className={cn("font-bold", labelTone[tone])}>
               {label}
               {colon ? " :" : tone === "proof" ? "." : title ? " —" : ""}
             </span>
-            {title && <span className="font-bold">{title}</span>}
+            {title && <span className="font-bold"><Tx>{title}</Tx></span>}
           </>
         )}
         {added && (
@@ -213,7 +214,7 @@ export function LessonBlockView({ block, index, number }: { block: LessonBlock; 
     case "heading":
       return (
         <SectionTitle number={number} id={headingId(String(d.text), index)} className="scroll-mt-24 pt-5">
-          {stripNumber(String(d.text))}
+          <Tx>{stripNumber(String(d.text))}</Tx>
         </SectionTitle>
       );
     case "text":
@@ -263,7 +264,7 @@ export function LessonBlockView({ block, index, number }: { block: LessonBlock; 
         <figure className="my-6">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={withBase(String(d.src))} alt={String(d.alt ?? "")} loading="lazy" className="fig mx-auto block h-auto max-h-[520px] w-full max-w-[720px] object-contain" />
-          {typeof d.caption === "string" && <figcaption className="mt-2 text-center text-[0.95rem] text-muted-foreground">{d.caption}</figcaption>}
+          {typeof d.caption === "string" && <figcaption className="mt-2 text-center text-[0.95rem] text-muted-foreground"><Tx>{d.caption}</Tx></figcaption>}
         </figure>
       );
     case "simulation":

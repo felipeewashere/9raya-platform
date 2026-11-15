@@ -31,6 +31,7 @@ import { saveLessonPosition, completeLessonWithoutQuiz, skipLesson, unskipLesson
 import { cn } from "@/lib/utils";
 import { refreshData } from "@/lib/use-data";
 import { stripNumber } from "./strip-number";
+import { Tx } from "@/components/math/tx";
 import type { LessonView } from "@/lib/data/lesson";
 import type { OutlineChapter } from "@/lib/data/courses";
 
@@ -116,7 +117,7 @@ function CourseNav({ view, chapters, onNavigate }: { view: LessonView; chapters:
               <NumberSquare tone={locked ? "muted" : c.slug === view.chapter.slug ? "blue" : "muted"} className="translate-y-[0.1em] text-[0.75rem]">
                 {locked ? <Lock className="size-3" /> : c.number}
               </NumberSquare>
-              <span className="min-w-0 flex-1 truncate">{c.title}</span>
+              <span className="min-w-0 flex-1 truncate"><Tx>{c.title}</Tx></span>
               <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
                 <ChevronDown className="size-4 text-muted-foreground" />
               </motion.span>
@@ -126,14 +127,14 @@ function CourseNav({ view, chapters, onNavigate }: { view: LessonView; chapters:
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
                   {c.sections.map((s) => (
                     <div key={s.id} className="mb-1 ml-3 border-l border-primary/20 pl-2">
-                      <p className="px-2 pb-1 pt-2 text-[0.8rem] font-bold text-primary">{s.title} :</p>
+                      <p className="px-2 pb-1 pt-2 text-[0.8rem] font-bold text-primary"><Tx>{s.title}</Tx> :</p>
                       {s.lessons.map((l) => {
                         const current = l.id === view.lesson.id;
                         const icon = l.status === "completed" ? <Check className={cn("size-3.5", l.skipped ? "text-muted-foreground" : "text-success")} /> : l.status === "in_progress" ? <CircleDot className="size-3.5 text-primary" /> : <Circle className="size-3.5 text-muted-foreground" />;
                         return locked ? (
                           <span key={l.id} className="flex items-center gap-2 rounded-sm px-2 py-1.5 text-muted-foreground opacity-60">
                             {icon}
-                            <span className="truncate">{l.title}</span>
+                            <span className="truncate"><Tx>{l.title}</Tx></span>
                           </span>
                         ) : (
                           <Link
@@ -144,7 +145,7 @@ function CourseNav({ view, chapters, onNavigate }: { view: LessonView; chapters:
                             className={cn("flex items-center gap-2 rounded-sm px-2 py-1.5 hover:bg-muted", current && "bg-brand-soft font-bold text-primary")}
                           >
                             {icon}
-                            <span className="truncate">{l.title}</span>
+                            <span className="truncate"><Tx>{l.title}</Tx></span>
                           </Link>
                         );
                       })}
@@ -264,7 +265,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
               active === o.id ? "border-brand font-bold text-primary" : "border-transparent text-muted-foreground hover:text-foreground",
             )}
           >
-            {o.label}
+            <Tx>{o.label}</Tx>
           </a>
         </li>
       ))}
@@ -296,7 +297,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
             <ArrowLeft className="size-4 shrink-0" />
             <span className="hidden truncate sm:inline">{view.courseTitle}</span>
           </Link>
-          <span className="hidden min-w-0 truncate text-sm text-muted-foreground md:inline">· {view.lesson.section_title}</span>
+          <span className="hidden min-w-0 truncate text-sm text-muted-foreground md:inline">· <Tx>{view.lesson.section_title}</Tx></span>
           <div className="ml-auto flex items-center gap-1">
             <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setMobileOutline(true)} aria-label="Plan de la leçon">
               <NotebookPen className="size-4" />
@@ -346,7 +347,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
           <Watermark className="absolute right-[2%] top-28 -z-10 w-[min(70vw,520px)]" />
           <article className={cn("mx-auto space-y-6", focus ? "max-w-3xl" : "max-w-[46rem]")}>
             <header className="space-y-3 border-b border-[var(--rule)] pb-6">
-              <h1 className="font-display text-[2.6rem] leading-[0.9] sm:text-[3.6rem]">{view.lesson.title}</h1>
+              <h1 className="font-display text-[2.6rem] leading-[0.9] sm:text-[3.6rem]"><Tx>{view.lesson.title}</Tx></h1>
               {view.lesson.status === "completed" && (
                 <p className="label flex items-center gap-1 text-success">
                   <Check className="size-4" /> Terminée
@@ -477,7 +478,7 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
                   <span className="flex items-center gap-1 text-[0.85rem] text-muted-foreground smallcaps">
                     <ArrowLeft className="size-3 transition-transform group-hover:-translate-x-0.5" /> Précédente
                   </span>
-                  <span className="mt-0.5 line-clamp-2 font-bold text-primary group-hover:underline">{view.prev.title}</span>
+                  <span className="mt-0.5 line-clamp-2 font-bold text-primary group-hover:underline"><Tx>{view.prev.title}</Tx></span>
                 </Link>
               ) : (
                 <span />
@@ -488,14 +489,14 @@ export function LessonReader({ view, chapters }: { view: LessonView; chapters: O
                     <span className="flex items-center justify-end gap-1 text-[0.85rem] text-muted-foreground smallcaps">
                       <Lock className="size-3" /> Chapitre suivant verrouillé
                     </span>
-                    <span className="mt-0.5 line-clamp-2 font-bold">{view.next.title}</span>
+                    <span className="mt-0.5 line-clamp-2 font-bold"><Tx>{view.next.title}</Tx></span>
                   </div>
                 ) : (
                   <Link href={view.next.href} className="group rounded-sm p-2 text-right hover:bg-muted/60">
                     <span className="flex items-center justify-end gap-1 text-[0.85rem] text-muted-foreground smallcaps">
                       Suivante <ArrowRight className="size-3 transition-transform group-hover:translate-x-0.5" />
                     </span>
-                    <span className="mt-0.5 line-clamp-2 font-bold text-primary group-hover:underline">{view.next.title}</span>
+                    <span className="mt-0.5 line-clamp-2 font-bold text-primary group-hover:underline"><Tx>{view.next.title}</Tx></span>
                   </Link>
                 ))}
             </nav>
