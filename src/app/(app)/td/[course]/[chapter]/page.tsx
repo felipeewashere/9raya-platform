@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: PageProps<"/td/[course]/[chap
   const { course, chapter } = await params;
   const title = await courseTitle(course);
   const ch = readTdChapters(course).find((c) => String(c.chapter) === chapter);
-  return { title: ch ? `TD ${ch.chapter} — ${title ?? ""}` : title ? `TD — ${title}` : "TD" };
+  return { title: ch ? `Travaux dirigés n°${ch.chapter} — ${title ?? ""}` : "Travaux dirigés" };
 }
 
 /** All exercises of one TD sheet. */
@@ -35,7 +35,6 @@ export default async function TdChapterPage({ params }: PageProps<"/td/[course]/
           </Link>
         </p>
         <h1 className="font-display text-[clamp(2.6rem,7vw,5rem)] leading-[0.88]">Travaux dirigés n°{ch.chapter}</h1>
-        <p className="text-[1.1rem] text-muted-foreground">{ch.title}</p>
       </header>
       <div className="space-y-6">
         {ch.exercises.map((e) => (

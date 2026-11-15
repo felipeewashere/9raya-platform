@@ -38,7 +38,7 @@ export default async function TdCoursePage({ params }: PageProps<"/td/[course]">
             <li key={ch.chapter} className="border-b border-[var(--rule)]">
               <Link href={`/td/${course}/${ch.chapter}`} className="group grid grid-cols-[auto_1fr_auto] items-center gap-5 px-2 py-5 transition-colors hover:bg-foreground hover:text-background">
                 <span className="font-display text-[2.6rem] leading-none">TD {ch.chapter}</span>
-                <span className="text-[1.05rem] text-muted-foreground group-hover:text-background">{ch.title}</span>
+                <span />
                 <span className="label flex items-center gap-2">
                   {ch.exercises.length} ex.
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
