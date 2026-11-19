@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
 import { Loader2, Lock, Mail } from "lucide-react";
 import { toast } from "sonner";
+import { GoogleSignIn } from "@/components/auth/google-sign-in";
 import { signInWithGoogle } from "@/lib/actions/auth";
 import { completeOnboarding } from "@/lib/actions/profile";
 import { cn } from "@/lib/utils";
@@ -308,10 +309,15 @@ export function Survey({ mode, name }: { mode: "guest" | "member"; name?: string
               <Words text="Dernière étape : ton compte." />
             </h2>
             <div className="sv-fade grid w-full max-w-xl gap-3">
-              <form action={signInWithGoogle}>
-                <input type="hidden" name="next" value="/bienvenue" />
-                <GoogleSubmit />
-              </form>
+              <GoogleSignIn
+                next="/bienvenue"
+                fallback={
+                  <form action={signInWithGoogle}>
+                    <input type="hidden" name="next" value="/bienvenue" />
+                    <GoogleSubmit />
+                  </form>
+                }
+              />
               <Link href="/inscription" className="sv-cta flex items-center justify-center gap-3">
                 <Mail className="size-5" aria-hidden /> S&apos;inscrire avec un e-mail
               </Link>

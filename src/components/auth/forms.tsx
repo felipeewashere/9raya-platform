@@ -8,6 +8,7 @@ import { AlertCircle, Eye, EyeOff, Loader2, MailCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { GoogleSignIn } from "@/components/auth/google-sign-in";
 import { requestPasswordReset, signIn, signInWithGoogle, signUp, updatePassword, type FormState } from "@/lib/actions/auth";
 
 function Submit({ children }: { children: React.ReactNode }) {
@@ -54,10 +55,15 @@ function PasswordInput({ name, autoComplete, label = "Mot de passe" }: { name: s
 
 function GoogleButton({ next }: { next?: string }) {
   return (
-    <form action={signInWithGoogle}>
-      <input type="hidden" name="next" value={next ?? ""} />
-      <GoogleSubmit />
-    </form>
+    <GoogleSignIn
+      next={next}
+      fallback={
+        <form action={signInWithGoogle}>
+          <input type="hidden" name="next" value={next ?? ""} />
+          <GoogleSubmit />
+        </form>
+      }
+    />
   );
 }
 
