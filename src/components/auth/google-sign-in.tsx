@@ -13,7 +13,9 @@ import { createClient } from "@/lib/supabase/client";
  * NEXT_PUBLIC_GOOGLE_CLIENT_ID the old redirect button (`fallback`) is shown instead.
  */
 
-export const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ?? "";
+// Public OAuth Web client ID (not a secret: Google sends it to every browser that signs in).
+export const GOOGLE_CLIENT_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "776711978219-bnshkqfts1k6g47rklp6853sai6k82bj.apps.googleusercontent.com";
 
 type CredentialResponse = { credential: string };
 type GoogleId = {
